@@ -1,27 +1,44 @@
-# PrimeVue
+<div align="center">
 
-### The next chapter has begun.
+# OpenVue
 
-After years as an open source library, PrimeVue enters its next chapter as part of **PrimeUI**,  a sustainable foundation for the libraries you rely on.
+**The Vue UI component library, continued.**
 
-This repository is now **archived**. It remains available, as a record of everything built here together.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
-## What this means
+</div>
 
-**Existing MIT versions remain MIT, forever.**
-Every release published under the MIT license stays exactly as it is. Your existing projects are unaffected. Nothing is taken away.
+## About
 
-**Development continues at a new home.**
-Active development, new releases, and everything ahead now live under PrimeUI.
+OpenVue is a community-maintained continuation of PrimeVue, one of the most widely adopted Vue.js component libraries, following its archival by the original maintainers. The project is stewarded by [open-vue](https://github.com/open-vue), an independent organization of experienced developers who use this library in production and are committed to keeping it maintained, stable, and open.
 
-➡️ **Read the announcement:** [primeui.dev/nextchapter](https://primeui.dev/nextchapter)
+OpenVue is not affiliated with PrimeTek or PrimeUI. We started this project because a library with this much adoption, and this many teams depending on it, deserves a maintenance path that isn't tied to any single company's plans.
 
-➡️ **The journey continues at:** [primevue.dev](https://primevue.dev)
+## Ecosystem
 
-## Thank you
+The fork spans the full toolchain, each piece maintained under the [open-vue](https://github.com/orgs/open-vue/repositories) organization.
 
-To everyone who used PrimeVue, filed an issue, opened a pull request, answered a question, or simply built something with it,  thank you. This library reached hundreds of millions of downloads because of you.
+| Repository | Description |
+| --- | --- |
+| [openvue](https://github.com/open-vue/openvue) | The core Vue UI component library (this repository) |
+| [open-ux](https://github.com/open-vue/open-ux) | Shared theming and design-token package |
+| [open-icons](https://github.com/open-vue/open-icons) | Icon library |
+| [openvue-tailwind](https://github.com/open-vue/openvue-tailwind) | Components styled with Tailwind CSS |
 
-This archive stays here as a thank you and a milestone. The next chapter is just beginning, and we hope you'll be part of it.
+## Roadmap
 
-— The PrimeTek Team
+Our priority is stability first, growth second. In order:
+
+1. **Publish to npm.** Ship OpenVue packages under their own name so teams can adopt or migrate cleanly.
+2. **Maintain the codebase.** Work through the existing issue backlog, keep dependencies current, and establish a predictable release process.
+3. **Launch the OpenVue website.** Documentation and a live playground for testing components, in the spirit of the original primevue.org.
+4. **Grow the community.** Open governance, responsive maintainers, and a clear path for contributors.
+5. **Expand the library.** Once the foundation is stable, invest in new components and improvements.
+
+## Contributing
+
+We're building the initial maintainer team now. If you're an experienced developer interested in helping maintain or grow this library, issues and pull requests are open, and we'd welcome the help.
+
+## License
+
+MIT, unchanged. Every release under the MIT license stays exactly as it is. This fork doesn't affect that in any way.
