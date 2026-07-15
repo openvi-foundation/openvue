@@ -1,71 +1,98 @@
 name: Bug report
 description: Create a report to help OpenVue improve.
-title: Issue Title
+title: 'Bug: '
 labels:
   - 'Status: Needs Triage'
 body:
   - type: markdown
     attributes:
       value: >
-        ## Overview
-
-
-        OpenVue is maintained by a small team of volunteers, so we ask that you follow the guidelines below when opening a bug report. It helps us triage issues quickly and use our limited time effectively.
-
-
-        ## Issue Creation Guidelines
-
-
-        To help us assist you better, please follow these requirements when creating an issue:
-
-
-        ### Reproducer
-
-
-        Provide a clear and concise example that reproduces the issue. StackBlitz or CodeSandbox both work well.
-
-
-        ### OpenVue Version
-
-        Let us know which version of OpenVue you're using.
-
-        ### Provide a Pull Request
-
-        We welcome contributions from the community! If you have the time and ability, consider submitting a pull request to address this issue. Here's how you can get started:
-
-          1. Fork the repository.
-          2. Create a new branch (`git checkout -b feature/YourFeatureName`).
-          3. Run `pnpm run dev` to run the showcase locally from the monorepo.
-          4. Make your changes.
-          5. Commit your changes (`git commit -m 'Add some feature'`).
-          6. Push to the branch (`git push origin feature/YourFeatureName`).
-          7. Open a pull request.
-
-        ### Reason for No PR
-
-
-        If you are unable to provide a PR, please explain why. Understanding the reasons helps us improve and support contributors.
-
-
-        ### Discussions and Questions
-
-
-        Please avoid opening issue tickets for questions or support requests. Use GitHub Discussions instead.
-
-
-        ## New Issue Report
+        OpenVue is maintained by a small team of volunteers. A clear
+        reproducer and complete environment info help us triage much faster
+        — issues without them may take a while to get to. Have a fix in
+        mind? PRs are welcome, see the field below. For questions or support,
+        please use [GitHub Discussions](https://github.com/open-vue/openvue/discussions)
+        instead of opening an issue.
   - type: textarea
     id: description
     attributes:
       label: Describe the bug
       description: A clear and concise description of what the report is about.
+      value: |
+        **What happened?**
+
+
+        **Additional context**
+        <!-- Screenshots, logs, or anything else that might help -->
     validations:
       required: true
+  - type: input
+    id: reproducer
+    attributes:
+      label: Reproducer
+      placeholder: 'https://stackblitz.com/edit/...'
+      description: >-
+        A link to a minimal reproduction of the bug. Issues without a
+        reproducer take much longer to triage.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: Steps to reproduce the behavior
+      description: A clear and concise description of how to make the issue happen.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: input
+    id: openvue-version
+    attributes:
+      label: OpenVue version
+      placeholder: x.x.x
+    validations:
+      required: true
+  - type: input
+    id: pr-version
+    attributes:
+      label: Vue version
+      placeholder: x.x.x
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node version
+      placeholder: x.x.x
+    validations:
+      required: false
+  - type: input
+    id: browsers
+    attributes:
+      label: Browser(s)
+      description: >-
+        List specific browser(s) the problem occurs on or leave blank if ALL
+        browsers
+      placeholder: |
+        e.g. Safari 15, iOS 15.4, Chrome 90
+  - type: markdown
+    attributes:
+      value: '---'
   - type: input
     id: pull_request
     attributes:
       label: Pull Request Link
-      description: Link to your pull request.
+      description: Link to your pull request, if you have one.
     validations:
       required: false
   - type: checkboxes
@@ -88,66 +115,3 @@ body:
         reason.
     validations:
       required: false
-  - type: input
-    id: reproducer
-    attributes:
-      label: Reproducer
-      placeholder: 'https://stackblitz.com/edit/...'
-      description: >-
-        A link to a minimal reproduction of the bug. Issues without a
-        reproducer take much longer to triage.
-    validations:
-      required: true
-  - type: textarea
-    id: environment
-    attributes:
-      label: Environment
-      description: Tell us about your environment.
-    validations:
-      required: true
-  - type: input
-    id: pr-version
-    attributes:
-      label: Vue version
-      placeholder: x.x.x
-    validations:
-      required: true
-  - type: input
-    id: openvue-version
-    attributes:
-      label: OpenVue version
-      placeholder: x.x.x
-    validations:
-      required: true
-  - type: input
-    id: node-version
-    attributes:
-      label: Node version
-      placeholder: x.x.x
-    validations:
-      required: false
-  - type: input
-    id: browsers
-    attributes:
-      label: Browser(s)
-      description: >-
-        List specific browser(s) the problem occurs on or leave blank if ALL
-        browsers
-      placeholder: |
-        e.g. Safari 15, iOS 15.4, Chrome 90
-  - type: textarea
-    id: reproduce-steps
-    attributes:
-      label: Steps to reproduce the behavior
-      description: A clear and concise description of how to make the issue happen.
-      placeholder: |
-        1. Go to '...' 2. Click on '....' 3. Scroll down to '....' 4. See error
-    validations:
-      required: true
-  - type: textarea
-    id: expected-behavior
-    attributes:
-      label: Expected behavior
-      description: A clear and concise description of what you expected to happen.
-    validations:
-      required: true
