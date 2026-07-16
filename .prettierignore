@@ -10,3 +10,4 @@ node_modules
 .output
 pnpm-publish-summary.json
 apps/showcase/components.d.ts
+apps/showcase/server/assets/llms
