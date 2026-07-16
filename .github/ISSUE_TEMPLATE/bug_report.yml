@@ -11,7 +11,7 @@ body:
         reproducer and complete environment info help us triage much faster
         — issues without them may take a while to get to. Have a fix in
         mind? PRs are welcome, see the field below. For questions or support,
-        please use [GitHub Discussions](https://github.com/open-vue/openvue/discussions)
+        please use [GitHub Discussions](https://github.com/openvi-foundation/openvue/discussions)
         instead of opening an issue.
   - type: textarea
     id: description

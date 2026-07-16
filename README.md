@@ -10,20 +10,20 @@
 
 ## About
 
-OpenVue is a community-maintained continuation of PrimeVue, one of the most widely adopted Vue.js component libraries, following its archival by the original maintainers. The project is stewarded by [open-vue](https://github.com/open-vue), an independent organization of experienced developers who use this library in production and are committed to keeping it maintained, stable, and open.
+OpenVue is a community-maintained continuation of PrimeVue, one of the most widely adopted Vue.js component libraries, following its archival by the original maintainers. The project is stewarded by [openvi-foundation](https://github.com/openvi-foundation), an independent organization of experienced developers who use this library in production and are committed to keeping it maintained, stable, and open.
 
 OpenVue is not affiliated with PrimeTek or PrimeUI. We started this project because a library with this much adoption, and this many teams depending on it, deserves a maintenance path that isn't tied to any single company's plans.
 
 ## Ecosystem
 
-The fork spans the full toolchain, each piece maintained under the [open-vue](https://github.com/orgs/open-vue/repositories) organization.
+The fork spans the full toolchain, each piece maintained under the [openvi-foundation](https://github.com/orgs/openvi-foundation/repositories) organization.
 
 | Repository | Description |
 | --- | --- |
-| [openvue](https://github.com/open-vue/openvue) | The core Vue UI component library (this repository) |
-| [open-ux](https://github.com/open-vue/open-ux) | Shared theming and design-token package |
-| [open-icons](https://github.com/open-vue/open-icons) | Icon library |
-| [openvue-tailwind](https://github.com/open-vue/openvue-tailwind) | Components styled with Tailwind CSS |
+| [openvue](https://github.com/openvi-foundation/openvue) | The core Vue UI component library (this repository) |
+| [openux](https://github.com/openvi-foundation/openux) | Shared theming and design-token package |
+| [openicons](https://github.com/openvi-foundation/openicons) | Icon library |
+| [openvue-tailwind](https://github.com/openvi-foundation/openvue-tailwind) | Components styled with Tailwind CSS |
 
 ## Roadmap
 

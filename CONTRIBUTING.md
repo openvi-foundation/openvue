@@ -4,7 +4,7 @@ Thanks for considering a contribution. OpenVue is maintained by a small team of 
 
 ## Before you start
 
-- Search existing [issues](https://github.com/open-vue/openvue/issues) and [discussions](https://github.com/open-vue/openvue/discussions) to check your bug or idea hasn't already been reported or proposed.
+- Search existing [issues](https://github.com/openvi-foundation/openvue/issues) and [discussions](https://github.com/openvi-foundation/openvue/discussions) to check your bug or idea hasn't already been reported or proposed.
 - For anything beyond a small fix, open an issue first so we can discuss the approach before you put time into a PR.
 - Questions and support requests belong in Discussions, not in an issue ticket.
 
@@ -21,7 +21,7 @@ Use the **Feature request** issue template. Describe the problem you're running 
 This is a pnpm monorepo.
 
 ```bash
-git clone https://github.com/open-vue/openvue.git
+git clone https://github.com/openvi-foundation/openvue.git
 cd openvue
 pnpm run init      
 pnpm run dev        
