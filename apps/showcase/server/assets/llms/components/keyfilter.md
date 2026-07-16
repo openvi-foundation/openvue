@@ -75,7 +75,6 @@ const alphabetic = ref(null);
 const alphanumeric = ref(null);
 <\/script>
 ```
-
 </details>
 
 ## Regex (Single Keypress)
@@ -111,7 +110,6 @@ const spacekey = ref(null);
 const chars = ref(null);
 <\/script>
 ```
-
 </details>
 
 ## Regex (Whole Word)
@@ -141,7 +139,7 @@ import { ref } from 'vue';
 const text = ref(null);
 <\/script>
 ```
-
 </details>
 
 ## Keyfilter
+

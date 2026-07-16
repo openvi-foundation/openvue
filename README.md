@@ -18,12 +18,12 @@ OpenVue is not affiliated with PrimeTek or PrimeUI. We started this project beca
 
 The fork spans the full toolchain, each piece maintained under the [openvi-foundation](https://github.com/orgs/openvi-foundation/repositories) organization.
 
-| Repository | Description |
-| --- | --- |
-| [openvue](https://github.com/openvi-foundation/openvue) | The core Vue UI component library (this repository) |
-| [openux](https://github.com/openvi-foundation/openux) | Shared theming and design-token package |
-| [openicons](https://github.com/openvi-foundation/openicons) | Icon library |
-| [openvue-tailwind](https://github.com/openvi-foundation/openvue-tailwind) | Components styled with Tailwind CSS |
+| Repository                                                                | Description                                         |
+| ------------------------------------------------------------------------- | --------------------------------------------------- |
+| [openvue](https://github.com/openvi-foundation/openvue)                   | The core Vue UI component library (this repository) |
+| [openux](https://github.com/openvi-foundation/openux)                     | Shared theming and design-token package             |
+| [openicons](https://github.com/openvi-foundation/openicons)               | Icon library                                        |
+| [openvue-tailwind](https://github.com/openvi-foundation/openvue-tailwind) | Components styled with Tailwind CSS                 |
 
 ## Roadmap
 

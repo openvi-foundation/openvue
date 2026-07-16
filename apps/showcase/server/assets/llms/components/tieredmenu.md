@@ -100,7 +100,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Popup
@@ -202,7 +201,6 @@ const toggle = (event) => {
 };
 <\/script>
 ```
-
 </details>
 
 ## Router
@@ -296,7 +294,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Template
@@ -421,5 +418,5 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
+

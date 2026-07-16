@@ -337,7 +337,6 @@ const commandHandler = (text) => {
 }
 </style>
 ```
-
 </details>
 
 ## Basic
@@ -351,3 +350,4 @@ Dock requires a collection of menuitems as its model and an icon template. Defau
     </template>
 </Dock>
 ```
+

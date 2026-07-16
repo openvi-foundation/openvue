@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-04-08
+Generated: 2026-07-16
 
 ---
 

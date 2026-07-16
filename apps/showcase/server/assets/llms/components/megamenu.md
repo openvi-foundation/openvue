@@ -25,7 +25,13 @@ MegaMenu requires a collection of menuitems as its model .
 The command property of a menuitem defines the callback to run when an item is activated by click or a key event.
 
 ```vue
-{ label: 'Log out', icon: 'pi pi-signout', command: () => { // Callback to run } }
+{
+    label: 'Log out',
+    icon: 'pi pi-signout',
+    command: () => {
+        // Callback to run
+    }
+}
 ```
 
 ## Router
@@ -125,7 +131,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Template
@@ -263,7 +268,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## VerticalDoc
@@ -385,5 +389,5 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
+

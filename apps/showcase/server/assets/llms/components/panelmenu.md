@@ -104,7 +104,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Controlled
@@ -225,7 +224,6 @@ const expandNode = (node) => {
 };
 <\/script>
 ```
-
 </details>
 
 ## Multiple
@@ -329,7 +327,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Router
@@ -427,7 +424,6 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
 
 ## Template
@@ -534,5 +530,5 @@ const items = ref([
 ]);
 <\/script>
 ```
-
 </details>
+

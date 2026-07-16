@@ -72,5 +72,11 @@
     "packageManager": "pnpm@9.6.0",
     "engines": {
         "node": ">=12.11.0"
+    },
+    "pnpm": {
+        "overrides": {
+            "fast-uri": ">=3.1.2",
+            "hono": ">=4.12.25"
+        }
     }
 }

@@ -23,17 +23,17 @@ This is a pnpm monorepo.
 ```bash
 git clone https://github.com/openvi-foundation/openvue.git
 cd openvue
-pnpm run init      
-pnpm run dev        
+pnpm run init
+pnpm run dev
 ```
 
 Useful commands while working on a component:
 
 ```bash
-pnpm run lint                                                  
-pnpm run format                                                 
-pnpm --filter primevue exec vitest run src/button               
-pnpm --filter primevue exec vitest run src/button/Button.spec.js  
+pnpm run lint
+pnpm run format
+pnpm --filter primevue exec vitest run src/button
+pnpm --filter primevue exec vitest run src/button/Button.spec.js
 ```
 
 ## Submitting a pull request
