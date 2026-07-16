@@ -7,10 +7,10 @@
  * @module inputnumber
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, Nullable, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { InputTextPassThroughOptions } from 'primevue/inputtext';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, Nullable, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { InputTextPassThroughOptions } from 'openvue/inputtext';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { VNode } from 'vue';
 
 export declare type RoundingMode = 'ceil' | 'floor' | 'expand' | 'trunc' | 'halfCeil' | 'halfFloor' | 'halfExpand' | 'halfTrunc' | 'halfEven';

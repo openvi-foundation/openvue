@@ -60,7 +60,7 @@
 import { findSingle, focus, isTouchDevice } from '@primeuix/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@primeuix/utils/object';
 import { ZIndex } from '@primeuix/utils/zindex';
-import BarsIcon from '@primevue/icons/bars';
+import BarsIcon from '@openvue/icons/bars';
 import BaseMenubar from './BaseMenubar.vue';
 import MenubarSub from './MenubarSub.vue';
 

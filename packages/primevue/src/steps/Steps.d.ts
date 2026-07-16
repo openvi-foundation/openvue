@@ -7,10 +7,10 @@
  * @module steps
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { MenuItem } from 'primevue/menuitem';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { MenuItem } from 'openvue/menuitem';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { VNode } from 'vue';
 
 export declare type StepsPassThroughOptionType = StepsPassThroughAttributes | ((options: StepsPassThroughMethodOptions) => StepsPassThroughAttributes | string) | string | null | undefined;

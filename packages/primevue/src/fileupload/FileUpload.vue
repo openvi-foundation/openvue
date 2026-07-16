@@ -88,13 +88,13 @@
 
 <script>
 import { addClass, removeClass } from '@primeuix/utils/dom';
-import PlusIcon from '@primevue/icons/plus';
-import TimesIcon from '@primevue/icons/times';
-import UploadIcon from '@primevue/icons/upload';
-import Button from 'primevue/button';
-import Message from 'primevue/message';
-import ProgressBar from 'primevue/progressbar';
-import Ripple from 'primevue/ripple';
+import PlusIcon from '@openvue/icons/plus';
+import TimesIcon from '@openvue/icons/times';
+import UploadIcon from '@openvue/icons/upload';
+import Button from 'openvue/button';
+import Message from 'openvue/message';
+import ProgressBar from 'openvue/progressbar';
+import Ripple from 'openvue/ripple';
 import BaseFileUpload from './BaseFileUpload.vue';
 import FileContent from './FileContent.vue';
 

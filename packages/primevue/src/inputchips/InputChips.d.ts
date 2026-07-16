@@ -7,10 +7,10 @@
  * @module inputchips
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { ChipPassThroughOptions } from 'primevue/chip';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { ChipPassThroughOptions } from 'openvue/chip';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { InputHTMLAttributes, VNode } from 'vue';
 
 export declare type InputChipsPassThroughOptionType = InputChipsPassThroughAttributes | ((options: InputChipsPassThroughMethodOptions) => InputChipsPassThroughAttributes | string) | string | null | undefined;

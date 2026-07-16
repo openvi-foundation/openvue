@@ -134,15 +134,15 @@
 import { cn } from '@primeuix/utils';
 import { findSingle, focus, getFirstFocusableElement, isElement } from '@primeuix/utils/dom';
 import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@primeuix/utils/object';
-import { FilterService } from '@primevue/core/api';
-import BlankIcon from '@primevue/icons/blank';
-import CheckIcon from '@primevue/icons/check';
-import SearchIcon from '@primevue/icons/search';
-import IconField from 'primevue/iconfield';
-import InputIcon from 'primevue/inputicon';
-import InputText from 'primevue/inputtext';
-import Ripple from 'primevue/ripple';
-import VirtualScroller from 'primevue/virtualscroller';
+import { FilterService } from '@openvue/core/api';
+import BlankIcon from '@openvue/icons/blank';
+import CheckIcon from '@openvue/icons/check';
+import SearchIcon from '@openvue/icons/search';
+import IconField from 'openvue/iconfield';
+import InputIcon from 'openvue/inputicon';
+import InputText from 'openvue/inputtext';
+import Ripple from 'openvue/ripple';
+import VirtualScroller from 'openvue/virtualscroller';
 import BaseListbox from './BaseListbox.vue';
 
 export default {

@@ -103,12 +103,12 @@
 <script>
 import { addClass, find, findSingle, getAttribute, removeClass, setAttribute } from '@primeuix/utils/dom';
 import { localeComparator, sort } from '@primeuix/utils/object';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronLeftIcon from '@primevue/icons/chevronleft';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import ChevronUpIcon from '@primevue/icons/chevronup';
-import Button from 'primevue/button';
-import Ripple from 'primevue/ripple';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronLeftIcon from '@openvue/icons/chevronleft';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import ChevronUpIcon from '@openvue/icons/chevronup';
+import Button from 'openvue/button';
+import Ripple from 'openvue/ripple';
 import BaseCarousel from './BaseCarousel.vue';
 
 export default {

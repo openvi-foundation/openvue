@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import SliderStyle from 'primevue/slider/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import SliderStyle from 'openvue/slider/style';
 
 export default {
     name: 'BaseSlider',

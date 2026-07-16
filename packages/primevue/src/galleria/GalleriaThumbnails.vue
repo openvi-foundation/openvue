@@ -73,12 +73,12 @@
 <script>
 import { addClass, find, findSingle, getAttribute, removeClass, setAttribute } from '@primeuix/utils/dom';
 import { localeComparator, sort } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronLeftIcon from '@primevue/icons/chevronleft';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import ChevronUpIcon from '@primevue/icons/chevronup';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronLeftIcon from '@openvue/icons/chevronleft';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import ChevronUpIcon from '@openvue/icons/chevronup';
+import Ripple from 'openvue/ripple';
 
 export default {
     name: 'GalleriaThumbnails',

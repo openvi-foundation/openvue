@@ -73,7 +73,7 @@
 import { cn } from '@primeuix/utils';
 import { getOuterHeight } from '@primeuix/utils/dom';
 import { resolveFieldData } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
+import BaseComponent from '@openvue/core/basecomponent';
 import BodyRow from './BodyRow.vue';
 
 export default {

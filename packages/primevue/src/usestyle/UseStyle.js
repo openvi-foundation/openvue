@@ -1,1 +1,1 @@
-export * from '@primevue/core/usestyle';
+export * from '@openvue/core/usestyle';

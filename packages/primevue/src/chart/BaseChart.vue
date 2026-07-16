@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import ChartStyle from 'primevue/chart/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import ChartStyle from 'openvue/chart/style';
 
 export default {
     name: 'BaseChart',

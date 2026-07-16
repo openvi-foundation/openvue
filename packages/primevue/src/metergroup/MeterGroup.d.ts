@@ -7,8 +7,8 @@
  * @module metergroup
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@primevue/core';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { VNode } from 'vue';
 
 export declare type MeterGroupPassThroughOptionType = MeterGroupPassThroughAttributes | ((options: MeterGroupPassThroughMethodOptions) => MeterGroupPassThroughAttributes | string) | string | null | undefined;

@@ -8,8 +8,8 @@
  * @module accordiontab
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@primevue/core';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { AnchorHTMLAttributes, HTMLAttributes, TransitionProps, VNode } from 'vue';
 
 export declare type AccordionTabPassThroughOptionType = AccordionTabPassThroughAttributes | ((options: AccordionTabPassThroughMethodOptions) => AccordionTabPassThroughAttributes | string) | string | null | undefined;

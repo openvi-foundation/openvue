@@ -7,7 +7,7 @@
  * @module tabmenustyle
  *
  */
-import type { BaseStyle } from '@primevue/core/base/style';
+import type { BaseStyle } from '@openvue/core/base/style';
 
 export enum TabMenuClasses {
     /**

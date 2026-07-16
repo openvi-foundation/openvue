@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import ChevronUpIcon from '@primevue/icons/chevronup';
-import AccordionContent from 'primevue/accordioncontent';
-import AccordionHeader from 'primevue/accordionheader';
-import AccordionPanel from 'primevue/accordionpanel';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import ChevronUpIcon from '@openvue/icons/chevronup';
+import AccordionContent from 'openvue/accordioncontent';
+import AccordionHeader from 'openvue/accordionheader';
+import AccordionPanel from 'openvue/accordionpanel';
 import { mergeProps } from 'vue';
 import BaseAccordion from './BaseAccordion.vue';
 

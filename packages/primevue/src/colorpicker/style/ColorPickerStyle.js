@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/colorpicker';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     root: 'p-colorpicker p-component',

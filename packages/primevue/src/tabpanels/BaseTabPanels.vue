@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import TabPanelsStyle from 'primevue/tabpanels/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import TabPanelsStyle from 'openvue/tabpanels/style';
 
 export default {
     name: 'BaseTabPanels',

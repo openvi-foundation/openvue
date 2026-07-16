@@ -62,15 +62,15 @@
 <script>
 import { addClass, focus, isAttributeEquals } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import EyeIcon from '@primevue/icons/eye';
-import RefreshIcon from '@primevue/icons/refresh';
-import SearchMinusIcon from '@primevue/icons/searchminus';
-import SearchPlusIcon from '@primevue/icons/searchplus';
-import TimesIcon from '@primevue/icons/times';
-import UndoIcon from '@primevue/icons/undo';
-import FocusTrap from 'primevue/focustrap';
-import Portal from 'primevue/portal';
-import { blockBodyScroll, unblockBodyScroll } from 'primevue/utils';
+import EyeIcon from '@openvue/icons/eye';
+import RefreshIcon from '@openvue/icons/refresh';
+import SearchMinusIcon from '@openvue/icons/searchminus';
+import SearchPlusIcon from '@openvue/icons/searchplus';
+import TimesIcon from '@openvue/icons/times';
+import UndoIcon from '@openvue/icons/undo';
+import FocusTrap from 'openvue/focustrap';
+import Portal from 'openvue/portal';
+import { blockBodyScroll, unblockBodyScroll } from 'openvue/utils';
 import BaseImage from './BaseImage.vue';
 
 export default {

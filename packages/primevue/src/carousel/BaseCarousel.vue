@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import CarouselStyle from 'primevue/carousel/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import CarouselStyle from 'openvue/carousel/style';
 
 export default {
     name: 'BaseCarousel',

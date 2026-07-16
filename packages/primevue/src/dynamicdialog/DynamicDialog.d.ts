@@ -7,7 +7,7 @@
  * @module dynamicdialog
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
+import type { DefineComponent, EmitFn } from '@openvue/core';
 
 /**
  * Defines valid properties in DynamicDialog component.

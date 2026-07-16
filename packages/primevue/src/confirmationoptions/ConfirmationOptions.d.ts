@@ -5,8 +5,8 @@
  * @module confirmationoptions
  *
  */
-import type { HintedString } from '@primevue/core';
-import type { ButtonProps } from 'primevue/button';
+import type { HintedString } from '@openvue/core';
+import type { ButtonProps } from 'openvue/button';
 
 /**
  * Confirmation Service options.

@@ -7,10 +7,10 @@
  * @module inputotp
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { InputTextPassThroughOptions } from 'primevue/inputtext';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { InputTextPassThroughOptions } from 'openvue/inputtext';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { VNode } from 'vue';
 
 export declare type InputOtpPassThroughOptionType = InputOtpPassThroughAttributes | ((options: InputOtpPassThroughMethodOptions) => InputOtpPassThroughAttributes | string) | string | null | undefined;

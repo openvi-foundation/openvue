@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import SelectButtonStyle from 'primevue/selectbutton/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import SelectButtonStyle from 'openvue/selectbutton/style';
 
 export default {
     name: 'BaseSelectButton',

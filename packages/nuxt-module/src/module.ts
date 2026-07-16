@@ -1,7 +1,7 @@
 import { addPlugin, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { isNotEmpty } from '@primeuix/utils';
-import { PrimeVueResolver } from '@primevue/auto-import-resolver';
-import type { MetaType } from '@primevue/metadata';
+import { PrimeVueResolver } from '@openvue/auto-import-resolver';
+import type { MetaType } from '@openvue/metadata';
 import { normalize } from 'pathe';
 import Components from 'unplugin-vue-components/nuxt';
 import { register } from './register';
@@ -9,7 +9,7 @@ import type { ModuleOptions } from './types';
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
-        name: '@primevue/nuxt-module',
+        name: '@openvue/nuxt-module',
         configKey: 'primevue',
         compatibility: {
             nuxt: '>=3.0.0'
@@ -58,8 +58,8 @@ export default defineNuxtModule<ModuleOptions>({
         };
 
         //nuxt.options.build.transpile.push('nuxt');
-        nuxt.options.build.transpile.push('primevue');
-        hasTheme && nuxt.options.build.transpile.push('@primevue/themes');
+        nuxt.options.build.transpile.push('openvue');
+        hasTheme && nuxt.options.build.transpile.push('@openvue/themes');
         hasTheme && nuxt.options.build.transpile.push('@primeuix/themes');
 
         let registeredStyles: MetaType[] = registered.styles;

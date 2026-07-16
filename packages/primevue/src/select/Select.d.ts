@@ -7,13 +7,13 @@
  * @module select
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { IconFieldPassThroughOptions } from 'primevue/iconfield';
-import type { InputIconPassThroughOptions } from 'primevue/inputicon';
-import type { InputTextPassThroughOptions } from 'primevue/inputtext';
-import type { PassThroughOptions } from 'primevue/passthrough';
-import type { VirtualScrollerItemOptions, VirtualScrollerPassThroughOptionType, VirtualScrollerProps } from 'primevue/virtualscroller';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { IconFieldPassThroughOptions } from 'openvue/iconfield';
+import type { InputIconPassThroughOptions } from 'openvue/inputicon';
+import type { InputTextPassThroughOptions } from 'openvue/inputtext';
+import type { PassThroughOptions } from 'openvue/passthrough';
+import type { VirtualScrollerItemOptions, VirtualScrollerPassThroughOptionType, VirtualScrollerProps } from 'openvue/virtualscroller';
 import { TransitionProps, VNode } from 'vue';
 
 export declare type SelectPassThroughOptionType<T = any> = SelectPassThroughAttributes | ((options: SelectPassThroughMethodOptions<T>) => SelectPassThroughAttributes | string) | string | null | undefined;

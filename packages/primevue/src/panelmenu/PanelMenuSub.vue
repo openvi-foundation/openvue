@@ -75,10 +75,10 @@
 
 <script>
 import { isNotEmpty, resolve } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 
 export default {

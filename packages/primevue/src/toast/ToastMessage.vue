@@ -21,13 +21,13 @@
 
 <script>
 import { cn } from '@primeuix/utils';
-import BaseComponent from '@primevue/core/basecomponent';
-import CheckIcon from '@primevue/icons/check';
-import ExclamationTriangleIcon from '@primevue/icons/exclamationtriangle';
-import InfoCircleIcon from '@primevue/icons/infocircle';
-import TimesIcon from '@primevue/icons/times';
-import TimesCircleIcon from '@primevue/icons/timescircle';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import CheckIcon from '@openvue/icons/check';
+import ExclamationTriangleIcon from '@openvue/icons/exclamationtriangle';
+import InfoCircleIcon from '@openvue/icons/infocircle';
+import TimesIcon from '@openvue/icons/times';
+import TimesCircleIcon from '@openvue/icons/timescircle';
+import Ripple from 'openvue/ripple';
 
 export default {
     name: 'ToastMessage',

@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import CardStyle from 'primevue/card/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import CardStyle from 'openvue/card/style';
 
 export default {
     name: 'BaseCard',

@@ -25,8 +25,8 @@
 
 <script>
 import { cn } from '@primeuix/utils';
-import TimesIcon from '@primevue/icons/times';
-import Ripple from 'primevue/ripple';
+import TimesIcon from '@openvue/icons/times';
+import Ripple from 'openvue/ripple';
 import BaseMessage from './BaseMessage.vue';
 
 export default {

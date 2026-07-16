@@ -1,38 +1,38 @@
 // Api
-export * from '@primevue/core/api';
+export * from '@openvue/core/api';
 
 // Base
-export { default as Base } from '@primevue/core/base';
-export { default as BaseStyle } from '@primevue/core/base/style';
+export { default as Base } from '@openvue/core/base';
+export { default as BaseStyle } from '@openvue/core/base/style';
 
 // BaseComponent
-export { default as BaseComponent } from '@primevue/core/basecomponent';
-export { default as BaseComponentStyle } from '@primevue/core/basecomponent/style';
+export { default as BaseComponent } from '@openvue/core/basecomponent';
+export { default as BaseComponentStyle } from '@openvue/core/basecomponent/style';
 
 // BaseDirective
-export { default as BaseDirective } from '@primevue/core/basedirective';
+export { default as BaseDirective } from '@openvue/core/basedirective';
 
 // BaseEditableHolder
-export { default as BaseEditableHolder } from '@primevue/core/baseeditableholder';
+export { default as BaseEditableHolder } from '@openvue/core/baseeditableholder';
 
 // BaseInput
-export { default as BaseInput } from '@primevue/core/baseinput';
+export { default as BaseInput } from '@openvue/core/baseinput';
 
 // PrimeVue
-export * from '@primevue/core/config';
-export { default as PrimeVue } from '@primevue/core/config';
+export * from '@openvue/core/config';
+export { default as PrimeVue } from '@openvue/core/config';
 
 // PrimeVueService
-export { default as PrimeVueService } from '@primevue/core/service';
+export { default as PrimeVueService } from '@openvue/core/service';
 
 // UseAttrSelector
-export * from '@primevue/core/useattrselector';
+export * from '@openvue/core/useattrselector';
 
 // UseId
-export * from '@primevue/core/useid';
+export * from '@openvue/core/useid';
 
 // UseStyle
-export * from '@primevue/core/usestyle';
+export * from '@openvue/core/usestyle';
 
 // Utils
-export * from '@primevue/core/utils';
+export * from '@openvue/core/utils';

@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import ButtonStyle from 'primevue/button/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import ButtonStyle from 'openvue/button/style';
 
 export default {
     name: 'BaseButton',

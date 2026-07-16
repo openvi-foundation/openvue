@@ -6,7 +6,7 @@
 
 <script>
 import { omit } from '@primeuix/utils';
-import { useForm } from '@primevue/forms/useform';
+import { useForm } from '@openvue/forms/useform';
 import { ref } from 'vue';
 import BaseForm from './BaseForm.vue';
 

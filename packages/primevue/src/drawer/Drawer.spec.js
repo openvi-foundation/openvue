@@ -1,6 +1,6 @@
 import { addClass } from '@primeuix/utils/dom';
 import { mount } from '@vue/test-utils';
-import PrimeVue from 'primevue/config';
+import PrimeVue from 'openvue/config';
 import { describe, expect, it, vi } from 'vitest';
 import Drawer from './Drawer.vue';
 vi.mock('@primeuix/utils/dom', async (getModule) => {

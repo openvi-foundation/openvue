@@ -7,8 +7,8 @@
  * @module dropdown
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
-import * as Select from 'primevue/select';
+import type { DefineComponent, EmitFn } from '@openvue/core';
+import * as Select from 'openvue/select';
 import 'vue';
 
 /**

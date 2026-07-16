@@ -212,16 +212,16 @@ import { cn } from '@primeuix/utils';
 import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
 import { equals, findLastIndex, isEmpty, isNotEmpty, resolveFieldData } from '@primeuix/utils/object';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import SpinnerIcon from '@primevue/icons/spinner';
-import TimesIcon from '@primevue/icons/times';
-import Chip from 'primevue/chip';
-import InputText from 'primevue/inputtext';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Portal from 'primevue/portal';
-import Ripple from 'primevue/ripple';
-import VirtualScroller from 'primevue/virtualscroller';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import SpinnerIcon from '@openvue/icons/spinner';
+import TimesIcon from '@openvue/icons/times';
+import Chip from 'openvue/chip';
+import InputText from 'openvue/inputtext';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Portal from 'openvue/portal';
+import Ripple from 'openvue/ripple';
+import VirtualScroller from 'openvue/virtualscroller';
 import BaseAutoComplete from './BaseAutoComplete.vue';
 
 export default {

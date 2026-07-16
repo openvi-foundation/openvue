@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import AngleDoubleRightIcon from '@primevue/icons/angledoubleright';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';
+import Ripple from 'openvue/ripple';
 
 export default {
     name: 'LastPageLink',

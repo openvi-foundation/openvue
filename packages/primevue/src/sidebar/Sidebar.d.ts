@@ -7,8 +7,8 @@
  * @module sidebar
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
-import * as Drawer from 'primevue/drawer';
+import type { DefineComponent, EmitFn } from '@openvue/core';
+import * as Drawer from 'openvue/drawer';
 import 'vue';
 
 /**

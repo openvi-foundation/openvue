@@ -7,9 +7,9 @@
  * @module message
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { ButtonHTMLAttributes, TransitionProps, VNode } from 'vue';
 
 export declare type MessagePassThroughOptionType<T = any> = MessagePassThroughAttributes | ((options: MessagePassThroughMethodOptions<T>) => MessagePassThroughAttributes | string) | string | null | undefined;

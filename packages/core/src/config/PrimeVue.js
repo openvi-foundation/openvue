@@ -1,8 +1,8 @@
 import { Theme, ThemeService } from '@primeuix/styled';
 import { mergeKeys } from '@primeuix/utils';
-import { FilterMatchMode } from '@primevue/core/api';
-import BaseStyle from '@primevue/core/base/style';
-import PrimeVueService from '@primevue/core/service';
+import { FilterMatchMode } from '@openvue/core/api';
+import BaseStyle from '@openvue/core/base/style';
+import PrimeVueService from '@openvue/core/service';
 import { inject, reactive, ref, watch } from 'vue';
 
 export const defaultOptions = {

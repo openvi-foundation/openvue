@@ -168,17 +168,17 @@
 <script>
 import { find, scrollInView, setAttribute } from '@primeuix/utils/dom';
 import { findIndexInList, isEmpty } from '@primeuix/utils/object';
-import AngleDoubleDownIcon from '@primevue/icons/angledoubledown';
-import AngleDoubleLeftIcon from '@primevue/icons/angledoubleleft';
-import AngleDoubleRightIcon from '@primevue/icons/angledoubleright';
-import AngleDoubleUpIcon from '@primevue/icons/angledoubleup';
-import AngleDownIcon from '@primevue/icons/angledown';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
-import AngleUpIcon from '@primevue/icons/angleup';
-import Button from 'primevue/button';
-import Listbox from 'primevue/listbox';
-import Ripple from 'primevue/ripple';
+import AngleDoubleDownIcon from '@openvue/icons/angledoubledown';
+import AngleDoubleLeftIcon from '@openvue/icons/angledoubleleft';
+import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';
+import AngleDoubleUpIcon from '@openvue/icons/angledoubleup';
+import AngleDownIcon from '@openvue/icons/angledown';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
+import AngleUpIcon from '@openvue/icons/angleup';
+import Button from 'openvue/button';
+import Listbox from 'openvue/listbox';
+import Ripple from 'openvue/ripple';
 import BasePickList from './BasePickList.vue';
 
 export default {

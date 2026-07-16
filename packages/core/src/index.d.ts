@@ -45,17 +45,17 @@ export declare type NoInfer<T> = [T][T extends any ? 0 : never];
 /**
  * Modules
  */
-export * from '@primevue/core/api';
-export * from '@primevue/core/base/style';
-export * from '@primevue/core/basecomponent';
-export * from '@primevue/core/basecomponent/style';
-export * from '@primevue/core/basedirective';
-export * from '@primevue/core/baseeditableholder';
-export * from '@primevue/core/baseinput';
-export * from '@primevue/core/config';
-export { default as PrimeVue } from '@primevue/core/config';
-export * from '@primevue/core/service';
-export * from '@primevue/core/useattrselector';
-export * from '@primevue/core/useid';
-export * from '@primevue/core/usestyle';
-export * from '@primevue/core/utils';
+export * from '@openvue/core/api';
+export * from '@openvue/core/base/style';
+export * from '@openvue/core/basecomponent';
+export * from '@openvue/core/basecomponent/style';
+export * from '@openvue/core/basedirective';
+export * from '@openvue/core/baseeditableholder';
+export * from '@openvue/core/baseinput';
+export * from '@openvue/core/config';
+export { default as PrimeVue } from '@openvue/core/config';
+export * from '@openvue/core/service';
+export * from '@openvue/core/useattrselector';
+export * from '@openvue/core/useid';
+export * from '@openvue/core/usestyle';
+export * from '@openvue/core/utils';

@@ -13,9 +13,9 @@
 <script>
 import { addClass, focus } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import FocusTrap from 'primevue/focustrap';
-import Portal from 'primevue/portal';
-import { blockBodyScroll, unblockBodyScroll } from 'primevue/utils';
+import FocusTrap from 'openvue/focustrap';
+import Portal from 'openvue/portal';
+import { blockBodyScroll, unblockBodyScroll } from 'openvue/utils';
 import BaseGalleria from './BaseGalleria.vue';
 import GalleriaContent from './GalleriaContent.vue';
 

@@ -7,8 +7,8 @@
  * @module inputswitch
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
-import * as ToggleSwitch from 'primevue/toggleswitch';
+import type { DefineComponent, EmitFn } from '@openvue/core';
+import * as ToggleSwitch from 'openvue/toggleswitch';
 /**
  * Custom passthrough(pt) option method.
  */

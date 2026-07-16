@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/datepicker';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {
     root: ({ props }) => ({ position: props.appendTo === 'self' || props.showClear ? 'relative' : undefined })

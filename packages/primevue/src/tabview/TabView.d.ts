@@ -8,10 +8,10 @@
  * @module tabview
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { PassThroughOptions } from 'primevue/passthrough';
-import type { TabPanelPassThroughOptionType } from 'primevue/tabpanel';
+import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { PassThroughOptions } from 'openvue/passthrough';
+import type { TabPanelPassThroughOptionType } from 'openvue/tabpanel';
 import { ButtonHTMLAttributes, VNode } from 'vue';
 
 export declare type TabViewPassThroughOptionType = TabViewPassThroughAttributes | ((options: TabViewPassThroughMethodOptions) => TabViewPassThroughAttributes | string) | string | null | undefined;

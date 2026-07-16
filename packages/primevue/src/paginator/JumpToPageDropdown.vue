@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import Select from 'primevue/select';
+import BaseComponent from '@openvue/core/basecomponent';
+import Select from 'openvue/select';
 
 export default {
     name: 'JumpToPageDropdown',

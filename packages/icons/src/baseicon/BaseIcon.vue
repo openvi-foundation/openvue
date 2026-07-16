@@ -1,7 +1,7 @@
 <script>
 import { isEmpty } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import BaseIconStyle from '@primevue/icons/baseicon/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import BaseIconStyle from '@openvue/icons/baseicon/style';
 
 export default {
     name: 'BaseIcon',

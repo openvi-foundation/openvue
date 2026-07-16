@@ -30,7 +30,7 @@
 
 <script>
 import { isTouchDevice } from '@primeuix/utils/dom';
-import InputText from 'primevue/inputtext';
+import InputText from 'openvue/inputtext';
 import BaseInputOtp from './BaseInputOtp.vue';
 
 export default {

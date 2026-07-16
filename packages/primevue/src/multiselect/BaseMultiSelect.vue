@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import MultiSelectStyle from 'primevue/multiselect/style';
+import BaseInput from '@openvue/core/baseinput';
+import MultiSelectStyle from 'openvue/multiselect/style';
 
 export default {
     name: 'BaseMultiSelect',

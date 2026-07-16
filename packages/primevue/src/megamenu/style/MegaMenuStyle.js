@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/megamenu';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {
     rootList: ({ props }) => ({ 'max-height': props.scrollHeight, overflow: 'auto' })

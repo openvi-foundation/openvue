@@ -1,20 +1,21 @@
 {
-    "name": "primevue",
+    "name": "openvue",
     "version": "4.5.5",
-    "author": "PrimeTek Informatics",
+    "author": "OpenVue Contributors",
     "description": "PrimeVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 370+ ready to use UI blocks to build spectacular applications in no time.",
-    "homepage": "https://primevue.org/",
+    "homepage": "https://github.com/openvi-foundation/openvue",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git",
+        "url": "https://github.com/openvi-foundation/openvue.git",
         "directory": "packages/primevue"
     },
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
         "primevue",
+        "openvue",
         "vue",
         "vue.js",
         "vue2",
@@ -355,8 +356,8 @@
         "@primeuix/styled": "catalog:",
         "@primeuix/utils": "catalog:",
         "@primeuix/styles": "catalog:",
-        "@primevue/core": "workspace:*",
-        "@primevue/icons": "workspace:*"
+        "@openvue/core": "workspace:*",
+        "@openvue/icons": "workspace:*"
     },
     "engines": {
         "node": ">=12.11.0"

@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/splitter';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     root: ({ props }) => ['p-splitter p-component', 'p-splitter-' + props.layout],

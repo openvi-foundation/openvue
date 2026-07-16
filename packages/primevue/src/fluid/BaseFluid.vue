@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import FluidStyle from 'primevue/fluid/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import FluidStyle from 'openvue/fluid/style';
 
 export default {
     name: 'BaseFluid',

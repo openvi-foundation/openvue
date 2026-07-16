@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import CascadeSelectStyle from 'primevue/cascadeselect/style';
+import BaseInput from '@openvue/core/baseinput';
+import CascadeSelectStyle from 'openvue/cascadeselect/style';
 
 export default {
     name: 'BaseCascadeSelect',

@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import ToggleSwitchStyle from 'primevue/toggleswitch/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import ToggleSwitchStyle from 'openvue/toggleswitch/style';
 
 export default {
     name: 'BaseToggleSwitch',

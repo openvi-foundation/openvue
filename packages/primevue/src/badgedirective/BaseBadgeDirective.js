@@ -1,5 +1,5 @@
-import BaseDirective from '@primevue/core/basedirective';
-import BadgeDirectiveStyle from 'primevue/badgedirective/style';
+import BaseDirective from '@openvue/core/basedirective';
+import BadgeDirectiveStyle from 'openvue/badgedirective/style';
 
 const BaseBadgeDirective = BaseDirective.extend({
     style: BadgeDirectiveStyle

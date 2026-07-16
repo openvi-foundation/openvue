@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import ImageStyle from 'primevue/image/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import ImageStyle from 'openvue/image/style';
 
 export default {
     name: 'BaseImage',

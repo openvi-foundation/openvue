@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import PasswordStyle from 'primevue/password/style';
+import BaseInput from '@openvue/core/baseinput';
+import PasswordStyle from 'openvue/password/style';
 
 export default {
     name: 'BasePassword',

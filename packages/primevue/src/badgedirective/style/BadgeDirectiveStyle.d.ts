@@ -7,7 +7,7 @@
  * @module badgedirectivestyle
  *
  */
-import type { BaseStyle } from '@primevue/core/base/style';
+import type { BaseStyle } from '@openvue/core/base/style';
 
 export enum BadgeDirectiveClasses {
     root = 'p-badge'

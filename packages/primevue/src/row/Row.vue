@@ -1,5 +1,5 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
+import BaseComponent from '@openvue/core/basecomponent';
 
 export default {
     name: 'Row',

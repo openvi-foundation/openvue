@@ -30,7 +30,7 @@
 
 <script>
 import { getAttribute, find, findSingle, getWidth, getOffset } from '@primeuix/utils/dom';
-import Ripple from 'primevue/ripple';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import BaseTabMenu from './BaseTabMenu.vue';
 

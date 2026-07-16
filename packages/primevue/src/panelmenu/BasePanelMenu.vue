@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import PanelMenuStyle from 'primevue/panelmenu/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import PanelMenuStyle from 'openvue/panelmenu/style';
 
 export default {
     name: 'BasePanelMenu',

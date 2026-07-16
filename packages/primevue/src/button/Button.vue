@@ -18,9 +18,9 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { isEmpty } from '@primeuix/utils/object';
-import SpinnerIcon from '@primevue/icons/spinner';
-import Badge from 'primevue/badge';
-import Ripple from 'primevue/ripple';
+import SpinnerIcon from '@openvue/icons/spinner';
+import Badge from 'openvue/badge';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import BaseButton from './BaseButton.vue';
 

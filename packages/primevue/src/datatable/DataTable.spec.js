@@ -1,8 +1,8 @@
-import { FilterMatchMode } from '@primevue/core/api';
+import { FilterMatchMode } from '@openvue/core/api';
 import { mount } from '@vue/test-utils';
-import Button from 'primevue/button';
-import PrimeVue from 'primevue/config';
-import InputText from 'primevue/inputtext';
+import Button from 'openvue/button';
+import PrimeVue from 'openvue/config';
+import InputText from 'openvue/inputtext';
 import { defineComponent, nextTick } from 'vue';
 import Column from '../column/Column.vue';
 import ColumnGroup from '../columngroup/ColumnGroup.vue';

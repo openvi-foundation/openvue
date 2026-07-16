@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import AccordionContentStyle from 'primevue/accordioncontent/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import AccordionContentStyle from 'openvue/accordioncontent/style';
 
 export default {
     name: 'BaseAccordionContent',

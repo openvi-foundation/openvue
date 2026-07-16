@@ -53,9 +53,9 @@
 
 <script>
 import { isAttributeEquals } from '@primeuix/utils/dom';
-import BaseComponent from '@primevue/core/basecomponent';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronUpIcon from '@primevue/icons/chevronup';
+import BaseComponent from '@openvue/core/basecomponent';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronUpIcon from '@openvue/icons/chevronup';
 
 export default {
     name: 'OrganizationChartNode',

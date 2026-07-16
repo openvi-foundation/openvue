@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/paginator';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     paginator: ({ instance, key }) => [

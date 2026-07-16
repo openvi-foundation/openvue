@@ -1,3 +1,3 @@
-import type { ToastServiceMethods } from 'primevue/toastservice';
+import type { ToastServiceMethods } from 'openvue/toastservice';
 
 export declare function useToast(): ToastServiceMethods;

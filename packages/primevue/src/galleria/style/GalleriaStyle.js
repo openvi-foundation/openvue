@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/galleria';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     mask: 'p-galleria-mask p-overlay-mask p-overlay-mask-enter-active',

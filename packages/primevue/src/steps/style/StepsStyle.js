@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/steps';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     root: ({ props }) => ['p-steps p-component', { 'p-readonly': props.readonly }],

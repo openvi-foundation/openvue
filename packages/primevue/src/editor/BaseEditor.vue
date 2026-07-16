@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import EditorStyle from 'primevue/editor/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import EditorStyle from 'openvue/editor/style';
 
 export default {
     name: 'BaseEditor',

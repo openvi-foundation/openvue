@@ -1,4 +1,4 @@
-import type { DefineComponent, EmitFn, HintedString } from '@primevue/core';
+import type { DefineComponent, EmitFn, HintedString } from '@openvue/core';
 import { VNode } from 'vue';
 
 type PortalAppendToType = HintedString<'body' | 'self'> | undefined | HTMLElement;

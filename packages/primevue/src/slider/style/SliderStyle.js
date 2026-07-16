@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/slider';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {
     handle: { position: 'absolute' },

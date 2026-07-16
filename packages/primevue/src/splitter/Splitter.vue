@@ -36,7 +36,7 @@
 import { cn } from '@primeuix/utils';
 import { getHeight, getOuterHeight, getOuterWidth, getWidth, isRTL } from '@primeuix/utils/dom';
 import { isArray, isNotEmpty } from '@primeuix/utils/object';
-import { getVNodeProp } from '@primevue/core/utils';
+import { getVNodeProp } from '@openvue/core/utils';
 import BaseSplitter from './BaseSplitter.vue';
 
 export default {

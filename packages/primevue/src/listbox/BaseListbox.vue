@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import ListboxStyle from 'primevue/listbox/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import ListboxStyle from 'openvue/listbox/style';
 
 export default {
     name: 'BaseListbox',

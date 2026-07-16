@@ -7,9 +7,9 @@
  * @module inputtext
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, Nullable, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, Nullable, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { InputHTMLAttributes } from 'vue';
 
 export declare type InputTextPassThroughOptionType<T = any> = InputTextPassThroughAttributes | ((options: InputTextPassThroughMethodOptions<T>) => InputTextPassThroughAttributes | string) | string | null | undefined;

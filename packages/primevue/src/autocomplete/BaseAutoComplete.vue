@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import AutoCompleteStyle from 'primevue/autocomplete/style';
+import BaseInput from '@openvue/core/baseinput';
+import AutoCompleteStyle from 'openvue/autocomplete/style';
 
 export default {
     name: 'BaseAutoComplete',

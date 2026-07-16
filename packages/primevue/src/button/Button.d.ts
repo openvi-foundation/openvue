@@ -7,9 +7,9 @@
  * @module button
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import type { ButtonHTMLAttributes, Component, VNode } from 'vue';
 
 export declare type ButtonPassThroughOptionType<T = any> = ButtonPassThroughAttributes | ((options: ButtonPassThroughMethodOptions<T>) => ButtonPassThroughAttributes | string) | string | null | undefined;

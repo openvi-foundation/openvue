@@ -1,21 +1,23 @@
 {
     "name": "showcase",
     "version": "4.5.5",
-    "author": "PrimeTek Informatics",
+    "private": true,
+    "author": "OpenVue Contributors",
     "description": "",
-    "homepage": "https://primevue.org/",
+    "homepage": "https://github.com/openvi-foundation/openvue",
     "type": "module",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git",
+        "url": "https://github.com/openvi-foundation/openvue.git",
         "directory": "packages/showcase"
     },
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
         "primevue",
+        "openvue",
         "vue",
         "vue.js",
         "vue2",
@@ -42,11 +44,11 @@
     "dependencies": {
         "@docsearch/js": "catalog:app",
         "@primeuix/themes": "catalog:",
-        "@primevue/core": "workspace:*",
-        "@primevue/forms": "workspace:*",
-        "@primevue/nuxt-module": "workspace:*",
+        "@openvue/core": "workspace:*",
+        "@openvue/forms": "workspace:*",
+        "@openvue/nuxt-module": "workspace:*",
         "primeicons": "catalog:",
-        "primevue": "workspace:*",
+        "openvue": "workspace:*",
         "chart.js": "catalog:app",
         "quill": "catalog:app",
         "superstruct": "^2.0.2",

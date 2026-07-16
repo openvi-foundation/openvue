@@ -7,10 +7,10 @@
  * @module menubar
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { MenuItem } from 'primevue/menuitem';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { MenuItem } from 'openvue/menuitem';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { ButtonHTMLAttributes, VNode } from 'vue';
 
 export declare type MenubarPassThroughOptionType = MenubarPassThroughAttributes | ((options: MenubarPassThroughMethodOptions) => MenubarPassThroughAttributes | string) | string | null | undefined;

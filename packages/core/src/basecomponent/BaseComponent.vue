@@ -2,9 +2,9 @@
 import { Theme, ThemeService } from '@primeuix/styled';
 import { findSingle, isElement } from '@primeuix/utils/dom';
 import { getKeyValue, isArray, isFunction, isNotEmpty, isString, resolve, toFlatCase } from '@primeuix/utils/object';
-import Base from '@primevue/core/base';
-import BaseStyle from '@primevue/core/base/style';
-import { useAttrSelector } from '@primevue/core/useattrselector';
+import Base from '@openvue/core/base';
+import BaseStyle from '@openvue/core/base/style';
+import { useAttrSelector } from '@openvue/core/useattrselector';
 import { mergeProps } from 'vue';
 import BaseComponentStyle from './style/BaseComponentStyle';
 

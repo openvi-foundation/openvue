@@ -7,8 +7,8 @@
  * @module chips
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
-import * as InputChips from 'primevue/inputchips';
+import type { DefineComponent, EmitFn } from '@openvue/core';
+import * as InputChips from 'openvue/inputchips';
 import 'vue';
 
 /**

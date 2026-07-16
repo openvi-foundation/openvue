@@ -43,15 +43,15 @@
 <script>
 import { getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@primeuix/utils/dom';
 import { resolveFieldData } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import { getVNodeProp } from '@primevue/core/utils';
-import CheckIcon from '@primevue/icons/check';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import MinusIcon from '@primevue/icons/minus';
-import SpinnerIcon from '@primevue/icons/spinner';
-import Checkbox from 'primevue/checkbox';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import { getVNodeProp } from '@openvue/core/utils';
+import CheckIcon from '@openvue/icons/check';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import MinusIcon from '@openvue/icons/minus';
+import SpinnerIcon from '@openvue/icons/spinner';
+import Checkbox from 'openvue/checkbox';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 
 export default {

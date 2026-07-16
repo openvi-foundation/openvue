@@ -155,19 +155,19 @@
 <script>
 import { absolutePosition, addStyle, focus, getAttribute, isTouchDevice } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { FilterOperator } from '@primevue/core/api';
-import BaseComponent from '@primevue/core/basecomponent';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
-import FilterIcon from '@primevue/icons/filter';
-import FilterFillIcon from '@primevue/icons/filterfill';
-import FilterSlashIcon from '@primevue/icons/filterslash';
-import PlusIcon from '@primevue/icons/plus';
-import TrashIcon from '@primevue/icons/trash';
-import Button from 'primevue/button';
-import FocusTrap from 'primevue/focustrap';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Portal from 'primevue/portal';
-import Select from 'primevue/select';
+import { FilterOperator } from '@openvue/core/api';
+import BaseComponent from '@openvue/core/basecomponent';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import FilterIcon from '@openvue/icons/filter';
+import FilterFillIcon from '@openvue/icons/filterfill';
+import FilterSlashIcon from '@openvue/icons/filterslash';
+import PlusIcon from '@openvue/icons/plus';
+import TrashIcon from '@openvue/icons/trash';
+import Button from 'openvue/button';
+import FocusTrap from 'openvue/focustrap';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Portal from 'openvue/portal';
+import Select from 'openvue/select';
 import { mergeProps } from 'vue';
 
 export default {

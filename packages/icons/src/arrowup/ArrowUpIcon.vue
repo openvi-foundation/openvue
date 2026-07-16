@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseIcon from '@primevue/icons/baseicon';
+import BaseIcon from '@openvue/icons/baseicon';
 
 export default {
     name: 'ArrowUpIcon',

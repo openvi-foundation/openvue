@@ -1,4 +1,4 @@
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 export default BaseStyle.extend({
     name: 'inputswitch'

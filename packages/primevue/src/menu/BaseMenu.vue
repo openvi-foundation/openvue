@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import MenuStyle from 'primevue/menu/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import MenuStyle from 'openvue/menu/style';
 
 export default {
     name: 'BaseMenu',

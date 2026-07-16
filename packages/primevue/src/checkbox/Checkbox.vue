@@ -33,8 +33,8 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { contains, equals } from '@primeuix/utils/object';
-import CheckIcon from '@primevue/icons/check';
-import MinusIcon from '@primevue/icons/minus';
+import CheckIcon from '@openvue/icons/check';
+import MinusIcon from '@openvue/icons/minus';
 import BaseCheckbox from './BaseCheckbox.vue';
 
 export default {

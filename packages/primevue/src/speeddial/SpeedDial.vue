@@ -69,10 +69,10 @@
 <script>
 import { $dt } from '@primeuix/styled';
 import { find, findSingle, focus } from '@primeuix/utils/dom';
-import PlusIcon from '@primevue/icons/plus';
-import Button from 'primevue/button';
-import Ripple from 'primevue/ripple';
-import Tooltip from 'primevue/tooltip';
+import PlusIcon from '@openvue/icons/plus';
+import Button from 'openvue/button';
+import Ripple from 'openvue/ripple';
+import Tooltip from 'openvue/tooltip';
 import BaseSpeedDial from './BaseSpeedDial.vue';
 
 // Set fix value for SSR.

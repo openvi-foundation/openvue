@@ -69,13 +69,13 @@
 <script>
 import { find, findSingle, scrollInView, setAttribute } from '@primeuix/utils/dom';
 import { findIndexInList, isNotEmpty } from '@primeuix/utils/object';
-import AngleDoubleDownIcon from '@primevue/icons/angledoubledown';
-import AngleDoubleUpIcon from '@primevue/icons/angledoubleup';
-import AngleDownIcon from '@primevue/icons/angledown';
-import AngleUpIcon from '@primevue/icons/angleup';
-import Button from 'primevue/button';
-import Listbox from 'primevue/listbox';
-import Ripple from 'primevue/ripple';
+import AngleDoubleDownIcon from '@openvue/icons/angledoubledown';
+import AngleDoubleUpIcon from '@openvue/icons/angledoubleup';
+import AngleDownIcon from '@openvue/icons/angledown';
+import AngleUpIcon from '@openvue/icons/angleup';
+import Button from 'openvue/button';
+import Listbox from 'openvue/listbox';
+import Ripple from 'openvue/ripple';
 import BaseOrderList from './BaseOrderList.vue';
 
 export default {

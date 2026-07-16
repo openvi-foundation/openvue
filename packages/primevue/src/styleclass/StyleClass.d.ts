@@ -7,9 +7,9 @@
  * @module styleclass
  *
  */
-import type { DesignToken, HintedString, PassThrough } from '@primevue/core';
-import type { DirectiveHooks } from '@primevue/core/basedirective';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DesignToken, HintedString, PassThrough } from '@openvue/core';
+import type { DirectiveHooks } from '@openvue/core/basedirective';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { DirectiveBinding, ObjectDirective } from 'vue';
 
 /**

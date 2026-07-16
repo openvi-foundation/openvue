@@ -7,8 +7,8 @@
  * @module calendar
  *
  */
-import type { DefineComponent, EmitFn } from '@primevue/core';
-import * as DatePicker from 'primevue/datepicker';
+import type { DefineComponent, EmitFn } from '@openvue/core';
+import * as DatePicker from 'openvue/datepicker';
 import 'vue';
 
 /**

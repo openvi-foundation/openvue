@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import RadioButtonStyle from 'primevue/radiobutton/style';
+import BaseInput from '@openvue/core/baseinput';
+import RadioButtonStyle from 'openvue/radiobutton/style';
 
 export default {
     name: 'BaseRadioButton',

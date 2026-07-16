@@ -1,5 +1,5 @@
-import type { DefineComponent } from '@primevue/core';
-import type { Icon } from '@primevue/icons/baseicon';
+import type { DefineComponent } from '@openvue/core';
+import type { Icon } from '@openvue/icons/baseicon';
 
 declare class FilterIcon extends Icon {}
 

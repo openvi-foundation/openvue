@@ -1,4 +1,4 @@
-import PrimeVue from 'primevue/config';
+import PrimeVue from 'openvue/config';
 import { mount } from '@vue/test-utils';
 import Dialog from './Dialog.vue';
 

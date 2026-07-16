@@ -1,6 +1,6 @@
 <script>
-import BaseInput from '@primevue/core/baseinput';
-import TreeSelectStyle from 'primevue/treeselect/style';
+import BaseInput from '@openvue/core/baseinput';
+import TreeSelectStyle from 'openvue/treeselect/style';
 
 export default {
     name: 'BaseTreeSelect',

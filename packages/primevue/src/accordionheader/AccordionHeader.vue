@@ -24,9 +24,9 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { findSingle, focus, getAttribute } from '@primeuix/utils/dom';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronUpIcon from '@primevue/icons/chevronup';
-import Ripple from 'primevue/ripple';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronUpIcon from '@openvue/icons/chevronup';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import BaseAccordionHeader from './BaseAccordionHeader.vue';
 

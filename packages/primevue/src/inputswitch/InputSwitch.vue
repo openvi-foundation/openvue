@@ -1,5 +1,5 @@
 <script>
-import ToggleSwitch from 'primevue/toggleswitch';
+import ToggleSwitch from 'openvue/toggleswitch';
 
 export default {
     name: 'InputSwitch',

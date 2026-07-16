@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/menubar';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {
     submenu: ({ instance, processedItem }) => ({ display: instance.isItemActive(processedItem) ? 'flex' : 'none' })

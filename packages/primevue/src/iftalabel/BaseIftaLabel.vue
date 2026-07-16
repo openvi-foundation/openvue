@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import IftaLabelStyle from 'primevue/iftalabel/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import IftaLabelStyle from 'openvue/iftalabel/style';
 
 export default {
     name: 'BaseIftaLabel',

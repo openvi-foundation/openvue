@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/virtualscroller';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const css = `
 .p-virtualscroller {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import PrimeVue from 'primevue/config';
+import PrimeVue from 'openvue/config';
 import MultiSelect from './MultiSelect.vue';
 
 describe('MultiSelect.vue', () => {

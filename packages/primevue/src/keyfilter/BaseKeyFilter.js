@@ -1,5 +1,5 @@
-import BaseDirective from '@primevue/core/basedirective';
-import KeyFilterStyle from 'primevue/keyfilter/style';
+import BaseDirective from '@openvue/core/basedirective';
+import KeyFilterStyle from 'openvue/keyfilter/style';
 
 const BaseKeyFilter = BaseDirective.extend({
     style: KeyFilterStyle

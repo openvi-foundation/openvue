@@ -2,7 +2,7 @@ import { addClass, createElement, fadeIn, findSingle, getAttribute, getOuterHeig
 import { isEmpty } from '@primeuix/utils/object';
 import { uuid } from '@primeuix/utils/uuid';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import BaseTooltip from './BaseTooltip';
 
 const Tooltip = BaseTooltip.extend('tooltip', {

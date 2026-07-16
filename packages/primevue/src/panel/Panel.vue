@@ -36,10 +36,10 @@
 
 <script>
 import { cn } from '@primeuix/utils';
-import MinusIcon from '@primevue/icons/minus';
-import PlusIcon from '@primevue/icons/plus';
-import Button from 'primevue/button';
-import Ripple from 'primevue/ripple';
+import MinusIcon from '@openvue/icons/minus';
+import PlusIcon from '@openvue/icons/plus';
+import Button from 'openvue/button';
+import Ripple from 'openvue/ripple';
 import BasePanel from './BasePanel.vue';
 
 export default {

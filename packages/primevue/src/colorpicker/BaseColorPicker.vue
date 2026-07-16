@@ -1,6 +1,6 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
-import ColorPickerStyle from 'primevue/colorpicker/style';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
+import ColorPickerStyle from 'openvue/colorpicker/style';
 
 export default {
     name: 'BaseColorPicker',

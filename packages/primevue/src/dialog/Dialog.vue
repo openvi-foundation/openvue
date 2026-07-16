@@ -67,14 +67,14 @@
 import { cn } from '@primeuix/utils';
 import { addClass, addStyle, focus, getOuterHeight, getOuterWidth, getViewport, setAttribute } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import TimesIcon from '@primevue/icons/times';
-import WindowMaximizeIcon from '@primevue/icons/windowmaximize';
-import WindowMinimizeIcon from '@primevue/icons/windowminimize';
-import Button from 'primevue/button';
-import FocusTrap from 'primevue/focustrap';
-import Portal from 'primevue/portal';
-import Ripple from 'primevue/ripple';
-import { blockBodyScroll, unblockBodyScroll } from 'primevue/utils';
+import TimesIcon from '@openvue/icons/times';
+import WindowMaximizeIcon from '@openvue/icons/windowmaximize';
+import WindowMinimizeIcon from '@openvue/icons/windowminimize';
+import Button from 'openvue/button';
+import FocusTrap from 'openvue/focustrap';
+import Portal from 'openvue/portal';
+import Ripple from 'openvue/ripple';
+import { blockBodyScroll, unblockBodyScroll } from 'openvue/utils';
 import { computed } from 'vue';
 import BaseDialog from './BaseDialog.vue';
 

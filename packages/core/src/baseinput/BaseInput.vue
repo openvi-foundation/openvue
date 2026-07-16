@@ -1,5 +1,5 @@
 <script>
-import BaseEditableHolder from '@primevue/core/baseeditableholder';
+import BaseEditableHolder from '@openvue/core/baseeditableholder';
 
 export default {
     name: 'BaseInput',

@@ -1,7 +1,7 @@
 import { css as Css, Theme, dt } from '@primeuix/styled';
 import { style } from '@primeuix/styles/base';
 import { isNotEmpty, minifyCSS, resolve } from '@primeuix/utils/object';
-import { useStyle } from '@primevue/core/usestyle';
+import { useStyle } from '@openvue/core/usestyle';
 
 const css = ({ dt }) => `
 .p-hidden-accessible {

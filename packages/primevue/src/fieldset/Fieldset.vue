@@ -38,9 +38,9 @@
 
 <script>
 import { cn } from '@primeuix/utils';
-import MinusIcon from '@primevue/icons/minus';
-import PlusIcon from '@primevue/icons/plus';
-import Ripple from 'primevue/ripple';
+import MinusIcon from '@openvue/icons/minus';
+import PlusIcon from '@openvue/icons/plus';
+import Ripple from 'openvue/ripple';
 import BaseFieldset from './BaseFieldset.vue';
 
 export default {

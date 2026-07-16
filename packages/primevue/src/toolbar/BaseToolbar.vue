@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import ToolbarStyle from 'primevue/toolbar/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import ToolbarStyle from 'openvue/toolbar/style';
 
 export default {
     name: 'BaseToolbar',

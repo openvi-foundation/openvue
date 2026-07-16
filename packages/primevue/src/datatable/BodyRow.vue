@@ -94,10 +94,10 @@
 
 <script>
 import { equals, isNotEmpty, resolveFieldData } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import { getVNodeProp } from '@primevue/core/utils';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
+import BaseComponent from '@openvue/core/basecomponent';
+import { getVNodeProp } from '@openvue/core/utils';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
 import { mergeProps } from 'vue';
 import BodyCell from './BodyCell.vue';
 

@@ -78,13 +78,13 @@
 import { cn } from '@primeuix/utils';
 import { absolutePosition, addStyle, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
-import EyeIcon from '@primevue/icons/eye';
-import EyeSlashIcon from '@primevue/icons/eyeslash';
-import TimesIcon from '@primevue/icons/times';
-import InputText from 'primevue/inputtext';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Portal from 'primevue/portal';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import EyeIcon from '@openvue/icons/eye';
+import EyeSlashIcon from '@openvue/icons/eyeslash';
+import TimesIcon from '@openvue/icons/times';
+import InputText from 'openvue/inputtext';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Portal from 'openvue/portal';
 import BasePassword from './BasePassword.vue';
 
 export default {

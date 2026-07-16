@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import BlockUIStyle from 'primevue/blockui/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import BlockUIStyle from 'openvue/blockui/style';
 
 export default {
     name: 'BaseBlockUI',

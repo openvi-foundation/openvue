@@ -1,5 +1,5 @@
 import { style } from '@primeuix/styles/textarea';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const classes = {
     root: ({ instance, props }) => [

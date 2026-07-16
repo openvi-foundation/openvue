@@ -31,9 +31,9 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { focus, getFirstFocusableElement } from '@primeuix/utils/dom';
-import BanIcon from '@primevue/icons/ban';
-import StarIcon from '@primevue/icons/star';
-import StarFillIcon from '@primevue/icons/starfill';
+import BanIcon from '@openvue/icons/ban';
+import StarIcon from '@openvue/icons/star';
+import StarFillIcon from '@openvue/icons/starfill';
 import BaseRating from './BaseRating.vue';
 
 export default {

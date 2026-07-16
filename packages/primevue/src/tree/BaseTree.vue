@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import TreeStyle from 'primevue/tree/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import TreeStyle from 'openvue/tree/style';
 
 export default {
     name: 'BaseTree',

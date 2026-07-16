@@ -29,7 +29,7 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { isNotEmpty } from '@primeuix/utils/object';
-import Ripple from 'primevue/ripple';
+import Ripple from 'openvue/ripple';
 import BaseToggleButton from './BaseToggleButton.vue';
 
 export default {

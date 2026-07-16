@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import FormStyle from '@primevue/forms/form/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import FormStyle from '@openvue/forms/form/style';
 
 export default {
     name: 'BaseForm',

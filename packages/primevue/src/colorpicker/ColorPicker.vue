@@ -23,9 +23,9 @@
 <script>
 import { absolutePosition, addClass, isTouchDevice, relativePosition, removeClass } from '@primeuix/utils/dom';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Portal from 'primevue/portal';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Portal from 'openvue/portal';
 import BaseColorPicker from './BaseColorPicker.vue';
 
 export default {

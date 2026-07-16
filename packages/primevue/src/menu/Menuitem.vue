@@ -28,8 +28,8 @@
 <script>
 import { cn } from '@primeuix/utils';
 import { resolve } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 
 export default {

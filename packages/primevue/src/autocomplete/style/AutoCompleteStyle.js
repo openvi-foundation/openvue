@@ -1,6 +1,6 @@
 import { style } from '@primeuix/styles/autocomplete';
 import { isNotEmpty } from '@primeuix/utils/object';
-import BaseStyle from '@primevue/core/base/style';
+import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {
     root: { position: 'relative' }

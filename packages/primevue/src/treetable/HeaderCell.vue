@@ -27,12 +27,12 @@
 
 <script>
 import { getAttribute, getIndex, getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@primeuix/utils/dom';
-import BaseComponent from '@primevue/core/basecomponent';
-import { getVNodeProp } from '@primevue/core/utils';
-import SortAltIcon from '@primevue/icons/sortalt';
-import SortAmountDownIcon from '@primevue/icons/sortamountdown';
-import SortAmountUpAltIcon from '@primevue/icons/sortamountupalt';
-import Badge from 'primevue/badge';
+import BaseComponent from '@openvue/core/basecomponent';
+import { getVNodeProp } from '@openvue/core/utils';
+import SortAltIcon from '@openvue/icons/sortalt';
+import SortAmountDownIcon from '@openvue/icons/sortamountdown';
+import SortAmountUpAltIcon from '@openvue/icons/sortamountupalt';
+import Badge from 'openvue/badge';
 import { mergeProps } from 'vue';
 
 export default {

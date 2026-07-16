@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import StepStyle from 'primevue/step/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import StepStyle from 'openvue/step/style';
 
 export default {
     name: 'BaseStep',

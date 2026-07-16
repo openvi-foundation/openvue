@@ -7,11 +7,11 @@
  * @module datepicker
  *
  */
-import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@primevue/core';
-import type { ComponentHooks } from '@primevue/core/basecomponent';
-import type { ButtonPassThroughOptions, ButtonProps } from 'primevue/button';
-import type { InputTextPassThroughOptions } from 'primevue/inputtext';
-import type { PassThroughOptions } from 'primevue/passthrough';
+import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
+import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { ButtonPassThroughOptions, ButtonProps } from 'openvue/button';
+import type { InputTextPassThroughOptions } from 'openvue/inputtext';
+import type { PassThroughOptions } from 'openvue/passthrough';
 import { TransitionProps, VNode } from 'vue';
 
 export declare type DatePickerPassThroughOptionType = DatePickerPassThroughAttributes | ((options: DatePickerPassThroughMethodOptions) => DatePickerPassThroughAttributes | string) | string | null | undefined;

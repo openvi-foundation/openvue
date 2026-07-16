@@ -1,2 +1,2 @@
-export * from '@primevue/core/config';
-export { default } from '@primevue/core/config';
+export * from '@openvue/core/config';
+export { default } from '@openvue/core/config';

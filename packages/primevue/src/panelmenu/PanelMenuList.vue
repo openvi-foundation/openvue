@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
+import BaseComponent from '@openvue/core/basecomponent';
 import { findSingle, focus } from '@primeuix/utils/dom';
 import { resolve, isNotEmpty, isPrintableCharacter, findLast, isEmpty } from '@primeuix/utils/object';
 import PanelMenuSub from './PanelMenuSub.vue';

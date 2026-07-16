@@ -135,17 +135,17 @@
 <script>
 import { getAttribute, getFirstFocusableElement, getNextElementSibling, getOuterWidth, getPreviousElementSibling, invokeElementMethod } from '@primeuix/utils/dom';
 import { resolveFieldData } from '@primeuix/utils/object';
-import BaseComponent from '@primevue/core/basecomponent';
-import { getVNodeProp } from '@primevue/core/utils';
-import BarsIcon from '@primevue/icons/bars';
-import CheckIcon from '@primevue/icons/check';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import PencilIcon from '@primevue/icons/pencil';
-import TimesIcon from '@primevue/icons/times';
-import Button from 'primevue/button';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Ripple from 'primevue/ripple';
+import BaseComponent from '@openvue/core/basecomponent';
+import { getVNodeProp } from '@openvue/core/utils';
+import BarsIcon from '@openvue/icons/bars';
+import CheckIcon from '@openvue/icons/check';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import PencilIcon from '@openvue/icons/pencil';
+import TimesIcon from '@openvue/icons/times';
+import Button from 'openvue/button';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import RowCheckbox from './RowCheckbox.vue';
 import RowRadioButton from './RowRadioButton.vue';

@@ -1,17 +1,17 @@
 {
-    "name": "@primevue/core",
+    "name": "@openvue/core",
     "version": "4.5.5",
-    "author": "PrimeTek Informatics",
+    "author": "OpenVue Contributors",
     "description": "",
-    "homepage": "https://primevue.org/",
+    "homepage": "https://github.com/openvi-foundation/openvue",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git",
+        "url": "https://github.com/openvi-foundation/openvue.git",
         "directory": "packages/core"
     },
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "main": "./src/index.js",
     "module": "./src/index.js",

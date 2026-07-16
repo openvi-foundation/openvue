@@ -9,7 +9,7 @@
 import { cn } from '@primeuix/utils';
 import { findSingle, focus, getAttribute } from '@primeuix/utils/dom';
 import { equals } from '@primeuix/utils/object';
-import Ripple from 'primevue/ripple';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import BaseTab from './BaseTab.vue';
 

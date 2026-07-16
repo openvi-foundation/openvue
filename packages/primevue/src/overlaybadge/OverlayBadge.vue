@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Badge from 'primevue/badge';
+import Badge from 'openvue/badge';
 import BaseOverlayBadge from './BaseOverlayBadge.vue';
 
 export default {

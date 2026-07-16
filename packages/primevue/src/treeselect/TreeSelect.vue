@@ -134,14 +134,14 @@
 import { absolutePosition, addStyle, find, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
 import { isEmpty, isNotEmpty } from '@primeuix/utils/object';
 import { ZIndex } from '@primeuix/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@primevue/core/utils';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import TimesIcon from '@primevue/icons/times';
-import Chip from 'primevue/chip';
-import OverlayEventBus from 'primevue/overlayeventbus';
-import Portal from 'primevue/portal';
-import Ripple from 'primevue/ripple';
-import Tree from 'primevue/tree';
+import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import TimesIcon from '@openvue/icons/times';
+import Chip from 'openvue/chip';
+import OverlayEventBus from 'openvue/overlayeventbus';
+import Portal from 'openvue/portal';
+import Ripple from 'openvue/ripple';
+import Tree from 'openvue/tree';
 import BaseTreeSelect from './BaseTreeSelect.vue';
 
 export default {

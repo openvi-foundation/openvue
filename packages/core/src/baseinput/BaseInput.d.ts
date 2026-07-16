@@ -5,7 +5,7 @@
  * @module baseinput
  *
  */
-import { BaseEditableHolderEmitsOptions, BaseEditableHolderProps } from '@primevue/core/baseeditableholder';
+import { BaseEditableHolderEmitsOptions, BaseEditableHolderProps } from '@openvue/core/baseeditableholder';
 
 export interface BaseInputProps extends BaseEditableHolderProps {
     /**

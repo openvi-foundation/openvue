@@ -1,17 +1,17 @@
 {
-    "name": "@primevue/auto-import-resolver",
+    "name": "@openvue/auto-import-resolver",
     "version": "4.5.5",
-    "author": "PrimeTek Informatics",
+    "author": "OpenVue Contributors",
     "description": "",
-    "homepage": "https://primevue.org/",
+    "homepage": "https://github.com/openvi-foundation/openvue",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git",
+        "url": "https://github.com/openvi-foundation/openvue.git",
         "directory": "packages/auto-import-resolver"
     },
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "main": "./index.ts",
     "module": "./index.ts",
@@ -39,7 +39,7 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primevue/metadata": "workspace:*"
+        "@openvue/metadata": "workspace:*"
     },
     "devDependencies": {
         "tsup": "^8.1.0",

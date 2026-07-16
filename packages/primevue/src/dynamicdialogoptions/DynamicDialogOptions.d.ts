@@ -5,7 +5,7 @@
  * @module dynamicdialogoptions
  *
  */
-import type { DialogProps } from 'primevue/dialog';
+import type { DialogProps } from 'openvue/dialog';
 
 /**
  * Custom dialog templates.

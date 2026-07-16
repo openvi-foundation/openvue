@@ -1,4 +1,4 @@
-import { defaultOptions } from '@primevue/core/config';
+import { defaultOptions } from '@openvue/core/config';
 import { config } from '@vue/test-utils';
 
 config.global.mocks['$primevue'] = {

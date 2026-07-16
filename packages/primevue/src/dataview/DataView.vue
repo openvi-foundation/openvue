@@ -102,7 +102,7 @@
 
 <script>
 import { localeComparator, resolveFieldData, sort } from '@primeuix/utils/object';
-import Paginator from 'primevue/paginator';
+import Paginator from 'openvue/paginator';
 import BaseDataView from './BaseDataView.vue';
 
 export default {

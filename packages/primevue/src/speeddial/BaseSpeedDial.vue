@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import SpeedDialStyle from 'primevue/speeddial/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import SpeedDialStyle from 'openvue/speeddial/style';
 
 export default {
     name: 'BaseSpeedDial',

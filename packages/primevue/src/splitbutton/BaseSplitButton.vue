@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import SplitButtonStyle from 'primevue/splitbutton/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import SplitButtonStyle from 'openvue/splitbutton/style';
 
 export default {
     name: 'BaseSplitButton',

@@ -345,13 +345,13 @@ import {
     setAttribute
 } from '@primeuix/utils/dom';
 import { equals, findIndexInList, isEmpty, isNotEmpty, localeComparator, reorderArray, resolveFieldData, sort } from '@primeuix/utils/object';
-import { FilterMatchMode, FilterOperator, FilterService } from '@primevue/core/api';
-import { HelperSet, getVNodeProp } from '@primevue/core/utils';
-import ArrowDownIcon from '@primevue/icons/arrowdown';
-import ArrowUpIcon from '@primevue/icons/arrowup';
-import SpinnerIcon from '@primevue/icons/spinner';
-import Paginator from 'primevue/paginator';
-import VirtualScroller from 'primevue/virtualscroller';
+import { FilterMatchMode, FilterOperator, FilterService } from '@openvue/core/api';
+import { HelperSet, getVNodeProp } from '@openvue/core/utils';
+import ArrowDownIcon from '@openvue/icons/arrowdown';
+import ArrowUpIcon from '@openvue/icons/arrowup';
+import SpinnerIcon from '@openvue/icons/spinner';
+import Paginator from 'openvue/paginator';
+import VirtualScroller from 'openvue/virtualscroller';
 import BaseDataTable from './BaseDataTable.vue';
 import TableBody from './TableBody.vue';
 import TableFooter from './TableFooter.vue';

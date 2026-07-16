@@ -57,8 +57,8 @@
 <script>
 import { findSingle, focus, getAttribute } from '@primeuix/utils/dom';
 import { equals, isNotEmpty, resolve } from '@primeuix/utils/object';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
 import { mergeProps } from 'vue';
 import BasePanelMenu from './BasePanelMenu.vue';
 import PanelMenuList from './PanelMenuList.vue';

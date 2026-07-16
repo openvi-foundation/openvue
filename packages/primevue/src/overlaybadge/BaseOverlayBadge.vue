@@ -1,6 +1,6 @@
 <script>
-import Badge from 'primevue/badge';
-import OverlayBadgeStyle from 'primevue/overlaybadge/style';
+import Badge from 'openvue/badge';
+import OverlayBadgeStyle from 'openvue/overlaybadge/style';
 
 export default {
     name: 'OverlayBadge',

@@ -1,6 +1,6 @@
 <script>
-import BaseComponent from '@primevue/core/basecomponent';
-import ProgressSpinnerStyle from 'primevue/progressspinner/style';
+import BaseComponent from '@openvue/core/basecomponent';
+import ProgressSpinnerStyle from 'openvue/progressspinner/style';
 
 export default {
     name: 'BaseProgressSpinner',

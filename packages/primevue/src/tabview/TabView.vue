@@ -92,9 +92,9 @@
 
 <script>
 import { findSingle, focus, getAttribute, getOffset, getWidth } from '@primeuix/utils/dom';
-import ChevronLeftIcon from '@primevue/icons/chevronleft';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import Ripple from 'primevue/ripple';
+import ChevronLeftIcon from '@openvue/icons/chevronleft';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import Ripple from 'openvue/ripple';
 import { mergeProps } from 'vue';
 import BaseTabView from './BaseTabView.vue';
 

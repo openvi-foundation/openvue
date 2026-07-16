@@ -1,20 +1,21 @@
 {
-    "name": "@primevue/mcp",
+    "name": "@openvue/mcp",
     "version": "4.5.5",
-    "author": "PrimeTek Informatics",
+    "author": "OpenVue Contributors",
     "description": "Model Context Protocol (MCP) server for PrimeVue component library",
-    "homepage": "https://primevue.org/",
+    "homepage": "https://github.com/openvi-foundation/openvue",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git",
+        "url": "https://github.com/openvi-foundation/openvue.git",
         "directory": "packages/mcp"
     },
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
         "primevue",
+        "openvue",
         "mcp",
         "model-context-protocol",
         "ai",
@@ -23,7 +24,7 @@
         "components"
     ],
     "bin": {
-        "primevue-mcp": "./dist/index.js"
+        "openvue-mcp": "./dist/index.js"
     },
     "type": "module",
     "main": "./dist/index.js",
