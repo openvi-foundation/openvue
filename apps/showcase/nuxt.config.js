@@ -109,10 +109,7 @@ export default defineNuxtConfig({
                 { property: 'og:description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
                 { property: 'og:ttl', content: '604800' }
             ],
-            link: [
-                { rel: 'icon', href: baseUrl + 'favicon.ico' },
-                { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }
-            ],
+            link: [{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }],
             script: [
                 {
                     src: baseUrl + 'scripts/prism.js',
