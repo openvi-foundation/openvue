@@ -1,5 +1,5 @@
 :root {
-    color-scheme: light dark;
+    color-scheme: dark;
     --bg: #0b0f14;
     --bg-elevated: #11161d;
     --text: #f2f5f8;
@@ -7,18 +7,6 @@
     --accent: #42b883;
     --accent-strong: #35a873;
     --border: rgba(255, 255, 255, 0.08);
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --bg: #f7f9fb;
-        --bg-elevated: #ffffff;
-        --text: #1a2027;
-        --text-muted: #5a6572;
-        --accent: #2f8f63;
-        --accent-strong: #267a53;
-        --border: rgba(0, 0, 0, 0.08);
-    }
 }
 
 * {
