@@ -106,6 +106,58 @@ h1 {
     color: var(--accent);
 }
 
+.body h2 {
+    font-size: 1.3rem;
+    margin: 0 0 1rem;
+    font-weight: 700;
+}
+
+.body ol {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.body li {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.body li:last-child {
+    margin-bottom: 0;
+}
+
+.body .muted {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.body code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.code {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0 0 0.75rem;
+    overflow-x: auto;
+}
+
+.code code {
+    background: none;
+    padding: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.95rem;
+    color: var(--accent);
+}
+
 .signoff {
     color: var(--text-muted);
     font-style: italic;
