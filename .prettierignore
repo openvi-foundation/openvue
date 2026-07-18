@@ -11,3 +11,5 @@ node_modules
 pnpm-publish-summary.json
 apps/showcase/components.d.ts
 apps/showcase/server/assets/llms
+packages/migrate/test/fixtures
+packages/migrate/LICENSE.md

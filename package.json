@@ -21,7 +21,7 @@
         "release:rc": "pnpm run build && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag rc",
         "build": "NODE_ENV=production pnpm run build:check && pnpm run build:packages",
         "build:check": "pnpm run format:check && pnpm run security:check",
-        "build:packages": "pnpm run build:metadata && pnpm run build:resolver && pnpm run build:core && pnpm run build:lib && pnpm run build:module && pnpm run build:themes && pnpm run build:icons && pnpm run build:mcp && pnpm run build:forms && pnpm run build:apps",
+        "build:packages": "pnpm run build:metadata && pnpm run build:resolver && pnpm run build:core && pnpm run build:lib && pnpm run build:module && pnpm run build:themes && pnpm run build:icons && pnpm run build:mcp && pnpm run build:forms && pnpm run build:migrate && pnpm run build:apps",
         "build:apps": "pnpm run build:showcase && pnpm run build:volt",
         "build:resolver": "pnpm --filter auto-import-resolver build",
         "build:core": "pnpm --filter core build",
@@ -31,6 +31,7 @@
         "build:themes": "pnpm --filter themes build",
         "build:icons": "pnpm --filter icons build",
         "build:mcp": "pnpm --filter mcp build",
+        "build:migrate": "pnpm --filter migrate build",
         "build:forms": "pnpm --filter forms build",
         "build:showcase": "pnpm --filter showcase build",
         "build:llm": "pnpm --filter showcase build:llmdocs",
@@ -47,7 +48,7 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
         "format:check": "prettier --check \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
-        "test:unit": "pnpm --filter openvue test:unit"
+        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.21.5",
