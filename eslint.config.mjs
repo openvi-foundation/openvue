@@ -119,7 +119,7 @@ export default [
         }
     },
     {
-        files: ['**/*.{js,mjs,cjs,ts'],
+        files: ['**/*.{js,mjs,cjs}'],
         plugins: {
             vue: eslintPluginVue
         },
@@ -131,6 +131,6 @@ export default [
         }
     },
     {
-        ignores: ['**/dist/**', '**/node_modules/**', '**/.nuxt/**', '**/.output/**', 'build/**', '**/prism.js']
+        ignores: ['**/dist/**', '**/node_modules/**', '**/.nuxt/**', '**/.output/**', 'build/**', '**/prism.js', 'packages/migrate/test/fixtures/**']
     }
 ];
