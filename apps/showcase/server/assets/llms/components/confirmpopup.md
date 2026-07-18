@@ -5,7 +5,7 @@ ConfirmPopup displays a confirmation overlay displayed relatively to its target.
 ## Import
 
 ```javascript
-import ConfirmPopup from 'primevue/confirmpopup';
+import ConfirmPopup from 'openvue/confirmpopup';
 ```
 
 ## Accessibility
@@ -68,8 +68,8 @@ Headless mode is enabled by defining a container slot that lets you implement en
 </template>
 
 <script setup>
-import { useConfirm } from "primevue/useconfirm";
-import { useToast } from "primevue/usetoast";
+import { useConfirm } from "openvue/useconfirm";
+import { useToast } from "openvue/usetoast";
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -127,8 +127,8 @@ Templating allows customizing the message content.
 </template>
 
 <script setup>
-import { useConfirm } from "primevue/useconfirm";
-import { useToast } from "primevue/usetoast";
+import { useConfirm } from "openvue/useconfirm";
+import { useToast } from "openvue/usetoast";
 
 const confirm = useConfirm();
 const toast = useToast();

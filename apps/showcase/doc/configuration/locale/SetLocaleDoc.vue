@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Second parameter of the use function can be used to initiate the locale during PrimeVue installation.</p>
+        <p>Second parameter of the use function can be used to initiate the locale during OpenVue installation.</p>
 
         <DocSectionCode :code="code1" hideToggleCode importCode hideStackBlitz />
 
@@ -16,7 +16,7 @@ export default {
         return {
             code1: {
                 basic: `
-app.use(PrimeVue, {
+app.use(OpenVue, {
     locale: {
         accept: 'Aceptar',
         reject: 'Rechazar',
@@ -28,7 +28,7 @@ app.use(PrimeVue, {
             code2: {
                 basic: `
 import { defineComponent, onMounted } from "vue";
-import { usePrimeVue } from "primevue/config";
+import { usePrimeVue } from "openvue/config";
 
 export default defineComponent({
     setup() {

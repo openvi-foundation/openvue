@@ -5,7 +5,7 @@ MultiSelect is used to select multiple items from a collection.
 ## Import
 
 ```javascript
-import MultiSelect from 'primevue/multiselect';
+import MultiSelect from 'openvue/multiselect';
 ```
 
 ## Accessibility
@@ -281,8 +281,8 @@ const cities = ref([
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();
@@ -708,11 +708,11 @@ const onChange = (event) => {
 | autoFilterFocus | boolean | false | Whether to focus on the filter element when the overlay panel is shown. |
 | focusOnHover | boolean | true | When enabled, the focus is placed on the hovered option. |
 | highlightOnSelect | boolean | false | Highlights automatically the first item. |
-| filterMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration. |
-| selectionMessage | string | null | Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration. |
-| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration. |
-| emptyFilterMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration. |
-| emptyMessage | string | No available options' | Text to display when there are no options available. Defaults to value from PrimeVue locale configuration. |
+| filterMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration. |
+| selectionMessage | string | null | Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration. |
+| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration. |
+| emptyFilterMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration. |
+| emptyMessage | string | No available options' | Text to display when there are no options available. Defaults to value from OpenVue locale configuration. |
 | tabindex | string \| number | - | Index of the element in tabbing order. |
 | ariaLabel | string | - | Defines a string value that labels an interactive element. |
 | ariaLabelledby | string | - | Identifier of the underlying input element. |

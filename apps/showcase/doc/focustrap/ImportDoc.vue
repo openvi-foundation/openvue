@@ -9,7 +9,7 @@ export default {
         return {
             code: {
                 basic: `
-import FocusTrap from 'primevue/focustrap';
+import FocusTrap from 'openvue/focustrap';
 
 app.directive('focustrap', FocusTrap);
 `

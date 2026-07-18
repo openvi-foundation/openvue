@@ -5,7 +5,7 @@ OrganizationChart visualizes hierarchical organization data.
 ## Import
 
 ```javascript
-import OrganizationChart from 'primevue/organizationchart';
+import OrganizationChart from 'openvue/organizationchart';
 ```
 
 ## Accessibility

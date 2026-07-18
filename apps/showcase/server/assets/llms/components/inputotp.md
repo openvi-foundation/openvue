@@ -5,7 +5,7 @@ Input Otp is used to enter one time passwords.
 ## Import
 
 ```javascript
-import InputOtp from 'primevue/inputotp';
+import InputOtp from 'openvue/inputotp';
 ```
 
 ## Accessibility
@@ -48,7 +48,7 @@ const value = ref(null);
 
 ## Forms
 
-InputOtp integrates seamlessly with the PrimeVue Forms library.
+InputOtp integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -78,8 +78,8 @@ InputOtp integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

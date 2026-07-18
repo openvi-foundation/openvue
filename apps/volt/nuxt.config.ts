@@ -68,10 +68,7 @@ export default defineNuxtConfig({
                 { property: 'og:image', content: 'https://www.primefaces.org/static/social/volt.jpg' },
                 { property: 'og:ttl', content: '604800' }
             ],
-            link: [
-                { rel: 'icon', href: baseUrl + 'favicon.ico' },
-                { rel: 'stylesheet', as: 'font', href: 'https://rsms.me/inter/inter.css' }
-            ],
+            link: [{ rel: 'stylesheet', as: 'font', href: 'https://rsms.me/inter/inter.css' }],
             script: [
                 {
                     src: baseUrl + 'scripts/prism.js',

@@ -5,7 +5,7 @@ PickList is used to reorder items between different lists.
 ## Import
 
 ```javascript
-import PickList from 'primevue/picklist';
+import PickList from 'openvue/picklist';
 ```
 
 ## Accessibility

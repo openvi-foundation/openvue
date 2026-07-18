@@ -5,7 +5,7 @@ AnimateOnScroll is used to apply animations to elements when entering or leaving
 ## Import
 
 ```javascript
-import AnimateOnScroll from 'primevue/animateonscroll';
+import AnimateOnScroll from 'openvue/animateonscroll';
 
 app.directive('animateonscroll', AnimateOnScroll);
 ```

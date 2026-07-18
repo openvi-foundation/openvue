@@ -1,5 +1,5 @@
 import AppTheme from '@/themes/app-theme';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import { reactive } from 'vue';
 
 const $appState = {
@@ -13,23 +13,7 @@ const $appState = {
             sourceType: 'options-api',
             newsActive: false,
             announcement: null,
-            storageKey: 'primevue',
-            designer: {
-                verified: false,
-                csrfToken: null,
-                themeLimit: null,
-                active: false,
-                activeView: 'dashboard',
-                activeTab: '0',
-                theme: {
-                    key: null,
-                    name: null,
-                    preset: null,
-                    config: null
-                },
-                acTokens: [],
-                themes: []
-            }
+            storageKey: 'openvue'
         });
     }
 };
@@ -40,7 +24,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     nuxtApp.vueApp.use($appState);
 
     if (runtimeConfig.public.DEV_ENV === 'hot') {
-        nuxtApp.vueApp.use(PrimeVue, {
+        nuxtApp.vueApp.use(OpenVue, {
             theme: AppTheme
         });
     }

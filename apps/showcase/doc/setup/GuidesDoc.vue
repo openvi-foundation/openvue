@@ -83,36 +83,6 @@
         </div>
         <div class="col-span-12 sm:col-span-6 md:col-span-3">
             <div class="card flex-1">
-                <NuxtLink to="/cdn">
-                    <span class="images">
-                        <svg width="55" height="60" viewBox="0 0 55 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M0.59082 0.0688477H54.3064L49.3794 53.166L27.1685 59.2714L5.51761 53.6348L0.59082 0.0688477ZM1.68702 1.06885L6.44909 52.844L27.1614 58.2362L48.4475 52.3851L53.2093 1.06885H1.68702ZM9.62573 10.0733H45.1308L44.3146 17.6229H18.3298L18.8344 23.5266H43.8817L41.9722 44.7773L27.4625 48.6181L12.8914 44.7772L11.9306 33.4396H19.7175L20.1987 38.7929L27.4612 40.6224L34.6048 38.795L35.2392 31.0762H11.5463L9.62573 10.0733ZM10.7213 11.0733L12.4591 30.0762H36.3248L35.5431 39.5872L27.4631 41.6541L19.2662 39.5892L18.8033 34.4396H13.0189L13.8283 43.99L27.4619 47.5838L41.0389 43.9899L42.7878 24.5266H17.9162L17.2407 16.6229H43.4169L44.0169 11.0733H10.7213Z"
-                                fill="var(--text-secondary-color)"
-                            />
-                        </svg>
-                        <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg" class="original">
-                            <g id="Frame" clip-path="url(#clip0_3_69)">
-                                <path id="Vector" d="M8.91734 54.595L3.99609 0.5H58.8661L53.8286 54.5562L31.3536 60.5625" fill="#E44D26" />
-                                <path id="Vector_2" d="M31.3926 55.9512V4.91748H53.8288L49.5663 51.0687" fill="#F16529" />
-                                <path id="Vector_3" d="M14.1489 11.5437H31.3927V18.17H21.7052L22.3252 24.9512H31.3927V31.5775H16.0089L14.1489 11.5437ZM16.3189 34.91H23.2552L23.7589 40.2187L31.4314 42.1562V49.1312L17.3264 45.3337" fill="#EBEBEB" />
-                                <path id="Vector_4" d="M48.559 11.5437H31.3928V18.17H47.9778L48.5978 11.5825L48.559 11.5437ZM47.319 24.9512H31.354V31.5775H39.8403L39.0265 40.2187L31.354 42.1562V49.0925L45.4203 45.3337" fill="white" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_3_69">
-                                    <rect width="62" height="62" fill="white" transform="translate(0.392578 0.5)" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </span>
-                    <span class="title">CDN</span>
-                </NuxtLink>
-            </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
-            <div class="card flex-1">
                 <NuxtLink to="/laravel">
                     <span class="images">
                         <svg width="62" height="63" viewBox="0 0 62 63" fill="none" xmlns="http://www.w3.org/2000/svg">

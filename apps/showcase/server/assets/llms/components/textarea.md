@@ -5,7 +5,7 @@ Textarea adds styling and autoResize functionality to standard textarea element.
 ## Import
 
 ```javascript
-import Textarea from 'primevue/textarea';
+import Textarea from 'openvue/textarea';
 ```
 
 ## Accessibility
@@ -190,7 +190,7 @@ const value = ref('');
 
 ## Forms
 
-Textarea integrates seamlessly with the PrimeVue Forms library.
+Textarea integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -220,8 +220,8 @@ Textarea integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

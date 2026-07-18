@@ -15,10 +15,10 @@ export default {
             code: {
                 basic: `
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     ptOptions: {
         mergeSections: true,
         mergeProps: false

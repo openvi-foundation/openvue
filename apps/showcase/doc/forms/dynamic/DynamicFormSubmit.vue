@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import Button from 'primevue/button';
+import Button from 'openvue/button';
 
 const props = defineProps({
     severity: {

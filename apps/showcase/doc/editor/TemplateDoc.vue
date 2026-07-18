@@ -20,7 +20,7 @@
 export default {
     data() {
         return {
-            value: '<div>Hello World!</div><div>PrimeVue <b>Editor</b> Rocks</div><div><br></div>',
+            value: '<div>Hello World!</div><div>OpenVue <b>Editor</b> Rocks</div><div><br></div>',
             code: {
                 basic: `
 <Editor v-model="value" editorStyle="height: 320px">
@@ -52,7 +52,7 @@ export default {
 export default {
     data() {
         return {
-            value: '<div>Hello World!</div><div>PrimeVue <b>Editor</b> Rocks</div><div><br></div>'
+            value: '<div>Hello World!</div><div>OpenVue <b>Editor</b> Rocks</div><div><br></div>'
         }
     }
 }
@@ -76,7 +76,7 @@ export default {
 <script setup>
 import { ref } from "vue";
 
-const value = ref('<div>Hello World!</div><div>PrimeVue <b>Editor</b> Rocks</div><div><br></div>');
+const value = ref('<div>Hello World!</div><div>OpenVue <b>Editor</b> Rocks</div><div><br></div>');
 <\/script>
 `
             }

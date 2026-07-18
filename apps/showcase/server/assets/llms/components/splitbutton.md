@@ -5,7 +5,7 @@ SplitButton groups a set of commands in an overlay with a default command.
 ## Import
 
 ```javascript
-import SplitButton from 'primevue/splitbutton';
+import SplitButton from 'openvue/splitbutton';
 ```
 
 ## Accessibility
@@ -44,7 +44,7 @@ When disabled is present, the element cannot be edited and focused.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -98,7 +98,7 @@ The buttons and menuitems have support to display icons.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -265,7 +265,7 @@ Outlined buttons display a border without a background initially.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -333,7 +333,7 @@ Raised buttons display a shadow to indicate elevation.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -399,7 +399,7 @@ Text buttons can be displayed as raised as well for elevation.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -467,7 +467,7 @@ Rounded buttons have a circular border radius.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -535,7 +535,7 @@ The severity property defines the variant of a button.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -593,7 +593,7 @@ SplitButton provides small and large sizes as alternatives to the standard.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -635,7 +635,7 @@ Custom content inside a button is defined as children.
 <SplitButton :model="items" @click="save" severity="contrast">
     <span class="flex items-center font-bold">
         <img alt="logo" src="https://primefaces.org/cdn/primevue/images/logo.svg" style="height: 1rem; margin-right: 0.5rem" />
-        <span>PrimeVue</span>
+        <span>OpenVue</span>
     </span>
 </SplitButton>
 ```
@@ -650,14 +650,14 @@ Custom content inside a button is defined as children.
         <SplitButton :model="items" @click="save" severity="contrast">
             <span class="flex items-center font-bold">
                 <img alt="logo" src="https://primefaces.org/cdn/primevue/images/logo.svg" style="height: 1rem; margin-right: 0.5rem" />
-                <span>PrimeVue</span>
+                <span>OpenVue</span>
             </span>
         </SplitButton>
     </div>
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [
@@ -723,7 +723,7 @@ Text buttons are displayed as textual elements.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const items = [

@@ -1,20 +1,20 @@
-# Install PrimeVue with Laravel
+# Install OpenVue with Laravel
 
-Setting up PrimeVue in a Laravel project.
+Setting up OpenVue in a Laravel project.
 
 ## Download
 
-PrimeVue is available for download on npm registry .
+OpenVue is available for download on npm registry . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
 
 ```vue
 # Using npm
-npm install primevue @primeuix/themes
+npm install openvue@alpha @primeuix/themes
 
 # Using yarn
-yarn add primevue @primeuix/themes
+yarn add openvue@alpha @primeuix/themes
 
 # Using pnpm
-pnpm add primevue @primeuix/themes
+pnpm add openvue@alpha @primeuix/themes
 ```
 
 ## Examples
@@ -23,31 +23,31 @@ We've created various samples for the popular options in the Vue ecosystem. Visi
 
 ## Next Steps
 
-Welcome to the Prime UI Ecosystem! Once you have PrimeVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes Getting support
+Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
 
 ## Plugin
 
-PrimeVue plugin is required to be installed as an application plugin to set up the default configuration . The plugin is lightweight, and only utilized for configuration purposes.
+OpenVue plugin is required to be installed as an application plugin to set up the default configuration . The plugin is lightweight, and only utilized for configuration purposes.
 
 ```vue
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 
 const app = createApp(App);
-app.use(PrimeVue);
+app.use(OpenVue);
 ```
 
 ## Plugin
 
-Configure PrimeVue to use a theme like Aura.
+Configure OpenVue to use a theme like Aura.
 
 ```vue
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: Aura
     }
@@ -59,7 +59,7 @@ app.use(PrimeVue, {
 Verify your setup by adding a component such as Button . Each component can be imported and registered individually so that you only include what you use for bundle optimization. Import path is available in the documentation of the corresponding component.
 
 ```vue
-import Button from "primevue/button"
+import Button from "openvue/button"
 
 const app = createApp(App);
 app.component('Button', Button);

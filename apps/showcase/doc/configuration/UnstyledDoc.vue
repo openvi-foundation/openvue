@@ -16,10 +16,10 @@ export default {
             code: {
                 basic: `
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, { unstyled: true });
+app.use(OpenVue, { unstyled: true });
 `
             }
         };

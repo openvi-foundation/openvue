@@ -1,7 +1,7 @@
 <template>
     <Head>
-        <Title>MCP Server - PrimeVue</Title>
-        <Meta name="description" content="Model Context Protocol (MCP) server for PrimeVue component library." />
+        <Title>MCP Server - OpenVue</Title>
+        <Meta name="description" content="Model Context Protocol (MCP) server for OpenVue component library." />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>MCP Server</h1>
-                        <p>Model Context Protocol (MCP) server for PrimeVue component library. Provides AI assistants with comprehensive access to PrimeVue component documentation.</p>
+                        <p>Model Context Protocol (MCP) server for OpenVue component library. Provides AI assistants with comprehensive access to OpenVue component documentation.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>

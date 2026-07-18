@@ -4,14 +4,14 @@ Dynamic imports enable the loading of multiple items as needed, streamlining the
 
 ## Overview
 
-With @primevue/icons for icons and primevue for components (except Editor and Chart), multiple items can be imported together.
+With @openvue/icons for icons and openvue for components (except Editor and Chart), multiple items can be imported together.
 
 ```vue
-import { Button, InputText } from 'primevue';
-import { SearchIcon, BellIcon } from '@primevue/icons';
+import { Button, InputText } from 'openvue';
+import { SearchIcon, BellIcon } from '@openvue/icons';
 
 <script setup>
-import * as PrimeVue from 'primevue';
+import * as OpenVue from 'openvue';
 
 const items = [
     { as: 'Button', class: 'my-button-class' },
@@ -20,7 +20,7 @@ const items = [
 </script>
 
 <template>
-    <component v-for="item of items" :is="PrimeVue[item.as]" :class="item.class" />
+    <component v-for="item of items" :is="OpenVue[item.as]" :class="item.class" />
 </template>
 ```
 

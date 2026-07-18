@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Adds PrimeVue to your existing project.</p>
+        <p>Adds OpenVue to your existing project.</p>
     </DocSectionText>
     <DocSectionCode :code="code" hideToggleCode hideStackBlitz />
 </template>

@@ -5,7 +5,7 @@ Fieldset is a grouping component with a content toggle feature.
 ## Import
 
 ```javascript
-import Fieldset from 'primevue/fieldset';
+import Fieldset from 'openvue/fieldset';
 ```
 
 ## Accessibility

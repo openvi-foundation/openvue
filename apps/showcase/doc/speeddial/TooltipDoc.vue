@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Items display a tooltip on hover when a standalone <PrimeVueNuxtLink to="/tooltip">Tooltip</PrimeVueNuxtLink> is present with a target that matches the items.</p>
+        <p>Items display a tooltip on hover when a standalone <OpenVueNuxtLink to="/tooltip">Tooltip</OpenVueNuxtLink> is present with a target that matches the items.</p>
     </DocSectionText>
     <div class="card">
         <div :style="{ position: 'relative', height: '350px' }">
@@ -127,7 +127,7 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();

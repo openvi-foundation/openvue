@@ -5,7 +5,7 @@ IftaLabel is used to create infield top aligned labels
 ## Import
 
 ```javascript
-import IftaLabel from 'primevue/iftalabel';
+import IftaLabel from 'openvue/iftalabel';
 ```
 
 ## Accessibility

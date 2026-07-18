@@ -1,15 +1,15 @@
 <template>
     <Head>
-        <Title>Install PrimeVue with Laravel</Title>
-        <Meta name="description" content="Setting up PrimeVue in a Laravel project" />
+        <Title>Install OpenVue with Laravel</Title>
+        <Meta name="description" content="Setting up OpenVue in a Laravel project" />
     </Head>
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
-                        <h1>Install PrimeVue with Laravel</h1>
-                        <p>Setting up PrimeVue in a Laravel project.</p>
+                        <h1>Install OpenVue with Laravel</h1>
+                        <p>Setting up OpenVue in a Laravel project.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>

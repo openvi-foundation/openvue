@@ -1,6 +1,6 @@
-# Install PrimeVue with Nuxt
+# Install OpenVue with Nuxt
 
-Setting up PrimeVue in a Nuxt project.
+Setting up OpenVue in a Nuxt project.
 
 ## autoImport
 
@@ -8,37 +8,37 @@ The auto import feature registers components automatically with tree shaking sup
 
 ## Download
 
-PrimeVue is available for download on npm registry along with the official @primevue/nuxt-module .
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
 
 ```vue
 # Using npm
-npm install primevue @primeuix/themes
-npm install --save-dev @primevue/nuxt-module
+npm install openvue@alpha @primeuix/themes
+npm install --save-dev @openvue/nuxt-module
 
 # Using yarn
-yarn add primevue @primeuix/themes
-yarn add --dev @primevue/nuxt-module
+yarn add openvue@alpha @primeuix/themes
+yarn add --dev @openvue/nuxt-module
 
 # Using pnpm
-pnpm add primevue @primeuix/themes
-pnpm add -D @primevue/nuxt-module
+pnpm add openvue@alpha @primeuix/themes
+pnpm add -D @openvue/nuxt-module
 ```
 
 ## Examples
 
-Nuxt based samples with different options are available at PrimeVue examples repository.
+Nuxt based samples with different options are available at OpenVue examples repository.
 
 ## Module
 
-In nuxt.config file, add the @primevue/nuxt-module to the modules section and define primevue object for the configuration of the module.
+In nuxt.config file, add the @openvue/nuxt-module to the modules section and define primevue object for the configuration of the module.
 
 ## Next Steps
 
-Welcome to the Prime UI Ecosystem! Once you have PrimeVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes Getting support
+Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
 
 ## Styled Mode
 
-Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @primeuix/themes add-on package as the themes are not included in PrimeVue by default. Configure the module to use a theme like Aura.
+Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @primeuix/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
 
 ## Theme
 
@@ -49,7 +49,7 @@ import Aura from '@primeuix/themes/aura';
 
 export default defineNuxtConfig({
     modules: [
-        '@primevue/nuxt-module'
+        '@openvue/nuxt-module'
     ],
     primevue: {
         options: {
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 
 ## Unstyled Mode
 
-In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of PrimeVue. Visit the Unstyled mode documentation for more information and examples.
+In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of OpenVue. Visit the Unstyled mode documentation for more information and examples.
 
 ## Verify
 
@@ -72,10 +72,6 @@ The nuxt-primevue module registers the components automatically with tree-shakin
 ```vue
 <Button label="Verify" />
 ```
-
-## Video
-
-A video tutorial that goes through steps of setting up PrimeVue with the nuxt-primevue module.
 
 ## components
 
@@ -99,14 +95,14 @@ Configures the theme configuration path for the customizations of a theme in sty
 
 ## options
 
-Main configuration settings of PrimeVue, refer to the configuration documentation for details.
+Main configuration settings of OpenVue, refer to the configuration documentation for details.
 
 ```vue
 import Aura from '@primeuix/themes/aura';
 
 export default defineNuxtConfig({
     modules: [
-        '@primevue/nuxt-module'
+        '@openvue/nuxt-module'
     ],
     primevue: {
         options: {
@@ -125,9 +121,9 @@ export default defineNuxtConfig({
 })
 ```
 
-## usePrimeVue
+## Use Open Vue
 
-The module installs the PrimeVue plugin by default. Disable this option if you prefer to configure PrimeVue manually e.g. with a Nuxt plugin.
+The module installs the OpenVue plugin by default. Disable this option if you prefer to configure OpenVue manually e.g. with a Nuxt plugin.
 
 ```vue
 primevue: {

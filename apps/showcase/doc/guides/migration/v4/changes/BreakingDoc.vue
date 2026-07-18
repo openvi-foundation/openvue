@@ -27,7 +27,7 @@
             <li>Themes under the <i class="mark">primevue/resources</i> path, migration to new styled mode is necessary.</li>
             <li>
                 The legacy Tailwind preset at <i class="mark">primevue/passthrough/tailwind</i>, migrate to the <a href="https://volt.primevue.org" target="_blank" rel="noopener noreferrer" class="doc-link">Volt</a> project if you'd like to style
-                PrimeVue with Tailwind CSS.
+                OpenVue with Tailwind CSS.
             </li>
         </ul>
 
@@ -39,7 +39,7 @@
 
         <h4>PT Section Names</h4>
         <p>
-            The experimental PassThrough feature is not production ready, there are changes on the PT section names due to alignment with CSS classes for certain components. If when component element is another PrimeVue component <i>pc</i> prefix is
+            The experimental PassThrough feature is not production ready, there are changes on the PT section names due to alignment with CSS classes for certain components. If when component element is another OpenVue component <i>pc</i> prefix is
             added for indication. Review the <i>Pass Through</i> section of a component for the new API. The Tailwind CSS presets for the unstyled mode are not updated to v4 yet.
         </p>
 
@@ -64,6 +64,6 @@
         </p>
 
         <h4>PrimeFlex CSS</h4>
-        <p>In case you are using PrimeFlex CSS library, upgrade to PrimeFlex v4 since PrimeFlex v3 is not compatible with PrimeVue v4+.</p>
+        <p>In case you are using PrimeFlex CSS library, upgrade to PrimeFlex v4 since PrimeFlex v3 is not compatible with OpenVue v4+.</p>
     </DocSectionText>
 </template>

@@ -18,7 +18,7 @@
                         >Live Demo</a
                     >
                     <a
-                        :href="templateHeroData.storeHref ?? 'https://www.primefaces.org/store/'"
+                        :href="templateHeroData.storeHref ?? 'https://github.com/openvi-foundation/openvue'"
                         target="_blank"
                         class="flex-1 rounded-full border text-center font-semibold w-full bg-primary-600 border-primary-600 hover:bg-primary-700 text-surface-0 py-3.5 transition-all leading-none"
                     >
@@ -26,7 +26,7 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-4 mt-6">
-                    <a class="flex items-center gap-2 text-primary-contrast lg:text-base text-sm" :href="templateHeroData.supportHref ?? 'https://github.com/orgs/primefaces/discussions/categories/primevue-templates'" target="_blank">
+                    <a class="flex items-center gap-2 text-primary-contrast lg:text-base text-sm" :href="templateHeroData.supportHref ?? 'https://github.com/openvi-foundation/openvue/issues'" target="_blank">
                         <i class="pi pi-github" />
                         <span class="hover:underline">{{ templateHeroData.free ? 'Open Issues' : 'Community' }}</span>
                     </a>

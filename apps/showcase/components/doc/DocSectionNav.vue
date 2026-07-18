@@ -19,33 +19,6 @@
                 </template>
             </li>
         </ul>
-
-        <div class="mt-8 px-4 py-6 rounded-lg border border-surface-200 dark:border-surface-800 bg-surface-0 dark:bg-surface-900 w-full" v-if="ad">
-            <img :src="ad.lightImage" class="w-full rounded-xl block dark:hidden mb-4" />
-            <img :src="ad.darkImage" class="w-full rounded-xl hidden dark:block mb-4" />
-            <div class="text-xl font-semibold flex flex-col gap-2 text-center">
-                <span class="leading-none">{{ ad.title }}</span>
-            </div>
-            <div class="text-center text-sm mt-4">{{ ad.details }}</div>
-            <span class="flex justify-center mt-4">
-                <Button v-if="ad.href" as="a" label="Learn More" :href="ad.href" target="_blank" rel="noopener" rounded size="small" />
-                <Button asChild v-slot="slotProps" v-if="ad.to" rounded size="small">
-                    <RouterLink :to="ad.to" :class="slotProps.class">Learn More</RouterLink>
-                </Button>
-            </span>
-        </div>
-
-        <div class="mt-8 p-4 rounded-lg border border-surface-200 dark:border-surface-800 bg-surface-0 dark:bg-surface-900 w-full" v-if="false">
-            <img src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/store.images/discount/dec25/showcase/primestore-endofyear-2025-sm.jpg" class="w-full rounded-lg" alt="November Sale 2025" />
-            <div class="text-xl font-semibold flex flex-col gap-2 text-center mt-4" v-if="false">
-                <span class="leading-none">END OF YEAR SALE</span>
-                <span class="leading-none text-primary">2025</span>
-            </div>
-            <div class="text-center text-sm mt-4">Apply coupon code <b>ENDOFYEAR25</b> at checkout to enjoy 25% off your order.</div>
-            <span class="flex justify-center">
-                <Button as="a" label="Buy Now" size="small" href="https://primeui.store" target="_blank" rel="noopener" class="mt-4 inline-flex" rounded />
-            </span>
-        </div>
     </div>
 </template>
 
@@ -60,45 +33,7 @@ export default {
             activeId: null,
             isScrollBlocked: false,
             scrollEndTimer: null,
-            topbarHeight: 0,
-            ad: null,
-            ads: [
-                {
-                    lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/primeblocks-menu-light.jpg',
-                    darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/primeblocks-menu-dark.jpg',
-                    title: 'PrimeBlocks',
-                    details: '490+ ready to use UI blocks crafted with PrimeVue and Tailwind CSS.',
-                    href: 'https://primeblocks.org'
-                },
-                {
-                    lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/primeone-menu-light.jpg',
-                    darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/primeone-menu-dark.jpg',
-                    title: 'Figma UI Kit',
-                    details: 'The official Figma UI Kit for Prime UI libraries, the essential resource for designing with PrimeOne components.',
-                    to: '/uikit'
-                },
-                {
-                    lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/templates-menu-light.jpg',
-                    darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/templates-menu-dark.jpg',
-                    title: 'Templates',
-                    details: 'Highly customizable application templates to get started in no time with style. Designed and implemented by PrimeTek.',
-                    to: '/templates'
-                },
-                {
-                    lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/themedesigner-menu-light.jpg',
-                    darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/themedesigner-menu-dark.jpg',
-                    title: 'Theme Designer',
-                    details: 'Theme Designer is the ultimate tool to customize and design your own themes featuring a visual editor, figma to theme code, cloud storage, and migration assistant.',
-                    to: '/designer'
-                },
-                {
-                    lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/volt-menu-light.jpg',
-                    darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/ads/volt-menu-dark.jpg',
-                    title: 'Volt UI',
-                    details: 'Craft your own UI component library with Unstyled PrimeVue and Tailwind CSS',
-                    href: 'https://volt.primevue.org'
-                }
-            ]
+            topbarHeight: 0
         };
     },
     watch: {
@@ -110,15 +45,6 @@ export default {
         this.scrollCurrentUrl();
 
         window.addEventListener('scroll', this.onScroll, { passive: true });
-
-        this.ad = this.ads[Math.floor(Math.random() * 5)];
-        /*this.ad = {
-            lightImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/store.images/discount/apr26/primestore-spring-2026-sm.jpg',
-            darkImage: 'https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/store.images/discount/apr26/primestore-spring-2026-sm.jpg',
-            title: 'Spring Sale',
-            details: 'Spring Sale is here. 50% OFF everything at PrimeStore and PrimeBlocks.',
-            href: 'https://primeui.store/'
-        };*/
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.onScroll, { passive: true });

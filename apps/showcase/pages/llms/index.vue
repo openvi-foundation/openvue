@@ -1,7 +1,7 @@
 <template>
     <Head>
-        <Title>LLMs.txt - PrimeVue</Title>
-        <Meta name="description" content="LLM-optimized documentation endpoints for PrimeVue components." />
+        <Title>LLMs.txt - OpenVue</Title>
+        <Meta name="description" content="LLM-optimized documentation endpoints for OpenVue components." />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>LLMs.txt</h1>
-                        <p>LLM-optimized documentation endpoints for PrimeVue components.</p>
+                        <p>LLM-optimized documentation endpoints for OpenVue components.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>

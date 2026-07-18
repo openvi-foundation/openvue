@@ -4275,7 +4275,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} results are available'",
-                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "selectionMessage",
@@ -4283,7 +4283,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} items selected'",
-                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySelectionMessage",
@@ -4291,7 +4291,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No selected item",
-                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySearchMessage",
@@ -4299,7 +4299,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No results found",
-                            "description": "Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "showEmptyMessage",
@@ -11398,7 +11398,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} results are available'",
-                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "selectionMessage",
@@ -11406,7 +11406,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} items selected'",
-                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySelectionMessage",
@@ -11414,7 +11414,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No selected item",
-                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySearchMessage",
@@ -11422,7 +11422,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No results found",
-                            "description": "Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyMessage",
@@ -11430,7 +11430,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No available options",
-                            "description": "Text to be displayed when there are no options available. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed when there are no options available. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "tabindex",
@@ -15090,7 +15090,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Type of data. It's value is related to PrimeVue.filterMatchModeOptions config."
+                            "description": "Type of data. It's value is related to OpenVue.filterMatchModeOptions config."
                         },
                         {
                             "name": "sortable",
@@ -16202,14 +16202,14 @@
             }
         }
     },
-    "primevue/src/config/Config": {
+    "openvue/src/config/Config": {
         "interfaces": {
             "description": "Defines the custom interfaces used by the module.",
             "eventDescription": "Defines the custom events used by the component's emit.",
             "methodDescription": "Defines methods that can be accessed by the component's reference.",
             "typeDescription": "Defines the custom types used by the module.",
             "values": {
-                "PrimeVueConfiguration": {
+                "OpenVueConfiguration": {
                     "relatedProp": "",
                     "props": [
                         {
@@ -16274,7 +16274,7 @@
                             "name": "pt",
                             "optional": true,
                             "readonly": false,
-                            "type": "PassThrough<PrimeVuePTOptions>",
+                            "type": "PassThrough<OpenVuePTOptions>",
                             "default": ""
                         },
                         {
@@ -16294,7 +16294,7 @@
                     ],
                     "methods": []
                 },
-                "PrimeVuePTOptions": {
+                "OpenVuePTOptions": {
                     "relatedProp": "",
                     "props": [
                         {
@@ -17182,10 +17182,10 @@
         "tokens": {
             "description": "Define design tokens used by the component.",
             "values": {
-                "PrimeVueConfiguration": {
+                "OpenVueConfiguration": {
                     "props": []
                 },
-                "PrimeVuePTOptions": {
+                "OpenVuePTOptions": {
                     "props": []
                 }
             }
@@ -17309,7 +17309,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Label of the accept button. Defaults to PrimeVue Locale configuration."
+                            "description": "Label of the accept button. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "rejectLabel",
@@ -17317,7 +17317,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Label of the reject button. Defaults to PrimeVue Locale configuration."
+                            "description": "Label of the reject button. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "acceptIcon",
@@ -24502,7 +24502,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Format of the date. Defaults to PrimeVue Locale configuration."
+                            "description": "Format of the date. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "updateModelType",
@@ -30814,7 +30814,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Label of the choose button. Defaults to PrimeVue Locale configuration."
+                            "description": "Label of the choose button. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "uploadLabel",
@@ -30822,7 +30822,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Label of the upload button. Defaults to PrimeVue Locale configuration."
+                            "description": "Label of the upload button. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "cancelLabel",
@@ -30830,7 +30830,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "Cancel",
-                            "description": "Label of the cancel button. Defaults to PrimeVue Locale configuration."
+                            "description": "Label of the cancel button. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "customUpload",
@@ -30838,7 +30838,7 @@
                             "readonly": false,
                             "type": "boolean",
                             "default": "",
-                            "description": "Whether to use the default upload or a manual implementation defined in uploadHandler callback. Defaults to PrimeVue Locale configuration."
+                            "description": "Whether to use the default upload or a manual implementation defined in uploadHandler callback. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "showUploadButton",
@@ -34733,7 +34733,7 @@
             }
         }
     },
-    "primevue/src": {},
+    "openvue/src": {},
     "inlinemessage": {
         "description": "InlineMessage component is useful in cases where a single message needs to be displayed related to an element such as forms. It has one property, severity of the message.\n\n[Live Demo](https://www.primevue.org/inlinemessage/)",
         "components": {
@@ -42472,7 +42472,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} results are available'",
-                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "selectionMessage",
@@ -42480,7 +42480,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} items selected'",
-                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySelectionMessage",
@@ -42488,7 +42488,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No selected item",
-                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyFilterMessage",
@@ -42496,7 +42496,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No results found",
-                            "description": "Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyMessage",
@@ -42504,7 +42504,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No available options",
-                            "description": "Text to display when there are no options available. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when there are no options available. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "striped",
@@ -45333,7 +45333,7 @@
         }
     },
     "menuitem": {
-        "description": "PrimeVue menu components share a common api to specify the menuitems and submenus.",
+        "description": "OpenVue menu components share a common api to specify the menuitems and submenus.",
         "interfaces": {
             "description": "Defines the custom interfaces used by the module.",
             "eventDescription": "Defines the custom events used by the component's emit.",
@@ -47441,7 +47441,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} results are available'",
-                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "selectionMessage",
@@ -47449,7 +47449,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "null",
-                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySelectionMessage",
@@ -47457,7 +47457,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No selected item",
-                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyFilterMessage",
@@ -47465,7 +47465,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No results found",
-                            "description": "Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyMessage",
@@ -47473,7 +47473,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No available options'",
-                            "description": "Text to display when there are no options available. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when there are no options available. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "tabindex",
@@ -52441,7 +52441,7 @@
             }
         }
     },
-    "primevue/src/passthrough": {
+    "openvue/src/passthrough": {
         "functions": {
             "description": "Defines the custom functions used by the module.",
             "values": {
@@ -54386,7 +54386,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Text to prompt password entry. Defaults to PrimeVue Locale configuration."
+                            "description": "Text to prompt password entry. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "mediumRegex",
@@ -54410,7 +54410,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Text for a weak password. Defaults to PrimeVue Locale configuration."
+                            "description": "Text for a weak password. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "mediumLabel",
@@ -54418,7 +54418,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Text for a medium password. Defaults to PrimeVue Locale configuration."
+                            "description": "Text for a medium password. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "strongLabel",
@@ -54426,7 +54426,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "",
-                            "description": "Text for a strong password. Defaults to PrimeVue Locale configuration."
+                            "description": "Text for a strong password. Defaults to OpenVue Locale configuration."
                         },
                         {
                             "name": "feedback",
@@ -56614,7 +56614,7 @@
             }
         }
     },
-    "primevue/src/portal/Portal": {
+    "openvue/src/portal/Portal": {
         "interfaces": {
             "description": "Defines the custom interfaces used by the module.",
             "eventDescription": "Defines the custom events used by the component's emit.",
@@ -56714,7 +56714,7 @@
         "description": "ProgressBar is a process status indicator.\n\n[Live Demo](https://www.primevue.org/progressbar)",
         "components": {
             "default": {
-                "description": "\n\n[Live Demo](https://www.primevue.org/progressbar/)\n--- ---\n![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)",
+                "description": "\n\n[Live Demo](https://www.primevue.org/progressbar/)\n--- ---\n![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)",
                 "methods": {
                     "description": "Defines methods that can be accessed by the component's reference.",
                     "values": []
@@ -60740,7 +60740,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} results are available'",
-                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "selectionMessage",
@@ -60748,7 +60748,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "'{0} items selected'",
-                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptySelectionMessage",
@@ -60756,7 +60756,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No selected item",
-                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyFilterMessage",
@@ -60764,7 +60764,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No results found",
-                            "description": "Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "emptyMessage",
@@ -60772,7 +60772,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No available options",
-                            "description": "Text to display when there are no options available. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when there are no options available. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "tabindex",
@@ -77313,7 +77313,7 @@
         }
     },
     "treenode": {
-        "description": "PrimeVue tree components share a common api to specify the node.",
+        "description": "OpenVue tree components share a common api to specify the node.",
         "interfaces": {
             "description": "Defines the custom interfaces used by the module.",
             "eventDescription": "Defines the custom events used by the component's emit.",
@@ -77941,7 +77941,7 @@
                             "readonly": false,
                             "type": "string",
                             "default": "No available options",
-                            "description": "Text to display when there are no options available. Defaults to value from PrimeVue locale configuration."
+                            "description": "Text to display when there are no options available. Defaults to value from OpenVue locale configuration."
                         },
                         {
                             "name": "placeholder",
@@ -80441,7 +80441,7 @@
             }
         }
     },
-    "primevue/src/useconfirm/UseConfirm": {
+    "openvue/src/useconfirm/UseConfirm": {
         "functions": {
             "description": "Defines the custom functions used by the module.",
             "values": {
@@ -80453,7 +80453,7 @@
             }
         }
     },
-    "primevue/src/usedialog/UseDialog": {
+    "openvue/src/usedialog/UseDialog": {
         "functions": {
             "description": "Defines the custom functions used by the module.",
             "values": {
@@ -80465,8 +80465,8 @@
             }
         }
     },
-    "primevue/src/usestyle/UseStyle": {},
-    "primevue/src/usetoast/UseToast": {
+    "openvue/src/usestyle/UseStyle": {},
+    "openvue/src/usetoast/UseToast": {
         "functions": {
             "description": "Defines the custom functions used by the module.",
             "values": {

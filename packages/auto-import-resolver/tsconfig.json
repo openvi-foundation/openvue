@@ -4,8 +4,8 @@
         "moduleResolution": "Node",
         "baseUrl": ".",
         "paths": {
-            "@primevue/auto-import-resolver/*": ["./*"],
-            "@primevue/metadata/*": ["../../packages/metadata/src/*"]
+            "@openvue/auto-import-resolver/*": ["./*"],
+            "@openvue/metadata/*": ["../../packages/metadata/src/*"]
         }
     },
     "exclude": ["node_modules", "dist"]

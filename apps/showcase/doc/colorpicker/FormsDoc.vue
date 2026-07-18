@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>ColorPicker integrates seamlessly with the <NuxtLink to="/forms">PrimeVue Forms</NuxtLink> library.</p>
+        <p>ColorPicker integrates seamlessly with the <NuxtLink to="/forms">OpenVue Forms</NuxtLink> library.</p>
     </DocSectionText>
     <div class="card flex justify-center">
         <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -53,7 +53,7 @@ export default {
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -95,8 +95,8 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

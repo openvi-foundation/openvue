@@ -1,7 +1,7 @@
 <template>
     <DocSectionText label="Built-in" :level="2" v-bind="$attrs">
         <p>
-            Although PrimeVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other
+            Although OpenVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other
             3rd party components, your own custom components, and native elements, for consistency it may be an option.
         </p>
     </DocSectionText>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -55,7 +55,7 @@ export default {
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -93,9 +93,9 @@ export default {
 
 <script setup>
 import { reactive } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

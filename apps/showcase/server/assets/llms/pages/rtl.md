@@ -1,10 +1,10 @@
 # RTL Support
 
-Right-to-left direction support of PrimeVue.
+Right-to-left direction support of OpenVue.
 
 ## Configuration
 
-The PrimeVue components natively support Right-to-Left (RTL) text direction through a modern CSS implementation utilizing FlexBox and classes like *-inline-start and *-block-end . Consequently, no JavaScript configuration is necessary; setting the document's text direction to RTL is sufficient to enable this feature. The RTL setting can either be set using the dir attribute or with the direction style property.
+The OpenVue components natively support Right-to-Left (RTL) text direction through a modern CSS implementation utilizing FlexBox and classes like *-inline-start and *-block-end . Consequently, no JavaScript configuration is necessary; setting the document's text direction to RTL is sufficient to enable this feature. The RTL setting can either be set using the dir attribute or with the direction style property.
 
 ```vue
 <html dir="rtl">

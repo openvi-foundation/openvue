@@ -1,6 +1,6 @@
 # Forms
 
-The PrimeVue Forms library provides comprehensive form state management with built-in validation support.
+The OpenVue Forms library provides comprehensive form state management with built-in validation support.
 
 ## Accessibility
 
@@ -8,7 +8,7 @@ Screen Reader Form does not require any roles and attributes. Keyboard Support C
 
 ## Basic
 
-All PrimeVue form components are designed for seamless integration with the forms library. Instead of using the standard v-model , the name property is used to link a state object that tracks values, errors, and actions. The form component provides four key properties for state management.
+All OpenVue form components are designed for seamless integration with the forms library. Instead of using the standard v-model , the name property is used to link a state object that tracks values, errors, and actions. The form component provides four key properties for state management.
 
 ```vue
 <Form v-slot="$form" :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -40,7 +40,7 @@ All PrimeVue form components are designed for seamless integration with the form
 
 <script setup>
 import { reactive } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -80,13 +80,13 @@ Forms add-on is available for download on npm registry.
 
 ```vue
 # Using npm
-npm install @primevue/forms
+npm install @openvue/forms
 
 # Using yarn
-yarn add @primevue/forms
+yarn add @openvue/forms
 
 # Using pnpm
-pnpm add @primevue/forms
+pnpm add @openvue/forms
 ```
 
 ## Dynamic
@@ -98,7 +98,7 @@ This section demonstrates how to create a dynamic form using a custom Form compo
     <DynamicForm @submit="onFormSubmit('Form 1', $event)">
         <DynamicFormField groupId="userId_1" name="username">
             <DynamicFormLabel>Username</DynamicFormLabel>
-            <DynamicFormControl defaultValue="PrimeVue" fluid :schema="userNameSchema" />
+            <DynamicFormControl defaultValue="OpenVue" fluid :schema="userNameSchema" />
             <DynamicFormMessage />
         </DynamicFormField>
         <DynamicFormField groupId="passId_1" name="password">
@@ -131,7 +131,7 @@ This section demonstrates how to create a dynamic form using a custom Form compo
             <DynamicForm @submit="onFormSubmit('Form 1', $event)">
                 <DynamicFormField groupId="userId_1" name="username">
                     <DynamicFormLabel>Username</DynamicFormLabel>
-                    <DynamicFormControl defaultValue="PrimeVue" fluid :schema="userNameSchema" />
+                    <DynamicFormControl defaultValue="OpenVue" fluid :schema="userNameSchema" />
                     <DynamicFormMessage />
                 </DynamicFormField>
                 <DynamicFormField groupId="passId_1" name="password">
@@ -156,7 +156,7 @@ This section demonstrates how to create a dynamic form using a custom Form compo
 <script setup>
 import { reactive } from 'vue';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import DynamicForm from './dynamic/DynamicForm.vue';
 import DynamicFormControl from './dynamic/DynamicFormControl.vue';
 import DynamicFormField from './dynamic/DynamicFormField.vue';
@@ -189,7 +189,7 @@ const fields = reactive({
     username: {
         groupId: 'userId_2',
         label: 'Username',
-        defaultValue: 'PrimeVue',
+        defaultValue: 'OpenVue',
         fluid: true,
         schema: userNameSchema
     },
@@ -229,12 +229,12 @@ const onFormSubmit = (text, { valid }) => {
 The form component is responsible for managing the form state and must encapsulate the form fields.
 
 ```vue
-import { Form } from '@primevue/forms';
+import { Form } from '@openvue/forms';
 ```
 
 ## Resolvers
 
-Validations are implemented with the resolver property. A custom resolver is responsible for handling the validation and returning an errors object with key-value pairs where key is the form field name and value is an array of error object data. For productivity, we recommend using a schema validation library instead of building your own custom validation logic. The forms library provide built-in resolvers for popular options including Zod , Yup , Joi , Valibot , and Superstruct that can be imported from @primevue/forms/resolvers path.
+Validations are implemented with the resolver property. A custom resolver is responsible for handling the validation and returning an errors object with key-value pairs where key is the form field name and value is an array of error object data. For productivity, we recommend using a schema validation library instead of building your own custom validation logic. The forms library provide built-in resolvers for popular options including Zod , Yup , Joi , Valibot , and Superstruct that can be imported from @openvue/forms/resolvers path.
 
 ```vue
 <Form v-slot="$form" :initialValues :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -291,15 +291,15 @@ Validations are implemented with the resolver property. A custom resolver is res
 
 <script setup>
 import { ref, watch } from 'vue';
-import { superStructResolver } from '@primevue/forms/resolvers/superstruct';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { superStructResolver } from '@openvue/forms/resolvers/superstruct';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as s from 'superstruct';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -406,7 +406,7 @@ The $form object tracks the state management of the fields. Each field is linked
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -490,9 +490,9 @@ The submit callback returns an object that encapsulates the form's validity, any
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -586,7 +586,7 @@ Form component supports flexible validation triggers, allowing validation on val
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -627,7 +627,7 @@ const onFormSubmit = ({ valid }) => {
 
 ## Built In
 
-Although PrimeVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other 3rd party components, your own custom components, and native elements, for consistency it may be an option.
+Although OpenVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other 3rd party components, your own custom components, and native elements, for consistency it may be an option.
 
 ```vue
 <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -657,9 +657,9 @@ Although PrimeVue components have built-in support for the Form API, you may sti
 
 <script setup>
 import { reactive } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -680,15 +680,15 @@ const onFormSubmit = ({ valid }) => {
 
 ## FormField
 
-The FormField is a helper component that provides validation and tracking for input elements, offering a more flexible structure to bind PrimeVue, non-PrimeVue components or native HTML elements to Form API. Additionally, with props like validateOn* , initialValue , resolver , and name , behaviors can be controlled directly from this component.
+The FormField is a helper component that provides validation and tracking for input elements, offering a more flexible structure to bind OpenVue, non-OpenVue components or native HTML elements to Form API. Additionally, with props like validateOn* , initialValue , resolver , and name , behaviors can be controlled directly from this component.
 
 ```vue
-import { FormField } from '@primevue/forms';
+import { FormField } from '@openvue/forms';
 ```
 
-## Non Prime Vue
+## Non Open Vue
 
-Form API is not strictly tied to PrimeVue components, providing a flexible way to manage validation and state for any native HTML elements, your own custom components or third-party libraries.
+Form API is not strictly tied to OpenVue components, providing a flexible way to manage validation and state for any native HTML elements, your own custom components or third-party libraries.
 
 ```vue
 <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -696,7 +696,7 @@ Form API is not strictly tied to PrimeVue components, providing a flexible way t
         <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
         <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
     </FormField>
-    <FormField v-slot="$field" name="password" initialValue="PrimeVue" class="flex flex-col gap-1">
+    <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
         <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
         <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
     </FormField>
@@ -715,7 +715,7 @@ Form API is not strictly tied to PrimeVue components, providing a flexible way t
                 <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
                 <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
             </FormField>
-            <FormField v-slot="$field" name="password" initialValue="PrimeVue" class="flex flex-col gap-1">
+            <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
                 <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
                 <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
             </FormField>
@@ -726,9 +726,9 @@ Form API is not strictly tied to PrimeVue components, providing a flexible way t
 
 <script setup>
 import { reactive } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -824,13 +824,13 @@ Each FormField can have its own dedicated resolver, allowing you to define custo
 
 <script setup>
 import { reactive } from 'vue';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 
@@ -913,9 +913,9 @@ It renders as a HTML div element, but this behavior can be modified using the as
 
 <script setup>
 import { reactive } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

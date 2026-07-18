@@ -43,12 +43,12 @@ export default {
             },
             code3: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: Aura,
         options: {
@@ -69,12 +69,12 @@ app.use(PrimeVue, {
             },
             code5: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: Aura,
         options: {

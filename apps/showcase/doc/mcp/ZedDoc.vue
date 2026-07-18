@@ -18,7 +18,7 @@ export default {
         "primevue": {
             "command": {
                 "path": "npx",
-                "args": ["-y", "@primevue/mcp"]
+                "args": ["-y", "@openvue/mcp"]
             }
         }
     }

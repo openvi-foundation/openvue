@@ -1,19 +1,19 @@
 <template>
     <div>
         <Head>
-            <Title>UI Kit - PrimeVue</Title>
-            <Meta name="description" content="Design files for PrimeVue Components." />
+            <Title>UI Kit - OpenVue</Title>
+            <Meta name="description" content="Design files for OpenVue Components." />
         </Head>
 
         <div>
             <div style="border-radius: 50px" class="overflow-hidden mb-8 flex items-center">
-                <img alt="PrimeVue Figma UI Kit" :src="coverImage" class="w-full" />
+                <img alt="OpenVue Figma UI Kit" :src="coverImage" class="w-full" />
             </div>
 
             <div class="card !mb-8" style="border-radius: 50px">
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-20 mb-20">
                     <div class="w-full md:w-6/12">
-                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="PrimeVue UI Kit" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-figma.png" class="w-full" />
+                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="OpenVue UI Kit" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-figma.png" class="w-full" />
                     </div>
                     <div v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-r-4 animate-duration-1000' }" class="w-full md:w-6/12">
                         <div class="text-primary font-bold mb-2">UP-TO-DATE</div>
@@ -74,12 +74,12 @@
                         </ul>
                     </div>
                     <div class="w-full md:w-6/12">
-                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-r-4 animate-duration-1000' }" alt="PrimeVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-system.png" class="w-full" />
+                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-r-4 animate-duration-1000' }" alt="OpenVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-system.png" class="w-full" />
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-20 mb-20">
                     <div class="w-full md:w-6/12">
-                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="PrimeVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-themes.png" class="w-full" />
+                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="OpenVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/uikit/uikit-themes.png" class="w-full" />
                     </div>
                     <div v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-r-4 animate-duration-1000' }" class="w-full md:w-6/12">
                         <div class="text-primary font-bold mb-2">DARK MODE</div>
@@ -129,7 +129,7 @@
                 </div>
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-20 mb-20">
                     <div class="w-full md:w-6/12">
-                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="PrimeVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/designer/feature-2.png" class="w-full" />
+                        <img v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-l-4 animate-duration-1000' }" alt="OpenVue Designer" src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/designer/feature-2.png" class="w-full" />
                     </div>
                     <div v-animateonscroll.once="{ enterClass: 'animate-enter fade-in-10 slide-in-from-r-4 animate-duration-1000' }" class="w-full md:w-6/12">
                         <div class="text-primary font-bold mb-2">AUTOMATED</div>
@@ -239,7 +239,7 @@
                                     </li>
                                 </ul>
                                 <hr class="mb-4 mx-0 border-t border-0 border-surface-200 dark:border-surface-700 mt-auto" />
-                                <a v-ripple href="https://primeui.store/uikit" class="bg-blue-500 text-white hover:bg-blue-400 p-4 w-full rounded text-center transition-colors duration-300 font-bold p-ripple">Buy Now</a>
+                                <a v-ripple href="https://github.com/openvi-foundation/openvue" class="bg-blue-500 text-white hover:bg-blue-400 p-4 w-full rounded text-center transition-colors duration-300 font-bold p-ripple">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                                     </li>
                                 </ul>
                                 <hr class="mb-4 mx-0 border-t border-0 border-surface-200 dark:border-surface-700" />
-                                <a v-ripple href="https://primeui.store/uikit" class="bg-purple-500 text-white hover:bg-purple-400 p-4 w-full rounded text-center transition-colors duration-300 font-bold p-ripple">Buy Now</a>
+                                <a v-ripple href="https://github.com/openvi-foundation/openvue" class="bg-purple-500 text-white hover:bg-purple-400 p-4 w-full rounded text-center transition-colors duration-300 font-bold p-ripple">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -353,14 +353,9 @@
                             date will remain accessible to you indefinitely.
                         </p>
 
-                        <div class="leading-normal mb-2 font-bold">How Can I Extend My Access to Updates After One Year?</div>
-                        <p class="mt-0 mb-12 p-0 leading-normal">At PrimeStore, you have the option to purchase an additional update term. This will grant you access to all existing versions and updates for another year.</p>
-
                         <div class="leading-normal mb-2 font-bold">How can I get support?</div>
                         <p class="mt-0 mb-12 p-0 leading-normal">
-                            PrimeTek offers assistance with account management and licensing issues, with the expectation that users have the necessary technical knowledge to use our products, as we do not offer technical support or consulting. Users
-                            can seek assistance in our community via our public <a href="https://discord.com/invite/gzKFYnpmCY" class="doc-link">Discord</a> and
-                            <a href="https://github.com/orgs/primefaces/discussions/categories/figma-ui-kit" class="doc-link">Forum</a>.
+                            Users can seek assistance in our community via <a href="https://github.com/openvi-foundation/openvue" class="doc-link">GitHub</a>.
                         </p>
                     </div>
                     <div class="col-span-12 lg:col-span-4 px-2 lg:px-8">

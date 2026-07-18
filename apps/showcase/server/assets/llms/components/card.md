@@ -5,7 +5,7 @@ Card is a flexible container component.
 ## Import
 
 ```javascript
-import Card from 'primevue/card';
+import Card from 'openvue/card';
 ```
 
 ## Accessibility

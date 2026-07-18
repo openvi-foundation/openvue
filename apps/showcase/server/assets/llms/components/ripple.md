@@ -20,11 +20,11 @@ mounted() {
 <summary>Composition API Example</summary>
 
 ```vue
-import { usePrimeVue } from 'primevue/config';
+import { usePrimeVue } from 'openvue/config';
 
-const PrimeVue = usePrimeVue();
+const OpenVue = usePrimeVue();
 
-PrimeVue.config.ripple = true;
+OpenVue.config.ripple = true;
 ```
 </details>
 

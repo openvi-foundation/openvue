@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>A floating label appears on top of the input field when focused. Visit <PrimeVueNuxtLink to="/floatlabel">FloatLabel</PrimeVueNuxtLink> documentation for more information.</p>
+        <p>A floating label appears on top of the input field when focused. Visit <OpenVueNuxtLink to="/floatlabel">FloatLabel</OpenVueNuxtLink> documentation for more information.</p>
     </DocSectionText>
     <div class="card flex flex-wrap justify-center items-end gap-4">
         <FloatLabel class="w-full md:w-80">

@@ -5,7 +5,7 @@ Toast is used to display messages in an overlay.
 ## Import
 
 ```javascript
-import Toast from 'primevue/toast';
+import Toast from 'openvue/toast';
 ```
 
 ## Accessibility
@@ -76,7 +76,7 @@ Headless mode is enabled by defining a container slot that lets you implement en
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 import { ref, onUnmounted } from 'vue';
 const toast = useToast();
 const visible = ref(false);
@@ -136,7 +136,7 @@ Multiple messages are displayed by passing an array to the show method.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const showMultiple = () => {
@@ -182,7 +182,7 @@ A message can be targeted to a certain Toast component by matching the group key
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const showTopLeft = () => {
@@ -233,7 +233,7 @@ The severity option specifies the type of the message.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const showSuccess = () => {
@@ -288,7 +288,7 @@ A message disappears after the number of milliseconds defined in the life option
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 const toast = useToast();
 
 const showSticky = () => {
@@ -345,7 +345,7 @@ Custom content inside a message is defined with the message template.
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 import { ref } from 'vue';
 const toast = useToast();
 const visible = ref(false);

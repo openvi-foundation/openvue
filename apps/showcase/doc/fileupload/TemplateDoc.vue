@@ -308,8 +308,8 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { usePrimeVue } from 'primevue/config';
-import { useToast } from "primevue/usetoast";
+import { usePrimeVue } from 'openvue/config';
+import { useToast } from "openvue/usetoast";
 
 const $primevue = usePrimeVue();
 const toast = useToast();

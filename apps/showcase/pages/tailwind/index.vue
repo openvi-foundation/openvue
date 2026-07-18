@@ -1,7 +1,7 @@
 <template>
     <Head>
-        <Title>Tailwind CSS - PrimeVue</Title>
-        <Meta name="description" content="Integration between PrimeVue and Tailwind CSS both in styled and unstyled modes" />
+        <Title>Tailwind CSS - OpenVue</Title>
+        <Meta name="description" content="Integration between OpenVue and Tailwind CSS both in styled and unstyled modes" />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>Tailwind CSS</h1>
-                        <p>Integration between PrimeVue and Tailwind CSS both in styled and unstyled modes.</p>
+                        <p>Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>
@@ -72,7 +72,7 @@ export default {
                 {
                     id: 'samples',
                     label: 'Samples',
-                    description: 'Example uses cases with PrimeVue and Tailwind CSS.',
+                    description: 'Example uses cases with OpenVue and Tailwind CSS.',
                     children: [
                         {
                             id: 'colorpalette',

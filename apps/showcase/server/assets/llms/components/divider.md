@@ -5,7 +5,7 @@ Divider is used to separate contents.
 ## Import
 
 ```javascript
-import Divider from 'primevue/divider';
+import Divider from 'openvue/divider';
 ```
 
 ## Accessibility

@@ -5,7 +5,7 @@ When pressed, a floating action button can display multiple primary actions that
 ## Import
 
 ```javascript
-import SpeedDial from 'primevue/speeddial';
+import SpeedDial from 'openvue/speeddial';
 ```
 
 ## Accessibility
@@ -39,7 +39,7 @@ Items can be displayed around the button when type is set to circle . Additional
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -115,7 +115,7 @@ SpeedDial items are defined with the model property based on MenuModel API. Defa
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -184,7 +184,7 @@ Adding mask property displays a modal layer behind the popup items.
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -260,7 +260,7 @@ Setting type as quarter-circle displays the items at one of four corners of a bu
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -334,7 +334,7 @@ When type is defined as semi-circle , items are displayed in a half-circle aroun
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -438,7 +438,7 @@ SpeedDial offers item customization with the item template that receives the men
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();
@@ -510,7 +510,7 @@ Items display a tooltip on hover when a standalone Tooltip is present with a tar
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { useRouter } from 'vue-router';
 
 const toast = useToast();

@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <Title>PrimeFlex - PrimeVue</Title>
+        <Title>PrimeFlex - OpenVue</Title>
         <Meta name="description" content="The PrimeFlex CSS library is being sunset and will no longer receive active development or maintenance." />
     </Head>
     <div class="doc">

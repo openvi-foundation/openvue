@@ -5,7 +5,7 @@ Popover is a container component that can overlay other components on page.
 ## Import
 
 ```javascript
-import Popover from 'primevue/popover';
+import Popover from 'openvue/popover';
 ```
 
 ## Accessibility
@@ -169,7 +169,7 @@ Place the Popover outside of the data iteration components to avoid rendering it
 
 <script setup>
 import { ref, onMounted, nextTick } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 import { ProductService } from '@/service/ProductService';
 
 onMounted(() => {

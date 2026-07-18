@@ -1,9 +1,9 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <h3>Component Information</h3>
-        <p>Tools for exploring and understanding PrimeVue components.</p>
+        <p>Tools for exploring and understanding OpenVue components.</p>
         <ul class="leading-loose list-disc ml-6">
-            <li><i>list_components</i> : List all PrimeVue components with categories</li>
+            <li><i>list_components</i> : List all OpenVue components with categories</li>
             <li><i>get_component</i> : Get detailed info about a specific component</li>
             <li><i>search_components</i> : Search components by name or description</li>
             <li><i>get_component_props</i> : Get all props for a component</li>
@@ -34,11 +34,11 @@
         </ul>
 
         <h3>Documentation & Guides</h3>
-        <p>Tools for accessing PrimeVue documentation and guides.</p>
+        <p>Tools for accessing OpenVue documentation and guides.</p>
         <ul class="leading-loose list-disc ml-6">
             <li><i>list_guides</i> : List all guides and documentation pages</li>
             <li><i>get_guide</i> : Get a specific guide by name</li>
-            <li><i>get_configuration</i> : Get PrimeVue configuration options</li>
+            <li><i>get_configuration</i> : Get OpenVue configuration options</li>
             <li><i>get_installation</i> : Get installation instructions</li>
             <li><i>get_accessibility_guide</i> : Get accessibility guide</li>
             <li><i>get_accessibility_info</i> : Get accessibility info for a component</li>

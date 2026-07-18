@@ -5,7 +5,7 @@ ScrollPanel is a cross browser, lightweight and skinnable alternative to native 
 ## Import
 
 ```javascript
-import ScrollPanel from 'primevue/scrollpanel';
+import ScrollPanel from 'openvue/scrollpanel';
 ```
 
 ## Accessibility

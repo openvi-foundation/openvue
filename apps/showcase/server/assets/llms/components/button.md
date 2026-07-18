@@ -5,7 +5,7 @@ Button is an extension to standard input element with icons and theming.
 ## Import
 
 ```javascript
-import Button from 'primevue/button';
+import Button from 'openvue/button';
 ```
 
 ## Accessibility

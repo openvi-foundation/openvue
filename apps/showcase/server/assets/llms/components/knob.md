@@ -5,7 +5,7 @@ Knob is a form component to define number inputs with a dial.
 ## Import
 
 ```javascript
-import Knob from 'primevue/knob';
+import Knob from 'openvue/knob';
 ```
 
 ## Accessibility
@@ -81,7 +81,7 @@ const value = ref(50);
 
 ## Forms
 
-Knob integrates seamlessly with the PrimeVue Forms library.
+Knob integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -112,8 +112,8 @@ Knob integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 

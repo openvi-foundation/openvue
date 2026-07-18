@@ -1,12 +1,12 @@
 <template>
     <Head>
-        <Title>Install PrimeVue with PrimeCLT</Title>
-        <Meta name="description" content="Install PrimeVue with PrimeCLT" />
+        <Title>Install OpenVue with PrimeCLT</Title>
+        <Meta name="description" content="Install OpenVue with PrimeCLT" />
     </Head>
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
-                <h1>Install PrimeVue with CLT</h1>
+                <h1>Install OpenVue with CLT</h1>
                 <p>PrimeCLT is a command line utility for Prime UI libraries. It is currently in beta state.</p>
             </div>
             <DocSections :docs="docs" />

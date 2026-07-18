@@ -5,8 +5,8 @@ Checkbox is an extension to standard checkbox element with theming.
 ## Import
 
 ```javascript
-import Checkbox from 'primevue/checkbox';
-import CheckboxGroup from 'primevue/checkboxgroup';
+import Checkbox from 'openvue/checkbox';
+import CheckboxGroup from 'openvue/checkboxgroup';
 ```
 
 ## Accessibility
@@ -128,7 +128,7 @@ const checked = ref(false);
 
 ## Forms
 
-Checkbox integrates seamlessly with the PrimeVue Forms library.
+Checkbox integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex justify-center flex-col gap-4">
@@ -193,8 +193,8 @@ Checkbox integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

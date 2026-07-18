@@ -1,6 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>PrimeVue is available for download on <a href="https://www.npmjs.com/package/primevue">npm registry</a>.</p>
+        <p>OpenVue is available for download on <a href="https://www.npmjs.com/package/openvue">npm registry</a>.</p>
+        <Message severity="warn" :closable="false">OpenVue is currently in <b>alpha</b> and not yet production ready. APIs may change without notice before a stable release.</Message>
     </DocSectionText>
     <DocSectionCode :code="code" hideToggleCode hideStackBlitz />
 </template>
@@ -12,13 +13,13 @@ export default {
             code: {
                 basic: `
 # Using npm
-npm install primevue @primeuix/themes
+npm install openvue@alpha @primeuix/themes
 
 # Using yarn
-yarn add primevue @primeuix/themes
+yarn add openvue@alpha @primeuix/themes
 
 # Using pnpm
-pnpm add primevue @primeuix/themes
+pnpm add openvue@alpha @primeuix/themes
 `
             }
         };

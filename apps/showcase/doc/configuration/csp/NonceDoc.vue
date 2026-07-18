@@ -12,7 +12,7 @@ export default {
         return {
             code1: {
                 basic: `
-app.use(PrimeVue, {
+app.use(OpenVue, {
     csp: {
         nonce: '...'
     }

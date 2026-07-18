@@ -1,7 +1,7 @@
 <template>
     <section class="landing-features py-20">
         <div class="section-header">Features</div>
-        <p class="section-detail">PrimeVue is the most complete solution for your UI requirements.</p>
+        <p class="section-detail">OpenVue is the most complete solution for your UI requirements.</p>
         <div class="mt-16 px-8 lg:px-20">
             <div class="features-container">
                 <div class="grid grid-cols-12 gap-4">
@@ -36,8 +36,8 @@
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
                         <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box p-6 w-full animate-duration-500">
                             <img src="https://primefaces.org/cdn/primevue/images/landing/features/icon-support.svg" alt="components icon" class="block mb-4" />
-                            <div class="font-semibold mb-4 text-lg">Enterprise Support</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">Exceptional support service featuring response within 1 business day and option to request enhancements and new features for the library.</p>
+                            <div class="font-semibold mb-4 text-lg">Free & Open Source</div>
+                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">MIT licensed with no paid tiers or locked features, built and maintained in the open by the community.</p>
                         </div>
                     </div>
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
@@ -50,8 +50,8 @@
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
                         <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box p-6 w-full animate-duration-500">
                             <img src="https://primefaces.org/cdn/primevue/images/landing/features/icon-productivity.svg" alt="components icon" class="block mb-4" />
-                            <div class="font-semibold mb-4 text-lg">Blocks</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">500+ pre-designed copy paste ready UI blocks to build spectacular apps in no time.</p>
+                            <div class="font-semibold mb-4 text-lg">Nuxt Ready</div>
+                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">First-class Nuxt module with auto-imports so you can get a project up and running in minutes.</p>
                         </div>
                     </div>
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">

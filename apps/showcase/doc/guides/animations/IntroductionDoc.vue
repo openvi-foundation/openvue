@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Various PrimeVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to customize the default
+            Various OpenVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to customize the default
             animations, this documentation covers the entire set of built-in animations.
         </p>
         <p>

@@ -5,12 +5,12 @@ The Stepper component displays a wizard-like workflow by guiding users through t
 ## Import
 
 ```javascript
-import Stepper from 'primevue/stepper';
-import StepList from 'primevue/steplist';
-import StepPanels from 'primevue/steppanels';
-import StepItem from 'primevue/stepitem';
-import Step from 'primevue/step';
-import StepPanel from 'primevue/steppanel';
+import Stepper from 'openvue/stepper';
+import StepList from 'openvue/steplist';
+import StepPanels from 'openvue/steppanels';
+import StepItem from 'openvue/stepitem';
+import Step from 'openvue/step';
+import StepPanel from 'openvue/steppanel';
 ```
 
 ## Accessibility

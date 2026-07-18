@@ -72,10 +72,10 @@ The global property has a css option to define custom css that belongs to a glob
 
 ```vue
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     pt: {
         global: {
             css: \`
@@ -101,10 +101,10 @@ Defines the shared pass through properties per component type. For example, with
 
 ```vue
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     pt: {
         panel: {
             header: {
@@ -122,7 +122,7 @@ app.use(PrimeVue, {
 
 ## Introduction
 
-In traditional 3rd party UI libraries, users are limited to the API provided by component author. This API commonly consists of props, events and slots. Whenever a requirement emerges for a new customization option in the API, the component author needs to develop and publish it with a new release. Vision of PrimeTek is Your components, not ours . The pass through feature is a key element to implement this vision by exposing the component internals in order to apply arbitrary attributes and listeners to the DOM elements. The primary advantage of this approach is that it frees you from being restricted by the main component API. We recommend considering the pass-through feature whenever you need to tailor a component that lacks a built-in feature for your specific requirement. Two videos are available at PrimeTV youtube channel, first one is an introduction and second one covers a unique case that is solved by the pass-through.
+In traditional 3rd party UI libraries, users are limited to the API provided by component author. This API commonly consists of props, events and slots. Whenever a requirement emerges for a new customization option in the API, the component author needs to develop and publish it with a new release. OpenVue's vision is Your components, not ours . The pass through feature is a key element to implement this vision by exposing the component internals in order to apply arbitrary attributes and listeners to the DOM elements. The primary advantage of this approach is that it frees you from being restricted by the main component API. We recommend considering the pass-through feature whenever you need to tailor a component that lacks a built-in feature for your specific requirement.
 
 ## Lifecycle
 
@@ -163,7 +163,7 @@ const panelPt = ref({
 
 ## PC Prefix
 
-Section names prefixed with pc denote PrimeVue components, distinguishing them from standard DOM elements and indicating the necessity for a nested structure. For example, the "badge" section is identified as pcBadge because the button component incorporates the badge component internally.
+Section names prefixed with pc denote OpenVue components, distinguishing them from standard DOM elements and indicating the necessity for a nested structure. For example, the "badge" section is identified as pcBadge because the button component incorporates the badge component internally.
 
 ```vue
 <Button

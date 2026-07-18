@@ -5,7 +5,7 @@ Breadcrumb provides contextual information about page hierarchy.
 ## Import
 
 ```javascript
-import Breadcrumb from 'primevue/breadcrumb';
+import Breadcrumb from 'openvue/breadcrumb';
 ```
 
 ## Accessibility

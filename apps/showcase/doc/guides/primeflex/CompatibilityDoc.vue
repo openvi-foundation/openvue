@@ -5,11 +5,11 @@
             <table class="doc-table">
                 <tbody>
                     <tr>
-                        <td>PrimeVue v4 and newer</td>
+                        <td>OpenVue v4 and newer</td>
                         <td>PrimeFlex v4</td>
                     </tr>
                     <tr>
-                        <td>PrimeVue v3 and older</td>
+                        <td>OpenVue v3 and older</td>
                         <td>PrimeFlex v3</td>
                     </tr>
                 </tbody>

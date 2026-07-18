@@ -5,7 +5,7 @@ CascadeSelect is a form component to select a value from a nested structure of o
 ## Import
 
 ```javascript
-import CascadeSelect from 'primevue/cascadeselect';
+import CascadeSelect from 'openvue/cascadeselect';
 ```
 
 ## Accessibility
@@ -488,7 +488,7 @@ const countries = ref([
 
 ## Forms
 
-CascadeSelect integrates seamlessly with the PrimeVue Forms library.
+CascadeSelect integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex justify-center flex-col gap-4">
@@ -519,8 +519,8 @@ CascadeSelect integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from "vue";
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();
@@ -1159,11 +1159,11 @@ const countries = ref([
 | selectOnFocus | boolean | false | When enabled, the focused option is selected/opened. |
 | focusOnHover | boolean | true | When enabled, the focus is placed on the hovered option. |
 | searchLocale | string | - | Locale to use in searching. The default locale is the host environment's current locale. |
-| searchMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration. |
-| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration. |
-| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration. |
-| emptySearchMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration. |
-| emptyMessage | string | No available options | Text to be displayed when there are no options available. Defaults to value from PrimeVue locale configuration. |
+| searchMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration. |
+| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration. |
+| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration. |
+| emptySearchMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration. |
+| emptyMessage | string | No available options | Text to be displayed when there are no options available. Defaults to value from OpenVue locale configuration. |
 | tabindex | string \| number | - | Index of the element in tabbing order. |
 | fluid | boolean | null | Spans 100% width of the container when enabled. |
 | ariaLabelledby | string | - | Establishes relationships between the component and label(s) where its value should be one or more element IDs. |

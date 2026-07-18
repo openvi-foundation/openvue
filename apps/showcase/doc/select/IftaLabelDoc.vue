@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>IftaLabel is used to create infield top aligned labels. Visit <PrimeVueNuxtLink to="/iftalabel">IftaLabel</PrimeVueNuxtLink> documentation for more information.</p>
+        <p>IftaLabel is used to create infield top aligned labels. Visit <OpenVueNuxtLink to="/iftalabel">IftaLabel</OpenVueNuxtLink> documentation for more information.</p>
     </DocSectionText>
     <div class="card flex justify-center">
         <IftaLabel class="w-full md:w-56">

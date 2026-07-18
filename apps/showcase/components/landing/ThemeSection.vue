@@ -85,7 +85,7 @@
 
 <script>
 import { CustomerService } from '@/service/CustomerService';
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
+import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 export default {
     data() {

@@ -5,7 +5,7 @@ ContextMenu displays an overlay menu to display actions related to an element.
 ## Import
 
 ```javascript
-import ContextMenu from 'primevue/contextmenu';
+import ContextMenu from 'openvue/contextmenu';
 ```
 
 ## Accessibility
@@ -71,7 +71,7 @@ The command property defines the callback to run when an item is activated by cl
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 const selectedUser = ref();

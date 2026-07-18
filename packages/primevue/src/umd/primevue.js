@@ -1,11 +1,11 @@
-/***************** PrimeVue (Auto-Generated) *****************/
+/***************** OpenVue (Auto-Generated) *****************/
 
 // API
-export * from '@primevue/core';
+export * from '@openvue/core';
 
 // BaseIcon
-export { default as BaseIcon } from '@primevue/icons/baseicon';
-export { default as BaseIconStyle } from '@primevue/icons/baseicon/style';
+export { default as BaseIcon } from '@openvue/icons/baseicon';
+export { default as BaseIconStyle } from '@openvue/icons/baseicon/style';
 
 // Themes
 export * from '@primeuix/styled';

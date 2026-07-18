@@ -25,7 +25,7 @@ function registerConfig(resolvePath: any) {
         {
             name: 'PrimeVue',
             as: 'PrimeVue',
-            from: resolvePath({ name: 'PrimeVue', as: 'PrimeVue', from: `primevue/config`, type: 'config' })
+            from: resolvePath({ name: 'PrimeVue', as: 'PrimeVue', from: `openvue/config`, type: 'config' })
         }
     ];
 }
@@ -97,7 +97,7 @@ function registerServices(resolvePath: any, registered: any) {
     return [...services].map((service) => ({
         name: service,
         as: service,
-        from: resolvePath({ name: service, as: service, from: `primevue/${service.toLowerCase()}`, type: 'service' })
+        from: resolvePath({ name: service, as: service, from: `openvue/${service.toLowerCase()}`, type: 'service' })
     }));
 }
 

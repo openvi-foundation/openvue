@@ -1,7 +1,7 @@
 <template>
     <Head>
-        <Title>RTL - PrimeVue</Title>
-        <Meta name="description" content="Right-to-Left direction support of PrimeVue." />
+        <Title>RTL - OpenVue</Title>
+        <Meta name="description" content="Right-to-Left direction support of OpenVue." />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>RTL Support</h1>
-                        <p>Right-to-left direction support of PrimeVue.</p>
+                        <p>Right-to-left direction support of OpenVue.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>

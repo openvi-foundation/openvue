@@ -5,7 +5,7 @@ MeterGroup displays scalar measurements within a known range.
 ## Import
 
 ```javascript
-import MeterGroup from 'primevue/metergroup';
+import MeterGroup from 'openvue/metergroup';
 ```
 
 ## Accessibility

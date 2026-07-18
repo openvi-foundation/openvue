@@ -147,7 +147,7 @@ export default {
 </template>
 
 <script setup>
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 import { ref, onUnmounted } from 'vue';
 const toast = useToast();
 const visible = ref(false);

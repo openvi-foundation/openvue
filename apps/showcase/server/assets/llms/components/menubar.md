@@ -5,7 +5,7 @@ Menubar also known as Navbar, is a horizontal menu component.
 ## Import
 
 ```javascript
-import Menubar from 'primevue/menubar';
+import Menubar from 'openvue/menubar';
 ```
 
 ## Accessibility
@@ -14,7 +14,7 @@ Screen Reader Menubar component uses the menubar role and the value to describe 
 
 ## Advanced
 
-Menubar is a simple horizontal navigation component, for advanced use cases consider Marketing and Application NavBars in PrimeBlocks or templates with horizontal menus in application templates.
+Menubar is a simple horizontal navigation component, for advanced use cases consider the templates with horizontal menus in application templates.
 
 ## Basic
 
@@ -46,7 +46,7 @@ The command property defines the callback to run when an item is activated by cl
 
 <script setup>
 import { ref } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 

@@ -67,11 +67,11 @@ export default {
             if (name) {
                 if (this.docType === 'page') {
                     const fullPath = this.$route.path.split('/').filter(Boolean).join('/');
-                    return `https://github.com/primefaces/primevue/tree/master/apps/showcase/pages/${fullPath}/`;
+                    return `https://github.com/openvi-foundation/openvue/tree/master/apps/showcase/pages/${fullPath}/`;
                 }
-                return `https://github.com/primefaces/primevue/tree/master/apps/showcase/doc/${name}/`;
+                return `https://github.com/openvi-foundation/openvue/tree/master/apps/showcase/doc/${name}/`;
             }
-            return 'https://github.com/primefaces/primevue/tree/master/apps/showcase/';
+            return 'https://github.com/openvi-foundation/openvue/tree/master/apps/showcase/';
         },
         chatGPTLink() {
             const urlMessage = `Read ${this.markdownLink}, I want to ask questions about it.`;

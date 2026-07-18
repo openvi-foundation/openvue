@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            PrimeVue uses the <i>system</i> as the default <i>darkModeSelector</i> in theme configuration. If you have a dark mode switch in your application, set the <i>darkModeSelector</i> to the selector you utilize such as <i>.my-app-dark</i> so
-            that PrimeVue can fit in seamlessly with your color scheme.
+            OpenVue uses the <i>system</i> as the default <i>darkModeSelector</i> in theme configuration. If you have a dark mode switch in your application, set the <i>darkModeSelector</i> to the selector you utilize such as <i>.my-app-dark</i> so
+            that OpenVue can fit in seamlessly with your color scheme.
         </p>
         <DocSectionCode :code="code1" hideToggleCode importCode hideStackBlitz />
         <p>
@@ -24,12 +24,12 @@ export default {
         return {
             code1: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     // Default theme configuration
     theme: {
         preset: Aura,

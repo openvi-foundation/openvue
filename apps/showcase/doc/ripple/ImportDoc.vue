@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Ripple is an optional animation for the supported components such as buttons. It is disabled by default and needs to be enabled at your app's entry file (e.g. main.js) during the PrimeVue setup.</p>
+        <p>Ripple is an optional animation for the supported components such as buttons. It is disabled by default and needs to be enabled at your app's entry file (e.g. main.js) during the OpenVue setup.</p>
 
         <DocSectionCode :code="code1" hideToggleCode importCode hideStackBlitz />
 
@@ -17,15 +17,15 @@ export default {
             code1: {
                 basic: `
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 const app = createApp(App);
 
-app.use(PrimeVue, { ripple: true });
+app.use(OpenVue, { ripple: true });
 `
             },
             code2: {
                 basic: `
-import Ripple from 'primevue/ripple';
+import Ripple from 'openvue/ripple';
 
 app.directive('ripple', Ripple);
 `

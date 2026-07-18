@@ -5,7 +5,7 @@ ScrollTop gets displayed after a certain scroll position and used to navigates t
 ## Import
 
 ```javascript
-import ScrollTop from 'primevue/scrolltop';
+import ScrollTop from 'openvue/scrolltop';
 ```
 
 ## Accessibility

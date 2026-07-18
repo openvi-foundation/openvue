@@ -20,8 +20,8 @@ export default {
             code1: {
                 basic: `
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
-import { usePassThrough } from "primevue/passthrough";
+import OpenVue from "openvue/config";
+import { usePassThrough } from "openvue/passthrough";
 import BasePreset from "./basepreset";
 
 const app = createApp(App);
@@ -41,7 +41,7 @@ const CustomPreset = usePassThrough(
     }
 );
 
-app.use(PrimeVue, { unstyled: true, pt: CustomPreset });
+app.use(OpenVue, { unstyled: true, pt: CustomPreset });
 `
             },
             code2: {

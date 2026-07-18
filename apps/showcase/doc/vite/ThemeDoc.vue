@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Configure PrimeVue to use a theme like Aura.</p>
+        <p>Configure OpenVue to use a theme like Aura.</p>
         <DocSectionCode :code="code" importCode hideToggleCode hideStackBlitz />
     </DocSectionText>
 </template>
@@ -12,11 +12,11 @@ export default {
             code: {
                 basic: `
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: Aura
     }

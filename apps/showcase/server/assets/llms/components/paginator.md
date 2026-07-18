@@ -5,7 +5,7 @@ Paginator displays data in paged format and provides navigation between pages.
 ## Import
 
 ```javascript
-import Paginator from 'primevue/paginator';
+import Paginator from 'openvue/paginator';
 ```
 
 ## Accessibility

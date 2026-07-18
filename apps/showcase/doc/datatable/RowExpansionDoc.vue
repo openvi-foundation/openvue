@@ -336,7 +336,7 @@ export default {
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ProductService } from '@/service/ProductService';
 
 const products = ref();

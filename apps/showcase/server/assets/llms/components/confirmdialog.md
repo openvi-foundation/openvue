@@ -5,7 +5,7 @@ ConfirmDialog uses a Dialog UI that is integrated with the Confirmation API.
 ## Import
 
 ```javascript
-import ConfirmDialog from 'primevue/confirmdialog';
+import ConfirmDialog from 'openvue/confirmdialog';
 ```
 
 ## Accessibility
@@ -76,8 +76,8 @@ Headless mode is enabled by defining a container slot that lets you implement en
 </template>
 
 <script setup>
-import { useConfirm } from "primevue/useconfirm";
-import { useToast } from "primevue/usetoast";
+import { useConfirm } from "openvue/useconfirm";
+import { useToast } from "openvue/usetoast";
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -147,8 +147,8 @@ The position property of the confirm options specifies the location of the Dialo
 </template>
 
 <script setup>
-import { useConfirm } from "primevue/useconfirm";
-import { useToast } from "primevue/usetoast";
+import { useConfirm } from "openvue/useconfirm";
+import { useToast } from "openvue/usetoast";
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -217,8 +217,8 @@ Templating allows customizing the message content.
 </template>
 
 <script setup>
-import { useConfirm } from "primevue/useconfirm";
-import { useToast } from "primevue/usetoast";
+import { useConfirm } from "openvue/useconfirm";
+import { useToast } from "openvue/usetoast";
 
 const confirm = useConfirm();
 const toast = useToast();

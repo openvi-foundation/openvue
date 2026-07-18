@@ -5,7 +5,7 @@ StyleClass manages css classes declaratively to during enter/leave animations or
 ## Import
 
 ```javascript
-import StyleClass from 'primevue/styleclass';
+import StyleClass from 'openvue/styleclass';
 
 app.directive('styleclass', StyleClass);
 ```

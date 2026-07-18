@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
@@ -110,9 +110,9 @@ export default {
 </template>
 
 <script>
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
@@ -185,13 +185,13 @@ export default {
 
 <script setup>
 import { reactive } from 'vue';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

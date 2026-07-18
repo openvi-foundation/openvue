@@ -34,7 +34,7 @@ export default {
 </template>
 
 <script>
-import Button from 'primevue/button';
+import Button from 'openvue/button';
 import { markRaw, defineAsyncComponent } from 'vue';
 const ProductListDemo = defineAsyncComponent(() => import('./components/ProductListDemo.vue'));
 const FooterDemo = defineAsyncComponent(() => import('./components/FooterDemo.vue'));
@@ -84,9 +84,9 @@ export default {
 
 <script setup>
 import { markRaw, defineAsyncComponent } from 'vue';
-import { useDialog } from 'primevue/usedialog';
-import { useToast } from 'primevue/usetoast';
-import Button from 'primevue/button';
+import { useDialog } from 'openvue/usedialog';
+import { useToast } from 'openvue/usetoast';
+import Button from 'openvue/button';
 const ProductListDemo = defineAsyncComponent(() => import('./components/ProductListDemo.vue'));
 const FooterDemo = defineAsyncComponent(() => import('./components/FooterDemo.vue'));
 
@@ -282,7 +282,7 @@ export default {
 
 <script setup>
 import { ref, onMounted, inject } from "vue";
-import { useDialog } from "primevue/usedialog";
+import { useDialog } from "openvue/usedialog";
 import { ProductService } from "@/service/ProductService";
 import InfoDemo from "./InfoDemo.vue";
 

@@ -5,7 +5,7 @@ InputMask component is used to enter input in a certain format such as numeric, 
 ## Import
 
 ```javascript
-import InputMask from 'primevue/inputmask';
+import InputMask from 'openvue/inputmask';
 ```
 
 ## Accessibility
@@ -164,7 +164,7 @@ const value = ref(null);
 
 ## Forms
 
-InputMask integrates seamlessly with the PrimeVue Forms library.
+InputMask integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -194,8 +194,8 @@ InputMask integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Section names prefixed with <i>pc</i> denote PrimeVue components, distinguishing them from standard DOM elements and indicating the necessity for a nested structure. For example, the "badge" section is identified as <i>pcBadge</i> because
+            Section names prefixed with <i>pc</i> denote OpenVue components, distinguishing them from standard DOM elements and indicating the necessity for a nested structure. For example, the "badge" section is identified as <i>pcBadge</i> because
             the button component incorporates the badge component internally.
         </p>
     </DocSectionText>

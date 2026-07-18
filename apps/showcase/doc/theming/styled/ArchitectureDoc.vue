@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            PrimeVue is a design agnostic library so unlike some other UI libraries it does not enforce a certain styling such as material design. Styling is decoupled from the components using the themes instead. A theme consists of two parts;
+            OpenVue is a design agnostic library so unlike some other UI libraries it does not enforce a certain styling such as material design. Styling is decoupled from the components using the themes instead. A theme consists of two parts;
             <i>base</i> and <i>preset</i>. The base is the style rules with CSS variables as placeholders whereas the preset is a set of design tokens to feed a base by mapping the tokens to CSS variables. A base may be configured with different
             presets, currently Aura, Material, Lara and Nora are the available built-in options.
         </p>
@@ -28,14 +28,8 @@
         <h3>Best Practices</h3>
         <p>
             Use primitive tokens when defining the core color palette and semantic tokens to specify the common design elements such as focus ring, primary colors and surfaces. Components tokens should only be used when customizing a specific
-            component. By defining your own design tokens as a custom preset, you'll be able to define your own style without touching CSS. Overriding the PrimeVue components using style classes is not a best practice and should be the last resort,
+            component. By defining your own design tokens as a custom preset, you'll be able to define your own style without touching CSS. Overriding the OpenVue components using style classes is not a best practice and should be the last resort,
             design tokens are the suggested approach.
         </p>
-
-        <h3>Video Tutorial</h3>
-        <p>Watch the <b>PrimeVue Theming Demystified</b> series to learn more about the architecture with examples.</p>
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=nlVVyxrwgiJCL9U7&amp;list=PLC9bp-OHi-Wm2LqlXk1i-haW-1kESMIqh" frameborder="0" allowfullscreen></iframe>
-        </div>
     </DocSectionText>
 </template>

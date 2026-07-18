@@ -1,7 +1,7 @@
 <template>
     <div>
         <Head>
-            <Title>Contribution - PrimeVue</Title>
+            <Title>Contribution - OpenVue</Title>
             <Meta name="description" content="Accessible Vue UI Components." />
         </Head>
 
@@ -11,7 +11,7 @@
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                         <div class="flex-1">
                             <h1>Contribution Guide</h1>
-                            <p>Welcome to the PrimeVue Contribution Guide and thank you for considering contributing.</p>
+                            <p>Welcome to the OpenVue Contribution Guide and thank you for considering contributing.</p>
                         </div>
                         <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                     </div>

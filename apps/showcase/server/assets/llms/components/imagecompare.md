@@ -5,7 +5,7 @@ Compare two images side by side with a slider.
 ## Import
 
 ```javascript
-import ImageCompare from 'primevue/imagecompare';
+import ImageCompare from 'openvue/imagecompare';
 ```
 
 ## Accessibility

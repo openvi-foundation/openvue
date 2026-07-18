@@ -28,7 +28,7 @@
             </Dock>
 
             <Dialog v-model:visible="displayTerminal" header="Terminal" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
-                <Terminal welcomeMessage="Welcome to PrimeVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
+                <Terminal welcomeMessage="Welcome to OpenVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
             </Dialog>
 
             <Dialog v-model:visible="displayFinder" header="Finder" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
@@ -48,7 +48,7 @@
 <script>
 import { NodeService } from '@/service/NodeService';
 import { PhotoService } from '@/service/PhotoService';
-import TerminalService from 'primevue/terminalservice';
+import TerminalService from 'openvue/terminalservice';
 
 export default {
     data() {
@@ -279,7 +279,7 @@ export default {
             </Dock>
 
             <Dialog v-model:visible="displayTerminal" header="Terminal" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
-                <Terminal welcomeMessage="Welcome to PrimeVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
+                <Terminal welcomeMessage="Welcome to OpenVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
             </Dialog>
 
             <Dialog v-model:visible="displayFinder" header="Finder" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
@@ -296,7 +296,7 @@ export default {
 </template>
 
 <script>
-import TerminalService from 'primevue/terminalservice';
+import TerminalService from 'openvue/terminalservice';
 import { NodeService } from '@/service/NodeService';
 import { PhotoService } from '@/service/PhotoService';
 
@@ -583,7 +583,7 @@ export default {
                 </Dock>
 
                 <Dialog v-model:visible="displayTerminal" header="Terminal" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
-                    <Terminal welcomeMessage="Welcome to PrimeVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
+                    <Terminal welcomeMessage="Welcome to OpenVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
                 </Dialog>
 
                 <Dialog v-model:visible="displayFinder" header="Finder" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
@@ -602,8 +602,8 @@ export default {
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useToast } from 'primevue/usetoast';
-import TerminalService from 'primevue/terminalservice';
+import { useToast } from 'openvue/usetoast';
+import TerminalService from 'openvue/terminalservice';
 import { NodeService } from '@/service/NodeService';
 import { PhotoService } from '@/service/PhotoService';
 

@@ -1,6 +1,6 @@
 # Unstyled Mode
 
-Theming PrimeVue with alternative styling approaches.
+Theming OpenVue with alternative styling approaches.
 
 ## Architecture
 
@@ -27,10 +27,10 @@ A global configuration can be created at application level to avoid repetition v
 
 ```vue
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     unstyled: true,
     pt: {
         button: {
@@ -52,9 +52,9 @@ app.use(PrimeVue, {
 
 ## Setup
 
-Unstyled mode is enabled for the whole suite by enabling unstyled option during PrimeVue installation. Alternatively even in the default styled mode, a particular component can still be used as unstyled by adding the unstyled prop of the component.
+Unstyled mode is enabled for the whole suite by enabling unstyled option during OpenVue installation. Alternatively even in the default styled mode, a particular component can still be used as unstyled by adding the unstyled prop of the component.
 
 ## Volt
 
-Tailwind CSS is perfect fit for the unstyled mode, PrimeTek has initiated a new UI library called Volt based on the unstyled PrimeVue and Tailwind CSS v4. Volt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within Volt are essentially wrapped versions of the unstyled PrimeVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
+Tailwind CSS is perfect fit for the unstyled mode, PrimeTek has initiated a new UI library called Volt based on the unstyled OpenVue and Tailwind CSS v4. Volt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within Volt are essentially wrapped versions of the unstyled OpenVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
 

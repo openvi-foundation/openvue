@@ -5,7 +5,7 @@ Fluid is a layout component to make descendant components span full width of the
 ## Import
 
 ```javascript
-import Fluid from 'primevue/fluid';
+import Fluid from 'openvue/fluid';
 ```
 
 ## Accessibility

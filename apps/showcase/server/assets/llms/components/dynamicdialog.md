@@ -5,7 +5,7 @@ Dialogs can be created dynamically with any component as the content using a Dia
 ## Import
 
 ```javascript
-import DynamicDialog from 'primevue/dynamicdialog';
+import DynamicDialog from 'openvue/dynamicdialog';
 ```
 
 ## Accessibility
@@ -32,7 +32,7 @@ DynamicDialog uses the Dialog component internally, visit dialog for more inform
 
 ```vue
 import ProductListDemo from './ProductListDemo';
-import { useDialog } from 'primevue/usedialog';
+import { useDialog } from 'openvue/usedialog';
 
 const dialog = useDialog();
 
@@ -85,9 +85,9 @@ A sample implementation to demonstrate loading components asynchronously, nested
 
 <script setup>
 import { markRaw, defineAsyncComponent } from 'vue';
-import { useDialog } from 'primevue/usedialog';
-import { useToast } from 'primevue/usetoast';
-import Button from 'primevue/button';
+import { useDialog } from 'openvue/usedialog';
+import { useToast } from 'openvue/usetoast';
+import Button from 'openvue/button';
 const ProductListDemo = defineAsyncComponent(() => import('./components/ProductListDemo.vue'));
 const FooterDemo = defineAsyncComponent(() => import('./components/FooterDemo.vue'));
 

@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>FloatLabel visually integrates a label with its form element. Visit <PrimeVueNuxtLink to="/floatlabel">FloatLabel</PrimeVueNuxtLink> documentation for more information.</p>
+        <p>FloatLabel visually integrates a label with its form element. Visit <OpenVueNuxtLink to="/floatlabel">FloatLabel</OpenVueNuxtLink> documentation for more information.</p>
     </DocSectionText>
     <div class="card flex flex-col md:items-end md:flex-row gap-4">
         <InputGroup>

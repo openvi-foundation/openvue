@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -64,7 +64,7 @@ export default {
 </template>
 
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 
 export default {
@@ -119,8 +119,8 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

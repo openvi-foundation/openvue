@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Configuration is managed by the Locale API imported from <i>primevue/config</i>.</p>
+        <p>Configuration is managed by the Locale API imported from <i>openvue/config</i>.</p>
 
         <h3>Locale Options</h3>
         <div class="doc-tablewrapper">

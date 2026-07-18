@@ -12,10 +12,10 @@ export default {
             code: {
                 basic: `
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
+import OpenVue from "openvue/config";
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     pt: {
         slider: {
             handle: { class: 'bg-primary text-primary-contrast' }

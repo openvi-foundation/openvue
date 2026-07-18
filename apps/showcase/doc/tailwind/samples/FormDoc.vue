@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Using Tailwind utilities for the responsive layout of a form with PrimeVue components.</p>
+        <p>Using Tailwind utilities for the responsive layout of a form with OpenVue components.</p>
     </DocSectionText>
     <div class="card flex sm:justify-center">
         <div class="flex flex-col gap-6 w-full sm:w-auto">

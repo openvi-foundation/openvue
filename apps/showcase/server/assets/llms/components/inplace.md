@@ -5,7 +5,7 @@ Inplace provides an easy to do editing and display at the same time where clicki
 ## Import
 
 ```javascript
-import Inplace from 'primevue/inplace';
+import Inplace from 'openvue/inplace';
 ```
 
 ## Accessibility

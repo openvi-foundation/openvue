@@ -10,8 +10,8 @@ export default {
             code: {
                 basic: `
 // import as component
-import Badge from 'primevue/badge';
-import OverlayBadge from 'primevue/overlaybadge';
+import Badge from 'openvue/badge';
+import OverlayBadge from 'openvue/overlaybadge';
 `
             }
         };

@@ -1,8 +1,8 @@
 <template>
     <div>
         <Head>
-            <Title>Unstyled - PrimeVue</Title>
-            <Meta name="description" content="Theming PrimeVue with alternative styling approaches." />
+            <Title>Unstyled - OpenVue</Title>
+            <Meta name="description" content="Theming OpenVue with alternative styling approaches." />
         </Head>
 
         <div class="doc">
@@ -11,7 +11,7 @@
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                         <div class="flex-1">
                             <h1>Unstyled Mode</h1>
-                            <p>Theming PrimeVue with alternative styling approaches.</p>
+                            <p>Theming OpenVue with alternative styling approaches.</p>
                         </div>
                         <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                     </div>

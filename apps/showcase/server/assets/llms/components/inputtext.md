@@ -5,7 +5,7 @@ InputText is an extension to standard input element with theming.
 ## Import
 
 ```javascript
-import InputText from 'primevue/inputtext';
+import InputText from 'openvue/inputtext';
 ```
 
 ## Accessibility
@@ -164,7 +164,7 @@ const value = ref(null);
 
 ## Forms
 
-InputText integrates seamlessly with the PrimeVue Forms library.
+InputText integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex justify-center flex-col gap-4">
@@ -202,8 +202,8 @@ InputText integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

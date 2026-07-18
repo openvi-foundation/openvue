@@ -9,8 +9,8 @@ export default {
         return {
             code: {
                 basic: `
-import Terminal from 'primevue/terminal';
-import TerminalService from 'primevue/terminalservice'
+import Terminal from 'openvue/terminal';
+import TerminalService from 'openvue/terminalservice'
 `
             }
         };

@@ -85,7 +85,7 @@
 
 <script>
 import { CustomerService } from '@/service/CustomerService';
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
+import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 export default {
     data() {
@@ -235,7 +235,7 @@ export default {
 
 <script>
 import { CustomerService } from '@/service/CustomerService';
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
+import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 export default {
     data() {
@@ -364,7 +364,7 @@ export default {
 <script setup>
 import { ref, onMounted } from 'vue';
 import { CustomerService } from '@/service/CustomerService';
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
+import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 const customers = ref();
 const selectedCustomer = ref();

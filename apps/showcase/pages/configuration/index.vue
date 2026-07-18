@@ -1,7 +1,7 @@
 <template>
     <Head>
-        <Title>Configuration - PrimeVue</Title>
-        <Meta name="description" content="Application wide configuration for PrimeVue." />
+        <Title>Configuration - OpenVue</Title>
+        <Meta name="description" content="Application wide configuration for OpenVue." />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>Configuration</h1>
-                        <p>Application wide configuration for PrimeVue.</p>
+                        <p>Application wide configuration for OpenVue.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>

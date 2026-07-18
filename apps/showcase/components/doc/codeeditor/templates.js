@@ -1,10 +1,10 @@
 import pkg from '../../../package.json';
 import { services } from './services';
 
-const PrimeVue = {
+const OpenVue = {
     version: '^4.0.0',
     description:
-        'PrimeVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 500+ ready to use UI blocks to build spectacular applications in no time.'
+        'OpenVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 500+ ready to use UI blocks to build spectacular applications in no time.'
 };
 
 const app_dependencies = pkg ? pkg.devDependencies : {};
@@ -13,10 +13,10 @@ const core_dependencies = {
     vue: '^3.2.45',
     '@vitejs/plugin-vue': '^4.0.0',
     vite: '^4.0.0',
-    primevue: pkg.version || PrimeVue.version || 'latest',
+    openvue: pkg.version || OpenVue.version || 'latest',
     '@primeuix/themes': 'latest',
-    '@primevue/auto-import-resolver': pkg.version || PrimeVue.version || 'latest',
-    '@primevue/forms': pkg.version || PrimeVue.version || 'latest',
+    '@openvue/auto-import-resolver': pkg.version || OpenVue.version || 'latest',
+    '@openvue/forms': pkg.version || OpenVue.version || 'latest',
     primeicons: app_dependencies['primeicons'] || 'latest',
     tailwindcss: app_dependencies['tailwindcss'] || 'latest',
     autoprefixer: app_dependencies['autoprefixer'] || 'latest',
@@ -28,7 +28,7 @@ const core_dependencies = {
 // create-vue -> https://github.com/vuejs/create-vue
 const getVueApp = (props = {}, sourceType) => {
     const path = 'src/';
-    const { code: sources, title = 'primevue_demo', description = '', service, dependencies: deps, component, extFiles } = props;
+    const { code: sources, title = 'openvue_demo', description = '', service, dependencies: deps, component, extFiles } = props;
     const dependencies = { ...core_dependencies, ...deps };
 
     const fileExtension = '.vue';
@@ -40,7 +40,7 @@ const getVueApp = (props = {}, sourceType) => {
         themeSwitchCode;
 
     if (deps !== null && component !== null) {
-        imports += `import ${component} from 'primevue/${component.toLowerCase()}';
+        imports += `import ${component} from 'openvue/${component.toLowerCase()}';
 `;
         element += `app.component('${component}', ${component});
 `;
@@ -57,7 +57,7 @@ const getVueApp = (props = {}, sourceType) => {
         'package.json': {
             content: {
                 name: title.toLowerCase().replaceAll(' ', '_'),
-                description: `**${description}** ${PrimeVue.description}`,
+                description: `**${description}** ${OpenVue.description}`,
                 keywords: [],
                 scripts: {
                     dev: 'vite',
@@ -73,7 +73,7 @@ const getVueApp = (props = {}, sourceType) => {
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
-import {PrimeVueResolver} from '@primevue/auto-import-resolver';
+import {PrimeVueResolver} from '@openvue/auto-import-resolver';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -99,10 +99,10 @@ export default defineConfig({
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <meta name="description" content="**${description}** ${PrimeVue.description}" />
+        <meta name="description" content="**${description}** ${OpenVue.description}" />
         <!-- Added to show icons in the editor -->
         <link rel="stylesheet" href="https://unpkg.com/primeicons@${dependencies['primeicons'].replace(/[\^|~]/gi, '')}/primeicons.css">
-        <title>PrimeVue App</title>
+        <title>OpenVue App</title>
     </head>
     <body>
         <div id="app"></div>
@@ -135,10 +135,10 @@ import "./style.css";
 import "./flags.css";
 
 import { createApp } from "vue";
-import PrimeVue from "primevue/config";
-import ConfirmationService from 'primevue/confirmationservice'
-import DialogService from 'primevue/dialogservice'
-import ToastService from 'primevue/toastservice';
+import OpenVue from "openvue/config";
+import ConfirmationService from 'openvue/confirmationservice'
+import DialogService from 'openvue/dialogservice'
+import ToastService from 'openvue/toastservice';
 
 import App from "./App.vue";
 import AppState from './plugins/appState.js';
@@ -148,7 +148,7 @@ ${imports}
 
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: Noir,
         options: {

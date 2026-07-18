@@ -5,7 +5,7 @@ A keyfilter is a directive used to block individual keystrokes based on a patter
 ## Import
 
 ```javascript
-import KeyFilter from 'primevue/keyfilter';
+import KeyFilter from 'openvue/keyfilter';
 
 app.directive('keyfilter', KeyFilter);
 ```

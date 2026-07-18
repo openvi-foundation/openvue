@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            All PrimeVue form components are designed for seamless integration with the forms library. Instead of using the standard <i>v-model</i>, the <i>name</i> property is used to link a state object that tracks values, errors, and actions. The
+            All OpenVue form components are designed for seamless integration with the forms library. Instead of using the standard <i>v-model</i>, the <i>name</i> property is used to link a state object that tracks values, errors, and actions. The
             form component provides four key properties for state management.
         </p>
     </DocSectionText>
@@ -125,7 +125,7 @@ export default {
 
 <script setup>
 import { reactive } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

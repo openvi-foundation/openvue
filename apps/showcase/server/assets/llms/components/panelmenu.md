@@ -5,7 +5,7 @@ PanelMenu is a hybrid of accordion-tree components.
 ## Import
 
 ```javascript
-import PanelMenu from 'primevue/panelmenu';
+import PanelMenu from 'openvue/panelmenu';
 ```
 
 ## Accessibility
@@ -42,7 +42,7 @@ The command property defines the callback to run when an item is activated by cl
 
 <script setup>
 import { ref } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 

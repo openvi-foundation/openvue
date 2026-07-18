@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Main configuration settings of PrimeVue, refer to the <PrimeVueNuxtLink to="/configuration">configuration</PrimeVueNuxtLink> documentation for details.</p>
+        <p>Main configuration settings of OpenVue, refer to the <OpenVueNuxtLink to="/configuration">configuration</OpenVueNuxtLink> documentation for details.</p>
     </DocSectionText>
     <DocSectionCode :code="code" importCode hideToggleCode hideStackBlitz />
 </template>
@@ -15,7 +15,7 @@ import Aura from '@primeuix/themes/aura';
 
 export default defineNuxtConfig({
     modules: [
-        '@primevue/nuxt-module'
+        '@openvue/nuxt-module'
     ],
     primevue: {
         options: {

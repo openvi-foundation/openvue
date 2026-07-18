@@ -5,7 +5,7 @@ Toolbar is a grouping component for buttons and other content.
 ## Import
 
 ```javascript
-import Toolbar from 'primevue/toolbar';
+import Toolbar from 'openvue/toolbar';
 ```
 
 ## Accessibility

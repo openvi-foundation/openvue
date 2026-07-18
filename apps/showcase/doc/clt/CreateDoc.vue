@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Creates a new project from scratch with PrimeVue.</p>
+        <p>Creates a new project from scratch with OpenVue.</p>
     </DocSectionText>
     <DocSectionCode :code="code" hideToggleCode hideStackBlitz />
 </template>

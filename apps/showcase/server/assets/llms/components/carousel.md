@@ -5,7 +5,7 @@ Carousel is a content slider featuring various customization options.
 ## Import
 
 ```javascript
-import Carousel from 'primevue/carousel';
+import Carousel from 'openvue/carousel';
 ```
 
 ## Accessibility

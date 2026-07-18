@@ -5,7 +5,7 @@ Displays a single image with preview and tranformation options.
 ## Import
 
 ```javascript
-import Image from 'primevue/image';
+import Image from 'openvue/image';
 ```
 
 ## Accessibility

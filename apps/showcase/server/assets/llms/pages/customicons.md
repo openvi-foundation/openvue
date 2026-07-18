@@ -1,6 +1,6 @@
 # Custom Icons
 
-PrimeVue components can be used with any icon library using the templating features.
+OpenVue components can be used with any icon library using the templating features.
 
 ## FontAwesome
 
@@ -53,8 +53,4 @@ Inline SVGs are embedded inside the dom.
     </template>
 </Select>
 ```
-
-## Video Tutorial
-
-A video tutorial to demonstrate how to customize icons.
 

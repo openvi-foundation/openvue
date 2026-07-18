@@ -1,7 +1,7 @@
 <template>
     <div>
         <Head>
-            <Title>Accessibility - PrimeVue</Title>
+            <Title>Accessibility - OpenVue</Title>
             <Meta name="description" content="Accessible Vue UI Components." />
         </Head>
 
@@ -11,7 +11,7 @@
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                         <div class="flex-1">
                             <h1>Accessibility</h1>
-                            <p>PrimeVue has WCAG 2.1 AA level compliance, refer to the accessibility documentation of each component for detailed information.</p>
+                            <p>OpenVue has WCAG 2.1 AA level compliance, refer to the accessibility documentation of each component for detailed information.</p>
                         </div>
                         <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                     </div>

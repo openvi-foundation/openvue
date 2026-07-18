@@ -5,7 +5,7 @@ Rating component is a star based selection input.
 ## Import
 
 ```javascript
-import Rating from 'primevue/rating';
+import Rating from 'openvue/rating';
 ```
 
 ## Accessibility
@@ -48,7 +48,7 @@ const value = ref(5);
 
 ## Forms
 
-Rating integrates seamlessly with the PrimeVue Forms library.
+Rating integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4 w-40">
@@ -78,8 +78,8 @@ Rating integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

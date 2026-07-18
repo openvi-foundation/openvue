@@ -5,7 +5,7 @@ Editor is rich text editor component based on Quill.
 ## Import
 
 ```javascript
-import Editor from 'primevue/editor';
+import Editor from 'openvue/editor';
 ```
 
 ## Accessibility
@@ -22,7 +22,7 @@ Editor is used with the v-model property for two-way value binding.
 
 ## Forms
 
-Editor integrates seamlessly with the PrimeVue Forms library.
+Editor integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -52,8 +52,8 @@ Editor integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();
@@ -146,7 +146,7 @@ Editor provides a default toolbar with common options, to customize it define yo
 <script setup>
 import { ref } from "vue";
 
-const value = ref('<div>Hello World!</div><div>PrimeVue <b>Editor</b> Rocks</div><div><br></div>');
+const value = ref('<div>Hello World!</div><div>OpenVue <b>Editor</b> Rocks</div><div><br></div>');
 <\/script>
 ```
 </details>

@@ -33,7 +33,7 @@
                     <div class="p-6 shadow-lg border border-transparent dark:border-surface-800 bg-surface-0 dark:bg-surface-900 min-h-44">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-primary-100 text-primary-950 dark:bg-primary-400/30 dark:text-primary-100 rounded-md h-8 w-8 inline-flex items-center justify-center">
-                                <i class="pi pi-prime" />
+                                <i class="pi pi-sliders-h" />
                             </span>
                             <span class="font-semibold text-surface-950 dark:text-surface-0">Unstyled PrimeVue</span>
                         </div>

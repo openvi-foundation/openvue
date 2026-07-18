@@ -5,11 +5,11 @@ Tabs facilitates seamless switching between different views.
 ## Import
 
 ```javascript
-import Tabs from 'primevue/tabs';
-import TabList from 'primevue/tablist';
-import Tab from 'primevue/tab';
-import TabPanels from 'primevue/tabpanels';
-import TabPanel from 'primevue/tabpanel';
+import Tabs from 'openvue/tabs';
+import TabList from 'openvue/tablist';
+import Tab from 'openvue/tab';
+import TabPanels from 'openvue/tabpanels';
+import TabPanel from 'openvue/tabpanel';
 ```
 
 ## Accessibility

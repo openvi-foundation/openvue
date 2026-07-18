@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <Title>PrimeVue - Pass Through</Title>
+        <Title>OpenVue - Pass Through</Title>
         <Meta name="description" content="The Pass Through attributes is an API to access the internal DOM Structure of the components." />
     </Head>
     <div class="doc">

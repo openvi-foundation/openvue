@@ -5,7 +5,7 @@ FloatLabel visually integrates a label with its form element.
 ## Import
 
 ```javascript
-import FloatLabel from 'primevue/floatlabel';
+import FloatLabel from 'openvue/floatlabel';
 ```
 
 ## Accessibility

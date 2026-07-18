@@ -5,7 +5,7 @@ BlockUI can either block other components or the whole page.
 ## Import
 
 ```javascript
-import BlockUI from 'primevue/blockui';
+import BlockUI from 'openvue/blockui';
 ```
 
 ## Accessibility

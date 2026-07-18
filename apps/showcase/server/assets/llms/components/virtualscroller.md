@@ -5,7 +5,7 @@ VirtualScroller is a performant approach to render large amounts of data efficie
 ## Import
 
 ```javascript
-import VirtualScroller from 'primevue/virtualscroller';
+import VirtualScroller from 'openvue/virtualscroller';
 ```
 
 ## Accessibility

@@ -1,6 +1,6 @@
 <template>
     <DocSectionText>
-        <p>PrimeVue offers various preset options that allow you to customize the component's styling to match your application's design system. Below you'll find links to the implementation and type definitions for each preset.</p>
+        <p>OpenVue offers various preset options that allow you to customize the component's styling to match your application's design system. Below you'll find links to the implementation and type definitions for each preset.</p>
         <div class="doc-tablewrapper mt-4">
             <table class="doc-preset-table">
                 <thead>

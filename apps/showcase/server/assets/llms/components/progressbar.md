@@ -5,7 +5,7 @@ ProgressBar is a process status indicator.
 ## Import
 
 ```javascript
-import ProgressBar from 'primevue/progressbar';
+import ProgressBar from 'openvue/progressbar';
 ```
 
 ## Accessibility
@@ -48,7 +48,7 @@ Value is reactive so updating it dynamically changes the bar as well.
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 onMounted(() => {
     startProgress();

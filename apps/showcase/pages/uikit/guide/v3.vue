@@ -1,7 +1,7 @@
 <template>
     <div>
         <Head>
-            <Title>PrimeOne Guide - PrimeVue</Title>
+            <Title>PrimeOne Guide - OpenVue</Title>
             <Meta name="description" content="PrimeOne is a strong UI component library gets even better with a great Figma UI Kit. That's what PrimeOne is PrimeTek's official Figma UI Kit, built to work seamlessly with the Prime UI Suites." />
         </Head>
 

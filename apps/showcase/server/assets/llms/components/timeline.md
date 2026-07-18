@@ -5,7 +5,7 @@ Timeline visualizes a series of chained events.
 ## Import
 
 ```javascript
-import Timeline from 'primevue/timeline';
+import Timeline from 'openvue/timeline';
 ```
 
 ## Accessibility

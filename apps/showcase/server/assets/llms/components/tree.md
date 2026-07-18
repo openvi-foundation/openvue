@@ -5,7 +5,7 @@ Tree is used to display hierarchical data.
 ## Import
 
 ```javascript
-import Tree from 'primevue/tree';
+import Tree from 'openvue/tree';
 ```
 
 ## AccessibilityDoc
@@ -106,7 +106,7 @@ An event is provided for each type of user interaction such as expand, collapse 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { NodeService } from '@/service/NodeService';
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const nodes = ref(null);
 const selectedKey = ref(null);

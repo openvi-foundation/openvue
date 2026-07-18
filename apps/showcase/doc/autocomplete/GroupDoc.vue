@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 
 export default {
     data() {
@@ -81,7 +81,7 @@ export default {
 </template>
 
 <script>
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 
 export default {
     data() {
@@ -157,7 +157,7 @@ export default {
 
 <script setup>
 import { ref } from "vue";
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 
 const selectedCity = ref();
 const filteredCities = ref();

@@ -5,7 +5,7 @@ Menu displays a list of items in vertical orientation.
 ## Import
 
 ```javascript
-import Menu from 'primevue/menu';
+import Menu from 'openvue/menu';
 ```
 
 ## Accessibility
@@ -42,7 +42,7 @@ The command property defines the callback to run when an item is activated by cl
 
 <script setup>
 import { ref } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 

@@ -1,4 +1,4 @@
 export default defineNuxtLink({
-    componentName: 'PrimeVueNuxtLink',
+    componentName: 'OpenVueNuxtLink',
     trailingSlash: 'append'
 });

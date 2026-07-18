@@ -21,7 +21,7 @@ Welcome to the Prime UI Ecosystem! Once you have PrimeVue up and running, we rec
 PrimeVue plugin is required to be installed as an application plugin to set up the default configuration . The plugin is lightweight, and only utilized for configuration purposes.
 
 ```vue
-import { createApp } from 'vue'; import PrimeVue from 'primevue/config'; const app = createApp(App); app.use(PrimeVue);
+import { createApp } from 'vue'; import PrimeVue from 'openvue/config'; const app = createApp(App); app.use(PrimeVue);
 ```
 
 ## Plugin
@@ -33,7 +33,7 @@ Configure PrimeVue to use a theme like Aura.
 Verify your setup by adding a component such as Button . Each component can be imported and registered individually so that you only include what you use for bundle optimization. Import path is available in the documentation of the corresponding component.
 
 ```vue
-import Button from "primevue/button" const app = createApp(App); app.component('Button', Button);
+import Button from "openvue/button" const app = createApp(App); app.component('Button', Button);
 ```
 
 <details>

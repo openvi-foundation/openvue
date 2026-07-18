@@ -1,8 +1,8 @@
 <template>
     <div>
         <Head>
-            <Title>Vue Icon Library - PrimeVue</Title>
-            <Meta name="description" content="PrimeVue components can be used with any icon library using the templating features." />
+            <Title>Vue Icon Library - OpenVue</Title>
+            <Meta name="description" content="OpenVue components can be used with any icon library using the templating features." />
         </Head>
 
         <div class="doc">
@@ -11,7 +11,7 @@
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                         <div class="flex-1">
                             <h1>Custom Icons</h1>
-                            <p>PrimeVue components can be used with any icon library using the templating features.</p>
+                            <p>OpenVue components can be used with any icon library using the templating features.</p>
                         </div>
                         <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                     </div>
@@ -29,7 +29,6 @@ import FontAwesomeDoc from '@/doc/customicons/FontAwesomeDoc.vue';
 import ImageDoc from '@/doc/customicons/ImageDoc.vue';
 import MaterialDoc from '@/doc/customicons/MaterialDoc.vue';
 import SVGDoc from '@/doc/customicons/SVGDoc.vue';
-import VideoDoc from '@/doc/customicons/VideoDoc.vue';
 
 export default {
     components: { DocCopyMarkdown },
@@ -55,11 +54,6 @@ export default {
                     id: 'image',
                     label: 'Image',
                     component: ImageDoc
-                },
-                {
-                    id: 'video',
-                    label: 'Video Tutorial',
-                    component: VideoDoc
                 }
             ]
         };

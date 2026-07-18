@@ -5,7 +5,7 @@ DeferredContent postpones the loading the content that is initially not in the v
 ## Import
 
 ```javascript
-import DeferredContent from 'primevue/deferredcontent';
+import DeferredContent from 'openvue/deferredcontent';
 ```
 
 ## Accessibility

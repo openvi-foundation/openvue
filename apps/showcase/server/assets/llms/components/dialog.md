@@ -5,7 +5,7 @@ Dialog is a container to display content in an overlay window.
 ## Import
 
 ```javascript
-import Dialog from 'primevue/dialog';
+import Dialog from 'openvue/dialog';
 ```
 
 ## Accessibility

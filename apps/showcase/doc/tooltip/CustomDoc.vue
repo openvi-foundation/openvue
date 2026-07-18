@@ -5,7 +5,7 @@
     <div class="card flex flex-wrap justify-center">
         <Button
             v-tooltip.bottom="{
-                value: 'PrimeVue Rocks',
+                value: 'OpenVue Rocks',
                 pt: {
                     arrow: {
                         style: {
@@ -30,7 +30,7 @@ export default {
                 basic: `
 <Button
     v-tooltip.bottom="{
-        value: 'PrimeVue Rocks',
+        value: 'OpenVue Rocks',
         pt: {
             arrow: {
                 style: {
@@ -48,7 +48,7 @@ export default {
     <div class="card flex flex-wrap justify-center">
         <Button
             v-tooltip.bottom="{
-                value: 'PrimeVue Rocks',
+                value: 'OpenVue Rocks',
                 pt: {
                     arrow: {
                         style: {
@@ -69,7 +69,7 @@ export default {
     <div class="card flex flex-wrap justify-center">
         <Button
             v-tooltip.bottom="{
-                value: 'PrimeVue Rocks',
+                value: 'OpenVue Rocks',
                 pt: {
                     arrow: {
                         style: {

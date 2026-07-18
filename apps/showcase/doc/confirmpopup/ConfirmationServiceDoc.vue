@@ -16,7 +16,7 @@ export default {
             code1: {
                 basic: `
 import {createApp} from 'vue';
-import ConfirmationService from 'primevue/confirmationservice';
+import ConfirmationService from 'openvue/confirmationservice';
 
 const app = createApp(App);
 app.use(ConfirmationService);
@@ -24,7 +24,7 @@ app.use(ConfirmationService);
             },
             code2: {
                 basic: `
-import { useConfirm } from "primevue/useconfirm";
+import { useConfirm } from "openvue/useconfirm";
 
 const confirm = useConfirm();
 `

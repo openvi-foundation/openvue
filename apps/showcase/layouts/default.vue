@@ -11,9 +11,6 @@
                 <slot></slot>
             </div>
         </div>
-        <ClientOnly fallback-tag="div" fallback="Theme Designer">
-            <AppDesigner />
-        </ClientOnly>
         <AppFooter />
         <Toast />
         <Toast position="top-left" group="tl" />

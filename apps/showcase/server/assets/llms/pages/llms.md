@@ -1,14 +1,14 @@
 # LLMs.txt
 
-LLM-optimized documentation endpoints for PrimeVue components.
+LLM-optimized documentation endpoints for OpenVue components.
 
 ## /llms-full.txt
 
-The llms-full.txt file is a complete list of all the pages in the PrimeVue documentation. It is used to help AI models understand the entire documentation set. Open llms-full.txt
+The llms-full.txt file is a complete list of all the pages in the OpenVue documentation. It is used to help AI models understand the entire documentation set. Open llms-full.txt
 
 ## /llms.txt
 
-The llms.txt file is an industry standard that helps AI models better understand and navigate the PrimeVue documentation. It lists key pages in a structured format, making it easier for LLMs to retrieve relevant information. Open llms.txt
+The llms.txt file is an industry standard that helps AI models better understand and navigate the OpenVue documentation. It lists key pages in a structured format, making it easier for LLMs to retrieve relevant information. Open llms.txt
 
 ## Markdown Extension
 
@@ -16,5 +16,5 @@ Add a .md to a page's URL to display a Markdown version of that page. Open /butt
 
 ## Overview
 
-LLMs.txt is a file that contains the LLMs for the PrimeVue documentation.
+LLMs.txt is a file that contains the LLMs for the OpenVue documentation.
 

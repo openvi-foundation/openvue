@@ -5,7 +5,7 @@ ToggleSwitch is used to select a boolean value.
 ## Import
 
 ```javascript
-import ToggleSwitch from 'primevue/toggleswitch';
+import ToggleSwitch from 'openvue/toggleswitch';
 ```
 
 ## Accessibility
@@ -58,7 +58,7 @@ const checked = ref(false);
 
 ## Forms
 
-ToggleSwitch integrates seamlessly with the PrimeVue Forms library.
+ToggleSwitch integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4 w-48">
@@ -88,8 +88,8 @@ ToggleSwitch integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

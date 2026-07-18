@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>A headless PrimeVue dialog with a custom UI.</p>
+        <p>A headless OpenVue dialog with a custom UI.</p>
     </DocSectionText>
     <div class="card flex justify-center">
         <Button label="Login" icon="pi pi-user" @click="visible = true" />

@@ -5,7 +5,7 @@ Skeleton is a placeholder to display instead of the actual content.
 ## Import
 
 ```javascript
-import Skeleton from 'primevue/skeleton';
+import Skeleton from 'openvue/skeleton';
 ```
 
 ## Accessibility

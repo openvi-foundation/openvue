@@ -4,7 +4,7 @@
             Validations are implemented with the <i>resolver</i> property. A custom resolver is responsible for handling the validation and returning an <i>errors</i> object with key-value pairs where key is the form field name and value is an array
             of error object data. For productivity, we recommend using a schema validation library instead of building your own custom validation logic. The forms library provide built-in resolvers for popular options including
             <a href="https://zod.dev/">Zod</a>, <a href="https://github.com/jquense/yup">Yup</a>, <a href="https://joi.dev/">Joi</a>, <a href="https://valibot.dev/">Valibot</a>, and <a href="https://docs.superstructjs.org/">Superstruct</a> that can
-            be imported from <i>@primevue/forms/resolvers</i> path.
+            be imported from <i>@openvue/forms/resolvers</i> path.
         </p>
     </DocSectionText>
     <div class="card flex flex-col items-center gap-5">
@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import { superStructResolver } from '@primevue/forms/resolvers/superstruct';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { superStructResolver } from '@openvue/forms/resolvers/superstruct';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as s from 'superstruct';
 import * as v from 'valibot';
 import * as yup from 'yup';
@@ -117,10 +117,10 @@ export default {
 </template>
 
 <script>
-import { superStructResolver } from '@primevue/forms/resolvers/superstruct';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { superStructResolver } from '@openvue/forms/resolvers/superstruct';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as s from 'superstruct';
 import * as v from 'valibot';
 import * as yup from 'yup';
@@ -232,15 +232,15 @@ export default {
 
 <script setup>
 import { ref, watch } from 'vue';
-import { superStructResolver } from '@primevue/forms/resolvers/superstruct';
-import { valibotResolver } from '@primevue/forms/resolvers/valibot';
-import { yupResolver } from '@primevue/forms/resolvers/yup';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { superStructResolver } from '@openvue/forms/resolvers/superstruct';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
 import * as s from 'superstruct';
 import * as v from 'valibot';
 import * as yup from 'yup';
 import { z } from 'zod';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

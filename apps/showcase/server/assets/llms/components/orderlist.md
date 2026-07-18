@@ -5,7 +5,7 @@ OrderList is used to sort a collection.
 ## Import
 
 ```javascript
-import OrderList from 'primevue/orderlist';
+import OrderList from 'openvue/orderlist';
 ```
 
 ## Accessibility

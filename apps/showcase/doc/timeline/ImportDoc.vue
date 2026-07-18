@@ -9,7 +9,7 @@ export default {
         return {
             code: {
                 basic: `
-import Timeline from 'primevue/timeline';
+import Timeline from 'openvue/timeline';
 `
             }
         };

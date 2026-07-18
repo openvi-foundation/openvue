@@ -5,7 +5,7 @@ Listbox is used to select one or more values from a list of items.
 ## Import
 
 ```javascript
-import Listbox from 'primevue/listbox';
+import Listbox from 'openvue/listbox';
 ```
 
 ## Accessibility
@@ -128,7 +128,7 @@ const cities = ref([
 
 ## Forms
 
-Listbox integrates seamlessly with the PrimeVue Forms library.
+Listbox integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
@@ -158,8 +158,8 @@ Listbox integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();
@@ -439,11 +439,11 @@ const items = ref(Array.from({ length: 100000 }, (_, i) => ({ label: \`Item #\${
 | focusOnHover | boolean | true | When enabled, the focus is placed on the hovered option. |
 | highlightOnSelect | boolean | true | Whether the selected option will be add highlight class. |
 | checkmark | boolean | false | Whether the selected option will be shown with a check mark. |
-| filterMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration. |
-| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration. |
-| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration. |
-| emptyFilterMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration. |
-| emptyMessage | string | No available options | Text to display when there are no options available. Defaults to value from PrimeVue locale configuration. |
+| filterMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration. |
+| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration. |
+| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration. |
+| emptyFilterMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration. |
+| emptyMessage | string | No available options | Text to display when there are no options available. Defaults to value from OpenVue locale configuration. |
 | striped | boolean | false | Whether to displays rows with alternating colors. |
 | tabindex | string \| number | - | Index of the element in tabbing order. |
 | filterIcon | string | - | Icon to display in filter input. |

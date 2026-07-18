@@ -5,7 +5,7 @@ Dock is a navigation component consisting of menuitems.
 ## Import
 
 ```javascript
-import Dock from 'primevue/dock';
+import Dock from 'openvue/dock';
 ```
 
 ## Accessibility
@@ -59,7 +59,7 @@ A mock desktop UI implemented with various components in addition to Dock.
                 </Dock>
 
                 <Dialog v-model:visible="displayTerminal" header="Terminal" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
-                    <Terminal welcomeMessage="Welcome to PrimeVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
+                    <Terminal welcomeMessage="Welcome to OpenVue(cmd: 'date', 'greet {0}' and 'random')" prompt="primevue $" />
                 </Dialog>
 
                 <Dialog v-model:visible="displayFinder" header="Finder" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
@@ -78,8 +78,8 @@ A mock desktop UI implemented with various components in addition to Dock.
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useToast } from 'primevue/usetoast';
-import TerminalService from 'primevue/terminalservice';
+import { useToast } from 'openvue/usetoast';
+import TerminalService from 'openvue/terminalservice';
 import { NodeService } from '@/service/NodeService';
 import { PhotoService } from '@/service/PhotoService';
 

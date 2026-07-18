@@ -5,7 +5,7 @@ Password displays strength indicator for password fields.
 ## Import
 
 ```javascript
-import Password from 'primevue/password';
+import Password from 'openvue/password';
 ```
 
 ## Accessibility
@@ -221,8 +221,8 @@ InputText is used with the v-model property.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();
@@ -704,12 +704,12 @@ const value = ref(null);
 | modelValue | Nullable<string> | - | Value of the component. |
 | defaultValue | Nullable<string> | - | The default value for the input when not controlled by  `modelValue` . |
 | name | string | - | The name attribute for the element, typically used in form submissions. |
-| promptLabel | string | - | Text to prompt password entry. Defaults to PrimeVue Locale configuration. |
+| promptLabel | string | - | Text to prompt password entry. Defaults to OpenVue Locale configuration. |
 | mediumRegex | string \| RegExp | ^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,}) | Regex for a medium level password. |
 | strongRegex | string \| RegExp | ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,}) | Regex for a strong level password. |
-| weakLabel | string | - | Text for a weak password. Defaults to PrimeVue Locale configuration. |
-| mediumLabel | string | - | Text for a medium password. Defaults to PrimeVue Locale configuration. |
-| strongLabel | string | - | Text for a strong password. Defaults to PrimeVue Locale configuration. |
+| weakLabel | string | - | Text for a weak password. Defaults to OpenVue Locale configuration. |
+| mediumLabel | string | - | Text for a medium password. Defaults to OpenVue Locale configuration. |
+| strongLabel | string | - | Text for a strong password. Defaults to OpenVue Locale configuration. |
 | feedback | boolean | true | Whether to show the strength indicator or not. |
 | appendTo | HTMLElement \| HintedString<"body" \| "self"> | body | A valid query selector or an HTMLElement to specify where the overlay gets attached. |
 | toggleMask | boolean | false | Whether to show an icon to display the password as plain text. |

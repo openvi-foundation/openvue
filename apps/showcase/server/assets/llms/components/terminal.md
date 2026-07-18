@@ -5,8 +5,8 @@ Terminal is a text based user interface.
 ## Import
 
 ```javascript
-import Terminal from 'primevue/terminal';
-import TerminalService from 'primevue/terminalservice'
+import Terminal from 'openvue/terminal';
+import TerminalService from 'openvue/terminalservice'
 ```
 
 ## Accessibility
@@ -19,9 +19,9 @@ Commands are processed using an EventBus implementation called TerminalService .
 
 ```vue
 <Terminal
-    welcomeMessage="Welcome to PrimeVue"
+    welcomeMessage="Welcome to OpenVue"
     prompt="primevue $"
-    aria-label="PrimeVue Terminal Service"
+    aria-label="OpenVue Terminal Service"
 />
 ```
 

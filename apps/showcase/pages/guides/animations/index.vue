@@ -1,8 +1,8 @@
 <template>
     <div>
         <Head>
-            <Title>Animations - PrimeVue</Title>
-            <Meta name="description" content="PrimeVue animations guide." />
+            <Title>Animations - OpenVue</Title>
+            <Meta name="description" content="OpenVue animations guide." />
         </Head>
 
         <div class="doc">
@@ -12,7 +12,7 @@
                         <div class="flex-1">
                             <h1>Animations</h1>
                             <p>
-                                Various PrimeVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to
+                                Various OpenVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to
                                 customize the default animations, this documentation covers the entire set of built-in animations.
                             </p>
                         </div>

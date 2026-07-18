@@ -5,7 +5,7 @@ Chip represents entities using icons, labels and images.
 ## Import
 
 ```javascript
-import Chip from 'primevue/chip';
+import Chip from 'openvue/chip';
 ```
 
 ## Accessibility

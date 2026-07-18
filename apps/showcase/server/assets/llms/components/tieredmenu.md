@@ -5,7 +5,7 @@ TieredMenu displays submenus in nested overlays.
 ## Import
 
 ```javascript
-import TieredMenu from 'primevue/tieredmenu';
+import TieredMenu from 'openvue/tieredmenu';
 ```
 
 ## Accessibility
@@ -42,7 +42,7 @@ The command property defines the callback to run when an item is activated by cl
 
 <script setup>
 import { ref } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 

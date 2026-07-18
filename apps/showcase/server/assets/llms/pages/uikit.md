@@ -1,6 +1,6 @@
-# UI Kit
+# UI Kit - OpenVue
 
-Design files for PrimeVue Components.
+Design files for OpenVue Components.
 
 ## Adding Prime Icons
 
@@ -12,15 +12,11 @@ PrimeOne is the official Figma library of UI components designed to match the im
 
 ## Support
 
-The community gathers on GitHub Discussions and Discord to ask questions, share ideas, and discuss the technology. For direct inquiries or suggestions, feel free to contact us at contact@primetek.com.tr .
+The community gathers on GitHub to ask questions, share ideas, and discuss the technology.
 
 ## Update Prime One
 
-When a new version of PrimeOne is released, follow the steps below to update your files: Download the latest version of PrimeOne from PrimeStore. Unzip the file and upload it to your Figma workspace. Publish the newly uploaded file as a library. In all consumer files, use Swap Library to point to the new version. Once the transition is complete, you can safely unpublish the old PrimeOne library Before each update, it's a good idea to review the Changelog on the Get Started page of the PrimeOne Figma file. Keep in mind that while Swap Library will update most components, any customized components may require manual review and adjustment.
-
-## Licence
-
-Will purchasing a PrimeBlocks license include access to PrimeOne components? No. The PrimeBlocks license does not grant access to the PrimeOne UI Kit. They are separate products with individual licenses.
+When a new version of PrimeOne is released, follow the steps below to update your files: Download the latest version of PrimeOne. Unzip the file and upload it to your Figma workspace. Publish the newly uploaded file as a library. In all consumer files, use Swap Library to point to the new version. Once the transition is complete, you can safely unpublish the old PrimeOne library Before each update, it's a good idea to review the Changelog on the Get Started page of the PrimeOne Figma file. Keep in mind that while Swap Library will update most components, any customized components may require manual review and adjustment.
 
 ## Roadmap
 
@@ -32,7 +28,7 @@ If you want to enable PrimeOne across all files in your team, follow these steps
 
 ## Importing
 
-Download the latest .fig UI Kit - From your PrimeStore panel, download the latest PrimeOne package. The archive contains the .fig UI Kit. Open Figma in Google Chrome - Launch Figma in Chrome (or another supported browser). Avoid using the Desktop app for this import. It's more reliable in-browser. Import into your Team project - Navigate to the Teams section in the left sidebar. Select your Team project where you want PrimeOne. Drag and drop the .fig file into the project folder in the browser UI. Figma will upload it, showing a new file card once complete.
+Download the latest .fig UI Kit - Download the latest PrimeOne package. The archive contains the .fig UI Kit. Open Figma in Google Chrome - Launch Figma in Chrome (or another supported browser). Avoid using the Desktop app for this import. It's more reliable in-browser. Import into your Team project - Navigate to the Teams section in the left sidebar. Select your Team project where you want PrimeOne. Drag and drop the .fig file into the project folder in the browser UI. Figma will upload it, showing a new file card once complete.
 
 ## Publishing
 
@@ -60,7 +56,7 @@ Will there be a completely new Figma file with each update, or will the current 
 
 ## Usage
 
-What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file from PrimeStore and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? After exporting your tokens as Figma Variables using the Themes option in Tokens Studio, theme switching must be handled using Figma's native Mode Switching feature. The Theme Switcher within the Tokens Studio plugin will no longer function once themes are bound to a Variable Collection — this applies to PrimeOne as well. Therefore, to switch between Light and Dark modes, you should always use Figma's built-in Mode Switching interface.
+What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? After exporting your tokens as Figma Variables using the Themes option in Tokens Studio, theme switching must be handled using Figma's native Mode Switching feature. The Theme Switcher within the Tokens Studio plugin will no longer function once themes are bound to a Variable Collection — this applies to PrimeOne as well. Therefore, to switch between Light and Dark modes, you should always use Figma's built-in Mode Switching interface.
 
 ## C I Pipeline
 
@@ -104,5 +100,5 @@ Will there be a completely new Figma file with each update, or will the current 
 
 ## Usage
 
-What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file from PrimeStore and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? To enable theme switching in PrimeOne, you need to set up the Variable modes. Select the layers you want to switch between Light or Dark. Then, under Appearance, use the Apply variable modes icon to assign both the Semantic and Component modes to the target theme.
+What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? To enable theme switching in PrimeOne, you need to set up the Variable modes. Select the layers you want to switch between Light or Dark. Then, under Appearance, use the Apply variable modes icon to assign both the Semantic and Component modes to the target theme.
 

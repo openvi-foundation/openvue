@@ -26,7 +26,7 @@ export default {
         return {
             code1: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
 
@@ -43,7 +43,7 @@ const MyPreset = definePreset(Aura, {
     }
 });
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     theme: {
         preset: MyPreset
     }

@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <ul class="leading-normal px-10 m-0 list-disc">
-            <li class="p-2"><b>Download the latest .fig UI Kit</b> - From your PrimeStore panel, download the latest PrimeOne package. The archive contains the .fig UI Kit.</li>
+            <li class="p-2"><b>Download the latest .fig UI Kit</b> - Download the latest PrimeOne package. The archive contains the .fig UI Kit.</li>
             <li class="p-2"><b>Open Figma in Google Chrome</b> - Launch Figma in Chrome (or another supported browser). Avoid using the Desktop app for this import. It's more reliable in-browser.</li>
             <li class="p-2">
                 <b>Import into your Team project</b> - Navigate to the Teams section in the left sidebar. Select your Team project where you want PrimeOne. Drag and drop the .fig file into the project folder in the browser UI. Figma will upload it,

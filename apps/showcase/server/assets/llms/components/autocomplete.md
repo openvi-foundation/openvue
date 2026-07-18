@@ -5,7 +5,7 @@ AutoComplete is an input component that provides real-time suggestions when bein
 ## Import
 
 ```javascript
-import AutoComplete from 'primevue/autocomplete';
+import AutoComplete from 'openvue/autocomplete';
 ```
 
 ## Accessibility
@@ -287,7 +287,7 @@ const search = (event) => {
 
 ## Forms
 
-AutoComplete integrates seamlessly with the PrimeVue Forms library.
+AutoComplete integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex justify-center flex-col gap-4 w-full md:w-56">
@@ -318,8 +318,8 @@ AutoComplete integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 import { CountryService } from "@/service/CountryService";
 
@@ -400,7 +400,7 @@ Option groups are specified with the optionGroupLabel and optionGroupChildren pr
 
 <script setup>
 import { ref } from "vue";
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 
 const selectedCity = ref();
 const filteredCities = ref();
@@ -819,10 +819,10 @@ const searchItems = (event) => {
 | selectOnFocus | boolean | false | When enabled, the focused option is selected. |
 | focusOnHover | boolean | true | When enabled, the focus is placed on the hovered option. |
 | searchLocale | string | - | Locale to use in searching. The default locale is the host environment's current locale. |
-| searchMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration. |
-| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration. |
-| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration. |
-| emptySearchMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration. |
+| searchMessage | string | '{0} results are available' | Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration. |
+| selectionMessage | string | '{0} items selected' | Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration. |
+| emptySelectionMessage | string | No selected item | Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration. |
+| emptySearchMessage | string | No results found | Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration. |
 | showEmptyMessage | boolean | true | When enabled, empty search message will be visible. |
 | tabindex | string \| number | - | Index of the element in tabbing order. |
 | fluid | boolean | null | Spans 100% width of the container when enabled. |

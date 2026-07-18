@@ -15,14 +15,14 @@ let exports = {};
 let modules = {
     ignoredFolders: ['useconfirm', 'usedialog', 'usetoast', 'usestyle', 'editor', 'chart', 'utils'],
     umd: [
-        `/***************** PrimeVue (Auto-Generated) *****************/
+        `/***************** OpenVue (Auto-Generated) *****************/
 
 // API
-export * from '@primevue/core';
+export * from '@openvue/core';
 
 // BaseIcon
-export { default as BaseIcon } from '@primevue/icons/baseicon';
-export { default as BaseIconStyle } from '@primevue/icons/baseicon/style';
+export { default as BaseIcon } from '@openvue/icons/baseicon';
+export { default as BaseIconStyle } from '@openvue/icons/baseicon/style';
 
 // Themes
 export * from '@primeuix/styled';
@@ -56,22 +56,22 @@ export { default as ChartStyle } from '../chart/style/ChartStyle.js';
 `
     ],
     esm: [
-        `/***************** PrimeVue (Auto-Generated) *****************/
+        `/***************** OpenVue (Auto-Generated) *****************/
 
 // Utils
-export * from 'primevue/utils';
+export * from 'openvue/utils';
 
 // UseConfirm
-export * from 'primevue/useconfirm';
+export * from 'openvue/useconfirm';
 
 // UseDialog
-export * from 'primevue/usedialog';
+export * from 'openvue/usedialog';
 
 // UseToast
-export * from 'primevue/usetoast';
+export * from 'openvue/usetoast';
 
 // UseStyle
-export * from 'primevue/usestyle';
+export * from 'openvue/usestyle';
 `
     ]
 };
@@ -101,8 +101,8 @@ export { default as ${fileName} } from '../${folderName}/${file}';
                     modules.esm.push(
                         `
 // ${fileName}
-export * from 'primevue/${folderName}';
-export { default as ${fileName} } from 'primevue/${folderName}';
+export * from 'openvue/${folderName}';
+export { default as ${fileName} } from 'openvue/${folderName}';
 `
                     );
                 }
@@ -122,8 +122,8 @@ export { default as ${subFileName} } from '../${folderName}/style/${file}';
 `
                                 );
                                 modules.esm.push(
-                                    `export * from 'primevue/${folderName}/style';
-export { default as ${subFileName} } from 'primevue/${folderName}/style';
+                                    `export * from 'openvue/${folderName}/style';
+export { default as ${subFileName} } from 'openvue/${folderName}/style';
 `
                                 );
                             }

@@ -5,7 +5,7 @@ Drawer is a container component displayed as an overlay.
 ## Import
 
 ```javascript
-import Drawer from 'primevue/drawer';
+import Drawer from 'openvue/drawer';
 ```
 
 ## Accessibility

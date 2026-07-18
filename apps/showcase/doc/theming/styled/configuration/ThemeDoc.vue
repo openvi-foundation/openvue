@@ -11,12 +11,12 @@ export default {
         return {
             code: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App);
 
-app.use(PrimeVue, {
+app.use(OpenVue, {
     // Default theme configuration
     theme: {
         preset: Aura,

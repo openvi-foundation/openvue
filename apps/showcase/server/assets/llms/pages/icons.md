@@ -1,6 +1,6 @@
 # Icons
 
-PrimeIcons is the default icon library of PrimeVue with over 250 open source icons developed by PrimeTek. PrimeIcons library is optional as PrimeVue components can use any icon with templating.
+PrimeIcons is the default icon library of OpenVue with over 250 open source icons developed by PrimeTek. PrimeIcons library is optional as OpenVue components can use any icon with templating.
 
 ## Basic
 
@@ -36,7 +36,7 @@ Constants API is available to reference icons easily when used programmatically.
 </template>
 
 <script>
-import { PrimeIcons } from '@primevue/core/api';
+import { PrimeIcons } from '@openvue/core/api';
 
 export default {
     data() {

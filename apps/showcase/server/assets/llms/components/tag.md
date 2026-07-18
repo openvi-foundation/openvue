@@ -5,7 +5,7 @@ Tag component is used to categorize content.
 ## Import
 
 ```javascript
-import Tag from 'primevue/tag';
+import Tag from 'openvue/tag';
 ```
 
 ## Accessibility

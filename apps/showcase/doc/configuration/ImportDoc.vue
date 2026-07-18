@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Configuration is managed by the <i>PrimeVue</i> instance imported from <i>primevue/config</i>.</p>
+        <p>Configuration is managed by the <i>OpenVue</i> instance imported from <i>openvue/config</i>.</p>
     </DocSectionText>
     <DocSectionCode :code="code" hideToggleCode importCode hideStackBlitz />
 </template>
@@ -11,10 +11,10 @@ export default {
         return {
             code: {
                 basic: `
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 const app = createApp(App);
 
-app.use(PrimeVue, { /* options */ });
+app.use(OpenVue, { /* options */ });
 `
             }
         };

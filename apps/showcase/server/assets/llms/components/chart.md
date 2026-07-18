@@ -5,7 +5,7 @@ Chart components are based on Chart.js, an open source HTML5 based charting libr
 ## Import
 
 ```javascript
-import Chart from 'primevue/chart';
+import Chart from 'openvue/chart';
 ```
 
 ## Accessibility

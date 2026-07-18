@@ -5,7 +5,7 @@ Galleria is a content gallery component.
 ## Import
 
 ```javascript
-import Galleria from 'primevue/galleria';
+import Galleria from 'openvue/galleria';
 ```
 
 ## AccessibilityDoc

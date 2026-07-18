@@ -5,7 +5,7 @@ ToggleButton is used to select a boolean value using a button.
 ## Import
 
 ```javascript
-import ToggleButton from 'primevue/togglebutton';
+import ToggleButton from 'openvue/togglebutton';
 ```
 
 ## Accessibility
@@ -111,7 +111,7 @@ const checked = ref(false);
 
 ## Forms
 
-ToggleButton integrates seamlessly with the PrimeVue Forms library.
+ToggleButton integrates seamlessly with the OpenVue Forms library.
 
 ```vue
 <Form v-slot="$form" :resolver="resolver" :initialValues="initialValues" @submit="onFormSubmit" class="flex flex-col gap-4">
@@ -141,8 +141,8 @@ ToggleButton integrates seamlessly with the PrimeVue Forms library.
 
 <script setup>
 import { ref } from 'vue';
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { useToast } from "primevue/usetoast";
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { useToast } from "openvue/usetoast";
 import { z } from 'zod';
 
 const toast = useToast();

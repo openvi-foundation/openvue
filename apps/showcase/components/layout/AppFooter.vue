@@ -1,8 +1,7 @@
 <template>
     <div class="layout-footer">
         <div>
-            <span>PrimeVue {{ version }} on Vue 3 by </span>
-            <a href="https://www.primetek.com.tr" target="_blank" rel="noopener noreferrer">PrimeTek</a>
+            <span>OpenVue {{ version }} on Vue 3 by Openvi Foundation</span>
         </div>
     </div>
 </template>

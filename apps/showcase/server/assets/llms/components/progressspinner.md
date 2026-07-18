@@ -5,7 +5,7 @@ ProgressSpinner is a process status indicator.
 ## Import
 
 ```javascript
-import ProgressSpinner from 'primevue/progressspinner';
+import ProgressSpinner from 'openvue/progressspinner';
 ```
 
 ## Accessibility

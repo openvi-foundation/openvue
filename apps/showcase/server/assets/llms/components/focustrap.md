@@ -5,7 +5,7 @@ Focus Trap keeps focus within a certain DOM element while tabbing.
 ## Import
 
 ```javascript
-import FocusTrap from 'primevue/focustrap';
+import FocusTrap from 'openvue/focustrap';
 
 app.directive('focustrap', FocusTrap);
 ```
