@@ -64,7 +64,16 @@
                         v-bind="ptm('list')"
                     >
                         <template v-for="(option, i) of items" :key="getOptionRenderKey(option, getOptionIndex(i, getItemOptions))">
-                            <li v-if="isOptionGroup(option)" :id="$id + '_' + getOptionIndex(i, getItemOptions)" :style="{ height: itemSize ? itemSize + 'px' : undefined }" :class="cx('optionGroup')" role="option" v-bind="ptm('optionGroup')">
+                            <li
+                                v-if="isOptionGroup(option)"
+                                :id="$id + '_' + getOptionIndex(i, getItemOptions)"
+                                :style="{ height: itemSize ? itemSize + 'px' : undefined }"
+                                :class="cx('optionGroup')"
+                                role="group"
+                                :aria-labelledby="$id + '_' + getOptionIndex(i, getItemOptions)"
+                                :aria-owns="getOptionGroupOwnedIds(getOptionIndex(i, getItemOptions))"
+                                v-bind="ptm('optionGroup')"
+                            >
                                 <slot name="optiongroup" :option="option.optionGroup" :index="getOptionIndex(i, getItemOptions)">{{ getOptionGroupLabel(option.optionGroup) }}</slot>
                             </li>
                             <li
@@ -207,6 +216,15 @@ export default {
         },
         getAriaPosInset(index) {
             return (this.optionGroupLabel ? index - this.visibleOptions.slice(0, index).filter((option) => this.isOptionGroup(option)).length : index) + 1;
+        },
+        getOptionGroupOwnedIds(index) {
+            const ids = [];
+
+            for (let i = index + 1; i < this.visibleOptions.length && !this.isOptionGroup(this.visibleOptions[i]); i++) {
+                ids.push(`${this.$id}_${i}`);
+            }
+
+            return ids.length ? ids.join(' ') : undefined;
         },
         onFirstHiddenFocus() {
             focus(this.list);
