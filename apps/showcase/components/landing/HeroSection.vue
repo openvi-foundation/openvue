@@ -1,9 +1,9 @@
 <template>
     <section class="landing-hero py-20 px-8 lg:px-20">
         <div class="flex flex-col items-center">
-            <h1 class="text-5xl font-bold text-center xl:text-left leading-tight">The Next-Gen UI Suite for <span class="font-bold text-primary">Vue.js</span></h1>
+            <h1 class="text-5xl font-bold text-center xl:text-left leading-tight">The complete UI toolkit for <span class="font-bold text-primary">Vue and Nuxt</span></h1>
             <p class="text-center mt-0 mb-8 text-surface-500 dark:text-surface-400 font-medium text-xl leading-relaxed lg:px-56">
-                Enhance your web applications with OpenVue's comprehensive suite of customizable, feature-rich UI components. With OpenVue, turning your development vision into reality has never been easier.
+                80+ accessible, themeable components, MIT licensed and actively maintained. OpenVue picks up where PrimeVue 4.5.5 left off, so the library your app already depends on stays free to use and keeps getting better.
             </p>
             <div class="flex items-center gap-4">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">

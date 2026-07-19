@@ -3,6 +3,7 @@
         <!--<AppNews />-->
         <AppTopBar :showMenuButton="false" />
         <HeroSection />
+        <ForkNoticeSection />
         <FeaturesSection />
         <ThemeSection />
         <FooterSection />
@@ -12,6 +13,7 @@
 
 <script>
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
+import ForkNoticeSection from '@/components/landing/ForkNoticeSection.vue';
 import FooterSection from '@/components/landing/FooterSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
 import ThemeSection from '@/components/landing/ThemeSection.vue';
@@ -35,6 +37,7 @@ export default {
     },
     components: {
         HeroSection,
+        ForkNoticeSection,
         ThemeSection,
         FeaturesSection,
         FooterSection
