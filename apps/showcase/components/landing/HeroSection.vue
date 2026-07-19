@@ -16,19 +16,6 @@
                 </a>
             </div>
         </div>
-        <div class="w-full flex lg:hidden items-center justify-center mt-16 mb-4">
-            <SelectButton v-model="selectedSampleOption" :options="sampleOptions" optionLabel="title" class="dark:border dark:border-white/20">
-                <template #option="slotProps">
-                    <i :class="slotProps.option.icon"></i>
-                    <div class="hidden sm:flex flex-1 text-sm font-medium leading-5">{{ slotProps.option.title }}</div>
-                </template>
-            </SelectButton>
-        </div>
-        <div class="bg-surface-0 border border-black/10 dark:border-white/20 dark:bg-surface-950 w-full rounded-3xl p-0 flex lg:hidden items-start gap-6 overflow-hidden">
-            <template v-for="sampleOption of sampleOptions" :key="sampleOption.title">
-                <img v-if="selectedSampleOption.title === sampleOption.title" :src="sampleOption.src + (isDark() ? '-dark.jpg' : '.jpg')" class="w-full" />
-            </template>
-        </div>
         <div class="bg-surface-0 border border-black/10 dark:border-white/20 dark:bg-surface-950 w-full h-[85vh] max-h-[1040px] rounded-3xl p-6 hidden lg:flex lg:mt-20 items-start gap-6 overflow-hidden">
             <div :class="isSlimMenu ? 'w-auto' : 'w-72'" class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between">
                 <div :class="isSlimMenu ? 'w-12 flex flex-col items-center' : 'w-auto'">
@@ -99,7 +86,7 @@
                     </div>
                     <Divider />
                     <div :class="isSlimMenu ? 'justify-center' : ' gap-3'" class="flex items-center">
-                        <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png" size="large" shape="circle" class="shrink-0" />
+                        <Avatar image="/demo/images/landing/avatars/avatar-01.svg" size="large" shape="circle" class="shrink-0" />
                         <div>
                             <div :class="isSlimMenu ? 'hidden' : 'text-base font-medium text-color leading-5'">Robin Jonas</div>
                             <div :class="isSlimMenu ? 'hidden' : 'text-sm text-muted-color mt-1'">hi@robin.xyz</div>
@@ -136,7 +123,7 @@
                     <div class="flex flex-col h-screen overflow-auto">
                         <div class="">
                             <div class="flex align-items-center gap-3 p-6">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg" size="large" class="rounded-xl overflow-hidden" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-11.svg" size="large" class="rounded-xl overflow-hidden" />
                                 <div class="flex-1">
                                     <div class="leading-6 text-color font-medium">Brook Simmons</div>
                                     <div class="mt-1 leading-5 text-muted-color text-sm">Sales Executive</div>
@@ -243,20 +230,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-if="selectedSidebarOption === 'Opportunities'" class="grid grid-cols-2 gap-6 p-6">
-                            <div v-for="(data, i) of opportunities" :key="i" class="flex flex-col p-3 rounded-xl bg-emphasis">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div class="font-medium text-color mt-0.5">{{ data.title }}</div>
-                                    <NuxtLink :to="data.link" target="_blank" rel="noopener">
-                                        <Button icon="pi pi-arrow-up-right text-sm !leading-none" class="w-8 h-8 !border-surface !bg-surface-0 dark:!bg-surface-900" severity="secondary" text />
-                                    </NuxtLink>
-                                </div>
-                                <img class="w-full rounded-lg mt-2 block" :src="data.image" alt="Opportunutiy Image" />
-                                <div class="flex-1 mt-2 p-2 rounded-lg bg-surface-0 dark:bg-surface-900 text-xs text-color">
-                                    {{ data.text }}
-                                </div>
-                            </div>
-                        </div>
                         <div v-if="selectedSidebarOption === 'Statistics'" class="h-[calc(100%-160px)] p-6">
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="w-full h-full flex flex-col p-3 rounded-xl bg-emphasis">
@@ -329,64 +302,55 @@ export default {
             selectedSampleAppsSidebarNav: 'Overview',
             isSlimMenu: true,
             isSlimMenuSelected: false,
-            sampleOptions: [
-                { icon: 'pi pi-home', title: 'Overview', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/overview' },
-                { icon: 'pi pi-comment', title: 'Chat', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/chat' },
-                { icon: 'pi pi-inbox', title: 'Inbox', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/mail' },
-                { icon: 'pi pi-th-large', title: 'Cards', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/cards' },
-                { icon: 'pi pi-user', title: 'Customers', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/customers' },
-                { icon: 'pi pi-video', title: 'Movies', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/movies' }
-            ],
-            selectedSampleOption: { icon: 'pi pi-home', title: 'Overview', src: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/sampleshots/overview' },
             visibleRight: false,
             selectedSidebarOption: 'Statistics',
-            sidebarOptions: ['Interaction Logs', 'Preferences', 'Statistics', 'Opportunities'],
+            sidebarOptions: ['Interaction Logs', 'Preferences', 'Statistics'],
             callLogs: [
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar6.png', name: 'Brook Simmons', time: '02.02.2024 | 45 min' },
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg', name: 'Jacob Jones', time: '02.02.2024 | 45 min' },
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg', name: 'Annette Black', time: '02.03.2024 | 13 min' },
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg', name: 'Arlene McCoy', time: '02.03.2024 | 14 min' },
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar10.jpg', name: 'Arlene Simmons', time: '02.03.2024 | 14 min' },
-                { image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg', name: 'Michael Brown', time: '02.04.2024 | 20 min' }
+                { image: '/demo/images/landing/avatars/avatar-06.svg', name: 'Brook Simmons', time: '02.02.2024 | 45 min' },
+                { image: '/demo/images/landing/avatars/avatar-12.svg', name: 'Jacob Jones', time: '02.02.2024 | 45 min' },
+                { image: '/demo/images/landing/avatars/avatar-13.svg', name: 'Annette Black', time: '02.03.2024 | 13 min' },
+                { image: '/demo/images/landing/avatars/avatar-09.svg', name: 'Arlene McCoy', time: '02.03.2024 | 14 min' },
+                { image: '/demo/images/landing/avatars/avatar-10.svg', name: 'Arlene Simmons', time: '02.03.2024 | 14 min' },
+                { image: '/demo/images/landing/avatars/avatar-11.svg', name: 'Michael Brown', time: '02.04.2024 | 20 min' }
             ],
             emailRecords: [
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
+                    image: '/demo/images/landing/avatars/avatar-04.svg',
                     name: 'Brook Simmons',
                     time: '3:24 PM',
                     title: 'Unleash Business Potential',
                     text: 'Automate, analyze, and accelerate with our SaaS platform. Unshackle from mundane tasks and focus on scaling your business. Contact us for a demo today!'
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar7.png',
+                    image: '/demo/images/landing/avatars/avatar-07.svg',
                     name: 'Jacob Jones',
                     time: '12.23.2023',
                     title: 'Optimized Workflow Revolution  ',
                     text: "Experience a workflow revolution with our intuitive SaaS tool. With enhanced features and optimized processes, it's efficiency like never before. Let's get in touch for a brief demo!"
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png',
+                    image: '/demo/images/landing/avatars/avatar-08.svg',
                     name: 'Annette Black',
                     time: '12.17.2023',
                     title: 'Innovation at Fingertips',
                     text: 'With our SaaS solution, innovation is only a click away. Shape your future with pioneering features and minimalist design. Join us for your solution walk-through today!'
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg',
+                    image: '/demo/images/landing/avatars/avatar-11.svg',
                     name: 'Arlene McCoy',
                     time: '06.17.2023',
                     title: 'Seamless Integration',
                     text: 'Integrate effortlessly with our user-friendly SaaS tools. Streamline your operations and boost productivity. Discover more in our demo session.'
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg',
+                    image: '/demo/images/landing/avatars/avatar-13.svg',
                     name: 'Arlene Simmons',
                     time: '04.17.2023',
                     title: 'Transform Your Business',
                     text: 'Empower your team with our innovative SaaS solutions. Achieve unparalleled efficiency and drive growth. Book a demo to explore the possibilities.'
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
+                    image: '/demo/images/landing/avatars/avatar-04.svg',
                     name: 'Michael Brown',
                     time: '01.05.2024',
                     title: 'Next-Gen Collaboration',
@@ -425,44 +389,6 @@ export default {
                     ]
                 }
             ],
-            opportunities: [
-                {
-                    title: 'Apollo',
-                    link: 'https://primevue.org/templates/apollo/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/apollo-vue.jpg',
-                    text: 'Keep your application fresh with Apollo, the newest and most modern template available.'
-                },
-                {
-                    title: 'Ultima',
-                    link: 'https://primevue.org/templates/ultima/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/ultima-vue.jpg',
-                    text: "Elevate your application's intuitiveness with Ultima's premium Material Design interface."
-                },
-                {
-                    title: 'Diamond',
-                    link: 'https://primevue.org/templates/diamond/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/diamond-remastered-vue.jpg',
-                    text: "Handle complex operations with elegance with Diamond's robust and powerful premium design."
-                },
-                {
-                    title: 'Atlantis',
-                    link: 'https://primevue.org/templates/atlantis/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/atlantis-vue.jpg',
-                    text: "Boost your application's capabilities, customization with the Atlantis template."
-                },
-                {
-                    title: 'Verona',
-                    link: 'https://primevue.org/templates/verona/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/verona-vue.jpg',
-                    text: "Achieve sophistication and subtlety with Verona's minimalistic, content-focused design."
-                },
-                {
-                    title: 'Freya',
-                    link: 'https://primevue.org/templates/freya/',
-                    image: 'https://primefaces.org/cdn/primevue/images/layouts/freya-vue.png',
-                    text: "Give your application a sleek, updated look with Freya's chic and modern premium template."
-                }
-            ],
             customerSatisfaction: 56,
             churnRisk: 24
         };
@@ -490,9 +416,6 @@ export default {
     methods: {
         setSelectedSampleAppsSidebarNav(title) {
             this.selectedSampleAppsSidebarNav = title;
-        },
-        isDark() {
-            return this.$appState.darkTheme;
         },
         toggleSlimMenu() {
             this.isSlimMenu = !this.isSlimMenu;

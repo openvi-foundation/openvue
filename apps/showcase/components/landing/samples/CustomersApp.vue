@@ -118,7 +118,7 @@ export default {
             tableData: [
                 {
                     id: 1,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
+                    image: '/demo/images/landing/avatars/avatar-04.svg',
                     active: true,
                     name: 'Brook Simmons',
                     title: 'Sales Executive ',
@@ -129,7 +129,7 @@ export default {
                 },
                 {
                     id: 2,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg',
+                    image: '/demo/images/landing/avatars/avatar-09.svg',
                     active: true,
                     name: 'Dianne Russell',
                     title: 'CEO',
@@ -140,7 +140,7 @@ export default {
                 },
                 {
                     id: 3,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg',
+                    image: '/demo/images/landing/avatars/avatar-13.svg',
                     active: undefined,
                     name: 'Amy Elsner',
                     title: 'Product Manager',
@@ -151,7 +151,7 @@ export default {
                 },
                 {
                     id: 4,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg',
+                    image: '/demo/images/landing/avatars/avatar-11.svg',
                     active: true,
                     name: 'Jacob Jones',
                     title: 'Manager',
@@ -164,7 +164,7 @@ export default {
                 { id: 6, image: '', active: true, name: 'Wade Warren', capName: 'WW', title: 'Director', company: { name: 'Streamlinz', logo: 'streamlinz' }, email: 'hi@annetteblack.com', lead: 'Cold Call', status: 'Inactive' },
                 {
                     id: 7,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar7.png',
+                    image: '/demo/images/landing/avatars/avatar-07.svg',
                     active: true,
                     name: 'Guy Hawkins',
                     title: 'Director',
@@ -175,7 +175,7 @@ export default {
                 },
                 {
                     id: 8,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png',
+                    image: '/demo/images/landing/avatars/avatar-08.svg',
                     active: true,
                     name: 'Annette Black',
                     title: 'Manager',
@@ -186,7 +186,7 @@ export default {
                 },
                 {
                     id: 9,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar10.jpg',
+                    image: '/demo/images/landing/avatars/avatar-10.svg',
                     active: undefined,
                     name: 'Darrell Steward',
                     title: 'Product Manager',
@@ -198,7 +198,7 @@ export default {
                 { id: 10, image: '', active: true, name: 'Jerome Bell', capName: 'JB', title: 'Marketing Manager', company: { name: 'Mistranet', logo: 'mistranet' }, email: 'hi@courtneyhenryo', lead: 'Social Media', status: 'Active' },
                 {
                     id: 11,
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg',
+                    image: '/demo/images/landing/avatars/avatar-12.svg',
                     active: undefined,
                     name: 'Onyama Limba',
                     title: 'Sales Executive ',

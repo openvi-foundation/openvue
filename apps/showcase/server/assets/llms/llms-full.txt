@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-07-17
+Generated: 2026-07-19
 
 ---
 
@@ -1755,112 +1755,6 @@ The Tailwind v4 and OpenVue starter example is available to demonstrate the inte
 
 ---
 
-# UI Kit - OpenVue
-
-Design files for OpenVue Components.
-
-## Adding Prime Icons
-
-PrimeOne uses PrimeIcons, the official icon library by PrimeTek. To use it effectively within your design system, you need to add PrimeIcons to your Figma environment by following these steps: Open the PrimeIcons file in Figma and move it to your team project. Publish the PrimeIcons file and enable it for all team files in your Team Settings. Return to your PrimeOne file. In the Libraries panel, click on the banner that says “Includes X missing libraries.” From the dropdown, select “ PrimeIcons (Community) ” and click the Swap Library button.
-
-## Overview
-
-PrimeOne is the official Figma library of UI components designed to match the implementations in the Prime UI Suites. The current iteration of PrimeOne is structured around the Aura Light and Aura Dark themes.
-
-## Support
-
-The community gathers on GitHub to ask questions, share ideas, and discuss the technology.
-
-## Update Prime One
-
-When a new version of PrimeOne is released, follow the steps below to update your files: Download the latest version of PrimeOne. Unzip the file and upload it to your Figma workspace. Publish the newly uploaded file as a library. In all consumer files, use Swap Library to point to the new version. Once the transition is complete, you can safely unpublish the old PrimeOne library Before each update, it's a good idea to review the Changelog on the Get Started page of the PrimeOne Figma file. Keep in mind that while Swap Library will update most components, any customized components may require manual review and adjustment.
-
-## Roadmap
-
-Are there plans to add a Tailwind theme to the UI Kit? At this time, we do not plan to include Tailwind theme support in the Figma UI Kit.
-
-## Enabling
-
-If you want to enable PrimeOne across all files in your team, follow these steps: Navigate to All Projects from the Teams section. Go to View Settings View Team Libraries . You can find this option in the dropdown menu next to your team name. Toggle PrimeOne "On" to make it available globally.
-
-## Importing
-
-Download the latest .fig UI Kit - Download the latest PrimeOne package. The archive contains the .fig UI Kit. Open Figma in Google Chrome - Launch Figma in Chrome (or another supported browser). Avoid using the Desktop app for this import. It's more reliable in-browser. Import into your Team project - Navigate to the Teams section in the left sidebar. Select your Team project where you want PrimeOne. Drag and drop the .fig file into the project folder in the browser UI. Figma will upload it, showing a new file card once complete.
-
-## Publishing
-
-To make PrimeOne available as a shared library: Open the imported PrimeOne .fig file. Go to Assets Manage Libraries Click "Publish..." to share PrimeOne with your team, then confirm by clicking the "Publish" button in the modal.
-
-## Resources
-
-PrimeOne for Figma takes full advantage of powerful Figma features such as components, variants, auto layout, styles, interactivity, and design tokens via Tokens Studio. If you're new to Figma or want to get the most out of PrimeOne, we recommend exploring the following resources: Tokens Studio Documentation - PrimeOne uses Tokens Studio for design token management. Visit the official docs to understand how it works and how to use it effectively. Figma's Best Practice Guides - Learn how to work efficiently with components, variants, and layouts. Figma's Official YouTube Channel - Tutorials and feature walkthroughs from the Figma team. Figmalion Newsletter - Stay updated with curated insights from the Figma community.
-
-## Token Sets
-
-Primitive This set contains the most foundational tokens, such as base colors and border radius, elements that are considered “primitive” by nature. Semantic Includes essential system-wide tokens like primary, surface, and other shared design values It also defines tokens used across multiple component groups. For example, tokens under {form.field.*} are referenced by component-level tokens in InputText, MultiSelect, Checkbox, and other form components, enabling consistent styling across the board. Component These tokens are defined specifically for each component to allow deep customization While we've aimed to create dedicated tokens for every component state, many of them still reference the semantic or primitive tokens, allowing you to make global updates from a single place when needed. App Tokens in this set are not part of the PrimeUIX system. They are intended for values defined in your own application. The same applies to tokens used in our UI library showcases. For example, there is no dedicated font size token in PrimeUIX because font styles are not part of the design system. UI components inherit their font settings from the application. Custom If you're using the Figma to Theme feature and want your newly created custom tokens to appear in your Theme Designer themes, place them in this set. Even if you're not using the Theme Designer, we still recommend creating a separate set — or using the existing “Custom” set — for your own tokens. Making changes to the default sets, especially deleting tokens or altering reference values, can lead to inconsistencies with the library tokens and cause additional work during development.
-
-## Components
-
-How to change base font size? The base font size used in PrimeOne is 14px. Similar to how rem works in CSS, this is controlled by the {app.font.size} token located under the "app" set in Tokens Studio. When you change the value of this token, all size calculations will adjust accordingly based on the new value. To apply this change, you need to use the “Apply” function in Tokens Studio. However, we do not recommend using the “ Apply to Document ” option if the change affects the entire library, as it may lead to unexpected errors. Instead, go page by page and review the updates carefully before applying changes. Also note: not all token values in the library may be linked to {app.font.size} . So it's important to check components individually. After completing each page, verify the updated values under Local Variables and make manual adjustments if needed. Alternatively, you can use Export Styles & Variables to Figma in Tokens Studio to sync the updated values.
-
-## Tokens
-
-Is Tokens Studio too slow? This might be caused by using the wrong Apply method when pushing your changes. Since PrimeOne is a large file, using Apply to Document can result in very long processing times. We recommend using Apply to Selection or Apply to Page instead for better performance.
-
-## Updates
-
-Will there be a completely new Figma file with each update, or will the current PrimeOne file be modified and versioned? Each update will come as a new Figma file—an updated version of the previous one. You can seamlessly transition to the new version in your consumer files using Figma's Swap Library feature. Will the PrimeOne UI Kit stay in sync with ongoing updates to the Prime UI Libraries? The PrimeOne UI Kit does not update in real time alongside the libraries. However, we regularly release updates to bridge the gap and ensure alignment with key changes. How will users receive new components when they're added? New components will be included in future updates to the UI Kit. Please note that these updates may not coincide immediately with library changes and may take some time to roll out. How frequently is the PrimeOne UI Kit updated? We don't follow a fixed release schedule. Updates are made as needed, based on significant changes or additions to the Prime UI libraries.
-
-## Usage
-
-What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? After exporting your tokens as Figma Variables using the Themes option in Tokens Studio, theme switching must be handled using Figma's native Mode Switching feature. The Theme Switcher within the Tokens Studio plugin will no longer function once themes are bound to a Variable Collection — this applies to PrimeOne as well. Therefore, to switch between Light and Dark modes, you should always use Figma's built-in Mode Switching interface.
-
-## C I Pipeline
-
-Theme Designer offers an API that can be utilized to implement continuos integration pipelines to automate figma to theme code generation whenever you push updates to the repository from Figma. Visit the CI Pipeline documentation for comprehensive information.
-
-## Design Changes
-
-Change on Tokens Studio The first step when planning a design change is to identify which tokens need to be modified within Tokens Studio. Use the Inspect tab in Tokens Studio to locate the relevant tokens, then apply your changes directly via the plugin. After making the updates, don't forget to push the changes to your Sync Provider. Change on Figma Variables After making changes in Tokens Studio, you also need to apply these updates in Figma Variables. There are two options: Manually update the variables one by one, or Use the Export to Styles & Variables feature in Tokens Studio. In our own workflow, we prefer to update the variables manually, as the export feature can be unstable with large files like PrimeOne. We recommend this manual approach for reliability. However, if you choose to use the export feature, make sure the settings match the screenshot provided. Specifically, ensure the “ Themes (Pro) ” tab is selected during the second step. Don't worry, even though it says “Pro,” you don't need a Pro license to access this feature in Tokens Studio. If you notice missing or incomplete exports on your first attempt, try running the export again from the beginning. This is a known issue with Tokens Studio and often resolves on the second attempt. For more detailed guidance, see the official documentation . Get Updates on Consumer Files We do not recommend making design changes directly in consumer files, as this goes against best practices. Instead, apply all design updates in the main UI Kit file, then publish the library and accept the updates in any consumer files that rely on it.
-
-## Tokens Studio Setup
-
-Set sync provider via Tokens Studio - Figma plugins are limited to sharing a maximum of 100KB of data through their APIs. Because PrimeOne's token data exceeds this limit, using tokens locally within your Figma file may lead to performance issues. To avoid this, you should first configure and switch to a remote sync provider. You can follow the official Tokens Studio guide for setting up remote storage. Push tokens to your sync provider - Once you've successfully switched to your new sync provider, push the token data from your local file to the new provider to ensure everything stays in sync. Set Base Font Size to {app.font.size} in Tokens Studio Settings - PrimeOne uses a base font size of 14px, aligning with the default in Prime UI libraries. In Tokens Studio, go to the Settings tab and set the Base font size to {app.font.size} . If you wish to change this value, you can update the corresponding token in the app set.
-
-## Collections
-
-Primitive This collection contains the most foundational variables, such as base colors and border radius, elements that are considered “primitive” by nature. Semantic Common & Semantic Color Scheme Includes essential system-wide variables like primary, surface, and other shared design values It also defines variables used across multiple component groups. For example, variables under form/field are referenced by component-level variables in InputText, MultiSelect, Checkbox, and other form components, enabling consistent styling across the board. Component Common & Component Color Scheme These variables are defined specifically for each component to allow deep customization. While we've aimed to create dedicated variables for every component state, many of them still reference the semantic or primitive variables, allowing you to make global updates from a single place when needed. App Variables in this collection are not part of the PrimeUIX system. They are intended for values defined in your own application. The same applies to variables used in our UI library showcases. For example, there is no dedicated font size variable in PrimeUIX because font styles are not part of the design system. UI components inherit their font settings from the application. Custom If you're using the Figma to Theme feature and want your newly created custom variables to appear in your Theme Designer themes, place them in this collection. Even if you're not using the Theme Designer, we still recommend creating a separate collection — or using the existing “Custom” collection — for your own variables. Making changes to the default collections, especially deleting variables or altering reference values, can lead to inconsistencies with the library variables and cause additional work during development.
-
-## Important Notice
-
-Starting from PrimeOne UI Kit version 4.0, the Tokens Studio plugin is no longer used. We've fully migrated to Figma's native variable features, which now power the system. If you prefer to continue working with Tokens Studio, please use PrimeOne UI Kit version 3.2, which still supports the plugin.
-
-## Limitations
-
-Current known technical limitations are listed at this section. Multiple-value variables - Figma currently supports only a single value per variable. For this reason, multi-value tokens defined in PrimeUIX—such as padding or margin, which can contain multiple values—are represented in Figma as separate variables for each side (top/right/bottom/left) or axis (x/y), unlike the combined multi-value CSS definitions in PrimeUIX. Calculations - Since Figma does not yet allow calculations within variable definitions, values that rely on expressions like calc() cannot function dynamically. In these cases, any adjustments you make may require manual updates. Focus Rings - In Tokens Studio, focus rings could be positioned by calculating the outer stroke distance using expressions such as focus.ring.width + focus.ring.offset. Since Figma Variables do not support arithmetic operations, these calculations cannot be reproduced. As a result, focus ring width values are no longer dynamically linked and must be handled as static values. Color Mix - Figma Variables do not currently support color mix modifiers. Values in PrimeUIX that rely on color mixing have therefore been converted into raw hex values when brought into Figma Variables.
-
-## Prime U I Figma Plugin
-
-PrimeUI Theme Generator Figma plugin is the official tool developed by PrimeTek that provides built-in synchronization capabilities to automate the theme code generation process. Visit the plugin website to learn more about this workflow.
-
-## Resources
-
-PrimeOne for Figma takes full advantage of powerful Figma features such as components, variants, auto layout, styles, prototypes, and variables. If you're new to Figma or want to get the most out of PrimeOne, we recommend exploring the following resources: Variables - PrimeOne uses Figma Variables for design token management. Visit the official docs to understand how it works and how to use it effectively. Figma's Best Practice Guides - Learn how to work efficiently with components, variants, and layouts. Figma's Official YouTube Channel - Tutorials and feature walkthroughs from the Figma team. Figmalion Newsletter - Stay updated with curated insights from the Figma community.
-
-## Components
-
-How to change base font size? The base font size used in PrimeOne is 14px. Similar to how rem works in CSS, this is controlled by the scale/* variables located under the "Primitive" collection in Variables. When you change the values of these variables, all size calculations will adjust accordingly. Note that not all variables in the library may be linked to scale/* variables. So it's essential to check components individually.
-
-## Updates
-
-Will there be a completely new Figma file with each update, or will the current PrimeOne file be modified and versioned? Each update will come as a new Figma file—an updated version of the previous one. You can seamlessly transition to the new version in your consumer files using Figma's Swap Library feature. Will the PrimeOne UI Kit stay in sync with ongoing updates to the Prime UI Libraries? The PrimeOne UI Kit does not update in real time alongside the libraries. However, we regularly release updates to bridge the gap and ensure alignment with key changes. How will users receive new components when they're added? New components will be included in future updates to the UI Kit. Please note that these updates may not coincide immediately with library changes and may take some time to roll out. How frequently is the PrimeOne UI Kit updated? We don't follow a fixed release schedule. Updates are made as needed, based on significant changes or additions to the Prime UI libraries.
-
-## Usage
-
-What should we do after purchasing? I can't publish the Preview file? The Preview file is view-only , so it can't be published. To use the library, download the .fig file and import it into your Figma workspace. Once imported, you'll be able to open the file and publish it as a library for use in your projects. How to change theme? To enable theme switching in PrimeOne, you need to set up the Variable modes. Select the layers you want to switch between Light or Dark. Then, under Appearance, use the Apply variable modes icon to assign both the Semantic and Component modes to the target theme.
-
----
-
 # Contribution Guide
 
 Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
@@ -2282,7 +2176,7 @@ Migration guide to OpenVue v4.
 
 ## Overview
 
-At PrimeTek, we have been developing UI component libraries since 2008. The web continues to undergo technological advancements, and as a result, we have to modernize and update our libraries to stay relevant. OpenVue v4 is the next-generation version that fully embraces modern Web APIs and removes technical debt like the legacy-styled mode. Every component has been reviewed and enhanced. As part of our commitment to our products and the community, OpenVue v3 will continue to be maintained until the end of 2024. The most notable feature is the new styled mode implementation. Previous iterations use SASS at an external repo called primevue-sass-theme which requires compilation of a theme.css a file. This file had to be included in the application and need to be swapped at runtime for basic tasks like dark mode or primary color changes. In v4, styled mode is now part of the core, SASS is not used at all, and a new design token based architecture that fully utilizes CSS variables has been created. The new API is modern and superior to the legacy styled mode. Names of some of the components have been changed to more common alternatives for example, Popover replaced OverlayPanel and InputSwitch is now called ToggleSwitch . Each component has been reviewed for a consistent naming between CSS class names and PT sections. An example would be the option element of a Select component that uses p-select-option for the class name. Components have been utilized more within other components, for instance Dialog close button is not actually a OpenVue button so that closeButtonProps can be used to enable the features of button like outlined, raised and more. Whenever a component is using another component, in v3 the pt sections were causing confusion, to prevent this pc prefix is added to indicate that the PT section is actually a OpenVue component, not a simple DOM element. This is especially useful because PT allows passing arbitrary attributes to DOM elements whereas if the element is actually a OpenVue component, props can also be passed.
+The most notable feature is the new styled mode implementation. Previous iterations use SASS at an external repo called primevue-sass-theme which requires compilation of a theme.css a file. This file had to be included in the application and need to be swapped at runtime for basic tasks like dark mode or primary color changes. In v4, styled mode is now part of the core, SASS is not used at all, and a new design token based architecture that fully utilizes CSS variables has been created. The new API is modern and superior to the legacy styled mode. Names of some of the components have been changed to more common alternatives for example, Popover replaced OverlayPanel and InputSwitch is now called ToggleSwitch . Each component has been reviewed for a consistent naming between CSS class names and PT sections. An example would be the option element of a Select component that uses p-select-option for the class name. Components have been utilized more within other components, for instance Dialog close button is not actually a OpenVue button so that closeButtonProps can be used to enable the features of button like outlined, raised and more. Whenever a component is using another component, in v3 the pt sections were causing confusion, to prevent this pc prefix is added to indicate that the PT section is actually a OpenVue component, not a simple DOM element. This is especially useful because PT allows passing arbitrary attributes to DOM elements whereas if the element is actually a OpenVue component, props can also be passed.
 
 ## Breaking
 
@@ -26170,6 +26064,16 @@ const value = ref([
 | metergroup.label.icon.size | --p-metergroup-label-icon-size | Size of label icon |
 | metergroup.label.list.vertical.gap | --p-metergroup-label-list-vertical-gap | Vertical gap of label list |
 | metergroup.label.list.horizontal.gap | --p-metergroup-label-list-horizontal-gap | Horizontal gap of label list |
+
+---
+
+# migrate
+
+
+
+## Overview
+
+OpenVue is a fork of PrimeVue, and most existing PrimeVue v4 code already works against it with minimal changes. To make moving over effortless, we're building @openvue/migrate , a dedicated codemod that will automatically rewrite a project's imports and package references from PrimeVue to OpenVue. The package is published on npm, but it's still an early, active work in progress and isn't ready for use in real projects yet. Once it's ready for general use, this page will be updated with installation and usage instructions. In the meantime, you can track progress on npmjs.com/package/@openvue/migrate .
 
 ---
 

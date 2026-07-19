@@ -39,7 +39,7 @@
                     <Column field="country.name" header="Country" sortable style="min-width: 14rem">
                         <template #body="{ data }">
                             <div class="flex items-center gap-2">
-                                <img alt="flag" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${data.country.code}`" style="width: 24px" />
+                                <span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded border border-surface bg-emphasis text-xs font-semibold uppercase tracking-wide">{{ data.country.code }}</span>
                                 <span>{{ data.country.name }}</span>
                             </div>
                         </template>
@@ -47,7 +47,7 @@
                     <Column header="Agent" sortable sortField="representative.name" style="min-width: 14rem">
                         <template #body="{ data }">
                             <div class="flex items-center gap-2">
-                                <img :alt="data.representative.name" :src="'https://primefaces.org/cdn/primevue/images/avatar/' + data.representative.image" width="32" />
+                                <img :alt="data.representative.name" :src="avatarFor(data.representative.image)" width="32" />
                                 <span>{{ data.representative.name }}</span>
                             </div>
                         </template>
@@ -103,7 +103,8 @@ export default {
                 activity: { value: null, matchMode: FilterMatchMode.BETWEEN },
                 verified: { value: null, matchMode: FilterMatchMode.EQUALS }
             },
-            loading: true
+            loading: true,
+            representativeAvatars: ['amyelsner.png', 'annafali.png', 'asiyajavayant.png', 'bernardodominic.png', 'elwinsharvill.png', 'ionibowcher.png', 'ivanmagalhaes.png', 'onyamalimba.png', 'stephenshaw.png', 'xuxuefeng.png']
         };
     },
     mounted() {
@@ -114,6 +115,11 @@ export default {
         });
     },
     methods: {
+        avatarFor(image) {
+            const index = this.representativeAvatars.indexOf(image);
+
+            return `/demo/images/landing/avatars/avatar-${String((index < 0 ? 0 : index) + 1).padStart(2, '0')}.svg`;
+        },
         formatDate(value) {
             return value.toLocaleDateString('en-US', {
                 day: '2-digit',
