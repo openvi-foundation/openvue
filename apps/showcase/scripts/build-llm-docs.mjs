@@ -339,29 +339,7 @@ function getAllComponents() {
     const components = [];
 
     // Directories to exclude (non-component documentation)
-    const excludeDirs = [
-        'common',
-        'guides',
-        'theming',
-        'clt',
-        'forms',
-        'autoimport',
-        'cdn',
-        'configuration',
-        'contribution',
-        'customicons',
-        'designer',
-        'icons',
-        'introduction',
-        'laravel',
-        'llms',
-        'nuxt',
-        'passthrough',
-        'setup',
-        'tailwind',
-        'uikit',
-        'vite'
-    ];
+    const excludeDirs = ['common', 'guides', 'theming', 'clt', 'forms', 'autoimport', 'cdn', 'configuration', 'contribution', 'customicons', 'designer', 'icons', 'introduction', 'laravel', 'llms', 'nuxt', 'passthrough', 'setup', 'tailwind', 'vite'];
 
     for (const entry of entries) {
         const componentDir = path.join(DOCS_DIR, entry);
@@ -933,7 +911,6 @@ const GUIDE_PAGES = [
     'vite',
     'designer',
     'tailwind',
-    'uikit',
     'contribution',
     'setup',
     'llms',

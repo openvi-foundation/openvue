@@ -29,6 +29,14 @@
                         </li>
                     </ul>
                 </div>
+                <div class="w-6/12 lg:w-3/12 flex">
+                    <ul class="list-none p-0 m-0">
+                        <li class="font-bold mt-8 lg:mt-0 mb-8">Contact</li>
+                        <li class="mb-6">
+                            <a href="mailto:contact@openvi.dev" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300">contact@openvi.dev</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <hr class="section-divider" />
@@ -40,8 +48,11 @@
                     </svg>
                 </span>
                 <div class="flex items-center gap-2">
-                    <a href="https://github.com/openvi-foundation/openvue" class="linkbox linkbox-icon">
+                    <a href="https://github.com/openvi-foundation/openvue" class="linkbox linkbox-icon" target="_blank" rel="noopener noreferrer">
                         <i class="pi pi-github"></i>
+                    </a>
+                    <a href="mailto:contact@openvi.dev" class="linkbox linkbox-icon">
+                        <i class="pi pi-envelope"></i>
                     </a>
                 </div>
             </div>

@@ -69,7 +69,7 @@
         <div class="w-8/12 xl:w-6/12 border-x border-surface flex flex-col">
             <div class="flex items-center p-4 gap-7 border-b border-surface">
                 <div class="flex items-center">
-                    <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar-primetek.png" class="mr-2 av" size="large" shape="circle" />
+                    <Avatar image="/demo/images/landing/avatars/avatar-02.svg" class="mr-2 av" size="large" shape="circle" />
                     <div class="flex-1">
                         <div class="text-color leading-6 cursor-pointer hover:text-muted-color-emphasis transition-colors">OpenVue</div>
                         <div class="text-muted-color leading-5 line-clamp-1 mt-1">Cody Fisher, Esther Howard, Jerome Bell, Kristin Watson, Ronald Richards, Darrell Steward</div>
@@ -125,7 +125,7 @@
         </div>
         <div class="w-3/12 xl:block hidden min-w-40 py-6 px-3 overflow-auto">
             <div class="flex flex-col items-center justify-center">
-                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar-primetek.png" class="w-32 h-32" size="xlarge" shape="circle" />
+                <Avatar image="/demo/images/landing/avatars/avatar-02.svg" class="w-32 h-32" size="xlarge" shape="circle" />
                 <div class="leading-6 font-medium text-color mt-4 w-full text-center">OpenVue</div>
                 <div class="leading-5 text-sm text-muted-color mt-1 w-full text-center">@primetek</div>
                 <div class="flex items-center justify-center flex-wrap gap-1 mt-4">
@@ -244,7 +244,7 @@ export default {
             ],
             chats: [
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg',
+                    image: '/demo/images/landing/avatars/avatar-11.svg',
                     name: 'Cody Fisher',
                     capName: 'CF',
                     active: true,
@@ -253,7 +253,7 @@ export default {
                     lastMessage: "Hey there! I've heard about OpenVue. Any cool tips for getting started?"
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar-primetek.png',
+                    image: '/demo/images/landing/avatars/avatar-02.svg',
                     name: 'OpenVue Team',
                     capName: 'PT',
                     active: undefined,
@@ -262,7 +262,7 @@ export default {
                     lastMessage: "Let's implement OpenVue. Elevating our UI game! 🚀"
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
+                    image: '/demo/images/landing/avatars/avatar-04.svg',
                     name: 'Jerome Bell',
                     capName: 'JB',
                     active: true,
@@ -271,7 +271,7 @@ export default {
                     lastMessage: "Absolutely! OpenVue's documentation is gold—simplifies our UI work."
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg',
+                    image: '/demo/images/landing/avatars/avatar-12.svg',
                     name: 'Robert Fox',
                     capName: 'RF',
                     active: false,
@@ -280,7 +280,7 @@ export default {
                     lastMessage: "Interesting! OpenVue sounds amazing. What's your favorite feature?"
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg',
+                    image: '/demo/images/landing/avatars/avatar-13.svg',
                     name: 'Esther Howard',
                     capName: 'EH',
                     active: true,
@@ -289,7 +289,7 @@ export default {
                     lastMessage: 'Quick one, team! Anyone using OpenVue for mobile app development?'
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg',
+                    image: '/demo/images/landing/avatars/avatar-09.svg',
                     name: 'Darlene Robertson',
                     capName: 'DR',
                     active: false,
@@ -298,7 +298,7 @@ export default {
                     lastMessage: "Just explored OpenVue's themes. Can we talk about those stunning designs? 😍"
                 },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar6.png',
+                    image: '/demo/images/landing/avatars/avatar-06.svg',
                     name: 'Ralph Edwards',
                     capName: 'RE',
                     active: false,
@@ -309,7 +309,7 @@ export default {
                 { image: '', name: 'Ronald Richards', capName: 'RR', active: false, unreadMessageCount: 0, time: '11.15', lastMessage: "Jumping in! OpenVue's community forum is buzzing. Any engaging discussions?" },
                 { image: '', name: 'Kristin Watson', capName: 'KW', active: false, unreadMessageCount: 0, time: '11.15', lastMessage: 'Sharing a quick win-OpenVue tutorials are leveling up my UI skills. 👩‍💻' },
                 {
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar7.png',
+                    image: '/demo/images/landing/avatars/avatar-07.svg',
                     name: 'Darrell Steward',
                     capName: 'DS',
                     active: false,
@@ -320,25 +320,25 @@ export default {
             ],
             chatMessages: [
                 { id: 1, attachment: '', name: '', image: '', capName: 'OS', type: 'received', message: "Awesome! What's the standout feature?" },
-                { id: 2, attachment: '', name: '', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png', capName: 'A', type: 'received', message: 'OpenVue rocks! Simplifies UI dev with versatile components.' },
-                { id: 3, attachment: '', name: '', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg', capName: 'A', type: 'received', message: 'Intriguing! Tell us more about its impact.' },
+                { id: 2, attachment: '', name: '', image: '/demo/images/landing/avatars/avatar-08.svg', capName: 'A', type: 'received', message: 'OpenVue rocks! Simplifies UI dev with versatile components.' },
+                { id: 3, attachment: '', name: '', image: '/demo/images/landing/avatars/avatar-11.svg', capName: 'A', type: 'received', message: 'Intriguing! Tell us more about its impact.' },
                 {
                     id: 4,
-                    attachment: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/message-image.png',
+                    attachment: '/demo/images/landing/chat/message.svg',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png',
+                    image: '/demo/images/landing/avatars/avatar-04.svg',
                     capName: 'A',
                     type: 'received',
                     message: "It's design-neutral and compatible with Tailwind. Features accessible, high-grade components!"
                 },
-                { id: 5, attachment: '', name: '', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png', capName: 'A', type: 'sent', message: 'Customizable themes, responsive design – UI excellence!' },
-                { id: 6, attachment: '', name: '', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png', capName: 'A', type: 'received', message: 'Love it! Fast-tracking our development is key.' },
-                { id: 7, attachment: '', name: '', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar6.png', capName: 'A', type: 'received', message: 'Documentation rocks too – smooth integration for all.' },
+                { id: 5, attachment: '', name: '', image: '/demo/images/landing/avatars/avatar-05.svg', capName: 'A', type: 'sent', message: 'Customizable themes, responsive design – UI excellence!' },
+                { id: 6, attachment: '', name: '', image: '/demo/images/landing/avatars/avatar-08.svg', capName: 'A', type: 'received', message: 'Love it! Fast-tracking our development is key.' },
+                { id: 7, attachment: '', name: '', image: '/demo/images/landing/avatars/avatar-06.svg', capName: 'A', type: 'received', message: 'Documentation rocks too – smooth integration for all.' },
                 {
                     id: 8,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png',
+                    image: '/demo/images/landing/avatars/avatar-05.svg',
                     capName: 'B',
                     type: 'sent',
                     message: 'The flexibility and ease of use are truly impressive. Have you explored the new components?'
@@ -347,7 +347,7 @@ export default {
                     id: 9,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg',
+                    image: '/demo/images/landing/avatars/avatar-12.svg',
                     capName: 'C',
                     type: 'received',
                     message: 'Absolutely, the new calendar component has saved us a ton of development time!'
@@ -356,16 +356,16 @@ export default {
                     id: 10,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg',
+                    image: '/demo/images/landing/avatars/avatar-13.svg',
                     capName: 'D',
                     type: 'received',
                     message: "And the accessibility features are top-notch. It's great to see a library focusing on inclusivity."
                 },
                 {
                     id: 11,
-                    attachment: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/message-image.png',
+                    attachment: '/demo/images/landing/chat/message.svg',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png',
+                    image: '/demo/images/landing/avatars/avatar-05.svg',
                     capName: 'E',
                     type: 'sent',
                     message: "I couldn't agree more. Plus, the documentation is incredibly thorough, which makes onboarding new team members a breeze."
@@ -374,7 +374,7 @@ export default {
                     id: 12,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar6.png',
+                    image: '/demo/images/landing/avatars/avatar-06.svg',
                     capName: 'F',
                     type: 'received',
                     message: 'Do you have any tips for optimizing performance when using multiple complex components?'
@@ -383,7 +383,7 @@ export default {
                     id: 13,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg',
+                    image: '/demo/images/landing/avatars/avatar-11.svg',
                     capName: 'G',
                     type: 'received',
                     message: 'Yes! Lazy loading and code splitting can make a huge difference, especially in larger applications.'
@@ -401,24 +401,18 @@ export default {
                     id: 15,
                     attachment: '',
                     name: '',
-                    image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png',
+                    image: '/demo/images/landing/avatars/avatar-05.svg',
                     capName: 'H',
                     type: 'sent',
                     message: "That's great advice. It's amazing how much detail and thought has gone into making OpenVue such a powerful tool for developers."
                 }
             ],
-            chatMedia: [
-                'https://www.primefaces.org/cdn/primevue/images/landing/apps/chat-image1.png',
-                'https://www.primefaces.org/cdn/primevue/images/landing/apps/chat-image2.png',
-                'https://www.primefaces.org/cdn/primevue/images/landing/apps/chat-image3.png',
-                'https://www.primefaces.org/cdn/primevue/images/landing/apps/chat-image4.png',
-                'https://www.primefaces.org/cdn/primevue/images/landing/apps/chat-image5.png'
-            ],
+            chatMedia: ['/demo/images/landing/chat/chat-01.svg', '/demo/images/landing/chat/chat-02.svg', '/demo/images/landing/chat/chat-03.svg', '/demo/images/landing/chat/chat-04.svg', '/demo/images/landing/chat/chat-05.svg'],
             members: [
-                { name: 'Robin Jonas', capName: 'RJ', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png' },
-                { name: 'Cameron Williamson', capName: 'CW', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg' },
-                { name: 'Eleanor Pena', capName: 'EP', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png' },
-                { name: 'Arlene McCoy', capName: 'AM', image: 'https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png' },
+                { name: 'Robin Jonas', capName: 'RJ', image: '/demo/images/landing/avatars/avatar-04.svg' },
+                { name: 'Cameron Williamson', capName: 'CW', image: '/demo/images/landing/avatars/avatar-11.svg' },
+                { name: 'Eleanor Pena', capName: 'EP', image: '/demo/images/landing/avatars/avatar-05.svg' },
+                { name: 'Arlene McCoy', capName: 'AM', image: '/demo/images/landing/avatars/avatar-08.svg' },
                 { name: 'Dianne Russell', capName: 'DR', image: '' }
             ]
         };

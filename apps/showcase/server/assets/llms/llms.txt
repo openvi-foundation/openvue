@@ -15,7 +15,6 @@
 - [Install OpenVue with Nuxt](https://primevue.org/nuxt): Setting up OpenVue in a Nuxt project.
 - [Install OpenVue with Vite](https://primevue.org/vite): Setting up OpenVue in a Vite project.
 - [Tailwind CSS](https://primevue.org/tailwind): Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.
-- [UI Kit - OpenVue](https://primevue.org/uikit): Design files for OpenVue Components.
 - [Contribution Guide](https://primevue.org/contribution): Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
 - [Setup](https://primevue.org/setup): Installation guides for popular development environments.
 - [LLMs.txt](https://primevue.org/llms): LLM-optimized documentation endpoints for OpenVue components.
@@ -29,6 +28,7 @@
 ## Components
 
 - [mcp](https://primevue.org/mcp): 
+- [migrate](https://primevue.org/migrate): 
 - [Vue Accordion Component](https://primevue.org/accordion): Accordion groups a collection of contents in panels.
 - [Vue AnimateOnScroll Directive](https://primevue.org/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.
 - [Vue AutoComplete Component](https://primevue.org/autocomplete): AutoComplete is an input component that provides real-time suggestions when being typed.

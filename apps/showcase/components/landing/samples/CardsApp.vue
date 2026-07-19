@@ -7,7 +7,7 @@
                 <div class="border border-surface rounded-3xl p-6 flex flex-col gap-6">
                     <div class="flex items-center gap-3">
                         <OverlayBadge severity="danger" class="w-fit">
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png" size="large" class="rounded-lg overflow-hidden flex" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-01.svg" size="large" class="rounded-lg overflow-hidden flex" />
                         </OverlayBadge>
                         <div>
                             <div class="font-medium text-color leading-6">Jacob Jones</div>
@@ -22,11 +22,11 @@
                     <div class="flex items-center justify-between gap-2">
                         <div class="text-sm leading-5 text-color font-medium">Mutual Friends</div>
                         <AvatarGroup>
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar1.png" size="small" class="rounded-lg overflow-hidden" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg" size="small" class="rounded-lg overflow-hidden" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg" size="small" class="rounded-lg overflow-hidden" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg" size="small" class="rounded-lg overflow-hidden" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png" size="small" class="rounded-lg overflow-hidden" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-03.svg" size="small" class="rounded-lg overflow-hidden" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-09.svg" size="small" class="rounded-lg overflow-hidden" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-11.svg" size="small" class="rounded-lg overflow-hidden" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-13.svg" size="small" class="rounded-lg overflow-hidden" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-05.svg" size="small" class="rounded-lg overflow-hidden" />
                             <Avatar label="+99" size="small" class="rounded-lg overflow-hidden text-xs" />
                         </AvatarGroup>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="flex flex-col gap-4">
                         <div class="p-2 rounded-2xl flex items-center gap-3 bg-emphasis">
                             <OverlayBadge severity="danger" class="w-fit">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png" class="rounded-lg overflow-hidden w-10 h-10 block" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-01.svg" class="rounded-lg overflow-hidden w-10 h-10 block" />
                             </OverlayBadge>
                             <div class="flex-1">
                                 <div class="text-color text-sm font-medium leading-5">Jacob Jones</div>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="p-2 rounded-2xl flex items-center gap-3 bg-emphasis">
                             <OverlayBadge severity="danger" class="w-fit">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg" class="rounded-lg overflow-hidden w-10 h-10 flex" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-09.svg" class="rounded-lg overflow-hidden w-10 h-10 flex" />
                             </OverlayBadge>
                             <div class="flex-1">
                                 <div class="text-color text-sm font-medium leading-5">Courtney Henry</div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="border border-surface rounded-3xl p-6">
                     <div class="flex items-center gap-3 p-3 border border-surface rounded-xl shadow-[0px_1px_2px_0px_rgba(18,18,23,0.05)]">
-                        <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png" class="rounded-lg overflow-hidden w-14 h-14" />
+                        <Avatar image="/demo/images/landing/avatars/avatar-01.svg" class="rounded-lg overflow-hidden w-14 h-14" />
                         <div class="flex-1">
                             <div class="text-color font-medium leading-7">Jacob Jones</div>
                             <div class="text-muted-color text-sm mt-1">hi@jacobjones.co</div>
@@ -140,11 +140,11 @@
                     <div class="p-1 mt-4">
                         <button class="p-4 rounded-3xl w-full bg-emphasis transition-all text-color hover:text-color-emphasis flex items-center gap-2 justify-between cursor-pointer">
                             <div class="flex items-center [&>*]:-mr-2">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg" size="small" shape="circle" />
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar10.jpg" size="small" shape="circle" />
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg" size="small" shape="circle" />
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg" size="small" shape="circle" />
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png" size="small" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-11.svg" size="small" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-10.svg" size="small" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-12.svg" size="small" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-09.svg" size="small" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-05.svg" size="small" shape="circle" />
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="font-medium leading-6">12 Applicants</div>
@@ -253,17 +253,17 @@
                 <div class="border border-surface rounded-3xl p-6">
                     <div class="flex items-start justify-between gap-1">
                         <div class="flex items-center gap-x-2 gap-y-1 flex-wrap flex-1">
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar1.png" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar2.png" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar9.jpg" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar11.jpg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-03.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-04.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-09.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-11.svg" size="small" shape="circle" />
                             <div class="w-full"></div>
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar5.png" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar7.png" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar10.jpg" size="small" shape="circle" />
-                            <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-05.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-13.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-07.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-08.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-10.svg" size="small" shape="circle" />
+                            <Avatar image="/demo/images/landing/avatars/avatar-12.svg" size="small" shape="circle" />
                         </div>
                         <Button icon="pi pi-arrow-up-right" rounded text />
                     </div>
@@ -286,10 +286,10 @@
                         <div class="font-medium leading-6 text-muted-color">Members</div>
                         <div class="mt-4 flex flex-col gap-4">
                             <div class="flex items-center gap-2 justify-between">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar8.png" class="w-9 h-9" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-08.svg" class="w-9 h-9" shape="circle" />
                                 <div class="flex-1">
                                     <div class="text-sm font-medium text-color leading-5">Brook Simmons</div>
-                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">brook.sim42@primevue.org</div>
+                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">brook.sim42@openvue.dev</div>
                                 </div>
                                 <Select
                                     v-model="memberSelectedTypes[0]"
@@ -307,10 +307,10 @@
                                 />
                             </div>
                             <div class="flex items-center gap-2 justify-between">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar13.jpg" class="w-9 h-9" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-13.svg" class="w-9 h-9" shape="circle" />
                                 <div class="flex-1">
                                     <div class="text-sm font-medium text-color leading-5">Dianne Russell</div>
-                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">di.russ23@primevue.org</div>
+                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">di.russ23@openvue.dev</div>
                                 </div>
                                 <Select
                                     v-model="memberSelectedTypes[1]"
@@ -328,10 +328,10 @@
                                 />
                             </div>
                             <div class="flex items-center gap-2 justify-between">
-                                <Avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/avatar12.jpg" class="w-9 h-9" shape="circle" />
+                                <Avatar image="/demo/images/landing/avatars/avatar-12.svg" class="w-9 h-9" shape="circle" />
                                 <div class="flex-1">
                                     <div class="text-sm font-medium text-color leading-5">Jacob Jones</div>
-                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">jac.jon87@primevue.org</div>
+                                    <div class="text-sm text-muted-color leading-5 line-clamp-4">jac.jon87@openvue.dev</div>
                                 </div>
                                 <Select
                                     v-model="memberSelectedTypes[2]"

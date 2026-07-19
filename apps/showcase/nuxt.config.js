@@ -83,7 +83,6 @@ export default defineNuxtConfig({
     routeRules: {
         '/accessibility': { redirect: { to: '/guides/accessibility', statusCode: 301 } },
         '/installation': { redirect: { to: '/vite', statusCode: 301 } },
-        '/uikit/guide': { redirect: { to: '/uikit/guide/v3', statusCode: 301 } },
         ...markdownRedirects
     },
     primevue: {
@@ -105,11 +104,14 @@ export default defineNuxtConfig({
                 { name: 'twitter:description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
                 { property: 'og:type', content: 'website' },
                 { property: 'og:title', content: 'OpenVue | Vue UI Component Library' },
-                { property: 'og:url', content: 'https://github.com/openvi-foundation/openvue' },
+                { property: 'og:url', content: 'https://openvue.dev/' },
                 { property: 'og:description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
                 { property: 'og:ttl', content: '604800' }
             ],
-            link: [{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }],
+            link: [
+                { rel: 'icon', type: 'image/svg+xml', href: baseUrl + 'favicon.svg' },
+                { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }
+            ],
             script: [
                 {
                     src: baseUrl + 'scripts/prism.js',
