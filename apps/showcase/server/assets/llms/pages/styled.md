@@ -20,7 +20,7 @@ OpenVue uses the system as the default darkModeSelector in theme configuration. 
 
 ## Presets
 
-Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is PrimeTek's own vision, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
+Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
 
 ## Reserved Keys
 
@@ -50,7 +50,7 @@ The theme property is used to customize the initial theme.
 
 ```vue
 import OpenVue from 'openvue/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 const app = createApp(App);
 
@@ -77,7 +77,7 @@ In case OpenVue components have visual issues in your application, a Reset CSS m
 
 ```vue
 /* Order */
-@layer reset, primevue;
+@layer reset, openvue;
 
 /* Reset CSS */
 @layer reset {
@@ -90,7 +90,7 @@ In case OpenVue components have visual issues in your application, a Reset CSS m
 
 ## Specificity
 
-The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the primevue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.
+The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the openvue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.
 
 ## Color Scheme
 
@@ -135,8 +135,8 @@ The definePreset utility is used to customize an existing preset during the Open
 
 ```vue
 import OpenVue from 'openvue/config';
-import { definePreset } from '@primeuix/themes';
-import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@openvue/themes';
+import Aura from '@openvue/themes/aura';
 
 const MyPreset = definePreset(Aura, {
     //Your customizations, see the following sections for examples
@@ -365,7 +365,7 @@ const MyPreset = definePreset(Aura, {
 The $dt function returns the information about a token like the full path and value. This would be useful if you need to access tokens programmatically.
 
 ```vue
-import { $dt } from '@primeuix/themes';
+import { $dt } from '@openvue/themes';
 
 const duration = $dt('transition.duration');
 /*
@@ -410,7 +410,7 @@ const primaryColor = $dt('primary.color');
 Returns shades and tints of a given color from 50 to 950 as an object.
 
 ```vue
-import { palette } from '@primeuix/themes';
+import { palette } from '@openvue/themes';
 
 // custom color
 const values1 = palette('#10b981');
@@ -424,7 +424,7 @@ const primaryColor = palette('{blue}');
 Merges the provided tokens to the current preset, an example would be changing the primary color palette dynamically.
 
 ```vue
-import { updatePreset } from '@primeuix/themes';
+import { updatePreset } from '@openvue/themes';
 
 const changePrimaryColor() {
     updatePreset({
@@ -452,7 +452,7 @@ const changePrimaryColor() {
 Updates the primary colors, this is a shorthand to do the same update using updatePreset .
 
 ```vue
-import { updatePrimaryPalette } from '@primeuix/themes';
+import { updatePrimaryPalette } from '@openvue/themes';
 
 const changePrimaryColor() {
     updatePrimaryPalette({
@@ -476,7 +476,7 @@ const changePrimaryColor() {
 Updates the surface colors, this is a shorthand to do the same update using updatePreset .
 
 ```vue
-import { updateSurfacePalette } from '@primeuix/themes';
+import { updateSurfacePalette } from '@openvue/themes';
 
 const changeSurfaces() {
     //changes surfaces both in light and dark mode
@@ -515,7 +515,7 @@ const changeDarkSurfaces() {
 Replaces the current presets entirely, common use case is changing the preset dynamically at runtime.
 
 ```vue
-import { usePreset } from '@primeuix/themes';
+import { usePreset } from '@openvue/themes';
 
 const onButtonClick() {
     usePreset(MyPreset);

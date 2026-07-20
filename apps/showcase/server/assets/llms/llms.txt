@@ -11,6 +11,7 @@
 - [Custom Icons](https://primevue.org/customicons): OpenVue components can be used with any icon library using the templating features.
 - [Forms](https://primevue.org/forms): The OpenVue Forms library provides comprehensive form state management with built-in validation support.
 - [Auto Import](https://primevue.org/autoimport): On-demand OpenVue components with auto imports and tree-shaking.
+- [Install OpenVue with CDN](https://primevue.org/cdn): Setting up OpenVue in a project using CDN.
 - [Install OpenVue with Laravel](https://primevue.org/laravel): Setting up OpenVue in a Laravel project.
 - [Install OpenVue with Nuxt](https://primevue.org/nuxt): Setting up OpenVue in a Nuxt project.
 - [Install OpenVue with Vite](https://primevue.org/vite): Setting up OpenVue in a Vite project.

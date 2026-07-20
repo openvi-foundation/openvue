@@ -1,6 +1,6 @@
 {
     "name": "openvue",
-    "version": "0.0.1-alpha.3",
+    "version": "0.0.1-alpha.4",
     "author": "OpenVue Contributors",
     "description": "PrimeVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 370+ ready to use UI blocks to build spectacular applications in no time.",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -35,8 +35,8 @@
     "main": "./src/index.js",
     "module": "./src/index.js",
     "types": "./src/index.d.ts",
-    "unpkg": "umd/primevue.min.js",
-    "jsdelivr": "umd/primevue.min.js",
+    "unpkg": "umd/openvue.min.js",
+    "jsdelivr": "umd/openvue.min.js",
     "web-types": "./web-types.json",
     "vetur": {
         "tags": "./vetur-tags.json",
