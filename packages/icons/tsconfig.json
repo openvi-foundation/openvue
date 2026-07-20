@@ -16,8 +16,8 @@
         "incremental": true,
         "baseUrl": ".",
         "paths": {
-            "@primevue/icons/*": ["./src/*"],
-            "@primevue/core/*": ["../../packages/core/src/*"]
+            "@openvue/icons/*": ["./src/*"],
+            "@openvue/core/*": ["../../packages/core/src/*"]
         }
     },
     "include": ["**/*.ts", "src/*"],

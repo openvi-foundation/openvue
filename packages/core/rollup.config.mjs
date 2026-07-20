@@ -25,7 +25,7 @@ const EXTERNALS = [...GLOBAL_EXTERNALS, ...INLINE_EXTERNALS];
 // alias
 const ALIAS_ENTRIES = [
     {
-        find: /^primevue\/core\/(.*)$/,
+        find: /^openvue\/core\/(.*)$/,
         replacement: path.resolve(__dirname, './src/$1'),
         customResolver(source, importer) {
             const basedir = path.dirname(importer);

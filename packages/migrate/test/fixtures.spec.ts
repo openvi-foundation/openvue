@@ -26,13 +26,17 @@ function copyFixture(name: string): string {
     return dir;
 }
 
+// git checkout may normalize fixture line endings differently per platform,
+// so compare with LF-normalized content
+const normalizeEol = (text: string) => text.replaceAll('\r\n', '\n');
+
 function assertMatchesExpected(migratedDir: string, name: string) {
     const expectedDir = join(FIXTURES, name, 'after');
 
     for (const expectedFile of walk(expectedDir)) {
         const relativePath = relative(expectedDir, expectedFile);
-        const expected = readFileSync(expectedFile, 'utf8').replaceAll('__OPENVUE_VERSION__', OPENVUE_VERSION);
-        const actual = readFileSync(join(migratedDir, relativePath), 'utf8');
+        const expected = normalizeEol(readFileSync(expectedFile, 'utf8')).replaceAll('__OPENVUE_VERSION__', OPENVUE_VERSION);
+        const actual = normalizeEol(readFileSync(join(migratedDir, relativePath), 'utf8'));
 
         expect(actual, relativePath).toBe(expected);
     }

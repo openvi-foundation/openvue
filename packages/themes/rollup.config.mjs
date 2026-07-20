@@ -22,7 +22,7 @@ const EXTERNALS = [];
 // alias
 const ALIAS_ENTRIES = [
     {
-        find: /^@primevue\/themes\/(.*)$/,
+        find: /^@openvue\/themes\/(.*)$/,
         replacement: path.resolve(__dirname, './src/presets/$1/index.js')
     }
 ];
@@ -175,7 +175,8 @@ function addThemes() {
         (file) => file === 'index.js',
         (file, filePath, folderPath) => {
             const searchFolder = '/' + process.env.INPUT_DIR;
-            const folderName = folderPath.substring(folderPath.indexOf(searchFolder) + searchFolder.length);
+            const normalizedPath = folderPath.split(path.sep).join('/');
+            const folderName = normalizedPath.substring(normalizedPath.indexOf(searchFolder) + searchFolder.length);
             const input = process.env.INPUT_DIR + folderName + '/' + file;
             const output = process.env.OUTPUT_DIR + folderName.replace('presets/', '') + '/index';
 

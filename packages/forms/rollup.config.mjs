@@ -19,13 +19,13 @@ const GLOBALS = {
 
 // externals
 const GLOBAL_EXTERNALS = ['vue'];
-const INLINE_EXTERNALS = [/@primevue\/core\/.*/, /@primeuix\/.*/];
+const INLINE_EXTERNALS = [/@openvue\/core\/.*/, /@primeuix\/.*/];
 const EXTERNALS = [...GLOBAL_EXTERNALS, ...INLINE_EXTERNALS];
 
 // alias
 const ALIAS_ENTRIES = [
     {
-        find: /^@primevue\/forms\/(.*)$/,
+        find: /^@openvue\/forms\/(.*)$/,
         replacement: path.resolve(__dirname, './src/$1'),
         customResolver(source, importer) {
             const basedir = path.dirname(importer);
@@ -43,7 +43,7 @@ const ALIAS_ENTRIES = [
             return targetFile ? path.join(folderPath, targetFile) : null;
         }
     },
-    { find: '@primevue/forms/useform', replacement: path.resolve(__dirname, './src/useform/index.js') }
+    { find: '@openvue/forms/useform', replacement: path.resolve(__dirname, './src/useform/index.js') }
 ];
 
 // plugins

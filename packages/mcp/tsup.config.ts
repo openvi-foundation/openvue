@@ -4,7 +4,7 @@ export default defineConfig({
     entry: ['./src/index.ts'],
     format: ['esm'],
     dts: true,
-    external: [/^@primeuix\/(.*)$/, /^@primevue\/(.*)$/],
+    external: [/^@primeuix\/(.*)$/, /^@openvue\/(.*)$/],
     splitting: false,
     clean: true,
     shims: true,

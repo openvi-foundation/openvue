@@ -19,13 +19,13 @@ const GLOBALS = {
 
 // externals
 const GLOBAL_EXTERNALS = ['vue'];
-const INLINE_EXTERNALS = [/@primevue\/core\/.*/];
+const INLINE_EXTERNALS = [/@openvue\/core\/.*/];
 const EXTERNALS = [...GLOBAL_EXTERNALS, ...INLINE_EXTERNALS];
 
 // alias
 const ALIAS_ENTRIES = [
     {
-        find: /^@primevue\/icons\/(.*)$/,
+        find: /^@openvue\/icons\/(.*)$/,
         replacement: path.resolve(__dirname, './src/$1'),
         customResolver(source, importer) {
             const basedir = path.dirname(importer);
@@ -43,8 +43,8 @@ const ALIAS_ENTRIES = [
             return targetFile ? path.join(folderPath, targetFile) : null;
         }
     },
-    { find: '@primevue/icons/baseicon/style', replacement: path.resolve(__dirname, './src/baseicon/style/BaseIconStyle.js') },
-    { find: '@primevue/icons/baseicon', replacement: path.resolve(__dirname, './src/baseicon/BaseIcon.vue') }
+    { find: '@openvue/icons/baseicon/style', replacement: path.resolve(__dirname, './src/baseicon/style/BaseIconStyle.js') },
+    { find: '@openvue/icons/baseicon', replacement: path.resolve(__dirname, './src/baseicon/BaseIcon.vue') }
 ];
 
 // plugins

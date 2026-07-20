@@ -19,13 +19,13 @@ const GLOBALS = {
 
 // externals
 const GLOBAL_EXTERNALS = ['vue', 'chart.js/auto', 'quill'];
-const INLINE_EXTERNALS = [/@primevue\/core\/.*/, /@primevue\/icons\/.*/, '@primeuix/styled', /@primeuix\/utils\/.*/];
+const INLINE_EXTERNALS = [/@openvue\/core\/.*/, /@openvue\/icons\/.*/, '@primeuix/styled', /@primeuix\/utils\/.*/];
 const EXTERNALS = [...GLOBAL_EXTERNALS, ...INLINE_EXTERNALS];
 
 // alias
 const ALIAS_ENTRIES = [
     {
-        find: /^primevue\/(.*)$/,
+        find: /^openvue\/(.*)$/,
         replacement: path.resolve(__dirname, './src/$1'),
         customResolver(source, importer) {
             const basedir = path.dirname(importer);
@@ -44,23 +44,23 @@ const ALIAS_ENTRIES = [
         }
     },
     // @todo - Remove
-    { find: '@primevue/core/api', replacement: path.resolve(__dirname, '../core/src/api/Api.js') },
-    { find: '@primevue/core/base/style', replacement: path.resolve(__dirname, '../core/src/base/style/BaseStyle.js') },
-    { find: '@primevue/core/base', replacement: path.resolve(__dirname, '../core/src/base/Base.js') },
-    { find: '@primevue/core/basecomponent/style', replacement: path.resolve(__dirname, '../core/src/basecomponent/style/BaseComponentStyle.js') },
-    { find: '@primevue/core/basecomponent', replacement: path.resolve(__dirname, '../core/src/basecomponent/BaseComponent.vue') },
-    { find: '@primevue/core/basedirective', replacement: path.resolve(__dirname, '../core/src/basedirective/BaseDirective.js') },
-    { find: '@primevue/core/baseeditableholder', replacement: path.resolve(__dirname, '../core/src/baseeditableholder/BaseEditableHolder.vue') },
-    { find: '@primevue/core/baseinput', replacement: path.resolve(__dirname, '../core/src/baseinput/BaseInput.vue') },
-    { find: '@primevue/core/config', replacement: path.resolve(__dirname, '../core/src/config/PrimeVue.js') },
-    { find: '@primevue/core/service', replacement: path.resolve(__dirname, '../core/src/service/PrimeVueService.js') },
-    { find: '@primevue/core/useattrselector', replacement: path.resolve(__dirname, '../core/src/useattrselector/UseAttrSelector.js') },
-    { find: '@primevue/core/useid', replacement: path.resolve(__dirname, '../core/src/useid/UseId.js') },
-    { find: '@primevue/core/usestyle', replacement: path.resolve(__dirname, '../core/src/usestyle/UseStyle.js') },
-    { find: '@primevue/core/utils', replacement: path.resolve(__dirname, '../core/src/utils/Utils.js') },
-    { find: '@primevue/core', replacement: path.resolve(__dirname, '../core/src/index.js') },
-    { find: '@primevue/icons/baseicon/style', replacement: path.resolve(__dirname, '../icons/src/baseicon/style/BaseIconStyle.js') },
-    { find: '@primevue/icons/baseicon', replacement: path.resolve(__dirname, '../icons/src/baseicon/BaseIcon.vue') }
+    { find: '@openvue/core/api', replacement: path.resolve(__dirname, '../core/src/api/Api.js') },
+    { find: '@openvue/core/base/style', replacement: path.resolve(__dirname, '../core/src/base/style/BaseStyle.js') },
+    { find: '@openvue/core/base', replacement: path.resolve(__dirname, '../core/src/base/Base.js') },
+    { find: '@openvue/core/basecomponent/style', replacement: path.resolve(__dirname, '../core/src/basecomponent/style/BaseComponentStyle.js') },
+    { find: '@openvue/core/basecomponent', replacement: path.resolve(__dirname, '../core/src/basecomponent/BaseComponent.vue') },
+    { find: '@openvue/core/basedirective', replacement: path.resolve(__dirname, '../core/src/basedirective/BaseDirective.js') },
+    { find: '@openvue/core/baseeditableholder', replacement: path.resolve(__dirname, '../core/src/baseeditableholder/BaseEditableHolder.vue') },
+    { find: '@openvue/core/baseinput', replacement: path.resolve(__dirname, '../core/src/baseinput/BaseInput.vue') },
+    { find: '@openvue/core/config', replacement: path.resolve(__dirname, '../core/src/config/PrimeVue.js') },
+    { find: '@openvue/core/service', replacement: path.resolve(__dirname, '../core/src/service/PrimeVueService.js') },
+    { find: '@openvue/core/useattrselector', replacement: path.resolve(__dirname, '../core/src/useattrselector/UseAttrSelector.js') },
+    { find: '@openvue/core/useid', replacement: path.resolve(__dirname, '../core/src/useid/UseId.js') },
+    { find: '@openvue/core/usestyle', replacement: path.resolve(__dirname, '../core/src/usestyle/UseStyle.js') },
+    { find: '@openvue/core/utils', replacement: path.resolve(__dirname, '../core/src/utils/Utils.js') },
+    { find: '@openvue/core', replacement: path.resolve(__dirname, '../core/src/index.js') },
+    { find: '@openvue/icons/baseicon/style', replacement: path.resolve(__dirname, '../icons/src/baseicon/style/BaseIconStyle.js') },
+    { find: '@openvue/icons/baseicon', replacement: path.resolve(__dirname, '../icons/src/baseicon/BaseIcon.vue') }
 ];
 
 // plugins

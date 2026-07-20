@@ -1,6 +1,6 @@
 {
     "name": "@openvue/monorepo",
-    "version": "0.0.1-alpha.2",
+    "version": "0.0.1-alpha.3",
     "author": "OpenVue Contributors",
     "homepage": "https://github.com/openvi-foundation/openvue",
     "repository": {
@@ -16,9 +16,10 @@
         "clean": "npx rimraf --glob **/node_modules **/dist **/.nuxt ./pnpm-lock.yaml",
         "init": "pnpm install",
         "link": "pnpm --filter './packages/*' dev:link",
-        "release": "pnpm run build && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary",
-        "release:beta": "pnpm run build && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag beta",
-        "release:rc": "pnpm run build && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag rc",
+        "release": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary",
+        "release:beta": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag beta",
+        "release:rc": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag rc",
+        "verify:dist": "node scripts/verify-dist.mjs",
         "build": "NODE_ENV=production pnpm run build:check && pnpm run build:packages",
         "build:check": "pnpm run format:check && pnpm run security:check",
         "build:packages": "pnpm run build:metadata && pnpm run build:resolver && pnpm run build:core && pnpm run build:lib && pnpm run build:module && pnpm run build:themes && pnpm run build:icons && pnpm run build:mcp && pnpm run build:forms && pnpm run build:migrate && pnpm run build:apps",
