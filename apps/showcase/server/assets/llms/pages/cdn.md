@@ -29,7 +29,7 @@ Create an app container element and setup the application using createApp .
 
 ## Example
 
-A complete example using an OpenVue DatePicker. You can also view this sample live at Stackblitz .
+A complete example using an OpenVue DatePicker.
 
 ```vue
 <!DOCTYPE html>
@@ -41,8 +41,8 @@ A complete example using an OpenVue DatePicker. You can also view this sample li
     </head>
     <body>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"><\/script>
-        <script src="https://unpkg.com/openvue/umd/primevue.min.js"><\/script>
-        <script src="https://unpkg.com/@primeuix/themes/umd/aura.js"><\/script>
+        <script src="https://unpkg.com/openvue/umd/openvue.min.js"><\/script>
+        <script src="https://unpkg.com/@openvue/themes/umd/aura.min.js"><\/script>
 
         <div id="app">
             <p-datepicker v-model="date"></p-datepicker>
@@ -63,13 +63,13 @@ A complete example using an OpenVue DatePicker. You can also view this sample li
                 },
             });
 
-            app.use(PrimeVue.Config, {
+            app.use(OpenVue.Config, {
                 theme: {
-                    preset: PrimeUIX.Themes.Aura
+                    preset: OpenVue.Themes.Aura
                 }
             });
 
-            app.component('p-datepicker', PrimeVue.DatePicker);
+            app.component('p-datepicker', OpenVue.DatePicker);
 
             app.mount('#app');
         <\/script>
@@ -82,7 +82,7 @@ A complete example using an OpenVue DatePicker. You can also view this sample li
 OpenVue plugin is required to be installed as an application plugin to set up the default configuration .
 
 ```vue
-app.use(PrimeVue.Config);
+app.use(OpenVue.Config);
 ```
 
 ## Script
@@ -91,20 +91,20 @@ You can use OpenVue and Vue.js from a CDN with a script tag. This approach does 
 
 ```vue
 https://unpkg.com/vue@3/dist/vue.global.js
-https://unpkg.com/openvue/umd/primevue.min.js
-https://unpkg.com/@primeuix/themes/umd/aura.js  // see theming for alternatives
+https://unpkg.com/openvue/umd/openvue.min.js
+https://unpkg.com/@openvue/themes/umd/aura.min.js
 ```
 
 ## Theming
 
-Include the theme preset via a script element after adding OpenVue, valid options are Aura, Lara, Nora and Material.
+Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.
 
 ```vue
-<!-- <script src="https://unpkg.com/@primeuix/themes/umd/{preset}.js"><\/script> -->
+<!-- <script src="https://unpkg.com/@openvue/themes/umd/{preset}.min.js"><\/script> -->
 
-<script src="https://unpkg.com/@primeuix/themes/umd/aura.js"><\/script>
-<script src="https://unpkg.com/@primeuix/themes/umd/lara.js"><\/script>
-<script src="https://unpkg.com/@primeuix/themes/umd/nora.js"><\/script>
-<script src="https://unpkg.com/@primeuix/themes/umd/material.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/aura.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/lara.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/nora.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/material.min.js"><\/script>
 ```
 

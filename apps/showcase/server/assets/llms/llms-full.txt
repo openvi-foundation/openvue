@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-07-19
+Generated: 2026-07-20
 
 ---
 
@@ -210,7 +210,7 @@ OpenVue uses the system as the default darkModeSelector in theme configuration. 
 
 ## Presets
 
-Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is PrimeTek's own vision, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
+Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
 
 ## Reserved Keys
 
@@ -240,7 +240,7 @@ The theme property is used to customize the initial theme.
 
 ```vue
 import OpenVue from 'openvue/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 const app = createApp(App);
 
@@ -267,7 +267,7 @@ In case OpenVue components have visual issues in your application, a Reset CSS m
 
 ```vue
 /* Order */
-@layer reset, primevue;
+@layer reset, openvue;
 
 /* Reset CSS */
 @layer reset {
@@ -280,7 +280,7 @@ In case OpenVue components have visual issues in your application, a Reset CSS m
 
 ## Specificity
 
-The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the primevue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.
+The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the openvue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.
 
 ## Color Scheme
 
@@ -325,8 +325,8 @@ The definePreset utility is used to customize an existing preset during the Open
 
 ```vue
 import OpenVue from 'openvue/config';
-import { definePreset } from '@primeuix/themes';
-import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@openvue/themes';
+import Aura from '@openvue/themes/aura';
 
 const MyPreset = definePreset(Aura, {
     //Your customizations, see the following sections for examples
@@ -555,7 +555,7 @@ const MyPreset = definePreset(Aura, {
 The $dt function returns the information about a token like the full path and value. This would be useful if you need to access tokens programmatically.
 
 ```vue
-import { $dt } from '@primeuix/themes';
+import { $dt } from '@openvue/themes';
 
 const duration = $dt('transition.duration');
 /*
@@ -600,7 +600,7 @@ const primaryColor = $dt('primary.color');
 Returns shades and tints of a given color from 50 to 950 as an object.
 
 ```vue
-import { palette } from '@primeuix/themes';
+import { palette } from '@openvue/themes';
 
 // custom color
 const values1 = palette('#10b981');
@@ -614,7 +614,7 @@ const primaryColor = palette('{blue}');
 Merges the provided tokens to the current preset, an example would be changing the primary color palette dynamically.
 
 ```vue
-import { updatePreset } from '@primeuix/themes';
+import { updatePreset } from '@openvue/themes';
 
 const changePrimaryColor() {
     updatePreset({
@@ -642,7 +642,7 @@ const changePrimaryColor() {
 Updates the primary colors, this is a shorthand to do the same update using updatePreset .
 
 ```vue
-import { updatePrimaryPalette } from '@primeuix/themes';
+import { updatePrimaryPalette } from '@openvue/themes';
 
 const changePrimaryColor() {
     updatePrimaryPalette({
@@ -666,7 +666,7 @@ const changePrimaryColor() {
 Updates the surface colors, this is a shorthand to do the same update using updatePreset .
 
 ```vue
-import { updateSurfacePalette } from '@primeuix/themes';
+import { updateSurfacePalette } from '@openvue/themes';
 
 const changeSurfaces() {
     //changes surfaces both in light and dark mode
@@ -705,7 +705,7 @@ const changeDarkSurfaces() {
 Replaces the current presets entirely, common use case is changing the preset dynamically at runtime.
 
 ```vue
-import { usePreset } from '@primeuix/themes';
+import { usePreset } from '@openvue/themes';
 
 const onButtonClick() {
     usePreset(MyPreset);
@@ -1337,6 +1337,118 @@ The unplugin-vue-components library can automatically import and register OpenVu
 
 ---
 
+# Install OpenVue with CDN
+
+Setting up OpenVue in a project using CDN.
+
+## CreateApp
+
+Create an app container element and setup the application using createApp .
+
+```vue
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"><\/script>
+
+    <div id="app">
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        const app = createApp({
+            setup() {
+
+            }
+        });
+
+        app.mount('#app');
+    <\/script>
+</body>
+```
+
+## Example
+
+A complete example using an OpenVue DatePicker.
+
+```vue
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OpenVue + CDN</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"><\/script>
+        <script src="https://unpkg.com/openvue/umd/openvue.min.js"><\/script>
+        <script src="https://unpkg.com/@openvue/themes/umd/aura.min.js"><\/script>
+
+        <div id="app">
+            <p-datepicker v-model="date"></p-datepicker>
+            <br /><br />
+            {{ date }}
+        </div>
+
+        <script>
+            const { createApp, ref } = Vue;
+
+            const app = createApp({
+                setup() {
+                const date = ref();
+
+                return {
+                    date
+                };
+                },
+            });
+
+            app.use(OpenVue.Config, {
+                theme: {
+                    preset: OpenVue.Themes.Aura
+                }
+            });
+
+            app.component('p-datepicker', OpenVue.DatePicker);
+
+            app.mount('#app');
+        <\/script>
+    </body>
+</html>
+```
+
+## Plugin
+
+OpenVue plugin is required to be installed as an application plugin to set up the default configuration .
+
+```vue
+app.use(OpenVue.Config);
+```
+
+## Script
+
+You can use OpenVue and Vue.js from a CDN with a script tag. This approach does not involve any build step, and is suitable for enhancing static HTML. This guide uses unpkg however other providers such as jsdeliver and cdnjs can also be used.
+
+```vue
+https://unpkg.com/vue@3/dist/vue.global.js
+https://unpkg.com/openvue/umd/openvue.min.js
+https://unpkg.com/@openvue/themes/umd/aura.min.js
+```
+
+## Theming
+
+Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.
+
+```vue
+<!-- <script src="https://unpkg.com/@openvue/themes/umd/{preset}.min.js"><\/script> -->
+
+<script src="https://unpkg.com/@openvue/themes/umd/aura.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/lara.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/nora.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/material.min.js"><\/script>
+```
+
+---
+
 # Install OpenVue with Laravel
 
 Setting up OpenVue in a Laravel project.
@@ -1358,11 +1470,11 @@ pnpm add openvue@alpha @primeuix/themes
 
 ## Examples
 
-We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including laravel-quickstart and inertia-quickstart .
+We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including laravel-quickstart and inertia-quickstart .
 
 ## Next Steps
 
-Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
+Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
 
 ## Plugin
 
@@ -1562,7 +1674,7 @@ pnpm add openvue@alpha @primeuix/themes
 
 ## Examples
 
-We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .
+We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .
 
 ## Next Steps
 

@@ -19,11 +19,11 @@ pnpm add openvue@alpha @primeuix/themes
 
 ## Examples
 
-We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including laravel-quickstart and inertia-quickstart .
+We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including laravel-quickstart and inertia-quickstart .
 
 ## Next Steps
 
-Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
+Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
 
 ## Plugin
 

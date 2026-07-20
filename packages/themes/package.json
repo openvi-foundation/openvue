@@ -1,6 +1,6 @@
 {
     "name": "@openvue/themes",
-    "version": "0.0.1-alpha.3",
+    "version": "0.0.1-alpha.4",
     "author": "OpenVue Contributors",
     "description": "",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -16,6 +16,8 @@
     "main": "./src/index.js",
     "module": "./src/index.js",
     "types": "./src/index.d.ts",
+    "unpkg": "umd/aura.min.js",
+    "jsdelivr": "umd/aura.min.js",
     "exports": {
         ".": "./src/index.js",
         "./aura": "./src/presets/aura/index.js",

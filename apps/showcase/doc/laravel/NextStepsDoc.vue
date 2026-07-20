@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library.</p>
+        <p>Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library.</p>
         <ul class="leading-relaxed">
             <li><NuxtLink to="/configuration" class="doc-link">Global configuration</NuxtLink></li>
             <li><NuxtLink to="/autoimport" class="doc-link">Auto imports with tree-shaking</NuxtLink></li>

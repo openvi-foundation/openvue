@@ -143,7 +143,7 @@ pkgJson.exports = exports;
 fs.writeFileSync(pkg, JSON.stringify(pkgJson, null, 4));
 
 // UMD
-fs.writeFileSync(INPUT_DIR + 'umd/primevue.js', modules.umd.join(''));
+fs.writeFileSync(INPUT_DIR + 'umd/openvue.js', modules.umd.join(''));
 
 // ESM
 fs.writeFileSync(INPUT_DIR + 'index.js', modules.esm.join(''));

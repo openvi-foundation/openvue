@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-07-19",
+  "generatedAt": "2026-07-20",
   "components": [
     {
       "name": "accordion",
@@ -38806,7 +38806,7 @@
         {
           "id": "presets",
           "label": "Presets",
-          "description": "Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is PrimeTek's own vision, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.",
+          "description": "Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.",
           "examples": null
         },
         {
@@ -38840,7 +38840,7 @@
           "label": "Theme",
           "description": "The theme property is used to customize the initial theme.",
           "examples": {
-            "basic": "import OpenVue from 'openvue/config';\nimport Aura from '@primeuix/themes/aura';\n\nconst app = createApp(App);\n\napp.use(OpenVue, {\n    // Default theme configuration\n    theme: {\n        preset: Aura,\n        options: {\n            prefix: 'p',\n            darkModeSelector: 'system',\n            cssLayer: false\n        }\n    }\n });"
+            "basic": "import OpenVue from 'openvue/config';\nimport Aura from '@openvue/themes/aura';\n\nconst app = createApp(App);\n\napp.use(OpenVue, {\n    // Default theme configuration\n    theme: {\n        preset: Aura,\n        options: {\n            prefix: 'p',\n            darkModeSelector: 'system',\n            cssLayer: false\n        }\n    }\n });"
           }
         },
         {
@@ -38854,13 +38854,13 @@
           "label": "Reset",
           "description": "In case OpenVue components have visual issues in your application, a Reset CSS may be the culprit. CSS layers would be an efficient solution that involves enabling the OpenVue layer, wrapping the Reset CSS in another layer and defining the layer order. This way, your Reset CSS does not get in the way of OpenVue components.",
           "examples": {
-            "basic": "/* Order */\n@layer reset, primevue;\n\n/* Reset CSS */\n@layer reset {\n    button,\n    input {\n        /* CSS to Reset */\n    }\n}"
+            "basic": "/* Order */\n@layer reset, openvue;\n\n/* Reset CSS */\n@layer reset {\n    button,\n    input {\n        /* CSS to Reset */\n    }\n}"
           }
         },
         {
           "id": "csslayer/specificity",
           "label": "Specificity",
-          "description": "The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the primevue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.",
+          "description": "The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the openvue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.",
           "examples": null
         },
         {
@@ -38882,7 +38882,7 @@
           "label": "Define Preset",
           "description": "The definePreset utility is used to customize an existing preset during the OpenVue setup. The first parameter is the preset to customize and the second is the design tokens to override.",
           "examples": {
-            "basic": "import OpenVue from 'openvue/config';\nimport { definePreset } from '@primeuix/themes';\nimport Aura from '@primeuix/themes/aura';\n\nconst MyPreset = definePreset(Aura, {\n    //Your customizations, see the following sections for examples\n});\n\napp.use(OpenVue, {\n    theme: {\n        preset: MyPreset\n    }\n });"
+            "basic": "import OpenVue from 'openvue/config';\nimport { definePreset } from '@openvue/themes';\nimport Aura from '@openvue/themes/aura';\n\nconst MyPreset = definePreset(Aura, {\n    //Your customizations, see the following sections for examples\n});\n\napp.use(OpenVue, {\n    theme: {\n        preset: MyPreset\n    }\n });"
           }
         },
         {
@@ -38944,7 +38944,7 @@
           "label": "D T",
           "description": "The $dt function returns the information about a token like the full path and value. This would be useful if you need to access tokens programmatically.",
           "examples": {
-            "basic": "import { $dt } from '@primeuix/themes';\n\nconst duration = $dt('transition.duration');\n/*\n    duration: {\n        name: '--transition-duration',\n        variable: 'var(--p-transition-duration)',\n        value: '0.2s'\n    }\n*/\n\nconst primaryColor = $dt('primary.color');\n/*\n    primaryColor: {\n        name: '--primary-color',\n        variable: 'var(--p-primary-color)',\n        value: {\n        light: {\n            value: '#10b981',\n            paths: {\n                name: 'semantic.primary.color',\n                binding: {\n                    name: 'primitive.emerald.500'\n                }\n            }\n        },\n        dark: {\n            value: '#34d399',\n            paths: {\n                name: 'semantic.primary.color',\n                binding: {\n                    name: 'primitive.emerald.400'\n                }\n            }\n        }\n    }\n}\n*/"
+            "basic": "import { $dt } from '@openvue/themes';\n\nconst duration = $dt('transition.duration');\n/*\n    duration: {\n        name: '--transition-duration',\n        variable: 'var(--p-transition-duration)',\n        value: '0.2s'\n    }\n*/\n\nconst primaryColor = $dt('primary.color');\n/*\n    primaryColor: {\n        name: '--primary-color',\n        variable: 'var(--p-primary-color)',\n        value: {\n        light: {\n            value: '#10b981',\n            paths: {\n                name: 'semantic.primary.color',\n                binding: {\n                    name: 'primitive.emerald.500'\n                }\n            }\n        },\n        dark: {\n            value: '#34d399',\n            paths: {\n                name: 'semantic.primary.color',\n                binding: {\n                    name: 'primitive.emerald.400'\n                }\n            }\n        }\n    }\n}\n*/"
           }
         },
         {
@@ -38952,7 +38952,7 @@
           "label": "Palette",
           "description": "Returns shades and tints of a given color from 50 to 950 as an object.",
           "examples": {
-            "basic": "import { palette } from '@primeuix/themes';\n\n// custom color\nconst values1 = palette('#10b981');\n\n// copy an existing token set\nconst primaryColor = palette('{blue}');"
+            "basic": "import { palette } from '@openvue/themes';\n\n// custom color\nconst values1 = palette('#10b981');\n\n// copy an existing token set\nconst primaryColor = palette('{blue}');"
           }
         },
         {
@@ -38960,7 +38960,7 @@
           "label": "Update Preset",
           "description": "Merges the provided tokens to the current preset, an example would be changing the primary color palette dynamically.",
           "examples": {
-            "basic": "import { updatePreset } from '@primeuix/themes';\n\nconst changePrimaryColor() {\n    updatePreset({\n        semantic: {\n            primary: {\n                50: '{indigo.50}',\n                100: '{indigo.100}',\n                200: '{indigo.200}',\n                300: '{indigo.300}',\n                400: '{indigo.400}',\n                500: '{indigo.500}',\n                600: '{indigo.600}',\n                700: '{indigo.700}',\n                800: '{indigo.800}',\n                900: '{indigo.900}',\n                950: '{indigo.950}'\n            }\n        }\n    })\n}"
+            "basic": "import { updatePreset } from '@openvue/themes';\n\nconst changePrimaryColor() {\n    updatePreset({\n        semantic: {\n            primary: {\n                50: '{indigo.50}',\n                100: '{indigo.100}',\n                200: '{indigo.200}',\n                300: '{indigo.300}',\n                400: '{indigo.400}',\n                500: '{indigo.500}',\n                600: '{indigo.600}',\n                700: '{indigo.700}',\n                800: '{indigo.800}',\n                900: '{indigo.900}',\n                950: '{indigo.950}'\n            }\n        }\n    })\n}"
           }
         },
         {
@@ -38968,7 +38968,7 @@
           "label": "Update Primary Palette",
           "description": "Updates the primary colors, this is a shorthand to do the same update using updatePreset .",
           "examples": {
-            "basic": "import { updatePrimaryPalette } from '@primeuix/themes';\n\nconst changePrimaryColor() {\n    updatePrimaryPalette({\n        50: '{indigo.50}',\n        100: '{indigo.100}',\n        200: '{indigo.200}',\n        300: '{indigo.300}',\n        400: '{indigo.400}',\n        500: '{indigo.500}',\n        600: '{indigo.600}',\n        700: '{indigo.700}',\n        800: '{indigo.800}',\n        900: '{indigo.900}',\n        950: '{indigo.950}'\n    });\n}"
+            "basic": "import { updatePrimaryPalette } from '@openvue/themes';\n\nconst changePrimaryColor() {\n    updatePrimaryPalette({\n        50: '{indigo.50}',\n        100: '{indigo.100}',\n        200: '{indigo.200}',\n        300: '{indigo.300}',\n        400: '{indigo.400}',\n        500: '{indigo.500}',\n        600: '{indigo.600}',\n        700: '{indigo.700}',\n        800: '{indigo.800}',\n        900: '{indigo.900}',\n        950: '{indigo.950}'\n    });\n}"
           }
         },
         {
@@ -38976,7 +38976,7 @@
           "label": "Update Surface Palette",
           "description": "Updates the surface colors, this is a shorthand to do the same update using updatePreset .",
           "examples": {
-            "basic": "import { updateSurfacePalette } from '@primeuix/themes';\n\nconst changeSurfaces() {\n    //changes surfaces both in light and dark mode\n    updateSurfacePalette({\n        50: '{zinc.50}',\n        // ...\n        950: '{zinc.950}'\n    });\n}\n\nconst changeLightSurfaces() {\n    //changes surfaces only in light\n    updateSurfacePalette({\n        light: {\n            50: '{zinc.50}',\n            // ...\n            950: '{zinc.950}'\n        }\n    });\n}\n\nconst changeDarkSurfaces() {\n    //changes surfaces only in dark mode\n    updateSurfacePalette({\n        dark: {\n            50: '{zinc.50}',\n            // ...\n            950: '{zinc.950}'\n        }\n    });\n}"
+            "basic": "import { updateSurfacePalette } from '@openvue/themes';\n\nconst changeSurfaces() {\n    //changes surfaces both in light and dark mode\n    updateSurfacePalette({\n        50: '{zinc.50}',\n        // ...\n        950: '{zinc.950}'\n    });\n}\n\nconst changeLightSurfaces() {\n    //changes surfaces only in light\n    updateSurfacePalette({\n        light: {\n            50: '{zinc.50}',\n            // ...\n            950: '{zinc.950}'\n        }\n    });\n}\n\nconst changeDarkSurfaces() {\n    //changes surfaces only in dark mode\n    updateSurfacePalette({\n        dark: {\n            50: '{zinc.50}',\n            // ...\n            950: '{zinc.950}'\n        }\n    });\n}"
           }
         },
         {
@@ -38984,7 +38984,7 @@
           "label": "Use Preset",
           "description": "Replaces the current presets entirely, common use case is changing the preset dynamically at runtime.",
           "examples": {
-            "basic": "import { usePreset } from '@primeuix/themes';\n\nconst onButtonClick() {\n    usePreset(MyPreset);\n}"
+            "basic": "import { usePreset } from '@openvue/themes';\n\nconst onButtonClick() {\n    usePreset(MyPreset);\n}"
           }
         }
       ]
@@ -39390,6 +39390,54 @@
       ]
     },
     {
+      "name": "cdn",
+      "path": "cdn",
+      "title": "Install OpenVue with CDN",
+      "description": "Setting up OpenVue in a project using CDN.",
+      "sections": [
+        {
+          "id": "createapp",
+          "label": "CreateApp",
+          "description": "Create an app container element and setup the application using createApp .",
+          "examples": {
+            "basic": "<body>\n    <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"><\\/script>\n\n    <div id=\"app\">\n    </div>\n\n    <script>\n        const { createApp, ref } = Vue;\n\n        const app = createApp({\n            setup() {\n\n            }\n        });\n\n        app.mount('#app');\n    <\\/script>\n</body>"
+          }
+        },
+        {
+          "id": "example",
+          "label": "Example",
+          "description": "A complete example using an OpenVue DatePicker.",
+          "examples": {
+            "basic": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <title>OpenVue + CDN</title>\n        <meta charset=\"UTF-8\" />\n        <meta name=\"viewport\" content=\"width=device-width\" />\n    </head>\n    <body>\n        <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"><\\/script>\n        <script src=\"https://unpkg.com/openvue/umd/openvue.min.js\"><\\/script>\n        <script src=\"https://unpkg.com/@openvue/themes/umd/aura.min.js\"><\\/script>\n\n        <div id=\"app\">\n            <p-datepicker v-model=\"date\"></p-datepicker>\n            <br /><br />\n            {{ date }}\n        </div>\n\n        <script>\n            const { createApp, ref } = Vue;\n\n            const app = createApp({\n                setup() {\n                const date = ref();\n\n                return {\n                    date\n                };\n                },\n            });\n\n            app.use(OpenVue.Config, {\n                theme: {\n                    preset: OpenVue.Themes.Aura\n                }\n            });\n\n            app.component('p-datepicker', OpenVue.DatePicker);\n\n            app.mount('#app');\n        <\\/script>\n    </body>\n</html>"
+          }
+        },
+        {
+          "id": "plugin",
+          "label": "Plugin",
+          "description": "OpenVue plugin is required to be installed as an application plugin to set up the default configuration .",
+          "examples": {
+            "basic": "app.use(OpenVue.Config);"
+          }
+        },
+        {
+          "id": "script",
+          "label": "Script",
+          "description": "You can use OpenVue and Vue.js from a CDN with a script tag. This approach does not involve any build step, and is suitable for enhancing static HTML. This guide uses unpkg however other providers such as jsdeliver and cdnjs can also be used.",
+          "examples": {
+            "basic": "https://unpkg.com/vue@3/dist/vue.global.js\nhttps://unpkg.com/openvue/umd/openvue.min.js\nhttps://unpkg.com/@openvue/themes/umd/aura.min.js"
+          }
+        },
+        {
+          "id": "theming",
+          "label": "Theming",
+          "description": "Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.",
+          "examples": {
+            "basic": "<!-- <script src=\"https://unpkg.com/@openvue/themes/umd/{preset}.min.js\"><\\/script> -->\n\n<script src=\"https://unpkg.com/@openvue/themes/umd/aura.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/lara.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/nora.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/material.min.js\"><\\/script>"
+          }
+        }
+      ]
+    },
+    {
       "name": "laravel",
       "path": "laravel",
       "title": "Install OpenVue with Laravel",
@@ -39406,13 +39454,13 @@
         {
           "id": "examples",
           "label": "Examples",
-          "description": "We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including laravel-quickstart and inertia-quickstart .",
+          "description": "We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including laravel-quickstart and inertia-quickstart .",
           "examples": null
         },
         {
           "id": "nextsteps",
           "label": "Next Steps",
-          "description": "Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
+          "description": "Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
           "examples": null
         },
         {
@@ -39574,7 +39622,7 @@
         {
           "id": "examples",
           "label": "Examples",
-          "description": "We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .",
+          "description": "We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .",
           "examples": null
         },
         {

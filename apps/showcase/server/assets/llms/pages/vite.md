@@ -19,7 +19,7 @@ pnpm add openvue@alpha @primeuix/themes
 
 ## Examples
 
-We've created various samples for the popular options in the Vue ecosystem. Visit the primevue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .
+We've created various samples for the popular options in the Vue ecosystem. Visit the openvue-examples repository for more samples including vite-quickstart and vite-ts-quickstart .
 
 ## Next Steps
 

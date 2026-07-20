@@ -719,7 +719,8 @@ function generateJsonOutput(components, apiDocs, guidePages = []) {
 
     const mcpOutputPath = path.join(MCP_DATA_DIR, 'components.json');
 
-    fs.writeFileSync(mcpOutputPath, JSON.stringify(output, null, 2), 'utf-8');
+    // 4-space indent + trailing newline to match prettier, which checks this file
+    fs.writeFileSync(mcpOutputPath, JSON.stringify(output, null, 4) + '\n', 'utf-8');
     console.log(`✓ Generated JSON output: ${mcpOutputPath}`);
 
     return output;
