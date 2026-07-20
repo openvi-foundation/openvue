@@ -47,6 +47,7 @@
         "@openvue/forms": "workspace:*",
         "@openvue/nuxt-module": "workspace:*",
         "@primeuix/themes": "catalog:",
+        "@vercel/analytics": "^2.0.1",
         "chart.js": "catalog:app",
         "openvue": "workspace:*",
         "primeicons": "catalog:",
