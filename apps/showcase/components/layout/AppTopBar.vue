@@ -3,14 +3,10 @@
         <div class="layout-topbar-inner">
             <div class="layout-topbar-logo-container">
                 <OpenVueNuxtLink to="/" class="layout-topbar-logo" aria-label="OpenVue logo">
-                    <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="0" y="28" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700" font-size="24" fill="var(--high-contrast-text-color)">Open<tspan fill="var(--logo-color)">Vue</tspan></text>
-                    </svg>
+                    <img :src="$appState.darkTheme ? '/open_vue_logo_light.png' : '/open_vue_logo_1.png'" alt="OpenVue" width="66" height="30" />
                 </OpenVueNuxtLink>
                 <OpenVueNuxtLink to="/" class="layout-topbar-icon" aria-label="OpenVue logo">
-                    <svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="17.5" y="27" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700" font-size="20" fill="var(--logo-color)">OV</text>
-                    </svg>
+                    <img :src="$appState.darkTheme ? '/open_vue_logo_light.png' : '/open_vue_logo_1.png'" alt="OpenVue" width="53" height="24" />
                 </OpenVueNuxtLink>
             </div>
 
