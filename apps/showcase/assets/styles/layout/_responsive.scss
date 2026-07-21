@@ -26,21 +26,13 @@
             margin-right: 0;
         }
 
-        .DocSearch-Button {
+        .topbar-items .search-item {
             width: 2rem;
-            height: 2rem;
-            overflow: hidden;
             padding: 0;
             justify-content: center;
-            align-items: center;
 
-            .DocSearch-Search-Icon {
-                width: 1rem;
-                height: 1rem;
-            }
-
-            .DocSearch-Button-Placeholder,
-            .DocSearch-Button-Keys {
+            .search-item-label,
+            .search-item-hint {
                 display: none;
             }
         }
@@ -122,10 +114,6 @@
 }
 
 @media (max-width: 768px) {
-    .DocSearch-Container {
-        position: fixed !important;
-    }
-
     .doc-ptviewerwrapper {
         flex-direction: column;
 

@@ -32,17 +32,17 @@
         "passthrough"
     ],
     "scripts": {
-        "build": "pnpm run build:prebuild && pnpm run build:llmdocs && nuxt build",
-        "dev": "nuxt dev",
+        "build": "pnpm run build:prebuild && pnpm run build:llmdocs && pnpm run build:searchindex && nuxt build",
+        "dev": "pnpm run build:searchindex && nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare",
+        "postinstall": "nuxt prepare && node ./scripts/build-search-index.mjs",
         "build:prebuild": "node ./scripts/prebuild.mjs",
         "build:apidoc": "node ./scripts/build-apidoc.cjs",
-        "build:llmdocs": "node ./scripts/build-llm-docs.mjs"
+        "build:llmdocs": "node ./scripts/build-llm-docs.mjs",
+        "build:searchindex": "node ./scripts/build-search-index.mjs"
     },
     "dependencies": {
-        "@docsearch/js": "catalog:app",
         "@openvue/core": "workspace:*",
         "@openvue/forms": "workspace:*",
         "@openvue/nuxt-module": "workspace:*",

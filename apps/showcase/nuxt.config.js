@@ -136,5 +136,5 @@ export default defineNuxtConfig({
             DEV_ENV: PROCESS_ENV.DEV_ENV
         }
     },
-    css: ['primeicons/primeicons.css', '@/assets/styles/flags.css', '@docsearch/css/dist/style.css', '@/assets/styles/tailwind/main.css', '@/assets/styles/layout/layout.scss']
+    css: ['primeicons/primeicons.css', '@/assets/styles/flags.css', '@/assets/styles/tailwind/main.css', '@/assets/styles/layout/layout.scss']
 });
