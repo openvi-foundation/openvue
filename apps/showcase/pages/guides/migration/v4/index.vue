@@ -1,7 +1,7 @@
 <template>
     <Head>
         <Title>Migration - OpenVue</Title>
-        <Meta name="description" content="Migration Guide to OpenVue v4." />
+        <Meta name="description" content="Migration Guide to OpenVue from Primevue v3" />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>Migration</h1>
-                        <p>Migration guide to OpenVue v4.</p>
+                        <p>Migration guide to OpenVue from Primevue v3.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>
