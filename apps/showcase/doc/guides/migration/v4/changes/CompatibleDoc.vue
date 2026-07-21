@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <h4>Renamed Components</h4>
-        <p>Old names are deprecated but still functional, migrate to new import paths instead e.g. <i>primevue/calendar</i> becomes <i>primevue/datepicker</i>.</p>
+        <p>Old names are deprecated but still functional, migrate to new import paths instead e.g. <i>primevue/calendar</i> becomes <i>openvue/datepicker</i>.</p>
         <ul class="flex flex-col gap-2 leading-normal">
             <li><i class="mark">Calendar</i> -> <i class="mark">DatePicker</i>.</li>
             <li><i class="mark">Dropdown</i> -> <i class="mark">Select</i>.</li>

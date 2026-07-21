@@ -1,0 +1,90 @@
+.layout-search-dialog {
+    width: 36rem;
+    max-width: calc(100vw - 2rem);
+    margin-top: 10vh;
+
+    .p-dialog-content {
+        padding: 0.75rem;
+    }
+
+    .layout-search-input {
+        width: 100%;
+
+        .p-inputtext {
+            width: 100%;
+        }
+    }
+
+    .layout-search-results {
+        margin-top: 0.75rem;
+        max-height: 24rem;
+        overflow-y: auto;
+
+        ul {
+            list-style-type: none;
+            margin: 0 0 0.5rem 0;
+            padding: 0;
+        }
+    }
+
+    .layout-search-group {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--text-secondary-color);
+        padding: 0.5rem 0.75rem 0.25rem;
+    }
+
+    .layout-search-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &.layout-search-item-active {
+            background-color: var(--hover-background);
+        }
+
+        .layout-search-item-name {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            font-weight: 500;
+
+            mark {
+                background: transparent;
+                color: var(--primary-color);
+                font-weight: 600;
+            }
+
+            .layout-search-item-badge {
+                margin-inline-start: 0.5rem;
+                font-size: 0.625rem;
+                padding: 0.125rem 0.375rem;
+            }
+
+            .pi-external-link {
+                margin-inline-start: 0.5rem;
+                font-size: 0.75rem;
+                color: var(--text-secondary-color);
+            }
+        }
+
+        .layout-search-item-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .layout-search-empty {
+        padding: 1.5rem 0.75rem;
+        text-align: center;
+        color: var(--text-secondary-color);
+    }
+}

@@ -29,6 +29,7 @@ coverage
 # Custom
 api-generator/typedoc.json
 apps/showcase/components.d.ts
+apps/showcase/assets/data/search-index.json
 
 .claude
 .report

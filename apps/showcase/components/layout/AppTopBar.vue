@@ -12,6 +12,13 @@
 
             <ul class="topbar-items">
                 <li>
+                    <button type="button" class="topbar-item search-item" aria-label="Search" @click="openSearch">
+                        <i class="pi pi-search"></i>
+                        <span class="search-item-label">Search</span>
+                        <span class="search-item-hint" aria-hidden="true">⌘K</span>
+                    </button>
+                </li>
+                <li>
                     <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="topbar-item">
                         <i class="pi pi-github"></i>
                     </a>
@@ -38,6 +45,7 @@
                 </li>
             </ul>
         </div>
+        <AppSearch />
     </div>
 </template>
 
@@ -66,6 +74,9 @@ export default {
     methods: {
         onMenuButtonClick(event) {
             this.$emit('menubutton-click', event);
+        },
+        openSearch() {
+            EventBus.emit('open-search');
         },
         toggleDarkMode() {
             EventBus.emit('dark-mode-toggle', { dark: !this.$appState.darkTheme });
