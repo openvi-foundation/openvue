@@ -60,7 +60,7 @@ const markdownRedirects = (() => {
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
     devtools: { enabled: false },
-    modules: ['@openvue/nuxt-module', '@nuxtjs/sitemap', '@vercel/analytics/nuxt'],
+    modules: ['@openvue/nuxt-module', '@nuxtjs/sitemap', '@vercel/analytics/nuxt', '@vercel/speed-insights/nuxt'],
     site: {
         url: 'https://openvue.dev',
         name: 'OpenVue'
