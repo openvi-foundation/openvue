@@ -6,6 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![npm](https://img.shields.io/npm/v/openvue/alpha.svg)](https://www.npmjs.com/package/openvue)
+[![npm downloads](https://img.shields.io/npm/dt/openvue.svg)](https://www.npmjs.com/package/openvue)
 
 </div>
 

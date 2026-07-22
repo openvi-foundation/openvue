@@ -3,18 +3,21 @@
         <div class="layout-topbar-inner">
             <div class="layout-topbar-logo-container">
                 <OpenVueNuxtLink to="/" class="layout-topbar-logo" aria-label="OpenVue logo">
-                    <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="0" y="28" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700" font-size="24" fill="var(--high-contrast-text-color)">Open<tspan fill="var(--logo-color)">Vue</tspan></text>
-                    </svg>
+                    <img src="/open_vue_logo.svg" alt="OpenVue" width="66" height="31" />
                 </OpenVueNuxtLink>
                 <OpenVueNuxtLink to="/" class="layout-topbar-icon" aria-label="OpenVue logo">
-                    <svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="17.5" y="27" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700" font-size="20" fill="var(--logo-color)">OV</text>
-                    </svg>
+                    <img src="/open_vue_logo.svg" alt="OpenVue" width="53" height="25" />
                 </OpenVueNuxtLink>
             </div>
 
             <ul class="topbar-items">
+                <li>
+                    <button type="button" class="topbar-item search-item" aria-label="Search" @click="openSearch">
+                        <i class="pi pi-search"></i>
+                        <span class="search-item-label">Search</span>
+                        <span class="search-item-hint" aria-hidden="true">⌘K</span>
+                    </button>
+                </li>
                 <li>
                     <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="topbar-item">
                         <i class="pi pi-github"></i>
@@ -42,6 +45,7 @@
                 </li>
             </ul>
         </div>
+        <AppSearch />
     </div>
 </template>
 
@@ -70,6 +74,9 @@ export default {
     methods: {
         onMenuButtonClick(event) {
             this.$emit('menubutton-click', event);
+        },
+        openSearch() {
+            EventBus.emit('open-search');
         },
         toggleDarkMode() {
             EventBus.emit('dark-mode-toggle', { dark: !this.$appState.darkTheme });

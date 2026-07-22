@@ -539,7 +539,7 @@
                     "to": "/guides/dynamicimports"
                 },
                 {
-                    "name": "Migration to V4",
+                    "name": "Migration from V3 to Openvue",
                     "to": "/guides/migration/v4"
                 },
                 {
