@@ -190,7 +190,11 @@ function stopPreview(child) {
     if (process.platform === 'win32') {
         spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { shell: false, stdio: 'ignore' });
     } else {
-        child.kill('SIGTERM');
+        try {
+            process.kill(-child.pid, 'SIGTERM');
+        } catch {
+            child.kill('SIGTERM');
+        }
     }
 }
 
@@ -266,6 +270,7 @@ async function browserSmoke(dir, fixture) {
     const child = spawn(command, commandArgs, {
         cwd: dir,
         shell: process.platform === 'win32',
+        detached: process.platform !== 'win32',
         stdio: ['ignore', 'pipe', 'pipe'],
         env: { ...process.env, PORT: String(port), NITRO_PORT: String(port), OPENVUE_TEST_PORT: String(port) }
     });
@@ -528,6 +533,8 @@ const available = readdirSync(fixtureRoot, { withFileTypes: true })
     .sort();
 const fixtures = requested ? [requested] : available;
 
+let exitCode = 0;
+
 try {
     const tarballs = await packPackages();
     const migrationVersion = readPackageSync(join(root, 'packages', 'migrate', 'package.json')).version;
@@ -537,10 +544,15 @@ try {
 
         console.log(`\nConsumer suite passed for ${fixtures.length} fixture(s): ${fixtures.join(', ')}`);
     }
+} catch (error) {
+    console.error(error);
+    exitCode = 1;
 } finally {
     if (keep) console.log(`Preserved test directories:\n${workDirs.join('\n')}`);
     else workDirs.reverse().forEach((dir) => rmSync(dir, { recursive: true, force: true }));
 }
+
+process.exit(exitCode);
 
 function readPackageSync(file) {
     return JSON.parse(readFileSync(file, 'utf8'));
