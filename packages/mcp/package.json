@@ -52,7 +52,9 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primeuix/mcp": "catalog:"
+        "@modelcontextprotocol/sdk": "^1.25.2",
+        "@primeuix/mcp": "catalog:",
+        "zod": "^3.25.76"
     },
     "devDependencies": {
         "tsup": "^8.1.0"

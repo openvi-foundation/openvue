@@ -19,6 +19,7 @@ logs
 .idea
 .eslintcache
 coverage
+test-artifacts
 **/.DS_Store
 
 # Local env files

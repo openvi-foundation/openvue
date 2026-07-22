@@ -6,8 +6,9 @@
             mergeProps: ptViewMerge
         }"
     >
-        <template #toggleicon="{ active }">
-            <ChevronDownIcon v-if="active" />
+        <!-- @vue-ignore PrimeVue 4.5.x declares this scoped slot without its active argument. -->
+        <template #toggleicon="slotProps">
+            <ChevronDownIcon v-if="(slotProps as any).active" />
             <ChevronUpIcon v-else />
         </template>
         <slot></slot>

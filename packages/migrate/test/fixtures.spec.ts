@@ -155,16 +155,123 @@ describe('migrate', () => {
         expect(result.warnings.some((warning) => warning.includes('could not be parsed'))).toBe(true);
     });
 
-    it('warns when the project used a pre-fork PrimeVue major', () => {
+    it.each(['4.0.0', '^4.3.3', '~4.5.5', '>=4.0.0 <5.0.0', 'npm:primevue@4.5.5'])('accepts supported PrimeVue 4 range %s', (range) => {
         const dir = copyFixture('basic');
         const packageJson = join(dir, 'package.json');
         const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
 
-        pkg.dependencies.primevue = '^3.53.0';
+        pkg.dependencies.primevue = range;
         writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
 
         const result = migrate({ dir });
 
-        expect(result.warnings.some((warning) => warning.includes('predates the OpenVue fork point'))).toBe(true);
+        expect(result.failed).toBe(false);
+        expect(result.oldPrimevueRange).toBe(range);
+        expect(result.changedFiles.length).toBeGreaterThan(0);
+    });
+
+    it.each(['^3.53.1', '5.0.0'])('rejects unsupported PrimeVue range %s without changing files', (range) => {
+        const dir = copyFixture('basic');
+        const packageJson = join(dir, 'package.json');
+        const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        pkg.dependencies.primevue = range;
+        writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
+        const before = Object.fromEntries(walk(dir).map((file) => [file, readFileSync(file, 'utf8')]));
+
+        const result = migrate({ dir });
+
+        expect(result.failed).toBe(true);
+        expect(result.changedFiles).toEqual([]);
+        expect(result.warnings[0]).toContain('No files were changed');
+
+        for (const [file, content] of Object.entries(before)) {
+            expect(readFileSync(file, 'utf8'), file).toBe(content);
+        }
+    });
+
+    it('rejects an unsupported PrimeVue major in any monorepo package without changing files', () => {
+        const dir = copyFixture('basic');
+        const nested = join(dir, 'packages', 'legacy-app');
+
+        mkdirSync(nested, { recursive: true });
+        writeFileSync(join(nested, 'package.json'), JSON.stringify({ dependencies: { primevue: '5.0.0' } }, null, 4));
+        writeFileSync(join(nested, 'app.ts'), "import Button from 'primevue/button';\n");
+        const before = Object.fromEntries(walk(dir).map((file) => [file, readFileSync(file, 'utf8')]));
+
+        const result = migrate({ dir });
+
+        expect(result.failed).toBe(true);
+        expect(result.oldPrimevueRange).toBe('5.0.0');
+        expect(result.warnings[0]).toContain('packages/legacy-app/package.json');
+        expect(result.changedFiles).toEqual([]);
+
+        for (const [file, content] of Object.entries(before)) {
+            expect(readFileSync(file, 'utf8'), file).toBe(content);
+        }
+    });
+
+    it('resolves a catalog PrimeVue version before migration', () => {
+        const dir = copyFixture('basic');
+        const packageJson = join(dir, 'package.json');
+        const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        pkg.dependencies.primevue = 'catalog:';
+        writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
+        writeFileSync(join(dir, 'pnpm-workspace.yaml'), "catalog:\n    'primevue': 4.5.5\n");
+
+        const result = migrate({ dir });
+
+        expect(result.failed).toBe(false);
+        expect(result.oldPrimevueRange).toBe('4.5.5');
+        expect(result.packageManager).toBe('pnpm');
+    });
+
+    it('resolves the PrimeVue version from package-lock when the manifest uses workspace protocol', () => {
+        const dir = copyFixture('basic');
+        const packageJson = join(dir, 'package.json');
+        const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        pkg.dependencies.primevue = 'workspace:*';
+        writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
+        writeFileSync(join(dir, 'package-lock.json'), JSON.stringify({ lockfileVersion: 3, packages: { 'node_modules/primevue': { version: '4.5.5' } } }, null, 2));
+
+        const result = migrate({ dir });
+
+        expect(result.failed).toBe(false);
+        expect(result.oldPrimevueRange).toBe('4.5.5');
+    });
+
+    it('warns and continues when a declared PrimeVue version cannot be inferred', () => {
+        const dir = copyFixture('basic');
+        const packageJson = join(dir, 'package.json');
+        const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        pkg.dependencies.primevue = 'latest';
+        writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
+
+        const result = migrate({ dir });
+
+        expect(result.failed).toBe(false);
+        expect(result.oldPrimevueRange).toBe('latest');
+        expect(result.warnings.some((warning) => warning.includes('Could not determine'))).toBe(true);
+        expect(result.changedFiles.length).toBeGreaterThan(0);
+    });
+
+    it('is idempotent after a successful migration', () => {
+        const dir = copyFixture('basic');
+        const first = migrate({ dir });
+        const afterFirst = Object.fromEntries(walk(dir).map((file) => [file, readFileSync(file, 'utf8')]));
+        const second = migrate({ dir });
+
+        expect(first.failed).toBe(false);
+        expect(second.failed).toBe(false);
+        expect(second.mode).toBe('sources-only');
+        expect(second.changedFiles).toEqual([]);
+        expect(second.residuals).toEqual([]);
+
+        for (const [file, content] of Object.entries(afterFirst)) {
+            expect(readFileSync(file, 'utf8'), file).toBe(content);
+        }
     });
 });

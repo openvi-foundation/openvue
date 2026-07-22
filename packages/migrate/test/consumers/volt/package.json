@@ -1,0 +1,38 @@
+{
+    "name": "openvue-consumer-volt",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --host 127.0.0.1",
+        "serve:test": "vite preview --host 127.0.0.1",
+        "typecheck": "vue-tsc --noEmit",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@primevue/icons": "4.5.5",
+        "primeicons": "7.0.0",
+        "primevue": "4.5.5",
+        "tailwindcss-primeui": "0.6.1",
+        "vue": "3.5.17"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "4.1.11",
+        "@types/node": "22.13.10",
+        "@vitejs/plugin-vue": "6.0.1",
+        "tailwindcss": "4.1.11",
+        "tailwind-merge": "3.3.1",
+        "typescript": "5.7.3",
+        "vite": "6.0.11",
+        "vue-tsc": "2.2.12"
+    },
+    "openvueTest": {
+        "packageManager": "pnpm",
+        "copy": [
+            {
+                "from": "apps/volt/volt",
+                "to": "src/volt"
+            }
+        ]
+    }
+}

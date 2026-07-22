@@ -6,9 +6,9 @@
             mergeProps: ptViewMerge
         }"
     >
-        <template #icon="{ checked, indeterminate, dataP }">
-            <CheckIcon v-if="checked" :class="theme.icon" :data-p="dataP" />
-            <MinusIcon v-else-if="indeterminate" :class="theme.icon" :data-p="dataP" />
+        <template #icon="{ checked, indeterminate }">
+            <CheckIcon v-if="checked" :class="theme.icon" />
+            <MinusIcon v-else-if="indeterminate" :class="theme.icon" />
         </template>
     </Checkbox>
 </template>

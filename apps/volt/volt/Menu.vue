@@ -50,6 +50,6 @@ const theme = ref<MenuPassThroughOptions>({
 
 const el = ref();
 defineExpose({
-    toggle: (event) => el.value.toggle(event)
+    toggle: (event: Event) => el.value.toggle(event)
 });
 </script>

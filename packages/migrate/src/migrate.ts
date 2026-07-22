@@ -12,6 +12,7 @@ const CONFIG_FILE = /(^|\.)config\.[cm]?[jt]s$/i;
 // Package-reference shapes that should not survive a migration: a string literal starting with
 // `primevue` or `primevue/`, any `@primevue/` occurrence, or a CDN url segment like `/primevue@4`.
 const RESIDUAL_REFERENCE = /['"`]primevue(?=[/'"`])|@primevue\/|\/primevue@/;
+const DEPENDENCY_SECTIONS = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'];
 
 export type MigrateMode = 'full' | 'sources-only';
 
@@ -120,6 +121,182 @@ const INSTALL_COMMANDS: Record<PackageManager, string> = {
     bun: 'bun install'
 };
 
+interface PrimeVueVersion {
+    range: string;
+    major: number | null;
+    source: string;
+}
+
+function parsePrimeVueMajor(range: string): number | null {
+    const value = range.trim();
+    const direct = /^(?:npm:primevue@)?[~^=v\s]*(\d+)(?:\.|x|\*|$)/i.exec(value);
+
+    if (direct) return parseInt(direct[1], 10);
+
+    const bounded = /^>=?\s*(\d+)(?:\.\d+){0,2}\s+<\s*(\d+)(?:\.\d+){0,2}$/.exec(value);
+
+    if (bounded && parseInt(bounded[2], 10) === parseInt(bounded[1], 10) + 1) return parseInt(bounded[1], 10);
+
+    return null;
+}
+
+function readPackagePrimeVueRange(file: string): string | null {
+    try {
+        const pkg = JSON.parse(readText(file));
+
+        for (const section of DEPENDENCY_SECTIONS) {
+            const range = pkg[section]?.primevue;
+
+            if (typeof range === 'string') return range;
+        }
+    } catch {
+        // The main rewrite pass reports malformed package.json files with their paths.
+    }
+
+    return null;
+}
+
+function readCatalogRange(dir: string): string | null {
+    let current = dir;
+
+    for (;;) {
+        const workspace = join(current, 'pnpm-workspace.yaml');
+
+        if (existsSync(workspace)) {
+            const match = /^\s*['"]?primevue['"]?\s*:\s*['"]?([^\s'"#]+)['"]?/m.exec(readText(workspace));
+
+            if (match) return match[1];
+        }
+
+        const parent = dirname(current);
+
+        if (parent === current) return null;
+        current = parent;
+    }
+}
+
+function readInstalledVersion(dir: string): string | null {
+    let current = dir;
+
+    for (;;) {
+        const installed = join(current, 'node_modules', 'primevue', 'package.json');
+
+        if (existsSync(installed)) {
+            try {
+                const version = JSON.parse(readText(installed)).version;
+
+                if (typeof version === 'string') return version;
+            } catch {
+                return null;
+            }
+        }
+
+        const parent = dirname(current);
+
+        if (parent === current) return null;
+        current = parent;
+    }
+}
+
+function readLockfileVersion(dir: string): string | null {
+    let current = dir;
+
+    for (;;) {
+        const packageLock = join(current, 'package-lock.json');
+
+        if (existsSync(packageLock)) {
+            try {
+                const lock = JSON.parse(readText(packageLock));
+                const version = lock.packages?.['node_modules/primevue']?.version ?? lock.dependencies?.primevue?.version;
+
+                if (typeof version === 'string') return version;
+            } catch {
+                // Try another lockfile or continue walking toward the workspace root.
+            }
+        }
+
+        for (const lockName of ['pnpm-lock.yaml', 'yarn.lock', 'bun.lock', 'bun.lockb']) {
+            const lockfile = join(current, lockName);
+
+            if (!existsSync(lockfile)) continue;
+
+            const text = readText(lockfile);
+            const patterns =
+                lockName === 'pnpm-lock.yaml'
+                    ? [/^\s{2,}primevue@((?:\d+\.){2}\d+[^:\s(]*)(?:\([^\n]*)?:/m, /^\s{6,}version:\s*['"]?((?:\d+\.){2}\d+[^\s'"(]*)/m]
+                    : lockName === 'yarn.lock'
+                      ? [/^primevue@[^:]+:\s*\r?\n\s+version\s+['"]((?:\d+\.){2}\d+[^'"]*)/m]
+                      : [/primevue@((?:\d+\.){2}\d+[^\s'",\]]*)/m];
+
+            for (const pattern of patterns) {
+                const match = pattern.exec(text);
+
+                if (match) return match[1];
+            }
+        }
+
+        const parent = dirname(current);
+
+        if (parent === current) return null;
+        current = parent;
+    }
+}
+
+function detectPrimeVueVersions(dir: string, files: string[]): PrimeVueVersion[] {
+    const packageFiles = files
+        .filter((file) => basename(file) === 'package.json')
+        .sort((a, b) => {
+            if (a === join(dir, 'package.json')) return -1;
+            if (b === join(dir, 'package.json')) return 1;
+
+            return a.localeCompare(b);
+        });
+    const detected: PrimeVueVersion[] = [];
+    const unresolved: PrimeVueVersion[] = [];
+
+    for (const file of packageFiles) {
+        const declared = readPackagePrimeVueRange(file);
+
+        if (declared === null) continue;
+
+        const directMajor = parsePrimeVueMajor(declared);
+        const source = relative(dir, file).replace(/\\/g, '/');
+
+        if (directMajor !== null) {
+            detected.push({ range: declared, major: directMajor, source });
+            continue;
+        }
+
+        if (declared.startsWith('catalog:')) {
+            const catalog = readCatalogRange(dirname(file));
+
+            if (catalog !== null) {
+                detected.push({ range: catalog, major: parsePrimeVueMajor(catalog), source: `${source} via pnpm-workspace.yaml catalog` });
+                continue;
+            }
+        }
+
+        unresolved.push({ range: declared, major: null, source });
+    }
+
+    const installed = readInstalledVersion(dir);
+    const locked = installed === null ? readLockfileVersion(dir) : null;
+    const inferred = installed ?? locked;
+    const inferredSource = installed !== null ? 'node_modules/primevue/package.json' : 'lockfile';
+
+    if (unresolved.length > 0 && inferred !== null) {
+        for (const item of unresolved) {
+            detected.push({ range: inferred, major: parsePrimeVueMajor(inferred), source: `${item.source} (${item.range}) via ${inferredSource}` });
+        }
+    } else {
+        detected.push(...unresolved);
+    }
+
+    if (detected.length === 0 && inferred !== null) detected.push({ range: inferred, major: parsePrimeVueMajor(inferred), source: inferredSource });
+
+    return detected;
+}
+
 // Lockfiles are regenerated by the install step, so their stale references are not actionable.
 const LOCKFILES = new Set(['package-lock.json', 'npm-shrinkwrap.json', 'pnpm-lock.yaml', 'yarn.lock', 'bun.lock']);
 
@@ -168,8 +345,42 @@ export function migrate(options: MigrateOptions): MigrateResult {
     const skippedKeyFiles = new Set<string>();
     const unknownScoped = new Set<string>();
     const files = walk(dir);
+    const packageManager = detectPackageManager(dir);
+    const installCommand = INSTALL_COMMANDS[packageManager];
+    const detectedPrimeVue = mode === 'full' ? detectPrimeVueVersions(dir, files) : [];
+    const unsupportedPrimeVue = detectedPrimeVue.find((item) => item.major !== null && item.major !== 4);
+    const primaryPrimeVue = unsupportedPrimeVue ?? detectedPrimeVue.find((item) => item.major === 4) ?? detectedPrimeVue[0] ?? null;
+    const unknownPrimeVue = detectedPrimeVue.find((item) => item.major === null);
     let oldPrimevueRange: string | null = null;
     let rootPackageJsonFailed = false;
+
+    if (unsupportedPrimeVue !== undefined) {
+        const position = unsupportedPrimeVue.major! < 4 ? 'predates' : 'postdates';
+
+        warnings.push(
+            `Detected primevue@${unsupportedPrimeVue.range} from ${unsupportedPrimeVue.source}. PrimeVue ${unsupportedPrimeVue.major}.x ${position} the supported OpenVue fork line (PrimeVue 4.x). Upgrade or downgrade the project to PrimeVue 4.5.5, verify it, and run the migration again. No files were changed.`
+        );
+
+        return {
+            mode,
+            changedFiles,
+            warnings,
+            notes,
+            residuals: [],
+            failed: true,
+            oldPrimevueRange: unsupportedPrimeVue.range,
+            packageManager,
+            installCommand
+        };
+    }
+
+    if (primaryPrimeVue !== null) oldPrimevueRange = primaryPrimeVue.range;
+
+    if (unknownPrimeVue !== undefined) {
+        warnings.push(`Could not determine the PrimeVue major version from ${unknownPrimeVue.source} (${unknownPrimeVue.range}). Continuing with the rename; verify that the project was already working on PrimeVue 4.x.`);
+    } else if (mode === 'full') {
+        if (detectedPrimeVue.length === 0) warnings.push('Could not determine the installed PrimeVue major version. Continuing with the rename; verify that the project was already working on PrimeVue 4.x.');
+    }
 
     for (const file of files) {
         const name = basename(file);
@@ -220,7 +431,6 @@ export function migrate(options: MigrateOptions): MigrateResult {
         }
     }
 
-    const packageManager = detectPackageManager(dir);
     const rootPackageJson = join(dir, 'package.json');
 
     if (mode === 'full' && alias && changedFiles.length > 0 && !rootPackageJsonFailed && existsSync(rootPackageJson)) {
@@ -236,17 +446,6 @@ export function migrate(options: MigrateOptions): MigrateResult {
         }
     }
 
-    if (oldPrimevueRange !== null) {
-        const majorMatch = /\d+/.exec(oldPrimevueRange);
-        const major = majorMatch ? parseInt(majorMatch[0], 10) : null;
-
-        if (major !== null && major < 4) {
-            warnings.push(
-                `Your project used primevue@${oldPrimevueRange}, which predates the OpenVue fork point (PrimeVue 4.x). Apply the PrimeVue v${major} -> v4 migration guide before or after this codemod — renaming packages alone will not be enough.`
-            );
-        }
-    }
-
     for (const file of skippedKeyFiles) {
         warnings.push(`${file}: found a quoted 'primevue' object key and left it unchanged — the Nuxt module config key is still 'primevue' in OpenVue. Review it if it was meant as something else (e.g. a bundler alias).`);
     }
@@ -257,5 +456,5 @@ export function migrate(options: MigrateOptions): MigrateResult {
 
     const residuals = dry ? [] : auditResiduals(dir, files);
 
-    return { mode, changedFiles, warnings, notes, residuals, failed: rootPackageJsonFailed, oldPrimevueRange, packageManager, installCommand: INSTALL_COMMANDS[packageManager] };
+    return { mode, changedFiles, warnings, notes, residuals, failed: rootPackageJsonFailed, oldPrimevueRange, packageManager, installCommand };
 }

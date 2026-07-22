@@ -33,6 +33,7 @@
         "build:icons": "pnpm --filter icons build",
         "build:mcp": "pnpm --filter mcp build",
         "build:migrate": "pnpm --filter migrate build",
+        "build:test-packages": "pnpm run build:metadata && pnpm run build:core && pnpm run build:icons && pnpm run build:lib && pnpm run build:themes && pnpm run build:forms && pnpm run build:resolver && pnpm run build:module && pnpm run build:mcp && pnpm run build:migrate",
         "build:forms": "pnpm --filter forms build",
         "build:showcase": "pnpm --filter showcase build",
         "build:llm": "pnpm --filter showcase build:llmdocs",
@@ -49,7 +50,11 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
         "format:check": "prettier --check \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
-        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit"
+        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit",
+        "test:contracts": "pnpm run test:artifacts:pack && pnpm run verify:dist && node scripts/verify-package-contracts.mjs",
+        "test:artifacts:pack": "node scripts/run-consumer-tests.mjs --pack-only",
+        "test:consumers": "node scripts/run-consumer-tests.mjs",
+        "test:consumers:browser": "node scripts/run-consumer-tests.mjs --browser"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.21.5",
@@ -57,6 +62,7 @@
         "@rollup/plugin-babel": "^6.0.3",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
+        "@playwright/test": "^1.43.1",
         "eslint": "^9.19.0",
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-prettier": "^5.2.3",

@@ -1,7 +1,7 @@
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const EXCLUDED_DIRS = new Set(['node_modules', 'dist', 'build', 'coverage', '.git', '.nuxt', '.output', '.next', '.vite', '.cache', '.turbo']);
+const EXCLUDED_DIRS = new Set(['node_modules', 'vendor', 'dist', 'build', 'coverage', '.git', '.nuxt', '.output', '.next', '.vite', '.cache', '.turbo']);
 
 /**
  * Recursively lists files under `dir`, skipping directories that never contain user source.

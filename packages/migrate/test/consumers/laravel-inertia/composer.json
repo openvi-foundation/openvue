@@ -1,0 +1,18 @@
+{
+    "name": "openvue/laravel-inertia-contract",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "inertiajs/inertia-laravel": "2.0.24",
+        "laravel/framework": "12.64.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
