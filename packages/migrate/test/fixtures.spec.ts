@@ -91,6 +91,25 @@ describe('migrate', () => {
         expect(readFileSync(join(dir, 'components.d.ts'), 'utf8')).toContain(`import('openvue/button')`);
     });
 
+    it('stays in full mode when only the @openvue/migrate tooling package is a dependency', () => {
+        const dir = copyFixture('basic');
+        const packageJson = join(dir, 'package.json');
+        const pkg = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        pkg.dependencies['@openvue/migrate'] = OPENVUE_VERSION;
+        writeFileSync(packageJson, JSON.stringify(pkg, null, 4));
+
+        const result = migrate({ dir });
+        const migrated = JSON.parse(readFileSync(packageJson, 'utf8'));
+
+        expect(result.mode).toBe('full');
+        expect(result.oldPrimevueRange).toBe('^4.3.3');
+        expect(migrated.dependencies.openvue).toBe(OPENVUE_VERSION);
+        expect(migrated.dependencies.primevue).toBeUndefined();
+        expect(migrated.dependencies['@openvue/migrate']).toBe(OPENVUE_VERSION);
+        expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(true);
+    });
+
     it('switches to sources-only mode when openvue is present in node_modules', () => {
         const dir = copyFixture('basic');
 

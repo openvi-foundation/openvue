@@ -1,6 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, realpathSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { emitKeypressEvents } from 'node:readline';
 import { fileURLToPath } from 'node:url';
 import * as prompts from '@clack/prompts';
 import pc from 'picocolors';
@@ -47,17 +48,234 @@ Options:
 const KNOWN_FLAGS = ['--dry', '--force', '--no-install', '--no-alias', '--yes', '-y'];
 const MODES: Mode[] = ['full', 'files-only', 'dry'];
 
+const IS_WINDOWS = process.platform === 'win32';
+const UNICODE = !IS_WINDOWS || Boolean(process.env.WT_SESSION || process.env.TERM_PROGRAM === 'vscode' || process.env.TERM === 'xterm-256color' || process.env.TERM === 'alacritty');
+const S_ACTIVE = UNICODE ? '◆' : '*';
+const S_GUTTER = UNICODE ? '│' : '|';
+const S_RADIO_ON = UNICODE ? '●' : '(*)';
+const S_RADIO_OFF = UNICODE ? '○' : '( )';
+const S_SUBMIT = UNICODE ? '◇' : 'o';
+const S_BAR_END = UNICODE ? '└' : '+';
+
 const useColor = process.stdout.isTTY && !process.env.NO_COLOR;
 const bold = (text: string) => (useColor ? `\x1b[1m${text}\x1b[0m` : text);
 const green = (text: string) => (useColor ? `\x1b[32m${text}\x1b[0m` : text);
 const yellow = (text: string) => (useColor ? `\x1b[33m${text}\x1b[0m` : text);
 
+interface InlineChoice<T> {
+    value: T;
+    label: string;
+    hint?: string;
+}
+
+interface Keypress {
+    name?: string;
+    ctrl?: boolean;
+}
+
+const columns = () => (typeof process.stdout.columns === 'number' && process.stdout.columns > 20 ? process.stdout.columns : 80);
+
+/**
+ * Windows prompts (everything below up to runInteractive):
+ *
+ * conhost/ConPTY (Windows 10 especially) intermittently clamps the multi-row relative cursor-up
+ * moves that clack's frame re-rendering relies on, which leaves duplicated prompt frames on
+ * screen. These prompts therefore never move the cursor up relatively. The vertical select asks
+ * the terminal where the cursor is (CPR, ESC[6n) once after printing its frame, then repaints
+ * individual rows via absolute positioning (ESC[row;1H) — absolute moves cannot accumulate the
+ * drift that relative moves suffer from, because every repaint re-anchors to terminal-reported
+ * coordinates. If the terminal does not answer the CPR query, the select falls back to a
+ * single-row widget redrawn with carriage return + erase-to-end-of-line only.
+ */
+function captureKeys(onKeypress: (str: string | undefined, key: Keypress) => void): () => void {
+    emitKeypressEvents(process.stdin);
+
+    const wasRaw = process.stdin.isRaw === true;
+
+    if (process.stdin.isTTY) process.stdin.setRawMode(true);
+    process.stdin.resume();
+    process.stdin.on('keypress', onKeypress);
+
+    return () => {
+        process.stdin.off('keypress', onKeypress);
+        if (process.stdin.isTTY && !wasRaw) process.stdin.setRawMode(false);
+        process.stdin.pause();
+    };
+}
+
+/** Asks the terminal for the cursor position. Requires raw mode to be enabled already. */
+function queryCursorRow(timeoutMs = 300): Promise<number | null> {
+    return new Promise((resolveRow) => {
+        let buffer = '';
+        const cleanup = () => {
+            clearTimeout(timer);
+            process.stdin.off('data', onData);
+        };
+        const onData = (chunk: Buffer | string) => {
+            buffer += chunk.toString();
+            const match = /\x1b\[(\d+);\d+R/.exec(buffer);
+
+            if (match) {
+                cleanup();
+                resolveRow(parseInt(match[1], 10));
+            }
+        };
+        const timer = setTimeout(() => {
+            cleanup();
+            resolveRow(null);
+        }, timeoutMs);
+
+        process.stdin.on('data', onData);
+        process.stdout.write('\x1b[6n');
+    });
+}
+
+/** Single-row arrow-key loop: all choices on one line, redrawn via `\r` + erase-to-end-of-line. */
+function singleRowLoop<T extends string | boolean>(choices: InlineChoice<T>[], initialIndex: number, hotkeys: Record<string, T>): Promise<T | null> {
+    let active = initialIndex;
+    const row = () => `${pc.gray(S_GUTTER)}  ` + choices.map((choice, index) => (index === active ? `${pc.green(S_RADIO_ON)} ${choice.label}` : `${pc.dim(S_RADIO_OFF)} ${pc.dim(choice.label)}`)).join('   ');
+    const redraw = () => process.stdout.write(`\r${row()}\x1b[0K`);
+
+    return new Promise((resolveChoice) => {
+        const finish = (value: T | null) => {
+            releaseKeys();
+            process.stdout.write(`\r${pc.gray(S_GUTTER)}  ${pc.dim(value === null ? 'cancelled' : choices[active].label)}\x1b[0K\n`);
+            resolveChoice(value);
+        };
+
+        const releaseKeys = captureKeys((str, key) => {
+            if ((key.ctrl && key.name === 'c') || key.name === 'escape') return finish(null);
+            if (key.name === 'return' || key.name === 'enter') return finish(choices[active].value);
+
+            const hotkey = str === undefined ? undefined : hotkeys[str.toLowerCase()];
+
+            if (hotkey !== undefined) {
+                active = choices.findIndex((choice) => choice.value === hotkey);
+                redraw();
+
+                return finish(hotkey);
+            }
+
+            if (key.name === 'up' || key.name === 'left') active = (active - 1 + choices.length) % choices.length;
+            else if (key.name === 'down' || key.name === 'right' || key.name === 'tab') active = (active + 1) % choices.length;
+            else if (str !== undefined && /^[1-9]$/.test(str) && Number(str) <= choices.length) active = Number(str) - 1;
+            else return;
+
+            redraw();
+        });
+
+        redraw();
+    });
+}
+
+/** Confirm-style prompt: message via clack log, choices on one safe single row. */
+function inlineSelect<T extends string | boolean>(message: string, detailLines: string[], choices: InlineChoice<T>[], initialIndex: number, hotkeys: Record<string, T> = {}): Promise<T | null> {
+    prompts.log.message([message, ...detailLines.map((line) => pc.dim(line))], { symbol: pc.cyan(S_ACTIVE) });
+
+    return singleRowLoop(choices, initialIndex, hotkeys);
+}
+
+/**
+ * Vertical radio-list select rendered like clack's, but repainted via absolute cursor addressing
+ * (see the block comment above). Only the active row shows its hint, exactly like clack.
+ */
+async function verticalSelect<T extends string | boolean>(message: string, choices: InlineChoice<T>[], initialIndex: number): Promise<T | null> {
+    const width = columns() - 1;
+    const fitHint = (choice: InlineChoice<T>, glyph: string) => {
+        if (!choice.hint) return '';
+
+        const room = width - `${S_GUTTER}  ${glyph} ${choice.label}`.length;
+
+        if (room < 6) return '';
+
+        return ` (${choice.hint.length + 3 > room ? choice.hint.slice(0, room - 6) + '...' : choice.hint})`;
+    };
+    const choiceRow = (choice: InlineChoice<T>, isActive: boolean) =>
+        isActive ? `${pc.gray(S_GUTTER)}  ${pc.green(S_RADIO_ON)} ${choice.label}${pc.dim(fitHint(choice, S_RADIO_ON))}` : `${pc.gray(S_GUTTER)}  ${pc.dim(S_RADIO_OFF)} ${pc.dim(choice.label)}`;
+    const instructions = UNICODE ? '↑/↓ or 1-9 to choose · Enter to confirm' : 'arrow keys or 1-9 to choose, Enter to confirm';
+
+    // Static frame; the cursor parks at the end of the bottom bar so CPR reports that row.
+    process.stdout.write(
+        [`${pc.gray(S_GUTTER)}`, `${pc.cyan(S_ACTIVE)}  ${message.slice(0, width - 3)}`, ...choices.map((choice, index) => choiceRow(choice, index === initialIndex)), `${pc.gray(S_GUTTER)}  ${pc.dim(instructions.slice(0, width - 3))}`, pc.gray(S_BAR_END)].join('\n')
+    );
+
+    let active = initialIndex;
+
+    return new Promise((resolveChoice) => {
+        let bottomRow: number | null = null;
+        let messageRow = 0;
+        let firstChoiceRow = 0;
+        const paintChoice = (index: number) => process.stdout.write(`\x1b[${firstChoiceRow + index};1H${choiceRow(choices[index], index === active)}\x1b[K\x1b[${bottomRow};2H`);
+
+        const finish = (value: T | null) => {
+            releaseKeys();
+
+            if (bottomRow === null) {
+                // Fallback finished on its own single row; nothing of ours to collapse.
+                resolveChoice(value);
+
+                return;
+            }
+
+            // Collapse the frame the way clack does: submitted symbol, dim answer, rest erased.
+            process.stdout.write(`\x1b[${messageRow};1H${pc.green(S_SUBMIT)}  ${message.slice(0, width - 3)}\x1b[K`);
+            process.stdout.write(`\x1b[${firstChoiceRow};1H${pc.gray(S_GUTTER)}  ${pc.dim(value === null ? 'cancelled' : choices[active].label)}\x1b[K`);
+            process.stdout.write(`\x1b[${firstChoiceRow + 1};1H\x1b[J`);
+            resolveChoice(value);
+        };
+
+        let calibrating = true;
+        const releaseKeys = captureKeys((str, key) => {
+            if (calibrating) return;
+            if ((key.ctrl && key.name === 'c') || key.name === 'escape') return finish(null);
+            if (key.name === 'return' || key.name === 'enter') return finish(choices[active].value);
+
+            const previous = active;
+
+            if (key.name === 'up') active = (active - 1 + choices.length) % choices.length;
+            else if (key.name === 'down' || key.name === 'tab') active = (active + 1) % choices.length;
+            else if (str !== undefined && /^[1-9]$/.test(str) && Number(str) <= choices.length) active = Number(str) - 1;
+            else return;
+
+            if (active === previous) return;
+
+            if (bottomRow === null) return; // fallback repaints itself via its own loop
+
+            paintChoice(previous);
+            paintChoice(active);
+        });
+
+        queryCursorRow().then((row) => {
+            calibrating = false;
+
+            // Frame rows above the bottom bar: instructions, the choices, the message, the gutter.
+            if (row !== null && row - choices.length - 3 >= 1) {
+                bottomRow = row;
+                firstChoiceRow = row - 1 - choices.length;
+                messageRow = firstChoiceRow - 1;
+                process.stdout.write(`\x1b[${bottomRow};2H`);
+
+                return;
+            }
+
+            // No CPR answer (or not enough screen above): degrade to the single-row widget below.
+            releaseKeys();
+            process.stdout.write('\n');
+            singleRowLoop(
+                choices.map(({ value, label }) => ({ value, label })),
+                active,
+                {} as Record<string, T>
+            ).then(resolveChoice);
+        });
+    });
+}
+
 function gitDirtyCount(dir: string): number | null {
-    const inRepo = spawnSync('git', ['rev-parse', '--is-inside-work-tree'], { cwd: dir, encoding: 'utf8', shell: process.platform === 'win32' });
+    const inRepo = spawnSync('git', ['rev-parse', '--is-inside-work-tree'], { cwd: dir, encoding: 'utf8' });
 
     if (inRepo.status !== 0 || inRepo.stdout.trim() !== 'true') return null;
 
-    const status = spawnSync('git', ['status', '--porcelain'], { cwd: dir, encoding: 'utf8', shell: process.platform === 'win32' });
+    const status = spawnSync('git', ['status', '--porcelain'], { cwd: dir, encoding: 'utf8' });
 
     if (status.status !== 0) return null;
 
@@ -70,14 +288,9 @@ function totalReferences(result: MigrateResult): number {
     return result.changedFiles.reduce((sum, file) => sum + file.changes, 0);
 }
 
-/**
- * Prints the changed files, notes, warnings and residual references for a non-interactive run.
- * Kept byte-for-byte compatible with earlier releases so scripts and CI parsing stay stable.
- */
+
 function printPlainResult(result: MigrateResult, dry: boolean): void {
     if (result.changedFiles.length === 0) {
-        // A hard-failed run (e.g. an unsupported PrimeVue major) also has no changed files, but its
-        // blocking warning is printed below — do not claim there was nothing to do.
         if (!result.failed) console.log('No PrimeVue references found — nothing to do.');
     } else {
         const total = totalReferences(result);
@@ -219,29 +432,35 @@ async function runInteractive(dir: string, alias: boolean, force: boolean): Prom
     for (const warning of preview.warnings) prompts.log.warn(warning);
     if (!supported) prompts.log.warn('Continue only if this project already builds against PrimeVue 4.x.');
 
-    const mode = await prompts.select({
-        message: 'How should I migrate?',
-        initialValue: 'full' as Mode,
-        options: [
-            { value: 'full' as Mode, label: 'Full migration', hint: `rewrite files, add compat alias, run ${preview.installCommand}` },
-            { value: 'files-only' as Mode, label: 'Files only', hint: 'rewrite files; you run the install yourself' },
-            { value: 'dry' as Mode, label: 'Dry run', hint: 'show the changes, write nothing' }
-        ]
-    });
+    const modeChoices = [
+        { value: 'full' as Mode, label: 'Full migration', hint: `rewrite + alias + ${preview.installCommand}` },
+        { value: 'files-only' as Mode, label: 'Files only', hint: 'rewrite files, no install' },
+        { value: 'dry' as Mode, label: 'Dry run', hint: 'show changes, write nothing' }
+    ];
+    const mode = IS_WINDOWS ? await verticalSelect<Mode>('How should I migrate?', modeChoices, 0) : await prompts.select({ message: 'How should I migrate?', initialValue: 'full' as Mode, options: modeChoices });
 
-    if (prompts.isCancel(mode)) {
+    if (mode === null || prompts.isCancel(mode)) {
         prompts.cancel('Migration cancelled.');
 
         return 0;
     }
 
     if (mode !== 'dry' && dirty !== null && dirty > 0 && !force) {
-        const proceed = await prompts.confirm({
-            message: `Your git working tree has ${dirty} uncommitted change${dirty === 1 ? '' : 's'}. Continue anyway?`,
-            initialValue: false
-        });
+        const question = `Your git working tree has ${dirty} uncommitted change${dirty === 1 ? '' : 's'}. Continue anyway?`;
+        const proceed = IS_WINDOWS
+            ? await inlineSelect<boolean>(
+                  question,
+                  [UNICODE ? '←/→ or y/n · Enter to confirm' : 'arrow keys or y/n, Enter to confirm'],
+                  [
+                      { value: true, label: 'Yes' },
+                      { value: false, label: 'No' }
+                  ],
+                  1,
+                  { y: true, n: false }
+              )
+            : await prompts.confirm({ message: question, initialValue: false });
 
-        if (prompts.isCancel(proceed) || !proceed) {
+        if (proceed === null || prompts.isCancel(proceed) || proceed !== true) {
             prompts.cancel('Migration cancelled. Commit or stash your changes, then re-run.');
 
             return 0;

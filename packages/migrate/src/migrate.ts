@@ -55,6 +55,10 @@ export interface MigrateResult {
     installCommand: string;
 }
 
+// Tooling packages users install in order to run the migration or the MCP server; their presence
+// says nothing about whether the project's runtime dependencies were switched to OpenVue.
+const TOOLING_PACKAGES = new Set(['@openvue/migrate', '@openvue/mcp']);
+
 /**
  * A project that already declares or installed OpenVue has handled the dependency switch itself —
  * the migration then only rewrites source files and must not touch package.json or node_modules.
@@ -72,7 +76,7 @@ export function hasOpenVue(dir: string): boolean {
         for (const section of ['dependencies', 'devDependencies']) {
             const deps = pkg[section];
 
-            if (deps && typeof deps === 'object' && Object.keys(deps).some((key) => key === 'openvue' || key.startsWith('@openvue/'))) return true;
+            if (deps && typeof deps === 'object' && Object.keys(deps).some((key) => (key === 'openvue' || key.startsWith('@openvue/')) && !TOOLING_PACKAGES.has(key))) return true;
         }
     } catch {
         // unparsable package.json — treat as not migrated
