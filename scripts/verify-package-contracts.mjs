@@ -141,6 +141,7 @@ for (const preset of ['aura', 'lara', 'material', 'nora']) {
     const umd = join(contractDir, 'node_modules', '@openvue', 'themes', 'umd', `${preset}.min.js`);
 
     if (!existsSync(presetRoot)) fail(`missing theme preset ${preset}`);
+
     if (!existsSync(umd) || statSync(umd).size < 1000) fail(`missing or empty theme UMD ${preset}`);
     else {
         try {
@@ -175,6 +176,7 @@ async function smokeMcp() {
         let output = '';
         let errorOutput = '';
         let settled = false;
+
         const finish = (message) => {
             if (settled) return;
             settled = true;
@@ -183,6 +185,7 @@ async function smokeMcp() {
             if (message) fail(message);
             resolvePromise();
         };
+
         const timer = setTimeout(() => finish(`MCP server did not answer initialize; stdout: ${output.slice(0, 300)}`), 5000);
 
         child.stdout.on('data', (chunk) => {
@@ -220,9 +223,11 @@ for (const version of ['3.53.1', '5.0.0']) {
 
     if (result.status === 0) fail(`migrate CLI accepted unsupported PrimeVue ${version}`);
     if (result.stdout.includes('nothing to do')) fail(`migrate CLI printed a success line for rejected PrimeVue ${version}`);
+
     if (readFileSync(join(rejectedDir, 'package.json'), 'utf8') !== packageJson || readFileSync(join(rejectedDir, 'app.ts'), 'utf8') !== source) {
         fail(`migrate CLI mutated a rejected PrimeVue ${version} project`);
     }
+
     rmSync(rejectedDir, { recursive: true, force: true });
 }
 

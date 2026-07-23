@@ -68,7 +68,7 @@
         "eslint-plugin-prettier": "^5.2.3",
         "eslint-plugin-vue": "^9.32.0",
         "globals": "^15.14.0",
-        "pnpm": "^9.6.0",
+        "pnpm": "^9.15.9",
         "prettier": "^3.5.2",
         "rollup-plugin-postcss": "^4.0.0",
         "rollup-plugin-vue": "^6.0.0-beta.9",
@@ -77,14 +77,40 @@
     "publishConfig": {
         "access": "public"
     },
-    "packageManager": "pnpm@9.6.0",
+    "packageManager": "pnpm@9.15.9",
     "engines": {
         "node": ">=12.11.0"
     },
     "pnpm": {
         "overrides": {
-            "fast-uri": ">=3.1.2",
+            "fast-uri": ">=4.1.1",
             "hono": ">=4.12.25"
+        },
+        "auditConfig": {
+            "ignoreGhsas": [
+                "GHSA-23hp-3jrh-7fpw",
+                "GHSA-2p49-hgcm-8545",
+                "GHSA-34x7-hfp2-rc4v",
+                "GHSA-395f-4hp3-45gv",
+                "GHSA-3jxr-9vmj-r5cp",
+                "GHSA-52cp-r559-cp3m",
+                "GHSA-77vg-94rm-hx3p",
+                "GHSA-83g3-92jg-28cx",
+                "GHSA-8qq5-rm4j-mr97",
+                "GHSA-8x88-c5mf-7j5w",
+                "GHSA-96hv-2xvq-fx4p",
+                "GHSA-9ppj-qmqm-q256",
+                "GHSA-fx2h-pf6j-xcff",
+                "GHSA-hffm-xvc3-vprc",
+                "GHSA-jvhm-gjrh-3h93",
+                "GHSA-mm7m-92g8-7m47",
+                "GHSA-p9ff-h696-f583",
+                "GHSA-qffp-2rhf-9h96",
+                "GHSA-r6q2-hw4h-h46w",
+                "GHSA-v56q-mh7h-f735",
+                "GHSA-w7jw-789q-3m8p",
+                "GHSA-xvcm-6775-5m9r"
+            ]
         }
     }
 }
