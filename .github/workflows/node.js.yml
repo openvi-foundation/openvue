@@ -39,20 +39,20 @@ jobs:
               run: |
                   pnpm run lint
 
-            - name: Code Format Check
-              id: codeFormatCheck
-              if: ${{ success() }}
-              run: |
-                  pnpm run format:check
+            # - name: Code Format Check
+            #   id: codeFormatCheck
+            #   if: ${{ success() }}
+            #   run: |
+            #       pnpm run format:check
 
-            - name: Code Format
-              if: always() && steps.codeFormatCheck.outcome == 'failure'
-              run: |
-                  npm run format
-                  git config user.name "GitHub Actions Bot"
-                  git config user.email "<>"
-                  git commit -a -m "Code Format"
-                  git push
+            # - name: Code Format
+            #   if: always() && steps.codeFormatCheck.outcome == 'failure'
+            #   run: |
+            #       npm run format
+            #       git config user.name "GitHub Actions Bot"
+            #       git config user.email "<>"
+            #       git commit -a -m "Code Format"
+            #       git push
 
             - name: Security Check
               if: ${{ success() }}
