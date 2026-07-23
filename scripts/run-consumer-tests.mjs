@@ -140,7 +140,13 @@ function pointAtTarballs(dir, tarballs) {
 
     pkg.devDependencies ??= {};
 
-    for (const [name, tarball] of Object.entries(tarballs)) pkg.devDependencies[name] = `file:${tarball.replace(/\\/g, '/')}`;
+    for (const [name, tarball] of Object.entries(tarballs)) {
+        const home = ['dependencies', 'optionalDependencies'].find((section) => pkg[section]?.[name] !== undefined) ?? 'devDependencies';
+
+        for (const section of ['dependencies', 'devDependencies', 'optionalDependencies']) delete pkg[section]?.[name];
+
+        pkg[home][name] = `file:${tarball.replace(/\\/g, '/')}`;
+    }
 
     // The compatibility alias was asserted above. Local file dependencies cannot use npm's alias
     // protocol, so remove it only in this disposable install manifest.
