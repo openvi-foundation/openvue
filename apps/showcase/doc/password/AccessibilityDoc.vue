@@ -19,7 +19,15 @@
                 <tbody>
                     <tr>
                         <td><i>tab</i></td>
-                        <td>Moves focus to the input.</td>
+                        <td>Moves focus to the input, then to the show/hide password button and clear button when present.</td>
+                    </tr>
+                    <tr>
+                        <td><i>enter</i></td>
+                        <td>Toggles the password visibility or clears the value when the show/hide password button or clear button is focused.</td>
+                    </tr>
+                    <tr>
+                        <td><i>space</i></td>
+                        <td>Toggles the password visibility or clears the value when the show/hide password button or clear button is focused.</td>
                     </tr>
                     <tr>
                         <td><i>escape</i></td>

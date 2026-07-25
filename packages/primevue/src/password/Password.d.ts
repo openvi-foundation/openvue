@@ -393,6 +393,10 @@ export interface PasswordSlots {
          * Mask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the mask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom hide icon template.
@@ -403,6 +407,10 @@ export interface PasswordSlots {
          * Mask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the mask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * @deprecated since v4.0. use 'unmaskicon' slot instead.
@@ -414,6 +422,10 @@ export interface PasswordSlots {
          * Unmask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the unmask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom unmask icon template.
@@ -424,6 +436,10 @@ export interface PasswordSlots {
          * Unmask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the unmask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom clear icon template.
@@ -435,6 +451,10 @@ export interface PasswordSlots {
          * @param {Event} event - Browser event
          */
         clearCallback: (event: Event) => void;
+        /**
+         * Style class of the clear icon
+         */
+        class: any;
     }): VNode[];
 }
 

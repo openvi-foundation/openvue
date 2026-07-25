@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Labels are translated at component level by <i>promptLabel</i>, <i>weakLabel</i>, <i>mediumLabel</i> and <i>strongLabel</i> properties. In order to apply global translations for all Password components in the application, refer to the
-            <NuxtLink to="/configuration/#locale">locale</NuxtLink>.
+            Labels are translated at component level by <i>promptLabel</i>, <i>weakLabel</i>, <i>mediumLabel</i>, <i>strongLabel</i>, <i>showPasswordLabel</i> and <i>hidePasswordLabel</i> properties. In order to apply global translations for all
+            Password components in the application, refer to the <NuxtLink to="/configuration/#locale">locale</NuxtLink>.
         </p>
     </DocSectionText>
     <div class="card flex justify-center">
