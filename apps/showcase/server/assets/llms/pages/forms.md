@@ -224,6 +224,316 @@ const onFormSubmit = (text, { valid }) => {
 ```
 </details>
 
+## Built In
+
+Although OpenVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other 3rd party components, your own custom components, and native elements, for consistency it may be an option.
+
+```vue
+<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+    <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
+        <InputText type="text" placeholder="Username" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+            <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
+                <InputText type="text" placeholder="Username" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <Button type="submit" severity="secondary" label="Submit" />
+        </Form>
+    </div>
+</template>
+
+<script setup>
+import { reactive } from 'vue';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { z } from 'zod';
+import { useToast } from 'openvue/usetoast';
+
+const toast = useToast();
+
+const resolver = zodResolver(
+  z.object({
+    username: z.string().min(1, { message: 'Username is required.' })
+  })
+);
+
+const onFormSubmit = ({ valid }) => {
+  if (valid) {
+    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
+  }
+};
+<\/script>
+```
+</details>
+
+## FormField
+
+The FormField is a helper component that provides validation and tracking for input elements, offering a more flexible structure to bind OpenVue, non-OpenVue components or native HTML elements to Form API. Additionally, with props like validateOn* , initialValue , resolver , and name , behaviors can be controlled directly from this component.
+
+```vue
+import { FormField } from '@openvue/forms';
+```
+
+## Non Open Vue
+
+Form API is not strictly tied to OpenVue components, providing a flexible way to manage validation and state for any native HTML elements, your own custom components or third-party libraries.
+
+```vue
+<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+    <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
+        <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
+        <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+            <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
+                <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
+                <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <Button type="submit" severity="secondary" label="Submit" />
+        </Form>
+    </div>
+</template>
+
+<script setup>
+import { reactive } from 'vue';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { z } from 'zod';
+import { useToast } from 'openvue/usetoast';
+
+const toast = useToast();
+
+const resolver = zodResolver(
+    z.object({
+        username: z.string().min(1, { message: 'Username is required.' }),
+        password: z.string().min(1, { message: 'Password is required.' })
+    })
+);
+
+const onFormSubmit = ({ valid }) => {
+  if (valid) {
+    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
+  }
+};
+<\/script>
+<style scoped>
+input {
+    width: 100%;
+    color: var(--p-inputtext-color);
+    background: var(--p-inputtext-background);
+    border: 1px solid var(--p-inputtext-border-color);
+}
+
+input.error {
+    border-color: var(--p-inputtext-invalid-border-color);
+}
+<\/style>
+```
+</details>
+
+## Resolver
+
+Each FormField can have its own dedicated resolver, allowing you to define custom validation logic for individual fields. This flexibility enables tailored validation rules, ensuring that each form field meets specific criteria.
+
+```vue
+<Form :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-80">
+    <FormField v-slot="$field" name="username" initialValue="" :resolver="zodUserNameResolver" class="flex flex-col gap-1">
+        <InputText type="text" placeholder="Username" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" name="firstname" initialValue="" :resolver="yupFirstNameResolver" class="flex flex-col gap-1">
+        <InputText type="text" placeholder="First Name" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" name="lastname" initialValue="" :resolver="valibotLastNameResolver" class="flex flex-col gap-1">
+        <InputText type="text" placeholder="Last Name" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" name="password" initialValue="" :resolver="customPasswordResolver" class="flex flex-col gap-1">
+        <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" name="details" class="flex flex-col gap-1">
+        <Textarea placeholder="Details" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Form :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-80">
+            <FormField v-slot="$field" name="username" initialValue="" :resolver="zodUserNameResolver" class="flex flex-col gap-1">
+                <InputText type="text" placeholder="Username" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" name="firstname" initialValue="" :resolver="yupFirstNameResolver" class="flex flex-col gap-1">
+                <InputText type="text" placeholder="First Name" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" name="lastname" initialValue="" :resolver="valibotLastNameResolver" class="flex flex-col gap-1">
+                <InputText type="text" placeholder="Last Name" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" name="password" initialValue="" :resolver="customPasswordResolver" class="flex flex-col gap-1">
+                <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" name="details" class="flex flex-col gap-1">
+                <Textarea placeholder="Details" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <Button type="submit" severity="secondary" label="Submit" />
+        </Form>
+    </div>
+</template>
+
+<script setup>
+import { reactive } from 'vue';
+import { valibotResolver } from '@openvue/forms/resolvers/valibot';
+import { yupResolver } from '@openvue/forms/resolvers/yup';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import * as v from 'valibot';
+import * as yup from 'yup';
+import { z } from 'zod';
+import { useToast } from 'openvue/usetoast';
+
+const toast = useToast();
+
+const initialValues = reactive({
+    details: ''
+});
+
+const resolver = zodResolver(
+    z.object({
+        details: z.string().min(1, { message: 'Details is required via Form Resolver.' })
+    })
+);
+
+const zodUserNameResolver = zodResolver(z.string().min(1, { message: 'Username is required via Zod.' }));
+const yupFirstNameResolver = yupResolver(yup.string().required('First name is required via Yup.'));
+const valibotLastNameResolver = valibotResolver(v.pipe(v.string(), v.minLength(1, 'Last name is required via Valibot.')));
+
+const customPasswordResolver = ({ value }) => {
+    const errors = [];
+
+    if (!value) {
+        errors.push({ message: 'Password is required via Custom.' });
+    }
+
+    return {
+        errors
+    };
+};
+
+const onFormSubmit = ({ valid }) => {
+  if (valid) {
+    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
+  }
+};
+<\/script>
+```
+</details>
+
+## Template
+
+It renders as a HTML div element, but this behavior can be modified using the as and asChild props to render different HTML elements or to pass a custom component, allowing for greater flexibility in form structure.
+
+```vue
+<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+    <FormField v-slot="$field" as="section" name="username" initialValue="" class="flex flex-col gap-2">
+        <InputText type="text" placeholder="Username" />
+        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+    </FormField>
+    <FormField v-slot="$field" asChild name="password" initialValue="">
+        <section class="flex flex-col gap-2">
+            <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+            <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+        </section>
+    </FormField>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+            <FormField v-slot="$field" as="section" name="username" initialValue="" class="flex flex-col gap-2">
+                <InputText type="text" placeholder="Username" />
+                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+            </FormField>
+            <FormField v-slot="$field" asChild name="password" initialValue="">
+                <section class="flex flex-col gap-2">
+                    <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+                    <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
+                </section>
+            </FormField>
+            <Button type="submit" severity="secondary" label="Submit" />
+        </Form>
+    </div>
+</template>
+
+<script setup>
+import { reactive } from 'vue';
+import { zodResolver } from '@openvue/forms/resolvers/zod';
+import { z } from 'zod';
+import { useToast } from 'openvue/usetoast';
+
+const toast = useToast();
+
+const resolver =  zodResolver(
+    z.object({
+        username: z.string().min(1, { message: 'Username is required.' }),
+        password: z.string().min(1, { message: 'Password is required.' })
+    })
+);
+
+const onFormSubmit = ({ valid }) => {
+    if (valid) {
+        toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
+    }
+};
+<\/script>
+```
+</details>
+
 ## Import
 
 The form component is responsible for managing the form state and must encapsulate the form fields.
@@ -536,6 +846,10 @@ const onFormSubmit = (e) => {
 ```
 </details>
 
+## Styled
+
+Component does not apply any styling.
+
 ## ValidateOn
 
 Form component supports flexible validation triggers, allowing validation on value updates, blur events, form mount, or submission. These behaviors can be configured at form level or on specific fields via the validateOnValueUpdate , validateOnBlur , validateOnMount , and validateOnSubmit options of the formControl property. In this example, form disables validateOnValueUpdate and enables validateOnBlur at form level, and validates firstName on mount. The firstName field, overrides the form level setting locally.
@@ -624,318 +938,4 @@ const onFormSubmit = ({ valid }) => {
 <\/script>
 ```
 </details>
-
-## Built In
-
-Although OpenVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other 3rd party components, your own custom components, and native elements, for consistency it may be an option.
-
-```vue
-<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-    <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
-        <InputText type="text" placeholder="Username" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-<details>
-<summary>Composition API Example</summary>
-
-```vue
-<template>
-    <div class="card flex justify-center">
-        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-            <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
-                <InputText type="text" placeholder="Username" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <Button type="submit" severity="secondary" label="Submit" />
-        </Form>
-    </div>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-import { zodResolver } from '@openvue/forms/resolvers/zod';
-import { z } from 'zod';
-import { useToast } from 'openvue/usetoast';
-
-const toast = useToast();
-
-const resolver = zodResolver(
-  z.object({
-    username: z.string().min(1, { message: 'Username is required.' })
-  })
-);
-
-const onFormSubmit = ({ valid }) => {
-  if (valid) {
-    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
-  }
-};
-<\/script>
-```
-</details>
-
-## FormField
-
-The FormField is a helper component that provides validation and tracking for input elements, offering a more flexible structure to bind OpenVue, non-OpenVue components or native HTML elements to Form API. Additionally, with props like validateOn* , initialValue , resolver , and name , behaviors can be controlled directly from this component.
-
-```vue
-import { FormField } from '@openvue/forms';
-```
-
-## Non Open Vue
-
-Form API is not strictly tied to OpenVue components, providing a flexible way to manage validation and state for any native HTML elements, your own custom components or third-party libraries.
-
-```vue
-<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-    <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
-        <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
-        <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-<details>
-<summary>Composition API Example</summary>
-
-```vue
-<template>
-    <div class="card flex justify-center">
-        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-            <FormField v-slot="$field" name="username" initialValue="" class="flex flex-col gap-1">
-                <input type="text" placeholder="Username" :class="[{ error: $field?.invalid }]" v-bind="$field.props" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" name="password" initialValue="OpenVue" class="flex flex-col gap-1">
-                <input v-model="$field.value" type="password" placeholder="Password" :class="[{ error: $field?.invalid }]" @input="$field.onInput" @blur="$field.onBlur" @change="$field.onChange" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <Button type="submit" severity="secondary" label="Submit" />
-        </Form>
-    </div>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-import { zodResolver } from '@openvue/forms/resolvers/zod';
-import { z } from 'zod';
-import { useToast } from 'openvue/usetoast';
-
-const toast = useToast();
-
-const resolver = zodResolver(
-    z.object({
-        username: z.string().min(1, { message: 'Username is required.' }),
-        password: z.string().min(1, { message: 'Password is required.' })
-    })
-);
-
-const onFormSubmit = ({ valid }) => {
-  if (valid) {
-    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
-  }
-};
-<\/script>
-<style scoped>
-input {
-    width: 100%;
-    color: var(--p-inputtext-color);
-    background: var(--p-inputtext-background);
-    border: 1px solid var(--p-inputtext-border-color);
-}
-
-input.error {
-    border-color: var(--p-inputtext-invalid-border-color);
-}
-<\/style>
-```
-</details>
-
-## Resolver
-
-Each FormField can have its own dedicated resolver, allowing you to define custom validation logic for individual fields. This flexibility enables tailored validation rules, ensuring that each form field meets specific criteria.
-
-```vue
-<Form :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-80">
-    <FormField v-slot="$field" name="username" initialValue="" :resolver="zodUserNameResolver" class="flex flex-col gap-1">
-        <InputText type="text" placeholder="Username" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" name="firstname" initialValue="" :resolver="yupFirstNameResolver" class="flex flex-col gap-1">
-        <InputText type="text" placeholder="First Name" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" name="lastname" initialValue="" :resolver="valibotLastNameResolver" class="flex flex-col gap-1">
-        <InputText type="text" placeholder="Last Name" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" name="password" initialValue="" :resolver="customPasswordResolver" class="flex flex-col gap-1">
-        <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" name="details" class="flex flex-col gap-1">
-        <Textarea placeholder="Details" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-<details>
-<summary>Composition API Example</summary>
-
-```vue
-<template>
-    <div class="card flex justify-center">
-        <Form :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-80">
-            <FormField v-slot="$field" name="username" initialValue="" :resolver="zodUserNameResolver" class="flex flex-col gap-1">
-                <InputText type="text" placeholder="Username" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" name="firstname" initialValue="" :resolver="yupFirstNameResolver" class="flex flex-col gap-1">
-                <InputText type="text" placeholder="First Name" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" name="lastname" initialValue="" :resolver="valibotLastNameResolver" class="flex flex-col gap-1">
-                <InputText type="text" placeholder="Last Name" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" name="password" initialValue="" :resolver="customPasswordResolver" class="flex flex-col gap-1">
-                <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" name="details" class="flex flex-col gap-1">
-                <Textarea placeholder="Details" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <Button type="submit" severity="secondary" label="Submit" />
-        </Form>
-    </div>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-import { valibotResolver } from '@openvue/forms/resolvers/valibot';
-import { yupResolver } from '@openvue/forms/resolvers/yup';
-import { zodResolver } from '@openvue/forms/resolvers/zod';
-import * as v from 'valibot';
-import * as yup from 'yup';
-import { z } from 'zod';
-import { useToast } from 'openvue/usetoast';
-
-const toast = useToast();
-
-const initialValues = reactive({
-    details: ''
-});
-
-const resolver = zodResolver(
-    z.object({
-        details: z.string().min(1, { message: 'Details is required via Form Resolver.' })
-    })
-);
-
-const zodUserNameResolver = zodResolver(z.string().min(1, { message: 'Username is required via Zod.' }));
-const yupFirstNameResolver = yupResolver(yup.string().required('First name is required via Yup.'));
-const valibotLastNameResolver = valibotResolver(v.pipe(v.string(), v.minLength(1, 'Last name is required via Valibot.')));
-
-const customPasswordResolver = ({ value }) => {
-    const errors = [];
-
-    if (!value) {
-        errors.push({ message: 'Password is required via Custom.' });
-    }
-
-    return {
-        errors
-    };
-};
-
-const onFormSubmit = ({ valid }) => {
-  if (valid) {
-    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
-  }
-};
-<\/script>
-```
-</details>
-
-## Template
-
-It renders as a HTML div element, but this behavior can be modified using the as and asChild props to render different HTML elements or to pass a custom component, allowing for greater flexibility in form structure.
-
-```vue
-<Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-    <FormField v-slot="$field" as="section" name="username" initialValue="" class="flex flex-col gap-2">
-        <InputText type="text" placeholder="Username" />
-        <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-    </FormField>
-    <FormField v-slot="$field" asChild name="password" initialValue="">
-        <section class="flex flex-col gap-2">
-            <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
-            <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-        </section>
-    </FormField>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-<details>
-<summary>Composition API Example</summary>
-
-```vue
-<template>
-    <div class="card flex justify-center">
-        <Form :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-            <FormField v-slot="$field" as="section" name="username" initialValue="" class="flex flex-col gap-2">
-                <InputText type="text" placeholder="Username" />
-                <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-            </FormField>
-            <FormField v-slot="$field" asChild name="password" initialValue="">
-                <section class="flex flex-col gap-2">
-                    <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
-                    <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</Message>
-                </section>
-            </FormField>
-            <Button type="submit" severity="secondary" label="Submit" />
-        </Form>
-    </div>
-</template>
-
-<script setup>
-import { reactive } from 'vue';
-import { zodResolver } from '@openvue/forms/resolvers/zod';
-import { z } from 'zod';
-import { useToast } from 'openvue/usetoast';
-
-const toast = useToast();
-
-const resolver =  zodResolver(
-    z.object({
-        username: z.string().min(1, { message: 'Username is required.' }),
-        password: z.string().min(1, { message: 'Password is required.' })
-    })
-);
-
-const onFormSubmit = ({ valid }) => {
-    if (valid) {
-        toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
-    }
-};
-<\/script>
-```
-</details>
-
-## Styled
-
-Component does not apply any styling.
 

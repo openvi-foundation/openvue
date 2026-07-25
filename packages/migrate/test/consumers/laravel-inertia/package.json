@@ -1,0 +1,29 @@
+{
+    "name": "openvue-consumer-laravel-inertia",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "serve:test": "php artisan serve --host=127.0.0.1",
+        "typecheck": "vue-tsc --noEmit",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@inertiajs/vue3": "2.0.17",
+        "@primevue/themes": "4.5.4",
+        "primeicons": "7.0.0",
+        "primevue": "^4.5.5",
+        "vue": "3.5.17"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "6.0.1",
+        "laravel-vite-plugin": "1.2.0",
+        "typescript": "5.7.3",
+        "vite": "6.0.11",
+        "vue-tsc": "2.2.12"
+    },
+    "openvueTest": {
+        "packageManager": "pnpm",
+        "server": "laravel"
+    }
+}

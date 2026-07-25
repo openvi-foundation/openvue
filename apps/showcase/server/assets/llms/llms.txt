@@ -2,123 +2,123 @@
 
 ## Guides
 
-- [Introduction](https://primevue.org/introduction): Next-generation UI Component suite for Vue.
-- [Configuration](https://primevue.org/configuration): Application wide configuration for OpenVue.
-- [Styled Mode](https://primevue.org/styled): Choose from a variety of pre-styled themes or develop your own.
-- [Unstyled Mode](https://primevue.org/unstyled): Theming OpenVue with alternative styling approaches.
-- [Pass Through](https://primevue.org/passthrough): The Pass Through attributes is an API to access the internal DOM Structure of the components.
-- [Icons](https://primevue.org/icons): OpenIcons is the default icon library of OpenVue with over 250 open source icons maintained by the OpenVi Foundation. OpenIcons is optional as OpenVue components can use any icon with templating.
-- [Custom Icons](https://primevue.org/customicons): OpenVue components can be used with any icon library using the templating features.
-- [Forms](https://primevue.org/forms): The OpenVue Forms library provides comprehensive form state management with built-in validation support.
-- [Auto Import](https://primevue.org/autoimport): On-demand OpenVue components with auto imports and tree-shaking.
-- [Install OpenVue with CDN](https://primevue.org/cdn): Setting up OpenVue in a project using CDN.
-- [Install OpenVue with Laravel](https://primevue.org/laravel): Setting up OpenVue in a Laravel project.
-- [Install OpenVue with Nuxt](https://primevue.org/nuxt): Setting up OpenVue in a Nuxt project.
-- [Install OpenVue with Vite](https://primevue.org/vite): Setting up OpenVue in a Vite project.
-- [Tailwind CSS](https://primevue.org/tailwind): Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.
-- [Contribution Guide](https://primevue.org/contribution): Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
-- [Setup](https://primevue.org/setup): Installation guides for popular development environments.
-- [LLMs.txt](https://primevue.org/llms): LLM-optimized documentation endpoints for OpenVue components.
-- [MCP Server](https://primevue.org/mcp): Model Context Protocol (MCP) server for OpenVue component library. Provides AI assistants with comprehensive access to OpenVue component documentation.
-- [Accessibility](https://primevue.org/guides/accessibility): OpenVue has WCAG 2.1 AA level compliance, refer to the accessibility documentation of each component for detailed information.
-- [Animations](https://primevue.org/guides/animations): Various OpenVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to customize the default animations, this documentation covers the entire set of built-in animations.
-- [Dynamic Imports](https://primevue.org/guides/dynamicimports): Dynamic imports enable the loading of multiple items as needed, streamlining the import process.
-- [Migration](https://primevue.org/guides/migration/v4): Migration guide to OpenVue v4.
-- [RTL Support](https://primevue.org/guides/rtl): Right-to-left direction support of OpenVue.
+- [Introduction](https://openvue.dev/introduction): Next-generation UI Component suite for Vue.
+- [Configuration](https://openvue.dev/configuration): Application wide configuration for OpenVue.
+- [Styled Mode](https://openvue.dev/styled): Choose from a variety of pre-styled themes or develop your own.
+- [Unstyled Mode](https://openvue.dev/unstyled): Theming OpenVue with alternative styling approaches.
+- [Pass Through](https://openvue.dev/passthrough): The Pass Through attributes is an API to access the internal DOM Structure of the components.
+- [Icons](https://openvue.dev/icons): OpenIcons is the default icon library of OpenVue with over 250 open source icons maintained by the OpenVi Foundation. OpenIcons is optional as OpenVue components can use any icon with templating.
+- [Custom Icons](https://openvue.dev/customicons): OpenVue components can be used with any icon library using the templating features.
+- [Forms](https://openvue.dev/forms): The OpenVue Forms library provides comprehensive form state management with built-in validation support.
+- [Auto Import](https://openvue.dev/autoimport): On-demand OpenVue components with auto imports and tree-shaking.
+- [Install OpenVue with CDN](https://openvue.dev/cdn): Setting up OpenVue in a project using CDN.
+- [Install OpenVue with Laravel](https://openvue.dev/laravel): Setting up OpenVue in a Laravel project.
+- [Migration from PrimeVue v4](https://openvue.dev/migrate): Move an existing PrimeVue v4 project to OpenVue with one command.
+- [Install OpenVue with Nuxt](https://openvue.dev/nuxt): Setting up OpenVue in a Nuxt project.
+- [Install OpenVue with Vite](https://openvue.dev/vite): Setting up OpenVue in a Vite project.
+- [Tailwind CSS](https://openvue.dev/tailwind): Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.
+- [Contribution Guide](https://openvue.dev/contribution): Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
+- [Setup](https://openvue.dev/setup): Installation guides for popular development environments.
+- [LLMs.txt](https://openvue.dev/llms): LLM-optimized documentation endpoints for OpenVue components.
+- [MCP Server](https://openvue.dev/mcp): Model Context Protocol (MCP) server for OpenVue component library. Provides AI assistants with comprehensive access to OpenVue component documentation.
+- [Accessibility](https://openvue.dev/guides/accessibility): OpenVue has WCAG 2.1 AA level compliance, refer to the accessibility documentation of each component for detailed information.
+- [Animations](https://openvue.dev/guides/animations): Various OpenVue Components utilize native CSS animations to provide an enhanced user experience. The default animations are based on the best practices recommended by the usability experts. In case you need to customize the default animations, this documentation covers the entire set of built-in animations.
+- [Dynamic Imports](https://openvue.dev/guides/dynamicimports): Dynamic imports enable the loading of multiple items as needed, streamlining the import process.
+- [Migration](https://openvue.dev/guides/migration/v4): Migration guide to OpenVue from Primevue v3.
+- [RTL Support](https://openvue.dev/guides/rtl): Right-to-left direction support of OpenVue.
 
 ## Components
 
-- [mcp](https://primevue.org/mcp): 
-- [migrate](https://primevue.org/migrate): 
-- [Vue Accordion Component](https://primevue.org/accordion): Accordion groups a collection of contents in panels.
-- [Vue AnimateOnScroll Directive](https://primevue.org/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.
-- [Vue AutoComplete Component](https://primevue.org/autocomplete): AutoComplete is an input component that provides real-time suggestions when being typed.
-- [Vue Avatar Component](https://primevue.org/avatar): Avatar represents people using icons, labels and images.
-- [Vue Badge Component](https://primevue.org/badge): Badge is a small status indicator for another element.
-- [Vue BlockUI Component](https://primevue.org/blockui): BlockUI can either block other components or the whole page.
-- [Vue Breadcrumb Component](https://primevue.org/breadcrumb): Breadcrumb provides contextual information about page hierarchy.
-- [Vue Button Component](https://primevue.org/button): Button is an extension to standard input element with icons and theming.
-- [Vue Card Component](https://primevue.org/card): Card is a flexible container component.
-- [Vue Carousel Component](https://primevue.org/carousel): Carousel is a content slider featuring various customization options.
-- [Vue CascadeSelect Component](https://primevue.org/cascadeselect): CascadeSelect is a form component to select a value from a nested structure of options.
-- [Vue Chart Component](https://primevue.org/chart): Chart components are based on Chart.js, an open source HTML5 based charting library.
-- [Vue Checkbox Component](https://primevue.org/checkbox): Checkbox is an extension to standard checkbox element with theming.
-- [Vue Chip Component](https://primevue.org/chip): Chip represents entities using icons, labels and images.
-- [Vue ColorPicker Component](https://primevue.org/colorpicker): ColorPicker is an input component to select a color.
-- [Vue Confirmation Dialog Component](https://primevue.org/confirmdialog): ConfirmDialog uses a Dialog UI that is integrated with the Confirmation API.
-- [Vue Confirmation Popup Component](https://primevue.org/confirmpopup): ConfirmPopup displays a confirmation overlay displayed relatively to its target.
-- [Vue ContextMenu Component](https://primevue.org/contextmenu): ContextMenu displays an overlay menu to display actions related to an element.
-- [Vue DataView Component](https://primevue.org/dataview): DataView displays data in grid or list layout with pagination and sorting features.
-- [Vue DatePicker Component](https://primevue.org/datepicker): DatePicker is a form component for date inputs.
-- [Vue Deferred Content Component](https://primevue.org/deferredcontent): DeferredContent postpones the loading the content that is initially not in the viewport until it becomes visible on scroll.
-- [Vue Dialog Component](https://primevue.org/dialog): Dialog is a container to display content in an overlay window.
-- [Vue Divider Component](https://primevue.org/divider): Divider is used to separate contents.
-- [Vue Dock Component](https://primevue.org/dock): Dock is a navigation component consisting of menuitems.
-- [Vue Drawer Component](https://primevue.org/drawer): Drawer is a container component displayed as an overlay.
-- [Vue Dynamic Dialog Component](https://primevue.org/dynamicdialog): Dialogs can be created dynamically with any component as the content using a DialogService.
-- [Vue Editor Component](https://primevue.org/editor): Editor is rich text editor component based on Quill.
-- [Vue Fieldset Component](https://primevue.org/fieldset): Fieldset is a grouping component with a content toggle feature.
-- [Vue File Upload Component](https://primevue.org/fileupload): FileUpload is an advanced uploader with dragdrop support, multi file uploads, auto uploading, progress tracking and validations.
-- [Vue Float Label](https://primevue.org/floatlabel): FloatLabel visually integrates a label with its form element.
-- [Vue Fluid Component](https://primevue.org/fluid): Fluid is a layout component to make descendant components span full width of their container.
-- [Vue FocusTrap Directive](https://primevue.org/focustrap): Focus Trap keeps focus within a certain DOM element while tabbing.
-- [Vue Gallery Component](https://primevue.org/galleria): Galleria is a content gallery component.
-- [Vue IconField](https://primevue.org/iconfield): IconField wraps an input and an icon.
-- [Vue Ifta Label](https://primevue.org/iftalabel): IftaLabel is used to create infield top aligned labels
-- [Vue Image Component](https://primevue.org/image): Displays a single image with preview and tranformation options.
-- [Vue ImageCompare Component](https://primevue.org/imagecompare): Compare two images side by side with a slider.
-- [Vue Inplace Component](https://primevue.org/inplace): Inplace provides an easy to do editing and display at the same time where clicking the output displays the actual content.
-- [Vue Input Component](https://primevue.org/inputtext): InputText is an extension to standard input element with theming.
-- [Vue InputGroup Component](https://primevue.org/inputgroup): Text, icon, buttons and other content can be grouped next to an input.
-- [Vue InputNumber Component](https://primevue.org/inputnumber): InputNumber is an input component to provide numerical input.
-- [Vue KeyFilter Component](https://primevue.org/keyfilter): A keyfilter is a directive used to block individual keystrokes based on a pattern.
-- [Vue Knob Component](https://primevue.org/knob): Knob is a form component to define number inputs with a dial.
-- [Vue Listbox Component](https://primevue.org/listbox): Listbox is used to select one or more values from a list of items.
-- [Vue Mask Component](https://primevue.org/inputmask): InputMask component is used to enter input in a certain format such as numeric, date, currency, email and phone.
-- [Vue MegaMenu Component](https://primevue.org/megamenu): MegaMenu is a navigation component that displays submenus and content in columns.
-- [Vue Menu Component](https://primevue.org/menu): Menu displays a list of items in vertical orientation.
-- [Vue Message Component](https://primevue.org/message): Message component is used to display inline messages.
-- [Vue MeterGroup Component](https://primevue.org/metergroup): MeterGroup displays scalar measurements within a known range.
-- [Vue MultiSelect Component](https://primevue.org/multiselect): MultiSelect is used to select multiple items from a collection.
-- [Vue Navbar Component](https://primevue.org/menubar): Menubar also known as Navbar, is a horizontal menu component.
-- [Vue OrderList Component](https://primevue.org/orderlist): OrderList is used to sort a collection.
-- [Vue Organization Chart Component](https://primevue.org/organizationchart): OrganizationChart visualizes hierarchical organization data.
-- [Vue Otp Input Component](https://primevue.org/inputotp): Input Otp is used to enter one time passwords.
-- [Vue Paginator Component](https://primevue.org/paginator): Paginator displays data in paged format and provides navigation between pages.
-- [Vue Panel Component](https://primevue.org/panel): Panel is a grouping component providing with content toggle feature.
-- [Vue PanelMenu Component](https://primevue.org/panelmenu): PanelMenu is a hybrid of accordion-tree components.
-- [Vue Password Component](https://primevue.org/password): Password displays strength indicator for password fields.
-- [Vue PickList Component](https://primevue.org/picklist): PickList is used to reorder items between different lists.
-- [Vue Popover Component](https://primevue.org/popover): Popover is a container component that can overlay other components on page.
-- [Vue ProgressBar Component](https://primevue.org/progressbar): ProgressBar is a process status indicator.
-- [Vue ProgressSpinner Component](https://primevue.org/progressspinner): ProgressSpinner is a process status indicator.
-- [Vue RadioButton Component](https://primevue.org/radiobutton): RadioButton is an extension to standard radio button element with theming.
-- [Vue Rating Component](https://primevue.org/rating): Rating component is a star based selection input.
-- [Vue Ripple Component](https://primevue.org/ripple): Ripple directive adds ripple effect to the host element.
-- [Vue ScrollPanel Component](https://primevue.org/scrollpanel): ScrollPanel is a cross browser, lightweight and skinnable alternative to native browser scrollbar.
-- [Vue ScrollTop Component](https://primevue.org/scrolltop): ScrollTop gets displayed after a certain scroll position and used to navigates to the top of the page quickly.
-- [Vue Select Component](https://primevue.org/select): Select is used to choose an item from a collection of options.
-- [Vue SelectButton Component](https://primevue.org/selectbutton): SelectButton is used to choose single or multiple items from a list using buttons.
-- [Vue Skeleton Component](https://primevue.org/skeleton): Skeleton is a placeholder to display instead of the actual content.
-- [Vue Slider Component](https://primevue.org/slider): Slider is a component to provide input with a drag handle.
-- [Vue Speed Dial Component](https://primevue.org/speeddial): When pressed, a floating action button can display multiple primary actions that can be performed on a page.
-- [Vue SplitButton Component](https://primevue.org/splitbutton): SplitButton groups a set of commands in an overlay with a default command.
-- [Vue Splitter Component](https://primevue.org/splitter): Splitter is utilized to separate and resize panels.
-- [Vue Stepper Component](https://primevue.org/stepper): The Stepper component displays a wizard-like workflow by guiding users through the multi-step progression.
-- [Vue StyleClass Directive](https://primevue.org/styleclass): StyleClass manages css classes declaratively to during enter/leave animations or just to toggle classes on an element.
-- [Vue Table Component](https://primevue.org/datatable): DataTable displays data in tabular format.
-- [Vue Tabs Component](https://primevue.org/tabs): Tabs facilitates seamless switching between different views.
-- [Vue Tag Component](https://primevue.org/tag): Tag component is used to categorize content.
-- [Vue Terminal Component](https://primevue.org/terminal): Terminal is a text based user interface.
-- [Vue Textarea Component](https://primevue.org/textarea): Textarea adds styling and autoResize functionality to standard textarea element.
-- [Vue TieredMenu Component](https://primevue.org/tieredmenu): TieredMenu displays submenus in nested overlays.
-- [Vue Timeline Component](https://primevue.org/timeline): Timeline visualizes a series of chained events.
-- [Vue Toast Component](https://primevue.org/toast): Toast is used to display messages in an overlay.
-- [Vue ToggleButton Component](https://primevue.org/togglebutton): ToggleButton is used to select a boolean value using a button.
-- [Vue ToggleSwitch Component](https://primevue.org/toggleswitch): ToggleSwitch is used to select a boolean value.
-- [Vue Toolbar Component](https://primevue.org/toolbar): Toolbar is a grouping component for buttons and other content.
-- [Vue Tooltip Directive](https://primevue.org/tooltip): Tooltip directive provides advisory information for a component.
-- [Vue Tree Component](https://primevue.org/tree): Tree is used to display hierarchical data.
-- [Vue TreeSelect Component](https://primevue.org/treeselect): TreeSelect is a form component to choose from hierarchical data.
-- [Vue TreeTable Component](https://primevue.org/treetable): TreeTable is used to display hierarchical data in tabular format.
-- [Vue Virtual Scroller Component](https://primevue.org/virtualscroller): VirtualScroller is a performant approach to render large amounts of data efficiently.
+- [mcp](https://openvue.dev/mcp): 
+- [Vue Accordion Component](https://openvue.dev/accordion): Accordion groups a collection of contents in panels.
+- [Vue AnimateOnScroll Directive](https://openvue.dev/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.
+- [Vue AutoComplete Component](https://openvue.dev/autocomplete): AutoComplete is an input component that provides real-time suggestions when being typed.
+- [Vue Avatar Component](https://openvue.dev/avatar): Avatar represents people using icons, labels and images.
+- [Vue Badge Component](https://openvue.dev/badge): Badge is a small status indicator for another element.
+- [Vue BlockUI Component](https://openvue.dev/blockui): BlockUI can either block other components or the whole page.
+- [Vue Breadcrumb Component](https://openvue.dev/breadcrumb): Breadcrumb provides contextual information about page hierarchy.
+- [Vue Button Component](https://openvue.dev/button): Button is an extension to standard input element with icons and theming.
+- [Vue Card Component](https://openvue.dev/card): Card is a flexible container component.
+- [Vue Carousel Component](https://openvue.dev/carousel): Carousel is a content slider featuring various customization options.
+- [Vue CascadeSelect Component](https://openvue.dev/cascadeselect): CascadeSelect is a form component to select a value from a nested structure of options.
+- [Vue Chart Component](https://openvue.dev/chart): Chart components are based on Chart.js, an open source HTML5 based charting library.
+- [Vue Checkbox Component](https://openvue.dev/checkbox): Checkbox is an extension to standard checkbox element with theming.
+- [Vue Chip Component](https://openvue.dev/chip): Chip represents entities using icons, labels and images.
+- [Vue ColorPicker Component](https://openvue.dev/colorpicker): ColorPicker is an input component to select a color.
+- [Vue Confirmation Dialog Component](https://openvue.dev/confirmdialog): ConfirmDialog uses a Dialog UI that is integrated with the Confirmation API.
+- [Vue Confirmation Popup Component](https://openvue.dev/confirmpopup): ConfirmPopup displays a confirmation overlay displayed relatively to its target.
+- [Vue ContextMenu Component](https://openvue.dev/contextmenu): ContextMenu displays an overlay menu to display actions related to an element.
+- [Vue DataView Component](https://openvue.dev/dataview): DataView displays data in grid or list layout with pagination and sorting features.
+- [Vue DatePicker Component](https://openvue.dev/datepicker): DatePicker is a form component for date inputs.
+- [Vue Deferred Content Component](https://openvue.dev/deferredcontent): DeferredContent postpones the loading the content that is initially not in the viewport until it becomes visible on scroll.
+- [Vue Dialog Component](https://openvue.dev/dialog): Dialog is a container to display content in an overlay window.
+- [Vue Divider Component](https://openvue.dev/divider): Divider is used to separate contents.
+- [Vue Dock Component](https://openvue.dev/dock): Dock is a navigation component consisting of menuitems.
+- [Vue Drawer Component](https://openvue.dev/drawer): Drawer is a container component displayed as an overlay.
+- [Vue Dynamic Dialog Component](https://openvue.dev/dynamicdialog): Dialogs can be created dynamically with any component as the content using a DialogService.
+- [Vue Editor Component](https://openvue.dev/editor): Editor is rich text editor component based on Quill.
+- [Vue Fieldset Component](https://openvue.dev/fieldset): Fieldset is a grouping component with a content toggle feature.
+- [Vue File Upload Component](https://openvue.dev/fileupload): FileUpload is an advanced uploader with dragdrop support, multi file uploads, auto uploading, progress tracking and validations.
+- [Vue Float Label](https://openvue.dev/floatlabel): FloatLabel visually integrates a label with its form element.
+- [Vue Fluid Component](https://openvue.dev/fluid): Fluid is a layout component to make descendant components span full width of their container.
+- [Vue FocusTrap Directive](https://openvue.dev/focustrap): Focus Trap keeps focus within a certain DOM element while tabbing.
+- [Vue Gallery Component](https://openvue.dev/galleria): Galleria is a content gallery component.
+- [Vue IconField](https://openvue.dev/iconfield): IconField wraps an input and an icon.
+- [Vue Ifta Label](https://openvue.dev/iftalabel): IftaLabel is used to create infield top aligned labels
+- [Vue Image Component](https://openvue.dev/image): Displays a single image with preview and tranformation options.
+- [Vue ImageCompare Component](https://openvue.dev/imagecompare): Compare two images side by side with a slider.
+- [Vue Inplace Component](https://openvue.dev/inplace): Inplace provides an easy to do editing and display at the same time where clicking the output displays the actual content.
+- [Vue Input Component](https://openvue.dev/inputtext): InputText is an extension to standard input element with theming.
+- [Vue InputGroup Component](https://openvue.dev/inputgroup): Text, icon, buttons and other content can be grouped next to an input.
+- [Vue InputNumber Component](https://openvue.dev/inputnumber): InputNumber is an input component to provide numerical input.
+- [Vue KeyFilter Component](https://openvue.dev/keyfilter): A keyfilter is a directive used to block individual keystrokes based on a pattern.
+- [Vue Knob Component](https://openvue.dev/knob): Knob is a form component to define number inputs with a dial.
+- [Vue Listbox Component](https://openvue.dev/listbox): Listbox is used to select one or more values from a list of items.
+- [Vue Mask Component](https://openvue.dev/inputmask): InputMask component is used to enter input in a certain format such as numeric, date, currency, email and phone.
+- [Vue MegaMenu Component](https://openvue.dev/megamenu): MegaMenu is a navigation component that displays submenus and content in columns.
+- [Vue Menu Component](https://openvue.dev/menu): Menu displays a list of items in vertical orientation.
+- [Vue Message Component](https://openvue.dev/message): Message component is used to display inline messages.
+- [Vue MeterGroup Component](https://openvue.dev/metergroup): MeterGroup displays scalar measurements within a known range.
+- [Vue MultiSelect Component](https://openvue.dev/multiselect): MultiSelect is used to select multiple items from a collection.
+- [Vue Navbar Component](https://openvue.dev/menubar): Menubar also known as Navbar, is a horizontal menu component.
+- [Vue OrderList Component](https://openvue.dev/orderlist): OrderList is used to sort a collection.
+- [Vue Organization Chart Component](https://openvue.dev/organizationchart): OrganizationChart visualizes hierarchical organization data.
+- [Vue Otp Input Component](https://openvue.dev/inputotp): Input Otp is used to enter one time passwords.
+- [Vue Paginator Component](https://openvue.dev/paginator): Paginator displays data in paged format and provides navigation between pages.
+- [Vue Panel Component](https://openvue.dev/panel): Panel is a grouping component providing with content toggle feature.
+- [Vue PanelMenu Component](https://openvue.dev/panelmenu): PanelMenu is a hybrid of accordion-tree components.
+- [Vue Password Component](https://openvue.dev/password): Password displays strength indicator for password fields.
+- [Vue PickList Component](https://openvue.dev/picklist): PickList is used to reorder items between different lists.
+- [Vue Popover Component](https://openvue.dev/popover): Popover is a container component that can overlay other components on page.
+- [Vue ProgressBar Component](https://openvue.dev/progressbar): ProgressBar is a process status indicator.
+- [Vue ProgressSpinner Component](https://openvue.dev/progressspinner): ProgressSpinner is a process status indicator.
+- [Vue RadioButton Component](https://openvue.dev/radiobutton): RadioButton is an extension to standard radio button element with theming.
+- [Vue Rating Component](https://openvue.dev/rating): Rating component is a star based selection input.
+- [Vue Ripple Component](https://openvue.dev/ripple): Ripple directive adds ripple effect to the host element.
+- [Vue ScrollPanel Component](https://openvue.dev/scrollpanel): ScrollPanel is a cross browser, lightweight and skinnable alternative to native browser scrollbar.
+- [Vue ScrollTop Component](https://openvue.dev/scrolltop): ScrollTop gets displayed after a certain scroll position and used to navigates to the top of the page quickly.
+- [Vue Select Component](https://openvue.dev/select): Select is used to choose an item from a collection of options.
+- [Vue SelectButton Component](https://openvue.dev/selectbutton): SelectButton is used to choose single or multiple items from a list using buttons.
+- [Vue Skeleton Component](https://openvue.dev/skeleton): Skeleton is a placeholder to display instead of the actual content.
+- [Vue Slider Component](https://openvue.dev/slider): Slider is a component to provide input with a drag handle.
+- [Vue Speed Dial Component](https://openvue.dev/speeddial): When pressed, a floating action button can display multiple primary actions that can be performed on a page.
+- [Vue SplitButton Component](https://openvue.dev/splitbutton): SplitButton groups a set of commands in an overlay with a default command.
+- [Vue Splitter Component](https://openvue.dev/splitter): Splitter is utilized to separate and resize panels.
+- [Vue Stepper Component](https://openvue.dev/stepper): The Stepper component displays a wizard-like workflow by guiding users through the multi-step progression.
+- [Vue StyleClass Directive](https://openvue.dev/styleclass): StyleClass manages css classes declaratively to during enter/leave animations or just to toggle classes on an element.
+- [Vue Table Component](https://openvue.dev/datatable): DataTable displays data in tabular format.
+- [Vue Tabs Component](https://openvue.dev/tabs): Tabs facilitates seamless switching between different views.
+- [Vue Tag Component](https://openvue.dev/tag): Tag component is used to categorize content.
+- [Vue Terminal Component](https://openvue.dev/terminal): Terminal is a text based user interface.
+- [Vue Textarea Component](https://openvue.dev/textarea): Textarea adds styling and autoResize functionality to standard textarea element.
+- [Vue TieredMenu Component](https://openvue.dev/tieredmenu): TieredMenu displays submenus in nested overlays.
+- [Vue Timeline Component](https://openvue.dev/timeline): Timeline visualizes a series of chained events.
+- [Vue Toast Component](https://openvue.dev/toast): Toast is used to display messages in an overlay.
+- [Vue ToggleButton Component](https://openvue.dev/togglebutton): ToggleButton is used to select a boolean value using a button.
+- [Vue ToggleSwitch Component](https://openvue.dev/toggleswitch): ToggleSwitch is used to select a boolean value.
+- [Vue Toolbar Component](https://openvue.dev/toolbar): Toolbar is a grouping component for buttons and other content.
+- [Vue Tooltip Directive](https://openvue.dev/tooltip): Tooltip directive provides advisory information for a component.
+- [Vue Tree Component](https://openvue.dev/tree): Tree is used to display hierarchical data.
+- [Vue TreeSelect Component](https://openvue.dev/treeselect): TreeSelect is a form component to choose from hierarchical data.
+- [Vue TreeTable Component](https://openvue.dev/treetable): TreeTable is used to display hierarchical data in tabular format.
+- [Vue Virtual Scroller Component](https://openvue.dev/virtualscroller): VirtualScroller is a performant approach to render large amounts of data efficiently.

@@ -19,6 +19,7 @@ logs
 .idea
 .eslintcache
 coverage
+test-artifacts
 **/.DS_Store
 
 # Local env files
@@ -30,6 +31,7 @@ coverage
 api-generator/typedoc.json
 apps/showcase/components.d.ts
 apps/showcase/assets/data/search-index.json
+pnpm-publish-summary.json
 
 .claude
 .report

@@ -4,17 +4,17 @@ Setting up OpenVue in a Laravel project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
 
 ```vue
 # Using npm
-npm install openvue@alpha @primeuix/themes
+npm install openvue@beta @primeuix/themes
 
 # Using yarn
-yarn add openvue@alpha @primeuix/themes
+yarn add openvue@beta @primeuix/themes
 
 # Using pnpm
-pnpm add openvue@alpha @primeuix/themes
+pnpm add openvue@beta @primeuix/themes
 ```
 
 ## Examples

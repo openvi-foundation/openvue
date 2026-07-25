@@ -1,6 +1,6 @@
 {
     "name": "@openvue/migrate",
-    "version": "0.0.1-alpha.4",
+    "version": "0.0.1-beta.0",
     "author": "OpenVue Contributors",
     "description": "Codemod that migrates a PrimeVue project to OpenVue by rewriting package names and import specifiers",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -52,7 +52,9 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "devDependencies": {
+        "@clack/prompts": "^1.7.0",
         "@types/node": "^22.12.0",
+        "picocolors": "^1.1.1",
         "tsup": "^8.1.0",
         "typescript": "^5.7.3",
         "vitest": "^3.0.0"

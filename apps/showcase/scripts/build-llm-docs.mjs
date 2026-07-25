@@ -339,7 +339,7 @@ function getAllComponents() {
     const components = [];
 
     // Directories to exclude (non-component documentation)
-    const excludeDirs = ['common', 'guides', 'theming', 'clt', 'forms', 'autoimport', 'cdn', 'configuration', 'contribution', 'customicons', 'designer', 'icons', 'introduction', 'laravel', 'llms', 'nuxt', 'passthrough', 'setup', 'tailwind', 'vite'];
+    const excludeDirs = ['common', 'guides', 'theming', 'clt', 'forms', 'autoimport', 'cdn', 'configuration', 'contribution', 'customicons', 'designer', 'icons', 'introduction', 'laravel', 'llms', 'migrate', 'nuxt', 'passthrough', 'setup', 'tailwind', 'vite'];
 
     for (const entry of entries) {
         const componentDir = path.join(DOCS_DIR, entry);
@@ -908,6 +908,7 @@ const GUIDE_PAGES = [
     'autoimport',
     'cdn',
     'laravel',
+    'migrate',
     'nuxt',
     'vite',
     'designer',
@@ -1171,9 +1172,9 @@ function generateLlmsTxtWithGuides(components, guidePages) {
         const urlPath = page.fullPath || page.name;
 
         if (page.description) {
-            content += `- [${page.title}](https://primevue.org/${urlPath}): ${page.description}\n`;
+            content += `- [${page.title}](https://openvue.dev/${urlPath}): ${page.description}\n`;
         } else {
-            content += `- [${page.title}](https://primevue.org/${urlPath})\n`;
+            content += `- [${page.title}](https://openvue.dev/${urlPath})\n`;
         }
     }
 
@@ -1184,7 +1185,7 @@ function generateLlmsTxtWithGuides(components, guidePages) {
     const sorted = [...components].sort((a, b) => a.title.localeCompare(b.title));
 
     for (const comp of sorted) {
-        content += `- [${comp.title}](https://primevue.org/${comp.name}): ${comp.description}\n`;
+        content += `- [${comp.title}](https://openvue.dev/${comp.name}): ${comp.description}\n`;
     }
 
     const outputPath = path.join(OUTPUT_DIR, 'llms.txt');

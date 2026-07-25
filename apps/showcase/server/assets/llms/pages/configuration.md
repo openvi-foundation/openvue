@@ -2,6 +2,10 @@
 
 Application wide configuration for OpenVue.
 
+## Nonce
+
+The nonce value to use on dynamically generated style elements in core.
+
 ## Import
 
 Configuration is managed by the OpenVue instance imported from openvue/config .
@@ -24,6 +28,29 @@ const app = createApp(App);
 
 app.use(OpenVue, { inputVariant: "filled" });
 ```
+
+## Import
+
+Locale values are stored in the global configuration that becomes accessible after installing the OpenVue.
+
+```vue
+import OpenVue from 'openvue/config';
+const app = createApp(App);
+
+app.use(OpenVue);
+```
+
+## Locale Api
+
+Configuration is managed by the Locale API imported from openvue/config . Locale Options Key Value startsWith Starts with contains Contains notContains Not contains endsWith Ends with equals Equals notEquals Not equals noFilter No Filter lt Less than lte Less than or equal to gt Greater than gte Greater than or equal to dateIs Date is dateIsNot Date is not dateBefore Date is before dateAfter Date is after clear Clear apply Apply matchAll Match All matchAny Match Any addRule Add Rule removeRule Remove Rule accept Yes reject No choose Choose upload Upload cancel Cancel completed Completed pending Pending fileSizeTypes ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] dayNames ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' dayNamesShort ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' dayNamesMin ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' monthNames ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' monthNamesShort ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' chooseYear Choose Year chooseMonth Choose Month chooseDate Choose Date prevDecade Previous Decade nextDecade Next Decade prevYear Previous Year nextYear Next Year prevMonth Previous Month nextMonth Next Month prevHour Previous Hour nextHour Next Hour prevMinute Previous Minute nextMinute Next Minute prevSecond Previous Second nextSecond Next Second am am pm pm today Today weekHeader Wk firstDayOfWeek 0 showMonthAfterYear false dateFormat mm/dd/yy weak Weak medium Medium strong Strong passwordPrompt Enter a password searchMessage {0} results are available selectionMessage {0} items selected emptySelectionMessage No selected item emptySearchMessage No results found fileChosenMessage {0} files noFileChosenMessage No file chosen emptyMessage No available options aria.trueLabel True aria.falseLabel False aria.nullLabel Not Selected aria.star 1 star aria.stars {star} stars aria.selectAll All items selected aria.unselectAll All items unselected aria.close Close aria.previous Previous aria.next Next aria.navigation Navigation aria.scrollTop Scroll Top aria.moveTop Move Top aria.moveUp Move Up aria.moveDown Move Down aria.moveBottom Move Bottom aria.moveToTarget Move to Target aria.moveToSource Move to Source aria.moveAllToTarget Move All to Target aria.moveAllToSource Move All to Source aria.pageLabel Page {page} aria.firstPageLabel First Page aria.lastPageLabel Last Page aria.nextPageLabel Next Page aria.prevPageLabel Previous Page aria.rowsPerPageLabel Rows per page aria.jumpToPageDropdownLabel Jump to Page Dropdown aria.jumpToPageInputLabel Jump to Page Input aria.selectRow Row Selected aria.unselectRow Row Unselected aria.expandRow Row Expanded aria.collapseRow Row Collapsed aria.showFilterMenu Show Filter Menu aria.hideFilterMenu Hide Filter Menu aria.filterOperator Filter Operator aria.filterConstraint Filter Constraint aria.editRow Row Edit aria.saveEdit Save Edit aria.cancelEdit Cancel Edit aria.listView List View aria.gridView Grid View aria.slide Slide aria.slideNumber {slideNumber} aria.zoomImage Zoom Image aria.zoomIn Zoom In aria.zoomOut Zoom Out aria.rotateRight Rotate Right aria.rotateLeft Rotate Left
+
+## Repository
+
+Ready to use settings for locales are available at the community supported PrimeLocale repository. We'd appreciate if you could contribute to this repository with pull requests and share it with the rest of the community.
+
+## Set Locale
+
+Second parameter of the use function can be used to initiate the locale during OpenVue installation. The locale configuration is reactive so that any changes are instantly reflected in the UI. Suppose you are doing a multi language application and need to change the language dynamically.
 
 ## Pass Through
 
@@ -124,31 +151,4 @@ app.use(OpenVue, {
     }
 });
 ```
-
-## Nonce
-
-The nonce value to use on dynamically generated style elements in core.
-
-## Import
-
-Locale values are stored in the global configuration that becomes accessible after installing the OpenVue.
-
-```vue
-import OpenVue from 'openvue/config';
-const app = createApp(App);
-
-app.use(OpenVue);
-```
-
-## Locale Api
-
-Configuration is managed by the Locale API imported from openvue/config . Locale Options Key Value startsWith Starts with contains Contains notContains Not contains endsWith Ends with equals Equals notEquals Not equals noFilter No Filter lt Less than lte Less than or equal to gt Greater than gte Greater than or equal to dateIs Date is dateIsNot Date is not dateBefore Date is before dateAfter Date is after clear Clear apply Apply matchAll Match All matchAny Match Any addRule Add Rule removeRule Remove Rule accept Yes reject No choose Choose upload Upload cancel Cancel completed Completed pending Pending fileSizeTypes ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] dayNames ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' dayNamesShort ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' dayNamesMin ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' monthNames ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' monthNamesShort ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' chooseYear Choose Year chooseMonth Choose Month chooseDate Choose Date prevDecade Previous Decade nextDecade Next Decade prevYear Previous Year nextYear Next Year prevMonth Previous Month nextMonth Next Month prevHour Previous Hour nextHour Next Hour prevMinute Previous Minute nextMinute Next Minute prevSecond Previous Second nextSecond Next Second am am pm pm today Today weekHeader Wk firstDayOfWeek 0 showMonthAfterYear false dateFormat mm/dd/yy weak Weak medium Medium strong Strong passwordPrompt Enter a password searchMessage {0} results are available selectionMessage {0} items selected emptySelectionMessage No selected item emptySearchMessage No results found fileChosenMessage {0} files noFileChosenMessage No file chosen emptyMessage No available options aria.trueLabel True aria.falseLabel False aria.nullLabel Not Selected aria.star 1 star aria.stars {star} stars aria.selectAll All items selected aria.unselectAll All items unselected aria.close Close aria.previous Previous aria.next Next aria.navigation Navigation aria.scrollTop Scroll Top aria.moveTop Move Top aria.moveUp Move Up aria.moveDown Move Down aria.moveBottom Move Bottom aria.moveToTarget Move to Target aria.moveToSource Move to Source aria.moveAllToTarget Move All to Target aria.moveAllToSource Move All to Source aria.pageLabel Page {page} aria.firstPageLabel First Page aria.lastPageLabel Last Page aria.nextPageLabel Next Page aria.prevPageLabel Previous Page aria.rowsPerPageLabel Rows per page aria.jumpToPageDropdownLabel Jump to Page Dropdown aria.jumpToPageInputLabel Jump to Page Input aria.selectRow Row Selected aria.unselectRow Row Unselected aria.expandRow Row Expanded aria.collapseRow Row Collapsed aria.showFilterMenu Show Filter Menu aria.hideFilterMenu Hide Filter Menu aria.filterOperator Filter Operator aria.filterConstraint Filter Constraint aria.editRow Row Edit aria.saveEdit Save Edit aria.cancelEdit Cancel Edit aria.listView List View aria.gridView Grid View aria.slide Slide aria.slideNumber {slideNumber} aria.zoomImage Zoom Image aria.zoomIn Zoom In aria.zoomOut Zoom Out aria.rotateRight Rotate Right aria.rotateLeft Rotate Left
-
-## Repository
-
-Ready to use settings for locales are available at the community supported PrimeLocale repository. We'd appreciate if you could contribute to this repository with pull requests and share it with the rest of the community.
-
-## Set Locale
-
-Second parameter of the use function can be used to initiate the locale during OpenVue installation. The locale configuration is reactive so that any changes are instantly reflected in the UI. Suppose you are doing a multi language application and need to change the language dynamically.
 

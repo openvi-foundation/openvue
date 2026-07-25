@@ -11,7 +11,7 @@
 1. Add `@openvue/nuxt-module` to the `modules` section of `nuxt.config.{ts,js}`
 
 ```bash
-npm install @openvue/nuxt-module@alpha
+npm install @openvue/nuxt-module@beta
 ```
 
 ```js
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 
 That's it! You can now use OpenVue components in your Nuxt app.
 
-[npm-version-src]: https://img.shields.io/npm/v/@openvue/nuxt-module/alpha.svg
+[npm-version-src]: https://img.shields.io/npm/v/@openvue/nuxt-module/beta.svg
 [npm-version-href]: https://npmjs.com/package/@openvue/nuxt-module
 [npm-downloads-src]: https://img.shields.io/npm/dm/@openvue/nuxt-module
 [npm-downloads-href]: https://npmjs.com/package/@openvue/nuxt-module

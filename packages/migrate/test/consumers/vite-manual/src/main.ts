@@ -1,0 +1,30 @@
+import Aura from '@primevue/themes/aura';
+import { createApp } from 'vue';
+import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
+import DialogService from 'primevue/dialogservice';
+import AnimateOnScroll from 'primevue/animateonscroll';
+import BadgeDirective from 'primevue/badgedirective';
+import FocusTrap from 'primevue/focustrap';
+import KeyFilter from 'primevue/keyfilter';
+import Ripple from 'primevue/ripple';
+import StyleClass from 'primevue/styleclass';
+import ToastService from 'primevue/toastservice';
+import Tooltip from 'primevue/tooltip';
+import 'primeicons/primeicons.css';
+import App from './App.vue';
+
+const app = createApp(App);
+
+app.use(PrimeVue, { ripple: true, theme: { preset: Aura } });
+app.use(ToastService);
+app.use(ConfirmationService);
+app.use(DialogService);
+app.directive('animateonscroll', AnimateOnScroll);
+app.directive('badge', BadgeDirective);
+app.directive('focustrap', FocusTrap);
+app.directive('keyfilter', KeyFilter);
+app.directive('ripple', Ripple);
+app.directive('styleclass', StyleClass);
+app.directive('tooltip', Tooltip);
+app.mount('#app');

@@ -1,6 +1,6 @@
 {
     "name": "@openvue/monorepo",
-    "version": "0.0.1-alpha.4",
+    "version": "0.0.1-beta.0",
     "author": "OpenVue Contributors",
     "homepage": "https://github.com/openvi-foundation/openvue",
     "repository": {
@@ -13,12 +13,12 @@
     },
     "scripts": {
         "setup": "pnpm run clean && pnpm run init",
-        "clean": "npx rimraf --glob **/node_modules **/dist **/.nuxt ./pnpm-lock.yaml",
+        "clean": "npx rimraf --glob \"**/node_modules\" \"**/dist\" \"**/.nuxt\" ./pnpm-lock.yaml",
         "init": "pnpm install",
         "link": "pnpm --filter './packages/*' dev:link",
-        "release": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary",
-        "release:beta": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag beta",
-        "release:rc": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --report-summary --tag rc",
+        "release": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks",
+        "release:beta": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --tag beta",
+        "release:rc": "pnpm run build && pnpm run verify:dist && pnpm recursive publish --filter './packages/*' --no-git-checks --tag rc",
         "verify:dist": "node scripts/verify-dist.mjs",
         "build": "NODE_ENV=production pnpm run build:check && pnpm run build:packages",
         "build:check": "pnpm run format:check && pnpm run security:check",
@@ -33,6 +33,7 @@
         "build:icons": "pnpm --filter icons build",
         "build:mcp": "pnpm --filter mcp build",
         "build:migrate": "pnpm --filter migrate build",
+        "build:test-packages": "pnpm run build:metadata && pnpm run build:core && pnpm run build:icons && pnpm run build:lib && pnpm run build:themes && pnpm run build:forms && pnpm run build:resolver && pnpm run build:module && pnpm run build:mcp && pnpm run build:migrate",
         "build:forms": "pnpm --filter forms build",
         "build:showcase": "pnpm --filter showcase build",
         "build:llm": "pnpm --filter showcase build:llmdocs",
@@ -49,7 +50,11 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
         "format:check": "prettier --check \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
-        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit"
+        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit",
+        "test:contracts": "pnpm run test:artifacts:pack && pnpm run verify:dist && node scripts/verify-package-contracts.mjs",
+        "test:artifacts:pack": "node scripts/run-consumer-tests.mjs --pack-only",
+        "test:consumers": "node scripts/run-consumer-tests.mjs",
+        "test:consumers:browser": "node scripts/run-consumer-tests.mjs --browser"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.21.5",
@@ -57,12 +62,13 @@
         "@rollup/plugin-babel": "^6.0.3",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
+        "@playwright/test": "^1.43.1",
         "eslint": "^9.19.0",
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-prettier": "^5.2.3",
         "eslint-plugin-vue": "^9.32.0",
         "globals": "^15.14.0",
-        "pnpm": "^9.6.0",
+        "pnpm": "^9.15.9",
         "prettier": "^3.5.2",
         "rollup-plugin-postcss": "^4.0.0",
         "rollup-plugin-vue": "^6.0.0-beta.9",
@@ -71,14 +77,40 @@
     "publishConfig": {
         "access": "public"
     },
-    "packageManager": "pnpm@9.6.0",
+    "packageManager": "pnpm@9.15.9",
     "engines": {
         "node": ">=12.11.0"
     },
     "pnpm": {
         "overrides": {
-            "fast-uri": ">=3.1.2",
+            "fast-uri": ">=4.1.1",
             "hono": ">=4.12.25"
+        },
+        "auditConfig": {
+            "ignoreGhsas": [
+                "GHSA-23hp-3jrh-7fpw",
+                "GHSA-2p49-hgcm-8545",
+                "GHSA-34x7-hfp2-rc4v",
+                "GHSA-395f-4hp3-45gv",
+                "GHSA-3jxr-9vmj-r5cp",
+                "GHSA-52cp-r559-cp3m",
+                "GHSA-77vg-94rm-hx3p",
+                "GHSA-83g3-92jg-28cx",
+                "GHSA-8qq5-rm4j-mr97",
+                "GHSA-8x88-c5mf-7j5w",
+                "GHSA-96hv-2xvq-fx4p",
+                "GHSA-9ppj-qmqm-q256",
+                "GHSA-fx2h-pf6j-xcff",
+                "GHSA-hffm-xvc3-vprc",
+                "GHSA-jvhm-gjrh-3h93",
+                "GHSA-mm7m-92g8-7m47",
+                "GHSA-p9ff-h696-f583",
+                "GHSA-qffp-2rhf-9h96",
+                "GHSA-r6q2-hw4h-h46w",
+                "GHSA-v56q-mh7h-f735",
+                "GHSA-w7jw-789q-3m8p",
+                "GHSA-xvcm-6775-5m9r"
+            ]
         }
     }
 }

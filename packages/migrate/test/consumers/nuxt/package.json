@@ -1,0 +1,27 @@
+{
+    "name": "openvue-consumer-nuxt",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nuxt dev",
+        "serve:test": "node .output/server/index.mjs",
+        "typecheck": "nuxt typecheck",
+        "build": "nuxt build"
+    },
+    "dependencies": {
+        "@primevue/nuxt-module": "4.4.1",
+        "@primevue/themes": "4.4.1",
+        "nuxt": "3.15.4",
+        "primeicons": "7.0.0",
+        "primevue": "~4.4.1",
+        "vue": "3.5.17"
+    },
+    "devDependencies": {
+        "typescript": "5.7.3",
+        "vue-tsc": "2.2.12"
+    },
+    "openvueTest": {
+        "packageManager": "pnpm"
+    }
+}

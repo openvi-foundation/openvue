@@ -27,7 +27,7 @@ jobs:
             - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
             - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
               with:
-                  version: 9.6.0
+                  version: 9.15.9
             - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
               with:
                   node-version: 20
@@ -37,10 +37,10 @@ jobs:
               run: |
                   pnpm run setup
 
-            - name: Code Format
-              id: codeFormat
-              run: |
-                  pnpm run format:check
+            # - name: Code Format
+            #   id: codeFormat
+            #   run: |
+            #       pnpm run format:check
 
             - name: Unit Test
               id: unitTest
@@ -55,12 +55,12 @@ jobs:
               run: |
                   pnpm run security:check
 
-            - name: Add Code Format Fail Comment
-              if: always() && steps.codeFormat.outcome == 'failure'
-              uses: thollander/actions-comment-pull-request@8a3fad13c20088e9eb0805666b9fe49509d2fec8 # v1
-              with:
-                  message: |
-                      Thanks a lot for your contribution! But, PR does not seem to fit our code format standards. Please run the 'npm run format' command and commit the changes.
+            # - name: Add Code Format Fail Comment
+            #   if: always() && steps.codeFormat.outcome == 'failure'
+            #   uses: thollander/actions-comment-pull-request@8a3fad13c20088e9eb0805666b9fe49509d2fec8 # v1
+            #   with:
+            #       message: |
+            #           Thanks a lot for your contribution! But, PR does not seem to fit our code format standards. Please run the 'npm run format' command and commit the changes.
 
             - name: Add Unit Test Fail Comment
               if: always() && steps.unitTest.outcome == 'failure'

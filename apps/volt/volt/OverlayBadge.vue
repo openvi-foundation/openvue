@@ -6,7 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import Badge, { type BadgeProps } from './Badge.vue';
+import { type BadgeProps } from 'primevue/badge';
+import Badge from './Badge.vue';
 
 interface Props extends /* @vue-ignore */ BadgeProps {}
 defineProps<Props>();

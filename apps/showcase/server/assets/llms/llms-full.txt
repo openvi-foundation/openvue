@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-07-20
+Generated: 2026-07-23
 
 ---
 
@@ -36,6 +36,10 @@ OpenVue can be styled in two modes; styled or unstyled. Styled mode is based on 
 
 Application wide configuration for OpenVue.
 
+## Nonce
+
+The nonce value to use on dynamically generated style elements in core.
+
 ## Import
 
 Configuration is managed by the OpenVue instance imported from openvue/config .
@@ -58,6 +62,29 @@ const app = createApp(App);
 
 app.use(OpenVue, { inputVariant: "filled" });
 ```
+
+## Import
+
+Locale values are stored in the global configuration that becomes accessible after installing the OpenVue.
+
+```vue
+import OpenVue from 'openvue/config';
+const app = createApp(App);
+
+app.use(OpenVue);
+```
+
+## Locale Api
+
+Configuration is managed by the Locale API imported from openvue/config . Locale Options Key Value startsWith Starts with contains Contains notContains Not contains endsWith Ends with equals Equals notEquals Not equals noFilter No Filter lt Less than lte Less than or equal to gt Greater than gte Greater than or equal to dateIs Date is dateIsNot Date is not dateBefore Date is before dateAfter Date is after clear Clear apply Apply matchAll Match All matchAny Match Any addRule Add Rule removeRule Remove Rule accept Yes reject No choose Choose upload Upload cancel Cancel completed Completed pending Pending fileSizeTypes ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] dayNames ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' dayNamesShort ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' dayNamesMin ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' monthNames ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' monthNamesShort ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' chooseYear Choose Year chooseMonth Choose Month chooseDate Choose Date prevDecade Previous Decade nextDecade Next Decade prevYear Previous Year nextYear Next Year prevMonth Previous Month nextMonth Next Month prevHour Previous Hour nextHour Next Hour prevMinute Previous Minute nextMinute Next Minute prevSecond Previous Second nextSecond Next Second am am pm pm today Today weekHeader Wk firstDayOfWeek 0 showMonthAfterYear false dateFormat mm/dd/yy weak Weak medium Medium strong Strong passwordPrompt Enter a password searchMessage {0} results are available selectionMessage {0} items selected emptySelectionMessage No selected item emptySearchMessage No results found fileChosenMessage {0} files noFileChosenMessage No file chosen emptyMessage No available options aria.trueLabel True aria.falseLabel False aria.nullLabel Not Selected aria.star 1 star aria.stars {star} stars aria.selectAll All items selected aria.unselectAll All items unselected aria.close Close aria.previous Previous aria.next Next aria.navigation Navigation aria.scrollTop Scroll Top aria.moveTop Move Top aria.moveUp Move Up aria.moveDown Move Down aria.moveBottom Move Bottom aria.moveToTarget Move to Target aria.moveToSource Move to Source aria.moveAllToTarget Move All to Target aria.moveAllToSource Move All to Source aria.pageLabel Page {page} aria.firstPageLabel First Page aria.lastPageLabel Last Page aria.nextPageLabel Next Page aria.prevPageLabel Previous Page aria.rowsPerPageLabel Rows per page aria.jumpToPageDropdownLabel Jump to Page Dropdown aria.jumpToPageInputLabel Jump to Page Input aria.selectRow Row Selected aria.unselectRow Row Unselected aria.expandRow Row Expanded aria.collapseRow Row Collapsed aria.showFilterMenu Show Filter Menu aria.hideFilterMenu Hide Filter Menu aria.filterOperator Filter Operator aria.filterConstraint Filter Constraint aria.editRow Row Edit aria.saveEdit Save Edit aria.cancelEdit Cancel Edit aria.listView List View aria.gridView Grid View aria.slide Slide aria.slideNumber {slideNumber} aria.zoomImage Zoom Image aria.zoomIn Zoom In aria.zoomOut Zoom Out aria.rotateRight Rotate Right aria.rotateLeft Rotate Left
+
+## Repository
+
+Ready to use settings for locales are available at the community supported PrimeLocale repository. We'd appreciate if you could contribute to this repository with pull requests and share it with the rest of the community.
+
+## Set Locale
+
+Second parameter of the use function can be used to initiate the locale during OpenVue installation. The locale configuration is reactive so that any changes are instantly reflected in the UI. Suppose you are doing a multi language application and need to change the language dynamically.
 
 ## Pass Through
 
@@ -159,33 +186,6 @@ app.use(OpenVue, {
 });
 ```
 
-## Nonce
-
-The nonce value to use on dynamically generated style elements in core.
-
-## Import
-
-Locale values are stored in the global configuration that becomes accessible after installing the OpenVue.
-
-```vue
-import OpenVue from 'openvue/config';
-const app = createApp(App);
-
-app.use(OpenVue);
-```
-
-## Locale Api
-
-Configuration is managed by the Locale API imported from openvue/config . Locale Options Key Value startsWith Starts with contains Contains notContains Not contains endsWith Ends with equals Equals notEquals Not equals noFilter No Filter lt Less than lte Less than or equal to gt Greater than gte Greater than or equal to dateIs Date is dateIsNot Date is not dateBefore Date is before dateAfter Date is after clear Clear apply Apply matchAll Match All matchAny Match Any addRule Add Rule removeRule Remove Rule accept Yes reject No choose Choose upload Upload cancel Cancel completed Completed pending Pending fileSizeTypes ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] dayNames ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' dayNamesShort ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' dayNamesMin ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' monthNames ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' monthNamesShort ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' chooseYear Choose Year chooseMonth Choose Month chooseDate Choose Date prevDecade Previous Decade nextDecade Next Decade prevYear Previous Year nextYear Next Year prevMonth Previous Month nextMonth Next Month prevHour Previous Hour nextHour Next Hour prevMinute Previous Minute nextMinute Next Minute prevSecond Previous Second nextSecond Next Second am am pm pm today Today weekHeader Wk firstDayOfWeek 0 showMonthAfterYear false dateFormat mm/dd/yy weak Weak medium Medium strong Strong passwordPrompt Enter a password searchMessage {0} results are available selectionMessage {0} items selected emptySelectionMessage No selected item emptySearchMessage No results found fileChosenMessage {0} files noFileChosenMessage No file chosen emptyMessage No available options aria.trueLabel True aria.falseLabel False aria.nullLabel Not Selected aria.star 1 star aria.stars {star} stars aria.selectAll All items selected aria.unselectAll All items unselected aria.close Close aria.previous Previous aria.next Next aria.navigation Navigation aria.scrollTop Scroll Top aria.moveTop Move Top aria.moveUp Move Up aria.moveDown Move Down aria.moveBottom Move Bottom aria.moveToTarget Move to Target aria.moveToSource Move to Source aria.moveAllToTarget Move All to Target aria.moveAllToSource Move All to Source aria.pageLabel Page {page} aria.firstPageLabel First Page aria.lastPageLabel Last Page aria.nextPageLabel Next Page aria.prevPageLabel Previous Page aria.rowsPerPageLabel Rows per page aria.jumpToPageDropdownLabel Jump to Page Dropdown aria.jumpToPageInputLabel Jump to Page Input aria.selectRow Row Selected aria.unselectRow Row Unselected aria.expandRow Row Expanded aria.collapseRow Row Collapsed aria.showFilterMenu Show Filter Menu aria.hideFilterMenu Hide Filter Menu aria.filterOperator Filter Operator aria.filterConstraint Filter Constraint aria.editRow Row Edit aria.saveEdit Save Edit aria.cancelEdit Cancel Edit aria.listView List View aria.gridView Grid View aria.slide Slide aria.slideNumber {slideNumber} aria.zoomImage Zoom Image aria.zoomIn Zoom In aria.zoomOut Zoom Out aria.rotateRight Rotate Right aria.rotateLeft Rotate Left
-
-## Repository
-
-Ready to use settings for locales are available at the community supported PrimeLocale repository. We'd appreciate if you could contribute to this repository with pull requests and share it with the rest of the community.
-
-## Set Locale
-
-Second parameter of the use function can be used to initiate the locale during OpenVue installation. The locale configuration is reactive so that any changes are instantly reflected in the UI. Suppose you are doing a multi language application and need to change the language dynamically.
-
 ---
 
 # Styled Mode
@@ -196,39 +196,9 @@ Choose from a variety of pre-styled themes or develop your own.
 
 OpenVue is a design agnostic library so unlike some other UI libraries it does not enforce a certain styling such as material design. Styling is decoupled from the components using the themes instead. A theme consists of two parts; base and preset . The base is the style rules with CSS variables as placeholders whereas the preset is a set of design tokens to feed a base by mapping the tokens to CSS variables. A base may be configured with different presets, currently Aura, Material, Lara and Nora are the available built-in options. The core of the styled mode architecture is based on a concept named design token , a preset defines the token configuration in 3 tiers; primitive , semantic and component . Primitive Tokens Primitive tokens have no context, a color palette is a good example for a primitive token such as blue-50 to blue-900 . A token named blue-500 may be used as the primary color, the background of a message however on its own, the name of the token does not indicate context. Usually they are utilized by the semantic tokens. Semantic Tokens Semantic tokens define content and their names indicate where they are utilized, a well known example of a semantic token is the primary.color . Semantic tokens map to primitive tokens or other semantic tokens. The colorScheme token group is a special variable to define tokens based on the color scheme active in the application, this allows defining different tokens based on the color scheme like dark mode. Component Tokens Component tokens are isolated tokens per component such as inputtext.background or button.color that map to the semantic tokens. As an example, button.background component token maps to the primary.color semantic token which maps to the green.500 primitive token. Best Practices Use primitive tokens when defining the core color palette and semantic tokens to specify the common design elements such as focus ring, primary colors and surfaces. Components tokens should only be used when customizing a specific component. By defining your own design tokens as a custom preset, you'll be able to define your own style without touching CSS. Overriding the OpenVue components using style classes is not a best practice and should be the last resort, design tokens are the suggested approach.
 
-## C S S Modules
-
-CSS modules are supported by enabling the module property on a style element within your SFC. Use the $style keyword to apply classes to a OpenVue component. It is recommend to enable cssLayer when using CSS modules so that the OpenVue styles have low CSS specificity.
-
 ## Colors
 
 Color palette of a preset is defined by the primitive design token group. You can access colors using CSS variables or the $dt utility.
-
-## Dark Mode
-
-OpenVue uses the system as the default darkModeSelector in theme configuration. If you have a dark mode switch in your application, set the darkModeSelector to the selector you utilize such as .my-app-dark so that OpenVue can fit in seamlessly with your color scheme. Following is a very basic example implementation of a dark mode switch, you may extend it further by involving prefers-color-scheme to retrieve it from the system initially and use localStorage to make it stateful. See this article for more information. In case you prefer to use dark mode all the time, apply the darkModeSelector initially and never change it. It is also possible to disable dark mode completely using false or none as the value of the selector.
-
-## Presets
-
-Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
-
-## Reserved Keys
-
-Following keys are reserved in the preset scheme and cannot be used as a token name; primitive , semantic , components , directives , colorscheme , light , dark , common , root , states , and extend .
-
-## Scale
-
-OpenVue UI component use rem units, 1rem equals to the font size of the html element which is 16px by default. Use the root font-size to adjust the size of the components globally. This website uses 14px as the base so it may differ from your application if your base font size is different.
-
-```vue
-html {
-    font-size: 14px;
-}
-```
-
-## Scoped Tokens
-
-Design tokens can be scoped to a certain component using the dt property. In this example, first switch uses the global tokens whereas second one overrides the global with its own tokens. This approach is recommended over the :deep() as it offers a cleaner API while avoiding the hassle of CSS rule overrides.
 
 ## Options
 
@@ -281,6 +251,10 @@ In case OpenVue components have visual issues in your application, a Reset CSS m
 ## Specificity
 
 The &#64;layer is a standard CSS feature to define cascade layers for a customizable order of precedence. If you need to become more familiar with layers, visit the documentation at MDN to begin with. The cssLayer is disabled by default, when it is enabled at theme configuration, OpenVue wraps the built-in style classes under the openvue cascade layer to make the library styles easy to override. CSS in your app without a layer has the highest CSS specificity, so you'll be able to override styles regardless of the location or how strong a class is written. Layers also make it easier to use CSS Modules, view the CSS Modules guide for examples.
+
+## C S S Modules
+
+CSS modules are supported by enabling the module property on a style element within your SFC. Use the $style keyword to apply classes to a OpenVue component. It is recommend to enable cssLayer when using CSS modules so that the OpenVue styles have low CSS specificity.
 
 ## Color Scheme
 
@@ -549,6 +523,32 @@ const MyPreset = definePreset(Aura, {
     }
 });
 ```
+
+## Dark Mode
+
+OpenVue uses the system as the default darkModeSelector in theme configuration. If you have a dark mode switch in your application, set the darkModeSelector to the selector you utilize such as .my-app-dark so that OpenVue can fit in seamlessly with your color scheme. Following is a very basic example implementation of a dark mode switch, you may extend it further by involving prefers-color-scheme to retrieve it from the system initially and use localStorage to make it stateful. See this article for more information. In case you prefer to use dark mode all the time, apply the darkModeSelector initially and never change it. It is also possible to disable dark mode completely using false or none as the value of the selector.
+
+## Presets
+
+Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
+
+## Reserved Keys
+
+Following keys are reserved in the preset scheme and cannot be used as a token name; primitive , semantic , components , directives , colorscheme , light , dark , common , root , states , and extend .
+
+## Scale
+
+OpenVue UI component use rem units, 1rem equals to the font size of the html element which is 16px by default. Use the root font-size to adjust the size of the components globally. This website uses 14px as the base so it may differ from your application if your base font size is different.
+
+```vue
+html {
+    font-size: 14px;
+}
+```
+
+## Scoped Tokens
+
+Design tokens can be scoped to a certain component using the dt property. In this example, first switch uses the global tokens whereas second one overrides the global with its own tokens. This approach is recommended over the :deep() as it offers a cleaner API while avoiding the hassle of CSS rule overrides.
 
 ## D T
 
@@ -1128,88 +1128,6 @@ This section demonstrates how to create a dynamic form using a custom Form compo
 </Fieldset>
 ```
 
-## Import
-
-The form component is responsible for managing the form state and must encapsulate the form fields.
-
-```vue
-import { Form } from '@openvue/forms';
-```
-
-## Resolvers
-
-Validations are implemented with the resolver property. A custom resolver is responsible for handling the validation and returning an errors object with key-value pairs where key is the form field name and value is an array of error object data. For productivity, we recommend using a schema validation library instead of building your own custom validation logic. The forms library provide built-in resolvers for popular options including Zod , Yup , Joi , Valibot , and Superstruct that can be imported from @openvue/forms/resolvers path.
-
-```vue
-<Form v-slot="$form" :initialValues :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-    <div class="flex flex-col gap-1">
-        <InputText name="username" type="text" placeholder="Username" fluid />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
-    </div>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-## States
-
-The $form object tracks the state management of the fields. Each field is linked with the name property. View the FormFieldState type in the API documentation for details about each property.
-
-```vue
-<Form v-slot="$form" :initialValues :resolver @submit="onFormSubmit" class="grid lg:grid-cols-2 gap-4 w-full">
-    <div class="flex flex-col justify-center items-center gap-4">
-        <InputText name="username" type="text" placeholder="Username" class="w-full sm:w-56" />
-        <Button type="submit" severity="secondary" label="Submit" class="w-full sm:w-56" />
-    </div>
-    <Fieldset legend="Form States" class="h-80 overflow-auto">
-        <pre class="whitespace-pre-wrap">{{ $form }}</pre>
-    </Fieldset>
-</Form>
-```
-
-## Submit
-
-The submit callback returns an object that encapsulates the form's validity, any existing errors, and its current state. This enables access to the form values, validation status, and any errors present at the time of submission. View the FormSubmitEvent in the API documentation for more information about the available event data.
-
-```vue
-<Form v-slot="$form" :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-60">
-    <div class="flex flex-col gap-1">
-        <InputText name="username" type="text" placeholder="Username" fluid />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
-    </div>
-    <div class="flex flex-col gap-1">
-        <Password name="password" placeholder="Password" :feedback="false" toggleMask fluid />
-        <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">
-            <ul class="my-0 px-4 flex flex-col gap-1">
-                <li v-for="(error, index) of $form.password.errors" :key="index">{{ error.message }}</li>
-            </ul>
-        </Message>
-    </div>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
-## ValidateOn
-
-Form component supports flexible validation triggers, allowing validation on value updates, blur events, form mount, or submission. These behaviors can be configured at form level or on specific fields via the validateOnValueUpdate , validateOnBlur , validateOnMount , and validateOnSubmit options of the formControl property. In this example, form disables validateOnValueUpdate and enables validateOnBlur at form level, and validates firstName on mount. The firstName field, overrides the form level setting locally.
-
-```vue
-<Form v-slot="$form" :initialValues :resolver :validateOnValueUpdate="false" :validateOnBlur="true" :validateOnMount="['firstName']" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
-    <div class="flex flex-col gap-1">
-        <InputText name="username" type="text" placeholder="Username" fluid />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
-    </div>
-    <div class="flex flex-col gap-1">
-        <InputText name="firstName" type="text" placeholder="First Name" fluid :formControl="{ validateOnValueUpdate: true }" />
-        <Message v-if="$form.firstName?.invalid" severity="error" size="small" variant="simple">{{ $form.firstName.error.message }}</Message>
-    </div>
-    <div class="flex flex-col gap-1">
-        <InputText name="lastName" type="text" placeholder="Last Name" fluid />
-        <Message v-if="$form.lastName?.invalid" severity="error" size="small" variant="simple">{{ $form.lastName.error.message }}</Message>
-    </div>
-    <Button type="submit" severity="secondary" label="Submit" />
-</Form>
-```
-
 ## Built In
 
 Although OpenVue components have built-in support for the Form API, you may still prefer to utilize the components as wrapped with the FormField. This is a matter of preference, for example in case you are also using FormField for other 3rd party components, your own custom components, and native elements, for consistency it may be an option.
@@ -1300,9 +1218,91 @@ It renders as a HTML div element, but this behavior can be modified using the as
 </Form>
 ```
 
+## Import
+
+The form component is responsible for managing the form state and must encapsulate the form fields.
+
+```vue
+import { Form } from '@openvue/forms';
+```
+
+## Resolvers
+
+Validations are implemented with the resolver property. A custom resolver is responsible for handling the validation and returning an errors object with key-value pairs where key is the form field name and value is an array of error object data. For productivity, we recommend using a schema validation library instead of building your own custom validation logic. The forms library provide built-in resolvers for popular options including Zod , Yup , Joi , Valibot , and Superstruct that can be imported from @openvue/forms/resolvers path.
+
+```vue
+<Form v-slot="$form" :initialValues :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+    <div class="flex flex-col gap-1">
+        <InputText name="username" type="text" placeholder="Username" fluid />
+        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
+    </div>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
+## States
+
+The $form object tracks the state management of the fields. Each field is linked with the name property. View the FormFieldState type in the API documentation for details about each property.
+
+```vue
+<Form v-slot="$form" :initialValues :resolver @submit="onFormSubmit" class="grid lg:grid-cols-2 gap-4 w-full">
+    <div class="flex flex-col justify-center items-center gap-4">
+        <InputText name="username" type="text" placeholder="Username" class="w-full sm:w-56" />
+        <Button type="submit" severity="secondary" label="Submit" class="w-full sm:w-56" />
+    </div>
+    <Fieldset legend="Form States" class="h-80 overflow-auto">
+        <pre class="whitespace-pre-wrap">{{ $form }}</pre>
+    </Fieldset>
+</Form>
+```
+
+## Submit
+
+The submit callback returns an object that encapsulates the form's validity, any existing errors, and its current state. This enables access to the form values, validation status, and any errors present at the time of submission. View the FormSubmitEvent in the API documentation for more information about the available event data.
+
+```vue
+<Form v-slot="$form" :initialValues :resolver @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-60">
+    <div class="flex flex-col gap-1">
+        <InputText name="username" type="text" placeholder="Username" fluid />
+        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
+    </div>
+    <div class="flex flex-col gap-1">
+        <Password name="password" placeholder="Password" :feedback="false" toggleMask fluid />
+        <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">
+            <ul class="my-0 px-4 flex flex-col gap-1">
+                <li v-for="(error, index) of $form.password.errors" :key="index">{{ error.message }}</li>
+            </ul>
+        </Message>
+    </div>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
+
 ## Styled
 
 Component does not apply any styling.
+
+## ValidateOn
+
+Form component supports flexible validation triggers, allowing validation on value updates, blur events, form mount, or submission. These behaviors can be configured at form level or on specific fields via the validateOnValueUpdate , validateOnBlur , validateOnMount , and validateOnSubmit options of the formControl property. In this example, form disables validateOnValueUpdate and enables validateOnBlur at form level, and validates firstName on mount. The firstName field, overrides the form level setting locally.
+
+```vue
+<Form v-slot="$form" :initialValues :resolver :validateOnValueUpdate="false" :validateOnBlur="true" :validateOnMount="['firstName']" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
+    <div class="flex flex-col gap-1">
+        <InputText name="username" type="text" placeholder="Username" fluid />
+        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{ $form.username.error.message }}</Message>
+    </div>
+    <div class="flex flex-col gap-1">
+        <InputText name="firstName" type="text" placeholder="First Name" fluid :formControl="{ validateOnValueUpdate: true }" />
+        <Message v-if="$form.firstName?.invalid" severity="error" size="small" variant="simple">{{ $form.firstName.error.message }}</Message>
+    </div>
+    <div class="flex flex-col gap-1">
+        <InputText name="lastName" type="text" placeholder="Last Name" fluid />
+        <Message v-if="$form.lastName?.invalid" severity="error" size="small" variant="simple">{{ $form.lastName.error.message }}</Message>
+    </div>
+    <Button type="submit" severity="secondary" label="Submit" />
+</Form>
+```
 
 ---
 
@@ -1455,17 +1455,17 @@ Setting up OpenVue in a Laravel project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
 
 ```vue
 # Using npm
-npm install openvue@alpha @primeuix/themes
+npm install openvue@beta @primeuix/themes
 
 # Using yarn
-yarn add openvue@alpha @primeuix/themes
+yarn add openvue@beta @primeuix/themes
 
 # Using pnpm
-pnpm add openvue@alpha @primeuix/themes
+pnpm add openvue@beta @primeuix/themes
 ```
 
 ## Examples
@@ -1518,6 +1518,48 @@ app.component('Button', Button);
 
 ---
 
+# Migration from PrimeVue v4
+
+Move an existing PrimeVue v4 project to OpenVue with one command.
+
+## Options
+
+Option Description [dir] Directory to migrate (defaults to the current directory) --mode &lt;mode&gt; full , files-only or dry ; runs without prompting --dry Report what would change without writing any files --no-install Rewrite files but do not run the package manager install --no-alias Do not add the primevue to openvue override --force Do not stop on an uncommitted git working tree --yes , -y Skip prompts and use defaults (full migration) In interactive mode a dirty git tree only asks for confirmation. Non-interactively — with a mode flag, --yes or in CI — it stops unless you pass --force , so the migration stays a single reviewable, revertible diff.
+
+## Overview
+
+OpenVue is a fork of PrimeVue v4 that keeps the public API unchanged — usePrimeVue , PrimeVueResolver , the primevue Nuxt config key, p- prefixed CSS classes and pass-through options all work exactly as before. Migrating is therefore a package rename, which is exactly and only what @openvue/migrate does: an automated codemod that rewrites your project's imports and package references from PrimeVue to OpenVue. The tool is ready to use. It handles Vite, Nuxt and Laravel projects, monorepos included, and always shows you what it will change before touching a single file.
+
+## Requirements
+
+Node.js 18 or newer. Your project must be on PrimeVue 4.x, the fork point. The tool detects the installed major — from package.json , a catalog: or workspace: protocol, node_modules or the lockfile — and stops without changing anything if it finds a non-4.x version. Coming from v3 or earlier, apply the PrimeVue v4 migration guide first, then run the tool.
+
+## Try Without Migrating
+
+If you just want to evaluate OpenVue first, add only the compatibility override yourself instead of running the codemod — no source changes needed. Use overrides for npm and bun, pnpm.overrides for pnpm, or resolutions for yarn. Once you decide to stay, run npx @openvue/migrate for the real rename.
+
+```vue
+{
+    "overrides": {
+        "primevue": "npm:openvue@0.0.1-beta.0"
+    }
+}
+```
+
+## Usage
+
+Migration is a single command, run from the root of your project. For monorepos, run it at the workspace root so overrides land in the right place. Run in a terminal, it shows a plan — detected package manager, PrimeVue version, the files and references it will change, and your git status — then asks how to proceed: Full migration — rewrite files, add the compatibility override, and run your package manager's install (detected from the lockfile) so the project builds immediately. Files only — rewrite files and dependencies but leave node_modules alone; you run the install yourself. Dry run — show everything, write nothing. Pass a mode flag ( --mode , --dry , --no-install ) or --yes to skip the prompt; any non-terminal run such as CI or piped output is non-interactive as well. Already installed OpenVue yourself? If openvue is found in your package.json or node_modules , the tool switches to sources-only mode: dependencies and node_modules are left completely untouched, no install runs, and only source-file imports are rewritten.
+
+```vue
+npx @openvue/migrate
+```
+
+## What It Does
+
+Renames dependencies in every package.json , monorepos included — dependencies , devDependencies , peerDependencies , optionalDependencies , resolutions , overrides and pnpm.overrides , including selector keys like **&#47;primevue or primevue@^4 . workspace: , catalog: and npm: protocol values are preserved, and pnpm-workspace.yaml catalogs are rewritten too. Rewrites module specifiers in .js , .ts , .vue , .jsx , .tsx , .astro , .mdx and related files — static imports, import type , require() , dynamic import() , Nuxt modules arrays, Vite optimizeDeps and transpile entries, and generated components.d.ts files. A bare primevue string is only rewritten in import positions, so runtime data like provider: 'primevue' is never touched. Adds a compatibility override — "primevue": "npm:openvue@&lt;version&gt;" — so third-party libraries that depend or peer-depend on primevue resolve to OpenVue. Remove it once your whole dependency graph is OpenVue-native, or skip it with --no-alias . Audits what's left — after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references and lists each one with file and line, so it never reports success while actionable references remain. The rename mapping: From To primevue , primevue/* openvue , openvue/* @primevue/core , @primevue/forms , @primevue/icons , @primevue/themes , @primevue/nuxt-module , @primevue/auto-import-resolver , @primevue/metadata , @primevue/mcp same names under @openvue/*
+
+---
+
 # Install OpenVue with Nuxt
 
 Setting up OpenVue in a Nuxt project.
@@ -1525,73 +1567,6 @@ Setting up OpenVue in a Nuxt project.
 ## autoImport
 
 The auto import feature registers components automatically with tree shaking support. Defaults to true , when disabled use include/exclude options of components and directives for manual registration. Use the prefix in components and directives to add a prefix for registration.
-
-## Download
-
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
-
-```vue
-# Using npm
-npm install openvue@alpha @primeuix/themes
-npm install --save-dev @openvue/nuxt-module
-
-# Using yarn
-yarn add openvue@alpha @primeuix/themes
-yarn add --dev @openvue/nuxt-module
-
-# Using pnpm
-pnpm add openvue@alpha @primeuix/themes
-pnpm add -D @openvue/nuxt-module
-```
-
-## Examples
-
-Nuxt based samples with different options are available at OpenVue examples repository.
-
-## Module
-
-In nuxt.config file, add the @openvue/nuxt-module to the modules section and define primevue object for the configuration of the module.
-
-## Next Steps
-
-Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
-
-## Styled Mode
-
-Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @primeuix/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
-
-## Theme
-
-Configure the module to use a theme like Aura.
-
-```vue
-import Aura from '@primeuix/themes/aura';
-
-export default defineNuxtConfig({
-    modules: [
-        '@openvue/nuxt-module'
-    ],
-    primevue: {
-        options: {
-            theme: {
-                preset: Aura
-            }
-        }
-    }
-})
-```
-
-## Unstyled Mode
-
-In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of OpenVue. Visit the Unstyled mode documentation for more information and examples.
-
-## Verify
-
-The nuxt-primevue module registers the components automatically with tree-shaking support so you may start using them instantly.
-
-```vue
-<Button label="Verify" />
-```
 
 ## components
 
@@ -1651,6 +1626,73 @@ primevue: {
 }
 ```
 
+## Download
+
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+
+```vue
+# Using npm
+npm install openvue@beta @primeuix/themes
+npm install --save-dev @openvue/nuxt-module@beta
+
+# Using yarn
+yarn add openvue@beta @primeuix/themes
+yarn add --dev @openvue/nuxt-module@beta
+
+# Using pnpm
+pnpm add openvue@beta @primeuix/themes
+pnpm add -D @openvue/nuxt-module@beta
+```
+
+## Examples
+
+Nuxt based samples with different options are available at OpenVue examples repository.
+
+## Module
+
+In nuxt.config file, add the @openvue/nuxt-module to the modules section and define primevue object for the configuration of the module.
+
+## Next Steps
+
+Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
+
+## Styled Mode
+
+Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @primeuix/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
+
+## Theme
+
+Configure the module to use a theme like Aura.
+
+```vue
+import Aura from '@primeuix/themes/aura';
+
+export default defineNuxtConfig({
+    modules: [
+        '@openvue/nuxt-module'
+    ],
+    primevue: {
+        options: {
+            theme: {
+                preset: Aura
+            }
+        }
+    }
+})
+```
+
+## Unstyled Mode
+
+In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of OpenVue. Visit the Unstyled mode documentation for more information and examples.
+
+## Verify
+
+The nuxt-primevue module registers the components automatically with tree-shaking support so you may start using them instantly.
+
+```vue
+<Button label="Verify" />
+```
+
 ---
 
 # Install OpenVue with Vite
@@ -1659,17 +1701,17 @@ Setting up OpenVue in a Vite project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in alpha and not yet production ready. APIs may change without notice before a stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
 
 ```vue
 # Using npm
-npm install openvue@alpha @primeuix/themes
+npm install openvue@beta @primeuix/themes
 
 # Using yarn
-yarn add openvue@alpha @primeuix/themes
+yarn add openvue@beta @primeuix/themes
 
 # Using pnpm
-pnpm add openvue@alpha @primeuix/themes
+pnpm add openvue@beta @primeuix/themes
 ```
 
 ## Examples
@@ -1756,10 +1798,6 @@ Tailwind CSS is a popular CSS framework based on a utility-first design. The cor
 ## Plugin
 
 The tailwindcss-primeui is an official plugin by PrimeTek to provide first class integration between a Prime UI library like OpenVue and Tailwind CSS. It is designed to work both in styled and unstyled modes. In styled mode, for instance the semantic colors such as primary and surfaces are provided as Tailwind utilities e.g. bg-primary , text-surface-500 , text-muted-color . If you haven't already done so, start by integrating Tailwind into your project. Detailed steps for this process can be found in the Tailwind documentation . After successfully installing Tailwind, proceed with the installation of the PrimeUI plugin. This single npm package comes with two libraries: the CSS version is compatible with Tailwind v4, while the JS version is designed for Tailwind v3. Tailwind v4 In the CSS file that contains the tailwindcss import, add the tailwindcss-primeui import as well. Tailwind v3 Use the plugins option in your Tailwind config file to configure the plugin.
-
-## Volt UI
-
-Volt is ideal for developers who prefer customizing component styles using Tailwind CSS rather than the default design token-based styling. If you do not have this use case and prefer the default styled mode for OpenVue, while using Tailwind CSS only for other requirements such as layout, you can proceed to the next section. Volt is an open source UI component library implemented with the Unstyled OpenVue components and Tailwind CSS. Volt follows the Code Ownership model where the components live in your application code base as your own UI library rather than imported from node_modules as a 3rd party. Main benefit of this approach is full control over styling and ease of customization. Internally a Volt component wraps its OpenVue counterpart, removes the default design token based theming and applies Tailwind utility classes via the pass through attributes feature. Volt components are designed to be customized with Tailwind CSS and do not require separate updates. They serve as wrappers around OpenVue components, so maintenance is handled simply by updating the OpenVue version.
 
 ## Color Palette
 
@@ -1864,6 +1902,10 @@ A headless OpenVue dialog with a custom UI.
 ## Starter
 
 The Tailwind v4 and OpenVue starter example is available to demonstrate the integration setup with an example dashboard.
+
+## Volt UI
+
+Volt is ideal for developers who prefer customizing component styles using Tailwind CSS rather than the default design token-based styling. If you do not have this use case and prefer the default styled mode for OpenVue, while using Tailwind CSS only for other requirements such as layout, you can proceed to the next section. Volt is an open source UI component library implemented with the Unstyled OpenVue components and Tailwind CSS. Volt follows the Code Ownership model where the components live in your application code base as your own UI library rather than imported from node_modules as a 3rd party. Main benefit of this approach is full control over styling and ease of customization. Internally a Volt component wraps its OpenVue counterpart, removes the default design token based theming and applies Tailwind utility classes via the pass through attributes feature. Volt components are designed to be customized with Tailwind CSS and do not require separate updates. They serve as wrappers around OpenVue components, so maintenance is handled simply by updating the OpenVue version.
 
 ---
 
@@ -2284,11 +2326,7 @@ const items = [
 
 # Migration
 
-Migration guide to OpenVue v4.
-
-## Overview
-
-The most notable feature is the new styled mode implementation. Previous iterations use SASS at an external repo called primevue-sass-theme which requires compilation of a theme.css a file. This file had to be included in the application and need to be swapped at runtime for basic tasks like dark mode or primary color changes. In v4, styled mode is now part of the core, SASS is not used at all, and a new design token based architecture that fully utilizes CSS variables has been created. The new API is modern and superior to the legacy styled mode. Names of some of the components have been changed to more common alternatives for example, Popover replaced OverlayPanel and InputSwitch is now called ToggleSwitch . Each component has been reviewed for a consistent naming between CSS class names and PT sections. An example would be the option element of a Select component that uses p-select-option for the class name. Components have been utilized more within other components, for instance Dialog close button is not actually a OpenVue button so that closeButtonProps can be used to enable the features of button like outlined, raised and more. Whenever a component is using another component, in v3 the pt sections were causing confusion, to prevent this pc prefix is added to indicate that the PT section is actually a OpenVue component, not a simple DOM element. This is especially useful because PT allows passing arbitrary attributes to DOM elements whereas if the element is actually a OpenVue component, props can also be passed.
+Migration guide to OpenVue from Primevue v3.
 
 ## Breaking
 
@@ -2297,6 +2335,10 @@ SASS Themes The styled mode theming has been reimplemented from scratch based on
 ## Compatible
 
 Renamed Components Old names are deprecated but still functional, migrate to new import paths instead e.g. primevue/calendar becomes openvue/datepicker . Calendar -> DatePicker . Dropdown -> Select . InputSwitch -> ToggleSwitch . OverlayPanel -> Popover . Sidebar -> Drawer . Deprecated Components Components that are deprecated since their functionality is provided by other components. Chips | Use AutoComplete with multiple enabled and typeahead disabled. TabMenu | Use Tabs without panels. Steps | Use Stepper without panels. InlineMessage | Use Message component. BadgeDirective | Use OverlayBadge instead. TabView | Use the new Tabs components. Accordion | Use with the new AccordionHeader and AccordionContent components. Important Tickets Issue tickets with detailed information about component internal changes. #5426 #5437
+
+## Overview
+
+The most notable feature is the new styled mode implementation. Previous iterations use SASS at an external repo called primevue-sass-theme which requires compilation of a theme.css a file. This file had to be included in the application and need to be swapped at runtime for basic tasks like dark mode or primary color changes. In v4, styled mode is now part of the core, SASS is not used at all, and a new design token based architecture that fully utilizes CSS variables has been created. The new API is modern and superior to the legacy styled mode. Names of some of the components have been changed to more common alternatives for example, Popover replaced OverlayPanel and InputSwitch is now called ToggleSwitch . Each component has been reviewed for a consistent naming between CSS class names and PT sections. An example would be the option element of a Select component that uses p-select-option for the class name. Components have been utilized more within other components, for instance Dialog close button is not actually a OpenVue button so that closeButtonProps can be used to enable the features of button like outlined, raised and more. Whenever a component is using another component, in v3 the pt sections were causing confusion, to prevent this pc prefix is added to indicate that the PT section is actually a OpenVue component, not a simple DOM element. This is especially useful because PT allows passing arbitrary attributes to DOM elements whereas if the element is actually a OpenVue component, props can also be passed.
 
 ---
 
@@ -26176,16 +26218,6 @@ const value = ref([
 | metergroup.label.icon.size | --p-metergroup-label-icon-size | Size of label icon |
 | metergroup.label.list.vertical.gap | --p-metergroup-label-list-vertical-gap | Vertical gap of label list |
 | metergroup.label.list.horizontal.gap | --p-metergroup-label-list-horizontal-gap | Horizontal gap of label list |
-
----
-
-# migrate
-
-
-
-## Overview
-
-OpenVue is a fork of PrimeVue, and most existing PrimeVue v4 code already works against it with minimal changes. To make moving over effortless, we're building @openvue/migrate , a dedicated codemod that will automatically rewrite a project's imports and package references from PrimeVue to OpenVue. The package is published on npm, but it's still an early, active work in progress and isn't ready for use in real projects yet. Once it's ready for general use, this page will be updated with installation and usage instructions. In the meantime, you can track progress on npmjs.com/package/@openvue/migrate .
 
 ---
 
