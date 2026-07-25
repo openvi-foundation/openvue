@@ -32,14 +32,16 @@
             :unstyled="unstyled"
         />
         <!-- TODO: hideicon and showicon slots are deprecated since v4.0-->
-        <button v-if="toggleMask" type="button" :class="unmasked ? cx('maskIcon') : cx('unmaskIcon')" :style="sx(unmasked ? 'maskIcon' : 'unmaskIcon')" :aria-label="unmasked ? hidePasswordText : showPasswordText" @click="onMaskToggle" v-bind="ptm(unmasked ? 'maskIcon' : 'unmaskIcon')">
-            <slot v-if="unmasked" :name="$slots.maskicon ? 'maskicon' : 'hideicon'" :toggleCallback="onMaskToggle" :class="[cx('maskIcon'), maskIcon]" v-bind="ptm('maskIcon')">
+        <slot v-if="toggleMask && unmasked" :name="$slots.maskicon ? 'maskicon' : 'hideicon'" :toggleCallback="onMaskToggle" :class="[cx('maskIcon'), maskIcon]" v-bind="ptm('maskIcon')">
+            <button ref="maskButton" type="button" :class="cx('maskIcon')" :style="sx('maskIcon')" :aria-label="hidePasswordText" @click="onMaskToggle" v-bind="ptm('maskIcon')">
                 <component :is="maskIcon ? 'i' : 'EyeSlashIcon'" :class="maskIcon" aria-hidden="true" />
-            </slot>
-            <slot v-else :name="$slots.unmaskicon ? 'unmaskicon' : 'showicon'" :toggleCallback="onMaskToggle" :class="[cx('unmaskIcon')]" v-bind="ptm('unmaskIcon')">
+            </button>
+        </slot>
+        <slot v-if="toggleMask && !unmasked" :name="$slots.unmaskicon ? 'unmaskicon' : 'showicon'" :toggleCallback="onMaskToggle" :class="[cx('unmaskIcon')]" v-bind="ptm('unmaskIcon')">
+            <button ref="unmaskButton" type="button" :class="cx('unmaskIcon')" :style="sx('unmaskIcon')" :aria-label="showPasswordText" @click="onMaskToggle" v-bind="ptm('unmaskIcon')">
                 <component :is="unmaskIcon ? 'i' : 'EyeIcon'" :class="unmaskIcon" aria-hidden="true" />
-            </slot>
-        </button>
+            </button>
+        </slot>
         <slot v-if="isClearIconVisible" name="clearicon" :class="cx('clearIcon')" :clearCallback="onClearClick" v-bind="ptm('clearIcon')">
             <button ref="clearButton" type="button" :class="cx('clearIcon')" :style="sx('clearIcon')" :aria-label="clearText" @click="onClearClick" v-bind="ptm('clearIcon')">
                 <TimesIcon aria-hidden="true" />
@@ -304,7 +306,16 @@ export default {
             this.overlay = el;
         },
         onMaskToggle() {
+            const activeElement = document.activeElement;
+            const shouldRefocus = activeElement === this.$refs.maskButton || activeElement === this.$refs.unmaskButton;
+
             this.unmasked = !this.unmasked;
+
+            if (shouldRefocus) {
+                this.$nextTick(() => {
+                    (this.unmasked ? this.$refs.maskButton : this.$refs.unmaskButton)?.focus();
+                });
+            }
         },
         onClearClick(event) {
             const shouldRefocusInput = document.activeElement === this.$refs.clearButton;
