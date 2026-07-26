@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/blockui';
+export * from '@openuxkit/themes/types/blockui';

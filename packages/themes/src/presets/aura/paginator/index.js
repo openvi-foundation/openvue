@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/paginator';
+export { default } from '@openuxkit/themes/aura/paginator';

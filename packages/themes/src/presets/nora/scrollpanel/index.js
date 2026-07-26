@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/scrollpanel';
+export { default } from '@openuxkit/themes/nora/scrollpanel';

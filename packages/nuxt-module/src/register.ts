@@ -1,5 +1,5 @@
 import { addComponent, addImports } from '@nuxt/kit';
-import { isNotEmpty, isString, resolve } from '@primeuix/utils/object';
+import { isNotEmpty, isString, resolve } from '@openuxkit/utils/object';
 import type { MetaType } from '@openvue/metadata';
 import { components, composables, directives } from '@openvue/metadata';
 import type { PrimeVueConfiguration } from 'openvue/config';

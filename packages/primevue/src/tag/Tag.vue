@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import BaseTag from './BaseTag.vue';
 
 export default {

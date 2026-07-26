@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/inputnumber';
+export { default } from '@openuxkit/themes/lara/inputnumber';

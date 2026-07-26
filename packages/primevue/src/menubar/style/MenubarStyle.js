@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/menubar';
+import { style } from '@openuxkit/styles/menubar';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

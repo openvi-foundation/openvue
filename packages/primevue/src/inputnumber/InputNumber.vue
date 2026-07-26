@@ -90,9 +90,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { clearSelection, getSelection } from '@primeuix/utils/dom';
-import { isEmpty, isNotEmpty } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { clearSelection, getSelection } from '@openuxkit/utils/dom';
+import { isEmpty, isNotEmpty } from '@openuxkit/utils/object';
 import AngleDownIcon from '@openvue/icons/angledown';
 import AngleUpIcon from '@openvue/icons/angleup';
 import TimesIcon from '@openvue/icons/times';

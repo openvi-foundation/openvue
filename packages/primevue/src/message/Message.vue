@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import TimesIcon from '@openvue/icons/times';
 import Ripple from 'openvue/ripple';
 import BaseMessage from './BaseMessage.vue';

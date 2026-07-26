@@ -1,4 +1,4 @@
-import { getScrollableParents } from '@primeuix/utils/dom';
+import { getScrollableParents } from '@openuxkit/utils/dom';
 
 export default class ConnectedOverlayScrollHandler {
     constructor(element, listener = () => {}) {

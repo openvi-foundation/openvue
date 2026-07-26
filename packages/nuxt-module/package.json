@@ -38,9 +38,9 @@
             "@openvue/metadata",
             "@openvue/auto-import-resolver",
             "unplugin-vue-components",
-            "@primeuix/utils",
-            "@primeuix/utils/object",
-            "@primeuix/utils/dom"
+            "@openuxkit/utils",
+            "@openuxkit/utils/object",
+            "@openuxkit/utils/dom"
         ]
     },
     "publishConfig": {
@@ -70,8 +70,8 @@
     },
     "dependencies": {
         "@nuxt/kit": "^3",
-        "@primeuix/styled": "catalog:",
-        "@primeuix/utils": "catalog:",
+        "@openuxkit/styled": "catalog:",
+        "@openuxkit/utils": "catalog:",
         "openvue": "workspace:*",
         "@openvue/auto-import-resolver": "workspace:*",
         "@openvue/metadata": "workspace:*",
@@ -80,7 +80,7 @@
         "pathe": "^1.1.2"
     },
     "devDependencies": {
-        "@primeuix/themes": "catalog:",
+        "@openuxkit/themes": "catalog:",
         "@nuxt/devtools": "^2.1.0",
         "@nuxt/eslint-config": "^1.1.0",
         "@nuxt/module-builder": "^0.8.4",

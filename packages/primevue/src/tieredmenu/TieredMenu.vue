@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice } from '@primeuix/utils/dom';
-import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@primeuix/utils/object';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice } from '@openuxkit/utils/dom';
+import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';

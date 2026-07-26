@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/colorpicker';
+export * from '@openuxkit/themes/types/colorpicker';

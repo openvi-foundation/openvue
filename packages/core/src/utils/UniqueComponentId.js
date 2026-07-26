@@ -1,7 +1,7 @@
-import { uuid } from '@primeuix/utils/uuid';
+import { uuid } from '@openuxkit/utils/uuid';
 
 /**
- * @deprecated since v4.3.0. Use `uuid` from @primeuix/utils instead.
+ * @deprecated since v4.3.0. Use `uuid` from @openuxkit/utils instead.
  * @param {string} prefix
  * @return {string}
  */

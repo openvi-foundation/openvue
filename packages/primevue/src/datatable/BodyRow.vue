@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { equals, isNotEmpty, resolveFieldData } from '@primeuix/utils/object';
+import { equals, isNotEmpty, resolveFieldData } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import { getVNodeProp } from '@openvue/core/utils';
 import ChevronDownIcon from '@openvue/icons/chevrondown';

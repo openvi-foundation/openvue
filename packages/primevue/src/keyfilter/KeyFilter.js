@@ -1,4 +1,4 @@
-import { isAttributeEquals } from '@primeuix/utils/dom';
+import { isAttributeEquals } from '@openuxkit/utils/dom';
 import BaseKeyFilter from './BaseKeyFilter';
 
 const KeyFilter = BaseKeyFilter.extend('keyfilter', {

@@ -1,4 +1,4 @@
-import { addClass, removeClass } from '@primeuix/utils/dom';
+import { addClass, removeClass } from '@openuxkit/utils/dom';
 import BaseAnimateOnScroll from './BaseAnimateOnScroll';
 
 const AnimateOnScroll = BaseAnimateOnScroll.extend('animateonscroll', {

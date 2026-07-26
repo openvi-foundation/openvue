@@ -4,7 +4,7 @@
     "dependencies": {
         "vue": "^3.4.21",
         "openvue": "__OPENVUE_VERSION__",
-        "@primeuix/themes": "^2.0.3",
+        "@openvue/themes": "__OPENVUE_VERSION__",
         "primeicons": "^7.0.0"
     },
     "devDependencies": {

@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { isEmpty } from '@primeuix/utils/object';
+import { isEmpty } from '@openuxkit/utils/object';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import Button from 'openvue/button';
 import TieredMenu from 'openvue/tieredmenu';

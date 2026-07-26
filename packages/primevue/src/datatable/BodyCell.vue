@@ -133,8 +133,8 @@
 </template>
 
 <script>
-import { getAttribute, getFirstFocusableElement, getNextElementSibling, getOuterWidth, getPreviousElementSibling, invokeElementMethod } from '@primeuix/utils/dom';
-import { resolveFieldData } from '@primeuix/utils/object';
+import { getAttribute, getFirstFocusableElement, getNextElementSibling, getOuterWidth, getPreviousElementSibling, invokeElementMethod } from '@openuxkit/utils/dom';
+import { resolveFieldData } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import { getVNodeProp } from '@openvue/core/utils';
 import BarsIcon from '@openvue/icons/bars';

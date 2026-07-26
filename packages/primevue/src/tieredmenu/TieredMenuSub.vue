@@ -76,8 +76,8 @@
 </template>
 
 <script>
-import { nestedPosition } from '@primeuix/utils/dom';
-import { isNotEmpty, resolve } from '@primeuix/utils/object';
+import { nestedPosition } from '@openuxkit/utils/dom';
+import { isNotEmpty, resolve } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import AngleRightIcon from '@openvue/icons/angleright';
 import Ripple from 'openvue/ripple';

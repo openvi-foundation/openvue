@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/carousel';
+export { default } from '@openuxkit/themes/material/carousel';

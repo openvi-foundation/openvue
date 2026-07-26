@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/paginator';
+export { default } from '@openuxkit/themes/material/paginator';

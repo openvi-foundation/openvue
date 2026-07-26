@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/editor';
+export * from '@openuxkit/themes/types/editor';

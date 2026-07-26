@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/dialog';
+import { style } from '@openuxkit/styles/dialog';
 import BaseStyle from '@openvue/core/base/style';
 
 /* Position */

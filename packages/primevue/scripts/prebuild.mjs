@@ -25,7 +25,7 @@ export { default as BaseIcon } from '@openvue/icons/baseicon';
 export { default as BaseIconStyle } from '@openvue/icons/baseicon/style';
 
 // Themes
-export * from '@primeuix/styled';
+export * from '@openuxkit/styled';
 
 // Utils
 export * from '../utils/Utils.js';

@@ -131,9 +131,9 @@
 </template>
 
 <script>
-import { absolutePosition, addStyle, find, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
-import { isEmpty, isNotEmpty } from '@primeuix/utils/object';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { absolutePosition, addStyle, find, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
+import { isEmpty, isNotEmpty } from '@openuxkit/utils/object';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import TimesIcon from '@openvue/icons/times';

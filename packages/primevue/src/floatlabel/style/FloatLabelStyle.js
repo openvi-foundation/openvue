@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/floatlabel';
+import { style } from '@openuxkit/styles/floatlabel';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/orderlist';
+export { default } from '@openuxkit/themes/lara/orderlist';

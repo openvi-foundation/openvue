@@ -52,8 +52,8 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primeuix/utils": "catalog:",
-        "@primeuix/forms": "catalog:",
+        "@openuxkit/utils": "catalog:",
+        "@openuxkit/forms": "catalog:",
         "@openvue/core": "workspace:*"
     },
     "engines": {

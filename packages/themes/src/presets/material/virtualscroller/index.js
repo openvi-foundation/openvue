@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/virtualscroller';
+export { default } from '@openuxkit/themes/material/virtualscroller';

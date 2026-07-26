@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import { find, findSingle, scrollInView, setAttribute } from '@primeuix/utils/dom';
-import { findIndexInList, isNotEmpty } from '@primeuix/utils/object';
+import { find, findSingle, scrollInView, setAttribute } from '@openuxkit/utils/dom';
+import { findIndexInList, isNotEmpty } from '@openuxkit/utils/object';
 import AngleDoubleDownIcon from '@openvue/icons/angledoubledown';
 import AngleDoubleUpIcon from '@openvue/icons/angledoubleup';
 import AngleDownIcon from '@openvue/icons/angledown';

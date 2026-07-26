@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/imagecompare';
+import { style } from '@openuxkit/styles/imagecompare';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

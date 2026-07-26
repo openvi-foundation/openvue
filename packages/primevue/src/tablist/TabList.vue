@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { findSingle, getHeight, getOffset, getOuterHeight, getOuterWidth, getWidth, isRTL } from '@primeuix/utils/dom';
+import { cn } from '@openuxkit/utils';
+import { findSingle, getHeight, getOffset, getOuterHeight, getOuterWidth, getWidth, isRTL } from '@openuxkit/utils/dom';
 import ChevronLeftIcon from '@openvue/icons/chevronleft';
 import ChevronRightIcon from '@openvue/icons/chevronright';
 import Ripple from 'openvue/ripple';

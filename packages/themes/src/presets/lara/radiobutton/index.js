@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/radiobutton';
+export { default } from '@openuxkit/themes/lara/radiobutton';

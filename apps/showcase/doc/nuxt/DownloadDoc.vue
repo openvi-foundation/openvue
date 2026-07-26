@@ -16,15 +16,15 @@ export default {
             code: {
                 basic: `
 # Using npm
-npm install openvue@beta @primeuix/themes
+npm install openvue@beta @openvue/themes
 npm install --save-dev @openvue/nuxt-module@beta
 
 # Using yarn
-yarn add openvue@beta @primeuix/themes
+yarn add openvue@beta @openvue/themes
 yarn add --dev @openvue/nuxt-module@beta
 
 # Using pnpm
-pnpm add openvue@beta @primeuix/themes
+pnpm add openvue@beta @openvue/themes
 pnpm add -D @openvue/nuxt-module@beta
 `
             }

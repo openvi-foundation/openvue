@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/tabview';
+export { default } from '@openuxkit/themes/nora/tabview';

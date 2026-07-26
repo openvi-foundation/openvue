@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import BaseDivider from './BaseDivider.vue';
 
 export default {

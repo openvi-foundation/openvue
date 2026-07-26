@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { isNotEmpty, resolve } from '@primeuix/utils/object';
+import { isNotEmpty, resolve } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import AngleDownIcon from '@openvue/icons/angledown';
 import AngleRightIcon from '@openvue/icons/angleright';

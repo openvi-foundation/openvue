@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/timeline';
+export * from '@openuxkit/themes/types/timeline';

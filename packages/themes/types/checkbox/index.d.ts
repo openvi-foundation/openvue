@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/checkbox';
+export * from '@openuxkit/themes/types/checkbox';

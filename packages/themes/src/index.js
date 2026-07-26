@@ -1,1 +1,1 @@
-export * from '@primeuix/styled';
+export * from '@openuxkit/styled';

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/accordion';
+export * from '@openuxkit/themes/types/accordion';

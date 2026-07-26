@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { equals } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { equals } from '@openuxkit/utils/object';
 import BaseRadioButton from './BaseRadioButton.vue';
 
 export default {

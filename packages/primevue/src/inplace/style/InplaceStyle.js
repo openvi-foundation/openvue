@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/inplace';
+import { style } from '@openuxkit/styles/inplace';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

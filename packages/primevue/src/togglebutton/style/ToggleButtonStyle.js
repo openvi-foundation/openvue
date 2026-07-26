@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/togglebutton';
+import { style } from '@openuxkit/styles/togglebutton';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

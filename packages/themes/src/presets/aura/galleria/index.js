@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/galleria';
+export { default } from '@openuxkit/themes/aura/galleria';

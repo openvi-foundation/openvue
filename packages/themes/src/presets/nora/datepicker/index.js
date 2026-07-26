@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/datepicker';
+export { default } from '@openuxkit/themes/nora/datepicker';

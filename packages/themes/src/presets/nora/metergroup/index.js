@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/metergroup';
+export { default } from '@openuxkit/themes/nora/metergroup';

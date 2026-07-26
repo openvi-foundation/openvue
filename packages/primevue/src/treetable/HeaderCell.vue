@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { getAttribute, getIndex, getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@primeuix/utils/dom';
+import { getAttribute, getIndex, getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@openuxkit/utils/dom';
 import BaseComponent from '@openvue/core/basecomponent';
 import { getVNodeProp } from '@openvue/core/utils';
 import SortAltIcon from '@openvue/icons/sortalt';

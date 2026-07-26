@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/popover';
+export * from '@openuxkit/themes/types/popover';

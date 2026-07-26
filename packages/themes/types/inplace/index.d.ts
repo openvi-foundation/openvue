@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/inplace';
+export * from '@openuxkit/themes/types/inplace';

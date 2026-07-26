@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/password';
+export * from '@openuxkit/themes/types/password';

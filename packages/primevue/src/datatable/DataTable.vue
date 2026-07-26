@@ -323,7 +323,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import {
     addClass,
     addStyle,
@@ -343,8 +343,8 @@ import {
     isRTL,
     removeClass,
     setAttribute
-} from '@primeuix/utils/dom';
-import { equals, findIndexInList, isEmpty, isNotEmpty, localeComparator, reorderArray, resolveFieldData, sort } from '@primeuix/utils/object';
+} from '@openuxkit/utils/dom';
+import { equals, findIndexInList, isEmpty, isNotEmpty, localeComparator, reorderArray, resolveFieldData, sort } from '@openuxkit/utils/object';
 import { FilterMatchMode, FilterOperator, FilterService } from '@openvue/core/api';
 import { HelperSet, getVNodeProp } from '@openvue/core/utils';
 import ArrowDownIcon from '@openvue/icons/arrowdown';

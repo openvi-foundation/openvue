@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { omit } from '@primeuix/utils';
+import { omit } from '@openuxkit/utils';
 import { useForm } from '@openvue/forms/useform';
 import { ref } from 'vue';
 import BaseForm from './BaseForm.vue';

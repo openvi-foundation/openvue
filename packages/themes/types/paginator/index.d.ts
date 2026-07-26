@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/paginator';
+export * from '@openuxkit/themes/types/paginator';

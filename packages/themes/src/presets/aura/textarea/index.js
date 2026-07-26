@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/textarea';
+export { default } from '@openuxkit/themes/aura/textarea';

@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import { getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@primeuix/utils/dom';
-import { resolveFieldData } from '@primeuix/utils/object';
+import { getNextElementSibling, getOuterWidth, getPreviousElementSibling } from '@openuxkit/utils/dom';
+import { resolveFieldData } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import { getVNodeProp } from '@openvue/core/utils';
 import CheckIcon from '@openvue/icons/check';

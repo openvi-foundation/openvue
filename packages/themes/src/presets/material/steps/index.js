@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/steps';
+export { default } from '@openuxkit/themes/material/steps';

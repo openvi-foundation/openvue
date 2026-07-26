@@ -13,13 +13,13 @@ export default {
             code: {
                 basic: `
 # Using npm
-npm install openvue@beta @primeuix/themes
+npm install openvue@beta @openvue/themes
 
 # Using yarn
-yarn add openvue@beta @primeuix/themes
+yarn add openvue@beta @openvue/themes
 
 # Using pnpm
-pnpm add openvue@beta @primeuix/themes
+pnpm add openvue@beta @openvue/themes
 `
             }
         };

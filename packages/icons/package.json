@@ -99,7 +99,7 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primeuix/utils": "catalog:",
+        "@openuxkit/utils": "catalog:",
         "@openvue/core": "workspace:*"
     },
     "engines": {

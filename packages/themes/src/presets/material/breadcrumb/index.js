@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/breadcrumb';
+export { default } from '@openuxkit/themes/material/breadcrumb';

@@ -1,4 +1,4 @@
-export * from '@primeuix/utils';
+export * from '@openuxkit/utils';
 
 export declare class ConnectedOverlayScrollHandler {
     constructor(element: any, listener?: () => void);
@@ -17,7 +17,7 @@ export declare class HelperSet {
 }
 
 /**
- * @deprecated since v4.3.0. Use `uuid` from @primeuix/utils instead.
+ * @deprecated since v4.3.0. Use `uuid` from @openuxkit/utils instead.
  * @param {string} prefix
  * @return {string}
  */

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/selectbutton';
+import { style } from '@openuxkit/styles/selectbutton';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/inputtext';
+export { default } from '@openuxkit/themes/aura/inputtext';

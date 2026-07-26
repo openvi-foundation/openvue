@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/overlaybadge';
+import { style } from '@openuxkit/styles/overlaybadge';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

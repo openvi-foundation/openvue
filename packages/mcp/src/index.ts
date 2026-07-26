@@ -1,5 +1,5 @@
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { ComponentsData, createPrimeMcpServer } from '@primeuix/mcp';
+import { ComponentsData, createPrimeMcpServer } from '@openuxkit/mcp';
 import { z } from 'zod';
 import ComponentJson from '../data/components.json';
 import pkg from '../package.json';

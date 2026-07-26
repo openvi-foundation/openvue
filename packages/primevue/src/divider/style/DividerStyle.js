@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/divider';
+import { style } from '@openuxkit/styles/divider';
 import BaseStyle from '@openvue/core/base/style';
 
 /* Position */

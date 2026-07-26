@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/fieldset';
+import { style } from '@openuxkit/styles/fieldset';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

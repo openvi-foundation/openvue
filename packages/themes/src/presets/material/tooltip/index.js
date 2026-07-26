@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/tooltip';
+export { default } from '@openuxkit/themes/material/tooltip';

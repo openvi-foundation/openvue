@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import MinusIcon from '@openvue/icons/minus';
 import PlusIcon from '@openvue/icons/plus';
 import Button from 'openvue/button';

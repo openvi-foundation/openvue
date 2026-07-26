@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/iconfield';
+export { default } from '@openuxkit/themes/material/iconfield';

@@ -1,4 +1,4 @@
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openuxkit/themes/aura';
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({

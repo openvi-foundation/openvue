@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/iftalabel';
+import { style } from '@openuxkit/styles/iftalabel';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/splitbutton';
+export { default } from '@openuxkit/themes/nora/splitbutton';

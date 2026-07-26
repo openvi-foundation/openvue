@@ -2,7 +2,7 @@
  * Ported from useStyleTag in @vueuse/core
  * https://github.com/vueuse
  */
-import { isClient, isExist, setAttribute, setAttributes } from '@primeuix/utils/dom';
+import { isClient, isExist, setAttribute, setAttributes } from '@openuxkit/utils/dom';
 import { getCurrentInstance, nextTick, onMounted, readonly, ref, watch } from 'vue';
 
 function tryOnMounted(fn, sync = true) {

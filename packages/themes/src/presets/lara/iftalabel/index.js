@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/iftalabel';
+export { default } from '@openuxkit/themes/lara/iftalabel';

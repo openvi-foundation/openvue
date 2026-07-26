@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/popover';
+export { default } from '@openuxkit/themes/aura/popover';

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/buttongroup';
+import { style } from '@openuxkit/styles/buttongroup';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { isEmpty } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { isEmpty } from '@openuxkit/utils/object';
 import SpinnerIcon from '@openvue/icons/spinner';
 import Badge from 'openvue/badge';
 import Ripple from 'openvue/ripple';

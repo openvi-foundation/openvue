@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/confirmdialog';
+export { default } from '@openuxkit/themes/aura/confirmdialog';

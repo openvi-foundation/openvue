@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { OPENVUE_VERSION, renameSpecifier } from '../src/mappings';
+import { OPENUXKIT_VERSION, OPENVUE_VERSION, renameSpecifier } from '../src/mappings';
 import { addCompatAlias, rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from '../src/rewrite';
 
 describe('renameSpecifier', () => {
@@ -16,10 +16,18 @@ describe('renameSpecifier', () => {
         expect(renameSpecifier('@primevue/mcp')).toBe('@openvue/mcp');
     });
 
+    it('maps @primeuix/themes to @openvue/themes and the rest of @primeuix/* to @openuxkit/*', () => {
+        expect(renameSpecifier('@primeuix/themes')).toBe('@openvue/themes');
+        expect(renameSpecifier('@primeuix/themes/aura')).toBe('@openvue/themes/aura');
+        expect(renameSpecifier('@primeuix/utils')).toBe('@openuxkit/utils');
+        expect(renameSpecifier('@primeuix/utils/dom')).toBe('@openuxkit/utils/dom');
+        expect(renameSpecifier('@primeuix/styled')).toBe('@openuxkit/styled');
+        expect(renameSpecifier('@primeuix/styles/base')).toBe('@openuxkit/styles/base');
+    });
+
     it('leaves everything else alone', () => {
         expect(renameSpecifier('primeicons')).toBeNull();
         expect(renameSpecifier('primeicons/primeicons.css')).toBeNull();
-        expect(renameSpecifier('@primeuix/themes/aura')).toBeNull();
         expect(renameSpecifier('tailwindcss-primeui')).toBeNull();
         expect(renameSpecifier('primeflex')).toBeNull();
         expect(renameSpecifier('primevue-community-addon')).toBeNull();
@@ -71,12 +79,22 @@ describe('rewriteSource', () => {
     });
 
     it('leaves untouched packages and lookalike specifiers alone', () => {
-        const input = [`import 'primeicons/primeicons.css';`, `import Aura from '@primeuix/themes/aura';`, `import addon from 'primevue-community-addon';`, `const plugin = require('tailwindcss-primeui');`].join('\n');
+        const input = [`import 'primeicons/primeicons.css';`, `import addon from 'primevue-community-addon';`, `const plugin = require('tailwindcss-primeui');`].join('\n');
 
         const result = rewriteSource(input);
 
         expect(result.count).toBe(0);
         expect(result.code).toBe(input);
+    });
+
+    it('rewrites @primeuix imports to the OpenVue stack', () => {
+        const input = [`import Aura from '@primeuix/themes/aura';`, `import { uuid } from '@primeuix/utils/uuid';`].join('\n');
+
+        const result = rewriteSource(input);
+
+        expect(result.count).toBe(2);
+        expect(result.code).toContain(`from '@openvue/themes/aura'`);
+        expect(result.code).toContain(`from '@openuxkit/utils/uuid'`);
     });
 
     it('skips a quoted primevue object key (Nuxt config key) and reports it', () => {
@@ -126,7 +144,8 @@ describe('rewritePackageJson', () => {
         expect(pkg.dependencies.openvue).toBe(OPENVUE_VERSION);
         expect(pkg.dependencies.primevue).toBeUndefined();
         expect(pkg.dependencies.primeicons).toBe('^7.0.0');
-        expect(pkg.dependencies['@primeuix/themes']).toBe('^2.0.3');
+        expect(pkg.dependencies['@primeuix/themes']).toBeUndefined();
+        expect(pkg.dependencies['@openvue/themes']).toBe(OPENVUE_VERSION);
         expect(pkg.devDependencies['@openvue/auto-import-resolver']).toBe(OPENVUE_VERSION);
     });
 
@@ -221,14 +240,14 @@ describe('addCompatAlias', () => {
 });
 
 describe('rewriteWorkspaceYaml', () => {
-    it('rewrites catalog entries and leaves upstream packages alone', () => {
+    it('rewrites catalog entries (incl. @primeuix) and leaves upstream packages alone', () => {
         const input = ['catalog:', `    'primevue': ^4.3.3`, `    '@primevue/themes': ^4.3.3`, `    '@primeuix/utils': ^0.6.2`, `    'primeicons': ^7.0.0`, ''].join('\n');
         const result = rewriteWorkspaceYaml(input);
 
-        expect(result.count).toBe(2);
+        expect(result.count).toBe(3);
         expect(result.text).toContain(`'openvue': ${OPENVUE_VERSION}`);
         expect(result.text).toContain(`'@openvue/themes': ${OPENVUE_VERSION}`);
-        expect(result.text).toContain(`'@primeuix/utils': ^0.6.2`);
+        expect(result.text).toContain(`'@openuxkit/utils': ${OPENUXKIT_VERSION}`);
         expect(result.text).toContain(`'primeicons': ^7.0.0`);
     });
 

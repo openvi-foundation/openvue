@@ -1,6 +1,6 @@
-import { css as Css, Theme, dt } from '@primeuix/styled';
-import { style } from '@primeuix/styles/base';
-import { isNotEmpty, minifyCSS, resolve } from '@primeuix/utils/object';
+import { css as Css, Theme, dt } from '@openuxkit/styled';
+import { style } from '@openuxkit/styles/base';
+import { isNotEmpty, minifyCSS, resolve } from '@openuxkit/utils/object';
 import { useStyle } from '@openvue/core/usestyle';
 
 const css = ({ dt }) => `

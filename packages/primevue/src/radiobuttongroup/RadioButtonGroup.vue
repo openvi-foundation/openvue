@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { uuid } from '@primeuix/utils';
+import { uuid } from '@openuxkit/utils';
 import BaseRadioButtonGroup from './BaseRadioButtonGroup.vue';
 
 export default {

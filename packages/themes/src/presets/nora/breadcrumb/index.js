@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/breadcrumb';
+export { default } from '@openuxkit/themes/nora/breadcrumb';
