@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/datatable';
+export * from '@openuxkit/themes/types/datatable';

@@ -1,5 +1,5 @@
-import { createElement, focus, getFirstFocusableElement, getLastFocusableElement, isFocusableElement } from '@primeuix/utils/dom';
-import { isNotEmpty } from '@primeuix/utils/object';
+import { createElement, focus, getFirstFocusableElement, getLastFocusableElement, isFocusableElement } from '@openuxkit/utils/dom';
+import { isNotEmpty } from '@openuxkit/utils/object';
 import BaseFocusTrap from './BaseFocusTrap';
 
 const FocusTrap = BaseFocusTrap.extend('focustrap', {

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { isTouchDevice } from '@primeuix/utils/dom';
+import { isTouchDevice } from '@openuxkit/utils/dom';
 import InputText from 'openvue/inputtext';
 import BaseInputOtp from './BaseInputOtp.vue';
 

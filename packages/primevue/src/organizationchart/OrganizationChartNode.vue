@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { isAttributeEquals } from '@primeuix/utils/dom';
+import { isAttributeEquals } from '@openuxkit/utils/dom';
 import BaseComponent from '@openvue/core/basecomponent';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronUpIcon from '@openvue/icons/chevronup';

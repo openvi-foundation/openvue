@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/tabview';
+import { style } from '@openuxkit/styles/tabview';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

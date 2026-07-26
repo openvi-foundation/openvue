@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/toggleswitch';
+export { default } from '@openuxkit/themes/aura/toggleswitch';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/autocomplete';
+export { default } from '@openuxkit/themes/material/autocomplete';

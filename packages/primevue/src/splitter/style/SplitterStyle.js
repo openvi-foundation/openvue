@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/splitter';
+import { style } from '@openuxkit/styles/splitter';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/badge';
+export { default } from '@openuxkit/themes/aura/badge';

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/splitbutton';
+export * from '@openuxkit/themes/types/splitbutton';

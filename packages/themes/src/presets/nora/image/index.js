@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/image';
+export { default } from '@openuxkit/themes/nora/image';

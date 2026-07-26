@@ -1,3 +1,3 @@
-import type { EventBusOptions } from '@primeuix/utils/eventbus';
+import type { EventBusOptions } from '@openuxkit/utils/eventbus';
 
 export interface PrimeVueService extends EventBusOptions {}

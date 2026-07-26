@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/contextmenu';
+import { style } from '@openuxkit/styles/contextmenu';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { uuid } from '@primeuix/utils';
+import { uuid } from '@openuxkit/utils';
 import Dialog from 'openvue/dialog';
 import DynamicDialogEventBus from 'openvue/dynamicdialogeventbus';
 import BaseDynamicDialog from './BaseDynamicDialog.vue';

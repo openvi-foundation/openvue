@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { findSingle, focus, getAttribute } from '@primeuix/utils/dom';
+import { cn } from '@openuxkit/utils';
+import { findSingle, focus, getAttribute } from '@openuxkit/utils/dom';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronUpIcon from '@openvue/icons/chevronup';
 import Ripple from 'openvue/ripple';

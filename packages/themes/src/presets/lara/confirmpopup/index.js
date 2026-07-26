@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/confirmpopup';
+export { default } from '@openuxkit/themes/lara/confirmpopup';

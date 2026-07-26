@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/treeselect';
+import { style } from '@openuxkit/styles/treeselect';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

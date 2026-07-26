@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/textarea';
+import { style } from '@openuxkit/styles/textarea';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

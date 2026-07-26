@@ -13,7 +13,7 @@ export default {
                 basic: `
 import { createApp } from 'vue';
 import OpenVue from 'openvue/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 const app = createApp(App);
 app.use(OpenVue, {

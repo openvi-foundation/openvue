@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/badge';
+export { default } from '@openuxkit/themes/material/badge';

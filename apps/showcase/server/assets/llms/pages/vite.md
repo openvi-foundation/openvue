@@ -8,13 +8,13 @@ OpenVue is available for download on npm registry . OpenVue is currently in beta
 
 ```vue
 # Using npm
-npm install openvue@beta @primeuix/themes
+npm install openvue@beta @openvue/themes
 
 # Using yarn
-yarn add openvue@beta @primeuix/themes
+yarn add openvue@beta @openvue/themes
 
 # Using pnpm
-pnpm add openvue@beta @primeuix/themes
+pnpm add openvue@beta @openvue/themes
 ```
 
 ## Examples
@@ -44,7 +44,7 @@ Configure OpenVue to use a theme like Aura.
 ```vue
 import { createApp } from 'vue';
 import OpenVue from 'openvue/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 const app = createApp(App);
 app.use(OpenVue, {

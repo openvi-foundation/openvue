@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import { findSingle, focus, getAttribute } from '@primeuix/utils/dom';
-import { equals, isNotEmpty, resolve } from '@primeuix/utils/object';
+import { findSingle, focus, getAttribute } from '@openuxkit/utils/dom';
+import { equals, isNotEmpty, resolve } from '@openuxkit/utils/object';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronRightIcon from '@openvue/icons/chevronright';
 import { mergeProps } from 'vue';

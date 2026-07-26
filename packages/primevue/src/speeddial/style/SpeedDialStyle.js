@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/speeddial';
+import { style } from '@openuxkit/styles/speeddial';
 import BaseStyle from '@openvue/core/base/style';
 
 /* Direction */

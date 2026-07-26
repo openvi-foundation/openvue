@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/avatar';
+export { default } from '@openuxkit/themes/nora/avatar';

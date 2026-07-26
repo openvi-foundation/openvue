@@ -1,4 +1,4 @@
-import { equals, removeAccents, resolveFieldData } from '@primeuix/utils/object';
+import { equals, removeAccents, resolveFieldData } from '@openuxkit/utils/object';
 
 const FilterService = {
     filter(value, fields, filterValue, filterMatchMode, filterLocale) {

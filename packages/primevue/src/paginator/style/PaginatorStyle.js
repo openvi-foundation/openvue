@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/paginator';
+import { style } from '@openuxkit/styles/paginator';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

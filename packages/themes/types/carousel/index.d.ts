@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/carousel';
+export * from '@openuxkit/themes/types/carousel';

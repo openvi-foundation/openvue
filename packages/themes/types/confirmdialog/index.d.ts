@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/confirmdialog';
+export * from '@openuxkit/themes/types/confirmdialog';

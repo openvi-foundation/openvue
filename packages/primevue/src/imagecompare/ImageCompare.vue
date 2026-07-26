@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { $dt } from '@primeuix/styled';
-import { setCSSProperty } from '@primeuix/utils/dom';
+import { $dt } from '@openuxkit/styled';
+import { setCSSProperty } from '@openuxkit/utils/dom';
 import BaseImageCompare from './BaseImageCompare.vue';
 
 export default {

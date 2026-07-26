@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/megamenu';
+export { default } from '@openuxkit/themes/aura/megamenu';

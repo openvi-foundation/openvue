@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/inlinemessage';
+export * from '@openuxkit/themes/types/inlinemessage';

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/toggleswitch';
+import { style } from '@openuxkit/styles/toggleswitch';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

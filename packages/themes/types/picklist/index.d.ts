@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/picklist';
+export * from '@openuxkit/themes/types/picklist';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/checkbox';
+export { default } from '@openuxkit/themes/aura/checkbox';

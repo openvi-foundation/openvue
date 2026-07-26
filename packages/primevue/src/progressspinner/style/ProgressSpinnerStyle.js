@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/progressspinner';
+import { style } from '@openuxkit/styles/progressspinner';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isNotEmpty, mergeKeys, resolve } from '@primeuix/utils';
+import { isArray, isEmpty, isNotEmpty, mergeKeys, resolve } from '@openuxkit/utils';
 import { computed, getCurrentInstance, mergeProps, nextTick, onMounted, reactive, ref, toValue, watch } from 'vue';
 
 function tryOnMounted(fn, sync = true) {

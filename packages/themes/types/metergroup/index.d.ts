@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/metergroup';
+export * from '@openuxkit/themes/types/metergroup';

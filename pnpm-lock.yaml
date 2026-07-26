@@ -28,24 +28,24 @@ catalogs:
       specifier: 6.0.11
       version: 6.0.11
   default:
-    '@primeuix/forms':
-      specifier: ^0.1.0
-      version: 0.1.0
-    '@primeuix/mcp':
-      specifier: ^1.0.0
-      version: 1.0.1
-    '@primeuix/styled':
-      specifier: ^0.7.4
-      version: 0.7.4
-    '@primeuix/styles':
-      specifier: ^2.0.3
-      version: 2.0.3
-    '@primeuix/themes':
-      specifier: ^2.0.3
-      version: 2.0.3
-    '@primeuix/utils':
-      specifier: ^0.6.2
-      version: 0.6.4
+    '@openuxkit/forms':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
+    '@openuxkit/mcp':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
+    '@openuxkit/styled':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
+    '@openuxkit/styles':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
+    '@openuxkit/themes':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
+    '@openuxkit/utils':
+      specifier: ^0.0.1-alpha.1
+      version: 0.0.1-alpha.1
     primeicons:
       specifier: ^7.0.0
       version: 7.0.0
@@ -121,9 +121,9 @@ importers:
       '@openvue/nuxt-module':
         specifier: workspace:*
         version: link:../../packages/nuxt-module
-      '@primeuix/themes':
-        specifier: 'catalog:'
-        version: 2.0.3
+      '@openvue/themes':
+        specifier: workspace:*
+        version: link:../../packages/themes
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(nuxt@3.15.4(@parcel/watcher@2.5.6)(@types/node@26.1.1)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.4(jiti@1.21.7))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(optionator@0.9.4)(rollup@4.60.1)(sass@1.45.0)(terser@5.46.1)(typescript@5.7.3)(vite@6.0.11(@types/node@26.1.1)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.45.0)(terser@5.46.1)(yaml@2.8.3))(vue-tsc@2.1.10(typescript@5.7.3))(yaml@2.8.3))(vue-router@4.6.4(vue@3.5.32(typescript@5.7.3)))(vue@3.5.32(typescript@5.7.3))
@@ -269,12 +269,15 @@ importers:
 
   packages/core:
     dependencies:
-      '@primeuix/styled':
+      '@openuxkit/styled':
         specifier: 'catalog:'
-        version: 0.7.4
-      '@primeuix/utils':
+        version: 0.0.1-alpha.1
+      '@openuxkit/styles':
         specifier: 'catalog:'
-        version: 0.6.4
+        version: 0.0.1-alpha.1
+      '@openuxkit/utils':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
       vue:
         specifier: ^3.5.0
         version: 3.5.32(typescript@5.7.3)
@@ -282,25 +285,25 @@ importers:
 
   packages/forms:
     dependencies:
+      '@openuxkit/forms':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
+      '@openuxkit/utils':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
       '@openvue/core':
         specifier: workspace:*
         version: link:../core
-      '@primeuix/forms':
-        specifier: 'catalog:'
-        version: 0.1.0
-      '@primeuix/utils':
-        specifier: 'catalog:'
-        version: 0.6.4
     publishDirectory: dist
 
   packages/icons:
     dependencies:
+      '@openuxkit/utils':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
       '@openvue/core':
         specifier: workspace:*
         version: link:../core
-      '@primeuix/utils':
-        specifier: 'catalog:'
-        version: 0.6.4
     publishDirectory: dist
 
   packages/mcp:
@@ -308,9 +311,9 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.25.2
         version: 1.29.0(zod@3.25.76)
-      '@primeuix/mcp':
+      '@openuxkit/mcp':
         specifier: 'catalog:'
-        version: 1.0.1
+        version: 0.0.1-alpha.1
       zod:
         specifier: ^3.25.76
         version: 3.25.76
@@ -352,6 +355,12 @@ importers:
       '@nuxt/kit':
         specifier: ^3
         version: 3.21.2(magicast@0.3.5)
+      '@openuxkit/styled':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
+      '@openuxkit/utils':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
       '@openvue/auto-import-resolver':
         specifier: workspace:*
         version: link:../auto-import-resolver
@@ -361,12 +370,6 @@ importers:
       '@openvue/metadata':
         specifier: workspace:*
         version: link:../metadata
-      '@primeuix/styled':
-        specifier: 'catalog:'
-        version: 0.7.4
-      '@primeuix/utils':
-        specifier: 'catalog:'
-        version: 0.6.4
       openvue:
         specifier: workspace:*
         version: link:../primevue
@@ -392,9 +395,9 @@ importers:
       '@nuxt/test-utils':
         specifier: ^3
         version: 3.23.0(@playwright/test@1.61.1)(@vue/test-utils@2.4.6)(jsdom@19.0.0)(magicast@0.3.5)(playwright-core@1.61.1)(typescript@5.7.3)(vitest@3.2.4(@types/node@26.1.1)(jiti@2.7.0)(jsdom@19.0.0)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
-      '@primeuix/themes':
+      '@openuxkit/themes':
         specifier: 'catalog:'
-        version: 2.0.3
+        version: 0.0.1-alpha.1
       '@types/node':
         specifier: latest
         version: 26.1.1
@@ -413,21 +416,21 @@ importers:
 
   packages/primevue:
     dependencies:
+      '@openuxkit/styled':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
+      '@openuxkit/styles':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
+      '@openuxkit/utils':
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.1
       '@openvue/core':
         specifier: workspace:*
         version: link:../core
       '@openvue/icons':
         specifier: workspace:*
         version: link:../icons
-      '@primeuix/styled':
-        specifier: 'catalog:'
-        version: 0.7.4
-      '@primeuix/styles':
-        specifier: 'catalog:'
-        version: 2.0.3
-      '@primeuix/utils':
-        specifier: 'catalog:'
-        version: 0.6.4
     devDependencies:
       '@vue/test-utils':
         specifier: ^2.0.0
@@ -439,12 +442,12 @@ importers:
 
   packages/themes:
     dependencies:
-      '@primeuix/styled':
+      '@openuxkit/styled':
         specifier: 'catalog:'
-        version: 0.7.4
-      '@primeuix/themes':
+        version: 0.0.1-alpha.1
+      '@openuxkit/themes':
         specifier: 'catalog:'
-        version: 2.0.3
+        version: 0.0.1-alpha.1
     publishDirectory: dist
 
 packages:
@@ -2022,6 +2025,28 @@ packages:
   '@one-ini/wasm@0.1.1':
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
 
+  '@openuxkit/forms@0.0.1-alpha.1':
+    resolution: {integrity: sha512-dtlUNTwi68TtqeCfHiPdViv9qlaveRQEbGdwES38aUQmkXITbo7yQUOerQA/8zsoRvL4O4OM2sJ6qLKHA68fHA==}
+    engines: {node: '>=12.11.0'}
+
+  '@openuxkit/mcp@0.0.1-alpha.1':
+    resolution: {integrity: sha512-2T6TpbnzxO2yuEBuWvQI5xTcKt/q9hdtLAYYUwnUULrfjmXZzCKle+gReLusmOc1bW6M0H0uuAyfg4D4L/rwHA==}
+    engines: {node: '>=12.11.0'}
+
+  '@openuxkit/styled@0.0.1-alpha.1':
+    resolution: {integrity: sha512-jNaTe6dKPYQmn60O1q5Xf+hd2ne8PRM9i8JITRCKtFaEoquEega6SDw8eKmjxhIgUfFPTg6mhLpobd5UxrxkCQ==}
+    engines: {node: '>=12.11.0'}
+
+  '@openuxkit/styles@0.0.1-alpha.1':
+    resolution: {integrity: sha512-+5GqBpkhwBi7dRFHCASn2zde2hnHllI1D5FjBhydsHnzzugVFNEuKnkaO/CytVpxA64DMFeEmWYXd+1YA3i7zg==}
+
+  '@openuxkit/themes@0.0.1-alpha.1':
+    resolution: {integrity: sha512-Tpp/cN/s5+c9h8FKzbzIZ++O5cXCts/akY8xcgQ6wj3H475U28RLPzHgY8hGhF5iJ25RuvZKSJbO4EXhhA7xqA==}
+
+  '@openuxkit/utils@0.0.1-alpha.1':
+    resolution: {integrity: sha512-d0ed02SxElIuf2LMWogXvl5sGZPZ5j2ewn3+nGv8abtXLR1VEdylOgS2BTeJHQ8ZZZHdtUZ3D6IBh9kAqccGag==}
+    engines: {node: '>=12.11.0'}
+
   '@package-json/types@0.0.12':
     resolution: {integrity: sha512-uu43FGU34B5VM9mCNjXCwLaGHYjXdNincqKLaraaCW+7S2+SmiBg1Nv8bPnmschrIfZmfKNY9f3fC376MRrObw==}
 
@@ -2137,28 +2162,6 @@ packages:
 
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
-
-  '@primeuix/forms@0.1.0':
-    resolution: {integrity: sha512-LctcQidb+B5PuvAFWH24YH/SIzmHlOabLHpaTeGY/k51iBv1WyCp+5w9JMYuMB/BplSvV0ZGySxQVkN5Azr/aQ==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/mcp@1.0.1':
-    resolution: {integrity: sha512-TSaakkktu2Yt5HnD2q9HucxpXt6LawodBntjsXlhgZlMSLK1vo647A7lgW1hztsZuzQl1zlk8A+6OMmGY8Xnfg==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/styled@0.7.4':
-    resolution: {integrity: sha512-QSO/NpOQg8e9BONWRBx9y8VGMCMYz0J/uKfNJEya/RGEu7ARx0oYW0ugI1N3/KB1AAvyGxzKBzGImbwg0KUiOQ==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/styles@2.0.3':
-    resolution: {integrity: sha512-2ykAB6BaHzR/6TwF8ShpJTsZrid6cVIEBVlookSdvOdmlWuevGu5vWOScgIwqWwlZcvkFYAGR/SUV3OHCTBMdw==}
-
-  '@primeuix/themes@2.0.3':
-    resolution: {integrity: sha512-3fS1883mtCWhgUgNf/feiaaDSOND4EBIOu9tZnzJlJ8QtYyL6eFLcA6V3ymCWqLVXQ1+lTVEZv1gl47FIdXReg==}
-
-  '@primeuix/utils@0.6.4':
-    resolution: {integrity: sha512-pZ5f+vj7wSzRhC7KoEQRU5fvYAe+RP9+m39CTscZ3UywCD1Y2o6Fe1rRgklMPSkzUcty2jzkA0zMYkiJBD1hgg==}
-    engines: {node: '>=12.11.0'}
 
   '@rolldown/pluginutils@1.0.0-rc.14':
     resolution: {integrity: sha512-ktoSqSpdex3xml4M3wV//KiF8MiQkMz8bz2e7SUJvCK9qyL/XjAnLLB+UO3+uE9RLxqUhuDzddc7Cf+EaZ169Q==}
@@ -10038,6 +10041,32 @@ snapshots:
 
   '@one-ini/wasm@0.1.1': {}
 
+  '@openuxkit/forms@0.0.1-alpha.1':
+    dependencies:
+      '@openuxkit/utils': 0.0.1-alpha.1
+
+  '@openuxkit/mcp@0.0.1-alpha.1':
+    dependencies:
+      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
+      zod: 3.25.76
+    transitivePeerDependencies:
+      - '@cfworker/json-schema'
+      - supports-color
+
+  '@openuxkit/styled@0.0.1-alpha.1':
+    dependencies:
+      '@openuxkit/utils': 0.0.1-alpha.1
+
+  '@openuxkit/styles@0.0.1-alpha.1':
+    dependencies:
+      '@openuxkit/styled': 0.0.1-alpha.1
+
+  '@openuxkit/themes@0.0.1-alpha.1':
+    dependencies:
+      '@openuxkit/styled': 0.0.1-alpha.1
+
+  '@openuxkit/utils@0.0.1-alpha.1': {}
+
   '@package-json/types@0.0.12': {}
 
   '@parcel/watcher-android-arm64@2.5.6':
@@ -10127,32 +10156,6 @@ snapshots:
       supports-color: 10.2.2
 
   '@poppinss/exception@1.2.3': {}
-
-  '@primeuix/forms@0.1.0':
-    dependencies:
-      '@primeuix/utils': 0.6.4
-
-  '@primeuix/mcp@1.0.1':
-    dependencies:
-      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@cfworker/json-schema'
-      - supports-color
-
-  '@primeuix/styled@0.7.4':
-    dependencies:
-      '@primeuix/utils': 0.6.4
-
-  '@primeuix/styles@2.0.3':
-    dependencies:
-      '@primeuix/styled': 0.7.4
-
-  '@primeuix/themes@2.0.3':
-    dependencies:
-      '@primeuix/styled': 0.7.4
-
-  '@primeuix/utils@0.6.4': {}
 
   '@rolldown/pluginutils@1.0.0-rc.14': {}
 

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/treetable';
+import { style } from '@openuxkit/styles/treetable';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

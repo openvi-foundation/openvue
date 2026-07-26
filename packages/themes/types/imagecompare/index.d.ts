@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/imagecompare';
+export * from '@openuxkit/themes/types/imagecompare';

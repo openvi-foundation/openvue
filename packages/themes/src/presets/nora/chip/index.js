@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/chip';
+export { default } from '@openuxkit/themes/nora/chip';

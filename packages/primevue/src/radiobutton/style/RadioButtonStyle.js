@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/radiobutton';
+import { style } from '@openuxkit/styles/radiobutton';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

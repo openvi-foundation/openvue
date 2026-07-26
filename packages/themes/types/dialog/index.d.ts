@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/dialog';
+export * from '@openuxkit/themes/types/dialog';

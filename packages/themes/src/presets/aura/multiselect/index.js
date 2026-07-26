@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/multiselect';
+export { default } from '@openuxkit/themes/aura/multiselect';

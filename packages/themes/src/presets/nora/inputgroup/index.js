@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/inputgroup';
+export { default } from '@openuxkit/themes/nora/inputgroup';

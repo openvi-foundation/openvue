@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/blockui';
+import { style } from '@openuxkit/styles/blockui';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

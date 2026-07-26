@@ -1,5 +1,5 @@
 <script>
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import BaseComponent from '@openvue/core/basecomponent';
 
 export default {
@@ -97,7 +97,7 @@ export default {
 
             this.formField.onChange?.({ originalEvent: event, value });
         },
-        // @todo move to @primeuix/utils
+        // @todo move to @openuxkit/utils
         findNonEmpty(...values) {
             return values.find(isNotEmpty);
         }

@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { equals, isNotEmpty, resolveFieldData } from '@primeuix/utils/object';
+import { equals, isNotEmpty, resolveFieldData } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import AngleRightIcon from '@openvue/icons/angleright';
 import Ripple from 'openvue/ripple';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/select';
+export { default } from '@openuxkit/themes/material/select';

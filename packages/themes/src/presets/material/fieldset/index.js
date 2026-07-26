@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/fieldset';
+export { default } from '@openuxkit/themes/material/fieldset';

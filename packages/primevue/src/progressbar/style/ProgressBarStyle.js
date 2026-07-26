@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/progressbar';
+import { style } from '@openuxkit/styles/progressbar';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

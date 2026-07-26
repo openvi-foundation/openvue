@@ -75,9 +75,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { absolutePosition, addStyle, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { absolutePosition, addStyle, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import EyeIcon from '@openvue/icons/eye';
 import EyeSlashIcon from '@openvue/icons/eyeslash';

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/floatlabel';
+export * from '@openuxkit/themes/types/floatlabel';

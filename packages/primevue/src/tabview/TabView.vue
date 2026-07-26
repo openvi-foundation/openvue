@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { findSingle, focus, getAttribute, getOffset, getWidth } from '@primeuix/utils/dom';
+import { findSingle, focus, getAttribute, getOffset, getWidth } from '@openuxkit/utils/dom';
 import ChevronLeftIcon from '@openvue/icons/chevronleft';
 import ChevronRightIcon from '@openvue/icons/chevronright';
 import Ripple from 'openvue/ripple';

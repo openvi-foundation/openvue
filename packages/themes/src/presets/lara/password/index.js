@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/password';
+export { default } from '@openuxkit/themes/lara/password';

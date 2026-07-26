@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/inputotp';
+export * from '@openuxkit/themes/types/inputotp';

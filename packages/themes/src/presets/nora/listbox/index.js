@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/listbox';
+export { default } from '@openuxkit/themes/nora/listbox';

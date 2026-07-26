@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/splitter';
+export * from '@openuxkit/themes/types/splitter';

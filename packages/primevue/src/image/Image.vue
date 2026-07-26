@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import { addClass, focus, isAttributeEquals } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { addClass, focus, isAttributeEquals } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import EyeIcon from '@openvue/icons/eye';
 import RefreshIcon from '@openvue/icons/refresh';
 import SearchMinusIcon from '@openvue/icons/searchminus';

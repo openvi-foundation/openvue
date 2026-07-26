@@ -1,5 +1,5 @@
-import { createStyleAsString } from '@primeuix/utils/dom';
-import { isFunction } from '@primeuix/utils/object';
+import { createStyleAsString } from '@openuxkit/utils/dom';
+import { isFunction } from '@openuxkit/utils/object';
 import type { MetaType } from '@openvue/metadata';
 import type { ConstructsType, ResolvePathOptions } from './types';
 

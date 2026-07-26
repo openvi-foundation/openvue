@@ -5,7 +5,7 @@
 PrimeVue is available for download on npm registry .
 
 ```vue
-# Using npm npm install primevue @primeuix/themes # Using yarn yarn add primevue @primeuix/themes # Using pnpm pnpm add primevue @primeuix/themes
+# Using npm npm install primevue @openvue/themes # Using yarn yarn add primevue @openvue/themes # Using pnpm pnpm add primevue @openvue/themes
 ```
 
 ## Examples

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/tieredmenu';
+import { style } from '@openuxkit/styles/tieredmenu';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/button';
+export * from '@openuxkit/themes/types/button';

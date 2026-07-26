@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/multiselect';
+export * from '@openuxkit/themes/types/multiselect';

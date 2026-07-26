@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/listbox';
+import { style } from '@openuxkit/styles/listbox';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

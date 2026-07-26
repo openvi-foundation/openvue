@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/scrolltop';
+import { style } from '@openuxkit/styles/scrolltop';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

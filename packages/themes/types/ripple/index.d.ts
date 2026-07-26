@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/ripple';
+export * from '@openuxkit/themes/types/ripple';

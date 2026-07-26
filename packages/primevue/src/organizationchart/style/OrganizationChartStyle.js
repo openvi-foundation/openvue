@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/organizationchart';
+import { style } from '@openuxkit/styles/organizationchart';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

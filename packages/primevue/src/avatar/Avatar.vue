@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import BaseAvatar from './BaseAvatar.vue';
 
 export default {

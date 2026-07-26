@@ -224,10 +224,10 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
-import { equals, findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@primeuix/utils/object';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
+import { equals, findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@openuxkit/utils/object';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterService } from '@openvue/core/api';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import CheckIcon from '@openvue/icons/check';

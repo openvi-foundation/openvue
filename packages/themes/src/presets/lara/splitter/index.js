@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/splitter';
+export { default } from '@openuxkit/themes/lara/splitter';

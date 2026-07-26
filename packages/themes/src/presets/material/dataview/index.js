@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/dataview';
+export { default } from '@openuxkit/themes/material/dataview';

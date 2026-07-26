@@ -1,4 +1,4 @@
-import { addClass, createElement, getAttribute, getHeight, getOffset, getOuterHeight, getOuterWidth, getWidth, removeClass } from '@primeuix/utils/dom';
+import { addClass, createElement, getAttribute, getHeight, getOffset, getOuterHeight, getOuterWidth, getWidth, removeClass } from '@openuxkit/utils/dom';
 import BaseRipple from './BaseRipple';
 
 const Ripple = BaseRipple.extend('ripple', {

@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 import DynamicFormControl from './DynamicFormControl.vue';

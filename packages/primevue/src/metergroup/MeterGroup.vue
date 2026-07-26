@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import BaseMeterGroup from './BaseMeterGroup.vue';
 import MeterGroupLabel from './MeterGroupLabel.vue';
 

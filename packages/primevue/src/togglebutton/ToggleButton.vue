@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { isNotEmpty } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { isNotEmpty } from '@openuxkit/utils/object';
 import Ripple from 'openvue/ripple';
 import BaseToggleButton from './BaseToggleButton.vue';
 

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/accordion';
+export { default } from '@openuxkit/themes/material/accordion';
