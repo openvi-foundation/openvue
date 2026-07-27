@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/autocomplete';
+export * from '@openuxkit/themes/types/autocomplete';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/badge';
+export { default } from '@openuxkit/themes/lara/badge';

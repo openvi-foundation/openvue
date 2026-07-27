@@ -58,9 +58,9 @@
 </template>
 
 <script>
-import { $dt } from '@primeuix/styled';
-import { absolutePosition, addClass, focus, getOffset, isTouchDevice } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { $dt } from '@openuxkit/styled';
+import { absolutePosition, addClass, focus, getOffset, isTouchDevice } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import Button from 'openvue/button';
 import ConfirmationEventBus from 'openvue/confirmationeventbus';

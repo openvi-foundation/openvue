@@ -4,17 +4,17 @@ Setting up OpenVue in a Vite project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@beta @primeuix/themes
+npm install openvue@beta @openvue/themes
 
 # Using yarn
-yarn add openvue@beta @primeuix/themes
+yarn add openvue@beta @openvue/themes
 
 # Using pnpm
-pnpm add openvue@beta @primeuix/themes
+pnpm add openvue@beta @openvue/themes
 ```
 
 ## Examples
@@ -44,7 +44,7 @@ Configure OpenVue to use a theme like Aura.
 ```vue
 import { createApp } from 'vue';
 import OpenVue from 'openvue/config';
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 const app = createApp(App);
 app.use(OpenVue, {

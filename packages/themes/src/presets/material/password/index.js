@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/password';
+export { default } from '@openuxkit/themes/material/password';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/tooltip';
+export { default } from '@openuxkit/themes/nora/tooltip';

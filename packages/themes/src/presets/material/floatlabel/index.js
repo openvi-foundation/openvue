@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/floatlabel';
+export { default } from '@openuxkit/themes/material/floatlabel';

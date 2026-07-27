@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { isFunction, resolveFieldData } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { isFunction, resolveFieldData } from '@openuxkit/utils/object';
 import SearchIcon from '@openvue/icons/search';
 import SpinnerIcon from '@openvue/icons/spinner';
 import IconField from 'openvue/iconfield';

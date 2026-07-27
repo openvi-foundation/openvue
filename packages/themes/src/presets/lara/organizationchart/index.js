@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/organizationchart';
+export { default } from '@openuxkit/themes/lara/organizationchart';

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/timeline';
+import { style } from '@openuxkit/styles/timeline';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { blockBodyScroll, unblockBodyScroll } from '@primeuix/utils/dom';
+import { blockBodyScroll, unblockBodyScroll } from '@openuxkit/utils/dom';
 
 export default {
     data() {

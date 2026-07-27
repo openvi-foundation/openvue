@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/toolbar';
+import { style } from '@openuxkit/styles/toolbar';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

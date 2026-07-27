@@ -21,8 +21,8 @@
 </template>
 
 <script lang="ts">
-import { findSingle, getHeight, getOffset, getWindowScrollTop, isVisible } from '@primeuix/utils/dom';
-import { isNotEmpty } from '@primeuix/utils/object';
+import { findSingle, getHeight, getOffset, getWindowScrollTop, isVisible } from '@openuxkit/utils/dom';
+import { isNotEmpty } from '@openuxkit/utils/object';
 
 export default {
     props: ['docs'],

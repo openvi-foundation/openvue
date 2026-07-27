@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/iconfield';
+import { style } from '@openuxkit/styles/iconfield';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/treetable';
+export { default } from '@openuxkit/themes/material/treetable';

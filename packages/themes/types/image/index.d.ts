@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/image';
+export * from '@openuxkit/themes/types/image';

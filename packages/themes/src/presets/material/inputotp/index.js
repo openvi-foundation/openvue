@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/inputotp';
+export { default } from '@openuxkit/themes/material/inputotp';

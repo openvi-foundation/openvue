@@ -1,5 +1,5 @@
-import { style } from '@primeuix/styles/badge';
-import { isEmpty, isNotEmpty } from '@primeuix/utils/object';
+import { style } from '@openuxkit/styles/badge';
+import { isEmpty, isNotEmpty } from '@openuxkit/utils/object';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/drawer';
+export * from '@openuxkit/themes/types/drawer';

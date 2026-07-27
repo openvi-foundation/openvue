@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/steps';
+export * from '@openuxkit/themes/types/steps';

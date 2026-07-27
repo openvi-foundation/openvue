@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/iconfield';
+export * from '@openuxkit/themes/types/iconfield';

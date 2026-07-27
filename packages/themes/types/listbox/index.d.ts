@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/listbox';
+export * from '@openuxkit/themes/types/listbox';

@@ -1,5 +1,5 @@
-import { style } from '@primeuix/styles/autocomplete';
-import { isNotEmpty } from '@primeuix/utils/object';
+import { style } from '@openuxkit/styles/autocomplete';
+import { isNotEmpty } from '@openuxkit/utils/object';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

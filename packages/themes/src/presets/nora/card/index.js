@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/card';
+export { default } from '@openuxkit/themes/nora/card';

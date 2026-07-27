@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/tree';
+export * from '@openuxkit/themes/types/tree';

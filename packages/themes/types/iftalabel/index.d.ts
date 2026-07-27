@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/iftalabel';
+export * from '@openuxkit/themes/types/iftalabel';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/virtualscroller';
+export { default } from '@openuxkit/themes/lara/virtualscroller';

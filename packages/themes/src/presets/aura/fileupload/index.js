@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/fileupload';
+export { default } from '@openuxkit/themes/aura/fileupload';

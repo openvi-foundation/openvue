@@ -209,9 +209,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isRTL, setAttribute } from '@primeuix/utils/dom';
-import { localeComparator, resolveFieldData, sort } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isRTL, setAttribute } from '@openuxkit/utils/dom';
+import { localeComparator, resolveFieldData, sort } from '@openuxkit/utils/object';
 import { FilterService } from '@openvue/core/api';
 import { getVNodeProp, HelperSet } from '@openvue/core/utils';
 import SpinnerIcon from '@openvue/icons/spinner';

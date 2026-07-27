@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/toggleswitch';
+export { default } from '@openuxkit/themes/nora/toggleswitch';

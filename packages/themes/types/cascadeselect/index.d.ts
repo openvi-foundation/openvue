@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/cascadeselect';
+export * from '@openuxkit/themes/types/cascadeselect';

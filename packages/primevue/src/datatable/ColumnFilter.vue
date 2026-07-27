@@ -153,8 +153,8 @@
 </template>
 
 <script>
-import { absolutePosition, addStyle, focus, getAttribute, isTouchDevice } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { absolutePosition, addStyle, focus, getAttribute, isTouchDevice } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterOperator } from '@openvue/core/api';
 import BaseComponent from '@openvue/core/basecomponent';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';

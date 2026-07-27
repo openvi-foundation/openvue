@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { contains, equals } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { contains, equals } from '@openuxkit/utils/object';
 import CheckIcon from '@openvue/icons/check';
 import MinusIcon from '@openvue/icons/minus';
 import BaseCheckbox from './BaseCheckbox.vue';

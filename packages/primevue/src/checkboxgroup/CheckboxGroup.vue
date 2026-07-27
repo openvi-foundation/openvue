@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { uuid } from '@primeuix/utils';
+import { uuid } from '@openuxkit/utils';
 import BaseCheckboxGroup from './BaseCheckboxGroup.vue';
 
 export default {

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/divider';
+export * from '@openuxkit/themes/types/divider';

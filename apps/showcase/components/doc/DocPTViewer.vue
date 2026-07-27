@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { addClass, find, removeClass } from '@primeuix/utils/dom';
+import { addClass, find, removeClass } from '@openuxkit/utils/dom';
 import { defaultOptions } from '@openvue/core/config';
 
 export default {

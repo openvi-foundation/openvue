@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/rating';
+export * from '@openuxkit/themes/types/rating';

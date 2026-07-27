@@ -1,4 +1,4 @@
-import { isNotEmpty } from '@primeuix/utils/object';
+import { isNotEmpty } from '@openuxkit/utils/object';
 
 export default class {
     helpers;

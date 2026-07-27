@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/treeselect';
+export { default } from '@openuxkit/themes/material/treeselect';

@@ -1,5 +1,5 @@
 import { addPlugin, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit';
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { PrimeVueResolver } from '@openvue/auto-import-resolver';
 import type { MetaType } from '@openvue/metadata';
 import { normalize } from 'pathe';
@@ -60,7 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
         //nuxt.options.build.transpile.push('nuxt');
         nuxt.options.build.transpile.push('openvue');
         hasTheme && nuxt.options.build.transpile.push('@openvue/themes');
-        hasTheme && nuxt.options.build.transpile.push('@primeuix/themes');
+        hasTheme && nuxt.options.build.transpile.push('@openuxkit/themes');
 
         let registeredStyles: MetaType[] = registered.styles;
 
@@ -91,7 +91,7 @@ import { useRuntimeConfig } from '#imports';
 ${uniqueRegisteredStyles?.map((style: MetaType) => `import ${style.as} from '${style.from}';`).join('\n')}
 ${
     hasTheme
-        ? `import { Theme } from '@primeuix/styled';
+        ? `import { Theme } from '@openuxkit/styled';
 ${importTheme ? `import ${importTheme.as} from '${normalize(importTheme.from)}';\n` : ''}`
         : ''
 }

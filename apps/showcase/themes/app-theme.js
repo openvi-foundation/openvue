@@ -1,8 +1,8 @@
 // @ts-ignore
-import '@primeuix/styles'; // When styles change, the app will hot reload.
+import '@openuxkit/styles'; // When styles change, the app will hot reload.
 
-import { definePreset } from '@primeuix/themes';
-import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@openvue/themes';
+import Aura from '@openvue/themes/aura';
 
 export const NoirPreset = definePreset(Aura, {
     semantic: {

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/checkbox';
+import { style } from '@openuxkit/styles/checkbox';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { addClass, removeClass } from '@primeuix/utils/dom';
+import { addClass, removeClass } from '@openuxkit/utils/dom';
 import PlusIcon from '@openvue/icons/plus';
 import TimesIcon from '@openvue/icons/times';
 import UploadIcon from '@openvue/icons/upload';

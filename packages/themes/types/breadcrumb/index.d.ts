@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/breadcrumb';
+export * from '@openuxkit/themes/types/breadcrumb';

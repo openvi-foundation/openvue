@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/tieredmenu';
+export * from '@openuxkit/themes/types/tieredmenu';

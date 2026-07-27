@@ -41,12 +41,14 @@ In interactive mode a dirty git tree only asks for confirmation. Non-interactive
 
 The rename mapping:
 
-| From                                                                                                                                                                         | To                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `primevue`, `primevue/*`                                                                                                                                                     | `openvue`, `openvue/*`        |
-| `@primevue/core`, `@primevue/forms`, `@primevue/icons`, `@primevue/themes`, `@primevue/nuxt-module`, `@primevue/auto-import-resolver`, `@primevue/metadata`, `@primevue/mcp` | same names under `@openvue/*` |
+| From                                                                                                                                                                         | To                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `primevue`, `primevue/*`                                                                                                                                                     | `openvue`, `openvue/*`                 |
+| `@primevue/core`, `@primevue/forms`, `@primevue/icons`, `@primevue/themes`, `@primevue/nuxt-module`, `@primevue/auto-import-resolver`, `@primevue/metadata`, `@primevue/mcp` | same names under `@openvue/*`          |
+| `@primeuix/themes`, `@primeuix/themes/*`                                                                                                                                     | `@openvue/themes`, `@openvue/themes/*` |
+| `@primeuix/*` (engine: `styled`, `utils`, `styles`, `forms`, `mcp`)                                                                                                          | same names under `@openuxkit/*`        |
 
-Left untouched on purpose — OpenVue still uses these upstream packages: `@primeuix/*`, `primeicons`, `primeflex`, `tailwindcss-primeui`. The `primevue` Nuxt config key also stays, because OpenVue's Nuxt module kept it.
+Left untouched on purpose: `primeicons`, `primeflex`, `tailwindcss-primeui`. The `primevue` Nuxt config key also stays, because OpenVue's Nuxt module kept it.
 
 Renamed dependencies are pinned to the exact OpenVue version while OpenVue is in prerelease; once stable releases start, the codemod will emit caret ranges instead.
 

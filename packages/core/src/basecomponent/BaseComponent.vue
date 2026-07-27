@@ -1,7 +1,7 @@
 <script>
-import { Theme, ThemeService } from '@primeuix/styled';
-import { findSingle, isElement } from '@primeuix/utils/dom';
-import { getKeyValue, isArray, isFunction, isNotEmpty, isString, resolve, toFlatCase } from '@primeuix/utils/object';
+import { Theme, ThemeService } from '@openuxkit/styled';
+import { findSingle, isElement } from '@openuxkit/utils/dom';
+import { getKeyValue, isArray, isFunction, isNotEmpty, isString, resolve, toFlatCase } from '@openuxkit/utils/object';
 import Base from '@openvue/core/base';
 import BaseStyle from '@openvue/core/base/style';
 import { useAttrSelector } from '@openvue/core/useattrselector';

@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import { $dt } from '@primeuix/styled';
-import { find, findSingle, focus } from '@primeuix/utils/dom';
+import { $dt } from '@openuxkit/styled';
+import { find, findSingle, focus } from '@openuxkit/utils/dom';
 import PlusIcon from '@openvue/icons/plus';
 import Button from 'openvue/button';
 import Ripple from 'openvue/ripple';

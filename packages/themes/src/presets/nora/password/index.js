@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/password';
+export { default } from '@openuxkit/themes/nora/password';

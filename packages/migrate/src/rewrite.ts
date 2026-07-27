@@ -1,4 +1,4 @@
-import { isUnknownScopedPackage, OPENVUE_VERSION, renameSpecifier } from './mappings';
+import { isUnknownScopedPackage, OPENVUE_VERSION, renameSpecifier, versionForRenamed } from './mappings';
 
 export interface SourceRewriteOptions {
     // In config files (nuxt.config.ts, vite.config.mjs, ...) a bare 'primevue' string is a package
@@ -137,7 +137,7 @@ function renameDependencies(deps: DependencyMap, result: { renamed: string[]; no
             nextValue = child.next;
             changed = changed || child.changed;
         } else if (renamedKey !== key && typeof value === 'string' && !VALUE_PROTOCOL.test(value)) {
-            nextValue = OPENVUE_VERSION;
+            nextValue = versionForRenamed(renamedKey);
         }
 
         next[renamedKey] = nextValue;
@@ -234,7 +234,7 @@ export interface YamlRewriteResult {
 }
 
 // A pnpm-workspace.yaml dependency line: indentation, optionally quoted package name, colon, value.
-const YAML_DEPENDENCY_LINE = /^(\s*)(['"]?)(primevue|@primevue\/[a-z0-9-]+)\2(\s*:\s*)(\S.*?)(\s*)$/;
+const YAML_DEPENDENCY_LINE = /^(\s*)(['"]?)(primevue|@primevue\/[a-z0-9-]+|@primeuix\/[a-z0-9-]+)\2(\s*:\s*)(\S.*?)(\s*)$/;
 
 /**
  * Rewrites PrimeVue entries in pnpm-workspace.yaml (catalog/catalogs/overrides sections).
@@ -252,7 +252,7 @@ export function rewriteWorkspaceYaml(text: string): YamlRewriteResult {
 
         if (renamed === null) return line;
 
-        const nextValue = VALUE_PROTOCOL.test(value) ? value : OPENVUE_VERSION;
+        const nextValue = VALUE_PROTOCOL.test(value) ? value : versionForRenamed(renamed);
 
         count++;
 

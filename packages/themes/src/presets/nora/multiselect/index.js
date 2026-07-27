@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/multiselect';
+export { default } from '@openuxkit/themes/nora/multiselect';

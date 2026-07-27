@@ -1,4 +1,4 @@
-export * from '@primeuix/utils';
+export * from '@openuxkit/utils';
 export { default as ConnectedOverlayScrollHandler } from './ConnectedOverlayScrollHandler';
 export { default as HelperSet } from './HelperSet';
 export { default as UniqueComponentId } from './UniqueComponentId';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/progressspinner';
+export { default } from '@openuxkit/themes/nora/progressspinner';

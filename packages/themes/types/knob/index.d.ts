@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/knob';
+export * from '@openuxkit/themes/types/knob';

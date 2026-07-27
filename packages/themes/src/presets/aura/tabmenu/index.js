@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/tabmenu';
+export { default } from '@openuxkit/themes/aura/tabmenu';

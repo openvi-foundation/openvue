@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/picklist';
+export { default } from '@openuxkit/themes/lara/picklist';

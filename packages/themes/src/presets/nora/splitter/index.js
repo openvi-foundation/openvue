@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/splitter';
+export { default } from '@openuxkit/themes/nora/splitter';

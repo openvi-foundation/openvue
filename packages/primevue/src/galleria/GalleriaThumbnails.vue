@@ -71,8 +71,8 @@
 </template>
 
 <script>
-import { addClass, find, findSingle, getAttribute, removeClass, setAttribute } from '@primeuix/utils/dom';
-import { localeComparator, sort } from '@primeuix/utils/object';
+import { addClass, find, findSingle, getAttribute, removeClass, setAttribute } from '@openuxkit/utils/dom';
+import { localeComparator, sort } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronLeftIcon from '@openvue/icons/chevronleft';

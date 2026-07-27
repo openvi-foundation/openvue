@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { isClient } from '@primeuix/utils/dom';
+import { isClient } from '@openuxkit/utils/dom';
 
 export default {
     name: 'Portal',

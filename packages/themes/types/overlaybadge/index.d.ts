@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/overlaybadge';
+export * from '@openuxkit/themes/types/overlaybadge';

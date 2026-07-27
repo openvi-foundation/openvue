@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/megamenu';
+export * from '@openuxkit/themes/types/megamenu';

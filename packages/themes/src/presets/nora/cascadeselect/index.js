@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/cascadeselect';
+export { default } from '@openuxkit/themes/nora/cascadeselect';

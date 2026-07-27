@@ -1,5 +1,5 @@
 import APIDocs from '@/doc/common/apidoc/index.json';
-import ComponentTokens from '@primeuix/themes/tokens';
+import ComponentTokens from '@openuxkit/themes/tokens';
 
 export const getPTOptions = (name) => {
     const { props } = APIDocs[name.toLowerCase()].interfaces.values[`${name}PassThroughOptions`] || APIDocs[name.toLowerCase()].interfaces.values[`${name}DirectivePassThroughOptions`];

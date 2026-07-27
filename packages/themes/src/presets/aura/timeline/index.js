@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/timeline';
+export { default } from '@openuxkit/themes/aura/timeline';

@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/fieldset';
+export * from '@openuxkit/themes/types/fieldset';

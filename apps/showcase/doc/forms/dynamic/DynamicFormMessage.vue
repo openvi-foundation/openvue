@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { computed, inject } from 'vue';
 
 const props = defineProps({

@@ -1,1 +1,1 @@
-export * from '@primeuix/forms/resolvers/zod';
+export * from '@openuxkit/forms/resolvers/zod';

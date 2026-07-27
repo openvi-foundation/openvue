@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/multiselect';
+export { default } from '@openuxkit/themes/material/multiselect';

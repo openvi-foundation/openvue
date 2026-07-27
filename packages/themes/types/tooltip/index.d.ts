@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/tooltip';
+export * from '@openuxkit/themes/types/tooltip';

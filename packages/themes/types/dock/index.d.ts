@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/dock';
+export * from '@openuxkit/themes/types/dock';

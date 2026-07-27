@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/orderlist';
+export { default } from '@openuxkit/themes/aura/orderlist';

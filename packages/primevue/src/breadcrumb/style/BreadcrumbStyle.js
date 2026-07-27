@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/breadcrumb';
+import { style } from '@openuxkit/styles/breadcrumb';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

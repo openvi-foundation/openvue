@@ -197,10 +197,10 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isAndroid, isTouchDevice, isVisible, relativePosition } from '@primeuix/utils/dom';
-import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@primeuix/utils/object';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isAndroid, isTouchDevice, isVisible, relativePosition } from '@openuxkit/utils/dom';
+import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@openuxkit/utils/object';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterService } from '@openvue/core/api';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import BlankIcon from '@openvue/icons/blank';

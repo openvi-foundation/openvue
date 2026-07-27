@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import { addClass, focus } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { addClass, focus } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import FocusTrap from 'openvue/focustrap';
 import Portal from 'openvue/portal';
 import { blockBodyScroll, unblockBodyScroll } from 'openvue/utils';

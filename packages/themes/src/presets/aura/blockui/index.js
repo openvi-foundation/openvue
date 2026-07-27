@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/blockui';
+export { default } from '@openuxkit/themes/aura/blockui';

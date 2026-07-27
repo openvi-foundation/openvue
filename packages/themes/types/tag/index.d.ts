@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/tag';
+export * from '@openuxkit/themes/types/tag';

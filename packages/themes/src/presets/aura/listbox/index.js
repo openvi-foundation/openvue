@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/listbox';
+export { default } from '@openuxkit/themes/aura/listbox';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/dialog';
+export { default } from '@openuxkit/themes/aura/dialog';

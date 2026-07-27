@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/textarea';
+export * from '@openuxkit/themes/types/textarea';

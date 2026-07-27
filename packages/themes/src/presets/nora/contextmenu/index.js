@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/contextmenu';
+export { default } from '@openuxkit/themes/nora/contextmenu';

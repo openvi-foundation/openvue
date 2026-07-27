@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/tabs';
+export { default } from '@openuxkit/themes/lara/tabs';

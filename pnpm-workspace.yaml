@@ -3,12 +3,12 @@ packages:
     - 'apps/*'
 
 catalog:
-    '@primeuix/styled': ^0.7.4
-    '@primeuix/utils': ^0.6.2
-    '@primeuix/forms': ^0.1.0
-    '@primeuix/styles': ^2.0.3
-    '@primeuix/themes': ^2.0.3
-    '@primeuix/mcp': ^1.0.0
+    '@openuxkit/styled': ^0.0.1-alpha.1
+    '@openuxkit/utils': ^0.0.1-alpha.1
+    '@openuxkit/forms': ^0.0.1-alpha.1
+    '@openuxkit/styles': ^0.0.1-alpha.1
+    '@openuxkit/themes': ^0.0.1-alpha.1
+    '@openuxkit/mcp': ^0.0.1-alpha.1
     'tailwindcss-primeui': ^0.6.1
     'primeicons': ^7.0.0
 
