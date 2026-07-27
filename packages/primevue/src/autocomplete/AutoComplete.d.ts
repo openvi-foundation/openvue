@@ -2,7 +2,7 @@
  *
  * AutoComplete is an input component that provides real-time suggestions while being typed.
  *
- * [Live Demo](https://www.primevue.org/autocomplete/)
+ * [Live Demo](https://openvue.dev/autocomplete/)
  *
  * @module autocomplete
  *
@@ -515,22 +515,22 @@ export interface AutoCompleteProps {
      */
     searchLocale?: string | undefined;
     /**
-     * Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration.
      * @defaultValue '{0} results are available'
      */
     searchMessage?: string | undefined;
     /**
-     * Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration.
      * @defaultValue '{0} items selected'
      */
     selectionMessage?: string | undefined;
     /**
-     * Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration.
      * @defaultValue No selected item
      */
     emptySelectionMessage?: string | undefined;
     /**
-     * Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration.
+     * Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration.
      * @defaultValue No results found
      */
     emptySearchMessage?: string | undefined;
@@ -891,9 +891,9 @@ export declare type AutoCompleteEmits = EmitFn<AutoCompleteEmitsOptions>;
  *
  * _AutoComplete is an input component that provides real-time suggestions while being typed._
  *
- * [Live Demo](https://www.primevue.org/autocomplete/)
+ * [Live Demo](https://openvue.dev/autocomplete/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

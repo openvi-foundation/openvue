@@ -2,7 +2,7 @@
  *
  * Fluid is a layout component to make descendant components span full width of their container.
  *
- * [Live Demo](https://www.primevue.org/fluid/)
+ * [Live Demo](https://openvue.dev/fluid/)
  *
  * @module fluid
  *
@@ -112,9 +112,9 @@ export declare type FluidEmits = EmitFn<FluidEmitsOptions>;
  *
  * _Fluid is a layout component to make descendant components span full width of their container._
  *
- * [Live Demo](https://www.primevue.org/fluid/)
+ * [Live Demo](https://openvue.dev/fluid/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

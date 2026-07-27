@@ -2,7 +2,7 @@
  *
  * Badge represents people using icons, labels and images.
  *
- * [Live Demo](https://www.primevue.org/badge)
+ * [Live Demo](https://openvue.dev/badge)
  *
  * @module badge
  *
@@ -118,9 +118,9 @@ export declare type BadgeEmits = EmitFn<BadgeEmitsOptions>;
  *
  * _Badge represents people using icons, labels and images._
  *
- * [Live Demo](https://www.primevue.org/badge/)
+ * [Live Demo](https://openvue.dev/badge/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

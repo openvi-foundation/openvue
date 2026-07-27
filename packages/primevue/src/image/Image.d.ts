@@ -2,7 +2,7 @@
  *
  * Displays an image with preview and tranformation options. For multiple image, see Galleria.
  *
- * [Live Demo](https://www.primevue.org/image/)
+ * [Live Demo](https://openvue.dev/image/)
  *
  * @module image
  *
@@ -342,9 +342,9 @@ export interface ImageMethods {}
  *
  * _Displays an image with preview and tranformation options. For multiple image, see Galleria._
  *
- * [Live Demo](https://www.primevue.org/image/)
+ * [Live Demo](https://openvue.dev/image/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

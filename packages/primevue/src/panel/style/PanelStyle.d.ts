@@ -2,7 +2,7 @@
  *
  * Panel is a container with the optional content toggle feature.
  *
- * [Live Demo](https://www.primevue.org/panel/)
+ * [Live Demo](https://openvue.dev/panel/)
  *
  * @module panelstyle
  *

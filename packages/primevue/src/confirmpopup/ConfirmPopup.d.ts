@@ -2,7 +2,7 @@
  *
  * ConfirmPopup displays a confirmation overlay displayed relatively to its target.
  *
- * [Live Demo](https://www.primevue.org/confirmpopup)
+ * [Live Demo](https://openvue.dev/confirmpopup)
  *
  * @module confirmpopup
  *
@@ -223,9 +223,9 @@ export declare type ConfirmPopupEmits = EmitFn<ConfirmPopupEmitsOptions>;
  *
  * _ConfirmPopup displays a confirmation overlay displayed relatively to its target._
  *
- * [Live Demo](https://www.primevue.org/confirmpopup/)
+ * [Live Demo](https://openvue.dev/confirmpopup/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

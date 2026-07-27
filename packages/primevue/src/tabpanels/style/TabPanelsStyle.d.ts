@@ -2,7 +2,7 @@
  *
  * TabPanels is a helper component for Tabs component.
  *
- * [Live Demo](https://www.primevue.org/tabs/)
+ * [Live Demo](https://openvue.dev/tabs/)
  *
  * @module tabpanelsstyle
  *

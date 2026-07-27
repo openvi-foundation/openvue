@@ -1,6 +1,6 @@
 /**
  *
- * [Live Demo](https://www.primevue.org/confirmdialog/)
+ * [Live Demo](https://openvue.dev/confirmdialog/)
  *
  * @module confirmationservice-useconfirm
  *

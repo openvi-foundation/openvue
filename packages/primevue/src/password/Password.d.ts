@@ -2,7 +2,7 @@
  *
  * Password displays strength indicator for password fields.
  *
- * [Live Demo](https://www.primevue.org/password/)
+ * [Live Demo](https://openvue.dev/password/)
  *
  * @module password
  *
@@ -187,7 +187,7 @@ export interface PasswordProps extends Omit<InputHTMLAttributes, 'size'> {
      */
     name?: string | undefined;
     /**
-     * Text to prompt password entry. Defaults to PrimeVue Locale configuration.
+     * Text to prompt password entry. Defaults to OpenVue Locale configuration.
      */
     promptLabel?: string | undefined;
     /**
@@ -201,15 +201,15 @@ export interface PasswordProps extends Omit<InputHTMLAttributes, 'size'> {
      */
     strongRegex?: string | RegExp | undefined;
     /**
-     * Text for a weak password. Defaults to PrimeVue Locale configuration.
+     * Text for a weak password. Defaults to OpenVue Locale configuration.
      */
     weakLabel?: string | undefined;
     /**
-     * Text for a medium password. Defaults to PrimeVue Locale configuration.
+     * Text for a medium password. Defaults to OpenVue Locale configuration.
      */
     mediumLabel?: string | undefined;
     /**
-     * Text for a strong password. Defaults to PrimeVue Locale configuration.
+     * Text for a strong password. Defaults to OpenVue Locale configuration.
      */
     strongLabel?: string | undefined;
     /**
@@ -458,9 +458,9 @@ export declare type PasswordEmits = EmitFn<PasswordEmitsOptions>;
  *
  * _Password displays strength indicator for password fields._
  *
- * [Live Demo](https://www.primevue.org/password/)
+ * [Live Demo](https://openvue.dev/password/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

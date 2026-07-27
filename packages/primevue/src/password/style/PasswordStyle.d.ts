@@ -2,7 +2,7 @@
  *
  * Password displays strength indicator for password fields.
  *
- * [Live Demo](https://www.primevue.org/password/)
+ * [Live Demo](https://openvue.dev/password/)
  *
  * @module passwordstyle
  *

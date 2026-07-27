@@ -2,7 +2,7 @@
  *
  * Sidebar is a panel component displayed as an overlay at the edges of the screen.
  *
- * [Live Demo](https://primevue.org/drawer)
+ * [Live Demo](https://openvue.dev/drawer)
  *
  * @module sidebar
  *
@@ -61,9 +61,9 @@ export declare type SidebarEmits = EmitFn<SidebarEmitsOptions> & Drawer.DrawerEm
  *
  * _Sidebar is a panel component displayed as an overlay._
  *
- * [Live Demo](https://www.primevue.org/drawer/)
+ * [Live Demo](https://openvue.dev/drawer/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

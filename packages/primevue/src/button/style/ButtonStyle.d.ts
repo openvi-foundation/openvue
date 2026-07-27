@@ -2,7 +2,7 @@
  *
  * Button is an extension to standard button element with icons and theming.
  *
- * [Live Demo](https://www.primevue.org/button/)
+ * [Live Demo](https://openvue.dev/button/)
  *
  * @module buttonstyle
  *

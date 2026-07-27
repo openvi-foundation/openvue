@@ -2,7 +2,7 @@
  *
  * Fieldset is a grouping component with the optional content toggle feature.
  *
- * [Live Demo](https://www.primevue.org/fieldset/)
+ * [Live Demo](https://openvue.dev/fieldset/)
  *
  * @module fieldsetstyle
  *

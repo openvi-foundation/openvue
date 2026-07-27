@@ -2,7 +2,7 @@
  *
  * DeferredContent postpones the loading the content that is initially not in the viewport until it becomes visible on scroll.
  *
- * [Live Demo](https://www.primevue.org/deferredcontent/)
+ * [Live Demo](https://openvue.dev/deferredcontent/)
  *
  * @module deferredcontent
  *
@@ -130,9 +130,9 @@ export declare type DeferredContentEmits = EmitFn<DeferredContentEmitsOptions>;
  *
  * _DeferredContent postpones the loading the content that is initially not in the viewport until it becomes visible on scroll._
  *
- * [Live Demo](https://www.primevue.org/deferredcontent/)
+ * [Live Demo](https://openvue.dev/deferredcontent/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

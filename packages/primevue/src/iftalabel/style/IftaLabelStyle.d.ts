@@ -2,7 +2,7 @@
  *
  * IftaLabel visually integrates a label within its form element.
  *
- * [Live Demo](https://www.primevue.org/iftalabel/)
+ * [Live Demo](https://openvue.dev/iftalabel/)
  *
  * @module iftalabelstyle
  *

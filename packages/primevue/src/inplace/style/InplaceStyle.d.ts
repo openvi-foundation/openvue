@@ -2,7 +2,7 @@
  *
  * Inplace provides an easy to do editing and display at the same time where clicking the output displays the actual content.
  *
- * [Live Demo](https://www.primevue.org/inplace)
+ * [Live Demo](https://openvue.dev/inplace)
  *
  * @module inplacestyle
  *

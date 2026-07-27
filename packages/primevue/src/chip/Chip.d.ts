@@ -2,7 +2,7 @@
  *
  * Chip represents people using icons, labels and images.
  *
- * [Live Demo](https://www.primevue.org/chip)
+ * [Live Demo](https://openvue.dev/chip)
  *
  * @module chip
  *
@@ -188,9 +188,9 @@ export declare type ChipEmits = EmitFn<ChipEmitsOptions>;
  *
  * _Chip represents people using icons, labels and images._
  *
- * [Live Demo](https://www.primevue.org/chip/)
+ * [Live Demo](https://openvue.dev/chip/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

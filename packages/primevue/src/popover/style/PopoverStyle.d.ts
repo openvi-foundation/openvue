@@ -2,7 +2,7 @@
  *
  * Popover is a container component positioned as connected to its target.
  *
- * [Live Demo](https://primevue.org/popover)
+ * [Live Demo](https://openvue.dev/popover)
  *
  * @module popoverstyle
  *

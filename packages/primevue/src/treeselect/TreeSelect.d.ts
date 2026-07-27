@@ -2,7 +2,7 @@
  *
  * TreeSelect is a form component to choose from hierarchical data.
  *
- * [Live Demo](https://www.primevue.org/treeselect/)
+ * [Live Demo](https://openvue.dev/treeselect/)
  *
  * @module treeselect
  *
@@ -279,7 +279,7 @@ export interface TreeSelectProps {
      */
     filterLocale?: string | undefined;
     /**
-     * Text to display when there are no options available. Defaults to value from PrimeVue locale configuration.
+     * Text to display when there are no options available. Defaults to value from OpenVue locale configuration.
      * @defaultValue No available options
      */
     emptyMessage?: string | undefined;
@@ -597,9 +597,9 @@ export interface TreeSelectMethods {
  *
  * _TreeSelect is a form component to choose from hierarchical data._
  *
- * [Live Demo](https://www.primevue.org/treeselect/)
+ * [Live Demo](https://openvue.dev/treeselect/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

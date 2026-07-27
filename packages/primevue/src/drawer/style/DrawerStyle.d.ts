@@ -2,7 +2,7 @@
  *
  * Drawer is a panel component displayed as an overlay at the edges of the screen.
  *
- * [Live Demo](https://primevue.org/drawer)
+ * [Live Demo](https://openvue.dev/drawer)
  *
  * @module drawerstyle
  *

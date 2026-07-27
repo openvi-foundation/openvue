@@ -2,7 +2,7 @@
  *
  * OrganizationChart visualizes hierarchical organization data.
  *
- * [Live Demo](https://primevue.org/organizationchart)
+ * [Live Demo](https://openvue.dev/organizationchart)
  *
  * @module organizationchart
  *
@@ -358,9 +358,9 @@ export declare type OrganizationChartEmits = EmitFn<OrganizationChartEmitsOption
  *
  * _OrganizationChart visualizes hierarchical organization data._
  *
- * [Live Demo](https://www.primevue.org/organizationchart/)
+ * [Live Demo](https://openvue.dev/organizationchart/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

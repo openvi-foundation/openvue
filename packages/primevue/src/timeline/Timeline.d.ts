@@ -2,7 +2,7 @@
  *
  * Timeline visualizes a series of chained events.
  *
- * [Live Demo](https://primevue.org/timeline)
+ * [Live Demo](https://openvue.dev/timeline)
  *
  * @module timeline
  *
@@ -221,9 +221,9 @@ export declare type TimelineEmits = EmitFn<TimelineEmitsOptions>;
  *
  * _Timeline visualizes a series of chained events._
  *
- * [Live Demo](https://www.primevue.org/timeline/)
+ * [Live Demo](https://openvue.dev/timeline/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

@@ -2,7 +2,7 @@
  *
  * Galleria is an advanced content gallery component.
  *
- * [Live Demo](https://www.primevue.org/galleria/)
+ * [Live Demo](https://openvue.dev/galleria/)
  *
  * @module galleriastyle
  *

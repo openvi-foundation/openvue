@@ -2,7 +2,7 @@
  *
  * Inplace provides an easy to do editing and display at the same time where clicking the output displays the actual content.
  *
- * [Live Demo](https://www.primevue.org/inplace)
+ * [Live Demo](https://openvue.dev/inplace)
  *
  * @module inplace
  *
@@ -187,9 +187,9 @@ export declare type InplaceEmits = EmitFn<InplaceEmitsOptions>;
  *
  * _Inplace provides an easy to do editing and display at the same time where clicking the output displays the actual content._
  *
- * [Live Demo](https://www.primevue.org/inplace/)
+ * [Live Demo](https://openvue.dev/inplace/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

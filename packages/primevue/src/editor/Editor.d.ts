@@ -2,7 +2,7 @@
  *
  * Editor groups a collection of contents in tabs.
  *
- * [Live Demo](https://www.primevue.org/editor/)
+ * [Live Demo](https://openvue.dev/editor/)
  *
  * @module editor
  *
@@ -309,9 +309,9 @@ export declare type EditorEmits = EmitFn<EditorEmitsOptions>;
  *
  * _Editor groups a collection of contents in tabs._
  *
- * [Live Demo](https://www.primevue.org/editor/)
+ * [Live Demo](https://openvue.dev/editor/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

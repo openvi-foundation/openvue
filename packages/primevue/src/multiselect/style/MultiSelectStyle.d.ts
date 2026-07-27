@@ -2,7 +2,7 @@
  *
  * MultiSelect is used to select multiple items from a collection.
  *
- * [Live Demo](https://www.primevue.org/multiselect/)
+ * [Live Demo](https://openvue.dev/multiselect/)
  *
  * @module multiselectstyle
  *

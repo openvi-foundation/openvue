@@ -70,4 +70,4 @@ Once you decide to stay, run `npx @openvue/migrate` for the real rename.
 ## Requirements
 
 - Node.js 18+
-- Your project must be on PrimeVue 4.x (the fork point). The tool detects the installed major (from `package.json`, a `catalog:`/`workspace:` protocol, `node_modules`, or the lockfile) and stops without changing anything if it finds a non-4.x version. Coming from v3 or earlier, apply the [PrimeVue v4 migration guide](https://primevue.org/guides/migration/v4/) first, then run this tool.
+- Your project must be on PrimeVue 4.x (the fork point). The tool detects the installed major (from `package.json`, a `catalog:`/`workspace:` protocol, `node_modules`, or the lockfile) and stops without changing anything if it finds a non-4.x version. Coming from v3 or earlier, apply the [PrimeVue v4 migration guide](https://openvue.dev/guides/migration/v4/) first, then run this tool.

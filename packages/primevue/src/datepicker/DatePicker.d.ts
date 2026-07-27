@@ -2,7 +2,7 @@
  *
  * DatePicker is a form component to work with dates.
  *
- * [Live Demo](https://www.primevue.org/datepicker/)
+ * [Live Demo](https://openvue.dev/datepicker/)
  *
  * @module datepicker
  *
@@ -535,7 +535,7 @@ export interface DatePickerProps {
      */
     selectionMode?: HintedString<'single' | 'multiple' | 'range'> | undefined;
     /**
-     * Format of the date. Defaults to PrimeVue Locale configuration.
+     * Format of the date. Defaults to OpenVue Locale configuration.
      */
     dateFormat?: string | undefined;
     /**
@@ -1240,9 +1240,9 @@ export declare type DatePickerEmits = EmitFn<DatePickerEmitsOptions>;
  *
  * _DatePicker  is a form component to work with dates._
  *
- * [Live Demo](https://www.primevue.org/calendar/)
+ * [Live Demo](https://openvue.dev/calendar/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

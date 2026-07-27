@@ -2,7 +2,7 @@
  *
  * InputSwitch is used to select a boolean value.
  *
- * [Live Demo](https://www.primevue.org/toggleswitch/)
+ * [Live Demo](https://openvue.dev/toggleswitch/)
  *
  * @module inputswitchstyle
  *

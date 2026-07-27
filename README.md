@@ -8,6 +8,8 @@
 [![npm](https://img.shields.io/npm/v/openvue/beta.svg)](https://www.npmjs.com/package/openvue)
 [![npm downloads](https://img.shields.io/npm/dt/openvue.svg)](https://www.npmjs.com/package/openvue)
 
+[**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Playground**](https://openvue.dev/playground) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
+
 </div>
 
 ## About
@@ -83,6 +85,8 @@ Our priority is stability first, growth second. In order:
 ## Contributing
 
 We're building the initial maintainer team now. If you're an experienced developer interested in helping maintain or grow this library, issues and pull requests are open, and we'd welcome the help.
+
+Start with the [contributing guide](CONTRIBUTING.md) for the development setup and how changes get reviewed. Participation is covered by our [code of conduct](CODE_OF_CONDUCT.md). To report a security issue, follow the [security policy](SECURITY.md) rather than opening an issue.
 
 ## License
 

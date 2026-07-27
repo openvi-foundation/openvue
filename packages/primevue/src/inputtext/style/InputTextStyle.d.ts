@@ -2,7 +2,7 @@
  *
  * InputText renders a text field to enter data.
  *
- * [Live Demo](https://www.primevue.org/inputtext/)
+ * [Live Demo](https://openvue.dev/inputtext/)
  *
  * @module inputtextstyle
  *

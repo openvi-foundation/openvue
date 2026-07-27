@@ -2,7 +2,7 @@
  *
  * Menu is a navigation / command component that supports dynamic and static positioning.
  *
- * [Live Demo](https://www.primevue.org/menu/)
+ * [Live Demo](https://openvue.dev/menu/)
  *
  * @module menustyle
  *

@@ -2,7 +2,7 @@
  *
  * Slider is a component to provide input with a drag handle.
  *
- * [Live Demo](https://www.primevue.org/slider/)
+ * [Live Demo](https://openvue.dev/slider/)
  *
  * @module sliderstyle
  *

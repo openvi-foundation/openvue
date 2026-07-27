@@ -2,7 +2,7 @@
  *
  * Message groups a collection of contents in tabs.
  *
- * [Live Demo](https://www.primevue.org/message/)
+ * [Live Demo](https://openvue.dev/message/)
  *
  * @module messagestyle
  *

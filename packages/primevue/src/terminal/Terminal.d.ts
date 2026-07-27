@@ -2,7 +2,7 @@
  *
  * Terminal is a text based user interface.
  *
- * [Live Demo](https://www.primevue.org/terminal)
+ * [Live Demo](https://openvue.dev/terminal)
  *
  * @module terminal
  *
@@ -162,7 +162,7 @@ export declare type TerminalEmits = EmitFn<TerminalEmitsOptions>;
  *
  * _Terminal is a text based user interface._
  *
- * [Live Demo](https://www.primevue.org/terminal/)
+ * [Live Demo](https://openvue.dev/terminal/)
  * --- ---
  * ![Primevue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *

@@ -47,8 +47,8 @@ async function run() {
     const server = await createPrimeMcpServer({
         name: '@openvue/mcp',
         version: pkg.version,
-        baseUrl: 'https://primevue.org',
-        frameworkName: 'PrimeVue',
+        baseUrl: 'https://openvue.dev',
+        frameworkName: 'OpenVue',
         slotKey: 'slots',
         codeLanguage: 'javascript',
         compatibility: 'Vue 3.x',

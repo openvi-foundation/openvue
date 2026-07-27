@@ -1,6 +1,6 @@
 /**
  *
- * [Live Demo](https://primevue.org/)
+ * [Live Demo](https://openvue.dev/)
  *
  * @module basecomponentstyle
  *

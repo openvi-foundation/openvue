@@ -2,7 +2,7 @@
  *
  * Tag component is used to categorize content.
  *
- * [Live Demo](https://www.primevue.org/tag)
+ * [Live Demo](https://openvue.dev/tag)
  *
  * @module tag
  *
@@ -139,9 +139,9 @@ export declare type TagEmits = EmitFn<TagEmitsOptions>;
  *
  * _Tag component is used to categorize content._
  *
- * [Live Demo](https://www.primevue.org/tag/)
+ * [Live Demo](https://openvue.dev/tag/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

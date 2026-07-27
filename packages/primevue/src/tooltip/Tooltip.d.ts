@@ -2,7 +2,7 @@
  *
  * Tooltip directive provides advisory information for a component.
  *
- * [Live Demo](https://primevue.org/tooltip)
+ * [Live Demo](https://openvue.dev/tooltip)
  *
  * @module tooltip
  *
@@ -204,9 +204,9 @@ export interface TooltipDirectiveBinding extends Omit<DirectiveBinding, 'modifie
  *
  * _Tooltip directive provides advisory information for a component._
  *
- * [Live Demo](https://www.primevue.org/tooltip/)
+ * [Live Demo](https://openvue.dev/tooltip/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  */
 declare const Tooltip: ObjectDirective;

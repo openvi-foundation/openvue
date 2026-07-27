@@ -2,7 +2,7 @@
  *
  * Tabs facilitates seamless switching between different views.
  *
- * [Live Demo](https://www.primevue.org/tabs/)
+ * [Live Demo](https://openvue.dev/tabs/)
  *
  * @module tabs
  *
@@ -171,9 +171,9 @@ export declare type TabsEmits = EmitFn<TabsEmitsOptions>;
  *
  * _Tabs facilitates seamless switching between different views._
  *
- * [Live Demo](https://www.primevue.org/tabs/)
+ * [Live Demo](https://openvue.dev/tabs/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

@@ -3,7 +3,7 @@
  * Columns can be grouped at header and footer sections by defining a ColumnGroup component.
  * It is a helper component for DataTable.
  *
- * [Live Demo](https://www.primevue.org/datatable/)
+ * [Live Demo](https://openvue.dev/datatable/)
  * @module columngroup
  *
  */
@@ -127,9 +127,9 @@ export declare type ColumnGroupEmits = EmitFn<ColumnGroupEmitsOptions>;
  *
  * _It is a helper component for DataTable._
  *
- * [Live Demo](https://www.primevue.org/datatable/)
+ * [Live Demo](https://openvue.dev/datatable/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

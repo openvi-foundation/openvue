@@ -2,7 +2,7 @@
  *
  * Fieldset is a grouping component with the optional content toggle feature.
  *
- * [Live Demo](https://www.primevue.org/fieldset/)
+ * [Live Demo](https://openvue.dev/fieldset/)
  *
  * @module fieldset
  *
@@ -243,9 +243,9 @@ export declare type FieldsetEmits = EmitFn<FieldsetEmitsOptions>;
  *
  * _Fieldset is a grouping component with the optional content toggle feature._
  *
- * [Live Demo](https://www.primevue.org/fieldset/)
+ * [Live Demo](https://openvue.dev/fieldset/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *
