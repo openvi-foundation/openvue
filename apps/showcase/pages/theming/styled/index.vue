@@ -33,6 +33,7 @@ import PresetsDoc from '@/doc/theming/styled/PresetsDoc.vue';
 import ReservedKeysDoc from '@/doc/theming/styled/ReservedKeysDoc.vue';
 import ScaleDoc from '@/doc/theming/styled/ScaleDoc.vue';
 import ScopedTokensDoc from '@/doc/theming/styled/ScopedTokensDoc.vue';
+import ThemePackagesDoc from '@/doc/theming/styled/ThemePackagesDoc.vue';
 import OptionsDoc from '@/doc/theming/styled/configuration/OptionsDoc.vue';
 import ThemeDoc from '@/doc/theming/styled/configuration/ThemeDoc.vue';
 import ResetDoc from '@/doc/theming/styled/csslayer/ResetDoc.vue';
@@ -63,6 +64,11 @@ export default {
                     id: 'architecture',
                     label: 'Architecture',
                     component: ArchitectureDoc
+                },
+                {
+                    id: 'packages',
+                    label: 'Theme Packages',
+                    component: ThemePackagesDoc
                 },
                 {
                     id: 'configuration',

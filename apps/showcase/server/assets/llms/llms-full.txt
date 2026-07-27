@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-07-26
+Generated: 2026-07-27
 
 ---
 
@@ -229,6 +229,10 @@ html {
 ## Scoped Tokens
 
 Design tokens can be scoped to a certain component using the dt property. In this example, first switch uses the global tokens whereas second one overrides the global with its own tokens. This approach is recommended over the :deep() as it offers a cleaner API while avoiding the hassle of CSS rule overrides.
+
+## Theme Packages
+
+Presets and the theming API are distributed in two interchangeable packages. @openvue/themes is the OpenVue branded distribution and the one used throughout this documentation. @openuxkit/themes is the underlying engine package that @openvue/themes is built on, published by the OpenUXKit project. The two expose the same presets (Aura, Lara, Material and Nora) and the same utility API ( definePreset , usePreset , updatePreset , updatePrimaryPalette , updateSurfacePalette , palette , $dt and $t ), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary. Installation Install whichever package you prefer alongside OpenVue. Usage Only the module specifier differs, the imported values are identical. Which one to choose Use @openvue/themes if you want your dependencies to track OpenVue releases, it is versioned and released together with the component library. Use @openuxkit/themes if you are already consuming other @openuxkit/* engine packages directly, or if you want to pick up engine level theming updates without waiting for an OpenVue release.
 
 ## Options
 
@@ -1436,7 +1440,7 @@ https://unpkg.com/@openvue/themes/umd/aura.min.js
 
 ## Theming
 
-Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.
+Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global. The presets are also served from @openuxkit/themes , the engine package that @openvue/themes is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register on an OpenUXKit global rather than OpenVue , so reference them as OpenUXKit.Themes.Aura when configuring the theme.
 
 ```vue
 <!-- <script src="https://unpkg.com/@openvue/themes/umd/{preset}.min.js"><\/script> -->
@@ -1455,7 +1459,7 @@ Setting up OpenVue in a Laravel project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
@@ -1570,7 +1574,7 @@ The auto import feature registers components automatically with tree shaking sup
 
 ## Download
 
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
@@ -1600,7 +1604,7 @@ Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we reco
 
 ## Styled Mode
 
-Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
+Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Alternatively install @openuxkit/themes , the engine package that @openvue/themes is built on. It provides the same presets and utilities, so the configuration below works with either by changing only the import path. See theme packages for details. Configure the module to use a theme like Aura.
 
 ## Theme
 
@@ -1701,7 +1705,7 @@ Setting up OpenVue in a Vite project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-07-26",
+  "generatedAt": "2026-07-27",
   "components": [
     {
       "name": "accordion",
@@ -38809,6 +38809,12 @@
           "examples": null
         },
         {
+          "id": "themepackages",
+          "label": "Theme Packages",
+          "description": "Presets and the theming API are distributed in two interchangeable packages. @openvue/themes is the OpenVue branded distribution and the one used throughout this documentation. @openuxkit/themes is the underlying engine package that @openvue/themes is built on, published by the OpenUXKit project. The two expose the same presets (Aura, Lara, Material and Nora) and the same utility API ( definePreset , usePreset , updatePreset , updatePrimaryPalette , updateSurfacePalette , palette , $dt and $t ), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary. Installation Install whichever package you prefer alongside OpenVue. Usage Only the module specifier differs, the imported values are identical. Which one to choose Use @openvue/themes if you want your dependencies to track OpenVue releases, it is versioned and released together with the component library. Use @openuxkit/themes if you are already consuming other @openuxkit/* engine packages directly, or if you want to pick up engine level theming updates without waiting for an OpenVue release.",
+          "examples": null
+        },
+        {
           "id": "configuration/options",
           "label": "Options",
           "description": "The options property defines the how the CSS would be generated from the design tokens of the preset. prefix The prefix of the CSS variables, defaults to p . For instance, the primary.color design token would be var(--p-primary-color) . darkModeSelector The CSS rule to encapsulate the CSS variables of the dark mode, the default is the system to generate @media (prefers-color-scheme: dark) . If you need to make the dark mode toggleable based on the user selection define a class selector such as .app-dark and toggle this class at the document root. See the dark mode toggle section for an example. cssLayer Defines whether the styles should be defined inside a CSS layer by default or not. A CSS layer would be handy to declare a custom cascade layer for easier customization if necessary. The default is false .",
@@ -39409,7 +39415,7 @@
         {
           "id": "theming",
           "label": "Theming",
-          "description": "Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.",
+          "description": "Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global. The presets are also served from @openuxkit/themes , the engine package that @openvue/themes is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register on an OpenUXKit global rather than OpenVue , so reference them as OpenUXKit.Themes.Aura when configuring the theme.",
           "examples": {
             "basic": "<!-- <script src=\"https://unpkg.com/@openvue/themes/umd/{preset}.min.js\"><\\/script> -->\n\n<script src=\"https://unpkg.com/@openvue/themes/umd/aura.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/lara.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/nora.min.js\"><\\/script>\n<script src=\"https://unpkg.com/@openvue/themes/umd/material.min.js\"><\\/script>"
           }
@@ -39425,7 +39431,7 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.",
+          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
             "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes"
           }
@@ -39533,7 +39539,7 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.",
+          "description": "OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
             "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\nnpm install --save-dev @openvue/nuxt-module@beta\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\nyarn add --dev @openvue/nuxt-module@beta\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes\npnpm add -D @openvue/nuxt-module@beta"
           }
@@ -39559,7 +39565,7 @@
         {
           "id": "styledmode",
           "label": "Styled Mode",
-          "description": "Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.",
+          "description": "Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Alternatively install @openuxkit/themes , the engine package that @openvue/themes is built on. It provides the same presets and utilities, so the configuration below works with either by changing only the import path. See theme packages for details. Configure the module to use a theme like Aura.",
           "examples": null
         },
         {
@@ -39641,7 +39647,7 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.",
+          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
             "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes"
           }

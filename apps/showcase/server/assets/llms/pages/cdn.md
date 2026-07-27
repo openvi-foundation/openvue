@@ -97,7 +97,7 @@ https://unpkg.com/@openvue/themes/umd/aura.min.js
 
 ## Theming
 
-Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global.
+Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global. The presets are also served from @openuxkit/themes , the engine package that @openvue/themes is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register on an OpenUXKit global rather than OpenVue , so reference them as OpenUXKit.Themes.Aura when configuring the theme.
 
 ```vue
 <!-- <script src="https://unpkg.com/@openvue/themes/umd/{preset}.min.js"><\/script> -->

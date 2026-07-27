@@ -8,7 +8,7 @@ The auto import feature registers components automatically with tree shaking sup
 
 ## Download
 
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
@@ -38,7 +38,7 @@ Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we reco
 
 ## Styled Mode
 
-Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
+Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Alternatively install @openuxkit/themes , the engine package that @openvue/themes is built on. It provides the same presets and utilities, so the configuration below works with either by changing only the import path. See theme packages for details. Configure the module to use a theme like Aura.
 
 ## Theme
 

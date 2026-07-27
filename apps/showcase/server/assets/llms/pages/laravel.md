@@ -4,7 +4,7 @@ Setting up OpenVue in a Laravel project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
+OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
