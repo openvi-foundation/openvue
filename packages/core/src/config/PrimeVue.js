@@ -87,6 +87,8 @@ export const defaultOptions = {
             selectAll: 'All items selected',
             unselectAll: 'All items unselected',
             close: 'Close',
+            showPassword: 'Show Password',
+            hidePassword: 'Hide Password',
             previous: 'Previous',
             next: 'Next',
             navigation: 'Navigation',

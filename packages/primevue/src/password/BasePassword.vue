@@ -58,6 +58,14 @@ export default {
             type: String,
             default: undefined
         },
+        hidePasswordLabel: {
+            type: String,
+            default: null
+        },
+        showPasswordLabel: {
+            type: String,
+            default: null
+        },
         showClear: {
             type: Boolean,
             default: false

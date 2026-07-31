@@ -313,6 +313,14 @@
                         <td>Close</td>
                     </tr>
                     <tr>
+                        <td>aria.showPassword</td>
+                        <td>Show Password</td>
+                    </tr>
+                    <tr>
+                        <td>aria.hidePassword</td>
+                        <td>Hide Password</td>
+                    </tr>
+                    <tr>
                         <td>aria.previous</td>
                         <td>Previous</td>
                     </tr>

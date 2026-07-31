@@ -236,6 +236,14 @@ export interface PasswordProps extends Omit<InputHTMLAttributes, 'size'> {
      */
     unmaskIcon?: string | undefined;
     /**
+     * Accessible label for the button that hides the password. Defaults to OpenVue Locale configuration.
+     */
+    hidePasswordLabel?: string | undefined;
+    /**
+     * Accessible label for the button that shows the password. Defaults to OpenVue Locale configuration.
+     */
+    showPasswordLabel?: string | undefined;
+    /**
      * When enabled, a clear icon is displayed to clear the value.
      * @defaultValue false
      */
@@ -385,6 +393,10 @@ export interface PasswordSlots {
          * Mask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the mask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom hide icon template.
@@ -395,6 +407,10 @@ export interface PasswordSlots {
          * Mask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the mask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * @deprecated since v4.0. use 'unmaskicon' slot instead.
@@ -406,6 +422,10 @@ export interface PasswordSlots {
          * Unmask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the unmask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom unmask icon template.
@@ -416,6 +436,10 @@ export interface PasswordSlots {
          * Unmask icon click event
          */
         toggleCallback: () => void;
+        /**
+         * Style class of the unmask icon
+         */
+        class: any;
     }): VNode[];
     /**
      * Custom clear icon template.
@@ -427,6 +451,10 @@ export interface PasswordSlots {
          * @param {Event} event - Browser event
          */
         clearCallback: (event: Event) => void;
+        /**
+         * Style class of the clear icon
+         */
+        class: any;
     }): VNode[];
 }
 

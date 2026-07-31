@@ -1,9 +1,33 @@
 import { style } from '@openuxkit/styles/password';
 import BaseStyle from '@openvue/core/base/style';
 
-const inlineStyles = {
-    root: ({ props }) => ({ position: props.appendTo === 'self' ? 'relative' : undefined })
+const buttonReset = {
+    border: 'none',
+    background: 'transparent',
+    padding: 0,
+    cursor: 'pointer',
+    font: 'inherit'
 };
+
+const inlineStyles = {
+    root: ({ props }) => ({ position: props.appendTo === 'self' ? 'relative' : undefined }),
+    maskIcon: buttonReset,
+    unmaskIcon: buttonReset,
+    clearIcon: buttonReset
+};
+
+const iconButtonStyle = `
+    .p-password-toggle-mask-icon:focus-visible,
+    .p-password-clear-icon:focus-visible {
+        outline: var(--p-focus-ring-width) var(--p-focus-ring-style) var(--p-focus-ring-color);
+        outline-offset: var(--p-focus-ring-offset);
+    }
+
+    .p-password-toggle-mask-icon,
+    .p-password-clear-icon {
+        border-radius: max(2px, dt('form.field.border.radius') - dt('form.field.padding.x'));
+    }
+`;
 
 const classes = {
     root: ({ instance }) => [
@@ -27,7 +51,7 @@ const classes = {
 
 export default BaseStyle.extend({
     name: 'password',
-    style,
+    style: style + iconButtonStyle,
     classes,
     inlineStyles
 });
