@@ -359,6 +359,18 @@
         "@openvue/core": "workspace:*",
         "@openvue/icons": "workspace:*"
     },
+    "peerDependencies": {
+        "chart.js": "^4.0.0",
+        "quill": "^2.0.0"
+    },
+    "peerDependenciesMeta": {
+        "chart.js": {
+            "optional": true
+        },
+        "quill": {
+            "optional": true
+        }
+    },
     "engines": {
         "node": ">=12.11.0"
     }

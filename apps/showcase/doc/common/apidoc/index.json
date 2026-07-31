@@ -11921,10 +11921,10 @@
         }
     },
     "chart": {
-        "description": "Chart groups a collection of contents in tabs.\n\n[Live Demo](https://openvue.dev/chart/)",
+        "description": "Chart is a wrapper around Chart.js, rendering data driven charts on a canvas element.\n\n[Live Demo](https://openvue.dev/chart/)",
         "components": {
             "default": {
-                "description": "Chart groups a collection of contents in tabs.",
+                "description": "Chart is a wrapper around Chart.js, rendering data driven charts on a canvas element.",
                 "methods": {
                     "description": "Defines methods that can be accessed by the component's reference.",
                     "values": []
@@ -11953,7 +11953,7 @@
                             "name": "props",
                             "optional": false,
                             "readonly": false,
-                            "type": "ChartProps",
+                            "type": "ChartProps<keyof ChartTypeRegistry>",
                             "default": "",
                             "description": "Defines valid properties."
                         },
@@ -12067,7 +12067,7 @@
                             "name": "type",
                             "optional": true,
                             "readonly": false,
-                            "type": "string",
+                            "type": "TType",
                             "default": "",
                             "description": "Type of the chart."
                         },
@@ -12075,7 +12075,7 @@
                             "name": "data",
                             "optional": true,
                             "readonly": false,
-                            "type": "object",
+                            "type": "ChartData<TType, DistributiveArray<ChartTypeRegistry[TType][\"defaultDataPoint\"]>, unknown>",
                             "default": "",
                             "description": "Data to display."
                         },
@@ -12083,7 +12083,7 @@
                             "name": "options",
                             "optional": true,
                             "readonly": false,
-                            "type": "object",
+                            "type": "Exclude<DeepPartial<CoreChartOptions<TType> & ElementChartOptions<TType> & PluginChartOptions<TType> & DatasetChartOptions<TType> & ScaleChartOptions<TType> & ChartTypeRegistry[TType][\"chartOptions\"]>, _DeepPartialArray<unknown>>",
                             "default": "",
                             "description": "Options to customize the chart."
                         },
@@ -12091,7 +12091,7 @@
                             "name": "plugins",
                             "optional": true,
                             "readonly": false,
-                            "type": "any[]",
+                            "type": "Plugin<TType, AnyObject>[]",
                             "default": "",
                             "description": "Used to custom plugins of the chart."
                         },
@@ -12175,7 +12175,7 @@
                                 }
                             ],
                             "returnType": "void",
-                            "description": "Callback to invoke when a tab gets expanded."
+                            "description": "Callback to invoke when a data element of the chart is clicked."
                         },
                         {
                             "name": "loaded",
@@ -12209,10 +12209,16 @@
                             "description": "Destroys the graph first and then creates it again."
                         },
                         {
-                            "name": "generateLegend",
+                            "name": "getCanvas",
                             "parameters": [],
-                            "returnType": "any",
-                            "description": "Returns an HTML string of a legend for that chart. The legend is generated from the legendCallback in the options."
+                            "returnType": "undefined | HTMLCanvasElement",
+                            "description": "Returns the canvas element the chart is rendered on."
+                        },
+                        {
+                            "name": "getBase64Image",
+                            "parameters": [],
+                            "returnType": "string",
+                            "description": "Returns a base64 encoded png image of the chart."
                         },
                         {
                             "name": "getChart",

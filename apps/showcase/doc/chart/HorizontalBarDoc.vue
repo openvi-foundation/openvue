@@ -5,7 +5,7 @@
     <div class="card">
         <Chart type="bar" :data="chartData" :options="chartOptions" class="h-[30rem]" />
     </div>
-    <DocSectionCode :code="code" :dependencies="{ 'chart.js': '3.3.2' }" component="Chart" />
+    <DocSectionCode :code="code" :dependencies="{ 'chart.js': '4.5.0' }" component="Chart" />
 </template>
 
 <script>
@@ -88,8 +88,10 @@ export default {
                             }
                         },
                         grid: {
-                            display: false,
-                            drawBorder: false
+                            display: false
+                        },
+                        border: {
+                            display: false
                         }
                     },
                     y: {
@@ -97,8 +99,10 @@ export default {
                             color: textColorSecondary
                         },
                         grid: {
-                            color: surfaceBorder,
-                            drawBorder: false
+                            color: surfaceBorder
+                        },
+                        border: {
+                            display: false
                         }
                     }
                 }
@@ -173,8 +177,10 @@ const setChartOptions = () => {
                     }
                 },
                 grid: {
-                    display: false,
-                    drawBorder: false
+                    display: false
+                },
+                border: {
+                    display: false
                 }
             },
             y: {
@@ -182,8 +188,10 @@ const setChartOptions = () => {
                     color: textColorSecondary
                 },
                 grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
+                    color: surfaceBorder
+                },
+                border: {
+                    display: false
                 }
             }
         }
@@ -257,8 +265,10 @@ const setChartOptions = () => {
                             }
                         },
                         grid: {
-                            display: false,
-                            drawBorder: false
+                            display: false
+                        },
+                        border: {
+                            display: false
                         }
                     },
                     y: {
@@ -266,8 +276,10 @@ const setChartOptions = () => {
                             color: textColorSecondary
                         },
                         grid: {
-                            color: surfaceBorder,
-                            drawBorder: false
+                            color: surfaceBorder
+                        },
+                        border: {
+                            display: false
                         }
                     }
                 }

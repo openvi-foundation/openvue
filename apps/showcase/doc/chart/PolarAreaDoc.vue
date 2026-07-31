@@ -5,7 +5,7 @@
     <div class="card flex justify-center">
         <Chart type="polarArea" :data="chartData" :options="chartOptions" class="w-full md:w-[30rem]" />
     </div>
-    <DocSectionCode :code="code" :dependencies="{ 'chart.js': '3.3.2' }" component="Chart" />
+    <DocSectionCode :code="code" :dependencies="{ 'chart.js': '4.5.0' }" component="Chart" />
 </template>
 
 <script>

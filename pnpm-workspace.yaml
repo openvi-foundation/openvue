@@ -19,5 +19,5 @@ catalogs:
         'sass': 1.45.0
         'sass-loader': 8.0.2
         '@docsearch/js': ^3
-        'chart.js': 3.3.2
+        'chart.js': ^4.5.0
         'quill': 2.0.0

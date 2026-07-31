@@ -272,8 +272,10 @@ const setChartOptions = () => {
                     }
                 },
                 grid: {
-                    display: false,
-                    drawBorder: false
+                    display: false
+                },
+                border: {
+                    display: false
                 }
             },
             y: {
@@ -281,8 +283,10 @@ const setChartOptions = () => {
                     color: textColorSecondary
                 },
                 grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
+                    color: surfaceBorder
+                },
+                border: {
+                    display: false
                 }
             }
         }
@@ -993,8 +997,10 @@ const setChartOptions = () => {
                     }
                 },
                 grid: {
-                    display: false,
-                    drawBorder: false
+                    display: false
+                },
+                border: {
+                    display: false
                 }
             },
             y: {
@@ -1002,8 +1008,10 @@ const setChartOptions = () => {
                     color: textColorSecondary
                 },
                 grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
+                    color: surfaceBorder
+                },
+                border: {
+                    display: false
                 }
             }
         }

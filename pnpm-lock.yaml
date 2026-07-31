@@ -10,8 +10,8 @@ catalogs:
       specifier: ^3
       version: 3.9.0
     chart.js:
-      specifier: 3.3.2
-      version: 3.3.2
+      specifier: ^4.5.0
+      version: 4.5.1
     nuxt:
       specifier: 3.15.4
       version: 3.15.4
@@ -134,7 +134,7 @@ importers:
         version: 2.0.0(nuxt@3.15.4(@parcel/watcher@2.5.6)(@types/node@26.1.1)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.4(jiti@1.21.7))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(optionator@0.9.4)(rollup@4.60.1)(sass@1.45.0)(terser@5.46.1)(typescript@5.7.3)(vite@6.0.11(@types/node@26.1.1)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.45.0)(terser@5.46.1)(yaml@2.8.3))(vue-tsc@2.1.10(typescript@5.7.3))(yaml@2.8.3))(vue-router@4.6.4(vue@3.5.32(typescript@5.7.3)))(vue@3.5.32(typescript@5.7.3))
       chart.js:
         specifier: catalog:app
-        version: 3.3.2
+        version: 4.5.1
       openvue:
         specifier: workspace:*
         version: link:../../packages/primevue
@@ -201,7 +201,7 @@ importers:
         version: 3.9.0(@algolia/client-search@5.50.1)(search-insights@2.17.3)
       chart.js:
         specifier: catalog:app
-        version: 3.3.2
+        version: 4.5.1
       openvue:
         specifier: workspace:*
         version: link:../../packages/primevue
@@ -433,6 +433,12 @@ importers:
       '@openvue/icons':
         specifier: workspace:*
         version: link:../icons
+      chart.js:
+        specifier: ^4.0.0
+        version: 4.5.1
+      quill:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       '@vue/test-utils':
         specifier: ^2.0.0
@@ -1837,6 +1843,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@kurkle/color@0.3.4':
+    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
 
   '@kwsites/file-exists@1.1.1':
     resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
@@ -3470,8 +3479,9 @@ packages:
     resolution: {integrity: sha512-QtC7+r9BxoUm+XDAwhLbz3CgU134J1ytfE3iCpLpA4KFzX2P1e6s21RrWDwUBzfx66b1Rv+6lOA2nS2btprd+A==}
     hasBin: true
 
-  chart.js@3.3.2:
-    resolution: {integrity: sha512-H0hSO7xqTIrwxoACqnSoNromEMfXvfuVnrbuSt2TuXfBDDofbnto4zuZlRtRvC73/b37q3wGAWZyUU41QPvNbA==}
+  chart.js@4.5.1:
+    resolution: {integrity: sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw==}
+    engines: {pnpm: '>=8'}
 
   check-error@1.0.3:
     resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
@@ -9166,6 +9176,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@kurkle/color@0.3.4': {}
+
   '@kwsites/file-exists@1.1.1':
     dependencies:
       debug: 4.4.3
@@ -11632,7 +11644,9 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  chart.js@3.3.2: {}
+  chart.js@4.5.1:
+    dependencies:
+      '@kurkle/color': 0.3.4
 
   check-error@1.0.3:
     dependencies:
