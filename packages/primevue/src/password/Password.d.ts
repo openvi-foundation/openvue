@@ -236,11 +236,11 @@ export interface PasswordProps extends Omit<InputHTMLAttributes, 'size'> {
      */
     unmaskIcon?: string | undefined;
     /**
-     * Accessible label for the button that hides the password. Defaults to PrimeVue Locale configuration.
+     * Accessible label for the button that hides the password. Defaults to OpenVue Locale configuration.
      */
     hidePasswordLabel?: string | undefined;
     /**
-     * Accessible label for the button that shows the password. Defaults to PrimeVue Locale configuration.
+     * Accessible label for the button that shows the password. Defaults to OpenVue Locale configuration.
      */
     showPasswordLabel?: string | undefined;
     /**
