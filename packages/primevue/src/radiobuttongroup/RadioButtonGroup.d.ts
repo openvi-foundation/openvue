@@ -2,7 +2,7 @@
  *
  * RadioButtonGroup is a component that groups multiple radio buttons, allowing users to select only one option from the group.
  *
- * [Live Demo](https://www.primevue.org/radiobutton/)
+ * [Live Demo](https://openvue.dev/radiobutton/)
  *
  * @module radiobuttongroup
  *
@@ -142,9 +142,9 @@ export declare type RadioButtonGroupEmits = EmitFn<RadioButtonGroupEmitsOptions>
  *
  * _RadioButtonGroup is a component that groups multiple radio buttons, allowing users to select only one option from the group._
  *
- * [Live Demo](https://www.primevue.org/radiobutton/)
+ * [Live Demo](https://openvue.dev/radiobutton/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

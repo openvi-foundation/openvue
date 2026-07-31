@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { addClass, getHeight, removeClass } from '@primeuix/utils/dom';
+import { addClass, getHeight, removeClass } from '@openuxkit/utils/dom';
 import BaseScrollPanel from './BaseScrollPanel.vue';
 
 export default {

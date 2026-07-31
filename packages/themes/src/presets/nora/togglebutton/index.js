@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/togglebutton';
+export { default } from '@openuxkit/themes/nora/togglebutton';

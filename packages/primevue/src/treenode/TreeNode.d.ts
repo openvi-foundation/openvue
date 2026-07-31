@@ -1,6 +1,6 @@
 /**
  *
- * PrimeVue tree components share a common api to specify the node.
+ * OpenVue tree components share a common api to specify the node.
  *
  * @module treenode
  *

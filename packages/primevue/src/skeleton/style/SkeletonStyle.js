@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/skeleton';
+import { style } from '@openuxkit/styles/skeleton';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

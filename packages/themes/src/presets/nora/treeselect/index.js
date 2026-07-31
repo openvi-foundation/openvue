@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/treeselect';
+export { default } from '@openuxkit/themes/nora/treeselect';

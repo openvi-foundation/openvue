@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/scrollpanel';
+export { default } from '@openuxkit/themes/material/scrollpanel';

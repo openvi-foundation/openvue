@@ -360,7 +360,7 @@ const onFormSubmit = (text, { valid }) => {
 
 <script setup>
 import { ref, computed, provide } from 'vue';
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 import DynamicFormControl from './DynamicFormControl.vue';
@@ -475,7 +475,7 @@ const htmlFor = computed(() => $fcDynamicFormField?.groupId);
 </template>
 
 <script setup>
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { computed, inject } from 'vue';
 
 const props = defineProps({
@@ -547,7 +547,7 @@ const props = defineProps({
 
 <script setup>
 import { ref, computed, provide } from 'vue';
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { zodResolver } from '@openvue/forms/resolvers/zod';
 import { z } from 'zod';
 import DynamicFormControl from './DynamicFormControl.vue';
@@ -662,7 +662,7 @@ const htmlFor = computed(() => $fcDynamicFormField?.groupId);
 </template>
 
 <script setup>
-import { isNotEmpty } from '@primeuix/utils';
+import { isNotEmpty } from '@openuxkit/utils';
 import { computed, inject } from 'vue';
 
 const props = defineProps({

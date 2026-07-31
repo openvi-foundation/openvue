@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/avatar';
+export * from '@openuxkit/themes/types/avatar';

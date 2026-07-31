@@ -2,7 +2,7 @@
  *
  * PickList is used to reorder items between different lists.
  *
- * [Live Demo](https://primevue.org/picklist)
+ * [Live Demo](https://openvue.dev/picklist)
  *
  * @module picklist
  *
@@ -605,9 +605,9 @@ export declare type PickListEmits = EmitFn<PickListEmitsOptions>;
  *
  * _PickList is used to reorder items between different lists._
  *
- * [Live Demo](https://www.primevue.org/picklist/)
+ * [Live Demo](https://openvue.dev/picklist/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

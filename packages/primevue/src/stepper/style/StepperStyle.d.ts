@@ -2,7 +2,7 @@
  *
  * Stepper is a component that streamlines a wizard-like workflow, organizing content into coherent steps and visually guiding users through a numbered progression in a multi-step process.
  *
- * [Live Demo](https://www.primevue.org/stepper/)
+ * [Live Demo](https://openvue.dev/stepper/)
  *
  * @module stepperstyle
  *

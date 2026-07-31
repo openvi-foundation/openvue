@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/divider';
+export { default } from '@openuxkit/themes/lara/divider';

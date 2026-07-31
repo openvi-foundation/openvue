@@ -2,7 +2,7 @@
  *
  * A set of Avatars can be displayed together using the AvatarGroup component.
  *
- * [Live Demo](https://www.primevue.org/avatar/)
+ * [Live Demo](https://openvue.dev/avatar/)
  *
  * @module avatargroup
  *
@@ -110,9 +110,9 @@ export declare type AvatarGroupEmits = EmitFn<AvatarGroupEmitsOptions>;
  *
  * _A set of Avatars can be displayed together using the AvatarGroup component._
  *
- * [Live Demo](https://www.primevue.org/avatar/)
+ * [Live Demo](https://openvue.dev/avatar/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { find, findSingle, getAttribute } from '@primeuix/utils/dom';
+import { find, findSingle, getAttribute } from '@openuxkit/utils/dom';
 import BaseComponent from '@openvue/core/basecomponent';
 import ChevronLeftIcon from '@openvue/icons/chevronleft';
 import ChevronRightIcon from '@openvue/icons/chevronright';

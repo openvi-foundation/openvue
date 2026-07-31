@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/badge';
+export * from '@openuxkit/themes/types/badge';

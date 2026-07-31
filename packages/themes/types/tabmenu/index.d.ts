@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/tabmenu';
+export * from '@openuxkit/themes/types/tabmenu';

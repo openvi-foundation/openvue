@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/inplace';
+export { default } from '@openuxkit/themes/material/inplace';

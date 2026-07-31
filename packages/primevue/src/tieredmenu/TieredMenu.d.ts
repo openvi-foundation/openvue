@@ -2,7 +2,7 @@
  *
  * TieredMenu displays submenus in nested overlays.
  *
- * [Live Demo](https://www.primevue.org/menu/)
+ * [Live Demo](https://openvue.dev/menu/)
  *
  * @module tieredmenu
  *
@@ -406,9 +406,9 @@ export interface TieredMenuMethods {
  *
  * _TieredMenu displays submenus in nested overlays._
  *
- * [Live Demo](https://www.primevue.org/tieredmenu/)
+ * [Live Demo](https://openvue.dev/tieredmenu/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

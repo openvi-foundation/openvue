@@ -64,9 +64,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { addClass, addStyle, focus, getOuterHeight, getOuterWidth, getViewport, setAttribute } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { addClass, addStyle, focus, getOuterHeight, getOuterWidth, getViewport, setAttribute } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import TimesIcon from '@openvue/icons/times';
 import WindowMaximizeIcon from '@openvue/icons/windowmaximize';
 import WindowMinimizeIcon from '@openvue/icons/windowminimize';

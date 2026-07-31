@@ -2,7 +2,7 @@
  *
  * ProgressSpinner is a process status indicator.
  *
- * [Live Demo](https://www.primevue.org/progressspinner)
+ * [Live Demo](https://openvue.dev/progressspinner)
  *
  * @module progressspinner
  *
@@ -126,9 +126,9 @@ export declare type ProgressSpinnerEmits = EmitFn<ProgressSpinnerEmitsOptions>;
  *
  * _ProgressSpinner is a process status indicator._
  *
- * [Live Demo](https://www.primevue.org/progressspinner/)
+ * [Live Demo](https://openvue.dev/progressspinner/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

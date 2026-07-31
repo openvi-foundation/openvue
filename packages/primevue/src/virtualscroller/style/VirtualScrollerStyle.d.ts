@@ -2,7 +2,7 @@
  *
  * VirtualScroller is a performant approach to handle huge data efficiently.
  *
- * [Live Demo](https://www.primevue.org/virtualscroller/)
+ * [Live Demo](https://openvue.dev/virtualscroller/)
  *
  * @module virtualscrollerstyle
  *

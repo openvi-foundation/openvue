@@ -2,7 +2,7 @@
  *
  * Accordion groups a collection of contents in tabs.
  *
- * [Live Demo](https://www.primevue.org/accordion/)
+ * [Live Demo](https://openvue.dev/accordion/)
  *
  * @module accordionstyle
  *

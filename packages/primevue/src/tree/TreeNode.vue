@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { find, findSingle, getAttribute, getOuterHeight, getOuterWidth } from '@primeuix/utils';
+import { find, findSingle, getAttribute, getOuterHeight, getOuterWidth } from '@openuxkit/utils';
 import BaseComponent from '@openvue/core/basecomponent';
 import CheckIcon from '@openvue/icons/check';
 import ChevronDownIcon from '@openvue/icons/chevrondown';

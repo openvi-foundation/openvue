@@ -1,7 +1,15 @@
-### Defect Fixes
+### What does this PR do?
 
-When submitting a PR, please also create an issue documenting the error.
+<!-- A short description of the change and why it is needed. -->
 
-### Feature Requests
+### Related issue
 
-Due to company policy, we are unable to accept feature request PRs with significant changes as such cases has to be implemented by our team following our own processes.
+<!-- Link the issue this PR addresses, e.g. Closes #123. For anything beyond a small fix, please open an issue first so we can agree on the approach. -->
+
+### Checklist
+
+- [ ] Tests added or updated for the change
+- [ ] `pnpm run lint` and `pnpm run format` pass
+- [ ] Changelog entry added under `## [Unreleased]` in `CHANGELOG.md` (skip for internal refactors, tests, CI, and docs typos)
+
+<!-- Feature PRs are welcome. See CONTRIBUTING.md for the development setup and review process. -->

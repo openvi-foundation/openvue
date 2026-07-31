@@ -32,8 +32,8 @@ Useful commands while working on a component:
 ```bash
 pnpm run lint
 pnpm run format
-pnpm --filter primevue exec vitest run src/button
-pnpm --filter primevue exec vitest run src/button/Button.spec.js
+pnpm --filter openvue exec vitest run src/button
+pnpm --filter openvue exec vitest run src/button/Button.spec.js
 ```
 
 ## Submitting a pull request
@@ -42,10 +42,27 @@ pnpm --filter primevue exec vitest run src/button/Button.spec.js
 2. Create a branch off `master` (`git checkout -b feature/your-feature-name`).
 3. Make your change, and add or update tests for it.
 4. Run `pnpm run lint` and `pnpm run format` before committing.
-5. Reference the related issue in your PR description.
-6. Open the PR against `master`.
+5. Add a changelog entry if the change is user-facing (see below).
+6. Reference the related issue in your PR description.
+7. Open the PR against `master`.
 
 Small, focused PRs are easier to review and get merged faster than large ones that touch many components at once.
+
+## Keeping the changelog
+
+[CHANGELOG.md](CHANGELOG.md) is written by hand in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format, and all packages in the repo share one version.
+
+If your change is something a consumer would notice, add a bullet under `## [Unreleased]` in the same PR, under `Added`, `Changed`, `Fixed`, `Deprecated`, or `Removed`. Write it for someone upgrading, not for someone reading the diff:
+
+```md
+## [Unreleased]
+
+### Fixed
+
+- `Select` no longer loses its filter value when the overlay is reopened.
+```
+
+Skip it for internal refactors, test-only changes, CI, and documentation typos. At release time the `[Unreleased]` heading is replaced with the version and date, and a fresh empty `[Unreleased]` section is added on top.
 
 ## Code style
 

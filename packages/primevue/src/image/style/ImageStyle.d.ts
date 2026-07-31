@@ -2,7 +2,7 @@
  *
  * Displays an image with preview and tranformation options. For multiple image, see Galleria.
  *
- * [Live Demo](https://www.primevue.org/image/)
+ * [Live Demo](https://openvue.dev/image/)
  *
  * @module imagestyle
  *

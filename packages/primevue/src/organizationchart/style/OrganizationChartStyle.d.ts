@@ -2,7 +2,7 @@
  *
  * OrganizationChart visualizes hierarchical organization data.
  *
- * [Live Demo](https://primevue.org/organizationchart)
+ * [Live Demo](https://openvue.dev/organizationchart)
  *
  * @module organizationchartstyle
  *

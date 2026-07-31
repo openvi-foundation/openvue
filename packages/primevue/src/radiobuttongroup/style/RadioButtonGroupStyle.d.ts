@@ -2,7 +2,7 @@
  *
  * RadioButtonGroup is a component that groups multiple radio buttons, allowing users to select only one option from the group.
  *
- * [Live Demo](https://www.primevue.org/radiobuttongroup/)
+ * [Live Demo](https://openvue.dev/radiobuttongroup/)
  *
  * @module radiobuttongroupstyle
  *

@@ -2,7 +2,7 @@
  *
  * Dock is a navigation component consisting of menuitems.
  *
- * [Live Demo](https://www.primevue.org/dock/)
+ * [Live Demo](https://openvue.dev/dock/)
  *
  * @module dockstyle
  *

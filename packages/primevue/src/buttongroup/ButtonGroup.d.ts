@@ -2,7 +2,7 @@
  *
  * A set of Buttons can be displayed together using the ButtonGroup component.
  *
- * [Live Demo](https://www.primevue.org/button/)
+ * [Live Demo](https://openvue.dev/button/)
  *
  * @module buttongroup
  *
@@ -102,9 +102,9 @@ export declare type ButtonGroupEmits = EmitFn<ButtonGroupEmitsOptions>;
  *
  * _A set of Buttons can be displayed together using the ButtonGroup component._
  *
- * [Live Demo](https://www.primevue.org/button/)
+ * [Live Demo](https://openvue.dev/button/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

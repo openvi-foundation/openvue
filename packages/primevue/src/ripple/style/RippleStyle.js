@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/ripple';
+import { style } from '@openuxkit/styles/ripple';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

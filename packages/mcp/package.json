@@ -1,6 +1,6 @@
 {
     "name": "@openvue/mcp",
-    "version": "0.0.1-beta.0",
+    "version": "0.0.1-beta.1",
     "author": "OpenVue Contributors",
     "description": "Model Context Protocol (MCP) server for PrimeVue component library",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -53,7 +53,7 @@
     },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.25.2",
-        "@primeuix/mcp": "catalog:",
+        "@openuxkit/mcp": "catalog:",
         "zod": "^3.25.76"
     },
     "devDependencies": {

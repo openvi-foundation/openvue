@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/virtualscroller';
+export * from '@openuxkit/themes/types/virtualscroller';

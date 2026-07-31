@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { findSingle, find } from '@primeuix/utils/dom';
+import { findSingle, find } from '@openuxkit/utils/dom';
 import { mergeProps } from 'vue';
 import BaseSteps from './BaseSteps.vue';
 

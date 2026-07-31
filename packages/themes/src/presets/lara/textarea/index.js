@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/textarea';
+export { default } from '@openuxkit/themes/lara/textarea';

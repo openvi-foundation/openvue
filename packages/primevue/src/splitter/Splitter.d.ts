@@ -2,7 +2,7 @@
  *
  * Splitter is utilized to separate and resize panels.
  *
- * [Live Demo](https://www.primevue.org/splitter/)
+ * [Live Demo](https://openvue.dev/splitter/)
  *
  * @module splitter
  *
@@ -238,9 +238,9 @@ export interface SplitterMethods {
  *
  * _Splitter is utilized to separate and resize panels._
  *
- * [Live Demo](https://www.primevue.org/splitter/)
+ * [Live Demo](https://openvue.dev/splitter/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

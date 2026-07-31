@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/metergroup';
+export { default } from '@openuxkit/themes/material/metergroup';

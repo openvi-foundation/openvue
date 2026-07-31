@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/dialog';
+export { default } from '@openuxkit/themes/nora/dialog';

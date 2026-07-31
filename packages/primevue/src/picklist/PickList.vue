@@ -166,8 +166,8 @@
 </template>
 
 <script>
-import { find, scrollInView, setAttribute } from '@primeuix/utils/dom';
-import { findIndexInList, isEmpty } from '@primeuix/utils/object';
+import { find, scrollInView, setAttribute } from '@openuxkit/utils/dom';
+import { findIndexInList, isEmpty } from '@openuxkit/utils/object';
 import AngleDoubleDownIcon from '@openvue/icons/angledoubledown';
 import AngleDoubleLeftIcon from '@openvue/icons/angledoubleleft';
 import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';

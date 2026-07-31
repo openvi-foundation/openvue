@@ -2,7 +2,7 @@
  *
  * Avatar represents people using icons, labels and images.
  *
- * - [Live Demo](https://primevue.org/avatar)
+ * - [Live Demo](https://openvue.dev/avatar)
  *
  * @module avatar
  */
@@ -160,9 +160,9 @@ export declare type AvatarEmits = EmitFn<AvatarEmitsOptions>;
  *
  * _Avatar represents people using icons, labels and images._
  *
- * [Live Demo](https://www.primevue.org/avatar/)
+ * [Live Demo](https://openvue.dev/avatar/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

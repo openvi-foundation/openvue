@@ -1,4 +1,4 @@
-import ComponentTokens from '@primeuix/themes/tokens';
+import ComponentTokens from '@openuxkit/themes/tokens';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -339,7 +339,29 @@ function getAllComponents() {
     const components = [];
 
     // Directories to exclude (non-component documentation)
-    const excludeDirs = ['common', 'guides', 'theming', 'clt', 'forms', 'autoimport', 'cdn', 'configuration', 'contribution', 'customicons', 'designer', 'icons', 'introduction', 'laravel', 'llms', 'migrate', 'nuxt', 'passthrough', 'setup', 'tailwind', 'vite'];
+    const excludeDirs = [
+        'common',
+        'guides',
+        'theming',
+        'clt',
+        'forms',
+        'autoimport',
+        'cdn',
+        'configuration',
+        'contribution',
+        'customicons',
+        'designer',
+        'icons',
+        'introduction',
+        'laravel',
+        'llms',
+        'migrate',
+        'nuxt',
+        'passthrough',
+        'setup',
+        'tailwind',
+        'vite'
+    ];
 
     for (const entry of entries) {
         const componentDir = path.join(DOCS_DIR, entry);
@@ -459,7 +481,7 @@ function getStyleOptionsFromApi(apiDocs, componentName) {
 }
 
 /**
- * Get Design Tokens from @primeuix/themes
+ * Get Design Tokens from @openvue/themes
  */
 function getTokenOptionsFromApi(componentName) {
     const tokens = [];

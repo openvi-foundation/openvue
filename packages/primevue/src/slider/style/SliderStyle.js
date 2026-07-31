@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/slider';
+import { style } from '@openuxkit/styles/slider';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

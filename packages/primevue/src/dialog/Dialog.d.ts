@@ -2,7 +2,7 @@
  *
  * Dialog is a container to display content in an overlay window.
  *
- * [Live Demo](https://www.primevue.org/dialog)
+ * [Live Demo](https://openvue.dev/dialog)
  *
  * @module dialog
  *
@@ -450,9 +450,9 @@ export declare type DialogEmits = EmitFn<DialogEmitsOptions>;
  *
  * _Dialog is a container to display content in an overlay window._
  *
- * [Live Demo](https://www.primevue.org/dialog/)
+ * [Live Demo](https://openvue.dev/dialog/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

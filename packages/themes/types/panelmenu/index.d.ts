@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/panelmenu';
+export * from '@openuxkit/themes/types/panelmenu';

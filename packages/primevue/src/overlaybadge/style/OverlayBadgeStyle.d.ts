@@ -2,7 +2,7 @@
  *
  * OverlayBadge wraps an input and an icon.
  *
- * [Live Demo](https://www.primevue.org/badge/)
+ * [Live Demo](https://openvue.dev/badge/)
  *
  * @module overlaybadgestyle
  *

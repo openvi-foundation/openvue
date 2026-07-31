@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/popover';
+import { style } from '@openuxkit/styles/popover';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

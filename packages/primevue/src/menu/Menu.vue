@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { absolutePosition, addStyle, find, findSingle, focus, getOuterWidth, isTouchDevice } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { absolutePosition, addStyle, find, findSingle, focus, getOuterWidth, isTouchDevice } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';

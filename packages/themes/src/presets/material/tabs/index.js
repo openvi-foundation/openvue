@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/tabs';
+export { default } from '@openuxkit/themes/material/tabs';

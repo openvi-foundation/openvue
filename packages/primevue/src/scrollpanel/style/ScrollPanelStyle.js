@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/scrollpanel';
+import { style } from '@openuxkit/styles/scrollpanel';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

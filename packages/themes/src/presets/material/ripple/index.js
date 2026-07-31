@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/ripple';
+export { default } from '@openuxkit/themes/material/ripple';

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/confirmpopup';
+import { style } from '@openuxkit/styles/confirmpopup';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

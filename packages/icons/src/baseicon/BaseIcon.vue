@@ -1,5 +1,5 @@
 <script>
-import { isEmpty } from '@primeuix/utils/object';
+import { isEmpty } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import BaseIconStyle from '@openvue/icons/baseicon/style';
 

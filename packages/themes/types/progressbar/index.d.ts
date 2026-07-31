@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/progressbar';
+export * from '@openuxkit/themes/types/progressbar';

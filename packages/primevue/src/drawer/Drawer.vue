@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { addClass, focus } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { cn } from '@openuxkit/utils';
+import { addClass, focus } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import TimesIcon from '@openvue/icons/times';
 import Button from 'openvue/button';
 import FocusTrap from 'openvue/focustrap';

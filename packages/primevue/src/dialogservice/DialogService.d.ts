@@ -1,6 +1,6 @@
 /**
  *
- * [Live Demo](https://www.primevue.org/dynamicdialog/)
+ * [Live Demo](https://openvue.dev/dynamicdialog/)
  *
  * @module dialogservice-usedialog
  */

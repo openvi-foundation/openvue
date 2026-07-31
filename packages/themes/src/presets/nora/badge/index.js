@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/badge';
+export { default } from '@openuxkit/themes/nora/badge';

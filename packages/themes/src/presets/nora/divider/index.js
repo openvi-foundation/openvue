@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/divider';
+export { default } from '@openuxkit/themes/nora/divider';

@@ -2,7 +2,7 @@
  *
  * Tooltip directive provides advisory information for a component.
  *
- * [Live Demo](https://primevue.org/tooltip)
+ * [Live Demo](https://openvue.dev/tooltip)
  *
  * @module tooltipstyle
  *

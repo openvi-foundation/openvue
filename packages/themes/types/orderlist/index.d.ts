@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/orderlist';
+export * from '@openuxkit/themes/types/orderlist';

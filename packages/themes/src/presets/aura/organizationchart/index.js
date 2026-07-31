@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/organizationchart';
+export { default } from '@openuxkit/themes/aura/organizationchart';

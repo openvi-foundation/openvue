@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/virtualscroller';
+import { style } from '@openuxkit/styles/virtualscroller';
 import BaseStyle from '@openvue/core/base/style';
 
 const css = `

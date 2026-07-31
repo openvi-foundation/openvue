@@ -196,7 +196,13 @@ async function verticalSelect<T extends string | boolean>(message: string, choic
 
     // Static frame; the cursor parks at the end of the bottom bar so CPR reports that row.
     process.stdout.write(
-        [`${pc.gray(S_GUTTER)}`, `${pc.cyan(S_ACTIVE)}  ${message.slice(0, width - 3)}`, ...choices.map((choice, index) => choiceRow(choice, index === initialIndex)), `${pc.gray(S_GUTTER)}  ${pc.dim(instructions.slice(0, width - 3))}`, pc.gray(S_BAR_END)].join('\n')
+        [
+            `${pc.gray(S_GUTTER)}`,
+            `${pc.cyan(S_ACTIVE)}  ${message.slice(0, width - 3)}`,
+            ...choices.map((choice, index) => choiceRow(choice, index === initialIndex)),
+            `${pc.gray(S_GUTTER)}  ${pc.dim(instructions.slice(0, width - 3))}`,
+            pc.gray(S_BAR_END)
+        ].join('\n')
     );
 
     let active = initialIndex;
@@ -287,7 +293,6 @@ function gitDirtyCount(dir: string): number | null {
 function totalReferences(result: MigrateResult): number {
     return result.changedFiles.reduce((sum, file) => sum + file.changes, 0);
 }
-
 
 function printPlainResult(result: MigrateResult, dry: boolean): void {
     if (result.changedFiles.length === 0) {

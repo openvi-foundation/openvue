@@ -1,6 +1,6 @@
 {
     "name": "showcase",
-    "version": "0.0.1-beta.0",
+    "version": "0.0.1-beta.1",
     "private": true,
     "author": "OpenVue Contributors",
     "description": "",
@@ -46,7 +46,7 @@
         "@openvue/core": "workspace:*",
         "@openvue/forms": "workspace:*",
         "@openvue/nuxt-module": "workspace:*",
-        "@primeuix/themes": "catalog:",
+        "@openvue/themes": "workspace:*",
         "@vercel/analytics": "^2.0.1",
         "@vercel/speed-insights": "^2.0.0",
         "chart.js": "catalog:app",

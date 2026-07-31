@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/toggleswitch';
+export * from '@openuxkit/themes/types/toggleswitch';

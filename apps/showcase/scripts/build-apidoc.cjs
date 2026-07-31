@@ -689,9 +689,9 @@ const getTypeDoc = (typeDocOptions) => {
 };
 
 const inlineDocs = getTypeDoc({
-    name: 'PrimeVue',
+    name: 'OpenVue',
     entryPoints: ['../../packages/primevue', '../../packages/forms']
 });
 
 !fs.existsSync(outputPath) && fs.mkdirSync(outputPath);
-fs.writeFileSync(path.resolve(outputPath, 'index.json'), JSON.stringify({ ...inlineDocs }, null, 4));
+fs.writeFileSync(path.resolve(outputPath, 'index.json'), JSON.stringify({ ...inlineDocs }, null, 4) + '\n');

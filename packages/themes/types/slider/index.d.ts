@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/slider';
+export * from '@openuxkit/themes/types/slider';

@@ -2,7 +2,7 @@
  *
  * Fluid is a layout component to make descendant components span full width of their container.
  *
- * [Live Demo](https://www.primevue.org/fluid/)
+ * [Live Demo](https://openvue.dev/fluid/)
  *
  * @module fluidstyle
  *

@@ -2,7 +2,7 @@
  *
  * Menubar is a horizontal menu component.
  *
- * [Live Demo](https://www.primevue.org/menubar/)
+ * [Live Demo](https://openvue.dev/menubar/)
  *
  * @module menubar
  *
@@ -403,9 +403,9 @@ export declare type MenubarEmits = EmitFn<MenubarEmitsOptions>;
  *
  * _Menubar is a horizontal menu component._
  *
- * [Live Demo](https://www.primevue.org/menubar/)
+ * [Live Demo](https://openvue.dev/menubar/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

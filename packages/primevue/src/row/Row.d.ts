@@ -2,7 +2,7 @@
  *
  * Row component is a helper component used to create grouping structures in DataTable.
  *
- * [Live Demo](https://www.primevue.org/datatable/)
+ * [Live Demo](https://openvue.dev/datatable/)
  *
  * @module row
  *
@@ -108,9 +108,9 @@ export declare type RowEmits = EmitFn<RowEmitsOptions>;
  *
  * _Row component is a helper component used to create grouping structures in DataTable._
  *
- * [Live Demo](https://www.primevue.org/datatable/)
+ * [Live Demo](https://openvue.dev/datatable/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

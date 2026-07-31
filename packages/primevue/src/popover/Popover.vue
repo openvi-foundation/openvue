@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import { $dt } from '@primeuix/styled';
-import { absolutePosition, addClass, addStyle, focus, getOffset, isClient, isTouchDevice, setAttribute } from '@primeuix/utils/dom';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { $dt } from '@openuxkit/styled';
+import { absolutePosition, addClass, addStyle, focus, getOffset, isClient, isTouchDevice, setAttribute } from '@openuxkit/utils/dom';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import FocusTrap from 'openvue/focustrap';
 import OverlayEventBus from 'openvue/overlayeventbus';

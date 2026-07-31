@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/organizationchart';
+export * from '@openuxkit/themes/types/organizationchart';

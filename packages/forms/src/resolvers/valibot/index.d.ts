@@ -1,1 +1,1 @@
-export * from '@primeuix/forms/resolvers/valibot';
+export * from '@openuxkit/forms/resolvers/valibot';

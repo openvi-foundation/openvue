@@ -2,7 +2,7 @@
  *
  * ColorPicker groups a collection of contents in tabs.
  *
- * [Live Demo](https://www.primevue.org/colorpicker/)
+ * [Live Demo](https://openvue.dev/colorpicker/)
  *
  * @module colorpickerstyle
  *

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/chip';
+export { default } from '@openuxkit/themes/material/chip';

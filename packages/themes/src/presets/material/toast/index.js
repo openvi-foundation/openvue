@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/toast';
+export { default } from '@openuxkit/themes/material/toast';

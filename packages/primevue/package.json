@@ -1,8 +1,8 @@
 {
     "name": "openvue",
-    "version": "0.0.1-beta.0",
+    "version": "0.0.1-beta.1",
     "author": "OpenVue Contributors",
-    "description": "PrimeVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 370+ ready to use UI blocks to build spectacular applications in no time.",
+    "description": "OpenVue is an open source, MIT-licensed UI library for Vue featuring a rich set of 80+ components, a theme designer, and various theme alternatives such as Material, Bootstrap and Tailwind. It is a community-maintained continuation of PrimeVue.",
     "homepage": "https://github.com/openvi-foundation/openvue",
     "license": "MIT",
     "repository": {
@@ -353,9 +353,9 @@
         "vitest": "^0.29.8"
     },
     "dependencies": {
-        "@primeuix/styled": "catalog:",
-        "@primeuix/utils": "catalog:",
-        "@primeuix/styles": "catalog:",
+        "@openuxkit/styled": "catalog:",
+        "@openuxkit/utils": "catalog:",
+        "@openuxkit/styles": "catalog:",
         "@openvue/core": "workspace:*",
         "@openvue/icons": "workspace:*"
     },

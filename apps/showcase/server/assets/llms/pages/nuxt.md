@@ -6,6 +6,73 @@ Setting up OpenVue in a Nuxt project.
 
 The auto import feature registers components automatically with tree shaking support. Defaults to true , when disabled use include/exclude options of components and directives for manual registration. Use the prefix in components and directives to add a prefix for registration.
 
+## Download
+
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+
+```vue
+# Using npm
+npm install openvue@beta @openvue/themes
+npm install --save-dev @openvue/nuxt-module@beta
+
+# Using yarn
+yarn add openvue@beta @openvue/themes
+yarn add --dev @openvue/nuxt-module@beta
+
+# Using pnpm
+pnpm add openvue@beta @openvue/themes
+pnpm add -D @openvue/nuxt-module@beta
+```
+
+## Examples
+
+Nuxt based samples with different options are available at OpenVue examples repository.
+
+## Module
+
+In nuxt.config file, add the @openvue/nuxt-module to the modules section and define primevue object for the configuration of the module.
+
+## Next Steps
+
+Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
+
+## Styled Mode
+
+Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @openvue/themes add-on package as the themes are not included in OpenVue by default. Alternatively install @openuxkit/themes , the engine package that @openvue/themes is built on. It provides the same presets and utilities, so the configuration below works with either by changing only the import path. See theme packages for details. Configure the module to use a theme like Aura.
+
+## Theme
+
+Configure the module to use a theme like Aura.
+
+```vue
+import Aura from '@openvue/themes/aura';
+
+export default defineNuxtConfig({
+    modules: [
+        '@openvue/nuxt-module'
+    ],
+    primevue: {
+        options: {
+            theme: {
+                preset: Aura
+            }
+        }
+    }
+})
+```
+
+## Unstyled Mode
+
+In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of OpenVue. Visit the Unstyled mode documentation for more information and examples.
+
+## Verify
+
+The nuxt-primevue module registers the components automatically with tree-shaking support so you may start using them instantly.
+
+```vue
+<Button label="Verify" />
+```
+
 ## components
 
 When autoImport is disabled, use the include and exclude for manual registration. The components to import and register are defined with the include option using a string array. When the value is ignored or set using the * alias, all of the components are registered. In case all components are imported, particular components can still be excluded with the exclude option. By default, for compatibility reasons, Chart and Editor components are excluded. To include them simply set the exclude option to an empty list. Use the prefix option to give a prefix to the registered component names. Component registration can be customized further by implementing the name function that gets an object representing the import metadata. name is the label of the component, as is the default export name and from is the import path.
@@ -31,7 +98,7 @@ Configures the theme configuration path for the customizations of a theme in sty
 Main configuration settings of OpenVue, refer to the configuration documentation for details.
 
 ```vue
-import Aura from '@primeuix/themes/aura';
+import Aura from '@openvue/themes/aura';
 
 export default defineNuxtConfig({
     modules: [
@@ -62,72 +129,5 @@ The module installs the OpenVue plugin by default. Disable this option if you pr
 primevue: {
     usePrimeVue: true | false
 }
-```
-
-## Download
-
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release.
-
-```vue
-# Using npm
-npm install openvue@beta @primeuix/themes
-npm install --save-dev @openvue/nuxt-module@beta
-
-# Using yarn
-yarn add openvue@beta @primeuix/themes
-yarn add --dev @openvue/nuxt-module@beta
-
-# Using pnpm
-pnpm add openvue@beta @primeuix/themes
-pnpm add -D @openvue/nuxt-module@beta
-```
-
-## Examples
-
-Nuxt based samples with different options are available at OpenVue examples repository.
-
-## Module
-
-In nuxt.config file, add the @openvue/nuxt-module to the modules section and define primevue object for the configuration of the module.
-
-## Next Steps
-
-Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
-
-## Styled Mode
-
-Styled mode provides pre-skinned components, default theme is Aura with emerald as the primary color. See the styled mode documentation for details. Install the @primeuix/themes add-on package as the themes are not included in OpenVue by default. Configure the module to use a theme like Aura.
-
-## Theme
-
-Configure the module to use a theme like Aura.
-
-```vue
-import Aura from '@primeuix/themes/aura';
-
-export default defineNuxtConfig({
-    modules: [
-        '@openvue/nuxt-module'
-    ],
-    primevue: {
-        options: {
-            theme: {
-                preset: Aura
-            }
-        }
-    }
-})
-```
-
-## Unstyled Mode
-
-In unstyled mode, the components do not include any CSS so you'd need to style the components on your end, this is especially useful when building your own UI library on top of OpenVue. Visit the Unstyled mode documentation for more information and examples.
-
-## Verify
-
-The nuxt-primevue module registers the components automatically with tree-shaking support so you may start using them instantly.
-
-```vue
-<Button label="Verify" />
 ```
 

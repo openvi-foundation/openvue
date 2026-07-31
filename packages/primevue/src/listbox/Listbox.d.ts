@@ -2,7 +2,7 @@
  *
  * ListBox is used to select one or more values from a list of items.
  *
- * [Live Demo](https://www.primevue.org/listbox/)
+ * [Live Demo](https://openvue.dev/listbox/)
  *
  * @module listbox
  *
@@ -387,27 +387,27 @@ export interface ListboxProps {
      */
     checkmark?: boolean | undefined;
     /**
-     * Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when filtering returns any results. Defaults to value from OpenVue locale configuration.
      * @defaultValue '{0} results are available'
      */
     filterMessage?: string | undefined;
     /**
-     * Text to be displayed in hidden accessible field when options are selected. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when options are selected. Defaults to value from OpenVue locale configuration.
      * @defaultValue '{0} items selected'
      */
     selectionMessage?: string | undefined;
     /**
-     * Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from PrimeVue locale configuration.
+     * Text to be displayed in hidden accessible field when any option is not selected. Defaults to value from OpenVue locale configuration.
      * @defaultValue No selected item
      */
     emptySelectionMessage?: string | undefined;
     /**
-     * Text to display when filtering does not return any results. Defaults to value from PrimeVue locale configuration.
+     * Text to display when filtering does not return any results. Defaults to value from OpenVue locale configuration.
      * @defaultValue No results found
      */
     emptyFilterMessage?: string | undefined;
     /**
-     * Text to display when there are no options available. Defaults to value from PrimeVue locale configuration.
+     * Text to display when there are no options available. Defaults to value from OpenVue locale configuration.
      * @defaultValue No available options
      */
     emptyMessage?: string | undefined;
@@ -629,9 +629,9 @@ export declare type ListboxEmits = EmitFn<ListboxEmitsOptions>;
  *
  * _ListBox is used to select one or more values from a list of items._
  *
- * [Live Demo](https://www.primevue.org/listbox/)
+ * [Live Demo](https://openvue.dev/listbox/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

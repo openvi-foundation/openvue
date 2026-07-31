@@ -93,9 +93,9 @@
 </template>
 
 <script>
-import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice, relativePosition } from '@primeuix/utils/dom';
-import { equals, findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, isString, resolveFieldData } from '@primeuix/utils/object';
-import { ZIndex } from '@primeuix/utils/zindex';
+import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
+import { equals, findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, isString, resolveFieldData } from '@openuxkit/utils/object';
+import { ZIndex } from '@openuxkit/utils/zindex';
 import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
 import AngleRightIcon from '@openvue/icons/angleright';
 import ChevronDownIcon from '@openvue/icons/chevrondown';

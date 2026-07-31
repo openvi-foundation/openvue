@@ -1,6 +1,6 @@
 {
     "name": "@openvue/core",
-    "version": "0.0.1-beta.0",
+    "version": "0.0.1-beta.1",
     "author": "OpenVue Contributors",
     "description": "",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -60,8 +60,9 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primeuix/styled": "catalog:",
-        "@primeuix/utils": "catalog:"
+        "@openuxkit/styled": "catalog:",
+        "@openuxkit/styles": "catalog:",
+        "@openuxkit/utils": "catalog:"
     },
     "peerDependencies": {
         "vue": "^3.5.0"

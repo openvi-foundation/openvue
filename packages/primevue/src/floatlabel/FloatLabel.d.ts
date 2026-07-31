@@ -2,7 +2,7 @@
  *
  * FloatLabel visually integrates a label with its form element.
  *
- * [Live Demo](https://www.primevue.org/floatlabel/)
+ * [Live Demo](https://openvue.dev/floatlabel/)
  *
  * @module floatlabel
  *
@@ -117,9 +117,9 @@ export declare type FloatLabelEmits = EmitFn<FloatLabelEmitsOptions>;
  *
  * _FloatLabel visually integrates a label with its form element._
  *
- * [Live Demo](https://www.primevue.org/inputtext/)
+ * [Live Demo](https://openvue.dev/inputtext/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/autocomplete';
+export { default } from '@openuxkit/themes/aura/autocomplete';

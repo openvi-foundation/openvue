@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/multiselect';
+import { style } from '@openuxkit/styles/multiselect';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

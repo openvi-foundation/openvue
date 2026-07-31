@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/carousel';
+export { default } from '@openuxkit/themes/nora/carousel';

@@ -2,7 +2,7 @@
  *
  * ColorPicker groups a collection of contents in tabs.
  *
- * [Live Demo](https://www.primevue.org/colorpicker/)
+ * [Live Demo](https://openvue.dev/colorpicker/)
  *
  * @module colorpicker
  *
@@ -267,9 +267,9 @@ export declare type ColorPickerEmits = EmitFn<ColorPickerEmitsOptions>;
  *
  * _ColorPicker groups a collection of contents in tabs._
  *
- * [Live Demo](https://www.primevue.org/colorpicker/)
+ * [Live Demo](https://openvue.dev/colorpicker/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

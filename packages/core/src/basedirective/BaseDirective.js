@@ -1,6 +1,6 @@
-import { Theme, ThemeService } from '@primeuix/styled';
-import { getKeyValue, isArray, isEmpty, isFunction, isObject, isString, resolve, toCapitalCase, toFlatCase } from '@primeuix/utils/object';
-import { uuid } from '@primeuix/utils/uuid';
+import { Theme, ThemeService } from '@openuxkit/styled';
+import { getKeyValue, isArray, isEmpty, isFunction, isObject, isString, resolve, toCapitalCase, toFlatCase } from '@openuxkit/utils/object';
+import { uuid } from '@openuxkit/utils/uuid';
 import Base from '@openvue/core/base';
 import BaseStyle from '@openvue/core/base/style';
 import PrimeVueService from '@openvue/core/service';

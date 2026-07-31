@@ -1,1 +1,1 @@
-export * from '@primeuix/forms/resolvers/joi';
+export * from '@openuxkit/forms/resolvers/joi';

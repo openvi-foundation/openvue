@@ -2,7 +2,7 @@
  *
  * Stepper is a component that streamlines a wizard-like workflow, organizing content into coherent steps and visually guiding users through a numbered progression in a multi-step process.
  *
- * [Live Demo](https://www.primevue.org/stepper/)
+ * [Live Demo](https://openvue.dev/stepper/)
  *
  * @module stepper
  *
@@ -156,9 +156,9 @@ export declare type StepperEmits = EmitFn<StepperEmitsOptions>;
  *
  * _Stepper is a component that streamlines a wizard-like workflow, organizing content into coherent steps and visually guiding users through a numbered progression in a multi-step process._
  *
- * [Live Demo](https://www.primevue.org/stepper/)
+ * [Live Demo](https://openvue.dev/stepper/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

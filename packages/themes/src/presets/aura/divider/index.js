@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/divider';
+export { default } from '@openuxkit/themes/aura/divider';

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/floatlabel';
+export { default } from '@openuxkit/themes/aura/floatlabel';

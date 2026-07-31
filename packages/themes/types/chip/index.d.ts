@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/chip';
+export * from '@openuxkit/themes/types/chip';

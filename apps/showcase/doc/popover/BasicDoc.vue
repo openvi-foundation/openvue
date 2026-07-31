@@ -10,7 +10,7 @@
                 <div>
                     <span class="font-medium block mb-2">Share this document</span>
                     <InputGroup>
-                        <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
+                        <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
                         <InputGroupAddon>
                             <i class="pi pi-copy"></i>
                         </InputGroupAddon>
@@ -63,7 +63,7 @@ export default {
         <div>
             <span class="font-medium block mb-2">Share this document</span>
             <InputGroup>
-                <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
+                <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
                 <InputGroupAddon>
                     <i class="pi pi-copy"></i>
                 </InputGroupAddon>
@@ -105,7 +105,7 @@ export default {
                 <div>
                     <span class="font-medium block mb-2">Share this document</span>
                     <InputGroup>
-                        <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
+                        <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
                         <InputGroupAddon>
                             <i class="pi pi-copy"></i>
                         </InputGroupAddon>
@@ -168,7 +168,7 @@ export default {
                 <div>
                     <span class="font-medium block mb-2">Share this document</span>
                     <InputGroup>
-                        <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
+                        <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly class="w-[25rem]"></InputText>
                         <InputGroupAddon>
                             <i class="pi pi-copy"></i>
                         </InputGroupAddon>

@@ -2,7 +2,7 @@
  *
  *  AnimateOnScroll manages CSS classes declaratively to during enter/leave animations on scroll or on page load.
  *
- * [Live Demo](https://primevue.org/animateonscroll)
+ * [Live Demo](https://openvue.dev/animateonscroll)
  *
  * @module animateonscrollstyle
  *

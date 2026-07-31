@@ -2,7 +2,7 @@
  *
  * IconField wraps an input and an icon.
  *
- * [Live Demo](https://www.primevue.org/inputtext/)
+ * [Live Demo](https://openvue.dev/inputtext/)
  *
  * @module iconfieldstyle
  *

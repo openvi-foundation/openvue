@@ -2,7 +2,7 @@
  *
  * DataView displays data in grid or list layout with pagination and sorting features.
  *
- * [Live Demo](https://www.primevue.org/dataview/)
+ * [Live Demo](https://openvue.dev/dataview/)
  *
  * @module dataview
  *
@@ -399,9 +399,9 @@ export declare type DataViewEmits = EmitFn<DataViewEmitsOptions>;
  *
  * _DataView displays data in grid or list layout with pagination and sorting features._
  *
- * [Live Demo](https://www.primevue.org/dataview/)
+ * [Live Demo](https://openvue.dev/dataview/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

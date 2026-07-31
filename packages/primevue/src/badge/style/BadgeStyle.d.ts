@@ -2,7 +2,7 @@
  *
  * Badge represents people using icons, labels and images.
  *
- * [Live Demo](https://www.primevue.org/badge)
+ * [Live Demo](https://openvue.dev/badge)
  *
  * @module badgestyle
  *

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/material/confirmpopup';
+export { default } from '@openuxkit/themes/material/confirmpopup';

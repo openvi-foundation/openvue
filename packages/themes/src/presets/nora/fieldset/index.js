@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/fieldset';
+export { default } from '@openuxkit/themes/nora/fieldset';

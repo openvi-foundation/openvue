@@ -2,7 +2,7 @@
  *
  * Card is a flexible container component.
  *
- * [Live Demo](https://www.primevue.org/card/)
+ * [Live Demo](https://openvue.dev/card/)
  *
  * @module card
  *
@@ -150,9 +150,9 @@ export declare type CardEmits = EmitFn<CardEmitsOptions>;
  *
  * _Card is a flexible container component._
  *
- * [Live Demo](https://www.primevue.org/card/)
+ * [Live Demo](https://openvue.dev/card/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

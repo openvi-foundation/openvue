@@ -2,7 +2,7 @@
  *
  * Step is a helper component for Stepper component.
  *
- * [Live Demo](https://www.primevue.org/stepper/)
+ * [Live Demo](https://openvue.dev/stepper/)
  *
  * @module step
  *
@@ -169,9 +169,9 @@ export declare type StepEmits = EmitFn<StepEmitsOptions>;
  *
  * _Step is a helper component for Stepper component._
  *
- * [Live Demo](https://www.primevue.org/stepper/)
+ * [Live Demo](https://openvue.dev/stepper/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

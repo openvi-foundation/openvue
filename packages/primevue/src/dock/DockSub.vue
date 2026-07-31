@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import { find, findSingle } from '@primeuix/utils/dom';
-import { resolve } from '@primeuix/utils/object';
+import { find, findSingle } from '@openuxkit/utils/dom';
+import { resolve } from '@openuxkit/utils/object';
 import BaseComponent from '@openvue/core/basecomponent';
 import Ripple from 'openvue/ripple';
 import Tooltip from 'openvue/tooltip';

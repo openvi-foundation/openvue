@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import ConfirmDialog from '@/volt/ConfirmDialog.vue';
 import Toast from '@/volt/Toast.vue';
-import { blockBodyScroll, unblockBodyScroll } from '@primeuix/utils/dom';
+import { blockBodyScroll, unblockBodyScroll } from '@openuxkit/utils/dom';
 import { useToast } from 'primevue/usetoast';
 import { computed, ref, watch } from 'vue';
 

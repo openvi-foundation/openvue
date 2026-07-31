@@ -2,7 +2,7 @@
  *
  * Steps components is an indicator for the steps in a wizard workflow. Example below uses nested routes with Steps.
  *
- * [Live Demo](https://www.primevue.org/steps/)
+ * [Live Demo](https://openvue.dev/steps/)
  *
  * @module stepsstyle
  *

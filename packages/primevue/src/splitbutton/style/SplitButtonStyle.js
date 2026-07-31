@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/splitbutton';
+import { style } from '@openuxkit/styles/splitbutton';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

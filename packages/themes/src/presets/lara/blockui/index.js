@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/blockui';
+export { default } from '@openuxkit/themes/lara/blockui';

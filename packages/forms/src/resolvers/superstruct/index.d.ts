@@ -1,1 +1,1 @@
-export * from '@primeuix/forms/resolvers/superstruct';
+export * from '@openuxkit/forms/resolvers/superstruct';

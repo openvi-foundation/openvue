@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/inlinemessage';
+export { default } from '@openuxkit/themes/nora/inlinemessage';

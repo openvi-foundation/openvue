@@ -1,5 +1,5 @@
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { ComponentsData, createPrimeMcpServer } from '@primeuix/mcp';
+import { ComponentsData, createPrimeMcpServer } from '@openuxkit/mcp';
 import { z } from 'zod';
 import ComponentJson from '../data/components.json';
 import pkg from '../package.json';
@@ -47,8 +47,8 @@ async function run() {
     const server = await createPrimeMcpServer({
         name: '@openvue/mcp',
         version: pkg.version,
-        baseUrl: 'https://primevue.org',
-        frameworkName: 'PrimeVue',
+        baseUrl: 'https://openvue.dev',
+        frameworkName: 'OpenVue',
         slotKey: 'slots',
         codeLanguage: 'javascript',
         compatibility: 'Vue 3.x',

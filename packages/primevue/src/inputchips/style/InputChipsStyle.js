@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/inputchips';
+import { style } from '@openuxkit/styles/inputchips';
 import BaseStyle from '@openvue/core/base/style';
 
 const classes = {

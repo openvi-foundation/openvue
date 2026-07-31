@@ -1,5 +1,5 @@
-import { Theme, ThemeService } from '@primeuix/styled';
-import { mergeKeys } from '@primeuix/utils';
+import { Theme, ThemeService } from '@openuxkit/styled';
+import { mergeKeys } from '@openuxkit/utils';
 import { FilterMatchMode } from '@openvue/core/api';
 import BaseStyle from '@openvue/core/base/style';
 import PrimeVueService from '@openvue/core/service';

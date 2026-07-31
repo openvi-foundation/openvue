@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/aura/treeselect';
+export { default } from '@openuxkit/themes/aura/treeselect';

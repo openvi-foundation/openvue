@@ -1,6 +1,6 @@
 {
     "name": "@openvue/icons",
-    "version": "0.0.1-beta.0",
+    "version": "0.0.1-beta.1",
     "author": "OpenVue Contributors",
     "description": "",
     "homepage": "https://github.com/openvi-foundation/openvue",
@@ -99,7 +99,7 @@
         "dev:link": "pnpm link --global && npm link"
     },
     "dependencies": {
-        "@primeuix/utils": "catalog:",
+        "@openuxkit/utils": "catalog:",
         "@openvue/core": "workspace:*"
     },
     "engines": {

@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/megamenu';
+import { style } from '@openuxkit/styles/megamenu';
 import BaseStyle from '@openvue/core/base/style';
 
 const inlineStyles = {

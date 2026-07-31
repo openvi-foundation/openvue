@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/datepicker';
+export * from '@openuxkit/themes/types/datepicker';

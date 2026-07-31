@@ -1,4 +1,4 @@
-import { addClass, getTargetElement, hasClass, isElement, removeClass } from '@primeuix/utils/dom';
+import { addClass, getTargetElement, hasClass, isElement, removeClass } from '@openuxkit/utils/dom';
 import BaseStyleClass from './BaseStyleClass';
 
 const StyleClass = BaseStyleClass.extend('styleclass', {

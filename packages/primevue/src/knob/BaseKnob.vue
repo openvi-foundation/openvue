@@ -1,5 +1,5 @@
 <script>
-import { $dt } from '@primeuix/styled';
+import { $dt } from '@openuxkit/styled';
 import BaseEditableHolder from '@openvue/core/baseeditableholder';
 import KnobStyle from 'openvue/knob/style';
 

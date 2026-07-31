@@ -1,6 +1,6 @@
 /**
  *
- * [Live Demo](https://www.primevue.org/forms/)
+ * [Live Demo](https://openvue.dev/forms/)
  *
  * @module formfieldstyle
  *

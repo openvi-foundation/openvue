@@ -1,4 +1,4 @@
-import { style } from '@primeuix/styles/password';
+import { style } from '@openuxkit/styles/password';
 import BaseStyle from '@openvue/core/base/style';
 
 const buttonReset = {

@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/inputnumber';
+export { default } from '@openuxkit/themes/nora/inputnumber';

@@ -2,7 +2,7 @@
  *
  * InputIcon displays an icon.
  *
- * [Live Demo](https://www.primevue.org/inputgroup/)
+ * [Live Demo](https://openvue.dev/inputgroup/)
  *
  * @module inputiconstyle
  *

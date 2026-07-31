@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
+import { cn } from '@openuxkit/utils';
 import BaseToggleSwitch from './BaseToggleSwitch.vue';
 
 export default {

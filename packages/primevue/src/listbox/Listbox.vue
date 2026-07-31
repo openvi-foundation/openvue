@@ -131,9 +131,9 @@
 </template>
 
 <script>
-import { cn } from '@primeuix/utils';
-import { findSingle, focus, getFirstFocusableElement, isElement } from '@primeuix/utils/dom';
-import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@primeuix/utils/object';
+import { cn } from '@openuxkit/utils';
+import { findSingle, focus, getFirstFocusableElement, isElement } from '@openuxkit/utils/dom';
+import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@openuxkit/utils/object';
 import { FilterService } from '@openvue/core/api';
 import BlankIcon from '@openvue/icons/blank';
 import CheckIcon from '@openvue/icons/check';

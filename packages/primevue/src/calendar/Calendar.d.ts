@@ -2,7 +2,7 @@
  *
  * Calendar also known as DatePicker, is a form component to work with dates.
  *
- * [Live Demo](https://www.primevue.org/datepicker/)
+ * [Live Demo](https://openvue.dev/datepicker/)
  *
  * @module calendar
  *
@@ -109,9 +109,9 @@ export declare type CalendarEmits = EmitFn<CalendarEmitsOptions> & DatePicker.Da
  *
  * _Calendar also known as DatePicker, is a form component to work with dates._
  *
- * [Live Demo](https://www.primevue.org/datepicker/)
+ * [Live Demo](https://openvue.dev/datepicker/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

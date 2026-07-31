@@ -2,7 +2,7 @@
  *
  * Dock is a navigation component consisting of menuitems.
  *
- * [Live Demo](https://www.primevue.org/dock/)
+ * [Live Demo](https://openvue.dev/dock/)
  *
  * @module dock
  *
@@ -313,9 +313,9 @@ export declare type DockEmits = EmitFn<DockEmitsOptions>;
  *
  * _Dock is a navigation component consisting of menuitems._
  *
- * [Live Demo](https://www.primevue.org/dock/)
+ * [Live Demo](https://openvue.dev/dock/)
  * --- ---
- * ![PrimeVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
+ * ![OpenVue](https://primefaces.org/cdn/primevue/images/logo-100.png)
  *
  * @group Component
  *

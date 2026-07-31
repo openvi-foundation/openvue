@@ -2,7 +2,7 @@
  *
  * Toast is used to display messages in an overlay.
  *
- * [Live Demo](https://www.primevue.org/toast/)
+ * [Live Demo](https://openvue.dev/toast/)
  *
  * @module toaststyle
  *

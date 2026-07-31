@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/nora/iconfield';
+export { default } from '@openuxkit/themes/nora/iconfield';

@@ -2,7 +2,7 @@
  *
  * FloatLabel visually integrates a label with its form element.
  *
- * [Live Demo](https://www.primevue.org/floatlabel/)
+ * [Live Demo](https://openvue.dev/floatlabel/)
  *
  * @module floatlabelstyle
  *

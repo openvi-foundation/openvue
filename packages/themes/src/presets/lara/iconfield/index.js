@@ -1,1 +1,1 @@
-export { default } from '@primeuix/themes/lara/iconfield';
+export { default } from '@openuxkit/themes/lara/iconfield';

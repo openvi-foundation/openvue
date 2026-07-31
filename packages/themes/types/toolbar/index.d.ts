@@ -1,1 +1,1 @@
-export * from '@primeuix/themes/types/toolbar';
+export * from '@openuxkit/themes/types/toolbar';
