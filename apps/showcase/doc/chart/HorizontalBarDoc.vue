@@ -9,14 +9,47 @@
 </template>
 
 <script>
-import EventBus from '@/app/AppEventBus';
-
 export default {
-    redrawListener: null,
     data() {
         return {
-            chartData: null,
-            chartOptions: null,
+            chartData: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'My First dataset',
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: 'My Second dataset',
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
+            },
+            chartOptions: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                aspectRatio: 0.8,
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                weight: 500
+                            }
+                        },
+                        grid: {
+                            display: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        border: {
+                            display: false
+                        }
+                    }
+                }
+            },
             code: {
                 basic: `
 <Chart type="bar" :data="chartData" :options="chartOptions" class="h-[30rem]"  />
@@ -42,47 +75,28 @@ export default {
     },
     methods: {
         setChartData() {
-            const documentStyle = getComputedStyle(document.documentElement);
-
             return {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
                     {
                         label: 'My First dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
                         data: [65, 59, 80, 81, 56, 55, 40]
                     },
                     {
                         label: 'My Second dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
                         data: [28, 48, 40, 19, 86, 27, 90]
                     }
                 ]
             };
         },
         setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
             return {
                 indexAxis: 'y',
                 maintainAspectRatio: false,
                 aspectRatio: 0.8,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                },
                 scales: {
                     x: {
                         ticks: {
-                            color: textColorSecondary,
                             font: {
                                 weight: 500
                             }
@@ -95,12 +109,6 @@ export default {
                         }
                     },
                     y: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        },
                         border: {
                             display: false
                         }
@@ -131,47 +139,28 @@ const chartData = ref();
 const chartOptions = ref();
 
 const setChartData = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-
     return {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
             {
                 label: 'My First dataset',
-                backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
                 data: [65, 59, 80, 81, 56, 55, 40]
             },
             {
                 label: 'My Second dataset',
-                backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-                borderColor: documentStyle.getPropertyValue('--p-gray-500'),
                 data: [28, 48, 40, 19, 86, 27, 90]
             }
         ]
     };
 };
 const setChartOptions = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--p-text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-    const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
     return {
         indexAxis: 'y',
         maintainAspectRatio: false,
         aspectRatio: 0.8,
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
         scales: {
             x: {
                 ticks: {
-                    color: textColorSecondary,
                     font: {
                         weight: 500
                     }
@@ -184,12 +173,6 @@ const setChartOptions = () => {
                 }
             },
             y: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder
-                },
                 border: {
                     display: false
                 }
@@ -201,90 +184,6 @@ const setChartOptions = () => {
 `
             }
         };
-    },
-    beforeUnmount() {
-        EventBus.off('dark-mode-toggle-complete', this.redrawListener);
-        EventBus.off('theme-palette-change', this.redrawListener);
-    },
-    mounted() {
-        this.chartData = this.setChartData();
-        this.chartOptions = this.setChartOptions();
-
-        this.redrawListener = () => {
-            this.chartOptions = this.setChartOptions();
-        };
-
-        EventBus.on('theme-palette-change', this.redrawListener);
-        EventBus.on('dark-mode-toggle-complete', this.redrawListener);
-    },
-    methods: {
-        setChartData() {
-            const documentStyle = getComputedStyle(document.documentElement);
-
-            return {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
-                        label: 'My First dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: 'My Second dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    }
-                ]
-            };
-        },
-        setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
-            return {
-                indexAxis: 'y',
-                maintainAspectRatio: false,
-                aspectRatio: 0.8,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: textColorSecondary,
-                            font: {
-                                weight: 500
-                            }
-                        },
-                        grid: {
-                            display: false
-                        },
-                        border: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        },
-                        border: {
-                            display: false
-                        }
-                    }
-                }
-            };
-        }
     }
 };
 </script>

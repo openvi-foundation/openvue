@@ -122,6 +122,12 @@ export interface ChartProps<TType extends ChartType = ChartType> {
      */
     canvasProps?: CanvasHTMLAttributes | undefined;
     /**
+     * When enabled, colors, fonts and grid lines are derived from the active theme's design tokens
+     * and kept in sync with theme changes. Any option passed via the options property takes precedence.
+     * @defaultValue true
+     */
+    themed?: boolean | undefined;
+    /**
      * It generates scoped CSS variables using design tokens for the component.
      */
     dt?: DesignToken<any>;

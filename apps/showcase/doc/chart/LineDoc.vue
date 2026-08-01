@@ -9,14 +9,30 @@
 </template>
 
 <script>
-import EventBus from '@/app/AppEventBus';
-
 export default {
-    redrawListener: null,
     data() {
         return {
-            chartData: null,
-            chartOptions: null,
+            chartData: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'First Dataset',
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Second Dataset',
+                        data: [28, 48, 40, 19, 86, 27, 90],
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            chartOptions: {
+                maintainAspectRatio: false,
+                aspectRatio: 0.6
+            },
             code: {
                 basic: `
 <Chart type="line" :data="chartData" :options="chartOptions" class="h-[30rem]" />
@@ -42,8 +58,6 @@ export default {
     },
     methods: {
         setChartData() {
-            const documentStyle = getComputedStyle(document.documentElement);
-
             return {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
@@ -51,53 +65,21 @@ export default {
                         label: 'First Dataset',
                         data: [65, 59, 80, 81, 56, 55, 40],
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
                         tension: 0.4
                     },
                     {
                         label: 'Second Dataset',
                         data: [28, 48, 40, 19, 86, 27, 90],
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
                         tension: 0.4
                     }
                 ]
             };
         },
         setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
             return {
                 maintainAspectRatio: false,
-                aspectRatio: 0.6,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        }
-                    }
-                }
+                aspectRatio: 0.6
             };
         }
     }
@@ -123,8 +105,6 @@ const chartData = ref();
 const chartOptions = ref();
         
 const setChartData = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-
     return {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
@@ -132,135 +112,27 @@ const setChartData = () => {
                 label: 'First Dataset',
                 data: [65, 59, 80, 81, 56, 55, 40],
                 fill: false,
-                borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
                 tension: 0.4
             },
             {
                 label: 'Second Dataset',
                 data: [28, 48, 40, 19, 86, 27, 90],
                 fill: false,
-                borderColor: documentStyle.getPropertyValue('--p-gray-500'),
                 tension: 0.4
             }
         ]
     };
 };
 const setChartOptions = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--p-text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-    const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
     return {
         maintainAspectRatio: false,
-        aspectRatio: 0.6,
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder
-                }
-            },
-            y: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder
-                }
-            }
-        }
+        aspectRatio: 0.6
     };
 }
 <\/script>
 `
             }
         };
-    },
-    beforeUnmount() {
-        EventBus.off('dark-mode-toggle-complete', this.redrawListener);
-        EventBus.off('theme-palette-change', this.redrawListener);
-    },
-    mounted() {
-        this.chartData = this.setChartData();
-        this.chartOptions = this.setChartOptions();
-
-        this.redrawListener = () => {
-            this.chartOptions = this.setChartOptions();
-        };
-
-        EventBus.on('theme-palette-change', this.redrawListener);
-        EventBus.on('dark-mode-toggle-complete', this.redrawListener);
-    },
-    methods: {
-        setChartData() {
-            const documentStyle = getComputedStyle(document.documentElement);
-
-            return {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
-                        label: 'First Dataset',
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        fill: false,
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Second Dataset',
-                        data: [28, 48, 40, 19, 86, 27, 90],
-                        fill: false,
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        tension: 0.4
-                    }
-                ]
-            };
-        },
-        setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
-
-            return {
-                maintainAspectRatio: false,
-                aspectRatio: 0.6,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder
-                        }
-                    }
-                }
-            };
-        }
     }
 };
 </script>

@@ -9,14 +9,26 @@
 </template>
 
 <script>
-import EventBus from '@/app/AppEventBus';
-
 export default {
-    redrawListener: null,
     data() {
         return {
-            chartData: null,
-            chartOptions: null,
+            chartData: {
+                labels: ['A', 'B', 'C'],
+                datasets: [
+                    {
+                        data: [300, 50, 100]
+                    }
+                ]
+            },
+            chartOptions: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            cutout: '60%'
+                        }
+                    }
+                }
+            },
             code: {
                 basic: `
 <Chart type="doughnut" :data="chartData" :options="chartOptions" class="w-full md:w-[30rem]" />
@@ -44,29 +56,21 @@ export default {
     },
     methods: {
         setChartData() {
-            const documentStyle = getComputedStyle(document.body);
-
             return {
                 labels: ['A', 'B', 'C'],
                 datasets: [
                     {
-                        data: [540, 325, 702],
-                        backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                        hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
+                        data: [540, 325, 702]
                     }
                 ]
             };
         },
         setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-
             return {
                 plugins: {
                     legend: {
                         labels: {
-                            cutout: '60%',
-                            color: textColor
+                            cutout: '60%'
                         }
                     }
                 }
@@ -95,30 +99,22 @@ const chartData = ref();
 const chartOptions = ref(null);
 
 const setChartData = () => {
-    const documentStyle = getComputedStyle(document.body);
-
     return {
         labels: ['A', 'B', 'C'],
         datasets: [
             {
-                data: [540, 325, 702],
-                backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
+                data: [540, 325, 702]
             }
         ]
     };
 };
 
 const setChartOptions = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--p-text-color');
-
     return {
         plugins: {
             legend: {
                 labels: {
-                    cutout: '60%',
-                    color: textColor
+                    cutout: '60%'
                 }
             }
         }
@@ -128,52 +124,6 @@ const setChartOptions = () => {
 `
             }
         };
-    },
-    beforeUnmount() {
-        EventBus.off('dark-mode-toggle-complete', this.redrawListener);
-        EventBus.off('theme-palette-change', this.redrawListener);
-    },
-    mounted() {
-        this.chartData = this.setChartData();
-        this.chartOptions = this.setChartOptions();
-
-        this.redrawListener = () => {
-            this.chartOptions = this.setChartOptions();
-        };
-
-        EventBus.on('theme-palette-change', this.redrawListener);
-        EventBus.on('dark-mode-toggle-complete', this.redrawListener);
-    },
-    methods: {
-        setChartData() {
-            const documentStyle = getComputedStyle(document.documentElement);
-
-            return {
-                labels: ['A', 'B', 'C'],
-                datasets: [
-                    {
-                        data: [300, 50, 100],
-                        backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                        hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
-                    }
-                ]
-            };
-        },
-        setChartOptions() {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-
-            return {
-                plugins: {
-                    legend: {
-                        labels: {
-                            cutout: '60%',
-                            color: textColor
-                        }
-                    }
-                }
-            };
-        }
     }
 };
 </script>

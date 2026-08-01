@@ -21,6 +21,10 @@ export default {
         canvasProps: {
             type: null,
             default: null
+        },
+        themed: {
+            type: Boolean,
+            default: true
         }
     },
     style: ChartStyle,
