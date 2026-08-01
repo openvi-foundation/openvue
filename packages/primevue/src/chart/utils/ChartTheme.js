@@ -15,14 +15,14 @@ import { $dt } from '@openuxkit/styled';
  * lightened copy of light, because simply brightening these hues pushes them out of the band.
  */
 const SERIES_TOKENS = [
-    { light: 'blue.500', dark: 'blue.500' },
-    { light: 'amber.500', dark: 'amber.600' },
-    { light: 'violet.500', dark: 'violet.500' },
-    { light: 'emerald.500', dark: 'emerald.600' },
-    { light: 'fuchsia.500', dark: 'fuchsia.500' },
-    { light: 'rose.500', dark: 'rose.500' },
-    { light: 'cyan.500', dark: 'cyan.600' },
-    { light: 'lime.500', dark: 'lime.600' }
+    { light: 'blue.500', dark: 'blue.500', fallback: '#3b82f6' },
+    { light: 'amber.500', dark: 'amber.600', fallback: '#f59e0b' },
+    { light: 'violet.500', dark: 'violet.500', fallback: '#8b5cf6' },
+    { light: 'emerald.500', dark: 'emerald.600', fallback: '#10b981' },
+    { light: 'fuchsia.500', dark: 'fuchsia.500', fallback: '#d946ef' },
+    { light: 'rose.500', dark: 'rose.500', fallback: '#f43f5e' },
+    { light: 'cyan.500', dark: 'cyan.600', fallback: '#06b6d4' },
+    { light: 'lime.500', dark: 'lime.600', fallback: '#84cc16' }
 ];
 
 const SEMANTIC_TOKENS = {
@@ -85,7 +85,7 @@ const withAlpha = (color, alpha) => {
  * Reads the active theme off the given element and returns the palette plus a Chart.js options
  * skeleton. Returns null when nothing resolves, which is the case in non-browser environments.
  */
-export function getChartTheme(element, type) {
+export function getChartTheme(element, type, datasetCount = 0) {
     if (typeof window === 'undefined' || !element) return null;
 
     try {
@@ -98,17 +98,37 @@ export function getChartTheme(element, type) {
         const border = resolve(styles, SEMANTIC_TOKENS.border);
         const background = resolve(styles, SEMANTIC_TOKENS.background);
         const scheme = isDarkSurface(background) ? 'dark' : 'light';
-        const palette = SERIES_TOKENS.map((slot) => resolve(styles, slot[scheme])).filter(Boolean);
         const fontFamily = styles.fontFamily;
 
+        /*
+         * A slot that cannot be resolved keeps its position and falls back to the light step.
+         * Dropping it instead would shift every later series onto the wrong colour.
+         */
+        const palette = SERIES_TOKENS.map((slot) => resolve(styles, slot[scheme]) || resolve(styles, slot.light) || slot.fallback);
+
         const options = {
-            /*
-             * A legend is the secondary encoding that keeps series identifiable when the fill
-             * alone does not clear contrast against the surface.
-             */
             plugins: {
+                /*
+                 * A legend is the secondary encoding that keeps series identifiable when a fill
+                 * does not clear contrast against the surface. Small point-style swatches keep it
+                 * from competing with the plot.
+                 */
                 legend: {
-                    labels: { color: text, font: { family: fontFamily } }
+                    /*
+                     * With one series the title or surrounding copy already names it, so a legend
+                     * would repeat a single label. Types coloured per data point always keep it,
+                     * since there the legend carries the identity of each slice.
+                     */
+                    display: datasetCount > 1 || PER_POINT.includes(type),
+                    labels: {
+                        color: text,
+                        font: { family: fontFamily, size: 12 },
+                        usePointStyle: true,
+                        pointStyle: 'circle',
+                        boxWidth: 8,
+                        boxHeight: 8,
+                        padding: 16
+                    }
                 },
                 tooltip: {
                     titleColor: text,
@@ -116,8 +136,12 @@ export function getChartTheme(element, type) {
                     backgroundColor: background,
                     borderColor: border,
                     borderWidth: 1,
-                    titleFont: { family: fontFamily },
-                    bodyFont: { family: fontFamily }
+                    titleFont: { family: fontFamily, size: 12, weight: 600 },
+                    bodyFont: { family: fontFamily, size: 12 },
+                    padding: 12,
+                    cornerRadius: 6,
+                    boxPadding: 6,
+                    usePointStyle: true
                 }
             }
         };
@@ -142,23 +166,37 @@ export function getChartTheme(element, type) {
  */
 const CARTESIAN = ['bar', 'line', 'scatter', 'bubble'];
 const RADIAL = ['radar', 'polarArea'];
+const PER_POINT = ['pie', 'doughnut', 'polarArea'];
 
 function getScales(type, { textMuted, border, fontFamily }) {
-    const ticks = { color: textMuted, font: { family: fontFamily } };
+    const ticks = { color: textMuted, font: { family: fontFamily, size: 12 }, padding: 8 };
 
     if (CARTESIAN.includes(type)) {
-        const axis = { ticks, grid: { color: border }, border: { color: border } };
-
-        return { x: { ...axis }, y: { ...axis } };
+        /*
+         * Grid and axes stay recessive so the data reads first. Only the value axis keeps its
+         * lines: a grid in both directions boxes the plot in without adding information.
+         */
+        return {
+            x: {
+                ticks,
+                grid: { display: false },
+                border: { display: false }
+            },
+            y: {
+                ticks,
+                grid: { color: border, drawTicks: false },
+                border: { display: false }
+            }
+        };
     }
 
     if (RADIAL.includes(type)) {
         return {
             r: {
-                ticks: { ...ticks, backdropColor: 'transparent' },
+                ticks: { ...ticks, backdropColor: 'transparent', showLabelBackdrop: false },
                 grid: { color: border },
                 angleLines: { color: border },
-                pointLabels: { color: textMuted, font: { family: fontFamily } }
+                pointLabels: { color: textMuted, font: { family: fontFamily, size: 12 } }
             }
         };
     }
@@ -173,26 +211,53 @@ function getScales(type, { textMuted, border, fontFamily }) {
 export function applyPalette(data, type, palette) {
     if (!data || !Array.isArray(data.datasets) || !palette.length) return data;
 
-    const perPoint = type === 'pie' || type === 'doughnut' || type === 'polarArea';
+    const perPoint = PER_POINT.includes(type);
 
     return {
         ...data,
         datasets: data.datasets.map((dataset, index) => {
             const next = { ...dataset };
             const color = palette[index % palette.length];
+            const set = (key, value) => {
+                if (next[key] === undefined) next[key] = value;
+            };
 
             if (perPoint) {
-                const colors = (dataset.data || []).map((_, i) => palette[i % palette.length]);
-
-                if (next.backgroundColor === undefined) next.backgroundColor = colors;
+                set(
+                    'backgroundColor',
+                    (dataset.data || []).map((_, i) => palette[i % palette.length])
+                );
+                /*
+                 * A ring in the surface colour separates adjacent slices without a visible stroke.
+                 */
+                set('borderColor', 'transparent');
+                set('borderWidth', 2);
 
                 return next;
             }
 
-            const filled = dataset.fill || type === 'bar' || type === 'radar';
+            const filled = dataset.fill || type === 'radar';
 
-            if (next.backgroundColor === undefined) next.backgroundColor = filled && type !== 'bar' ? withAlpha(color, 0.2) : color;
-            if (next.borderColor === undefined) next.borderColor = color;
+            set('backgroundColor', filled ? withAlpha(color, 0.2) : color);
+            set('borderColor', color);
+
+            if (type === 'bar') {
+                // rounded at the data end, flat where the bar meets the baseline
+                set('borderRadius', 4);
+                set('borderSkipped', 'start');
+                set('maxBarThickness', 48);
+            } else {
+                set('borderWidth', 2);
+                /*
+                 * Points stay hidden until hover so a dense series reads as a line, but the hit
+                 * area is kept well above the mark size so they remain easy to target.
+                 */
+                set('pointRadius', 0);
+                set('pointHoverRadius', 4);
+                set('pointHitRadius', 12);
+                set('pointBackgroundColor', color);
+                set('pointBorderColor', color);
+            }
 
             return next;
         })

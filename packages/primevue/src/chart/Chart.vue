@@ -85,7 +85,7 @@ export default {
                 });
         },
         resolveConfig() {
-            const theme = this.themed ? getChartTheme(this.$el, this.type) : null;
+            const theme = this.themed ? getChartTheme(this.$el, this.type, this.data?.datasets?.length ?? 0) : null;
 
             return {
                 data: theme ? applyPalette(this.data, this.type, theme.palette) : this.data,
