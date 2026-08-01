@@ -246,18 +246,42 @@ export function applyPalette(data, type, palette) {
                 set('borderRadius', 4);
                 set('borderSkipped', 'start');
                 set('maxBarThickness', 48);
-            } else {
-                set('borderWidth', 2);
+
+                return next;
+            }
+
+            if (type === 'bubble') {
                 /*
-                 * Points stay hidden until hover so a dense series reads as a line, but the hit
-                 * area is kept well above the mark size so they remain easy to target.
+                 * Bubble radius comes from the r value of each point, so it must not be overridden.
                  */
-                set('pointRadius', 0);
-                set('pointHoverRadius', 4);
-                set('pointHitRadius', 12);
+                set('backgroundColor', withAlpha(color, 0.6));
+                set('borderWidth', 1);
+
+                return next;
+            }
+
+            if (type === 'scatter') {
+                /*
+                 * The points are the whole chart here, so unlike a line they stay visible.
+                 */
+                set('pointRadius', 5);
+                set('pointHoverRadius', 7);
                 set('pointBackgroundColor', color);
                 set('pointBorderColor', color);
+
+                return next;
             }
+
+            set('borderWidth', 2);
+            /*
+             * On a line the points stay hidden until hover so a dense series reads as a line, but
+             * the hit area is kept well above the mark size so they remain easy to target.
+             */
+            set('pointRadius', 0);
+            set('pointHoverRadius', 4);
+            set('pointHitRadius', 12);
+            set('pointBackgroundColor', color);
+            set('pointBorderColor', color);
 
             return next;
         })

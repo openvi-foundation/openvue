@@ -119,11 +119,15 @@ export default {
         scrollable: {
             type: Boolean,
             default: false
+        },
+        fullCode: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
         return {
-            codeMode: 'basic',
+            codeMode: this.fullCode && this.code?.['composition'] ? 'composition' : 'basic',
             codeLang: this.code['options'] ? 'composition' : 'basic'
         };
     },

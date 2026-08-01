@@ -234,6 +234,26 @@ describe('ChartTheme.applyPalette', () => {
         expect(result.datasets[0].backgroundColor).toEqual(palette);
     });
 
+    it('is scatter keeping its points visible', () => {
+        const result = applyPalette({ datasets: [{ data: [{ x: 1, y: 2 }] }] }, 'scatter', palette);
+
+        // the points are the whole chart, so hiding them the way a line does renders nothing
+        expect(result.datasets[0].pointRadius).toBeGreaterThan(0);
+    });
+
+    it('is line hiding its points until hover', () => {
+        const result = applyPalette({ datasets: [{ data: [1, 2] }] }, 'line', palette);
+
+        expect(result.datasets[0].pointRadius).toBe(0);
+        expect(result.datasets[0].pointHoverRadius).toBeGreaterThan(0);
+    });
+
+    it('is bubble radius left to the data', () => {
+        const result = applyPalette({ datasets: [{ data: [{ x: 1, y: 2, r: 9 }] }] }, 'bubble', palette);
+
+        expect(result.datasets[0].pointRadius).toBeUndefined();
+    });
+
     it('is source data not mutated', () => {
         const source = { datasets: [{ data: [1] }] };
 
