@@ -1,10 +1,11 @@
 <template>
     <section class="landing-hero py-20 px-8 lg:px-20">
-        <div class="flex flex-col items-center">
-            <h1 class="text-5xl font-bold text-center xl:text-left leading-tight">The complete UI toolkit for <span class="font-bold text-primary">Vue and Nuxt</span></h1>
-            <p class="text-center mt-0 mb-8 text-surface-500 dark:text-surface-400 font-medium text-xl leading-relaxed lg:px-56">
-                80+ accessible, themeable components, MIT licensed and actively maintained. OpenVue picks up where PrimeVue 4.5.5 left off, so the library your app already depends on stays free to use and keeps getting better.
-            </p>
+        <div class="flex flex-col items-center relative">
+            <h1 class="hero-title">
+                <span class="hero-title-line">The complete UI toolkit</span>
+                <span class="hero-title-line">for Vue and Nuxt</span>
+            </h1>
+            <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue carries PrimeVue 4.5.5 forward under the MIT license, so the library your app already depends on stays free and keeps moving.</p>
             <div class="flex items-center gap-4">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
                     <span>Get Started </span>
@@ -14,6 +15,13 @@
                     <span>Give a Star</span>
                     <i class="pi pi-star-fill ms-4 text-yellow-500"></i>
                 </a>
+            </div>
+            <div class="hero-install">
+                <span class="hero-install-prompt" aria-hidden="true">$</span>
+                <code class="hero-install-command">{{ installCommand }}</code>
+                <button type="button" class="hero-install-copy" :aria-label="`Copy ${installCommand} to clipboard`" @click="copyInstallCommand">
+                    <i :class="['pi', copied ? 'pi-check' : 'pi-copy']"></i>
+                </button>
             </div>
         </div>
         <div class="bg-surface-0 border border-black/10 dark:border-white/20 dark:bg-surface-950 w-full h-[85vh] max-h-[1040px] rounded-3xl p-6 hidden lg:flex lg:mt-20 items-start gap-6 overflow-hidden">
@@ -286,6 +294,9 @@ import EventBus from '@/app/AppEventBus';
 export default {
     data() {
         return {
+            installCommand: 'npm install openvue@beta',
+            copied: false,
+            copyTimeout: null,
             lineChartData: {},
             lineChartOptions: {},
             chartData: {},
@@ -396,6 +407,10 @@ export default {
     beforeUnmount() {
         EventBus.off('dark-mode-toggle-complete', this.redrawListener);
         EventBus.off('theme-palette-change', this.redrawListener);
+
+        if (this.copyTimeout) {
+            clearTimeout(this.copyTimeout);
+        }
     },
     mounted() {
         this.chartData = this.setChartData();
@@ -414,6 +429,21 @@ export default {
         EventBus.on('dark-mode-toggle-complete', this.redrawListener);
     },
     methods: {
+        async copyInstallCommand() {
+            try {
+                await navigator.clipboard.writeText(this.installCommand);
+            } catch {
+                return;
+            }
+
+            this.copied = true;
+
+            if (this.copyTimeout) {
+                clearTimeout(this.copyTimeout);
+            }
+
+            this.copyTimeout = setTimeout(() => (this.copied = false), 2000);
+        },
         setSelectedSampleAppsSidebarNav(title) {
             this.selectedSampleAppsSidebarNav = title;
         },
