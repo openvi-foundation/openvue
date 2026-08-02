@@ -6385,6 +6385,12 @@
                         "description": "Used to pass all properties of the CanvasHTMLAttributes to canvas element inside the component."
                     },
                     {
+                        "name": "themed",
+                        "type": "boolean",
+                        "default": "true",
+                        "description": "When enabled, colors, fonts and grid lines are derived from the active theme's design tokens\nand kept in sync with theme changes. Any option passed via the options property takes precedence."
+                    },
+                    {
                         "name": "dt",
                         "type": "any",
                         "default": "-",

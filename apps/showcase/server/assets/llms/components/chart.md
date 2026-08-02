@@ -855,6 +855,7 @@ const setChartOptions = () => {
 | width | number | 300 | Width of the chart in non-responsive mode. |
 | height | number | 150 | Height of the chart in non-responsive mode. |
 | canvasProps | CanvasHTMLAttributes | - | Used to pass all properties of the CanvasHTMLAttributes to canvas element inside the component. |
+| themed | boolean | true | When enabled, colors, fonts and grid lines are derived from the active theme's design tokens and kept in sync with theme changes. Any option passed via the options property takes precedence. |
 | dt | any | - | It generates scoped CSS variables using design tokens for the component. |
 | pt | PassThrough<ChartPassThroughOptions> | - | Used to pass attributes to DOM elements inside the component. |
 | ptOptions | any | - | Used to configure passthrough(pt) options of the component. |
