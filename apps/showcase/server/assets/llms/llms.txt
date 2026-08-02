@@ -30,6 +30,7 @@
 ## Components
 
 - [mcp](https://openvue.dev/mcp): 
+- [team](https://openvue.dev/team): 
 - [Vue Accordion Component](https://openvue.dev/accordion): Accordion groups a collection of contents in panels.
 - [Vue AnimateOnScroll Directive](https://openvue.dev/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.
 - [Vue AutoComplete Component](https://openvue.dev/autocomplete): AutoComplete is an input component that provides real-time suggestions when being typed.

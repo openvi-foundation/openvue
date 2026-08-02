@@ -1,12 +1,13 @@
 /**
  *
- * Chart groups a collection of contents in tabs.
+ * Chart is a wrapper around Chart.js, rendering data driven charts on a canvas element.
  *
  * [Live Demo](https://openvue.dev/chart/)
  *
  * @module chart
  *
  */
+import type { ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
 import type { DefineComponent, DesignToken, EmitFn, PassThrough } from '@openvue/core';
 import type { ComponentHooks } from '@openvue/core/basecomponent';
 import type { PassThroughOptions } from 'openvue/passthrough';
@@ -89,23 +90,23 @@ export interface ChartSelectEvent {
 /**
  * Defines valid properties in Chart component.
  */
-export interface ChartProps {
+export interface ChartProps<TType extends ChartType = ChartType> {
     /**
      * Type of the chart.
      */
-    type?: string | undefined;
+    type?: TType | undefined;
     /**
      * Data to display.
      */
-    data?: object | undefined;
+    data?: ChartData<TType> | undefined;
     /**
      * Options to customize the chart.
      */
-    options?: object | undefined;
+    options?: ChartOptions<TType> | undefined;
     /**
      * Used to custom plugins of the chart.
      */
-    plugins?: any[];
+    plugins?: Plugin<TType>[];
     /**
      * Width of the chart in non-responsive mode.
      * @defaultValue 300
@@ -120,6 +121,12 @@ export interface ChartProps {
      * Used to pass all properties of the CanvasHTMLAttributes to canvas element inside the component.
      */
     canvasProps?: CanvasHTMLAttributes | undefined;
+    /**
+     * When enabled, colors, fonts and grid lines are derived from the active theme's design tokens
+     * and kept in sync with theme changes. Any option passed via the options property takes precedence.
+     * @defaultValue true
+     */
+    themed?: boolean | undefined;
     /**
      * It generates scoped CSS variables using design tokens for the component.
      */
@@ -148,7 +155,7 @@ export interface ChartSlots {}
  */
 export interface ChartEmitsOptions {
     /**
-     * Callback to invoke when a tab gets expanded.
+     * Callback to invoke when a data element of the chart is clicked.
      * @param {ChartSelectEvent} event - Custom select event.
      */
     select(event: ChartSelectEvent): void;
@@ -175,11 +182,17 @@ export interface ChartMethods {
      */
     reinit(): void;
     /**
-     * Returns an HTML string of a legend for that chart. The legend is generated from the legendCallback in the options.
+     * Returns the canvas element the chart is rendered on.
      *
      * @memberof Chart
      */
-    generateLegend(): string | any;
+    getCanvas(): HTMLCanvasElement | undefined;
+    /**
+     * Returns a base64 encoded png image of the chart.
+     *
+     * @memberof Chart
+     */
+    getBase64Image(): string;
     /**
      * Returns Chart instance.
      *
@@ -189,9 +202,9 @@ export interface ChartMethods {
 }
 
 /**
- * **PrimeVue - Chart**
+ * **OpenVue - Chart**
  *
- * _Chart groups a collection of contents in tabs._
+ * _Chart is a wrapper around Chart.js, rendering data driven charts on a canvas element._
  *
  * [Live Demo](https://openvue.dev/chart/)
  * --- ---

@@ -10,7 +10,7 @@ import Password from 'openvue/password';
 
 ## Accessibility
 
-Screen Reader Value to describe the component can either be provided via label tag combined with id prop or using aria-labelledby , aria-label props. Screen reader is notified about the changes to the strength of the password using a section that has aria-live while typing. Keyboard Support Key Function tab Moves focus to the input. escape Hides the strength meter if open.
+Screen Reader Value to describe the component can either be provided via label tag combined with id prop or using aria-labelledby , aria-label props. Screen reader is notified about the changes to the strength of the password using a section that has aria-live while typing. Keyboard Support Key Function tab Moves focus to the input, then to the show/hide password button and clear button when present. enter Toggles the password visibility or clears the value when the show/hide password button or clear button is focused. space Toggles the password visibility or clears the value when the show/hide password button or clear button is focused. escape Hides the strength meter if open.
 
 ```vue
 <label for="pwd1">Password</label>
@@ -319,7 +319,7 @@ const value2 = ref(null);
 
 ## Locale
 
-Labels are translated at component level by promptLabel , weakLabel , mediumLabel and strongLabel properties. In order to apply global translations for all Password components in the application, refer to the locale .
+Labels are translated at component level by promptLabel , weakLabel , mediumLabel , strongLabel , showPasswordLabel and hidePasswordLabel properties. In order to apply global translations for all Password components in the application, refer to the locale .
 
 ```vue
 <Password v-model="value" promptLabel="Choose a password" weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" />
@@ -715,6 +715,8 @@ const value = ref(null);
 | toggleMask | boolean | false | Whether to show an icon to display the password as plain text. |
 | maskIcon | string | - | Icon to hide displaying the password as plain text. |
 | unmaskIcon | string | - | Icon to show displaying the password as plain text. |
+| hidePasswordLabel | string | - | Accessible label for the button that hides the password. Defaults to OpenVue Locale configuration. |
+| showPasswordLabel | string | - | Accessible label for the button that shows the password. Defaults to OpenVue Locale configuration. |
 | showClear | boolean | false | When enabled, a clear icon is displayed to clear the value. |
 | size | HintedString<"small" \| "large"> | - | Defines the size of the component. |
 | invalid | boolean | false | When present, it specifies that the component should have invalid state style. |

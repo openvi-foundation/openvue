@@ -5,7 +5,9 @@
 </template>
 
 <script>
+import { ThemeService } from '@openuxkit/styled';
 import BaseChart from './BaseChart.vue';
+import { applyPalette, getChartTheme, mergeOptions } from './utils/ChartTheme';
 
 export default {
     name: 'Chart',
@@ -13,6 +15,9 @@ export default {
     inheritAttrs: false,
     emits: ['select', 'loaded'],
     chart: null,
+    isDestroyed: false,
+    themeChangeListener: null,
+    themeObserver: null,
     watch: {
         /*
          * Use deep watch to enable triggering watch for changes within structure
@@ -20,48 +25,125 @@ export default {
          */
         data: {
             handler() {
-                this.reinit();
+                this.syncChart();
             },
             deep: true
         },
         type() {
             this.reinit();
         },
-        options() {
-            this.reinit();
+        options: {
+            handler() {
+                this.syncChart();
+            },
+            deep: true
+        },
+        themed() {
+            this.unbindThemeListeners();
+            this.bindThemeListeners();
+            this.syncChart();
         }
     },
     mounted() {
         this.initChart();
+        this.bindThemeListeners();
     },
     beforeUnmount() {
-        if (this.chart) {
-            this.chart.destroy();
-            this.chart = null;
-        }
+        this.isDestroyed = true;
+        this.unbindThemeListeners();
+        this.destroyChart();
     },
     methods: {
         initChart() {
-            import('chart.js/auto').then((module) => {
-                if (this.chart) {
-                    this.chart.destroy();
-                    this.chart = null;
-                }
+            import('chart.js/auto')
+                .then((module) => {
+                    this.destroyChart();
 
-                if (module && module.default) {
-                    this.chart = new module.default(this.$refs.canvas, {
-                        type: this.type,
-                        data: this.data,
-                        options: this.options,
-                        plugins: this.plugins
-                    });
-                }
+                    /*
+                     * The import is async, so the component may already be unmounted by the time it resolves.
+                     * Creating the chart here would leave an instance attached to a detached canvas.
+                     */
+                    if (this.isDestroyed) {
+                        return;
+                    }
 
-                this.$emit('loaded', this.chart);
-            });
+                    if (module && module.default) {
+                        const { data, options } = this.resolveConfig();
+
+                        this.chart = new module.default(this.$refs.canvas, {
+                            type: this.type,
+                            data,
+                            options,
+                            plugins: this.plugins
+                        });
+                    }
+
+                    this.$emit('loaded', this.chart);
+                })
+                .catch((error) => {
+                    console.error('[OpenVue] Chart requires chart.js to be installed. Run "npm install chart.js" to use this component.', error);
+                });
+        },
+        resolveConfig() {
+            const theme = this.themed ? getChartTheme(this.$el, this.type, this.data?.datasets?.length ?? 0) : null;
+
+            return {
+                data: theme ? applyPalette(this.data, this.type, theme.palette) : this.data,
+                options: theme ? mergeOptions(theme.options, this.options) : this.options
+            };
+        },
+        syncChart() {
+            if (!this.chart) {
+                return;
+            }
+
+            const { data, options } = this.resolveConfig();
+
+            /*
+             * Chart.js keeps a reference to the config passed on construction, so replaced data and
+             * options objects have to be reassigned before update() can pick the new values up.
+             */
+            this.chart.data = data;
+            this.chart.options = options;
+            this.chart.update();
+        },
+        bindThemeListeners() {
+            if (!this.themed || typeof window === 'undefined') {
+                return;
+            }
+
+            this.themeChangeListener = () => this.syncChart();
+            ThemeService.on('theme:change', this.themeChangeListener);
+
+            /*
+             * A preset swap emits through ThemeService, but toggling dark mode only rewrites CSS
+             * custom properties, which fires nothing. Watching the attributes that scope those
+             * properties covers the toggle however the application implements it.
+             */
+            if (typeof MutationObserver !== 'undefined') {
+                this.themeObserver = new MutationObserver(this.themeChangeListener);
+                this.themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+            }
+        },
+        unbindThemeListeners() {
+            if (this.themeChangeListener) {
+                ThemeService.off('theme:change', this.themeChangeListener);
+                this.themeChangeListener = null;
+            }
+
+            if (this.themeObserver) {
+                this.themeObserver.disconnect();
+                this.themeObserver = null;
+            }
+        },
+        destroyChart() {
+            if (this.chart) {
+                this.chart.destroy();
+                this.chart = null;
+            }
         },
         getCanvas() {
-            return this.$canvas;
+            return this.$refs.canvas;
         },
         getChart() {
             return this.chart;
@@ -85,11 +167,6 @@ export default {
                 if (element && element[0] && dataset) {
                     this.$emit('select', { originalEvent: event, element: element[0], dataset: dataset });
                 }
-            }
-        },
-        generateLegend() {
-            if (this.chart) {
-                return this.chart.generateLegend();
             }
         }
     }

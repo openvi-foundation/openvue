@@ -1,59 +1,55 @@
 <template>
-    <section class="landing-footer pt-20 px-8 lg:px-20">
-        <div class="landing-footer-container">
-            <div class="flex flex-wrap z-10">
-                <div class="w-6/12 lg:w-3/12 flex">
-                    <ul class="list-none p-0 m-0">
-                        <li class="font-bold mb-8">General</li>
-                        <li class="mb-6">
-                            <OpenVueNuxtLink to="/setup" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300">Get Started</OpenVueNuxtLink>
-                        </li>
-                    </ul>
+    <section class="landing-footer">
+        <div class="footer-cta">
+            <div class="footer-container flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div>
+                    <h2 class="footer-cta-title">Keep the library you already build on</h2>
+                    <p class="footer-cta-text">Free, MIT, and maintained by the people who use it.</p>
                 </div>
-                <div class="w-6/12 lg:w-3/12 flex">
-                    <ul class="list-none p-0 m-0">
-                        <li class="font-bold mt-8 lg:mt-0 mb-8">Theming</li>
-                        <li class="mb-6">
-                            <OpenVueNuxtLink to="/theming/styled" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300">Styled Mode</OpenVueNuxtLink>
-                        </li>
-                        <li class="mb-6">
-                            <OpenVueNuxtLink to="/theming/unstyled" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300">Unstyled Mode</OpenVueNuxtLink>
-                        </li>
-                    </ul>
+                <div class="flex items-center gap-3">
+                    <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
+                        <span>Get Started</span>
+                        <i class="pi pi-arrow-right ms-4"></i>
+                    </OpenVueNuxtLink>
+                    <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
+                        <span>Star on GitHub</span>
+                    </a>
                 </div>
-                <div class="w-6/12 lg:w-3/12 flex">
-                    <ul class="list-none p-0 m-0">
-                        <li class="font-bold mt-8 lg:mt-0 mb-8">Resources</li>
-                        <li class="mb-6">
-                            <a href="https://github.com/openvi-foundation/openvue" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300" target="_blank" rel="noopener noreferrer">Source Code</a>
-                        </li>
-                    </ul>
+            </div>
+        </div>
+
+        <div class="footer-main">
+            <div class="footer-container flex flex-wrap gap-y-12">
+                <div class="w-full lg:w-4/12 pe-8">
+                    <img src="/open_vue_logo.svg" class="footer-logo" alt="OpenVue" width="66" height="31" />
+                    <p class="footer-tagline">A community fork of PrimeVue 4.5.5, maintained under the MIT license.</p>
+                    <a href="https://www.openvi.dev/" class="footer-link inline-flex items-center gap-2 mt-4" target="_blank" rel="noopener noreferrer">
+                        <span>openvi.dev</span>
+                        <i class="pi pi-external-link !text-xs"></i>
+                    </a>
                 </div>
-                <div class="w-6/12 lg:w-3/12 flex">
+
+                <div v-for="group in groups" :key="group.title" class="w-6/12 lg:w-2/12">
                     <ul class="list-none p-0 m-0">
-                        <li class="font-bold mt-8 lg:mt-0 mb-8">Contact</li>
-                        <li class="mb-6">
-                            <a href="mailto:contact@openvi.dev" class="text-surface-500 dark:text-surface-400 font-medium hover:text-primary rounded transition-all duration-300">contact@openvi.dev</a>
+                        <li class="footer-group-title">{{ group.title }}</li>
+                        <li v-for="link in group.links" :key="link.label" class="mb-4">
+                            <a v-if="link.href" :href="link.href" class="footer-link" :target="link.external ? '_blank' : null" :rel="link.external ? 'noopener noreferrer' : null">{{ link.label }}</a>
+                            <OpenVueNuxtLink v-else :to="link.to" class="footer-link">{{ link.label }}</OpenVueNuxtLink>
                         </li>
                     </ul>
                 </div>
             </div>
+        </div>
 
-            <hr class="section-divider" />
-
-            <div class="flex flex-wrap justify-between py-12 gap-8">
-                <span>
-                    <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 120px">
-                        <text x="0" y="28" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700" font-size="24" fill="var(--high-contrast-text-color)">Open<tspan fill="var(--logo-color)">Vue</tspan></text>
-                    </svg>
-                </span>
-                <div class="flex items-center gap-2">
-                    <a href="https://github.com/openvi-foundation/openvue" class="linkbox linkbox-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="pi pi-github"></i>
+        <div class="footer-bottom">
+            <div class="footer-container flex flex-wrap items-center justify-between gap-4">
+                <span class="footer-note">Released under the MIT License.</span>
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <a href="mailto:contact@openvi.dev" class="footer-link footer-note inline-flex items-center gap-2">
+                        <i class="pi pi-envelope !text-xs"></i>
+                        <span>contact@openvi.dev</span>
                     </a>
-                    <a href="mailto:contact@openvi.dev" class="linkbox linkbox-icon">
-                        <i class="pi pi-envelope"></i>
-                    </a>
+                    <span class="footer-note">Not affiliated with PrimeTek.</span>
                 </div>
             </div>
         </div>
@@ -61,5 +57,47 @@
 </template>
 
 <script>
-export default {};
+const REPO = 'https://github.com/openvi-foundation/openvue';
+
+export default {
+    data() {
+        return {
+            groups: [
+                {
+                    title: 'Docs',
+                    links: [
+                        { label: 'Get Started', to: '/setup' },
+                        { label: 'Components', to: '/introduction' },
+                        { label: 'Theming', to: '/theming/styled' }
+                    ]
+                },
+                {
+                    title: 'Project',
+                    links: [
+                        { label: 'Issues', href: `${REPO}/issues`, external: true },
+                        { label: 'Changelog', href: `${REPO}/releases`, external: true },
+                        { label: 'Source Code', href: REPO, external: true }
+                    ]
+                },
+                {
+                    title: 'Migration',
+                    links: [
+                        { label: 'From PrimeVue v4', to: '/migrate' },
+                        { label: 'Codemod', href: 'https://www.npmjs.com/package/@openvue/migrate', external: true },
+                        { label: 'Nuxt', to: '/nuxt' }
+                    ]
+                },
+                {
+                    title: 'Community',
+                    links: [
+                        { label: 'GitHub', href: REPO, external: true },
+                        { label: 'Discussions', href: `${REPO}/discussions`, external: true },
+                        { label: 'Contributing', to: '/contribution' },
+                        { label: 'Team', to: '/team' }
+                    ]
+                }
+            ]
+        };
+    }
+};
 </script>

@@ -1,4 +1,94 @@
 .landing-hero {
+    position: relative;
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        text-align: center;
+        text-wrap: balance;
+        color: var(--high-contrast-text-color);
+        margin: 0;
+    }
+
+    .hero-title-line {
+        display: block;
+    }
+
+    .hero-subtitle {
+        text-align: center;
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        font-size: 1.125rem;
+        line-height: 1.65;
+        max-width: 42rem;
+        margin: 1.5rem 0 2.5rem 0;
+    }
+
+    .hero-install {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+        padding: 0.625rem 0.625rem 0.625rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: var(--card-background);
+    }
+
+    .hero-install-prompt {
+        font-family: monospace;
+        color: var(--text-secondary-color);
+    }
+
+    .hero-install-command {
+        font-family: monospace;
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+
+    .hero-install-copy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        color: var(--text-secondary-color);
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: color 0.2s, background-color 0.2s;
+        @include focus-visible();
+
+        i {
+            font-size: 0.875rem;
+        }
+
+        &:hover {
+            color: var(--text-color);
+            background-color: var(--hover-background);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero-title {
+            font-size: 2.25rem;
+        }
+
+        .hero-title-line {
+            display: inline;
+        }
+
+        .hero-install {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    }
+
     .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
         background: transparent;
     }

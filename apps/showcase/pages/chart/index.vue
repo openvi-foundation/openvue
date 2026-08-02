@@ -13,6 +13,7 @@
 <script>
 import AccessibilityDoc from '@/doc/chart/AccessibilityDoc.vue';
 import BasicDoc from '@/doc/chart/BasicDoc.vue';
+import BubbleDoc from '@/doc/chart/BubbleDoc.vue';
 import ChartJSDoc from '@/doc/chart/ChartJSDoc.vue';
 import ComboDoc from '@/doc/chart/ComboDoc.vue';
 import DoughnutDoc from '@/doc/chart/DoughnutDoc.vue';
@@ -24,6 +25,7 @@ import MultiAxisDoc from '@/doc/chart/MultiAxisDoc.vue';
 import PieChartDoc from '@/doc/chart/PieChartDoc.vue';
 import PolarAreaDoc from '@/doc/chart/PolarAreaDoc.vue';
 import RadarDoc from '@/doc/chart/RadarDoc.vue';
+import ScatterDoc from '@/doc/chart/ScatterDoc.vue';
 import StackedBarDoc from '@/doc/chart/StackedBarDoc.vue';
 import VerticalBarDoc from '@/doc/chart/VerticalBarDoc.vue';
 import PTComponent from '@/doc/chart/pt/index.vue';
@@ -97,6 +99,16 @@ export default {
                     id: 'radar',
                     label: 'Radar',
                     component: RadarDoc
+                },
+                {
+                    id: 'scatter',
+                    label: 'Scatter',
+                    component: ScatterDoc
+                },
+                {
+                    id: 'bubble',
+                    label: 'Bubble',
+                    component: BubbleDoc
                 },
                 {
                     id: 'combo',

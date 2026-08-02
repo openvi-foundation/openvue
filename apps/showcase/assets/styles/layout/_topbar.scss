@@ -107,6 +107,16 @@
             }
         }
 
+        .topbar-item:not(.search-item):not(.config-item) {
+            border-color: transparent;
+            background-color: transparent;
+
+            &:hover {
+                border-color: transparent;
+                background-color: var(--hover-background);
+            }
+        }
+
         .config-item {
             background-color: var(--primary-color);
 

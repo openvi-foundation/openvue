@@ -404,15 +404,6 @@
                     ]
                 },
                 {
-                    "name": "Chart",
-                    "children": [
-                        {
-                            "name": "Chart.js",
-                            "to": "/chart"
-                        }
-                    ]
-                },
-                {
                     "name": "Messages",
                     "children": [
                         {
@@ -518,6 +509,22 @@
                             "to": "/terminal"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Charts",
+            "icon": "pi pi-chart-bar",
+            "children": [
+                {
+                    "name": "Chart.js",
+                    "to": "/chart",
+                    "badge": "NEW"
+                },
+                {
+                    "name": "Playground",
+                    "to": "/chart/playground",
+                    "badge": "NEW"
                 }
             ]
         },
