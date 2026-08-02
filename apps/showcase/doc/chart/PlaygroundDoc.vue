@@ -153,6 +153,7 @@
                     <div v-for="(series, s) in data.series" :key="`h${s}`" class="flex min-w-0 items-center gap-2" :style="isPointType ? { gridColumn: `span ${pointFields.length}` } : null">
                         <span class="size-2.5 shrink-0 rounded-full" :style="{ backgroundColor: swatch(s) }" aria-hidden="true"></span>
                         <InputText v-model="series.label" size="small" fluid class="min-w-0" :aria-label="`Name of series ${s + 1}`" />
+                        <Button icon="pi pi-times" text rounded severity="secondary" size="small" :disabled="data.series.length === 1" :aria-label="`Remove series ${s + 1}`" @click="removeSeries(s)" />
                     </div>
 
                     <Button icon="pi pi-plus" text rounded severity="secondary" size="small" :disabled="data.series.length >= 8" aria-label="Add series" @click="addSeries" />
@@ -183,7 +184,6 @@
 
             <div class="mt-4 flex flex-wrap items-center gap-2 border-t border-surface pt-4">
                 <Button :label="isPointType ? 'Add point' : 'Add row'" icon="pi pi-plus" size="small" severity="secondary" outlined @click="addRow" />
-                <Button v-if="data.series.length > 1" label="Remove series" icon="pi pi-minus" size="small" severity="secondary" outlined @click="removeSeries(data.series.length - 1)" />
             </div>
         </div>
 
