@@ -1,6 +1,6 @@
 {
     "name": "openvue",
-    "version": "0.0.1-beta.1",
+    "version": "0.7.0-beta.0",
     "author": "OpenVue Contributors",
     "description": "OpenVue is an open source, MIT-licensed UI library for Vue featuring a rich set of 80+ components, a theme designer, and various theme alternatives such as Material, Bootstrap and Tailwind. It is a community-maintained continuation of PrimeVue.",
     "homepage": "https://github.com/openvi-foundation/openvue",

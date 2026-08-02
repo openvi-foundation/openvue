@@ -8,15 +8,39 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
-### Changed
+## [0.7.0-beta.0] - 2026-08-03
 
-- Documentation links in TypeScript definitions now point to openvue.dev instead of primevue.org, so editor tooltips reference the maintained docs.
+The version jumps from `0.0.1-beta.1` to `0.7.0-beta.0` to reflect the project's actual maturity. Nothing was released between the two. Packages remain pre-1.0 and continue to be published under the `beta` dist-tag.
 
 ### Added
 
+- `Chart` now follows the active theme, reading colors, fonts, grid and border values from the design tokens instead of relying on Chart.js defaults, and restyling itself when the preset changes or dark mode is toggled. Controlled by a new `themed` prop, enabled by default.
+- `Chart` ships TypeScript definitions.
+- `Password` gains `showPasswordLabel` and `hidePasswordLabel` props for labelling the mask toggle.
+- `chart.js` and `quill` are declared as optional `peerDependencies`, so package managers surface the expected version instead of leaving it undocumented.
+- `Chart` logs an actionable error when `chart.js` is not installed, rather than failing silently.
+- Showcase: a chart playground covering every chart type, a reworked landing hero, topbar and footer, and an About page.
 - `SECURITY.md` describing how to report a vulnerability.
 - `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1).
 - This changelog, backfilled with the release history from alpha.1 onward.
+
+### Changed
+
+- Documentation links in TypeScript definitions now point to openvue.dev instead of primevue.org, so editor tooltips reference the maintained docs.
+- `Chart` requires Chart.js 4.5 or newer.
+- Charts pick up a default look derived from the theme. Existing charts that relied on Chart.js default styling will look different; pass `:themed="false"` to opt out.
+
+### Removed
+
+- **Breaking:** `Chart`'s `generateLegend()` method. It called a Chart.js 2 API that has not existed since Chart.js 3, so it threw whenever it was called. Use the `plugins` option to customise legends.
+
+### Fixed
+
+- `Chart`'s `getCanvas()` returned `undefined` because it read a property that was never assigned.
+- `Chart` no longer builds an instance against a detached canvas when the component unmounts before the async `chart.js` import resolves.
+- `Chart` now reflects replaced `data` and `options` objects, which previously did not reach the underlying instance.
+- The `Password` mask toggle fired twice when a custom slot was used.
+- The show/hide and clear buttons on `Password` are now keyboard accessible.
 
 ## [0.0.1-beta.1] - 2026-07-27
 
@@ -84,7 +108,8 @@ First OpenVue release, forked from PrimeVue 4.5.5.
 - Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
 - License copyright updated for the fork. The project remains MIT.
 
-[unreleased]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...HEAD
+[unreleased]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...HEAD
+[0.7.0-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...0.7.0-beta.0
 [0.0.1-beta.1]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.0...0.0.1-beta.1
 [0.0.1-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-alpha.5...0.0.1-beta.0
 [0.0.1-alpha.5]: https://github.com/openvi-foundation/openvue/compare/0.0.1-alpha.4...0.0.1-alpha.5
