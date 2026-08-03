@@ -17,7 +17,7 @@ const core_dependencies = {
     '@openvue/themes': 'latest',
     '@openvue/auto-import-resolver': pkg.version || OpenVue.version || 'latest',
     '@openvue/forms': pkg.version || OpenVue.version || 'latest',
-    primeicons: app_dependencies['primeicons'] || 'latest',
+    '@openvue/openicons': app_dependencies['@openvue/openicons'] || 'latest',
     tailwindcss: app_dependencies['tailwindcss'] || 'latest',
     autoprefixer: app_dependencies['autoprefixer'] || 'latest',
     postcss: app_dependencies['postcss'] || 'latest',
@@ -101,7 +101,7 @@ export default defineConfig({
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="**${description}** ${OpenVue.description}" />
         <!-- Added to show icons in the editor -->
-        <link rel="stylesheet" href="https://unpkg.com/primeicons@${dependencies['primeicons'].replace(/[\^|~]/gi, '')}/primeicons.css">
+        <link rel="stylesheet" href="https://unpkg.com/@openvue/openicons@${dependencies['@openvue/openicons'].replace(/[\^|~]/gi, '')}/openicons-compat.css">
         <title>OpenVue App</title>
     </head>
     <body>
@@ -130,7 +130,7 @@ export default {
 `
         },
         [`${path}main.js`]: {
-            content: `import "primeicons/primeicons.css";
+            content: `import "@openvue/openicons/openicons-compat.css";
 import "./style.css";
 import "./flags.css";
 

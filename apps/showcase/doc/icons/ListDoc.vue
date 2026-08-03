@@ -6,13 +6,15 @@
         </p>
     </DocSectionText>
 
-    <InputText v-model="filter" class="w-full p-4 mt-4 mb-6" placeholder="Search an icon" />
+    <InputText v-model="filter" class="w-full p-4 mt-4 mb-2" placeholder="Search an icon" />
+
+    <p class="mb-6 text-sm text-surface-500 dark:text-surface-400">{{ filteredIcons.length }} of {{ icons.length }} icons</p>
 
     <div class="card">
         <div class="grid grid-cols-12 gap-4 text-center">
-            <div v-for="icon of filteredIcons" :key="icon.properties.name" class="col-span-12 md:col-span-2 mb-8">
-                <i :class="'text-2xl mb-4 text-surface-500 dark:text-surface-400 pi pi-' + icon.properties.name"></i>
-                <div>oi-{{ icon.properties.name }}</div>
+            <div v-for="icon of filteredIcons" :key="icon.name" class="col-span-12 md:col-span-2 mb-8">
+                <i :class="'text-2xl mb-4 text-surface-500 dark:text-surface-400 oi oi-' + icon.name"></i>
+                <div class="break-all">oi-{{ icon.name }}</div>
             </div>
         </div>
     </div>
@@ -21,50 +23,31 @@
 <script>
 import { IconService } from '@/service/IconService';
 
+const sanitize = (value) =>
+    value
+        .replace(/[^\w\s]/gi, '')
+        .replace(/\s/g, '')
+        .toLowerCase();
+
 export default {
     data() {
         return {
-            icons: null,
+            icons: [],
             filter: null
         };
     },
     mounted() {
         IconService.getIcons().then((data) => {
-            let d_data = data;
-            let d_icons = d_data.filter((value) => {
-                return value.icon.tags.indexOf('deprecate') === -1;
-            });
-
-            d_icons.sort((icon1, icon2) => {
-                if (icon1.properties.name < icon2.properties.name) return -1;
-                else if (icon1.properties.name < icon2.properties.name) return 1;
-                else return 0;
-            });
-
-            this.icons = d_icons;
+            this.icons = [...data].sort((icon1, icon2) => icon1.name.localeCompare(icon2.name));
         });
     },
     computed: {
         filteredIcons() {
-            let sanitizedInput = this.filter?.replace(/[^\w\s]/gi, '').replace(/\s/g, '');
+            const sanitizedInput = this.filter ? sanitize(this.filter) : null;
 
-            if (this.filter)
-                return this.icons.filter((icon) => {
-                    return (
-                        icon.icon.tags.some((tag) =>
-                            tag
-                                .replace(/[^\w\s]/gi, '')
-                                .replace(/\s/g, '')
-                                .includes(sanitizedInput.toLowerCase())
-                        ) ||
-                        icon.properties.name
-                            .replace(/[^\w\s]/gi, '')
-                            .replace(/\s/g, '')
-                            .toLowerCase()
-                            .includes(sanitizedInput.toLowerCase())
-                    );
-                });
-            else return this.icons;
+            if (!sanitizedInput) return this.icons;
+
+            return this.icons.filter((icon) => sanitize(icon.name).includes(sanitizedInput) || icon.tags.some((tag) => sanitize(tag).includes(sanitizedInput)));
         }
     }
 };

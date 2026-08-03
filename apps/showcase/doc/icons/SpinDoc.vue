@@ -3,8 +3,8 @@
         <p>Special <i>oi-spin</i> class applies infinite rotation to an icon.</p>
     </DocSectionText>
     <div class="card flex justify-center gap-4">
-        <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
-        <i class="pi pi-spin pi-cog" style="font-size: 2rem"></i>
+        <i class="oi oi-spin oi-spinner" style="font-size: 2rem"></i>
+        <i class="oi oi-spin oi-cog" style="font-size: 2rem"></i>
     </div>
     <DocSectionCode :code="code" hideToggleCode importCode hideStackBlitz />
 </template>

@@ -575,7 +575,8 @@
             "children": [
                 {
                     "name": "OpenIcons",
-                    "to": "/icons"
+                    "to": "/icons",
+                    "badge": "NEW"
                 },
                 {
                     "name": "Custom Icons",
