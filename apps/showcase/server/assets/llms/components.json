@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-08-02",
+  "generatedAt": "2026-08-03",
   "components": [
     {
       "name": "accordion",
@@ -39163,29 +39163,21 @@
       "name": "icons",
       "path": "icons",
       "title": "Icons",
-      "description": "OpenIcons is the default icon library of OpenVue with over 250 open source icons maintained by the OpenVi Foundation. OpenIcons is optional as OpenVue components can use any icon with templating.",
+      "description": "OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.",
       "sections": [
         {
-          "id": "basic",
-          "label": "Basic",
-          "description": "OpenIcons use the oi oi-&#123;icon&#125; syntax such as oi oi-check . A standalone icon can be displayed using an element such as i or span",
-          "examples": {
-            "basic": "<i class=\"oi oi-check\"></i>\n<i class=\"oi oi-times\"></i>\n<span class=\"oi oi-search\"></span>\n<span class=\"oi oi-user\"></span>"
-          }
-        },
-        {
-          "id": "color",
-          "label": "Color",
-          "description": "Icon color is defined with the color property which is inherited from parent by default.",
-          "examples": {
-            "basic": "<i class=\"oi oi-check\" style=\"color: slateblue\"></i>\n<i class=\"oi oi-times\" style=\"color: green\"></i>\n<i class=\"oi oi-search\" style=\"color: 'var(--p-primary-color)'\"></i>\n<i class=\"oi oi-user\" style=\"color: #708090\"></i>"
-          }
-        },
-        {
           "id": "compatibility",
-          "label": "Compatibility",
-          "description": "OpenIcons ships a compatibility stylesheet that aliases the legacy pi pi-&#123;icon&#125; class names onto the OpenIcons font. Import it instead of openicons.css and markup written against PrimeIcons keeps rendering without changes, which lets an existing project swap the dependency in one step. New code should use the oi prefix. For projects migrating away from the primeicons package, @openvue/openicons/primeicons.css resolves to the same compatibility layer so existing import statements can stay untouched.",
+          "label": "Migration from PrimeIcons",
+          "description": "The class prefix changed from pi to oi in this release. Existing markup keeps working through a compatibility stylesheet that aliases every .pi-* class onto the OpenIcons font, so migrating from the primeicons package is a one line dependency swap and nothing in your templates has to change. That entry point loads openicons-compat.css , which is also importable directly. To move to the new prefix, import @openvue/openicons/openicons.css instead and rename pi pi-check to oi oi-check throughout. Both stylesheets can be loaded at once during a gradual migration. One icon was removed rather than renamed: pi-prime was the PrimeTek logo mark, which the MIT license does not cover. OpenIcons is stewarded by the OpenVi Foundation and is not affiliated with PrimeTek or PrimeUI.",
           "examples": null
+        },
+        {
+          "id": "components",
+          "label": "Vue Components",
+          "description": "The webfont loads all 323 glyphs to show one, cannot be multicolored, and places icons in the text layer where screen readers meet them. For Vue 3 applications, @openvue/openicons-vue ships each icon as a tree-shakeable SVG component instead, so importing two icons costs under 1KB. Components default to 1em and currentColor , so they follow the surrounding text exactly as the font does. They are aria-hidden unless given a title , which promotes them to role=\"img\" with an accessible name.",
+          "examples": {
+            "basic": "<script setup>\nimport OiCheck from '@openvue/openicons-vue/icons/OiCheck';\n<\\/script>\n\n<template>\n    <OiCheck />\n    <OiCheck :size=\"32\" title=\"Saved\" />\n<\\/template>"
+          }
         },
         {
           "id": "constants",
@@ -39198,15 +39190,15 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenIcons is available at npm, run the following command to download it to your project.",
+          "description": "OpenIcons is available at npm, run the following command to download it to your project. OpenIcons is currently in beta, so install it with the beta tag.",
           "examples": {
-            "basic": "npm install @openvue/openicons"
+            "basic": "npm install @openvue/openicons@beta"
           }
         },
         {
           "id": "import",
           "label": "Import",
-          "description": "CSS file of the icon library needs to be imported at the entry point of your application.",
+          "description": "CSS file of the icon library needs to be imported at the entry point of your application. This stylesheet defines the oi prefix only. If your application still uses pi class names, from markup written against PrimeIcons or from the constants API , import the compatibility stylesheet instead.",
           "examples": null
         },
         {
@@ -39216,19 +39208,11 @@
           "examples": null
         },
         {
-          "id": "size",
-          "label": "Size",
-          "description": "Size of an icon is controlled with the font-size property of the element.",
+          "id": "webfont",
+          "label": "Webfont",
+          "description": "Once the stylesheet is imported, reference an icon by class on an element such as i or span . Icons inherit font-size and color from their parent, so they scale with the surrounding text. The oi-fw class gives an icon a fixed width, which is useful for aligning lists of menu items.",
           "examples": {
-            "basic": "<i class=\"oi oi-check\" style=\"font-size: 1rem\"></i>\n<i class=\"oi oi-times\" style=\"font-size: 1.5rem\"></i>\n<i class=\"oi oi-search\" style=\"font-size: 2rem\"></i>\n<i class=\"oi oi-user\" style=\"font-size: 2.5rem\"></i>"
-          }
-        },
-        {
-          "id": "spin",
-          "label": "Spin",
-          "description": "Special oi-spin class applies infinite rotation to an icon.",
-          "examples": {
-            "basic": "<i class=\"oi oi-spin oi-spinner\" style=\"font-size: 2rem\"></i>\n<i class=\"oi oi-spin oi-cog\" style=\"font-size: 2rem\"></i>"
+            "basic": "<i class=\"oi oi-check\"></i>\n<i class=\"oi oi-spin oi-spinner\"></i>\n<i class=\"oi oi-search\" style=\"font-size: 1.5rem; color: var(--p-primary-color)\"></i>"
           }
         }
       ]
