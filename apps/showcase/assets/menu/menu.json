@@ -13,10 +13,6 @@
                     "to": "/setup"
                 },
                 {
-                    "name": "Playground",
-                    "to": "/playground"
-                },
-                {
                     "name": "PrimeVue Migration",
                     "to": "/migrate",
                     "badge": "NEW"
