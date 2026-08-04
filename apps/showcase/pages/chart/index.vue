@@ -21,6 +21,7 @@ import HorizontalBarDoc from '@/doc/chart/HorizontalBarDoc.vue';
 import ImportDoc from '@/doc/chart/ImportDoc.vue';
 import LineDoc from '@/doc/chart/LineDoc.vue';
 import LineStylesDoc from '@/doc/chart/LineStylesDoc.vue';
+import MigrationDoc from '@/doc/chart/MigrationDoc.vue';
 import MultiAxisDoc from '@/doc/chart/MultiAxisDoc.vue';
 import PieChartDoc from '@/doc/chart/PieChartDoc.vue';
 import PolarAreaDoc from '@/doc/chart/PolarAreaDoc.vue';
@@ -114,6 +115,11 @@ export default {
                     id: 'combo',
                     label: 'Combo',
                     component: ComboDoc
+                },
+                {
+                    id: 'migration',
+                    label: 'Migrating from PrimeVue',
+                    component: MigrationDoc
                 },
                 {
                     id: 'accessibility',
