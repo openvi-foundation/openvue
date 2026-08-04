@@ -13,10 +13,6 @@
                     "to": "/setup"
                 },
                 {
-                    "name": "Playground",
-                    "to": "/playground"
-                },
-                {
                     "name": "PrimeVue Migration",
                     "to": "/migrate",
                     "badge": "NEW"
@@ -575,7 +571,8 @@
             "children": [
                 {
                     "name": "OpenIcons",
-                    "to": "/icons"
+                    "to": "/icons",
+                    "badge": "NEW"
                 },
                 {
                     "name": "Custom Icons",

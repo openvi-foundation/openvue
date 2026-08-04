@@ -1,0 +1,3440 @@
+{
+    "icons": [
+        {
+            "name": "address-book",
+            "tags": [
+                "address-book",
+                "contacts",
+                "directory",
+                "information",
+                "numbers",
+                "address",
+                "book"
+            ]
+        },
+        {
+            "name": "align-center",
+            "tags": [
+                "align-center",
+                "text-alignment",
+                "center-text",
+                "middle-alignment",
+                "centered-layout",
+                "align",
+                "center"
+            ]
+        },
+        {
+            "name": "align-justify",
+            "tags": [
+                "align-justify",
+                "text-alignment",
+                "justify-text",
+                "uniform-spacing",
+                "balanced-layout",
+                "align",
+                "justify"
+            ]
+        },
+        {
+            "name": "align-left",
+            "tags": [
+                "align-left",
+                "text-alignment",
+                "left-aligned",
+                "start-alignment",
+                "text-flush-left",
+                "align",
+                "left"
+            ]
+        },
+        {
+            "name": "align-right",
+            "tags": [
+                "align-right",
+                "text-alignment",
+                "right-aligned",
+                "end-alignment",
+                "text-flush-right",
+                "align",
+                "right"
+            ]
+        },
+        {
+            "name": "amazon",
+            "tags": [
+                "amazon",
+                "online-shopping",
+                "ecommerce",
+                "products",
+                "retail"
+            ]
+        },
+        {
+            "name": "android",
+            "tags": [
+                "android",
+                "mobile",
+                "os",
+                "tech",
+                "robot",
+                "system"
+            ]
+        },
+        {
+            "name": "angle-double-down",
+            "tags": [
+                "angle-double-down",
+                "fast-fall",
+                "down",
+                "decrease",
+                "lower",
+                "angle",
+                "double"
+            ]
+        },
+        {
+            "name": "angle-double-left",
+            "tags": [
+                "angle-double-left",
+                "fast-return",
+                "left",
+                "back",
+                "previous",
+                "angle",
+                "double"
+            ]
+        },
+        {
+            "name": "angle-double-right",
+            "tags": [
+                "angle-double-right",
+                "fast-proceed",
+                "right",
+                "next",
+                "forward",
+                "angle",
+                "double"
+            ]
+        },
+        {
+            "name": "angle-double-up",
+            "tags": [
+                "angle-double-up",
+                "fast-rise",
+                "lift",
+                "double-up",
+                "increase",
+                "angle",
+                "double",
+                "up"
+            ]
+        },
+        {
+            "name": "angle-down",
+            "tags": [
+                "angle-down",
+                "fall",
+                "down",
+                "decrease",
+                "lower",
+                "angle"
+            ]
+        },
+        {
+            "name": "angle-left",
+            "tags": [
+                "angle-left",
+                "back",
+                "return",
+                "left",
+                "previous",
+                "angle"
+            ]
+        },
+        {
+            "name": "angle-right",
+            "tags": [
+                "angle-right",
+                "next",
+                "proceed",
+                "right",
+                "forward",
+                "angle"
+            ]
+        },
+        {
+            "name": "angle-up",
+            "tags": [
+                "angle-up",
+                "rise",
+                "lift",
+                "up",
+                "increase",
+                "angle"
+            ]
+        },
+        {
+            "name": "apple",
+            "tags": [
+                "apple",
+                "brand",
+                "computer",
+                "technology",
+                "mac"
+            ]
+        },
+        {
+            "name": "arrow-circle-down",
+            "tags": [
+                "arrow-circle-down",
+                "download",
+                "decrease",
+                "down",
+                "lower",
+                "arrow",
+                "circle"
+            ]
+        },
+        {
+            "name": "arrow-circle-left",
+            "tags": [
+                "arrow-circle-left",
+                "back",
+                "previous",
+                "left",
+                "return",
+                "arrow",
+                "circle"
+            ]
+        },
+        {
+            "name": "arrow-circle-right",
+            "tags": [
+                "arrow-circle-right",
+                "next",
+                "forward",
+                "right",
+                "proceed",
+                "arrow",
+                "circle"
+            ]
+        },
+        {
+            "name": "arrow-circle-up",
+            "tags": [
+                "arrow-circle-up",
+                "upload",
+                "increase",
+                "up",
+                "elevate",
+                "arrow",
+                "circle"
+            ]
+        },
+        {
+            "name": "arrow-down",
+            "tags": [
+                "arrow-down",
+                "download",
+                "decrease",
+                "down",
+                "lower",
+                "arrow"
+            ]
+        },
+        {
+            "name": "arrow-down-left",
+            "tags": [
+                "arrow-down-left",
+                "southwest",
+                "move",
+                "diagonal",
+                "direction",
+                "arrow",
+                "down",
+                "left"
+            ]
+        },
+        {
+            "name": "arrow-down-left-and-arrow-up-right-to-center",
+            "tags": [
+                "arrow-down-left-and-arrow-up-right-to-center",
+                "join",
+                "meet",
+                "intersection",
+                "arrow",
+                "down",
+                "left",
+                "and",
+                "up",
+                "right",
+                "to",
+                "center"
+            ]
+        },
+        {
+            "name": "arrow-down-right",
+            "tags": [
+                "arrow-down-right",
+                "southeast",
+                "move",
+                "diagonal",
+                "direction",
+                "arrow",
+                "down",
+                "right"
+            ]
+        },
+        {
+            "name": "arrow-left",
+            "tags": [
+                "arrow-left",
+                "back",
+                "previous",
+                "left",
+                "return",
+                "arrow"
+            ]
+        },
+        {
+            "name": "arrow-right",
+            "tags": [
+                "arrow-right",
+                "next",
+                "forward",
+                "right",
+                "proceed",
+                "arrow"
+            ]
+        },
+        {
+            "name": "arrow-right-arrow-left",
+            "tags": [
+                "arrow-right-arrow-left",
+                "bidirectional",
+                "left-and-right",
+                "alternation",
+                "back-and-forth",
+                "arrow",
+                "right",
+                "left"
+            ]
+        },
+        {
+            "name": "arrow-up",
+            "tags": [
+                "arrow-up",
+                "upload",
+                "increase",
+                "up",
+                "elevate",
+                "arrow"
+            ]
+        },
+        {
+            "name": "arrow-up-left",
+            "tags": [
+                "arrow-up-left",
+                "northwest",
+                "move",
+                "diagonal",
+                "direction",
+                "arrow",
+                "up",
+                "left"
+            ]
+        },
+        {
+            "name": "arrow-up-right",
+            "tags": [
+                "arrow-up-right",
+                "northeast",
+                "move",
+                "diagonal",
+                "direction",
+                "arrow",
+                "up",
+                "right"
+            ]
+        },
+        {
+            "name": "arrow-up-right-and-arrow-down-left-from-center",
+            "tags": [
+                "arrow-up-right-and-arrow-down-left-from-center",
+                "split",
+                "diverge",
+                "separate",
+                "arrow",
+                "up",
+                "right",
+                "and",
+                "down",
+                "left",
+                "from",
+                "center"
+            ]
+        },
+        {
+            "name": "arrows-alt",
+            "tags": [
+                "arrows-alt",
+                "direction",
+                "move",
+                "arrows",
+                "alt"
+            ]
+        },
+        {
+            "name": "arrows-h",
+            "tags": [
+                "arrows-h",
+                "horizontal",
+                "left-and-right",
+                "bi-directional",
+                "move",
+                "arrows",
+                "h"
+            ]
+        },
+        {
+            "name": "arrows-v",
+            "tags": [
+                "arrows-v",
+                "vertical",
+                "up-and-down",
+                "bi-directional",
+                "move",
+                "arrows",
+                "v"
+            ]
+        },
+        {
+            "name": "asterisk",
+            "tags": [
+                "asterisk",
+                "star",
+                "note",
+                "reference",
+                "highlight"
+            ]
+        },
+        {
+            "name": "at",
+            "tags": [
+                "at",
+                "email",
+                "location",
+                "place"
+            ]
+        },
+        {
+            "name": "backward",
+            "tags": [
+                "backward",
+                "return",
+                "reverse",
+                "back",
+                "previous"
+            ]
+        },
+        {
+            "name": "ban",
+            "tags": [
+                "ban",
+                "block",
+                "stop",
+                "deny",
+                "prohibit"
+            ]
+        },
+        {
+            "name": "barcode",
+            "tags": [
+                "barcode",
+                "product",
+                "code",
+                "scan",
+                "retail",
+                "price"
+            ]
+        },
+        {
+            "name": "bars",
+            "tags": [
+                "bars",
+                "menu",
+                "options",
+                "list",
+                "categories",
+                "hamburger"
+            ]
+        },
+        {
+            "name": "battery",
+            "tags": [
+                "battery"
+            ]
+        },
+        {
+            "name": "bell",
+            "tags": [
+                "bell",
+                "alarm",
+                "reminder",
+                "notification",
+                "alert"
+            ]
+        },
+        {
+            "name": "bell-slash",
+            "tags": [
+                "bell-slash",
+                "mute",
+                "alert",
+                "silence",
+                "quiet",
+                "off",
+                "bell",
+                "slash"
+            ]
+        },
+        {
+            "name": "bitcoin",
+            "tags": [
+                "bitcoin",
+                "cryptocurrency",
+                "digital",
+                "currency",
+                "btc",
+                "blockchain"
+            ]
+        },
+        {
+            "name": "bluetooth",
+            "tags": [
+                "bluetooth"
+            ]
+        },
+        {
+            "name": "bolt",
+            "tags": [
+                "bolt",
+                "lightning",
+                "electicity",
+                "speed",
+                "charge"
+            ]
+        },
+        {
+            "name": "book",
+            "tags": [
+                "book",
+                "read",
+                "literature",
+                "knowledge",
+                "education"
+            ]
+        },
+        {
+            "name": "bookmark",
+            "tags": [
+                "bookmark",
+                "favorite",
+                "mark",
+                "save",
+                "tag"
+            ]
+        },
+        {
+            "name": "bookmark-fill",
+            "tags": [
+                "bookmark-fill",
+                "save",
+                "favorite",
+                "keep",
+                "bookmark",
+                "fill"
+            ]
+        },
+        {
+            "name": "box",
+            "tags": [
+                "box",
+                "package",
+                "container",
+                "storage",
+                "delivery"
+            ]
+        },
+        {
+            "name": "briefcase",
+            "tags": [
+                "briefcase",
+                "work",
+                "job",
+                "professional",
+                "business"
+            ]
+        },
+        {
+            "name": "building",
+            "tags": [
+                "building",
+                "office",
+                "architecture",
+                "structure",
+                "construction"
+            ]
+        },
+        {
+            "name": "building-columns",
+            "tags": [
+                "building-columns",
+                "architecture",
+                "structure",
+                "pillar",
+                "bank",
+                "building",
+                "columns"
+            ]
+        },
+        {
+            "name": "bullseye",
+            "tags": [
+                "bullseye",
+                "target",
+                "aim",
+                "goal",
+                "focus"
+            ]
+        },
+        {
+            "name": "calculator",
+            "tags": [
+                "calculator",
+                "math",
+                "addition",
+                "subtraction",
+                "calculation"
+            ]
+        },
+        {
+            "name": "calendar",
+            "tags": [
+                "calendar",
+                "date",
+                "event",
+                "schedule",
+                "day"
+            ]
+        },
+        {
+            "name": "calendar-clock",
+            "tags": [
+                "calendar-clock",
+                "schedule",
+                "date",
+                "event",
+                "time",
+                "calendar",
+                "clock"
+            ]
+        },
+        {
+            "name": "calendar-minus",
+            "tags": [
+                "calendar-minus",
+                "remove-event",
+                "delete-date",
+                "cancel-event",
+                "calendar",
+                "minus"
+            ]
+        },
+        {
+            "name": "calendar-plus",
+            "tags": [
+                "calendar-plus",
+                "add-event",
+                "new-date",
+                "schedule",
+                "calendar",
+                "plus"
+            ]
+        },
+        {
+            "name": "calendar-times",
+            "tags": [
+                "calendar-times",
+                "delete-event",
+                "clear-calendar",
+                "calendar",
+                "times"
+            ]
+        },
+        {
+            "name": "camera",
+            "tags": [
+                "camera",
+                "photo",
+                "picture",
+                "snapshot",
+                "image"
+            ]
+        },
+        {
+            "name": "car",
+            "tags": [
+                "car",
+                "vehicle",
+                "transport",
+                "drive",
+                "auto"
+            ]
+        },
+        {
+            "name": "caret-down",
+            "tags": [
+                "caret-down",
+                "collapse",
+                "down",
+                "fall",
+                "decrease",
+                "caret"
+            ]
+        },
+        {
+            "name": "caret-left",
+            "tags": [
+                "caret-left",
+                "previous",
+                "backward",
+                "left",
+                "return",
+                "caret"
+            ]
+        },
+        {
+            "name": "caret-right",
+            "tags": [
+                "caret-right",
+                "next",
+                "forward",
+                "right",
+                "proceed",
+                "caret"
+            ]
+        },
+        {
+            "name": "caret-up",
+            "tags": [
+                "caret-up",
+                "expand",
+                "up",
+                "rise",
+                "increase",
+                "caret"
+            ]
+        },
+        {
+            "name": "cart-arrow-down",
+            "tags": [
+                "cart-arrow-down",
+                "shopping",
+                "cart",
+                "arrow",
+                "down"
+            ]
+        },
+        {
+            "name": "cart-minus",
+            "tags": [
+                "cart-minus",
+                "remove",
+                "purchase",
+                "cart",
+                "minus"
+            ]
+        },
+        {
+            "name": "cart-plus",
+            "tags": [
+                "cart-plus",
+                "add-to-cart",
+                "purchase",
+                "cart",
+                "plus"
+            ]
+        },
+        {
+            "name": "chart-bar",
+            "tags": [
+                "chart-bar",
+                "graphic",
+                "diagram",
+                "stats",
+                "bar-chart",
+                "chart",
+                "bar"
+            ]
+        },
+        {
+            "name": "chart-line",
+            "tags": [
+                "chart-line",
+                "growth",
+                "increase",
+                "stats",
+                "trend",
+                "chart",
+                "line"
+            ]
+        },
+        {
+            "name": "chart-pie",
+            "tags": [
+                "chart-pie",
+                "graph",
+                "statistics",
+                "proportion",
+                "chart",
+                "pie"
+            ]
+        },
+        {
+            "name": "chart-scatter",
+            "tags": [
+                "chart-scatter",
+                "graph",
+                "statistic",
+                "plot",
+                "data",
+                "chart",
+                "scatter"
+            ]
+        },
+        {
+            "name": "check",
+            "tags": [
+                "check",
+                "done",
+                "complete",
+                "ok",
+                "approve"
+            ]
+        },
+        {
+            "name": "check-circle",
+            "tags": [
+                "check-circle",
+                "done",
+                "complete",
+                "ok",
+                "approve",
+                "check",
+                "circle"
+            ]
+        },
+        {
+            "name": "check-square",
+            "tags": [
+                "check-square",
+                "confirm",
+                "agree",
+                "approved",
+                "accepted",
+                "check",
+                "square"
+            ]
+        },
+        {
+            "name": "chevron-circle-down",
+            "tags": [
+                "chevron-circle-down",
+                "download",
+                "decrease",
+                "down",
+                "lower",
+                "chevron",
+                "circle"
+            ]
+        },
+        {
+            "name": "chevron-circle-left",
+            "tags": [
+                "chevron-circle-left",
+                "back",
+                "return",
+                "left",
+                "previous",
+                "chevron",
+                "circle"
+            ]
+        },
+        {
+            "name": "chevron-circle-right",
+            "tags": [
+                "chevron-circle-right",
+                "next",
+                "proceed",
+                "right",
+                "forward",
+                "chevron",
+                "circle"
+            ]
+        },
+        {
+            "name": "chevron-circle-up",
+            "tags": [
+                "chevron-circle-up",
+                "upload",
+                "increase",
+                "up",
+                "elevate",
+                "chevron",
+                "circle"
+            ]
+        },
+        {
+            "name": "chevron-down",
+            "tags": [
+                "chevron-down",
+                "down",
+                "fall",
+                "decrease",
+                "lower",
+                "chevron"
+            ]
+        },
+        {
+            "name": "chevron-left",
+            "tags": [
+                "chevron-left",
+                "backward",
+                "previous",
+                "return",
+                "left",
+                "chevron"
+            ]
+        },
+        {
+            "name": "chevron-right",
+            "tags": [
+                "chevron-right",
+                "forward",
+                "next",
+                "right",
+                "proceed",
+                "chevron"
+            ]
+        },
+        {
+            "name": "chevron-up",
+            "tags": [
+                "chevron-up",
+                "up",
+                "increase",
+                "rise",
+                "elevate",
+                "chevron"
+            ]
+        },
+        {
+            "name": "circle",
+            "tags": [
+                "circle",
+                "round",
+                "cycle",
+                "loop",
+                "circular"
+            ]
+        },
+        {
+            "name": "circle-fill",
+            "tags": [
+                "circle-fill",
+                "complete",
+                "whole",
+                "circle",
+                "fill"
+            ]
+        },
+        {
+            "name": "circle-off",
+            "tags": [
+                "circle",
+                "off"
+            ]
+        },
+        {
+            "name": "circle-on",
+            "tags": [
+                "circle",
+                "on"
+            ]
+        },
+        {
+            "name": "clipboard",
+            "tags": [
+                "clipboard",
+                "paste",
+                "copy",
+                "cut",
+                "notes"
+            ]
+        },
+        {
+            "name": "clock",
+            "tags": [
+                "clock",
+                "time",
+                "hours",
+                "minutes",
+                "seconds"
+            ]
+        },
+        {
+            "name": "clone",
+            "tags": [
+                "clone",
+                "duplicate",
+                "copy",
+                "replicate"
+            ]
+        },
+        {
+            "name": "cloud",
+            "tags": [
+                "cloud",
+                "internet",
+                "storage",
+                "weather",
+                "data"
+            ]
+        },
+        {
+            "name": "cloud-download",
+            "tags": [
+                "cloud-download",
+                "download",
+                "data",
+                "fetch",
+                "retrieval",
+                "cloud"
+            ]
+        },
+        {
+            "name": "cloud-upload",
+            "tags": [
+                "cloud-upload",
+                "backup",
+                "save",
+                "upload",
+                "cloud"
+            ]
+        },
+        {
+            "name": "code",
+            "tags": [
+                "code",
+                "programming",
+                "software",
+                "developer",
+                "script"
+            ]
+        },
+        {
+            "name": "code-branch",
+            "tags": [
+                "code",
+                "branch"
+            ]
+        },
+        {
+            "name": "cog",
+            "tags": [
+                "cog",
+                "settings",
+                "gears",
+                "options",
+                "configuration"
+            ]
+        },
+        {
+            "name": "comment",
+            "tags": [
+                "comment",
+                "chat",
+                "talk",
+                "feedback",
+                "opinion"
+            ]
+        },
+        {
+            "name": "comments",
+            "tags": [
+                "comments",
+                "chats",
+                "forums",
+                "discussions",
+                "feedbacks"
+            ]
+        },
+        {
+            "name": "compass",
+            "tags": [
+                "compass",
+                "navigation",
+                "direction",
+                "explorer",
+                "pathfinder"
+            ]
+        },
+        {
+            "name": "copy",
+            "tags": [
+                "copy",
+                "duplicate",
+                "replicate",
+                "clone",
+                "reproduce"
+            ]
+        },
+        {
+            "name": "credit-card",
+            "tags": [
+                "credit-card",
+                "payment",
+                "purchase",
+                "money",
+                "bank",
+                "credit",
+                "card"
+            ]
+        },
+        {
+            "name": "crown",
+            "tags": [
+                "crown",
+                "royalty",
+                "king",
+                "queen",
+                "leader"
+            ]
+        },
+        {
+            "name": "database",
+            "tags": [
+                "database",
+                "data",
+                "storage",
+                "information",
+                "records"
+            ]
+        },
+        {
+            "name": "delete-left",
+            "tags": [
+                "delete-left",
+                "remove",
+                "backspace",
+                "erase",
+                "eliminate",
+                "delete",
+                "left"
+            ]
+        },
+        {
+            "name": "desktop",
+            "tags": [
+                "desktop",
+                "computer",
+                "monitor",
+                "pc",
+                "screen"
+            ]
+        },
+        {
+            "name": "directions",
+            "tags": [
+                "directions",
+                "route",
+                "navigation",
+                "path",
+                "guide",
+                "right"
+            ]
+        },
+        {
+            "name": "directions-alt",
+            "tags": [
+                "directions-alt",
+                "route",
+                "navigation",
+                "path",
+                "guide",
+                "left",
+                "directions",
+                "alt"
+            ]
+        },
+        {
+            "name": "discord",
+            "tags": [
+                "discord",
+                "voice",
+                "chat",
+                "game",
+                "social",
+                "communication"
+            ]
+        },
+        {
+            "name": "dollar",
+            "tags": [
+                "dollar",
+                "money",
+                "currency",
+                "cash",
+                "payment"
+            ]
+        },
+        {
+            "name": "download",
+            "tags": [
+                "download",
+                "save",
+                "transfer",
+                "get",
+                "receive"
+            ]
+        },
+        {
+            "name": "eject",
+            "tags": [
+                "eject",
+                "remove",
+                "release",
+                "take-out",
+                "disconnect"
+            ]
+        },
+        {
+            "name": "ellipsis-h",
+            "tags": [
+                "ellipsis-h",
+                "more",
+                "options",
+                "menu",
+                "horizontal",
+                "dots",
+                "ellipsis",
+                "h"
+            ]
+        },
+        {
+            "name": "ellipsis-v",
+            "tags": [
+                "ellipsis-v",
+                "more",
+                "options",
+                "menu",
+                "vertical",
+                "dots",
+                "ellipsis",
+                "v"
+            ]
+        },
+        {
+            "name": "envelope",
+            "tags": [
+                "envelope",
+                "email",
+                "letter",
+                "mail",
+                "message"
+            ]
+        },
+        {
+            "name": "equals",
+            "tags": [
+                "equals",
+                "same",
+                "identical",
+                "match",
+                "balance"
+            ]
+        },
+        {
+            "name": "eraser",
+            "tags": [
+                "eraser",
+                "delete",
+                "remove",
+                "wipe",
+                "clean"
+            ]
+        },
+        {
+            "name": "ethereum",
+            "tags": [
+                "ethereum",
+                "cryptocurrency",
+                "blockchain",
+                "digital",
+                "currency"
+            ]
+        },
+        {
+            "name": "euro",
+            "tags": [
+                "euro",
+                "money",
+                "currency",
+                "europe",
+                "cash"
+            ]
+        },
+        {
+            "name": "exclamation-circle",
+            "tags": [
+                "exclamation-circle",
+                "important",
+                "attention",
+                "alert",
+                "warning",
+                "exclamation",
+                "circle"
+            ]
+        },
+        {
+            "name": "exclamation-triangle",
+            "tags": [
+                "exclamation-triangle",
+                "warning",
+                "alert",
+                "danger",
+                "caution",
+                "exclamation",
+                "triangle"
+            ]
+        },
+        {
+            "name": "expand",
+            "tags": [
+                "expand",
+                "enlarge",
+                "grow",
+                "increase",
+                "extend"
+            ]
+        },
+        {
+            "name": "external-link",
+            "tags": [
+                "external-link",
+                "new-tab",
+                "external",
+                "link",
+                "outside"
+            ]
+        },
+        {
+            "name": "eye",
+            "tags": [
+                "eye",
+                "view",
+                "see",
+                "look",
+                "watch"
+            ]
+        },
+        {
+            "name": "eye-slash",
+            "tags": [
+                "eye-slash",
+                "hide",
+                "private",
+                "unseen",
+                "invisible",
+                "eye",
+                "slash"
+            ]
+        },
+        {
+            "name": "face-smile",
+            "tags": [
+                "face-smile",
+                "happy",
+                "joy",
+                "pleased",
+                "positive",
+                "face",
+                "smile"
+            ]
+        },
+        {
+            "name": "facebook",
+            "tags": [
+                "facebook",
+                "social-network",
+                "friends",
+                "like",
+                "post"
+            ]
+        },
+        {
+            "name": "fast-backward",
+            "tags": [
+                "fast-backward",
+                "previous",
+                "speed",
+                "quick",
+                "past",
+                "fast",
+                "backward"
+            ]
+        },
+        {
+            "name": "fast-forward",
+            "tags": [
+                "fast-forward",
+                "next",
+                "speed",
+                "quick",
+                "future",
+                "fast",
+                "forward"
+            ]
+        },
+        {
+            "name": "file",
+            "tags": [
+                "file",
+                "document",
+                "record",
+                "data",
+                "paper"
+            ]
+        },
+        {
+            "name": "file-arrow-up",
+            "tags": [
+                "file-arrow-up",
+                "upload",
+                "send",
+                "transfer",
+                "file",
+                "arrow",
+                "up"
+            ]
+        },
+        {
+            "name": "file-check",
+            "tags": [
+                "file-check",
+                "document",
+                "confirmed",
+                "approve",
+                "verified",
+                "correct",
+                "file",
+                "check"
+            ]
+        },
+        {
+            "name": "file-edit",
+            "tags": [
+                "file-edit",
+                "modify",
+                "amend",
+                "revise",
+                "change",
+                "file",
+                "edit"
+            ]
+        },
+        {
+            "name": "file-excel",
+            "tags": [
+                "file-excel",
+                "spreadsheet",
+                "workbook",
+                "xls",
+                "microsoft",
+                "file",
+                "excel"
+            ]
+        },
+        {
+            "name": "file-export",
+            "tags": [
+                "file-export",
+                "send",
+                "save",
+                "dispatch",
+                "file",
+                "export"
+            ]
+        },
+        {
+            "name": "file-import",
+            "tags": [
+                "file-import",
+                "get",
+                "data",
+                "retrieve",
+                "fetch",
+                "file",
+                "import"
+            ]
+        },
+        {
+            "name": "file-o",
+            "tags": [
+                "file",
+                "o"
+            ]
+        },
+        {
+            "name": "file-pdf",
+            "tags": [
+                "file-pdf",
+                "document",
+                "adobe",
+                "read",
+                "acrobat",
+                "file",
+                "pdf"
+            ]
+        },
+        {
+            "name": "file-plus",
+            "tags": [
+                "file-plus",
+                "add",
+                "document",
+                "new",
+                "create",
+                "file",
+                "plus"
+            ]
+        },
+        {
+            "name": "file-word",
+            "tags": [
+                "file-word",
+                "document",
+                "edit",
+                "write",
+                "microsoft",
+                "file",
+                "word"
+            ]
+        },
+        {
+            "name": "filter",
+            "tags": [
+                "filter",
+                "refine",
+                "criteria",
+                "sort",
+                "selection"
+            ]
+        },
+        {
+            "name": "filter-fill",
+            "tags": [
+                "filter-fill",
+                "selection",
+                "full-filter",
+                "complete-criteria",
+                "filter",
+                "fill"
+            ]
+        },
+        {
+            "name": "filter-slash",
+            "tags": [
+                "filter-slash",
+                "remove-filter",
+                "all-results",
+                "clear-filter",
+                "filter",
+                "slash"
+            ]
+        },
+        {
+            "name": "flag",
+            "tags": [
+                "flag",
+                "report",
+                "banner"
+            ]
+        },
+        {
+            "name": "flag-fill",
+            "tags": [
+                "flag-fill",
+                "complete",
+                "report",
+                "flag",
+                "fill"
+            ]
+        },
+        {
+            "name": "folder",
+            "tags": [
+                "folder",
+                "file-holder",
+                "organizer",
+                "container",
+                "directory"
+            ]
+        },
+        {
+            "name": "folder-open",
+            "tags": [
+                "folder-open",
+                "access-files",
+                "open-directory",
+                "open-folder",
+                "file-access",
+                "folder",
+                "open"
+            ]
+        },
+        {
+            "name": "folder-plus",
+            "tags": [
+                "folder-plus",
+                "add",
+                "new",
+                "create",
+                "container",
+                "folder",
+                "plus"
+            ]
+        },
+        {
+            "name": "forward",
+            "tags": [
+                "forward",
+                "advance",
+                "proceed",
+                "next",
+                "move-on"
+            ]
+        },
+        {
+            "name": "gauge",
+            "tags": [
+                "gauge",
+                "measure",
+                "meter",
+                "indicator",
+                "level"
+            ]
+        },
+        {
+            "name": "gift",
+            "tags": [
+                "gift",
+                "present",
+                "suprise",
+                "box",
+                "birthday"
+            ]
+        },
+        {
+            "name": "github",
+            "tags": [
+                "github",
+                "code",
+                "repository",
+                "developer",
+                "open-source"
+            ]
+        },
+        {
+            "name": "globe",
+            "tags": [
+                "globe",
+                "world",
+                "internet",
+                "global",
+                "earth"
+            ]
+        },
+        {
+            "name": "google",
+            "tags": [
+                "google",
+                "search",
+                "brand",
+                "technology",
+                "internet"
+            ]
+        },
+        {
+            "name": "graduation-cap",
+            "tags": [
+                "graduation-cap",
+                "education",
+                "school",
+                "diploma",
+                "university",
+                "graduation",
+                "cap"
+            ]
+        },
+        {
+            "name": "hammer",
+            "tags": [
+                "hammer",
+                "tool",
+                "build",
+                "construction",
+                "fix"
+            ]
+        },
+        {
+            "name": "hashtag",
+            "tags": [
+                "hashtag",
+                "tag",
+                "trend",
+                "topic",
+                "social-media"
+            ]
+        },
+        {
+            "name": "headphones",
+            "tags": [
+                "headphones",
+                "music",
+                "audio",
+                "sound",
+                "listen"
+            ]
+        },
+        {
+            "name": "heart",
+            "tags": [
+                "heart",
+                "love",
+                "like",
+                "affection",
+                "favorite"
+            ]
+        },
+        {
+            "name": "heart-fill",
+            "tags": [
+                "heart-fill",
+                "love",
+                "affection",
+                "full-heart",
+                "heart",
+                "fill"
+            ]
+        },
+        {
+            "name": "history",
+            "tags": [
+                "history",
+                "past",
+                "records",
+                "timeline",
+                "memories"
+            ]
+        },
+        {
+            "name": "home",
+            "tags": [
+                "home",
+                "house",
+                "homepage",
+                "shelter",
+                "building"
+            ]
+        },
+        {
+            "name": "hourglass",
+            "tags": [
+                "hourglass",
+                "time",
+                "wait",
+                "patience",
+                "sand"
+            ]
+        },
+        {
+            "name": "id-card",
+            "tags": [
+                "id-card",
+                "identification",
+                "personal-info",
+                "identity",
+                "proof",
+                "id",
+                "card"
+            ]
+        },
+        {
+            "name": "image",
+            "tags": [
+                "image",
+                "picture",
+                "photo",
+                "graphic",
+                "illustration"
+            ]
+        },
+        {
+            "name": "images",
+            "tags": [
+                "images",
+                "pictures",
+                "photos",
+                "graphics",
+                "illustrations"
+            ]
+        },
+        {
+            "name": "inbox",
+            "tags": [
+                "inbox",
+                "email",
+                "messages",
+                "mail",
+                "receive"
+            ]
+        },
+        {
+            "name": "indian-rupee",
+            "tags": [
+                "indian-rupee",
+                "money",
+                "currency",
+                "inr",
+                "cash",
+                "indian",
+                "rupee"
+            ]
+        },
+        {
+            "name": "info",
+            "tags": [
+                "info",
+                "information",
+                "help",
+                "details"
+            ]
+        },
+        {
+            "name": "info-circle",
+            "tags": [
+                "info-circle",
+                "information",
+                "help",
+                "details",
+                "info",
+                "circle"
+            ]
+        },
+        {
+            "name": "instagram",
+            "tags": [
+                "instagram",
+                "photos",
+                "hashtag",
+                "selfie",
+                "social"
+            ]
+        },
+        {
+            "name": "key",
+            "tags": [
+                "key",
+                "unlock",
+                "access",
+                "secret",
+                "password"
+            ]
+        },
+        {
+            "name": "keyboard",
+            "tags": [
+                "keyboard"
+            ]
+        },
+        {
+            "name": "language",
+            "tags": [
+                "language",
+                "linguistics",
+                "words",
+                "communication",
+                "dialect"
+            ]
+        },
+        {
+            "name": "laptop",
+            "tags": [
+                "laptop"
+            ]
+        },
+        {
+            "name": "layers",
+            "tags": [
+                "layers"
+            ]
+        },
+        {
+            "name": "lightbulb",
+            "tags": [
+                "lightbulb",
+                "idea",
+                "inspiration",
+                "invention",
+                "light"
+            ]
+        },
+        {
+            "name": "link",
+            "tags": [
+                "link",
+                "connect",
+                "join",
+                "attach",
+                "web",
+                "url"
+            ]
+        },
+        {
+            "name": "linkedin",
+            "tags": [
+                "linkedin",
+                "jobs",
+                "professionals",
+                "business",
+                "network"
+            ]
+        },
+        {
+            "name": "list",
+            "tags": [
+                "list",
+                "items",
+                "tasks",
+                "enumeration",
+                "record"
+            ]
+        },
+        {
+            "name": "list-check",
+            "tags": [
+                "list-check",
+                "items",
+                "tasks",
+                "complete",
+                "done",
+                "list",
+                "check"
+            ]
+        },
+        {
+            "name": "lock",
+            "tags": [
+                "lock",
+                "secure",
+                "safe",
+                "restrict",
+                "close"
+            ]
+        },
+        {
+            "name": "lock-open",
+            "tags": [
+                "lock-open",
+                "unlock",
+                "access",
+                "open",
+                "unchain",
+                "lock"
+            ]
+        },
+        {
+            "name": "map",
+            "tags": [
+                "map",
+                "location",
+                "route",
+                "journey",
+                "area"
+            ]
+        },
+        {
+            "name": "map-marker",
+            "tags": [
+                "map-marker",
+                "location",
+                "pin",
+                "place",
+                "position",
+                "map",
+                "marker"
+            ]
+        },
+        {
+            "name": "mars",
+            "tags": [
+                "mars",
+                "male",
+                "man",
+                "men",
+                "gender"
+            ]
+        },
+        {
+            "name": "megaphone",
+            "tags": [
+                "megaphone",
+                "announce",
+                "shout",
+                "broadcast",
+                "loud"
+            ]
+        },
+        {
+            "name": "microchip",
+            "tags": [
+                "microchip",
+                "technology",
+                "circuit",
+                "processor",
+                "component"
+            ]
+        },
+        {
+            "name": "microchip-ai",
+            "tags": [
+                "microchip-ai",
+                "technology",
+                "smart",
+                "artificial-intelligence",
+                "microchip",
+                "ai"
+            ]
+        },
+        {
+            "name": "microphone",
+            "tags": [
+                "microphone",
+                "sound",
+                "record",
+                "speak",
+                "audio"
+            ]
+        },
+        {
+            "name": "microsoft",
+            "tags": [
+                "microsoft",
+                "brand",
+                "computer",
+                "technology",
+                "windows"
+            ]
+        },
+        {
+            "name": "minus",
+            "tags": [
+                "minus",
+                "remove",
+                "subtract",
+                "decrease",
+                "less"
+            ]
+        },
+        {
+            "name": "minus-circle",
+            "tags": [
+                "minus-circle",
+                "remove",
+                "subtract",
+                "decrease",
+                "minus",
+                "circle"
+            ]
+        },
+        {
+            "name": "mobile",
+            "tags": [
+                "mobile",
+                "phone",
+                "device",
+                "smartphone",
+                "cellphone"
+            ]
+        },
+        {
+            "name": "money-bill",
+            "tags": [
+                "money-bill",
+                "cash",
+                "currency",
+                "banknote",
+                "bucks",
+                "money",
+                "bill"
+            ]
+        },
+        {
+            "name": "moon",
+            "tags": [
+                "moon",
+                "night",
+                "dark",
+                "lunar",
+                "crescent"
+            ]
+        },
+        {
+            "name": "objects-column",
+            "tags": [
+                "objects-column",
+                "items",
+                "elements",
+                "organization",
+                "grid",
+                "layout",
+                "objects",
+                "column"
+            ]
+        },
+        {
+            "name": "palette",
+            "tags": [
+                "palette",
+                "colors",
+                "design",
+                "art",
+                "creative"
+            ]
+        },
+        {
+            "name": "paperclip",
+            "tags": [
+                "paperclip",
+                "attach",
+                "link",
+                "join",
+                "bind"
+            ]
+        },
+        {
+            "name": "pause",
+            "tags": [
+                "pause",
+                "stop",
+                "wait",
+                "halt",
+                "break"
+            ]
+        },
+        {
+            "name": "pause-circle",
+            "tags": [
+                "pause-circle",
+                "halt",
+                "wait",
+                "stop",
+                "break",
+                "pause",
+                "circle"
+            ]
+        },
+        {
+            "name": "paypal",
+            "tags": [
+                "paypal",
+                "payment",
+                "money",
+                "transfer",
+                "ecommerce",
+                "transaction"
+            ]
+        },
+        {
+            "name": "pen-to-square",
+            "tags": [
+                "pen-to-square",
+                "write",
+                "edit",
+                "note",
+                "document",
+                "pen",
+                "to",
+                "square"
+            ]
+        },
+        {
+            "name": "pencil",
+            "tags": [
+                "pencil",
+                "edit",
+                "write",
+                "draw",
+                "update"
+            ]
+        },
+        {
+            "name": "percentage",
+            "tags": [
+                "percentage",
+                "ratio",
+                "portion",
+                "rate",
+                "fraction"
+            ]
+        },
+        {
+            "name": "phone",
+            "tags": [
+                "phone",
+                "call",
+                "talk",
+                "voice",
+                "telephone"
+            ]
+        },
+        {
+            "name": "pinterest",
+            "tags": [
+                "pinterest",
+                "social",
+                "media",
+                "image",
+                "sharing",
+                "hobby"
+            ]
+        },
+        {
+            "name": "play",
+            "tags": [
+                "play",
+                "start",
+                "go",
+                "run",
+                "action"
+            ]
+        },
+        {
+            "name": "play-circle",
+            "tags": [
+                "play-circle",
+                "start",
+                "go",
+                "action",
+                "play",
+                "circle"
+            ]
+        },
+        {
+            "name": "plus",
+            "tags": [
+                "plus",
+                "add",
+                "increase",
+                "more",
+                "extra"
+            ]
+        },
+        {
+            "name": "plus-circle",
+            "tags": [
+                "plus-circle",
+                "add",
+                "increase",
+                "plus",
+                "more",
+                "circle"
+            ]
+        },
+        {
+            "name": "pound",
+            "tags": [
+                "pound",
+                "money",
+                "currency",
+                "sterling",
+                "uk"
+            ]
+        },
+        {
+            "name": "power-off",
+            "tags": [
+                "power-off",
+                "shutdown",
+                "turn-off",
+                "stop",
+                "end",
+                "power",
+                "off"
+            ]
+        },
+        {
+            "name": "print",
+            "tags": [
+                "print",
+                "printout",
+                "hard-copy",
+                "document",
+                "printer"
+            ]
+        },
+        {
+            "name": "qrcode",
+            "tags": [
+                "qrcode",
+                "scan",
+                "code",
+                "data",
+                "barcode"
+            ]
+        },
+        {
+            "name": "question",
+            "tags": [
+                "question",
+                "help",
+                "query",
+                "doubt",
+                "uncertainty"
+            ]
+        },
+        {
+            "name": "question-circle",
+            "tags": [
+                "question-circle",
+                "help",
+                "info",
+                "query",
+                "uncertainty",
+                "question",
+                "circle"
+            ]
+        },
+        {
+            "name": "receipt",
+            "tags": [
+                "receipt",
+                "bill",
+                "invoice",
+                "proof-of-purchase",
+                "payment"
+            ]
+        },
+        {
+            "name": "reddit",
+            "tags": [
+                "reddit",
+                "social",
+                "news",
+                "discussions",
+                "forum",
+                "upvote"
+            ]
+        },
+        {
+            "name": "refresh",
+            "tags": [
+                "refresh",
+                "update",
+                "reload",
+                "renew",
+                "repeat"
+            ]
+        },
+        {
+            "name": "replay",
+            "tags": [
+                "replay",
+                "repeat",
+                "redo",
+                "play-again",
+                "loop"
+            ]
+        },
+        {
+            "name": "reply",
+            "tags": [
+                "reply",
+                "respond",
+                "answer",
+                "comment-back",
+                "feedback"
+            ]
+        },
+        {
+            "name": "rss",
+            "tags": [
+                "rss"
+            ]
+        },
+        {
+            "name": "save",
+            "tags": [
+                "save",
+                "store",
+                "keep",
+                "reserve",
+                "record"
+            ]
+        },
+        {
+            "name": "search",
+            "tags": [
+                "search",
+                "find",
+                "query",
+                "lookup",
+                "discover"
+            ]
+        },
+        {
+            "name": "search-minus",
+            "tags": [
+                "search-minus",
+                "reduce-search",
+                "less-results",
+                "narrow-filter",
+                "restrict-search",
+                "search",
+                "minus"
+            ]
+        },
+        {
+            "name": "search-plus",
+            "tags": [
+                "search-plus",
+                "increase-search",
+                "more-search",
+                "wide-filter",
+                "expand-search",
+                "search",
+                "plus"
+            ]
+        },
+        {
+            "name": "send",
+            "tags": [
+                "send",
+                "deliver",
+                "dispatch",
+                "transmit",
+                "message"
+            ]
+        },
+        {
+            "name": "server",
+            "tags": [
+                "server",
+                "host",
+                "datacenter",
+                "cloud",
+                "storage"
+            ]
+        },
+        {
+            "name": "share-alt",
+            "tags": [
+                "share-alt",
+                "distribute",
+                "social",
+                "link",
+                "share",
+                "alt"
+            ]
+        },
+        {
+            "name": "shield",
+            "tags": [
+                "shield",
+                "protect",
+                "secure",
+                "guard",
+                "defense"
+            ]
+        },
+        {
+            "name": "shop",
+            "tags": [
+                "shop",
+                "store",
+                "retail",
+                "purchase",
+                "sell"
+            ]
+        },
+        {
+            "name": "shopping-bag",
+            "tags": [
+                "shopping-bag",
+                "retail",
+                "purchase",
+                "buy",
+                "shop",
+                "shopping",
+                "bag"
+            ]
+        },
+        {
+            "name": "shopping-cart",
+            "tags": [
+                "shopping-cart",
+                "buy",
+                "purchase",
+                "retain",
+                "shop",
+                "shopping",
+                "cart"
+            ]
+        },
+        {
+            "name": "sidebar",
+            "tags": [
+                "sidebar"
+            ]
+        },
+        {
+            "name": "sign-in",
+            "tags": [
+                "sign-in",
+                "login",
+                "enter",
+                "connect",
+                "access",
+                "sign",
+                "in"
+            ]
+        },
+        {
+            "name": "sign-out",
+            "tags": [
+                "sign-out",
+                "logout",
+                "exit",
+                "leave",
+                "disconnect",
+                "sign",
+                "out"
+            ]
+        },
+        {
+            "name": "sitemap",
+            "tags": [
+                "sitemap",
+                "hierarchy",
+                "structure",
+                "tree",
+                "network"
+            ]
+        },
+        {
+            "name": "slack",
+            "tags": [
+                "slack",
+                "communication",
+                "team",
+                "work",
+                "collabrate"
+            ]
+        },
+        {
+            "name": "sliders-h",
+            "tags": [
+                "sliders-h",
+                "controls",
+                "adjustments",
+                "sliders",
+                "settings",
+                "h"
+            ]
+        },
+        {
+            "name": "sliders-v",
+            "tags": [
+                "sliders-v",
+                "controls",
+                "adjustments",
+                "sliders",
+                "settings",
+                "v"
+            ]
+        },
+        {
+            "name": "sort",
+            "tags": [
+                "sort",
+                "order",
+                "sequence"
+            ]
+        },
+        {
+            "name": "sort-alpha-down",
+            "tags": [
+                "sort-alpha-down",
+                "sort",
+                "alpha",
+                "down"
+            ]
+        },
+        {
+            "name": "sort-alpha-down-alt",
+            "tags": [
+                "sort-alpha-down-alt",
+                "sort",
+                "alpha",
+                "down",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-alpha-up",
+            "tags": [
+                "sort-alpha-up",
+                "sort",
+                "alpha",
+                "up"
+            ]
+        },
+        {
+            "name": "sort-alpha-up-alt",
+            "tags": [
+                "sort-alpha-up-alt",
+                "sort",
+                "alpha",
+                "up",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-alt",
+            "tags": [
+                "sort-alt",
+                "sort",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-alt-slash",
+            "tags": [
+                "sort-alt-slash",
+                "remove-sorting",
+                "unsorted",
+                "orderless",
+                "sort",
+                "alt",
+                "slash"
+            ]
+        },
+        {
+            "name": "sort-amount-down",
+            "tags": [
+                "sort-amount-down",
+                "sort",
+                "amount",
+                "down"
+            ]
+        },
+        {
+            "name": "sort-amount-down-alt",
+            "tags": [
+                "sort-amount-down-alt",
+                "sort",
+                "amount",
+                "down",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-amount-up",
+            "tags": [
+                "sort-amount-up",
+                "sort",
+                "amount",
+                "up"
+            ]
+        },
+        {
+            "name": "sort-amount-up-alt",
+            "tags": [
+                "sort-amount-up-alt",
+                "sort",
+                "amount",
+                "up",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-down",
+            "tags": [
+                "sort-down",
+                "descending",
+                "down",
+                "decrease",
+                "lower",
+                "sort"
+            ]
+        },
+        {
+            "name": "sort-down-fill",
+            "tags": [
+                "sort-down-fill",
+                "descending",
+                "arrange",
+                "reduction",
+                "sort",
+                "down",
+                "fill"
+            ]
+        },
+        {
+            "name": "sort-numeric-down",
+            "tags": [
+                "sort-numeric-down",
+                "sort",
+                "numeric",
+                "down"
+            ]
+        },
+        {
+            "name": "sort-numeric-down-alt",
+            "tags": [
+                "sort-numeric-down-alt",
+                "sort",
+                "numeric",
+                "down",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-numeric-up",
+            "tags": [
+                "sort-numeric-up",
+                "sort",
+                "numeric",
+                "up"
+            ]
+        },
+        {
+            "name": "sort-numeric-up-alt",
+            "tags": [
+                "sort-numeric-up-alt",
+                "sort",
+                "numeric",
+                "up",
+                "alt"
+            ]
+        },
+        {
+            "name": "sort-up",
+            "tags": [
+                "sort-up",
+                "ascending",
+                "up",
+                "increase",
+                "elevate",
+                "sort"
+            ]
+        },
+        {
+            "name": "sort-up-fill",
+            "tags": [
+                "sort-up-fill",
+                "ascending",
+                "arrange",
+                "rise",
+                "sort",
+                "up",
+                "fill"
+            ]
+        },
+        {
+            "name": "sparkles",
+            "tags": [
+                "sparkles",
+                "shine",
+                "glitter",
+                "twinkle",
+                "bright",
+                "new",
+                "magic"
+            ]
+        },
+        {
+            "name": "spinner",
+            "tags": [
+                "spinner",
+                "loading",
+                "process",
+                "wait",
+                "buffering"
+            ]
+        },
+        {
+            "name": "spinner-dotted",
+            "tags": [
+                "spinner-dotted",
+                "loading",
+                "processing",
+                "buffering",
+                "spinner",
+                "dotted"
+            ]
+        },
+        {
+            "name": "star",
+            "tags": [
+                "star",
+                "favorite",
+                "rate",
+                "like",
+                "highlight"
+            ]
+        },
+        {
+            "name": "star-fill",
+            "tags": [
+                "star-fill",
+                "favorite",
+                "rate",
+                "like",
+                "full-star",
+                "star",
+                "fill"
+            ]
+        },
+        {
+            "name": "star-half",
+            "tags": [
+                "star-half",
+                "rate",
+                "like",
+                "average",
+                "star",
+                "half"
+            ]
+        },
+        {
+            "name": "star-half-fill",
+            "tags": [
+                "star-half-fill",
+                "rate",
+                "like",
+                "average",
+                "star",
+                "half",
+                "fill"
+            ]
+        },
+        {
+            "name": "step-backward",
+            "tags": [
+                "step-backward",
+                "back",
+                "previous",
+                "return",
+                "rewind",
+                "step",
+                "backward"
+            ]
+        },
+        {
+            "name": "step-backward-alt",
+            "tags": [
+                "step-backward-alt",
+                "previous-step",
+                "step",
+                "backward",
+                "alt"
+            ]
+        },
+        {
+            "name": "step-forward",
+            "tags": [
+                "step-forward",
+                "next",
+                "proceed",
+                "forward",
+                "advance",
+                "step"
+            ]
+        },
+        {
+            "name": "step-forward-alt",
+            "tags": [
+                "step-forward-alt",
+                "next-step",
+                "step",
+                "forward",
+                "alt"
+            ]
+        },
+        {
+            "name": "stop",
+            "tags": [
+                "stop",
+                "halt",
+                "end",
+                "cease",
+                "finish"
+            ]
+        },
+        {
+            "name": "stop-circle",
+            "tags": [
+                "stop-circle",
+                "halt",
+                "end",
+                "cease",
+                "finish",
+                "stop",
+                "circle"
+            ]
+        },
+        {
+            "name": "stopwatch",
+            "tags": [
+                "stopwatch",
+                "time",
+                "countdown",
+                "timer",
+                "race"
+            ]
+        },
+        {
+            "name": "sun",
+            "tags": [
+                "sun",
+                "daylight",
+                "bright",
+                "sunny",
+                "weather",
+                "light"
+            ]
+        },
+        {
+            "name": "sync",
+            "tags": [
+                "sync",
+                "update",
+                "refresh",
+                "reload",
+                "synchronize"
+            ]
+        },
+        {
+            "name": "table",
+            "tags": [
+                "table",
+                "spreadsheet",
+                "grid",
+                "chart",
+                "layout"
+            ]
+        },
+        {
+            "name": "tablet",
+            "tags": [
+                "tablet",
+                "device",
+                "tech",
+                "screen",
+                "mobile"
+            ]
+        },
+        {
+            "name": "tag",
+            "tags": [
+                "tag",
+                "label",
+                "price",
+                "identifier",
+                "sticker"
+            ]
+        },
+        {
+            "name": "tags",
+            "tags": [
+                "tags",
+                "labels",
+                "prices",
+                "identifiers",
+                "stickers"
+            ]
+        },
+        {
+            "name": "telegram",
+            "tags": [
+                "telegram",
+                "messaging",
+                "chat",
+                "fast"
+            ]
+        },
+        {
+            "name": "terminal",
+            "tags": [
+                "terminal"
+            ]
+        },
+        {
+            "name": "th-large",
+            "tags": [
+                "th-large",
+                "grid",
+                "layout",
+                "blocks",
+                "sections",
+                "th",
+                "large"
+            ]
+        },
+        {
+            "name": "thumbs-down",
+            "tags": [
+                "thumbs-down",
+                "dislike",
+                "negative",
+                "disagree",
+                "bad",
+                "thumbs",
+                "down"
+            ]
+        },
+        {
+            "name": "thumbs-down-fill",
+            "tags": [
+                "thumbs-down-fill",
+                "disapproval",
+                "dislike",
+                "disagreement",
+                "refusal",
+                "thumbs",
+                "down",
+                "fill"
+            ]
+        },
+        {
+            "name": "thumbs-up",
+            "tags": [
+                "thumbs-up",
+                "like",
+                "positive",
+                "agree",
+                "good",
+                "thumbs",
+                "up"
+            ]
+        },
+        {
+            "name": "thumbs-up-fill",
+            "tags": [
+                "thumbs-up-fill",
+                "approval",
+                "like",
+                "agreement",
+                "support",
+                "thumbs",
+                "up",
+                "fill"
+            ]
+        },
+        {
+            "name": "thumbtack",
+            "tags": [
+                "thumbtack",
+                "pin",
+                "mark",
+                "secure",
+                "set"
+            ]
+        },
+        {
+            "name": "ticket",
+            "tags": [
+                "ticket",
+                "pass",
+                "entry",
+                "admit",
+                "voucher"
+            ]
+        },
+        {
+            "name": "tiktok",
+            "tags": [
+                "tiktok",
+                "social",
+                "media",
+                "video",
+                "app",
+                "music"
+            ]
+        },
+        {
+            "name": "times",
+            "tags": [
+                "times",
+                "close",
+                "cancel",
+                "delete",
+                "remove"
+            ]
+        },
+        {
+            "name": "times-circle",
+            "tags": [
+                "times-circle",
+                "close",
+                "cancel",
+                "delete",
+                "times",
+                "circle"
+            ]
+        },
+        {
+            "name": "trash",
+            "tags": [
+                "trash",
+                "delete",
+                "remove",
+                "garbage",
+                "waste"
+            ]
+        },
+        {
+            "name": "trophy",
+            "tags": [
+                "trophy",
+                "award",
+                "prize",
+                "win",
+                "victory"
+            ]
+        },
+        {
+            "name": "truck",
+            "tags": [
+                "truck",
+                "delivery",
+                "transport",
+                "vehicle",
+                "cargo"
+            ]
+        },
+        {
+            "name": "turkish-lira",
+            "tags": [
+                "turkish-lira",
+                "money",
+                "currency",
+                "turkey",
+                "cash",
+                "turkish",
+                "lira"
+            ]
+        },
+        {
+            "name": "twitch",
+            "tags": [
+                "twitch",
+                "live",
+                "streaming",
+                "video",
+                "game",
+                "broadcast"
+            ]
+        },
+        {
+            "name": "twitter",
+            "tags": [
+                "twitter",
+                "social-media",
+                "tweet",
+                "bird",
+                "x"
+            ]
+        },
+        {
+            "name": "undo",
+            "tags": [
+                "undo",
+                "revert",
+                "back",
+                "cancel",
+                "reverse"
+            ]
+        },
+        {
+            "name": "unlock",
+            "tags": [
+                "unlock",
+                "open",
+                "access",
+                "free",
+                "unchain"
+            ]
+        },
+        {
+            "name": "upload",
+            "tags": [
+                "upload",
+                "send",
+                "transfer",
+                "give",
+                "provide"
+            ]
+        },
+        {
+            "name": "user",
+            "tags": [
+                "user",
+                "profile",
+                "person",
+                "account",
+                "individual"
+            ]
+        },
+        {
+            "name": "user-edit",
+            "tags": [
+                "user-edit",
+                "change-profile",
+                "user-modification",
+                "edit-user",
+                "update-details",
+                "user",
+                "edit"
+            ]
+        },
+        {
+            "name": "user-minus",
+            "tags": [
+                "user-minus",
+                "remove-user",
+                "delete-user",
+                "user-deletion",
+                "eliminate-user",
+                "user",
+                "minus"
+            ]
+        },
+        {
+            "name": "user-plus",
+            "tags": [
+                "user-plus",
+                "add-user",
+                "new-user",
+                "register",
+                "signup",
+                "user",
+                "plus"
+            ]
+        },
+        {
+            "name": "users",
+            "tags": [
+                "users",
+                "group",
+                "team",
+                "people",
+                "crowd"
+            ]
+        },
+        {
+            "name": "venus",
+            "tags": [
+                "venus",
+                "female",
+                "women",
+                "gender"
+            ]
+        },
+        {
+            "name": "verified",
+            "tags": [
+                "verified",
+                "confirm",
+                "checked",
+                "authenticated",
+                "approved"
+            ]
+        },
+        {
+            "name": "video",
+            "tags": [
+                "video",
+                "movie",
+                "clip",
+                "footage",
+                "film"
+            ]
+        },
+        {
+            "name": "vimeo",
+            "tags": [
+                "vimeo",
+                "video",
+                "movie",
+                "clip",
+                "streaming"
+            ]
+        },
+        {
+            "name": "volume-down",
+            "tags": [
+                "volume-down",
+                "low-sound",
+                "decrease-volume",
+                "quiet",
+                "softer",
+                "volume",
+                "down"
+            ]
+        },
+        {
+            "name": "volume-off",
+            "tags": [
+                "volume-off",
+                "mute",
+                "silent",
+                "noiseless",
+                "sound-off",
+                "volume",
+                "off"
+            ]
+        },
+        {
+            "name": "volume-up",
+            "tags": [
+                "volume-up",
+                "loud",
+                "increase-sound",
+                "high-volume",
+                "louder",
+                "volume",
+                "up"
+            ]
+        },
+        {
+            "name": "wallet",
+            "tags": [
+                "wallet",
+                "money",
+                "cash",
+                "payments",
+                "finance"
+            ]
+        },
+        {
+            "name": "warehouse",
+            "tags": [
+                "warehouse",
+                "storage",
+                "inventory",
+                "goods",
+                "distribution"
+            ]
+        },
+        {
+            "name": "wave-pulse",
+            "tags": [
+                "wave-pulse",
+                "frequency",
+                "rhythm",
+                "beat",
+                "vibration",
+                "rate",
+                "wave",
+                "pulse"
+            ]
+        },
+        {
+            "name": "whatsapp",
+            "tags": [
+                "whatsapp",
+                "chat",
+                "message",
+                "instant-messaging",
+                "call"
+            ]
+        },
+        {
+            "name": "wifi",
+            "tags": [
+                "wifi",
+                "internet",
+                "wireless",
+                "network",
+                "connection"
+            ]
+        },
+        {
+            "name": "wifi-slash",
+            "tags": [
+                "wifi",
+                "slash"
+            ]
+        },
+        {
+            "name": "window-maximize",
+            "tags": [
+                "window-maximize",
+                "enlarge",
+                "full-screen",
+                "expand",
+                "increase",
+                "window",
+                "maximize"
+            ]
+        },
+        {
+            "name": "window-minimize",
+            "tags": [
+                "window-minimize",
+                "shrink",
+                "small-screen",
+                "collapse",
+                "decrease-size",
+                "window",
+                "minimize"
+            ]
+        },
+        {
+            "name": "wrench",
+            "tags": [
+                "wrench",
+                "tool",
+                "fix",
+                "repair",
+                "adjust"
+            ]
+        },
+        {
+            "name": "youtube",
+            "tags": [
+                "youtube",
+                "video",
+                "sharing",
+                "music",
+                "clip",
+                "vlog"
+            ]
+        }
+    ]
+}

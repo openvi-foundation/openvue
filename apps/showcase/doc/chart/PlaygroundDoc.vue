@@ -12,129 +12,25 @@
             <p>Turn <i>themed</i> off to see what Chart.js renders on its own, and back on to see what OpenVue derives from the active theme. Switching the theme or dark mode while it is on updates the chart without any code on your side.</p>
         </div>
 
-        <div class="card">
-            <div class="flex flex-col gap-4 lg:flex-row">
-                <div class="min-w-0 flex-1">
-                    <Chart :type="config.type" :data="chartData" :options="chartOptions" :themed="config.themed" class="w-full" style="min-height: 22rem" />
+        <div class="mb-3 flex items-center justify-between gap-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-muted-color">Preview</span>
+            <Button label="Reset to defaults" severity="secondary" outlined size="small" @click="reset" />
+        </div>
+
+        <div class="card playground-surface">
+            <div class="flex flex-col lg:flex-row">
+                <!-- the chart sits at the foot of the pane so it stays anchored as the rail grows and shrinks with the type -->
+                <div class="flex min-w-0 flex-1 flex-col items-center justify-end p-4">
+                    <Chart :type="config.type" :data="chartData" :options="chartOptions" :themed="config.themed" :class="chartClass" style="min-height: 22rem" />
                 </div>
 
-                <aside class="w-full shrink-0 lg:w-72" aria-label="Chart options">
-                    <div class="rounded-border border border-surface">
-                        <div class="flex flex-col gap-3 p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-color">Chart</p>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-type" class="text-sm">Type</label>
-                                <Select id="pg-type" v-model="config.type" :options="chartTypes" optionLabel="label" optionValue="value" size="small" class="w-36" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-themed" class="text-sm">Themed</label>
-                                <ToggleSwitch id="pg-themed" v-model="config.themed" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-title" class="text-sm">Title</label>
-                                <InputText id="pg-title" v-model="config.title" size="small" class="w-36" placeholder="None" />
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-3 border-t border-surface p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-color">Presentation</p>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-legend" class="text-sm">Legend</label>
-                                <Select id="pg-legend" v-model="config.legend" :options="legendPositions" optionLabel="label" optionValue="value" size="small" class="w-36" />
-                            </div>
-
-                            <div v-if="isCartesian" class="flex items-center justify-between gap-3">
-                                <label for="pg-grid" class="text-sm">Grid lines</label>
-                                <ToggleSwitch id="pg-grid" v-model="config.grid" />
-                            </div>
-
-                            <template v-if="config.type === 'bar'">
-                                <div class="flex items-center justify-between gap-3">
-                                    <label for="pg-stacked" class="text-sm">Stacked</label>
-                                    <ToggleSwitch id="pg-stacked" v-model="config.stacked" />
-                                </div>
-                                <div class="flex items-center justify-between gap-3">
-                                    <label for="pg-horizontal" class="text-sm">Horizontal</label>
-                                    <ToggleSwitch id="pg-horizontal" v-model="config.horizontal" />
-                                </div>
-                            </template>
-
-                            <template v-if="config.type === 'line'">
-                                <div class="flex items-center justify-between gap-3">
-                                    <label for="pg-fill" class="text-sm">Fill area</label>
-                                    <ToggleSwitch id="pg-fill" v-model="config.fill" />
-                                </div>
-                                <div class="flex flex-col gap-2 pt-1">
-                                    <div class="flex items-center justify-between gap-3">
-                                        <label for="pg-tension" class="text-sm">Curve</label>
-                                        <span class="text-sm tabular-nums text-muted-color">{{ config.tension }}</span>
-                                    </div>
-                                    <Slider id="pg-tension" v-model="config.tension" :min="0" :max="0.5" :step="0.05" />
-                                </div>
-                            </template>
-
-                            <div v-if="config.type === 'doughnut'" class="flex flex-col gap-2 pt-1">
-                                <div class="flex items-center justify-between gap-3">
-                                    <label for="pg-cutout" class="text-sm">Cutout</label>
-                                    <span class="text-sm tabular-nums text-muted-color">{{ config.cutout }}%</span>
-                                </div>
-                                <Slider id="pg-cutout" v-model="config.cutout" :min="0" :max="90" :step="5" />
-                            </div>
-                        </div>
-
-                        <div v-if="isCartesian" class="flex flex-col gap-3 border-t border-surface p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-color">Axes</p>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-xtitle" class="text-sm">X title</label>
-                                <InputText id="pg-xtitle" v-model="config.xTitle" size="small" class="w-36" placeholder="None" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-ytitle" class="text-sm">Y title</label>
-                                <InputText id="pg-ytitle" v-model="config.yTitle" size="small" class="w-36" placeholder="None" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-ymin" class="text-sm">Y min</label>
-                                <InputNumber id="pg-ymin" v-model="config.yMin" size="small" fluid class="w-36 shrink-0" placeholder="Auto" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-ymax" class="text-sm">Y max</label>
-                                <InputNumber id="pg-ymax" v-model="config.yMax" size="small" fluid class="w-36 shrink-0" placeholder="Auto" />
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-3 border-t border-surface p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-color">Behaviour</p>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-tooltip" class="text-sm">Tooltip</label>
-                                <Select id="pg-tooltip" v-model="config.tooltipMode" :options="tooltipModes" optionLabel="label" optionValue="value" size="small" class="w-36" />
-                            </div>
-
-                            <div class="flex items-center justify-between gap-3">
-                                <label for="pg-animation" class="text-sm">Animation</label>
-                                <ToggleSwitch id="pg-animation" v-model="config.animation" />
-                            </div>
-                        </div>
-
-                        <div class="flex justify-end border-t border-surface px-4 py-3">
-                            <Button label="Reset" severity="secondary" text size="small" @click="reset" />
-                        </div>
-                    </div>
-                </aside>
+                <ControlPanel :config="config" />
             </div>
         </div>
 
         <h2 class="doc-section-label">Data</h2>
         <div class="doc-section-description">
-            <p v-if="isPointType">
+            <p v-if="pointType">
                 Scatter and bubble charts plot coordinates rather than categories, so each point carries an <i>x</i> and <i>y</i><span v-if="config.type === 'bubble'"> and a radius <i>r</i></span
                 >. Each series becomes one dataset and keeps its color by position.
             </p>
@@ -145,46 +41,7 @@
         </div>
 
         <div class="card">
-            <div class="overflow-x-auto pb-1">
-                <!-- point types carry one column group per series, category types a single value column -->
-                <div class="grid w-fit items-center gap-x-3 gap-y-2" :style="gridColumns" role="group" aria-label="Chart data">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-muted-color">{{ isPointType ? '#' : 'Label' }}</span>
-
-                    <div v-for="(series, s) in data.series" :key="`h${s}`" class="flex min-w-0 items-center gap-2" :style="isPointType ? { gridColumn: `span ${pointFields.length}` } : null">
-                        <span class="size-2.5 shrink-0 rounded-full" :style="{ backgroundColor: swatch(s) }" aria-hidden="true"></span>
-                        <InputText v-model="series.label" size="small" fluid class="min-w-0" :aria-label="`Name of series ${s + 1}`" />
-                        <Button icon="pi pi-times" text rounded severity="secondary" size="small" :disabled="data.series.length === 1" :aria-label="`Remove series ${s + 1}`" @click="removeSeries(s)" />
-                    </div>
-
-                    <Button icon="pi pi-plus" text rounded severity="secondary" size="small" :disabled="data.series.length >= 8" aria-label="Add series" @click="addSeries" />
-
-                    <template v-if="isPointType">
-                        <span></span>
-                        <template v-for="(series, s) in data.series" :key="`f${s}`">
-                            <span v-for="field in pointFields" :key="`f${s}${field}`" class="text-xs uppercase tracking-wider text-muted-color">{{ field }}</span>
-                        </template>
-                        <span></span>
-                    </template>
-
-                    <template v-for="(row, r) in rowCount" :key="r">
-                        <template v-if="isPointType">
-                            <span class="text-sm tabular-nums text-muted-color">{{ r + 1 }}</span>
-                            <template v-for="(series, s) in data.series" :key="`p${r}${s}`">
-                                <InputNumber v-for="field in pointFields" :key="`p${r}${s}${field}`" v-model="series.points[r][field]" size="small" fluid :aria-label="`${series.label} point ${r + 1} ${field}`" />
-                            </template>
-                        </template>
-                        <template v-else>
-                            <InputText v-model="data.labels[r]" size="small" fluid :aria-label="`Label for row ${r + 1}`" />
-                            <InputNumber v-for="(series, s) in data.series" :key="`${r}-${s}`" v-model="series.values[r]" size="small" fluid :aria-label="`${series.label} at ${data.labels[r]}`" />
-                        </template>
-                        <Button icon="pi pi-times" text rounded severity="secondary" size="small" :disabled="rowCount === 1" :aria-label="`Remove row ${r + 1}`" @click="removeRow(r)" />
-                    </template>
-                </div>
-            </div>
-
-            <div class="mt-4 flex flex-wrap items-center gap-2 border-t border-surface pt-4">
-                <Button :label="isPointType ? 'Add point' : 'Add row'" icon="pi pi-plus" size="small" severity="secondary" outlined @click="addRow" />
-            </div>
+            <DataEditor :type="config.type" :data="data" :palette="palette" @add-row="addRow" @remove-row="removeRow" @add-series="addSeries" @remove-series="removeSeries" />
         </div>
 
         <h2 class="doc-section-label">Advanced options</h2>
@@ -225,291 +82,94 @@
 </template>
 
 <script>
-const PALETTE = ['#3b82f6', '#f59e0b', '#8b5cf6', '#10b981', '#d946ef', '#f43f5e', '#06b6d4', '#84cc16'];
-const POINT_TYPES = ['scatter', 'bubble'];
-
-const randomPoint = () => ({ x: Math.round(Math.random() * 100), y: Math.round(Math.random() * 100), r: Math.round(Math.random() * 18) + 6 });
-
-const defaults = () => ({
-    config: {
-        type: 'bar',
-        themed: true,
-        title: '',
-        legend: 'top',
-        grid: true,
-        stacked: false,
-        horizontal: false,
-        fill: false,
-        tension: 0.4,
-        cutout: 60,
-        xTitle: '',
-        yTitle: '',
-        yMin: null,
-        yMax: null,
-        tooltipMode: 'index',
-        animation: true
-    },
-    data: {
-        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-        series: [
-            { label: 'Sales', values: [540, 325, 702, 620], points: [randomPoint(), randomPoint(), randomPoint(), randomPoint()] },
-            { label: 'Returns', values: [120, 90, 145, 130], points: [randomPoint(), randomPoint(), randomPoint(), randomPoint()] }
-        ]
-    }
-});
+import { mergeOptions } from 'openvue/chart/utils/ChartTheme';
+import ControlPanel from './playground/ControlPanel.vue';
+import DataEditor from './playground/DataEditor.vue';
+import { buildCode } from './playground/codegen';
+import { CIRCULAR_CLASS, MAX_SERIES, buildData, buildOptions, createDefaults, isCircular, isPointType, parseAdvanced, randomPoint, randomValue } from './playground/options';
+import { observeTheme, resolvePalette } from './playground/theme';
 
 export default {
+    components: {
+        ControlPanel,
+        DataEditor
+    },
     data() {
-        const { config, data } = defaults();
+        const { config, data } = createDefaults();
 
         return {
             config,
             data,
             advanced: '',
-            chartTypes: [
-                { label: 'Bar', value: 'bar' },
-                { label: 'Line', value: 'line' },
-                { label: 'Pie', value: 'pie' },
-                { label: 'Doughnut', value: 'doughnut' },
-                { label: 'Polar Area', value: 'polarArea' },
-                { label: 'Radar', value: 'radar' },
-                { label: 'Scatter', value: 'scatter' },
-                { label: 'Bubble', value: 'bubble' }
-            ],
-            legendPositions: [
-                { label: 'Top', value: 'top' },
-                { label: 'Right', value: 'right' },
-                { label: 'Bottom', value: 'bottom' },
-                { label: 'Left', value: 'left' },
-                { label: 'Hidden', value: 'none' }
-            ],
-            tooltipModes: [
-                { label: 'Index', value: 'index' },
-                { label: 'Nearest', value: 'nearest' },
-                { label: 'Point', value: 'point' },
-                { label: 'Dataset', value: 'dataset' }
-            ]
+            palette: []
         };
     },
+    unbindTheme: null,
     computed: {
-        isPointType() {
-            return POINT_TYPES.includes(this.config.type);
+        pointType() {
+            return isPointType(this.config.type);
         },
-        isCartesian() {
-            return this.config.type === 'bar' || this.config.type === 'line' || this.isPointType;
-        },
-        pointFields() {
-            return this.config.type === 'bubble' ? ['x', 'y', 'r'] : ['x', 'y'];
+        chartClass() {
+            return isCircular(this.config.type) ? CIRCULAR_CLASS : 'w-full';
         },
         rowCount() {
-            return this.isPointType ? this.data.series[0].points.length : this.data.labels.length;
-        },
-        gridColumns() {
-            const perSeries = this.isPointType ? this.pointFields.length : 1;
-            const width = this.isPointType ? '6rem' : '10rem';
-
-            return { gridTemplateColumns: `9rem repeat(${this.data.series.length * perSeries}, ${width}) 2.5rem` };
+            return this.pointType ? this.data.series[0].points.length : this.data.labels.length;
         },
         chartData() {
-            const fill = this.config.type === 'line' && this.config.fill;
-
-            if (this.isPointType) {
-                const fields = this.pointFields;
-
-                return {
-                    datasets: this.data.series.map((series) => ({
-                        label: series.label,
-                        data: series.points.map((p) => Object.fromEntries(fields.map((f) => [f, p[f] ?? 0])))
-                    }))
-                };
-            }
-
-            return {
-                labels: [...this.data.labels],
-                datasets: this.data.series.map((series) => ({
-                    label: series.label,
-                    data: this.data.labels.map((_, i) => series.values[i] ?? 0),
-                    ...(fill ? { fill: true } : {})
-                }))
-            };
+            return buildData(this.config, this.data);
         },
-        controlOptions() {
-            const { type, legend, grid, stacked, horizontal, tension, cutout, title, xTitle, yTitle, yMin, yMax, tooltipMode, animation } = this.config;
-
-            const options = {
-                plugins: {
-                    legend: legend === 'none' ? { display: false } : { display: true, position: legend },
-                    tooltip: { mode: tooltipMode, intersect: tooltipMode === 'nearest' || tooltipMode === 'point' }
-                }
-            };
-
-            if (title) options.plugins.title = { display: true, text: title };
-            if (!animation) options.animation = false;
-
-            if (this.isCartesian) {
-                const x = { grid: { display: grid && horizontal }, stacked };
-                const y = { grid: { display: grid && !horizontal }, stacked };
-
-                if (xTitle) x.title = { display: true, text: xTitle };
-                if (yTitle) y.title = { display: true, text: yTitle };
-                if (yMin !== null && yMin !== undefined) y.min = yMin;
-                if (yMax !== null && yMax !== undefined) y.max = yMax;
-
-                options.scales = { x, y };
-            }
-
-            if (type === 'bar' && horizontal) options.indexAxis = 'y';
-            if (type === 'line') options.elements = { line: { tension } };
-            if (type === 'doughnut') options.cutout = `${cutout}%`;
-
-            return options;
-        },
-        advancedParsed() {
-            if (!this.advanced.trim()) return null;
-
-            try {
-                const parsed = JSON.parse(this.advanced);
-
-                return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : null;
-            } catch {
-                return null;
-            }
+        advancedOptions() {
+            return parseAdvanced(this.advanced);
         },
         advancedError() {
-            if (!this.advanced.trim()) return null;
-
-            try {
-                const parsed = JSON.parse(this.advanced);
-
-                if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return 'Options must be a JSON object.';
-
-                return null;
-            } catch (error) {
-                return `Not valid JSON: ${error.message}`;
-            }
+            return this.advancedOptions.error;
         },
         chartOptions() {
-            return this.merge(this.controlOptions, this.advancedParsed);
+            return mergeOptions(buildOptions(this.config), this.advancedOptions.value);
         },
         code() {
-            const datasets = this.data.series
-                .map((series) => {
-                    if (this.isPointType) {
-                        const points = series.points.map((p) => `{ ${this.pointFields.map((f) => `${f}: ${p[f] ?? 0}`).join(', ')} }`).join(', ');
-
-                        return `            {\n                label: '${series.label}',\n                data: [${points}]\n            }`;
-                    }
-
-                    const values = this.data.labels.map((_, i) => series.values[i] ?? 0);
-                    const fill = this.config.type === 'line' && this.config.fill ? ',\n                fill: true' : '';
-
-                    return `            {\n                label: '${series.label}',\n                data: [${values.join(', ')}]${fill}\n            }`;
-                })
-                .join(',\n');
-
-            const labelsLine = this.isPointType ? '' : `\n                labels: [${this.data.labels.map((l) => `'${l}'`).join(', ')}],`;
-            const optionsLiteral = this.stringify(this.chartOptions, 3);
-            const themedAttr = this.config.themed ? '' : ' :themed="false"';
-            const tag = `<Chart type="${this.config.type}" :data="chartData" :options="chartOptions"${themedAttr} />`;
-
-            return {
-                basic: tag,
-                options: `<template>
-    <div class="card">
-        ${tag}
-    </div>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            chartData: {${labelsLine}
-                datasets: [
-${datasets}
-                ]
-            },
-            chartOptions: ${optionsLiteral}
-        };
-    }
-};
-<\/script>`,
-                composition: `<template>
-    <div class="card">
-        ${tag}
-    </div>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-
-const chartData = ref({${labelsLine.replace(/\n {16}/g, '\n    ')}
-    datasets: [
-${datasets.replace(/^ {12}/gm, '        ')}
-    ]
-});
-
-const chartOptions = ref(${optionsLiteral});
-<\/script>`
-            };
+            return buildCode({
+                type: this.config.type,
+                themed: this.config.themed,
+                data: this.chartData,
+                options: this.chartOptions,
+                className: isCircular(this.config.type) ? CIRCULAR_CLASS : null
+            });
         }
     },
+    mounted() {
+        this.syncPalette();
+        this.unbindTheme = observeTheme(this.syncPalette);
+    },
+    beforeUnmount() {
+        this.unbindTheme?.();
+    },
     methods: {
-        swatch(index) {
-            return PALETTE[index % PALETTE.length];
-        },
-        merge(base, override) {
-            if (!override) return { ...base };
-
-            const result = { ...base };
-
-            for (const key of Object.keys(override)) {
-                const value = override[key];
-                const current = result[key];
-                const mergeable = value && current && typeof value === 'object' && typeof current === 'object' && !Array.isArray(value) && !Array.isArray(current);
-
-                result[key] = mergeable ? this.merge(current, value) : value;
-            }
-
-            return result;
-        },
-        stringify(value, depth) {
-            const pad = ' '.repeat(depth * 4);
-            const inner = ' '.repeat((depth + 1) * 4);
-
-            if (value === null || typeof value !== 'object') return typeof value === 'string' ? `'${value}'` : String(value);
-            if (Array.isArray(value)) return `[${value.map((v) => this.stringify(v, depth + 1)).join(', ')}]`;
-
-            const entries = Object.entries(value).filter(([, v]) => v !== undefined);
-
-            if (!entries.length) return '{}';
-
-            return `{\n${entries.map(([k, v]) => `${inner}${k}: ${this.stringify(v, depth + 1)}`).join(',\n')}\n${pad}}`;
+        syncPalette() {
+            this.palette = resolvePalette(this.$el, this.config.type, this.data.series.length);
         },
         addRow() {
             this.data.labels.push(`Item ${this.data.labels.length + 1}`);
             this.data.series.forEach((series) => {
-                series.values.push(Math.round(Math.random() * 700) + 50);
+                series.values.push(randomValue());
                 series.points.push(randomPoint());
             });
         },
         removeRow(index) {
             if (this.rowCount === 1) return;
 
-            const at = typeof index === 'number' ? index : this.rowCount - 1;
-
-            this.data.labels.splice(at, 1);
+            this.data.labels.splice(index, 1);
             this.data.series.forEach((series) => {
-                series.values.splice(at, 1);
-                series.points.splice(at, 1);
+                series.values.splice(index, 1);
+                series.points.splice(index, 1);
             });
         },
         addSeries() {
-            if (this.data.series.length >= 8) return;
+            if (this.data.series.length >= MAX_SERIES) return;
 
             this.data.series.push({
                 label: `Series ${this.data.series.length + 1}`,
-                values: this.data.labels.map(() => Math.round(Math.random() * 700) + 50),
+                values: this.data.labels.map(() => randomValue()),
                 points: this.data.labels.map(() => randomPoint())
             });
         },
@@ -519,7 +179,7 @@ const chartOptions = ref(${optionsLiteral});
             this.data.series.splice(index, 1);
         },
         reset() {
-            const { config, data } = defaults();
+            const { config, data } = createDefaults();
 
             this.config = config;
             this.data = data;
@@ -528,3 +188,11 @@ const chartOptions = ref(${optionsLiteral});
     }
 };
 </script>
+
+<style scoped>
+/* the options rail runs to the edge of the surface, so the padding belongs to the panes instead */
+.playground-surface {
+    padding: 0;
+    overflow: hidden;
+}
+</style>

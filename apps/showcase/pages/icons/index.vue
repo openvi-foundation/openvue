@@ -2,7 +2,7 @@
     <div>
         <Head>
             <Title>OpenIcons - OpenVue</Title>
-            <Meta name="description" content="OpenIcons is the default icon library of OpenVue with over 250 open source icons. OpenIcons is optional as OpenVue components can use any icon with templating." />
+            <Meta name="description" content="OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons shipping 323 icons as a webfont and as tree-shakeable Vue components." />
         </Head>
 
         <div class="doc">
@@ -13,7 +13,7 @@
                             <h1>Icons</h1>
                             <p>
                                 <a href="https://github.com/openvi-foundation/openicons" target="_blank" rel="noopener noreferrer">OpenIcons</a>
-                                is the default icon library of OpenVue with over 250 open source icons maintained by the OpenVi Foundation. OpenIcons is optional as OpenVue components can use any icon with templating.
+                                is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.
                             </p>
                         </div>
                         <DocCopyMarkdown docType="page" class="flex-shrink-0" />
@@ -28,15 +28,13 @@
 
 <script>
 import DocCopyMarkdown from '@/components/doc/DocCopyMarkdown.vue';
-import BasicDoc from '@/doc/icons/BasicDoc.vue';
-import ColorDoc from '@/doc/icons/ColorDoc.vue';
 import CompatibilityDoc from '@/doc/icons/CompatibilityDoc.vue';
+import ComponentsDoc from '@/doc/icons/ComponentsDoc.vue';
 import ConstantsDoc from '@/doc/icons/ConstantsDoc.vue';
 import DownloadDoc from '@/doc/icons/DownloadDoc.vue';
 import ImportDoc from '@/doc/icons/ImportDoc.vue';
 import ListDoc from '@/doc/icons/ListDoc.vue';
-import SizeDoc from '@/doc/icons/SizeDoc.vue';
-import SpinDoc from '@/doc/icons/SpinDoc.vue';
+import WebfontDoc from '@/doc/icons/WebfontDoc.vue';
 
 export default {
     components: { DocCopyMarkdown },
@@ -54,34 +52,24 @@ export default {
                     component: ImportDoc
                 },
                 {
-                    id: 'compatibility',
-                    label: 'Compatibility',
-                    component: CompatibilityDoc
+                    id: 'webfont',
+                    label: 'Webfont',
+                    component: WebfontDoc
                 },
                 {
-                    id: 'basic',
-                    label: 'Basic',
-                    component: BasicDoc
-                },
-                {
-                    id: 'size',
-                    label: 'Size',
-                    component: SizeDoc
-                },
-                {
-                    id: 'color',
-                    label: 'Color',
-                    component: ColorDoc
-                },
-                {
-                    id: 'spin',
-                    label: 'Spin',
-                    component: SpinDoc
+                    id: 'components',
+                    label: 'Vue Components',
+                    component: ComponentsDoc
                 },
                 {
                     id: 'constants',
                     label: 'Constants',
                     component: ConstantsDoc
+                },
+                {
+                    id: 'compatibility',
+                    label: 'Migration from PrimeIcons',
+                    component: CompatibilityDoc
                 },
                 {
                     id: 'list',

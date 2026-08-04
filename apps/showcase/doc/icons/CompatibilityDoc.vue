@@ -1,12 +1,19 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            OpenIcons ships a compatibility stylesheet that aliases the legacy <i>pi pi-&#123;icon&#125;</i> class names onto the OpenIcons font. Import it instead of <i>openicons.css</i> and markup written against PrimeIcons keeps rendering
-            without changes, which lets an existing project swap the dependency in one step. New code should use the <i>oi</i> prefix.
+            The class prefix changed from <i>pi</i> to <i>oi</i> in this release. Existing markup keeps working through a compatibility stylesheet that aliases every <i>.pi-*</i> class onto the OpenIcons font, so migrating from the
+            <i>primeicons</i> package is a one line dependency swap and nothing in your templates has to change.
         </p>
-        <p>For projects migrating away from the <i>primeicons</i> package, <i>@openvue/openicons/primeicons.css</i> resolves to the same compatibility layer so existing import statements can stay untouched.</p>
     </DocSectionText>
     <DocSectionCode :code="code" hideToggleCode importCode hideStackBlitz />
+    <DocSectionText>
+        <p>
+            That entry point loads <i>openicons-compat.css</i>, which is also importable directly. To move to the new prefix, import <i>@openvue/openicons/openicons.css</i> instead and rename <i>pi pi-check</i> to <i>oi oi-check</i> throughout. Both
+            stylesheets can be loaded at once during a gradual migration.
+        </p>
+        <p>One icon was removed rather than renamed: <i>pi-prime</i> was the PrimeTek logo mark, which the MIT license does not cover.</p>
+        <p>OpenIcons is stewarded by the OpenVi Foundation and is not affiliated with PrimeTek or PrimeUI.</p>
+    </DocSectionText>
 </template>
 
 <script>
@@ -14,7 +21,7 @@ export default {
     data() {
         return {
             code: {
-                basic: "\nimport '@openvue/openicons/openicons-compat.css'\n"
+                basic: "\n- import 'primeicons/primeicons.css';\n+ import '@openvue/openicons/primeicons.css';\n"
             }
         };
     }

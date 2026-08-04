@@ -142,5 +142,5 @@ export default defineNuxtConfig({
             DEV_ENV: PROCESS_ENV.DEV_ENV
         }
     },
-    css: ['primeicons/primeicons.css', '@/assets/styles/flags.css', '@/assets/styles/tailwind/main.css', '@/assets/styles/layout/layout.scss']
+    css: ['@openvue/openicons/openicons-compat.css', '@/assets/styles/flags.css', '@/assets/styles/tailwind/main.css', '@/assets/styles/layout/layout.scss']
 });

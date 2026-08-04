@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-08-02
+Generated: 2026-08-04
 
 ---
 
@@ -909,33 +909,26 @@ An existing pass through configuration is customized with the usePassThrough uti
 
 # Icons
 
-OpenIcons is the default icon library of OpenVue with over 250 open source icons maintained by the OpenVi Foundation. OpenIcons is optional as OpenVue components can use any icon with templating.
+OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.
 
-## Basic
+## Migration from PrimeIcons
 
-OpenIcons use the oi oi-&#123;icon&#125; syntax such as oi oi-check . A standalone icon can be displayed using an element such as i or span
+The class prefix changed from pi to oi in this release. Existing markup keeps working through a compatibility stylesheet that aliases every .pi-* class onto the OpenIcons font, so migrating from the primeicons package is a one line dependency swap and nothing in your templates has to change. That entry point loads openicons-compat.css , which is also importable directly. To move to the new prefix, import @openvue/openicons/openicons.css instead and rename pi pi-check to oi oi-check throughout. Both stylesheets can be loaded at once during a gradual migration. One icon was removed rather than renamed: pi-prime was the PrimeTek logo mark, which the MIT license does not cover. OpenIcons is stewarded by the OpenVi Foundation and is not affiliated with PrimeTek or PrimeUI.
 
-```vue
-<i class="oi oi-check"></i>
-<i class="oi oi-times"></i>
-<span class="oi oi-search"></span>
-<span class="oi oi-user"></span>
-```
+## Vue Components
 
-## Color
-
-Icon color is defined with the color property which is inherited from parent by default.
+The webfont loads all 323 glyphs to show one, cannot be multicolored, and places icons in the text layer where screen readers meet them. For Vue 3 applications, @openvue/openicons-vue ships each icon as a tree-shakeable SVG component instead, so importing two icons costs under 1KB. Components default to 1em and currentColor , so they follow the surrounding text exactly as the font does. They are aria-hidden unless given a title , which promotes them to role="img" with an accessible name.
 
 ```vue
-<i class="oi oi-check" style="color: slateblue"></i>
-<i class="oi oi-times" style="color: green"></i>
-<i class="oi oi-search" style="color: 'var(--p-primary-color)'"></i>
-<i class="oi oi-user" style="color: #708090"></i>
+<script setup>
+import OiCheck from '@openvue/openicons-vue/icons/OiCheck';
+<\/script>
+
+<template>
+    <OiCheck />
+    <OiCheck :size="32" title="Saved" />
+<\/template>
 ```
-
-## Compatibility
-
-OpenIcons ships a compatibility stylesheet that aliases the legacy pi pi-&#123;icon&#125; class names onto the OpenIcons font. Import it instead of openicons.css and markup written against PrimeIcons keeps rendering without changes, which lets an existing project swap the dependency in one step. New code should use the oi prefix. For projects migrating away from the primeicons package, @openvue/openicons/primeicons.css resolves to the same compatibility layer so existing import statements can stay untouched.
 
 ## Constants
 
@@ -971,38 +964,28 @@ export default {
 
 ## Download
 
-OpenIcons is available at npm, run the following command to download it to your project.
+OpenIcons is available at npm, run the following command to download it to your project. OpenIcons is currently in beta, so install it with the beta tag.
 
 ```vue
-npm install @openvue/openicons
+npm install @openvue/openicons@beta
 ```
 
 ## Import
 
-CSS file of the icon library needs to be imported at the entry point of your application.
+CSS file of the icon library needs to be imported at the entry point of your application. This stylesheet defines the oi prefix only. If your application still uses pi class names, from markup written against PrimeIcons or from the constants API , import the compatibility stylesheet instead.
 
 ## List
 
 Here is the full list of OpenIcons. More icons will be added periodically and you may also request new icons at the issue tracker.
 
-## Size
+## Webfont
 
-Size of an icon is controlled with the font-size property of the element.
-
-```vue
-<i class="oi oi-check" style="font-size: 1rem"></i>
-<i class="oi oi-times" style="font-size: 1.5rem"></i>
-<i class="oi oi-search" style="font-size: 2rem"></i>
-<i class="oi oi-user" style="font-size: 2.5rem"></i>
-```
-
-## Spin
-
-Special oi-spin class applies infinite rotation to an icon.
+Once the stylesheet is imported, reference an icon by class on an element such as i or span . Icons inherit font-size and color from their parent, so they scale with the surrounding text. The oi-fw class gives an icon a fixed width, which is useful for aligning lists of menu items.
 
 ```vue
-<i class="oi oi-spin oi-spinner" style="font-size: 2rem"></i>
-<i class="oi oi-spin oi-cog" style="font-size: 2rem"></i>
+<i class="oi oi-check"></i>
+<i class="oi oi-spin oi-spinner"></i>
+<i class="oi oi-search" style="font-size: 1.5rem; color: var(--p-primary-color)"></i>
 ```
 
 ---
@@ -1316,7 +1299,7 @@ On-demand OpenVue components with auto imports and tree-shaking.
 
 ## Example
 
-A complete example using OpenVue with auto imports is available at the playground .
+A complete example using OpenVue with auto imports is available on StackBlitz .
 
 ## Overview
 
@@ -8388,6 +8371,16 @@ const setChartOptions = () => {
 <\/script>
 ```
 </details>
+
+## Migrating from PrimeVue
+
+Existing PrimeVue chart configurations keep working without changes. The data and options you already pass are handed to Chart.js as they are, and anything you set explicitly takes precedence over the values described below. Two things are worth knowing before you upgrade. Chart.js 4 is required The peer dependency is chart.js@^4.0.0 , so a project still on Chart.js 3 fails at install time with a peer conflict rather than breaking silently at runtime. Upgrade Chart.js first, then install OpenVue. Note that Chart.js 3 to 4 has its own breaking changes independent of OpenVue, covered in the Chart.js v4 migration guide . Theming is on by default The themed property defaults to true , which applies colors, fonts and grid styling from the active design tokens to any value you have not set yourself. This is why a chart matches the rest of your UI without configuration, but it also means a chart carried over from PrimeVue may render with different default colors than before. Set themed to false to disable it entirely and get the plain Chart.js defaults. The defaults that differ from plain Chart.js, all of which apply only when you have not set the value yourself: Series colors come from the theme palette, assigned by dataset index so a series keeps its color as other series are added or removed. The legend is hidden on a cartesian chart with a single dataset, since the surrounding copy already names it. Pie, doughnut and polar area charts always keep it. Line points are hidden until hover so a dense series reads as a line, with the hit area kept large enough to target them. Bars are capped at 48px and rounded at the data end. Grid lines are drawn on the value axis only, and axis border lines are hidden.
+
+**Basic Usage:**
+
+```vue
+<Chart type="bar" :data="data" :options="options" :themed="false" />
+```
 
 ## Multi Axis
 
