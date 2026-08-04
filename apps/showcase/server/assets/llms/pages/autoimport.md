@@ -4,7 +4,7 @@ On-demand OpenVue components with auto imports and tree-shaking.
 
 ## Example
 
-A complete example using OpenVue with auto imports is available at the playground .
+A complete example using OpenVue with auto imports is available on StackBlitz .
 
 ## Overview
 

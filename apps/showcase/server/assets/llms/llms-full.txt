@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-08-03
+Generated: 2026-08-04
 
 ---
 
@@ -1299,7 +1299,7 @@ On-demand OpenVue components with auto imports and tree-shaking.
 
 ## Example
 
-A complete example using OpenVue with auto imports is available at the playground .
+A complete example using OpenVue with auto imports is available on StackBlitz .
 
 ## Overview
 
@@ -8371,6 +8371,16 @@ const setChartOptions = () => {
 <\/script>
 ```
 </details>
+
+## Migrating from PrimeVue
+
+Existing PrimeVue chart configurations keep working without changes. The data and options you already pass are handed to Chart.js as they are, and anything you set explicitly takes precedence over the values described below. Two things are worth knowing before you upgrade. Chart.js 4 is required The peer dependency is chart.js@^4.0.0 , so a project still on Chart.js 3 fails at install time with a peer conflict rather than breaking silently at runtime. Upgrade Chart.js first, then install OpenVue. Note that Chart.js 3 to 4 has its own breaking changes independent of OpenVue, covered in the Chart.js v4 migration guide . Theming is on by default The themed property defaults to true , which applies colors, fonts and grid styling from the active design tokens to any value you have not set yourself. This is why a chart matches the rest of your UI without configuration, but it also means a chart carried over from PrimeVue may render with different default colors than before. Set themed to false to disable it entirely and get the plain Chart.js defaults. The defaults that differ from plain Chart.js, all of which apply only when you have not set the value yourself: Series colors come from the theme palette, assigned by dataset index so a series keeps its color as other series are added or removed. The legend is hidden on a cartesian chart with a single dataset, since the surrounding copy already names it. Pie, doughnut and polar area charts always keep it. Line points are hidden until hover so a dense series reads as a line, with the hit area kept large enough to target them. Bars are capped at 48px and rounded at the data end. Grid lines are drawn on the value axis only, and axis border lines are hidden.
+
+**Basic Usage:**
+
+```vue
+<Chart type="bar" :data="data" :options="options" :themed="false" />
+```
 
 ## Multi Axis
 

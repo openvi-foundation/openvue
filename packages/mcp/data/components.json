@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generatedAt": "2026-08-03",
+    "generatedAt": "2026-08-04",
     "components": [
         {
             "name": "accordion",
@@ -6267,6 +6267,14 @@
                         "basic": "<Chart type=\"line\" :data=\"chartData\" :options=\"chartOptions\" class=\"h-[30rem]\" />",
                         "options": "<template>\n    <div class=\"card\">\n        <Chart type=\"line\" :data=\"chartData\" :options=\"chartOptions\" class=\"h-[30rem]\" />\n    </div>\n</template>\n\n<script>\nexport default {\n    data() {\n        return {\n            chartData: null,\n            chartOptions: null\n        };\n    },\n    mounted() {\n        this.chartData = this.setChartData();\n        this.chartOptions = this.setChartOptions();\n    },\n    methods: {\n        setChartData() {\n            return {\n                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\n                datasets: [\n                    {\n                        label: 'First Dataset',\n                        data: [65, 59, 80, 81, 56, 55, 40],\n                        fill: false,\n                        tension: 0.4\n                    },\n                    {\n                        label: 'Second Dataset',\n                        data: [28, 48, 40, 19, 86, 27, 90],\n                        fill: false,\n                        borderDash: [5, 5],\n                        tension: 0.4\n                    },\n                    {\n                        label: 'Third Dataset',\n                        data: [12, 51, 62, 33, 21, 62, 45],\n                        fill: true,\n                        tension: 0.4,\n                        backgroundColor: 'rgba(107, 114, 128, 0.2)'\n                    }\n                ]\n            };\n        },\n        setChartOptions() {\n            return {\n                maintainAspectRatio: false,\n                aspectRatio: 0.6\n            };\n        }\n    }\n};\n<\\/script>",
                         "composition": "<template>\n    <div class=\"card\">\n        <Chart type=\"line\" :data=\"chartData\" :options=\"chartOptions\" class=\"h-[30rem]\" />\n    </div>\n</template>\n\n<script setup>\nimport { ref, onMounted } from \"vue\";\n\nonMounted(() => {\n    chartData.value = setChartData();\n    chartOptions.value = setChartOptions();\n});\n\nconst chartData = ref();\nconst chartOptions = ref();\n        \nconst setChartData = () => {\n    return {\n        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\n        datasets: [\n            {\n                label: 'First Dataset',\n                data: [65, 59, 80, 81, 56, 55, 40],\n                fill: false,\n                tension: 0.4\n            },\n            {\n                label: 'Second Dataset',\n                data: [28, 48, 40, 19, 86, 27, 90],\n                fill: false,\n                borderDash: [5, 5],\n                tension: 0.4\n            },\n            {\n                label: 'Third Dataset',\n                data: [12, 51, 62, 33, 21, 62, 45],\n                fill: true,\n                tension: 0.4,\n                backgroundColor: 'rgba(107, 114, 128, 0.2)'\n            }\n        ]\n    };\n};\nconst setChartOptions = () => {\n    return {\n        maintainAspectRatio: false,\n        aspectRatio: 0.6\n    };\n}\n<\\/script>"
+                    }
+                },
+                {
+                    "id": "migration",
+                    "label": "Migrating from PrimeVue",
+                    "description": "Existing PrimeVue chart configurations keep working without changes. The data and options you already pass are handed to Chart.js as they are, and anything you set explicitly takes precedence over the values described below. Two things are worth knowing before you upgrade. Chart.js 4 is required The peer dependency is chart.js@^4.0.0 , so a project still on Chart.js 3 fails at install time with a peer conflict rather than breaking silently at runtime. Upgrade Chart.js first, then install OpenVue. Note that Chart.js 3 to 4 has its own breaking changes independent of OpenVue, covered in the Chart.js v4 migration guide . Theming is on by default The themed property defaults to true , which applies colors, fonts and grid styling from the active design tokens to any value you have not set yourself. This is why a chart matches the rest of your UI without configuration, but it also means a chart carried over from PrimeVue may render with different default colors than before. Set themed to false to disable it entirely and get the plain Chart.js defaults. The defaults that differ from plain Chart.js, all of which apply only when you have not set the value yourself: Series colors come from the theme palette, assigned by dataset index so a series keeps its color as other series are added or removed. The legend is hidden on a cartesian chart with a single dataset, since the surrounding copy already names it. Pie, doughnut and polar area charts always keep it. Line points are hidden until hover so a dense series reads as a line, with the hit area kept large enough to target them. Bars are capped at 48px and rounded at the data end. Grid lines are drawn on the value axis only, and axis border lines are hidden.",
+                    "examples": {
+                        "basic": "<Chart type=\"bar\" :data=\"data\" :options=\"options\" :themed=\"false\" />"
                     }
                 },
                 {
@@ -39410,7 +39418,7 @@
                 {
                     "id": "example",
                     "label": "Example",
-                    "description": "A complete example using OpenVue with auto imports is available at the playground .",
+                    "description": "A complete example using OpenVue with auto imports is available on StackBlitz .",
                     "examples": null
                 },
                 {
