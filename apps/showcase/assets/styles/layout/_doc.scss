@@ -33,11 +33,15 @@
     li {
         position: relative;
         z-index: 1;
+        // stretching every button to the tallest one keeps the underlines on a single line,
+        // whatever a label carries alongside its text
+        display: flex;
 
         button {
             background-color: transparent;
             border: 0 none;
-            display: block;
+            display: flex;
+            align-items: center;
             padding-block: 0 1rem;
             padding-inline: 2rem;
             text-align: center;
