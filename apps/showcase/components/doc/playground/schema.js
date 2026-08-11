@@ -128,21 +128,31 @@ export function createState(schema) {
 }
 
 /**
+ * Whether a control currently contributes a property: it applies at all, and its value says
+ * something the component's own default does not.
+ */
+export function isActive(control, state) {
+    if (control.when && !control.when(state)) return false;
+
+    const value = state[control.prop];
+
+    return value !== control.default && value != null && value !== '';
+}
+
+/**
  * The props worth writing down: those the visitor changed away from the component's own default.
  * Codegen serializes these, so the generated snippet stays as short as the equivalent hand-written
  * one, and binding them onto the preview leaves untouched props at their real defaults.
+ *
+ * A control the rail is hiding is skipped even when its value lingers in state, so turning off the
+ * property that revealed it also drops it from the preview and the generated code.
  */
 export function activeProps(schema, state) {
     const active = {};
 
     for (const group of schema.groups) {
         for (const control of group.controls) {
-            const value = state[control.prop];
-
-            if (value === control.default) continue;
-            if (value == null || value === '') continue;
-
-            active[control.prop] = value;
+            if (isActive(control, state)) active[control.prop] = state[control.prop];
         }
     }
 

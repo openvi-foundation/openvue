@@ -55,8 +55,11 @@ export default {
             required: true
         }
     },
-    /* A component whose model shape depends on a prop needs to know when that prop moved. */
-    emits: ['update:props'],
+    /*
+     * `update:props` is for a component whose model shape depends on a prop; `reset` lets it clear
+     * the value it owns, which the control state knows nothing about.
+     */
+    emits: ['update:props', 'reset'],
     data() {
         return {
             state: createState(this.schema),
@@ -107,6 +110,7 @@ export default {
         },
         reset() {
             this.state = createState(this.schema);
+            this.$emit('reset');
         }
     }
 };

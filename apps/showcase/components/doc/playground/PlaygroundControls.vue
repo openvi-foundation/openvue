@@ -40,6 +40,7 @@
 <script>
 import ControlGroup from './ControlGroup.vue';
 import ControlRow from './ControlRow.vue';
+import { isActive } from './schema';
 
 export default {
     name: 'PlaygroundControls',
@@ -92,11 +93,9 @@ export default {
         }
     },
     methods: {
-        /* The same test codegen uses, so a marked row and a line in the generated snippet agree. */
+        /* The predicate codegen uses, so a marked row and a line in the generated snippet cannot disagree. */
         isModified(control) {
-            const value = this.state[control.prop];
-
-            return value !== control.default && value != null && value !== '';
+            return isActive(control, this.state);
         },
         tooltip(control) {
             return control.description ? { value: control.description, class: 'max-w-64' } : null;
