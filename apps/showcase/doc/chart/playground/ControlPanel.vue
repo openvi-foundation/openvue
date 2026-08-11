@@ -78,8 +78,8 @@
 </template>
 
 <script>
-import ControlGroup from './ControlGroup.vue';
-import ControlRow from './ControlRow.vue';
+import ControlGroup from '@/components/doc/playground/ControlGroup.vue';
+import ControlRow from '@/components/doc/playground/ControlRow.vue';
 import { CHART_TYPES, LEGEND_POSITIONS, TOOLTIP_MODES, isCartesian } from './options';
 
 export default {

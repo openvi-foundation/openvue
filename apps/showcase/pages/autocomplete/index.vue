@@ -5,6 +5,8 @@
         description="AutoComplete is an input component that provides real-time suggestions when being typed."
         :componentDocs="docs"
         :apiDocs="['AutoComplete']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -27,6 +29,7 @@ import ImportDoc from '@/doc/autocomplete/ImportDoc.vue';
 import InvalidDoc from '@/doc/autocomplete/InvalidDoc.vue';
 import MultipleDoc from '@/doc/autocomplete/MultipleDoc.vue';
 import ObjectsDoc from '@/doc/autocomplete/ObjectsDoc.vue';
+import PlaygroundDoc from '@/doc/autocomplete/PlaygroundDoc.vue';
 import SizesDoc from '@/doc/autocomplete/SizesDoc.vue';
 import TemplateDoc from '@/doc/autocomplete/TemplateDoc.vue';
 import VirtualScrollDoc from '@/doc/autocomplete/VirtualScrollDoc.vue';
@@ -133,6 +136,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };
