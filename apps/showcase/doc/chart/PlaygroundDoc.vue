@@ -12,11 +12,6 @@
             <p>Turn <i>themed</i> off to see what Chart.js renders on its own, and back on to see what OpenVue derives from the active theme. Switching the theme or dark mode while it is on updates the chart without any code on your side.</p>
         </div>
 
-        <div class="mb-3 flex items-center justify-between gap-3">
-            <span class="text-xs font-semibold uppercase tracking-wider text-muted-color">Preview</span>
-            <Button label="Reset to defaults" severity="secondary" outlined size="small" @click="reset" />
-        </div>
-
         <div class="card playground-surface">
             <div class="flex flex-col lg:flex-row">
                 <!-- the chart sits at the foot of the pane so it stays anchored as the rail grows and shrinks with the type -->
@@ -24,7 +19,7 @@
                     <Chart :type="config.type" :data="chartData" :options="chartOptions" :themed="config.themed" :class="chartClass" style="min-height: 22rem" />
                 </div>
 
-                <ControlPanel :config="config" />
+                <ControlPanel :config="config" @reset="reset" />
             </div>
         </div>
 
