@@ -40,7 +40,9 @@
         "build:prebuild": "node ./scripts/prebuild.mjs",
         "build:apidoc": "node ./scripts/build-apidoc.cjs",
         "build:llmdocs": "node ./scripts/build-llm-docs.mjs",
-        "build:searchindex": "node ./scripts/build-search-index.mjs"
+        "build:searchindex": "node ./scripts/build-search-index.mjs",
+        "test:unit": "vitest run",
+        "test:unit:watch": "vitest watch"
     },
     "dependencies": {
         "@openvue/core": "workspace:*",

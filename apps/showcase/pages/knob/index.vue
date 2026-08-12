@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Knob Component" header="Knob" description="Knob is a form component to define number inputs with a dial." :componentDocs="docs" :apiDocs="['Knob']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Knob Component"
+        header="Knob"
+        description="Knob is a form component to define number inputs with a dial."
+        :componentDocs="docs"
+        :apiDocs="['Knob']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -16,6 +26,7 @@ import SizeDoc from '@/doc/knob/SizeDoc.vue';
 import StepDoc from '@/doc/knob/StepDoc.vue';
 import StrokeDoc from '@/doc/knob/StrokeDoc.vue';
 import TemplateDoc from '@/doc/knob/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/knob/PlaygroundDoc.vue';
 import PTComponent from '@/doc/knob/pt/index.vue';
 import ThemingDoc from '@/doc/knob/theming/index.vue';
 
@@ -89,6 +100,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

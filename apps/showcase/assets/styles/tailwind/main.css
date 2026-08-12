@@ -1,6 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+ * Cascade layers, because specificity alone cannot settle Tailwind against the component CSS: a
+ * utility and a component class are both a single class, so the winner was whichever stylesheet the
+ * build happened to put last, and that order differs between dev and production.
+ *
+ * The order below is the whole point. Preflight sits under the components so it cannot strip their
+ * backgrounds and borders, and the utilities sit over them so `absolute` or `w-full` on a component
+ * does what it says. Component CSS is put into the `openvue` layer by the theme's `cssLayer`
+ * option, which names this same layer.
+ */
+@layer tailwind-base, openvue, tailwind-utilities;
+
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
 
 @layer components {
     .btn-design {

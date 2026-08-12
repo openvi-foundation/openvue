@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Listbox Component" header="Listbox" description="Listbox is used to select one or more values from a list of items." :componentDocs="docs" :apiDocs="['Listbox']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Listbox Component"
+        header="Listbox"
+        description="Listbox is used to select one or more values from a list of items."
+        :componentDocs="docs"
+        :apiDocs="['Listbox']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -15,6 +25,7 @@ import InvalidDoc from '@/doc/listbox/InvalidDoc.vue';
 import MultipleDoc from '@/doc/listbox/MultipleDoc.vue';
 import TemplateDoc from '@/doc/listbox/TemplateDoc.vue';
 import VirtualScrollDoc from '@/doc/listbox/VirtualScrollDoc.vue';
+import PlaygroundDoc from '@/doc/listbox/PlaygroundDoc.vue';
 import PTComponent from '@/doc/listbox/pt/index.vue';
 import ThemingDoc from '@/doc/listbox/theming/index.vue';
 
@@ -83,6 +94,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

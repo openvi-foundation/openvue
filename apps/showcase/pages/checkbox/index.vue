@@ -5,6 +5,8 @@
         description="Checkbox is an extension to standard checkbox element with theming."
         :componentDocs="docs"
         :apiDocs="['Checkbox', 'CheckboxGroup']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -21,6 +23,7 @@ import GroupDoc from '@/doc/checkbox/GroupDoc.vue';
 import ImportDoc from '@/doc/checkbox/ImportDoc.vue';
 import IndeterminateDoc from '@/doc/checkbox/IndeterminateDoc.vue';
 import InvalidDoc from '@/doc/checkbox/InvalidDoc.vue';
+import PlaygroundDoc from '@/doc/checkbox/PlaygroundDoc.vue';
 import PTComponent from '@/doc/checkbox/pt/index.vue';
 import SizesDoc from '@/doc/checkbox/SizesDoc.vue';
 import ThemingDoc from '@/doc/checkbox/theming/index.vue';
@@ -85,6 +88,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

@@ -5,6 +5,8 @@
         description="Textarea adds styling and autoResize functionality to standard textarea element."
         :componentDocs="docs"
         :apiDocs="['Textarea']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -22,6 +24,7 @@ import FormsDoc from '@/doc/textarea/FormsDoc.vue';
 import IftaLabelDoc from '@/doc/textarea/IftaLabelDoc.vue';
 import ImportDoc from '@/doc/textarea/ImportDoc.vue';
 import InvalidDoc from '@/doc/textarea/InvalidDoc.vue';
+import PlaygroundDoc from '@/doc/textarea/PlaygroundDoc.vue';
 import PTComponent from '@/doc/textarea/pt/index.vue';
 import SizesDoc from '@/doc/textarea/SizesDoc.vue';
 import ThemingDoc from '@/doc/textarea/theming/index.vue';
@@ -87,6 +90,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

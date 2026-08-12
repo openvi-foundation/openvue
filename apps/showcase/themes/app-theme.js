@@ -55,6 +55,15 @@ export const NoirPreset = definePreset(Aura, {
 export default {
     preset: NoirPreset,
     options: {
-        darkModeSelector: '.p-dark'
+        darkModeSelector: '.p-dark',
+        /*
+         * Component CSS goes into a cascade layer so the utilities in assets/styles/tailwind/main.css
+         * outrank it whatever order the build emits the two stylesheets in. The layer names and their
+         * order are declared there; changing either means changing both.
+         */
+        cssLayer: {
+            name: 'openvue',
+            order: 'tailwind-base, openvue, tailwind-utilities'
+        }
     }
 };

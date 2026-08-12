@@ -50,7 +50,7 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
         "format:check": "prettier --check \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
-        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit",
+        "test:unit": "pnpm --filter openvue test:unit && pnpm --filter migrate test:unit && pnpm --filter showcase test:unit",
         "test:contracts": "pnpm run test:artifacts:pack && pnpm run verify:dist && node scripts/verify-package-contracts.mjs",
         "test:artifacts:pack": "node scripts/run-consumer-tests.mjs --pack-only",
         "test:consumers": "node scripts/run-consumer-tests.mjs",

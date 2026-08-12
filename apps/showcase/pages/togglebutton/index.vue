@@ -5,6 +5,8 @@
         description="ToggleButton is used to select a boolean value using a button."
         :componentDocs="docs"
         :apiDocs="['ToggleButton']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -19,6 +21,7 @@ import FluidDoc from '@/doc/togglebutton/FluidDoc.vue';
 import FormsDoc from '@/doc/togglebutton/FormsDoc.vue';
 import ImportDoc from '@/doc/togglebutton/ImportDoc.vue';
 import InvalidDoc from '@/doc/togglebutton/InvalidDoc.vue';
+import PlaygroundDoc from '@/doc/togglebutton/PlaygroundDoc.vue';
 import PTComponent from '@/doc/togglebutton/pt/index.vue';
 import SizesDoc from '@/doc/togglebutton/SizesDoc.vue';
 import ThemingDoc from '@/doc/togglebutton/theming/index.vue';
@@ -73,6 +76,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

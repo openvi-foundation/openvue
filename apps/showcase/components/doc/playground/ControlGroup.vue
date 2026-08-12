@@ -8,7 +8,7 @@
         <button
             v-if="collapsible"
             type="button"
-            class="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-surface bg-surface-50 px-4 py-2.5 text-left transition-colors hover:bg-surface-100 dark:bg-surface-800 dark:hover:bg-surface-700"
+            class="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-surface bg-surface-50 px-3 py-2 text-left transition-colors hover:bg-surface-100 dark:bg-surface-800 dark:hover:bg-surface-700"
             :aria-expanded="open"
             @click="open = !open"
         >
@@ -20,7 +20,7 @@
         <!-- 0fr to 1fr animates to the content's own height, which a plain height transition cannot do -->
         <div :class="['grid transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none', open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]']">
             <div class="overflow-hidden">
-                <div class="flex flex-col gap-1 px-3 pb-3 pt-2">
+                <div class="flex flex-col gap-0.5 px-2 pb-2.5 pt-1.5">
                     <slot />
                 </div>
             </div>
