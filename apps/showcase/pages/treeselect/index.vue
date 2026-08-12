@@ -5,6 +5,8 @@
         description="TreeSelect is a form component to choose from hierarchical data."
         :componentDocs="docs"
         :apiDocs="['TreeSelect', 'TreeNode']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -26,6 +28,7 @@ import ImportDoc from '@/doc/treeselect/ImportDoc.vue';
 import InvalidDoc from '@/doc/treeselect/InvalidDoc.vue';
 import LazyDoc from '@/doc/treeselect/LazyDoc.vue';
 import MultipleDoc from '@/doc/treeselect/MultipleDoc.vue';
+import PlaygroundDoc from '@/doc/treeselect/PlaygroundDoc.vue';
 import PTComponent from '@/doc/treeselect/pt/index.vue';
 import SizesDoc from '@/doc/treeselect/SizesDoc.vue';
 import TemplateDoc from '@/doc/treeselect/TemplateDoc.vue';
@@ -121,6 +124,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

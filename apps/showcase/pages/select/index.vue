@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Select Component" header="Select" description="Select is used to choose an item from a collection of options." :componentDocs="docs" :apiDocs="['Select']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Select Component"
+        header="Select"
+        description="Select is used to choose an item from a collection of options."
+        :componentDocs="docs"
+        :apiDocs="['Select']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -20,6 +30,7 @@ import ImportDoc from '@/doc/select/ImportDoc.vue';
 import InvalidDoc from '@/doc/select/InvalidDoc.vue';
 import LazyVirtualScrollDoc from '@/doc/select/LazyVirtualScrollDoc.vue';
 import LoadingStateDoc from '@/doc/select/LoadingStateDoc.vue';
+import PlaygroundDoc from '@/doc/select/PlaygroundDoc.vue';
 import SizesDoc from '@/doc/select/SizesDoc.vue';
 import TemplateDoc from '@/doc/select/TemplateDoc.vue';
 import VirtualScrollDoc from '@/doc/select/VirtualScrollDoc.vue';
@@ -131,6 +142,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

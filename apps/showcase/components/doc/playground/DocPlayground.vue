@@ -12,10 +12,6 @@
                 <div class="playground-canvas relative flex min-h-72 min-w-0 flex-1 items-center justify-center overflow-auto p-4">
                     <slot name="preview" :props="props" />
 
-                    <!--
-                        `!absolute` because .p-button carries position: relative and is injected into the head
-                        after the Tailwind sheet in the production build, where the specificity tie goes to it
-                    -->
                     <Button
                         :icon="maximized ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"
                         :aria-label="maximized ? 'Exit full screen' : 'View full screen'"
@@ -23,7 +19,7 @@
                         severity="secondary"
                         text
                         rounded
-                        class="!absolute right-2 top-2"
+                        class="absolute right-2 top-2"
                         @click="maximized = !maximized"
                     />
                 </div>

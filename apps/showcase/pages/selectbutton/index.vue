@@ -5,6 +5,8 @@
         description="SelectButton is used to choose single or multiple items from a list using buttons."
         :componentDocs="docs"
         :apiDocs="['SelectButton']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -21,6 +23,7 @@ import InvalidDoc from '@/doc/selectbutton/InvalidDoc.vue';
 import MultipleDoc from '@/doc/selectbutton/MultipleDoc.vue';
 import SizesDoc from '@/doc/selectbutton/SizesDoc.vue';
 import TemplateDoc from '@/doc/selectbutton/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/selectbutton/PlaygroundDoc.vue';
 import PTComponent from '@/doc/selectbutton/pt/index.vue';
 import ThemingDoc from '@/doc/selectbutton/theming/index.vue';
 
@@ -79,6 +82,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

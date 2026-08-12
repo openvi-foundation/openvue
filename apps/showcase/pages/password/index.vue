@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Password Component" header="Password" description="Password displays strength indicator for password fields." :componentDocs="docs" :apiDocs="['Password']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Password Component"
+        header="Password"
+        description="Password displays strength indicator for password fields."
+        :componentDocs="docs"
+        :apiDocs="['Password']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -16,6 +26,7 @@ import ImportDoc from '@/doc/password/ImportDoc.vue';
 import InvalidDoc from '@/doc/password/InvalidDoc.vue';
 import LocaleDoc from '@/doc/password/LocaleDoc.vue';
 import MeterDoc from '@/doc/password/MeterDoc.vue';
+import PlaygroundDoc from '@/doc/password/PlaygroundDoc.vue';
 import PTComponent from '@/doc/password/pt/index.vue';
 import SizesDoc from '@/doc/password/SizesDoc.vue';
 import TemplateDoc from '@/doc/password/TemplateDoc.vue';
@@ -107,6 +118,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

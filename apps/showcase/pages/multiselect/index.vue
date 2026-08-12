@@ -5,6 +5,8 @@
         description="MultiSelect is used to select multiple items from a collection."
         :componentDocs="docs"
         :apiDocs="['MultiSelect']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -28,6 +30,7 @@ import InvalidDoc from '@/doc/multiselect/InvalidDoc.vue';
 import LoadingStateDoc from '@/doc/multiselect/LoadingStateDoc.vue';
 import TemplateDoc from '@/doc/multiselect/TemplateDoc.vue';
 import VirtualScrollDoc from '@/doc/multiselect/VirtualScrollDoc.vue';
+import PlaygroundDoc from '@/doc/multiselect/PlaygroundDoc.vue';
 import PTComponent from '@/doc/multiselect/pt/index.vue';
 import ThemingDoc from '@/doc/multiselect/theming/index.vue';
 
@@ -121,6 +124,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

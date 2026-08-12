@@ -5,6 +5,8 @@
         description="CascadeSelect is a form component to select a value from a nested structure of options."
         :componentDocs="docs"
         :apiDocs="['CascadeSelect']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -25,6 +27,7 @@ import InvalidDoc from '@/doc/cascadeselect/InvalidDoc.vue';
 import LoadingStateDoc from '@/doc/cascadeselect/LoadingStateDoc.vue';
 import SizesDoc from '@/doc/cascadeselect/SizesDoc.vue';
 import TemplateDoc from '@/doc/cascadeselect/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/cascadeselect/PlaygroundDoc.vue';
 import PTComponent from '@/doc/cascadeselect/pt/index.vue';
 import ThemingDoc from '@/doc/cascadeselect/theming/index.vue';
 
@@ -103,6 +106,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

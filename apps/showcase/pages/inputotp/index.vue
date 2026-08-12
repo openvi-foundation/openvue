@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Otp Input Component" header="InputOtp" description="Input Otp is used to enter one time passwords." :componentDocs="docs" :apiDocs="['InputOtp']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Otp Input Component"
+        header="InputOtp"
+        description="Input Otp is used to enter one time passwords."
+        :componentDocs="docs"
+        :apiDocs="['InputOtp']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -13,6 +23,7 @@ import IntegerOnlyDoc from '@/doc/inputotp/IntegerOnlyDoc.vue';
 import MaskDoc from '@/doc/inputotp/MaskDoc.vue';
 import SampleDoc from '@/doc/inputotp/SampleDoc.vue';
 import TemplateDoc from '@/doc/inputotp/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/inputotp/PlaygroundDoc.vue';
 import PTComponent from '@/doc/inputotp/pt/index.vue';
 import ThemingDoc from '@/doc/inputotp/theming/index.vue';
 
@@ -71,6 +82,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

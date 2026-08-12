@@ -8,7 +8,8 @@ const INLINE_WIDTH = 80;
 
 const quote = (value) => `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 const key = (name) => (IDENTIFIER.test(name) ? name : quote(name));
-const isPrimitive = (value) => value === null || typeof value !== 'object';
+/* A Date counts as primitive for layout: it serializes to one expression with nothing to break onto its own line. */
+const isPrimitive = (value) => value === null || typeof value !== 'object' || value instanceof Date;
 
 /**
  * Serializes a value as a JavaScript literal. `indent` is the column the closing bracket sits at,
@@ -21,6 +22,12 @@ export function serialize(value, indent = 0) {
     if (value === null) return 'null';
     if (typeof value === 'string') return quote(value);
     if (typeof value !== 'object') return String(value);
+
+    /*
+     * A Date has no enumerable entries, so the object branch below would render it as `{}`. The ISO
+     * string is what `new Date(...)` reads back to the same instant in any timezone.
+     */
+    if (value instanceof Date) return `new Date(${quote(value.toISOString())})`;
 
     if (Array.isArray(value)) {
         if (!value.length) return '[]';

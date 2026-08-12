@@ -40,7 +40,9 @@
         "build:prebuild": "node ./scripts/prebuild.mjs",
         "build:apidoc": "node ./scripts/build-apidoc.cjs",
         "build:llmdocs": "node ./scripts/build-llm-docs.mjs",
-        "build:searchindex": "node ./scripts/build-search-index.mjs"
+        "build:searchindex": "node ./scripts/build-search-index.mjs",
+        "test:unit": "vitest run",
+        "test:unit:watch": "vitest watch"
     },
     "dependencies": {
         "@openvue/core": "workspace:*",
@@ -70,6 +72,7 @@
         "tailwindcss": "^3",
         "tailwindcss-primeui": "catalog:",
         "typedoc": "0.23.23",
+        "vitest": "^3.2.4",
         "vite": "catalog:app"
     },
     "engines": {

@@ -10,6 +10,15 @@ import APIDocs from '@/doc/common/apidoc/index.json';
 /** Union members are wrapped in this helper by the typings, e.g. HintedString<"blank" | "current">. */
 const HINTED = /HintedString<([^>]*)>/;
 
+/** `Nullable<T>` says a prop may be left out, which every control already allows. */
+const NULLABLE = /^Nullable<(.+)>$/;
+
+/** A quoted member of a union, e.g. the `"vertical"` in `"horizontal" | "vertical"`. */
+const LITERAL = /^["'](.*)["']$/;
+
+/** The typings write a prop that accepts the string form of a value as its own alias. */
+const ALIASED = { Booleanish: 'boolean', Numberish: 'number' };
+
 /** The typings spell an absent default several ways; all of them mean "the component decides". */
 const UNSET = ['', 'null', 'undefined'];
 
@@ -36,26 +45,40 @@ function readProps(component) {
  * a schema must then handle itself or leave out.
  */
 function inferControl(type) {
-    if (type === 'boolean') return { control: 'boolean' };
-    if (type === 'number') return { control: 'number' };
+    const nullable = NULLABLE.exec(type);
+
+    if (nullable) return inferControl(nullable[1]);
+
+    if (type === 'boolean' || ALIASED[type] === 'boolean') return { control: 'boolean' };
+    if (type === 'number' || ALIASED[type] === 'number') return { control: 'number' };
 
     const hinted = HINTED.exec(type);
 
-    if (hinted) {
-        return {
-            control: 'select',
-            options: hinted[1]
-                .split('|')
-                .map((member) => member.trim().replace(/^["']|["']$/g, ''))
-                .filter(Boolean)
-        };
-    }
+    if (hinted) return { control: 'select', options: literals(hinted[1]) };
 
-    const members = type.split('|').map((member) => member.trim());
+    const members = type
+        .split('|')
+        .map((member) => member.trim())
+        // an optional prop is documented as a union with its own absence, which says nothing about the control
+        .filter((member) => member !== 'null' && member !== 'undefined');
+
+    /*
+     * A union of nothing but quoted members is a closed set the same way a hinted one is. The
+     * typings only reach for HintedString when the prop also takes strings outside the set.
+     */
+    if (members.length > 1 && members.every((member) => LITERAL.test(member))) return { control: 'select', options: literals(type) };
 
     if (members.includes('string') && members.every((member) => TEXTISH.includes(member))) return { control: 'text' };
 
     return null;
+}
+
+/** The members of a union, unquoted, in the order the typings list them. */
+function literals(union) {
+    return union
+        .split('|')
+        .map((member) => member.trim().replace(/^["']|["']$/g, ''))
+        .filter((member) => member && member !== 'null' && member !== 'undefined');
 }
 
 /**
@@ -82,6 +105,16 @@ function parseDefault(raw, control) {
 export function defineSchema({ component, groups, snippet }) {
     const documented = readProps(component);
     const defaults = {};
+    /*
+     * Kept on the schema as well as logged, because the apidoc is regenerated from the typings and a
+     * prop can be renamed or retyped out from under a schema written months earlier. The test in
+     * playgrounds.spec.js reads these, so that drift fails a run instead of quietly dropping a control.
+     */
+    const warnings = [];
+    const warn = (message) => {
+        warnings.push(message);
+        console.warn(`[playground] ${message}`);
+    };
 
     const resolved = groups.map((group) => ({
         title: group.title,
@@ -91,7 +124,7 @@ export function defineSchema({ component, groups, snippet }) {
                 const meta = documented.get(control.prop);
 
                 if (!meta) {
-                    console.warn(`[playground] ${component} has no documented prop "${control.prop}"`);
+                    warn(`${component} has no documented prop "${control.prop}"`);
 
                     return null;
                 }
@@ -99,7 +132,7 @@ export function defineSchema({ component, groups, snippet }) {
                 const inferred = control.control ? { control: control.control, options: control.options } : inferControl(meta.type);
 
                 if (!inferred) {
-                    console.warn(`[playground] ${component}.${control.prop} is typed "${meta.type}", which needs an explicit control`);
+                    warn(`${component}.${control.prop} is typed "${meta.type}", which needs an explicit control`);
 
                     return null;
                 }
@@ -119,7 +152,7 @@ export function defineSchema({ component, groups, snippet }) {
             .filter(Boolean)
     }));
 
-    return { component, groups: resolved, defaults, snippet };
+    return { component, groups: resolved, defaults, snippet, warnings };
 }
 
 /** A fresh copy of the defaults, for initial state and for the reset button. */

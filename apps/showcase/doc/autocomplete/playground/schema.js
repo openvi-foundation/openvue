@@ -1,52 +1,9 @@
+import { COUNTRIES } from '@/components/doc/playground/fixtures';
 import { closingScript, serialize } from '@/components/doc/playground/serialize';
 import { defineSchema } from '@/components/doc/playground/schema';
 
-/*
- * A small fixed list rather than the country service, so the generated code runs on its own without
- * a network call or an extra file to copy alongside it.
- */
-export const COUNTRIES = [
-    'Argentina',
-    'Australia',
-    'Austria',
-    'Belgium',
-    'Brazil',
-    'Canada',
-    'Chile',
-    'Croatia',
-    'Denmark',
-    'Egypt',
-    'Finland',
-    'France',
-    'Germany',
-    'Greece',
-    'Iceland',
-    'India',
-    'Ireland',
-    'Italy',
-    'Japan',
-    'Kenya',
-    'Mexico',
-    'Morocco',
-    'Netherlands',
-    'New Zealand',
-    'Norway',
-    'Peru',
-    'Poland',
-    'Portugal',
-    'Singapore',
-    'South Africa',
-    'Spain',
-    'Sweden',
-    'Switzerland',
-    'Thailand',
-    'Turkey',
-    'Ukraine',
-    'United Kingdom',
-    'United States',
-    'Uruguay',
-    'Vietnam'
-];
+/* re-exported so the preview and the generated snippet are filtering the very same list */
+export { COUNTRIES };
 
 /** Every generated variant needs these to query at all, so they sit ahead of the chosen props. */
 const BINDINGS = ['v-model="value"', ':suggestions="items"', '@complete="search"'];
