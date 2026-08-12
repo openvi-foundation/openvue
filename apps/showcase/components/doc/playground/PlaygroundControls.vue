@@ -1,37 +1,25 @@
 <template>
     <!-- the panel is a filled rail flush with the preview, so its own edge is the only border it draws -->
-    <aside :class="['flex w-full shrink-0 flex-col border-t border-surface bg-surface-50 lg:h-full lg:border-l lg:border-t-0 dark:bg-surface-800', wide ? 'lg:w-[28rem]' : 'lg:w-80']" :aria-label="`${schema.component} properties`">
-        <div class="shrink-0 border-b border-surface px-4 py-3">
-            <span class="font-semibold">Properties</span>
-        </div>
-
+    <!-- the rail keeps one width in and out of full screen: the extra room belongs to the preview, and a rail that resizes under you loses your place in the list -->
+    <aside class="flex w-full shrink-0 flex-col border-t border-surface lg:h-full lg:w-[21rem] lg:border-l lg:border-t-0" :aria-label="`${schema.component} properties`">
+        <!-- no panel heading: the group headers name what the rail is, and the row it would cost is worth more to the list -->
         <div class="max-h-96 flex-1 overflow-y-auto lg:max-h-none">
             <!-- a full property list is long, so the later groups start folded and the rail opens on the common ones -->
             <ControlGroup v-for="(group, index) in visibleGroups" :key="group.title" :title="group.title" :defaultOpen="index < openGroupCount" collapsible>
-                <ControlRow v-for="control in group.controls" :key="control.prop" :controlId="`${idPrefix}-${control.prop}`" :label="control.label" :modified="isModified(control)" v-slot="{ id }">
-                    <ToggleSwitch v-if="control.control === 'boolean'" :inputId="id" v-model="state[control.prop]" v-tooltip.left="tooltip(control)" />
+                <ControlRow v-for="control in group.controls" :key="control.prop" :controlId="`${idPrefix}-${control.prop}`" :label="control.label" :description="control.description" :modified="isModified(control)" v-slot="{ id }">
+                    <ToggleSwitch v-if="control.control === 'boolean'" :inputId="id" v-model="state[control.prop]" />
 
-                    <Select
-                        v-else-if="control.control === 'select'"
-                        :id="id"
-                        v-model="state[control.prop]"
-                        :options="control.options"
-                        :placeholder="control.default == null ? 'Default' : ''"
-                        v-tooltip.left="tooltip(control)"
-                        size="small"
-                        showClear
-                        fluid
-                    />
+                    <Select v-else-if="control.control === 'select'" :id="id" v-model="state[control.prop]" :options="control.options" :placeholder="control.default == null ? 'Default' : ''" size="small" showClear fluid />
 
-                    <InputNumber v-else-if="control.control === 'number'" :inputId="id" v-model="state[control.prop]" :min="control.min ?? 0" :max="control.max" :step="control.step" v-tooltip.left="tooltip(control)" size="small" fluid />
+                    <InputNumber v-else-if="control.control === 'number'" :inputId="id" v-model="state[control.prop]" :min="control.min ?? 0" :max="control.max" :step="control.step" size="small" fluid />
 
-                    <InputText v-else :id="id" v-model="state[control.prop]" v-tooltip.left="tooltip(control)" size="small" placeholder="None" fluid />
+                    <InputText v-else :id="id" v-model="state[control.prop]" size="small" placeholder="None" fluid />
                 </ControlRow>
             </ControlGroup>
         </div>
 
         <!-- outside the scroll area so it stays reachable however long the list of controls gets -->
-        <div class="shrink-0 border-t border-surface p-3">
+        <div class="shrink-0 border-t border-surface p-2.5">
             <Button label="Reset to defaults" severity="secondary" outlined size="small" fluid @click="$emit('reset')" />
         </div>
     </aside>
@@ -70,11 +58,6 @@ export default {
         openGroupCount: {
             type: Number,
             default: 2
-        },
-        /* Full screen has room to spare, so the rail takes some of it and the labels stop truncating. */
-        wide: {
-            type: Boolean,
-            default: false
         }
     },
     computed: {
@@ -96,9 +79,6 @@ export default {
         /* The predicate codegen uses, so a marked row and a line in the generated snippet cannot disagree. */
         isModified(control) {
             return isActive(control, this.state);
-        },
-        tooltip(control) {
-            return control.description ? { value: control.description, class: 'max-w-64' } : null;
         }
     }
 };

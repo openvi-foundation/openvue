@@ -41,11 +41,23 @@ export function buildCode({ schema, props }) {
     const { component, snippet } = schema;
     const bindings = snippet?.bindings ?? [];
 
-    return {
+    const code = {
         basic: buildTag({ component, props, bindings }),
         ...snippet.build({
             tag: buildTag({ component, props, bindings, indent: 8 }),
             props
         })
     };
+
+    return Object.fromEntries(Object.entries(code).map(([key, value]) => [key, typeof value === 'string' ? blankLined(value) : value]));
+}
+
+/*
+ * Every hand-written snippet on the site is a template literal that opens and closes on its own
+ * line, and the blank line that leaves at each end is the only vertical padding a code block gets —
+ * `pre[class*="language-"] code` sets `padding: 0 1rem`. Generated code has to say the same thing
+ * itself or it renders as a bare strip of text.
+ */
+function blankLined(code) {
+    return `\n${code}\n`;
 }
