@@ -48,11 +48,14 @@ describe.each(entries)('%s', (_path, schema) => {
     });
 
     /*
-     * The defaults are the state the playground opens on, and a playground that generates props on
-     * open is telling the visitor they changed something they did not.
+     * The state a playground opens on generates nothing, because a playground that writes props on
+     * open is telling the visitor they changed something they did not. The exception is a seeded
+     * prop, which is a value the schema deliberately starts from and so belongs in the code.
      */
-    it('generates nothing from its own defaults', () => {
-        expect(activeProps(schema, createState(schema))).toEqual({});
+    it('generates only what it seeds', () => {
+        const seeded = schema.groups.flatMap((group) => group.controls.filter((control) => control.seed !== undefined).map((control) => control.prop));
+
+        expect(Object.keys(activeProps(schema, createState(schema))).sort()).toEqual(seeded.sort());
     });
 
     it('builds code for every variant', () => {

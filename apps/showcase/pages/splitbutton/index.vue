@@ -5,6 +5,8 @@
         description="SplitButton groups a set of commands in an overlay with a default command."
         :componentDocs="docs"
         :apiDocs="['SplitButton']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -25,6 +27,7 @@ import SeverityDoc from '@/doc/splitbutton/SeverityDoc.vue';
 import SizesDoc from '@/doc/splitbutton/SizesDoc.vue';
 import TemplateDoc from '@/doc/splitbutton/TemplateDoc.vue';
 import TextDoc from '@/doc/splitbutton/TextDoc.vue';
+import PlaygroundDoc from '@/doc/splitbutton/PlaygroundDoc.vue';
 import PTComponent from '@/doc/splitbutton/pt/index.vue';
 import ThemingDoc from '@/doc/splitbutton/theming/index.vue';
 
@@ -103,6 +106,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

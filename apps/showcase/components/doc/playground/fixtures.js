@@ -66,6 +66,13 @@ export const CITIES = [
 /** A short list for the components that show every option at once, where forty would not fit. */
 export const MODES = ['Off', 'On', 'Auto'];
 
+/*
+ * MenuModel items for the components that hang a menu off a button. No `command` handlers: the
+ * playground is about the properties, and a generated snippet that fires toasts would need a
+ * ToastService registered before it ran anywhere else.
+ */
+export const ACTIONS = [{ label: 'Update', icon: 'pi pi-refresh' }, { label: 'Delete', icon: 'pi pi-trash' }, { label: 'Upload', icon: 'pi pi-upload' }, { separator: true }, { label: 'Website', icon: 'pi pi-external-link' }];
+
 /** Nested to the depth CascadeSelect needs: a group of groups of options. */
 export const REGIONS = [
     {

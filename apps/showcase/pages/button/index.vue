@@ -5,6 +5,8 @@
         description="Button is an extension to standard input element with icons and theming."
         :componentDocs="docs"
         :apiDocs="['Button', 'ButtonGroup']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -30,6 +32,7 @@ import SeverityDoc from '@/doc/button/SeverityDoc.vue';
 import SizesDoc from '@/doc/button/SizesDoc.vue';
 import TemplateDoc from '@/doc/button/TemplateDoc.vue';
 import TextDoc from '@/doc/button/TextDoc.vue';
+import PlaygroundDoc from '@/doc/button/PlaygroundDoc.vue';
 import PTComponent from '@/doc/button/pt/index.vue';
 import ThemingDoc from '@/doc/button/theming/index.vue';
 
@@ -133,6 +136,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };
