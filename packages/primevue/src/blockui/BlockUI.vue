@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { addClass, createElement, hasCSSAnimation } from '@openuxkit/utils/dom';
+import { addClass, createElement, hasCSSAnimation, remove } from '@openuxkit/utils/dom';
 import { ZIndex } from '@openuxkit/utils/zindex';
 import { blockBodyScroll, unblockBodyScroll } from 'openvue/utils';
 import BaseBlockUI from './BaseBlockUI.vue';
@@ -32,8 +32,26 @@ export default {
             this.block();
         }
     },
+    beforeUnmount() {
+        if (this.mask) {
+            ZIndex.clear(this.mask);
+            remove(this.mask);
+
+            if (this.fullScreen) {
+                unblockBodyScroll();
+            }
+
+            this.mask = null;
+        }
+    },
     methods: {
         block() {
+            if (this.mask) {
+                ZIndex.clear(this.mask);
+                remove(this.mask);
+                this.mask = null;
+            }
+
             let styleClass = 'p-blockui-mask p-overlay-mask p-overlay-mask-enter-active';
 
             if (this.fullScreen) {
@@ -77,35 +95,45 @@ export default {
             this.$emit('block');
         },
         unblock() {
-            if (this.mask) {
-                !this.isUnstyled && addClass(this.mask, 'p-overlay-mask-leave-active');
+            const mask = this.mask;
+
+            this.isBlocked = false;
+
+            if (mask) {
+                mask.style.pointerEvents = 'none';
+                !this.isUnstyled && addClass(mask, 'p-overlay-mask-leave-active');
 
                 const handleAnimationEnd = () => {
                     clearTimeout(fallbackTimer);
-                    this.mask.removeEventListener('animationend', handleAnimationEnd);
-                    this.mask.removeEventListener('webkitAnimationEnd', handleAnimationEnd);
+                    mask.removeEventListener('animationend', handleAnimationEnd);
+                    mask.removeEventListener('webkitAnimationEnd', handleAnimationEnd);
+                    this.removeMask(mask);
                 };
 
                 const fallbackTimer = setTimeout(() => {
-                    this.removeMask();
+                    this.removeMask(mask);
                 }, 300);
 
-                if (hasCSSAnimation(this.mask) > 0) {
-                    this.mask.addEventListener('animationend', handleAnimationEnd);
-                    this.mask.addEventListener('webkitAnimationEnd', handleAnimationEnd);
+                if (hasCSSAnimation(mask) > 0) {
+                    mask.addEventListener('animationend', handleAnimationEnd);
+                    mask.addEventListener('webkitAnimationEnd', handleAnimationEnd);
                 }
             } else {
                 this.removeMask();
             }
         },
-        removeMask() {
-            ZIndex.clear(this.mask);
+        removeMask(mask = this.mask) {
+            if (mask && mask !== this.mask) return;
 
-            if (this.fullScreen) {
-                document.body.removeChild(this.mask);
-                unblockBodyScroll();
-            } else {
-                this.$refs.container?.removeChild(this.mask);
+            if (mask) {
+                ZIndex.clear(mask);
+                remove(mask);
+
+                if (this.fullScreen) {
+                    unblockBodyScroll();
+                }
+
+                this.mask = null;
             }
 
             this.isBlocked = false;
