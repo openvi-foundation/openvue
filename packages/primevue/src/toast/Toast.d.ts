@@ -114,6 +114,11 @@ export interface ToastPassThroughAttributes {
  */
 export interface ToastMessageOptions {
     /**
+     * Unique identifier of the message, generated automatically when not provided and returned by the `add` method of
+     * the ToastService. Required to remove that particular message later on with the `remove` method.
+     */
+    id?: string | number | undefined;
+    /**
      * Severity level of the message.
      * @defaultValue info
      */
