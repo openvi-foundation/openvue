@@ -1,7 +1,7 @@
 <template>
     <Head>
         <Title>Introduction - OpenVue</Title>
-        <Meta name="description" content="Next-generation UI Component suite for Vue." />
+        <Meta name="description" content="The Vue UI component library, continued." />
     </Head>
     <div class="doc">
         <div class="doc-main">
@@ -9,7 +9,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
                         <h1>Introduction</h1>
-                        <p>Next-generation UI Component suite for Vue.</p>
+                        <p>The Vue UI component library, continued.</p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
                 </div>
@@ -23,7 +23,7 @@
 <script>
 import DocCopyMarkdown from '@/components/doc/DocCopyMarkdown.vue';
 import AccessibilityDoc from '@/doc/introduction/AccessibilityDoc.vue';
-import AddOnsDoc from '@/doc/introduction/AddOnsDoc.vue';
+import MigrationDoc from '@/doc/introduction/MigrationDoc.vue';
 import OverviewDoc from '@/doc/introduction/OverviewDoc.vue';
 import PassThroughDoc from '@/doc/introduction/PassThroughDoc.vue';
 import ThemingDoc from '@/doc/introduction/ThemingDoc.vue';
@@ -39,6 +39,11 @@ export default {
                     component: OverviewDoc
                 },
                 {
+                    id: 'migration',
+                    label: 'Migrating from PrimeVue',
+                    component: MigrationDoc
+                },
+                {
                     id: 'theming',
                     label: 'Theming',
                     component: ThemingDoc
@@ -52,11 +57,6 @@ export default {
                     id: 'accessibility',
                     label: 'Accessibility',
                     component: AccessibilityDoc
-                },
-                {
-                    id: 'add-ons',
-                    label: 'Add-Ons',
-                    component: AddOnsDoc
                 }
             ]
         };
