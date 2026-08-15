@@ -9,6 +9,7 @@ import HeadlessDoc from '@/doc/toast/HeadlessDoc.vue';
 import ImportDoc from '@/doc/toast/ImportDoc.vue';
 import MultipleDoc from '@/doc/toast/MultipleDoc.vue';
 import PositionDoc from '@/doc/toast/PositionDoc.vue';
+import RemoveDoc from '@/doc/toast/RemoveDoc.vue';
 import SeverityDoc from '@/doc/toast/SeverityDoc.vue';
 import StickyDoc from '@/doc/toast/StickyDoc.vue';
 import TemplateDoc from '@/doc/toast/TemplateDoc.vue';
@@ -54,6 +55,11 @@ export default {
                     id: 'sticky',
                     label: 'Sticky',
                     component: StickyDoc
+                },
+                {
+                    id: 'remove',
+                    label: 'Remove',
+                    component: RemoveDoc
                 },
                 {
                     id: 'template',
