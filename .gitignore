@@ -39,3 +39,4 @@ pnpm-publish-summary.json
 docs/plans
 docs/superpowers
 CLAUDE.md
+*.tsbuildinfo

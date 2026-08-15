@@ -40,6 +40,10 @@ jobs:
               run: |
                   pnpm run test:unit
 
+            - name: Typecheck
+              run: |
+                  pnpm run typecheck
+
             - name: Security
               run: |
                   pnpm run security:check

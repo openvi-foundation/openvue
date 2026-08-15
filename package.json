@@ -45,7 +45,7 @@
         "volt:dev": "pnpm --filter volt dev",
         "module:dev": "pnpm --filter @openvue/nuxt-module dev",
         "security:check": "pnpm audit --prod --audit-level high",
-        "typecheck": "pnpm --filter volt typecheck",
+        "typecheck": "pnpm --filter openvue typecheck && pnpm --filter migrate typecheck",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,json,md}\"",
