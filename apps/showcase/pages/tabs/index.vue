@@ -4,6 +4,8 @@
         header="Tabs"
         description="Tabs facilitates seamless switching between different views."
         :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :apiDocs="['Tabs', 'TabList', 'Tab', 'TabPanels', 'TabPanel']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
@@ -17,6 +19,7 @@ import ControlledDoc from '@/doc/tabs/ControlledDoc.vue';
 import DisabledDoc from '@/doc/tabs/DisabledDoc.vue';
 import DynamicDoc from '@/doc/tabs/DynamicDoc.vue';
 import ImportDoc from '@/doc/tabs/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/tabs/PlaygroundDoc.vue';
 import ScrollableDoc from '@/doc/tabs/ScrollableDoc.vue';
 import TabMenuDoc from '@/doc/tabs/TabMenuDoc.vue';
 import TemplateDoc from '@/doc/tabs/TemplateDoc.vue';
@@ -73,6 +76,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

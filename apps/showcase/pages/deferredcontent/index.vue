@@ -4,6 +4,8 @@
         header="DeferredContent"
         description="DeferredContent postpones the loading the content that is initially not in the viewport until it becomes visible on scroll."
         :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :apiDocs="['DeferredContent']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
@@ -15,6 +17,7 @@ import AccessibilityDoc from '@/doc/deferredcontent/AccessibilityDoc.vue';
 import BasicDoc from '@/doc/deferredcontent/BasicDoc.vue';
 import DataTableDoc from '@/doc/deferredcontent/DataTableDoc.vue';
 import ImportDoc from '@/doc/deferredcontent/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/deferredcontent/PlaygroundDoc.vue';
 import PTComponent from '@/doc/deferredcontent/pt/index.vue';
 import ThemingDoc from '@/doc/deferredcontent/theming/index.vue';
 
@@ -43,6 +46,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

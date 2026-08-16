@@ -1,11 +1,22 @@
 <template>
-    <DocComponent title="Vue Toolbar Component" header="Toolbar" description="Toolbar is a grouping component for buttons and other content." :componentDocs="docs" :apiDocs="['Toolbar']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Toolbar Component"
+        header="Toolbar"
+        description="Toolbar is a grouping component for buttons and other content."
+        :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :apiDocs="['Toolbar']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 <script>
 import AccessibilityDoc from '@/doc/toolbar/AccessibilityDoc.vue';
 import BasicDoc from '@/doc/toolbar/BasicDoc.vue';
 import CustomDoc from '@/doc/toolbar/CustomDoc.vue';
 import ImportDoc from '@/doc/toolbar/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/toolbar/PlaygroundDoc.vue';
 import PTComponent from '@/doc/toolbar/pt/index.vue';
 import ThemingDoc from '@/doc/toolbar/theming/index.vue';
 
@@ -34,6 +45,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

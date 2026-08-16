@@ -10,7 +10,7 @@
             <div :class="['flex flex-col lg:flex-row', maximized ? 'h-full' : 'lg:h-[60rem]']">
                 <!-- the dotted canvas sits behind the component so a white or transparent one still reads as an object on a surface -->
                 <div class="playground-canvas relative flex min-h-72 min-w-0 flex-1 items-center justify-center overflow-auto p-4">
-                    <slot name="preview" :props="props" />
+                    <slot name="preview" :props="props" :child="child" />
 
                     <Button
                         :icon="maximized ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"
@@ -44,7 +44,7 @@
 <script>
 import { buildCode } from './codegen';
 import PlaygroundControls from './PlaygroundControls.vue';
-import { activeProps, createState } from './schema';
+import { activeProps, childProps, createState } from './schema';
 
 export default {
     name: 'DocPlayground',
@@ -58,10 +58,12 @@ export default {
         }
     },
     /*
-     * `update:props` is for a component whose model shape depends on a prop; `reset` lets it clear
-     * the value it owns, which the control state knows nothing about.
+     * `update:props` is for a component whose model shape depends on a prop, and `update:child` for
+     * one whose model can be left pointing at markup that no longer exists — the open tab, when the
+     * control deciding how many tabs there are has just been turned down. `reset` lets a playground
+     * clear the value it owns, which the control state knows nothing about.
      */
-    emits: ['update:props', 'reset'],
+    emits: ['update:props', 'update:child', 'reset'],
     data() {
         return {
             state: createState(this.schema),
@@ -72,6 +74,12 @@ export default {
         props: {
             handler(value) {
                 this.$emit('update:props', value);
+            },
+            immediate: true
+        },
+        child: {
+            handler(value) {
+                this.$emit('update:child', value);
             },
             immediate: true
         },
@@ -93,8 +101,12 @@ export default {
         props() {
             return activeProps(this.schema, this.state);
         },
+        /* The same again for the controls that decide what the component encloses rather than how it behaves. */
+        child() {
+            return childProps(this.schema, this.state);
+        },
         code() {
-            return buildCode({ schema: this.schema, props: this.props });
+            return buildCode({ schema: this.schema, props: this.props, child: this.child });
         }
     },
     mounted() {

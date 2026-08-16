@@ -39,6 +39,22 @@ function readProps(component) {
     return new Map((props ?? []).map((prop) => [prop.name, prop]));
 }
 
+/*
+ * Where a control's value ends up. Most set a property on the component itself, but the container
+ * components are mostly not configured that way: a Card is its slots and a Splitter is its panels,
+ * so their controls have to reach the markup instead of the tag.
+ *
+ * `of` names another component whose typings document the control — SplitterPanel.size is a real
+ * documented property, just not one of Splitter's. `structure` is for a control no component
+ * documents at all, because it decides what markup exists rather than configuring any of it: how
+ * many panels there are, whether a Card has a footer. Those carry their own kind and default, since
+ * there are no typings to read them from.
+ */
+const CHILD = 'children';
+const ROOT = 'props';
+
+const targetOf = (control) => (control.structure || control.of ? CHILD : ROOT);
+
 /**
  * Maps an apidoc type string onto a control kind. Returns null only for types with nothing a
  * control could produce — `any`, a bare `object`, `Record<string, any>`, `PassThrough<...>` — which
@@ -109,7 +125,15 @@ function parseDefault(raw, control) {
  * would spell it out.
  */
 export function defineSchema({ component, groups, snippet }) {
-    const documented = readProps(component);
+    /* one read per component named, since a schema may borrow from a child component several times */
+    const documentation = new Map();
+
+    const propsOf = (name) => {
+        if (!documentation.has(name)) documentation.set(name, readProps(name));
+
+        return documentation.get(name);
+    };
+
     const defaults = {};
     /*
      * Kept on the schema as well as logged, because the apidoc is regenerated from the typings and a
@@ -128,10 +152,32 @@ export function defineSchema({ component, groups, snippet }) {
         controls: group.controls
             .map((entry) => {
                 const control = typeof entry === 'string' ? { prop: entry } : { ...entry };
-                const meta = documented.get(control.prop);
+                const target = targetOf(control);
+
+                /*
+                 * A structure control has no typings behind it, so the schema is the only source for
+                 * its kind and its starting value and both are required. Everything else is read the
+                 * same way whether the prop belongs to the component or to one of its children.
+                 */
+                if (control.structure) {
+                    if (!control.control || control.default === undefined) {
+                        warn(`${component}.${control.prop} is a structure control, which must declare both a control and a default`);
+
+                        return null;
+                    }
+
+                    const structural = { ...control, target, label: control.label ?? titleCase(control.prop) };
+
+                    defaults[structural.prop] = structural.seed !== undefined ? structural.seed : structural.default;
+
+                    return structural;
+                }
+
+                const owner = control.of ?? component;
+                const meta = propsOf(owner).get(control.prop);
 
                 if (!meta) {
-                    warn(`${component} has no documented prop "${control.prop}"`);
+                    warn(`${owner} has no documented prop "${control.prop}"`);
 
                     return null;
                 }
@@ -139,7 +185,7 @@ export function defineSchema({ component, groups, snippet }) {
                 const inferred = control.control ? { control: control.control, options: control.options } : inferControl(meta.type);
 
                 if (!inferred) {
-                    warn(`${component}.${control.prop} is typed "${meta.type}", which needs an explicit control`);
+                    warn(`${owner}.${control.prop} is typed "${meta.type}", which needs an explicit control`);
 
                     return null;
                 }
@@ -147,6 +193,7 @@ export function defineSchema({ component, groups, snippet }) {
                 const merged = {
                     ...control,
                     ...inferred,
+                    target,
                     label: control.label ?? titleCase(control.prop),
                     description: meta.description,
                     default: parseDefault(meta.default, inferred.control)
@@ -193,9 +240,35 @@ export function activeProps(schema, state) {
 
     for (const group of schema.groups) {
         for (const control of group.controls) {
+            if (control.target === CHILD) continue;
+
             if (isActive(control, state)) active[control.prop] = state[control.prop];
         }
     }
 
     return active;
+}
+
+/**
+ * The values the markup is built from: the controls that shape what the component encloses rather
+ * than how it is configured.
+ *
+ * Unlike `activeProps` this reports a value whether or not it differs from a default, because there
+ * is no equivalent of "leave it out and the component decides" for markup. Something has to be
+ * written, and a builder that was handed only the changed values would have to keep its own second
+ * copy of the defaults to fill the gaps. A control the rail is hiding is still skipped.
+ */
+export function childProps(schema, state) {
+    const child = {};
+
+    for (const group of schema.groups) {
+        for (const control of group.controls) {
+            if (control.target !== CHILD) continue;
+            if (control.when && !control.when(state)) continue;
+
+            child[control.prop] = state[control.prop];
+        }
+    }
+
+    return child;
 }

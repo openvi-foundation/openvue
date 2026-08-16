@@ -1,11 +1,22 @@
 <template>
-    <DocComponent title="Vue Fieldset Component" header="Fieldset" description="Fieldset is a grouping component with a content toggle feature." :componentDocs="docs" :apiDocs="['Fieldset']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Fieldset Component"
+        header="Fieldset"
+        description="Fieldset is a grouping component with a content toggle feature."
+        :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :apiDocs="['Fieldset']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
 import AccessibilityDoc from '@/doc/fieldset/AccessibilityDoc.vue';
 import BasicDoc from '@/doc/fieldset/BasicDoc.vue';
 import ImportDoc from '@/doc/fieldset/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/fieldset/PlaygroundDoc.vue';
 import TemplateDoc from '@/doc/fieldset/TemplateDoc.vue';
 import ToggleableDoc from '@/doc/fieldset/ToggleableDoc.vue';
 import PTComponent from '@/doc/fieldset/pt/index.vue';
@@ -41,6 +52,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

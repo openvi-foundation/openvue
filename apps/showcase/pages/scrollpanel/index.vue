@@ -4,6 +4,8 @@
         header="ScrollPanel"
         description="ScrollPanel is a cross browser, lightweight and skinnable alternative to native browser scrollbar."
         :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :apiDocs="['ScrollPanel']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
@@ -14,6 +16,7 @@ import AccessibilityDoc from '@/doc/scrollpanel/AccessibilityDoc.vue';
 import BasicDoc from '@/doc/scrollpanel/BasicDoc.vue';
 import CustomDoc from '@/doc/scrollpanel/CustomDoc.vue';
 import ImportDoc from '@/doc/scrollpanel/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/scrollpanel/PlaygroundDoc.vue';
 import PTComponent from '@/doc/scrollpanel/pt/index.vue';
 import ThemingDoc from '@/doc/scrollpanel/theming/index.vue';
 
@@ -42,6 +45,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

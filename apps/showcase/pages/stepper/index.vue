@@ -4,6 +4,8 @@
         header="Stepper"
         description="The Stepper component displays a wizard-like workflow by guiding users through the multi-step progression."
         :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :themingDocs="themingDoc"
         :ptTabComponent="ptComponent"
         :apiDocs="['Stepper', 'StepList', 'StepPanels', 'StepItem', 'Step', 'StepPanel']"
@@ -15,6 +17,7 @@ import AccessibilityDoc from '@/doc/stepper/AccessibilityDoc.vue';
 import HorizontalDoc from '@/doc/stepper/HorizontalDoc.vue';
 import ImportDoc from '@/doc/stepper/ImportDoc.vue';
 import LinearDoc from '@/doc/stepper/LinearDoc.vue';
+import PlaygroundDoc from '@/doc/stepper/PlaygroundDoc.vue';
 import TemplateDoc from '@/doc/stepper/TemplateDoc.vue';
 import StepsOnlyDoc from '@/doc/stepper/StepsOnlyDoc.vue';
 import VerticalDoc from '@/doc/stepper/VerticalDoc.vue';
@@ -61,6 +64,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

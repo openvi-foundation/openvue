@@ -4,6 +4,8 @@
         header="Accordion"
         description="Accordion groups a collection of contents in panels."
         :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :apiDocs="['Accordion', 'AccordionPanel', 'AccordionHeader', 'AccordionContent']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
@@ -18,6 +20,7 @@ import Disabled from '@/doc/accordion/DisabledDoc.vue';
 import DynamicDoc from '@/doc/accordion/DynamicDoc.vue';
 import ImportDoc from '@/doc/accordion/ImportDoc.vue';
 import MultipleDoc from '@/doc/accordion/MultipleDoc.vue';
+import PlaygroundDoc from '@/doc/accordion/PlaygroundDoc.vue';
 import TemplateDoc from '@/doc/accordion/TemplateDoc.vue';
 import PTComponent from '@/doc/accordion/pt/index.vue';
 import ThemingDoc from '@/doc/accordion/theming/index.vue';
@@ -67,6 +70,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildCode } from './codegen';
-import { activeProps, createState } from './schema';
+import { activeProps, childProps, createState } from './schema';
 
 /*
  * Every playground schema in the site, found rather than listed, so a new one is covered the moment
@@ -58,8 +58,22 @@ describe.each(entries)('%s', (_path, schema) => {
         expect(Object.keys(activeProps(schema, createState(schema))).sort()).toEqual(seeded.sort());
     });
 
+    /*
+     * A control that shapes the markup must not also be written onto the tag as a property. The
+     * component would either ignore it or, worse, warn about an unknown attribute in the very
+     * snippet the page is telling a visitor to copy.
+     */
+    it('keeps markup controls out of the props', () => {
+        const state = createState(schema);
+        const markup = schema.groups.flatMap((group) => group.controls.filter((control) => control.target === 'children').map((control) => control.prop));
+        const written = Object.keys(activeProps(schema, { ...state, ...Object.fromEntries(markup.map((prop) => [prop, 'set'])) }));
+
+        expect(written.filter((prop) => markup.includes(prop))).toEqual([]);
+    });
+
     it('builds code for every variant', () => {
-        const code = buildCode({ schema, props: activeProps(schema, createState(schema)) });
+        const state = createState(schema);
+        const code = buildCode({ schema, props: activeProps(schema, state), child: childProps(schema, state) });
 
         for (const variant of ['basic', 'composition', 'options']) {
             expect(code[variant], variant).toBeTruthy();
