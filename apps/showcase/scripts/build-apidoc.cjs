@@ -688,10 +688,26 @@ const getTypeDoc = (typeDocOptions) => {
     }
 };
 
+const normalizeLineEndings = (value) => {
+    if (typeof value === 'string') return value.replace(/\r\n?/g, '\n');
+
+    if (Array.isArray(value)) return value.map(normalizeLineEndings);
+
+    if (value && typeof value === 'object') {
+        return Object.fromEntries(Object.entries(value).map(([key, child]) => [key, normalizeLineEndings(child)]));
+    }
+
+    return value;
+};
+
 const inlineDocs = getTypeDoc({
     name: 'OpenVue',
     entryPoints: ['../../packages/primevue', '../../packages/forms']
 });
 
+if (!inlineDocs) throw new Error('TypeDoc conversion failed; API documentation was not generated.');
+
+const normalizedInlineDocs = normalizeLineEndings(inlineDocs);
+
 !fs.existsSync(outputPath) && fs.mkdirSync(outputPath);
-fs.writeFileSync(path.resolve(outputPath, 'index.json'), JSON.stringify({ ...inlineDocs }, null, 4) + '\n');
+fs.writeFileSync(path.resolve(outputPath, 'index.json'), JSON.stringify(normalizedInlineDocs, null, 4) + '\n');

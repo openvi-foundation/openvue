@@ -151,7 +151,7 @@ export function getChartTheme(element, type, datasetCount = 0) {
         if (scales) options.scales = scales;
 
         return { scheme, palette, text, textMuted, border, options };
-    } catch (error) {
+    } catch {
         /*
          * Theming is an enhancement, so a token that cannot be resolved must never stop the
          * chart from rendering. Fall back to Chart.js defaults instead.
@@ -218,6 +218,7 @@ export function applyPalette(data, type, palette) {
         datasets: data.datasets.map((dataset, index) => {
             const next = { ...dataset };
             const color = palette[index % palette.length];
+
             const set = (key, value) => {
                 if (next[key] === undefined) next[key] = value;
             };
