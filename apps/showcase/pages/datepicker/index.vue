@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue DatePicker Component" header="DatePicker" description="DatePicker is a form component for date inputs." :componentDocs="docs" :apiDocs="['DatePicker']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue DatePicker Component"
+        header="DatePicker"
+        description="DatePicker is a form component for date inputs."
+        :componentDocs="docs"
+        :apiDocs="['DatePicker']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -29,6 +39,7 @@ import RangeDoc from '@/doc/datepicker/RangeDoc.vue';
 import SizesDoc from '@/doc/datepicker/SizesDoc.vue';
 import TimeDoc from '@/doc/datepicker/TimeDoc.vue';
 import YearPickerDoc from '@/doc/datepicker/YearPickerDoc.vue';
+import PlaygroundDoc from '@/doc/datepicker/PlaygroundDoc.vue';
 import PTComponent from '@/doc/datepicker/pt/index.vue';
 import ThemingDoc from '@/doc/datepicker/theming/index.vue';
 
@@ -167,6 +178,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

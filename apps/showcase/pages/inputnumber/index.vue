@@ -5,6 +5,8 @@
         description="InputNumber is an input component to provide numerical input."
         :componentDocs="docs"
         :apiDocs="['InputNumber']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -28,6 +30,7 @@ import NumeralsDoc from '@/doc/inputnumber/NumeralsDoc.vue';
 import PrefixSuffixDoc from '@/doc/inputnumber/PrefixSuffixDoc.vue';
 import SizesDoc from '@/doc/inputnumber/SizesDoc.vue';
 import VerticalDoc from '@/doc/inputnumber/VerticalDoc.vue';
+import PlaygroundDoc from '@/doc/inputnumber/PlaygroundDoc.vue';
 import PTComponent from '@/doc/inputnumber/pt/index.vue';
 import ThemingDoc from '@/doc/inputnumber/theming/index.vue';
 
@@ -121,6 +124,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

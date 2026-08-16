@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue ColorPicker Component" header="ColorPicker" description="ColorPicker is an input component to select a color." :componentDocs="docs" :apiDocs="['ColorPicker']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue ColorPicker Component"
+        header="ColorPicker"
+        description="ColorPicker is an input component to select a color."
+        :componentDocs="docs"
+        :apiDocs="['ColorPicker']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -10,6 +20,7 @@ import FormatDoc from '@/doc/colorpicker/FormatDoc.vue';
 import FormsDoc from '@/doc/colorpicker/FormsDoc.vue';
 import ImportDoc from '@/doc/colorpicker/ImportDoc.vue';
 import InlineDoc from '@/doc/colorpicker/InlineDoc.vue';
+import PlaygroundDoc from '@/doc/colorpicker/PlaygroundDoc.vue';
 import PTComponent from '@/doc/colorpicker/pt/index.vue';
 import ThemingDoc from '@/doc/colorpicker/theming/index.vue';
 
@@ -53,6 +64,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

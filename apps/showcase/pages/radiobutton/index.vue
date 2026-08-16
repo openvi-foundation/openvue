@@ -5,6 +5,8 @@
         description="RadioButton is an extension to standard radio button element with theming."
         :componentDocs="docs"
         :apiDocs="['RadioButton']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -20,6 +22,7 @@ import GroupDoc from '@/doc/radiobutton/GroupDoc.vue';
 import ImportDoc from '@/doc/radiobutton/ImportDoc.vue';
 import SizesDoc from '@/doc/radiobutton/SizesDoc.vue';
 import InvalidDoc from '@/doc/radiobutton/InvalidDoc.vue';
+import PlaygroundDoc from '@/doc/radiobutton/PlaygroundDoc.vue';
 import PTComponent from '@/doc/radiobutton/pt/index.vue';
 import ThemingDoc from '@/doc/radiobutton/theming/index.vue';
 
@@ -73,6 +76,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

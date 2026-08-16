@@ -73886,6 +73886,14 @@
                     "relatedProp": "",
                     "props": [
                         {
+                            "name": "id",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "string | number",
+                            "default": "",
+                            "description": "Unique identifier of the message, generated automatically when not provided and returned by the  `add`  method of\nthe ToastService. Required to remove that particular message later on with the  `remove`  method."
+                        },
+                        {
                             "name": "severity",
                             "optional": true,
                             "readonly": false,
@@ -74517,8 +74525,8 @@
                                     "description": "Message instance."
                                 }
                             ],
-                            "returnType": "void",
-                            "description": "Displays the message in a suitable Toast component."
+                            "returnType": "string | number",
+                            "description": "Displays the message in a suitable Toast component and returns the id of the message, generated when the message\ndoes not define an  `id`  of its own. Keep the id around to remove that particular message later on with  `remove` ."
                         },
                         {
                             "name": "remove",
@@ -74531,7 +74539,7 @@
                                 }
                             ],
                             "returnType": "void",
-                            "description": "Clears the message."
+                            "description": "Clears the message with the matching  `id` , e.g.  `remove({ id: myId })`  where  `myId`  is the id returned by  `add` ."
                         },
                         {
                             "name": "removeGroup",

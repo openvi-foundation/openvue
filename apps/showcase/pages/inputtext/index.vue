@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Input Component" header="InputText" description="InputText is an extension to standard input element with theming." :componentDocs="docs" :apiDocs="['InputText']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Input Component"
+        header="InputText"
+        description="InputText is an extension to standard input element with theming."
+        :componentDocs="docs"
+        :apiDocs="['InputText']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -15,6 +25,7 @@ import IftaLabelDoc from '@/doc/inputtext/IftaLabelDoc.vue';
 import ImportDoc from '@/doc/inputtext/ImportDoc.vue';
 import InvalidDoc from '@/doc/inputtext/InvalidDoc.vue';
 import SizesDoc from '@/doc/inputtext/SizesDoc.vue';
+import PlaygroundDoc from '@/doc/inputtext/PlaygroundDoc.vue';
 import PTComponent from '@/doc/inputtext/pt/index.vue';
 import ThemingDoc from '@/doc/inputtext/theming/index.vue';
 
@@ -83,6 +94,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

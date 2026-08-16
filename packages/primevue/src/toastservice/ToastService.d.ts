@@ -19,12 +19,14 @@ export default plugin;
  */
 export interface ToastServiceMethods {
     /**
-     * Displays the message in a suitable Toast component.
+     * Displays the message in a suitable Toast component and returns the id of the message, generated when the message
+     * does not define an `id` of its own. Keep the id around to remove that particular message later on with `remove`.
      * @param {ToastMessageOptions} message - Message instance.
+     * @returns {string | number} Id of the message.
      */
-    add(message: ToastMessageOptions): void;
+    add(message: ToastMessageOptions): string | number;
     /**
-     * Clears the message.
+     * Clears the message with the matching `id`, e.g. `remove({ id: myId })` where `myId` is the id returned by `add`.
      * @param {ToastMessageOptions} message - Message instance.
      */
     remove(message: ToastMessageOptions): void;

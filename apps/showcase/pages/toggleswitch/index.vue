@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue ToggleSwitch Component" header="ToggleSwitch" description="ToggleSwitch is used to select a boolean value." :componentDocs="docs" :apiDocs="['ToggleSwitch']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue ToggleSwitch Component"
+        header="ToggleSwitch"
+        description="ToggleSwitch is used to select a boolean value."
+        :componentDocs="docs"
+        :apiDocs="['ToggleSwitch']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -11,6 +21,7 @@ import ImportDoc from '@/doc/toggleswitch/ImportDoc.vue';
 import InvalidDoc from '@/doc/toggleswitch/InvalidDoc.vue';
 import PreselectionDoc from '@/doc/toggleswitch/PreselectionDoc.vue';
 import TemplateDoc from '@/doc/toggleswitch/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/toggleswitch/PlaygroundDoc.vue';
 import PTComponent from '@/doc/toggleswitch/pt/index.vue';
 import ThemingDoc from '@/doc/toggleswitch/theming/index.vue';
 
@@ -59,6 +70,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Rating Component" header="Rating" description="Rating component is a star based selection input." :componentDocs="docs" :apiDocs="['Rating']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Rating Component"
+        header="Rating"
+        description="Rating component is a star based selection input."
+        :componentDocs="docs"
+        :apiDocs="['Rating']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -11,6 +21,7 @@ import ImportDoc from '@/doc/rating/ImportDoc.vue';
 import NumberOfStarsDoc from '@/doc/rating/NumberOfStarsDoc.vue';
 import ReadOnlyDoc from '@/doc/rating/ReadOnlyDoc.vue';
 import TemplateDoc from '@/doc/rating/TemplateDoc.vue';
+import PlaygroundDoc from '@/doc/rating/PlaygroundDoc.vue';
 import PTComponent from '@/doc/rating/pt/index.vue';
 import ThemingDoc from '@/doc/rating/theming/index.vue';
 
@@ -59,6 +70,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

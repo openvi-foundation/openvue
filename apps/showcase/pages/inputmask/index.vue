@@ -5,6 +5,8 @@
         description="InputMask component is used to enter input in a certain format such as numeric, date, currency, email and phone."
         :componentDocs="docs"
         :apiDocs="['InputMask']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -25,6 +27,7 @@ import MaskDoc from '@/doc/inputmask/MaskDoc.vue';
 import OptionalDoc from '@/doc/inputmask/OptionalDoc.vue';
 import SizesDoc from '@/doc/inputmask/SizesDoc.vue';
 import SlotCharDoc from '@/doc/inputmask/SlotCharDoc.vue';
+import PlaygroundDoc from '@/doc/inputmask/PlaygroundDoc.vue';
 import PTComponent from '@/doc/inputmask/pt/index.vue';
 import ThemingDoc from '@/doc/inputmask/theming/index.vue';
 
@@ -103,6 +106,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

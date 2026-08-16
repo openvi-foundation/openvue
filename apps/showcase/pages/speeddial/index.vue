@@ -5,6 +5,8 @@
         description="When pressed, a floating action button can display multiple primary actions that can be performed on a page."
         :componentDocs="docs"
         :apiDocs="['SpeedDial']"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
         :ptTabComponent="ptComponent"
         :themingDocs="themingDoc"
     />
@@ -20,6 +22,7 @@ import QuarterCircleDoc from '@/doc/speeddial/QuarterCircleDoc.vue';
 import SemiCircleDoc from '@/doc/speeddial/SemiCircleDoc.vue';
 import TemplateDoc from '@/doc/speeddial/TemplateDoc.vue';
 import TooltipDoc from '@/doc/speeddial/TooltipDoc.vue';
+import PlaygroundDoc from '@/doc/speeddial/PlaygroundDoc.vue';
 import PTComponent from '@/doc/speeddial/pt/index.vue';
 import ThemingDoc from '@/doc/speeddial/theming/index.vue';
 
@@ -37,6 +40,7 @@ export default {
                 { id: 'template', label: 'Template', component: TemplateDoc },
                 { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

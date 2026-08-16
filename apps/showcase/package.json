@@ -40,7 +40,9 @@
         "build:prebuild": "node ./scripts/prebuild.mjs",
         "build:apidoc": "node ./scripts/build-apidoc.cjs",
         "build:llmdocs": "node ./scripts/build-llm-docs.mjs",
-        "build:searchindex": "node ./scripts/build-search-index.mjs"
+        "build:searchindex": "node ./scripts/build-search-index.mjs",
+        "test:unit": "vitest run",
+        "test:unit:watch": "vitest watch"
     },
     "dependencies": {
         "@openvue/core": "workspace:*",
@@ -48,8 +50,6 @@
         "@openvue/nuxt-module": "workspace:*",
         "@openvue/openicons": "catalog:",
         "@openvue/themes": "workspace:*",
-        "@vercel/analytics": "^2.0.1",
-        "@vercel/speed-insights": "^2.0.0",
         "chart.js": "catalog:app",
         "openvue": "workspace:*",
         "quill": "catalog:app",
@@ -61,6 +61,8 @@
     "devDependencies": {
         "@nuxtjs/sitemap": "^8.2.3",
         "@stackblitz/sdk": "^1.8.2",
+        "@vercel/analytics": "^2.0.1",
+        "@vercel/speed-insights": "^2.0.0",
         "autoprefixer": "^10",
         "jsdom": "^19.0.0",
         "nuxt": "catalog:app",

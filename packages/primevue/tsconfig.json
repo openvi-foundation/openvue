@@ -18,7 +18,8 @@
         "paths": {
             "openvue/*": ["./src/*"],
             "@openvue/core/*": ["../../packages/core/src/*"],
-            "@openvue/icons/*": ["../../packages/icons/src/*"]
+            "@openvue/icons/*": ["../../packages/icons/src/*"],
+            "@openuxkit/utils/*": ["./node_modules/@openuxkit/utils/dist/*/index.d.mts"]
         }
     },
     "include": ["**/*.ts", "src/*"],
