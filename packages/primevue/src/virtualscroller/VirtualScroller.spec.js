@@ -106,7 +106,6 @@ describe('VirtualScroller.vue', () => {
             expect(wrapper.vm.spacerStyle.height).toBe(`${80 * 4 + 30 * 16}px`);
 
             await wrapper.setProps({ getItemSize: () => 40 });
-            wrapper.vm.init();
 
             expect(wrapper.vm.spacerStyle.height).toBe('800px');
         });
@@ -117,10 +116,35 @@ describe('VirtualScroller.vue', () => {
             expect(wrapper.vm.cumulativeSizes).not.toBe(null);
 
             await wrapper.setProps({ getItemSize: null });
-            wrapper.vm.init();
 
             expect(wrapper.vm.cumulativeSizes).toBe(null);
             expect(wrapper.vm.spacerStyle.height).toBe('600px');
+        });
+
+        it('should rebuild cumulative sizes when same-length items change', async () => {
+            let size = 30;
+            const wrapper = mountScroller({ getItemSize: () => size });
+
+            size = 50;
+            await wrapper.setProps({ items: buildItems(20).map((item) => ({ ...item })) });
+
+            expect(wrapper.vm.spacerStyle.height).toBe('1000px');
+        });
+
+        it('should cap the rendered range when all remaining items have zero height', () => {
+            const wrapper = mountScroller({ items: buildItems(1000), getItemSize: () => 0 });
+
+            expect(wrapper.vm.getLastByCumulative(0, 2, 4)).toBe(8);
+        });
+
+        it('should omit zero-height items while preserving their absolute indexes', () => {
+            const wrapper = mountScroller({ items: buildItems(10), getItemSize: (index) => (index % 2 === 0 ? 30 : 0) });
+
+            wrapper.vm.first = 0;
+            wrapper.vm.last = 10;
+
+            expect(wrapper.vm.loadedItems.map((item) => item.id)).toEqual([0, 2, 4, 6, 8]);
+            expect(wrapper.vm.getOptions(1).index).toBe(2);
         });
     });
 });

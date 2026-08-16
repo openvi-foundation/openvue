@@ -142,6 +142,10 @@ export default {
             type: Array,
             default: null
         },
+        groupRowsValue: {
+            type: Array,
+            default: null
+        },
         columns: {
             type: null,
             default: null
@@ -554,14 +558,15 @@ export default {
         },
         shouldRenderRowGroupHeader() {
             const currentRowFieldData = resolveFieldData(this.rowData, this.groupRowsBy);
-            const prevRowData = this.value[this.index - 1];
+            const groupRowsValue = this.groupRowsValue || this.value;
+            const prevRowData = groupRowsValue[this.rowIndex - 1];
 
             if (prevRowData) {
                 const previousRowFieldData = resolveFieldData(prevRowData, this.groupRowsBy);
 
                 return currentRowFieldData !== previousRowFieldData;
             } else {
-                return true;
+                return this.rowIndex === 0;
             }
         },
         shouldRenderRowGroupFooter() {
@@ -569,7 +574,8 @@ export default {
                 return false;
             } else {
                 let currentRowFieldData = resolveFieldData(this.rowData, this.groupRowsBy);
-                let nextRowData = this.value[this.index + 1];
+                let groupRowsValue = this.groupRowsValue || this.value;
+                let nextRowData = groupRowsValue[this.rowIndex + 1];
 
                 if (nextRowData) {
                     let nextRowFieldData = resolveFieldData(nextRowData, this.groupRowsBy);

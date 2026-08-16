@@ -246,7 +246,7 @@ export interface VirtualScrollerProps {
     /**
      * Callback to determine the height of an item by its index in vertical orientation.
      */
-    getItemSize?: (index: number) => number;
+    getItemSize?: ((index: number) => number) | undefined | null;
     /**
      * Height of the scroll viewport.
      */

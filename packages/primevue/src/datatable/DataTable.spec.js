@@ -10,6 +10,11 @@ import Row from '../row/Row.vue';
 import DataTable from './DataTable.vue';
 
 window.URL.createObjectURL = function () {};
+window.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+};
 
 const smallData = [
     {
@@ -1542,60 +1547,87 @@ describe('DataTable.vue', () => {
     });
 
     // VirtualScroller + rowGroupMode="subheader" item-size contract
-    it('should expose getItemSize as null when rowGroupMode is unset', () => {
-        expect(wrapper.vm.getItemSize).toBe(null);
+    const grouped = [
+        { id: 0, rep: 'Amy' },
+        { id: 1, rep: 'Amy' },
+        { id: 2, rep: 'John' },
+        { id: 3, rep: 'John' },
+        { id: 4, rep: 'Maria' }
+    ];
+    const mountGroupedTable = (props = {}) =>
+        mount(DataTable, {
+            global: {
+                plugins: [PrimeVue],
+                components: { Column }
+            },
+            props: {
+                value: grouped,
+                rowGroupMode: 'subheader',
+                groupRowsBy: 'rep',
+                scrollable: true,
+                virtualScrollerOptions: { itemSize: 36 },
+                ...props
+            },
+            slots: {
+                default: '<Column field="rep" />',
+                groupheader: '<span>Header</span>',
+                groupfooter: '<span>Footer</span>'
+            }
+        });
+
+    it('should pass a custom getItemSize through when row grouping is unset', async () => {
+        const getItemSize = () => 48;
+
+        await wrapper.setProps({ virtualScrollerOptions: { itemSize: 36, getItemSize } });
+
+        expect(wrapper.vm.getItemSize).toBe(getItemSize);
     });
 
-    it('should report itemSize plus a header contribution at group boundaries', async () => {
-        const grouped = [
-            { id: 0, rep: 'Amy' },
-            { id: 1, rep: 'Amy' },
-            { id: 2, rep: 'John' },
-            { id: 3, rep: 'John' },
-            { id: 4, rep: 'Maria' }
-        ];
-
-        await wrapper.setProps({
-            value: grouped,
-            rowGroupMode: 'subheader',
-            groupRowsBy: 'rep',
-            virtualScrollerOptions: { itemSize: 36 }
-        });
+    it('should include group headers, footers and custom item sizes', () => {
+        wrapper = mountGroupedTable({ virtualScrollerOptions: { itemSize: 36, getItemSize: (index) => (index === 1 ? 28 : 36) } });
         wrapper.vm.d_rowGroupHeaderHeight = 40;
+        wrapper.vm.d_rowGroupFooterHeight = 20;
 
         const fn = wrapper.vm.getItemSize;
 
         expect(typeof fn).toBe('function');
-        expect(fn(0)).toBe(76); // boundary (first row) + data row
-        expect(fn(1)).toBe(36); // continuation of Amy
-        expect(fn(2)).toBe(76); // boundary into John
-        expect(fn(3)).toBe(36); // continuation of John
-        expect(fn(4)).toBe(76); // boundary into Maria
+        expect(fn(0)).toBe(76);
+        expect(fn(1)).toBe(48);
+        expect(fn(2)).toBe(76);
+        expect(fn(3)).toBe(56);
+        expect(fn(4)).toBe(96);
     });
 
-    it('should report 0 for non-anchor rows of a collapsed group', async () => {
-        const grouped = [
-            { id: 0, rep: 'Amy' },
-            { id: 1, rep: 'Amy' },
-            { id: 2, rep: 'John' },
-            { id: 3, rep: 'John' }
-        ];
-
-        await wrapper.setProps({
-            value: grouped,
-            rowGroupMode: 'subheader',
-            groupRowsBy: 'rep',
-            expandableRowGroups: true,
-            expandedRowGroups: ['John'],
-            virtualScrollerOptions: { itemSize: 36 }
-        });
+    it('should report zero for hidden rows in a collapsed group', async () => {
+        wrapper = mountGroupedTable({ expandableRowGroups: true, expandedRowGroups: ['John'] });
         wrapper.vm.d_rowGroupHeaderHeight = 40;
+        wrapper.vm.d_rowGroupFooterHeight = 20;
 
         const fn = wrapper.vm.getItemSize;
 
-        expect(fn(0)).toBe(40); // Amy anchor: header only (collapsed)
-        expect(fn(1)).toBe(0); // Amy continuation: hidden
-        expect(fn(2)).toBe(76); // John anchor: header + data row (expanded)
-        expect(fn(3)).toBe(36); // John continuation: data row only
+        expect(fn(0)).toBe(40);
+        expect(fn(1)).toBe(0);
+        expect(fn(2)).toBe(76);
+        expect(fn(3)).toBe(56);
+
+        await wrapper.setProps({ expandedRowGroups: ['Amy'] });
+
+        expect(wrapper.vm.getItemSize(0)).toBe(76);
+        expect(wrapper.vm.getItemSize(1)).toBe(56);
+        expect(wrapper.vm.getItemSize(2)).toBe(40);
+        expect(wrapper.vm.getItemSize(3)).toBe(0);
+    });
+
+    it('should use absolute group boundaries in a window that starts inside a group', async () => {
+        wrapper = mountGroupedTable();
+
+        const virtualScroller = wrapper.findComponent({ name: 'VirtualScroller' });
+
+        virtualScroller.vm.first = 1;
+        virtualScroller.vm.last = 4;
+        await nextTick();
+
+        expect(wrapper.findAll('.p-datatable-row-group-header')).toHaveLength(1);
+        expect(wrapper.findAll('.p-datatable-row-group-footer')).toHaveLength(2);
     });
 });

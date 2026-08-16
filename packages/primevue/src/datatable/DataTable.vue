@@ -185,6 +185,7 @@
                         <DTTableBody
                             ref="bodyRef"
                             :value="dataToRender(slotProps.rows)"
+                            :groupRowsValue="virtualScrollerDisabled ? null : processedData"
                             :class="slotProps.styleClass"
                             :columns="slotProps.columns"
                             :empty="empty"
@@ -425,7 +426,8 @@ export default {
             d_filters: this.cloneFilters(this.filters),
             d_columns: new HelperSet({ type: 'Column' }),
             d_columnGroups: new HelperSet({ type: 'ColumnGroup' }),
-            d_rowGroupHeaderHeight: 0
+            d_rowGroupHeaderHeight: (this.virtualScrollerOptions && this.virtualScrollerOptions.itemSize) || 0,
+            d_rowGroupFooterHeight: (this.virtualScrollerOptions && this.virtualScrollerOptions.itemSize) || 0
         };
     },
     rowTouched: false,
@@ -502,7 +504,7 @@ export default {
             this.updateEditingRowKeys(this.editingRows);
         }
 
-        this.updateRowGroupHeaderHeight();
+        this.updateRowGroupHeights();
     },
     beforeUnmount() {
         this.unbindColumnResizeEvents();
@@ -520,7 +522,7 @@ export default {
             this.updateEditingRowKeys(this.editingRows);
         }
 
-        this.updateRowGroupHeaderHeight();
+        this.updateRowGroupHeights();
     },
     methods: {
         columnProp(col, prop) {
@@ -2052,12 +2054,13 @@ export default {
         hasSpacerStyle(style) {
             return isNotEmpty(style);
         },
-        updateRowGroupHeaderHeight() {
+        updateRowGroupHeights() {
             if (this.rowGroupMode !== 'subheader' || !this.groupRowsBy || this.virtualScrollerDisabled) {
                 return;
             }
 
-            const header = this.$refs.table && findSingle(this.$refs.table, 'tr.p-datatable-row-group-header');
+            const header = this.$refs.table && findSingle(this.$refs.table, '[data-pc-section="rowgroupheader"]');
+            const footer = this.$refs.table && findSingle(this.$refs.table, '[data-pc-section="rowgroupfooter"]');
 
             if (header) {
                 const height = getOuterHeight(header);
@@ -2066,21 +2069,30 @@ export default {
                     this.d_rowGroupHeaderHeight = height;
                 }
             }
+
+            if (footer) {
+                const height = getOuterHeight(footer);
+
+                if (height && height !== this.d_rowGroupFooterHeight) {
+                    this.d_rowGroupFooterHeight = height;
+                }
+            }
         },
         getRenderedWindowSize(slotProps) {
             if (!slotProps || !slotProps.rows || !slotProps.rows.length) {
                 return 0;
             }
 
+            const rows = this.dataToRender(slotProps.rows);
             const fn = this.getItemSize;
 
             if (typeof fn !== 'function') {
-                return slotProps.rows.length * slotProps.itemSize;
+                return rows.length * (slotProps.itemSize || 0);
             }
 
             let total = 0;
 
-            for (let i = 0; i < slotProps.rows.length; i++) {
+            for (let i = 0; i < rows.length; i++) {
                 total += fn(slotProps.getItemOptions(i).index);
             }
 
@@ -2152,29 +2164,37 @@ export default {
             return !data || data.length === 0;
         },
         getItemSize() {
-            const baseSize = (this.virtualScrollerOptions && this.virtualScrollerOptions.itemSize) || 0;
+            const itemSize = (this.virtualScrollerOptions && this.virtualScrollerOptions.itemSize) || 0;
+            const customItemSize = this.virtualScrollerOptions && this.virtualScrollerOptions.getItemSize;
             const groupRowsBy = this.groupRowsBy;
             const subheader = this.rowGroupMode === 'subheader' && !!groupRowsBy;
 
             if (!subheader) {
-                return null;
+                return customItemSize || null;
             }
 
             const items = this.processedData;
             const expandable = this.expandableRowGroups;
             const expandedGroups = this.expandedRowGroups;
             const headerHeight = this.d_rowGroupHeaderHeight;
+            const footerHeight = this.d_rowGroupFooterHeight;
+            const hasGroupHeader = !!this.$slots.groupheader;
+            const hasGroupFooter = !!this.$slots.groupfooter;
 
             return (index) => {
                 if (!items || index < 0 || index >= items.length) {
-                    return baseSize;
+                    return itemSize;
                 }
 
                 const groupValue = resolveFieldData(items[index], groupRowsBy);
                 const isFirstOfGroup = index === 0 || resolveFieldData(items[index - 1], groupRowsBy) !== groupValue;
+                const isLastOfGroup = index === items.length - 1 || resolveFieldData(items[index + 1], groupRowsBy) !== groupValue;
                 const isExpanded = !expandable || (expandedGroups && expandedGroups.indexOf(groupValue) > -1);
+                const rowHeight = isExpanded ? (typeof customItemSize === 'function' ? customItemSize(index) : itemSize) : 0;
+                const groupHeaderHeight = isFirstOfGroup && hasGroupHeader ? headerHeight || itemSize : 0;
+                const groupFooterHeight = isLastOfGroup && hasGroupFooter && isExpanded ? footerHeight || itemSize : 0;
 
-                return (isFirstOfGroup ? headerHeight : 0) + (isExpanded ? baseSize : 0);
+                return groupHeaderHeight + rowHeight + groupFooterHeight;
             };
         },
         paginatorTop() {

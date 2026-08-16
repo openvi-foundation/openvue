@@ -66,12 +66,12 @@ export default {
             d_loading: this.loading,
             loaderArr: [],
             spacerStyle: {},
-            contentStyle: {}
+            contentStyle: {},
+            cumulativeSizes: null
         };
     },
     element: null,
     content: null,
-    cumulativeSizes: null,
     lastScrollPos: null,
     scrollTimeout: null,
     resizeTimeout: null,
@@ -95,7 +95,7 @@ export default {
         },
         items: {
             handler(newValue, oldValue) {
-                if (!oldValue || oldValue.length !== (newValue || []).length) {
+                if (!oldValue || oldValue.length !== (newValue || []).length || typeof this.getItemSize === 'function') {
                     this.init();
                     this.calculateAutoSize();
                 }
@@ -160,6 +160,7 @@ export default {
                 this.buildCumulativeSizes();
                 this.calculateOptions();
                 this.setSpacerSize();
+                this.cumulativeSizes && this.setContentPosition();
             }
         },
         buildCumulativeSizes() {
@@ -214,14 +215,18 @@ export default {
 
             return lo;
         },
-        getLastByCumulative(first, numToleratedItems) {
+        getLastByCumulative(first, numToleratedItems, numItemsInViewport) {
             if (!this.cumulativeSizes) return this.getLast(first);
 
             const sizes = this.cumulativeSizes;
             const contentPos = this.getContentPosition();
             const contentHeight = this.element ? this.element.offsetHeight - contentPos.top : 0;
             const startOffset = sizes[Math.min(first, sizes.length - 1)];
-            const target = startOffset + contentHeight + 2 * numToleratedItems * this.itemSize;
+            const target = startOffset + contentHeight + 2 * numToleratedItems * (this.itemSize || 0);
+
+            if (sizes[sizes.length - 1] === startOffset) {
+                return this.getLast(first + numItemsInViewport + (first < numToleratedItems ? 2 : 3) * numToleratedItems);
+            }
 
             let lo = first;
             let hi = sizes.length - 1;
@@ -397,7 +402,7 @@ export default {
             if (both) {
                 last = { rows: calculateLast(first.rows, numItemsInViewport.rows, numToleratedItems[0]), cols: calculateLast(first.cols, numItemsInViewport.cols, numToleratedItems[1], true) };
             } else if (!horizontal && this.cumulativeSizes) {
-                last = this.getLastByCumulative(first, numToleratedItems);
+                last = this.getLastByCumulative(first, numToleratedItems, numItemsInViewport);
             } else {
                 last = calculateLast(first, numItemsInViewport, numToleratedItems);
             }
@@ -593,7 +598,8 @@ export default {
                     const triggerIndex = calculateTriggerIndex(currentIndex, this.first, this.last, this.numItemsInViewport, this.d_numToleratedItems, isScrollDownOrRight);
 
                     newFirst = calculateFirst(currentIndex, triggerIndex, this.first, this.last, this.numItemsInViewport, this.d_numToleratedItems, isScrollDownOrRight);
-                    newLast = !horizontal && this.cumulativeSizes ? this.getLastByCumulative(newFirst, this.d_numToleratedItems) : calculateLast(currentIndex, newFirst, this.last, this.numItemsInViewport, this.d_numToleratedItems);
+                    newLast =
+                        !horizontal && this.cumulativeSizes ? this.getLastByCumulative(newFirst, this.d_numToleratedItems, this.numItemsInViewport) : calculateLast(currentIndex, newFirst, this.last, this.numItemsInViewport, this.d_numToleratedItems);
                     isRangeChanged = newFirst !== this.first || newLast !== this.last || this.isRangeChanged;
                     newScrollPos = scrollPos;
                 }
@@ -714,7 +720,11 @@ export default {
         },
         getOptions(renderedIndex) {
             const count = (this.items || []).length;
-            const index = this.isBoth() ? this.first.rows + renderedIndex : this.first + renderedIndex;
+            let index = this.isBoth() ? this.first.rows + renderedIndex : this.first + renderedIndex;
+
+            if (!this.isBoth() && this.variableLoadedRange) {
+                index = this.variableLoadedRange.indexes[renderedIndex];
+            }
 
             return {
                 index,
@@ -782,10 +792,29 @@ export default {
                 }
             ];
         },
+        variableLoadedRange() {
+            if (!this.items || this.d_loading || !this.cumulativeSizes) {
+                return null;
+            }
+
+            const start = this.appendOnly ? 0 : this.first;
+            const items = [];
+            const indexes = [];
+
+            for (let index = start; index < this.last; index++) {
+                if (this.cumulativeSizes[index + 1] > this.cumulativeSizes[index]) {
+                    items.push(this.items[index]);
+                    indexes.push(index);
+                }
+            }
+
+            return { items, indexes };
+        },
         loadedItems() {
             if (this.items && !this.d_loading) {
                 if (this.isBoth()) return this.items.slice(this.appendOnly ? 0 : this.first.rows, this.last.rows).map((item) => (this.columns ? item : item.slice(this.appendOnly ? 0 : this.first.cols, this.last.cols)));
                 else if (this.isHorizontal() && this.columns) return this.items;
+                else if (this.variableLoadedRange) return this.variableLoadedRange.items;
                 else return this.items.slice(this.appendOnly ? 0 : this.first, this.last);
             }
 

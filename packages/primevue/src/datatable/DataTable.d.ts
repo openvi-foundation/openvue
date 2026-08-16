@@ -1153,6 +1153,7 @@ export interface DataTableProps<T = any> {
     /**
      * Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.
      * Note: Currently only vertical orientation mode is supported.
+     * When used with subheader row grouping, group headers are not sticky and group header/footer heights must be consistent.
      */
     virtualScrollerOptions?: VirtualScrollerProps;
     /**
