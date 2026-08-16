@@ -6,6 +6,7 @@
                     :rowData="rowData"
                     :index="rowIndex"
                     :value="value"
+                    :groupRowsValue="groupRowsValue"
                     :columns="columns"
                     :frozenRow="frozenRow"
                     :empty="empty"
@@ -106,6 +107,10 @@ export default {
     ],
     props: {
         value: {
+            type: Array,
+            default: null
+        },
+        groupRowsValue: {
             type: Array,
             default: null
         },
@@ -279,7 +284,7 @@ export default {
     },
     computed: {
         rowGroupHeaderStyle() {
-            if (this.scrollable) {
+            if (this.scrollable && this.isVirtualScrollerDisabled) {
                 return { top: this.rowGroupHeaderStyleObject.top };
             }
 

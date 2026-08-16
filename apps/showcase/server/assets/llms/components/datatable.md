@@ -1399,7 +1399,7 @@ const getSeverity = (product) => {
 | rowStyle | Function | - |  |
 | scrollable | boolean | false | When specified, enables horizontal and/or vertical scrolling. |
 | scrollHeight | HintedString<"flex"> | - | Height of the scroll viewport in fixed pixels or the 'flex' keyword for a dynamic size. |
-| virtualScrollerOptions | any | - | Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it. Note: Currently only vertical orientation mode is supported. |
+| virtualScrollerOptions | any | - | Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it. Note: Currently only vertical orientation mode is supported. When used with subheader row grouping, group headers are not sticky and group header/footer heights must be consistent. |
 | frozenValue | null \| NoInfer<T>[] | - | Items of the frozen part in scrollable DataTable. |
 | breakpoint | string | 960px | The breakpoint to define the maximum width boundary when using stack responsive layout. |
 | showHeaders | boolean | true | Whether to display table headers |
