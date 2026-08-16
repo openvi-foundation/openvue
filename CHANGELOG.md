@@ -8,6 +8,23 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Added
+
+- `VirtualScroller` gains a `getItemSize` prop, a callback that returns an item's height by index, so a list whose rows are not all the same height can still be virtualized. ([#621](https://github.com/openvi-foundation/openvue/pull/621))
+- Showcase: a Playground tab on the form components, the button components, and the panel components (Accordion, Card, DeferredContent, Divider, Fieldset, Panel, ScrollPanel, Splitter, Stepper, Tabs and Toolbar). Each one generates the code for whatever you set up in it, as a complete single file component in both the Composition and Options API. ([#622](https://github.com/openvi-foundation/openvue/pull/622), [#623](https://github.com/openvi-foundation/openvue/pull/623), [#624](https://github.com/openvi-foundation/openvue/pull/624))
+- Showcase: a guide for migrating charts from PrimeVue.
+
+### Changed
+
+- Showcase: the icons page is built on `@openvue/openicons` and restructured around the two OpenIcons formats. ([#37](https://github.com/openvi-foundation/openvue/pull/37))
+- Showcase: the introduction and contribution pages are rewritten, and Components now sits above Configuration in the sidebar.
+
+### Fixed
+
+- `DataTable` supports subheader row grouping together with virtual scrolling. Group headers and footers are measured rather than assumed to be the same height as a row, so grouped rows no longer drift out of position while scrolling. Contributed by [@Tamas-hi](https://github.com/Tamas-hi). ([#621](https://github.com/openvi-foundation/openvue/pull/621))
+- `BlockUI` always removes its mask when unblocked. Blocking and unblocking in quick succession, or unmounting the component while the leave animation was still running, could leave a mask covering the page and swallowing every click. The mask is now also cleaned up when the component unmounts. ([#626](https://github.com/openvi-foundation/openvue/pull/626))
+- Showcase: the `Toast` documentation covers removing a single message by its id, and the Multiple demo no longer calls a method that does not exist. ([#628](https://github.com/openvi-foundation/openvue/pull/628), [#629](https://github.com/openvi-foundation/openvue/pull/629))
+
 ## [0.7.0-beta.0] - 2026-08-03
 
 The version jumps from `0.0.1-beta.1` to `0.7.0-beta.0` to reflect the project's actual maturity. Nothing was released between the two. Packages remain pre-1.0 and continue to be published under the `beta` dist-tag.

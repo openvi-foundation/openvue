@@ -1,5 +1,15 @@
 <template>
-    <DocComponent title="Vue Card Component" header="Card" description="Card is a flexible container component." :componentDocs="docs" :apiDocs="['Card']" :ptTabComponent="ptComponent" :themingDocs="themingDoc" />
+    <DocComponent
+        title="Vue Card Component"
+        header="Card"
+        description="Card is a flexible container component."
+        :componentDocs="docs"
+        :playgroundDocs="playgroundDoc"
+        :newTabs="['playground']"
+        :apiDocs="['Card']"
+        :ptTabComponent="ptComponent"
+        :themingDocs="themingDoc"
+    />
 </template>
 
 <script>
@@ -7,6 +17,7 @@ import AccessibilityDoc from '@/doc/card/AccessibilityDoc.vue';
 import AdvancedDoc from '@/doc/card/AdvancedDoc.vue';
 import BasicDoc from '@/doc/card/BasicDoc.vue';
 import ImportDoc from '@/doc/card/ImportDoc.vue';
+import PlaygroundDoc from '@/doc/card/PlaygroundDoc.vue';
 import PTComponent from '@/doc/card/pt/index.vue';
 import ThemingDoc from '@/doc/card/theming/index.vue';
 export default {
@@ -34,6 +45,7 @@ export default {
                     component: AccessibilityDoc
                 }
             ],
+            playgroundDoc: PlaygroundDoc,
             ptComponent: PTComponent,
             themingDoc: ThemingDoc
         };

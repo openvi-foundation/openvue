@@ -134,6 +134,17 @@ export const REGIONS = [
     }
 ];
 
+/*
+ * Body copy for the container components, whose playgrounds are about what encloses the content
+ * rather than the content itself. Three distinct paragraphs rather than one repeated, so a panel
+ * that opens the wrong section is obvious at a glance instead of looking like it worked.
+ */
+export const PROSE = [
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.'
+];
+
 /** The `key`/`label`/`children` shape TreeSelect reads, kept shallow so the whole tree opens on screen. */
 export const NODES = [
     {
