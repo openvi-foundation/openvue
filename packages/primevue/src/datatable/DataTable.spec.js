@@ -10,6 +10,7 @@ import Row from '../row/Row.vue';
 import DataTable from './DataTable.vue';
 
 window.URL.createObjectURL = function () {};
+
 window.ResizeObserver = class {
     observe() {}
     unobserve() {}

@@ -117,6 +117,7 @@ export function defineSchema({ component, groups, snippet }) {
      * playgrounds.spec.js reads these, so that drift fails a run instead of quietly dropping a control.
      */
     const warnings = [];
+
     const warn = (message) => {
         warnings.push(message);
         console.warn(`[playground] ${message}`);

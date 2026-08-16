@@ -17,18 +17,17 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
-            - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-            - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+            - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
               with:
                   version: 9.15.9
-            - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+            - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
               with:
                   node-version: 20
                   cache: 'pnpm'
 
             - name: Install packages
-              run: |
-                  pnpm run setup
+              run: pnpm install --frozen-lockfile
 
             # - name: Code Format
             #   id: codeFormat
@@ -57,19 +56,40 @@ jobs:
 
             - name: Add Unit Test Fail Comment
               if: always() && steps.unitTest.outcome == 'failure'
-              uses: thollander/actions-comment-pull-request@fabd468d3a1a0b97feee5f6b9e499eab0dd903f6 # v2
+              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
               with:
-                  message: |
-                      Thanks a lot for your contribution! But, Unit tests failed. You can check the unit tests with the command 'npm run test:unit' and commit the changes.
+                  script: |
+                      await github.rest.issues.createComment({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: context.issue.number,
+                          body: "Thanks a lot for your contribution! But, Unit tests failed. You can check the unit tests with the command 'pnpm run test:unit' and commit the changes."
+                      });
 
             - name: Add Label
               if: ${{ failure() }}
-              uses: actions-ecosystem/action-add-labels@18f1af5e3544586314bbe15c0273249c770b2daf # v1
+              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
               with:
-                  labels: 'Resolution: Needs Revision'
+                  script: |
+                      await github.rest.issues.addLabels({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: context.issue.number,
+                          labels: ['Resolution: Needs Revision']
+                      });
 
             - name: Remove Label
-              uses: actions-ecosystem/action-remove-labels@2ce5d41b4b6aa8503e285553f75ed56e0a40bae0 # v1
               if: ${{ success() }}
+              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
               with:
-                  labels: 'Resolution: Needs Revision'
+                  script: |
+                      try {
+                          await github.rest.issues.removeLabel({
+                              owner: context.repo.owner,
+                              repo: context.repo.repo,
+                              issue_number: context.issue.number,
+                              name: 'Resolution: Needs Revision'
+                          });
+                      } catch (error) {
+                          if (error.status !== 404) throw error;
+                      }

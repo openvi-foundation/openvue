@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Cannot Replicate
         if: "${{ github.event.label.name == 'Resolution: Cannot Replicate'}}"
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({
@@ -28,7 +28,7 @@ jobs:
 
       - name: Needs Upvote
         if: contains(github.event.label.name, 'Needs Upvote')
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({
@@ -40,7 +40,7 @@ jobs:
 
       - name: Needs More Information
         if: contains(github.event.label.name, 'Needs More Information')
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({
@@ -52,7 +52,7 @@ jobs:
 
       - name: Wontfix
         if: contains(github.event.label.name, 'Wontfix')
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({
@@ -64,7 +64,7 @@ jobs:
 
       - name: Help Wanted
         if: contains(github.event.label.name, 'Help Wanted')
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({
@@ -76,7 +76,7 @@ jobs:
 
       - name: Duplicate
         if: contains(github.event.label.name, 'Duplicate')
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.createComment({

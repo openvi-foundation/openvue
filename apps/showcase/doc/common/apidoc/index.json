@@ -21537,7 +21537,7 @@
                             "readonly": false,
                             "type": "any",
                             "default": "",
-                            "description": "Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.\nNote: Currently only vertical orientation mode is supported."
+                            "description": "Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.\nNote: Currently only vertical orientation mode is supported.\nWhen used with subheader row grouping, group headers are not sticky and group header/footer heights must be consistent."
                         },
                         {
                             "name": "frozenValue",
@@ -81333,6 +81333,14 @@
                             "type": "number | number[]",
                             "default": "",
                             "description": "The height/width of item according to orientation."
+                        },
+                        {
+                            "name": "getItemSize",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "null | Function",
+                            "default": "",
+                            "description": "Callback to determine the height of an item by its index in vertical orientation."
                         },
                         {
                             "name": "scrollHeight",
