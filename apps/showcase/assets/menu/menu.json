@@ -42,53 +42,6 @@
             ]
         },
         {
-            "name": "Configuration",
-            "icon": "pi pi-cog",
-            "children": [
-                {
-                    "name": "Options",
-                    "to": "/configuration"
-                },
-                {
-                    "name": "Auto Import",
-                    "to": "/autoimport"
-                }
-            ]
-        },
-        {
-            "name": "Theming",
-            "icon": "pi pi-palette",
-            "children": [
-                {
-                    "name": "Styled Mode",
-                    "to": "/theming/styled"
-                },
-                {
-                    "name": "Unstyled Mode",
-                    "to": "/theming/unstyled"
-                },
-                {
-                    "name": "Tailwind CSS",
-                    "icon": "pi pi-star",
-                    "to": "/tailwind"
-                }
-            ]
-        },
-        {
-            "name": "AI Tools",
-            "icon": "pi pi-sparkles",
-            "children": [
-                {
-                    "name": "LLMs.txt",
-                    "to": "/llms"
-                },
-                {
-                    "name": "MCP Server",
-                    "to": "/mcp"
-                }
-            ]
-        },
-        {
             "name": "Components",
             "icon": "pi pi-compass",
             "children": [
@@ -505,6 +458,53 @@
                             "to": "/terminal"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Configuration",
+            "icon": "pi pi-cog",
+            "children": [
+                {
+                    "name": "Options",
+                    "to": "/configuration"
+                },
+                {
+                    "name": "Auto Import",
+                    "to": "/autoimport"
+                }
+            ]
+        },
+        {
+            "name": "Theming",
+            "icon": "pi pi-palette",
+            "children": [
+                {
+                    "name": "Styled Mode",
+                    "to": "/theming/styled"
+                },
+                {
+                    "name": "Unstyled Mode",
+                    "to": "/theming/unstyled"
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": "pi pi-star",
+                    "to": "/tailwind"
+                }
+            ]
+        },
+        {
+            "name": "AI Tools",
+            "icon": "pi pi-sparkles",
+            "children": [
+                {
+                    "name": "LLMs.txt",
+                    "to": "/llms"
+                },
+                {
+                    "name": "MCP Server",
+                    "to": "/mcp"
                 }
             ]
         },
