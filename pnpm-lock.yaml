@@ -47,8 +47,8 @@ catalogs:
       specifier: ^0.0.1-alpha.1
       version: 0.0.1-alpha.1
     '@openvue/openicons':
-      specifier: ^1.0.0-beta.1
-      version: 1.0.0-beta.1
+      specifier: ^1.0.0
+      version: 1.0.0
     primeicons:
       specifier: ^7.0.0
       version: 7.0.0
@@ -130,7 +130,7 @@ importers:
         version: link:../../packages/nuxt-module
       '@openvue/openicons':
         specifier: 'catalog:'
-        version: 1.0.0-beta.1
+        version: 1.0.0
       '@openvue/themes':
         specifier: workspace:*
         version: link:../../packages/themes
@@ -2063,8 +2063,8 @@ packages:
     resolution: {integrity: sha512-d0ed02SxElIuf2LMWogXvl5sGZPZ5j2ewn3+nGv8abtXLR1VEdylOgS2BTeJHQ8ZZZHdtUZ3D6IBh9kAqccGag==}
     engines: {node: '>=12.11.0'}
 
-  '@openvue/openicons@1.0.0-beta.1':
-    resolution: {integrity: sha512-ZxBKVSqkh6Wvya4jnwGNKEN0mvY6vO6L8VsPS0YndPDr9JIgbF/sasJL+qtHszeMCGR/DTQtLMmBdwCsCciamA==}
+  '@openvue/openicons@1.0.0':
+    resolution: {integrity: sha512-ZRV8Xt8y7oIYPQjtFiBf2UfxSzsjXcbPEZvvI9364T+F5BGxcP8EboO9ZLMxMRl2RCfFyBYs3XYiYGMLUMlNvA==}
 
   '@package-json/types@0.0.12':
     resolution: {integrity: sha512-uu43FGU34B5VM9mCNjXCwLaGHYjXdNincqKLaraaCW+7S2+SmiBg1Nv8bPnmschrIfZmfKNY9f3fC376MRrObw==}
@@ -10023,7 +10023,7 @@ snapshots:
 
   '@openuxkit/utils@0.0.1-alpha.1': {}
 
-  '@openvue/openicons@1.0.0-beta.1': {}
+  '@openvue/openicons@1.0.0': {}
 
   '@package-json/types@0.0.12': {}
 

@@ -21,7 +21,7 @@ export default {
         return {
             installCode: {
                 basic: `
-npm install @openvue/openicons-vue@beta
+npm install @openvue/openicons-vue
 `
             },
             code: {
