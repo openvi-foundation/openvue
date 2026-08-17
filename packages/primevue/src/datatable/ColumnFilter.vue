@@ -567,7 +567,20 @@ export default {
             this.overlay = el;
         },
         isOutsideClicked(target) {
-            return !this.isTargetClicked(target) && this.overlay && !(this.overlay.isSameNode(target) || this.overlay.contains(target));
+            return !this.isTargetClicked(target) && this.overlay && !(this.overlay.isSameNode(target) || this.overlay.contains(target) || this.isNestedOverlayClicked(target));
+        },
+        isNestedOverlayClicked(target) {
+            let node = target;
+
+            while (node && node !== document.body) {
+                const attrSelectors = [...(node.attributes || [])].filter((attr) => attr.value === '' && /^pc\w+$/.test(attr.name)).map((attr) => attr.name);
+
+                if (attrSelectors.some((attrSelector) => this.overlay.querySelector(`[${attrSelector}]`))) return true;
+
+                node = node.parentElement;
+            }
+
+            return false;
         },
         isTargetClicked(target) {
             return this.$refs.icon && (this.$refs.icon.$el.isSameNode(target) || this.$refs.icon.$el.contains(target));
