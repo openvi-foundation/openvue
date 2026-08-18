@@ -55,10 +55,10 @@ export default {
 
 ## Download
 
-OpenIcons is available at npm, run the following command to download it to your project. OpenIcons is currently in beta, so install it with the beta tag.
+OpenIcons is available at npm, run the following command to download it to your project.
 
 ```vue
-npm install @openvue/openicons@beta
+npm install @openvue/openicons
 ```
 
 ## Import

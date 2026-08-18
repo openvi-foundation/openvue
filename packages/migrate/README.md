@@ -60,7 +60,7 @@ If you just want to evaluate OpenVue first, add only the override yourself inste
 // package.json (npm / bun; use pnpm.overrides for pnpm, resolutions for yarn)
 {
     "overrides": {
-        "primevue": "npm:openvue@0.0.1-beta.0"
+        "primevue": "npm:openvue@1.0.0-rc.0"
     }
 }
 ```

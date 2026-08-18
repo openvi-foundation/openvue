@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-08-11
+Generated: 2026-08-18
 
 ---
 
@@ -8,27 +8,31 @@ Generated: 2026-08-11
 
 # Introduction
 
-Next-generation UI Component suite for Vue.
+The Vue UI component library, continued.
 
 ## Accessibility
 
-OpenVue has WCAG 2.1 AA level compliance; each component has a dedicated accessibility section to document several aspects, including keyboard and screen reader support. Through communication channels such as GitHub or Discord, numerous accessibility experts worldwide continue to provide constant feedback to improve the accessibility features further. View the accessibility guide to learn more.
+OpenVue has WCAG 2.1 AA level compliance, and each component has a dedicated accessibility section documenting keyboard and screen reader support. Accessibility regressions are treated as bugs, so please report anything you run into. View the accessibility guide to learn more.
 
-## Add Ons
+## Migrating from PrimeVue
 
-OpenVue does not require financial sponsorships from its community and there is no paywall when using OpenVue.
+An existing PrimeVue v4 project moves over with a single command, no manual find and replace required. The tool shows you a plan first, covering the detected package manager, the PrimeVue version and every file it intends to touch, then asks before writing anything. It renames dependencies, rewrites imports and leaves a single reviewable diff. Run it with --dry for a preview that writes nothing, and see the migration guide for the full walkthrough.
+
+```vue
+npx @openvue/migrate
+```
 
 ## Overview
 
-OpenVue is a complete UI suite for Vue.js consisting of a rich set of UI components. The project's primary goal is to boost developer productivity by offering reusable solutions that are easy to tune and customize as an in-house library. OpenVue is maintained by Openvi Foundation , a community-driven organization dedicated to keeping open source UI tooling free and available to every Vue developer, forever.
+OpenVue is a complete UI suite for Vue.js, consisting of a rich set of components that are easy to tune and customize as an in-house library. The library is a community-maintained continuation of PrimeVue, picked up after it was archived by its original maintainers. Everything you know from PrimeVue v4 is here, under a name and a maintenance path that are not tied to a single company. OpenVue is not affiliated with PrimeTek or PrimeUI. Development is led by Openvi Foundation , an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.
 
 ## Pass Through
 
-PassThrough is an innovative API to provide access to the internal DOM elements to add arbitrary attributes. In general, traditional UI component libraries encapsulate UI and logic with limited APIs that makes the developers dependant on the library maintainer to extend this API by adding new props or events. With Pass Through this limitation has been eliminated since, you'll be able to access the internal of the components to add events and attributes. Some common use-cases are adding test attributes, additional aria attributes, custom events and styling.
+Pass Through is an API that provides access to the internal DOM elements of a component to add arbitrary attributes. Traditional UI component libraries encapsulate their markup behind limited APIs, which leaves you waiting on a maintainer to add the prop or event you need. With Pass Through that limitation is gone, since you can reach the internals of a component yourself. Common use cases are test attributes, additional aria attributes, custom events and styling.
 
 ## Theming
 
-OpenVue can be styled in two modes; styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants of PrimeOne design like Aura, Lara or Nora presets. Unstyled mode on the other hand, leaves the styling to you while implementing the functionality and accessibility. Unstyled mode provides full control over the styling with no boundaries by implementing a pluggable architecture to utilize CSS libraries like Tailwind CSS, Bootstrap, Bulma or your own custom CSS. We've even further built the Volt UI library that styles the components with utility classes of Tailwind. This design is future proof as OpenVue can be styled with any CSS library without actually depending on it in its core.
+OpenVue can be styled in two modes, styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants such as the Aura, Lara, Material and Nora presets, all driven by design tokens rather than hardcoded CSS. Unstyled mode leaves the styling to you while keeping the functionality and accessibility intact, through a pluggable architecture that works with CSS libraries like Tailwind CSS, Bootstrap and Bulma, or with your own custom CSS. This design is future proof, as OpenVue can be styled with any CSS library without depending on one in its core.
 
 ---
 
@@ -964,10 +968,10 @@ export default {
 
 ## Download
 
-OpenIcons is available at npm, run the following command to download it to your project. OpenIcons is currently in beta, so install it with the beta tag.
+OpenIcons is available at npm, run the following command to download it to your project.
 
 ```vue
-npm install @openvue/openicons@beta
+npm install @openvue/openicons
 ```
 
 ## Import
@@ -1442,17 +1446,17 @@ Setting up OpenVue in a Laravel project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+OpenVue is available for download on npm registry . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@beta @openvue/themes
+npm install openvue@rc @openvue/themes
 
 # Using yarn
-yarn add openvue@beta @openvue/themes
+yarn add openvue@rc @openvue/themes
 
 # Using pnpm
-pnpm add openvue@beta @openvue/themes
+pnpm add openvue@rc @openvue/themes
 ```
 
 ## Examples
@@ -1528,7 +1532,7 @@ If you just want to evaluate OpenVue first, add only the compatibility override 
 ```vue
 {
     "overrides": {
-        "primevue": "npm:openvue@0.0.1-beta.0"
+        "primevue": "npm:openvue@1.0.0-rc.0"
     }
 }
 ```
@@ -1557,20 +1561,20 @@ The auto import feature registers components automatically with tree shaking sup
 
 ## Download
 
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@beta @openvue/themes
-npm install --save-dev @openvue/nuxt-module@beta
+npm install openvue@rc @openvue/themes
+npm install --save-dev @openvue/nuxt-module@rc
 
 # Using yarn
-yarn add openvue@beta @openvue/themes
-yarn add --dev @openvue/nuxt-module@beta
+yarn add openvue@rc @openvue/themes
+yarn add --dev @openvue/nuxt-module@rc
 
 # Using pnpm
-pnpm add openvue@beta @openvue/themes
-pnpm add -D @openvue/nuxt-module@beta
+pnpm add openvue@rc @openvue/themes
+pnpm add -D @openvue/nuxt-module@rc
 ```
 
 ## Examples
@@ -1688,17 +1692,17 @@ Setting up OpenVue in a Vite project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+OpenVue is available for download on npm registry . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@beta @openvue/themes
+npm install openvue@rc @openvue/themes
 
 # Using yarn
-yarn add openvue@beta @openvue/themes
+yarn add openvue@rc @openvue/themes
 
 # Using pnpm
-pnpm add openvue@beta @openvue/themes
+pnpm add openvue@rc @openvue/themes
 ```
 
 ## Examples
@@ -1918,7 +1922,7 @@ OpenVue is a community-driven project and we appreciate any help you can provide
 
 ## Introduction
 
-OpenVue is an open source Vue UI library, dedicated to providing high-quality, versatile, and accessible UI components that help developers build better applications faster. Development Setup To begin with, clone the OpenVue repository from GitHub: Then run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase .
+OpenVue is an open source Vue UI component library, and a community-maintained continuation of PrimeVue after it was archived by its original maintainers. It is led by openvi-foundation , an independent group of developers who run this library in production and intend to keep it maintained, stable and open. OpenVue is not affiliated with PrimeTek or PrimeUI. Contributions of every size move the library forward. A bug report with a clear reproduction, a correction to a documentation page and a pull request are all worth sending. This guide covers how to set the project up locally and how the codebase is organized. Development Setup To begin with, clone the OpenVue repository from GitHub: The repository is a pnpm workspace, so install pnpm first, then install the dependencies and run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase . Note that the main component package lives in packages/primevue , a folder name kept from the fork, and is published as openvue .
 
 ## Key Points
 
@@ -12524,7 +12528,7 @@ const getSeverity = (product) => {
 | rowStyle | Function | - |  |
 | scrollable | boolean | false | When specified, enables horizontal and/or vertical scrolling. |
 | scrollHeight | HintedString<"flex"> | - | Height of the scroll viewport in fixed pixels or the 'flex' keyword for a dynamic size. |
-| virtualScrollerOptions | any | - | Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it. Note: Currently only vertical orientation mode is supported. |
+| virtualScrollerOptions | any | - | Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it. Note: Currently only vertical orientation mode is supported. When used with subheader row grouping, group headers are not sticky and group header/footer heights must be consistent. |
 | frozenValue | null \| NoInfer<T>[] | - | Items of the frozen part in scrollable DataTable. |
 | breakpoint | string | 960px | The breakpoint to define the maximum width boundary when using stack responsive layout. |
 | showHeaders | boolean | true | Whether to display table headers |
@@ -38599,7 +38603,7 @@ import Toast from 'openvue/toast';
 
 ## Multiple
 
-Multiple messages are displayed by passing an array to the show method.
+Multiple messages are displayed by calling the add method for each message.
 
 **Basic Usage:**
 
@@ -38681,6 +38685,48 @@ const showBottomLeft = () => {
 
 const showBottomRight = () => {
     toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', group: 'br', life: 3000 });
+};
+<\/script>
+```
+</details>
+
+## Remove
+
+A specific message is removed with the remove method by passing an object with the id of the message. Define an id of your own when adding the message to be able to reference it later.
+
+**Basic Usage:**
+
+```vue
+<Toast />
+<Button label="Show" @click="show()" />
+<Button label="Remove" severity="secondary" @click="remove()" />
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Toast />
+        <div class="flex flex-wrap gap-2">
+            <Button label="Show" @click="show()" />
+            <Button label="Remove" severity="secondary" @click="remove()" />
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { useToast } from "openvue/usetoast";
+
+const toast = useToast();
+
+const show = () => {
+    toast.add({ id: 'info-message', severity: 'info', summary: 'Info', detail: 'Message Content' });
+};
+
+const remove = () => {
+    toast.remove({ id: 'info-message' });
 };
 <\/script>
 ```
@@ -43201,6 +43247,7 @@ const items = ref(Array.from({ length: 100000 }).map((_, i) => \`Item #\${i}\`))
 | class | any | - | Style class of the component. |
 | items | null \| any[] \| any[][] | - | An array of objects to display. |
 | itemSize | number \| number[] | - | The height/width of item according to orientation. |
+| getItemSize | null \| Function | - | Callback to determine the height of an item by its index in vertical orientation. |
 | scrollHeight | string | - | Height of the scroll viewport. |
 | scrollWidth | string | - | Width of the scroll viewport. |
 | orientation | HintedString<"both" \| "horizontal" \| "vertical"> | vertical | The orientation of scrollbar. |

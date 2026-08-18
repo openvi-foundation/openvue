@@ -2,7 +2,7 @@
 
 ## Guides
 
-- [Introduction](https://openvue.dev/introduction): Next-generation UI Component suite for Vue.
+- [Introduction](https://openvue.dev/introduction): The Vue UI component library, continued.
 - [Configuration](https://openvue.dev/configuration): Application wide configuration for OpenVue.
 - [Styled Mode](https://openvue.dev/styled): Choose from a variety of pre-styled themes or develop your own.
 - [Unstyled Mode](https://openvue.dev/unstyled): Theming OpenVue with alternative styling approaches.

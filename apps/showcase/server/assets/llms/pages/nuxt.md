@@ -8,20 +8,20 @@ The auto import feature registers components automatically with tree shaking sup
 
 ## Download
 
-OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@beta @openvue/themes
-npm install --save-dev @openvue/nuxt-module@beta
+npm install openvue@rc @openvue/themes
+npm install --save-dev @openvue/nuxt-module@rc
 
 # Using yarn
-yarn add openvue@beta @openvue/themes
-yarn add --dev @openvue/nuxt-module@beta
+yarn add openvue@rc @openvue/themes
+yarn add --dev @openvue/nuxt-module@rc
 
 # Using pnpm
-pnpm add openvue@beta @openvue/themes
-pnpm add -D @openvue/nuxt-module@beta
+pnpm add openvue@rc @openvue/themes
+pnpm add -D @openvue/nuxt-module@rc
 ```
 
 ## Examples

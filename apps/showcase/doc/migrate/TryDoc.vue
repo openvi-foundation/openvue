@@ -17,7 +17,7 @@ export default {
                 basic: `
 {
     "overrides": {
-        "primevue": "npm:openvue@0.0.1-beta.0"
+        "primevue": "npm:openvue@1.0.0-rc.0"
     }
 }
 `

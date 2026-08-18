@@ -21,7 +21,7 @@ If you just want to evaluate OpenVue first, add only the compatibility override 
 ```vue
 {
     "overrides": {
-        "primevue": "npm:openvue@0.0.1-beta.0"
+        "primevue": "npm:openvue@1.0.0-rc.0"
     }
 }
 ```

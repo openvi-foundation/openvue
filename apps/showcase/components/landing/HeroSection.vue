@@ -294,7 +294,7 @@ import EventBus from '@/app/AppEventBus';
 export default {
     data() {
         return {
-            installCommand: 'npm install openvue@beta',
+            installCommand: 'npm install openvue@rc',
             copied: false,
             copyTimeout: null,
             lineChartData: {},

@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/openvi-foundation/openvue/blob/main/LICENSE.md)
-[![npm](https://img.shields.io/npm/v/openvue/beta.svg)](https://www.npmjs.com/package/openvue)
+[![npm](https://img.shields.io/npm/v/openvue/rc.svg)](https://www.npmjs.com/package/openvue)
 
 # OpenVue
 
@@ -10,10 +10,10 @@ Visit [openvue.dev](https://openvue.dev) for the website, documentation, and roa
 ## Installation
 
 > [!NOTE]
-> OpenVue is currently in **beta**. The API is stable; we are polishing toward the first stable release. Install with the `beta` tag.
+> OpenVue is currently a **release candidate**. The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. Install with the `rc` tag.
 
 ```bash
-npm install openvue@beta @openvue/themes@beta
+npm install openvue@rc @openvue/themes@rc
 ```
 
 ```js

@@ -8,6 +8,10 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+## [1.0.0-rc.0] - 2026-08-18
+
+The first release candidate. The version moves from `0.7.0-beta.0` to `1.0.0-rc.0`: the public API is what we intend to ship as 1.0, and from here we only take bug fixes and documentation until the stable release. Packages are published under the `rc` dist-tag. Report anything that looks like a regression, that is exactly what a release candidate is for.
+
 ### Added
 
 - `VirtualScroller` gains a `getItemSize` prop, a callback that returns an item's height by index, so a list whose rows are not all the same height can still be virtualized. ([#621](https://github.com/openvi-foundation/openvue/pull/621))
@@ -16,6 +20,7 @@ All packages in this repository are released together under a single version.
 
 ### Changed
 
+- The `@openuxkit/*` engine packages are upgraded to 1.0.0.
 - Showcase: the icons page is built on `@openvue/openicons` and restructured around the two OpenIcons formats. ([#37](https://github.com/openvi-foundation/openvue/pull/37))
 - Showcase: the introduction and contribution pages are rewritten, and Components now sits above Configuration in the sidebar.
 
@@ -126,7 +131,8 @@ First OpenVue release, forked from PrimeVue 4.5.5.
 - Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
 - License copyright updated for the fork. The project remains MIT.
 
-[unreleased]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...HEAD
+[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.0.0-rc.0...HEAD
+[1.0.0-rc.0]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...1.0.0-rc.0
 [0.7.0-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...0.7.0-beta.0
 [0.0.1-beta.1]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.0...0.0.1-beta.1
 [0.0.1-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-alpha.5...0.0.1-beta.0

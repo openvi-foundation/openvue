@@ -5,7 +5,7 @@
 **The Vue UI component library, continued.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![npm](https://img.shields.io/npm/v/openvue/beta.svg)](https://www.npmjs.com/package/openvue)
+[![npm](https://img.shields.io/npm/v/openvue/rc.svg)](https://www.npmjs.com/package/openvue)
 [![npm downloads](https://img.shields.io/npm/dt/openvue.svg)](https://www.npmjs.com/package/openvue)
 
 [**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Playground**](https://openvue.dev/playground) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
@@ -33,10 +33,10 @@ Read the full guide at [openvue.dev/migrate](https://openvue.dev/migrate) or the
 ## Installation
 
 > [!NOTE]
-> OpenVue is currently in **beta**. The API is stable; we are polishing toward the first stable release. Install with the `beta` tag.
+> OpenVue is currently a **release candidate**. The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. Install with the `rc` tag.
 
 ```bash
-npm install openvue@beta @openvue/themes@beta
+npm install openvue@rc @openvue/themes@rc
 ```
 
 Register a theme preset when installing the plugin:
@@ -75,10 +75,10 @@ The fork spans the full toolchain, each piece maintained under the [openvi-found
 
 Our priority is stability first, growth second. In order:
 
-1. ~~**Publish to npm.**~~ Done: OpenVue packages are live under the [`@openvue`](https://www.npmjs.com/org/openvue) org, currently tagged `beta`.
+1. ~~**Publish to npm.**~~ Done: OpenVue packages are live under the [`@openvue`](https://www.npmjs.com/org/openvue) org, currently tagged `rc`.
 2. ~~**Launch the OpenVue website.**~~ Done: [openvue.dev](https://openvue.dev) is live with the full documentation and interactive component demos.
 3. ~~**Ship a PrimeVue migration tool.**~~ Done: [`npx @openvue/migrate`](https://openvue.dev/migrate) moves a PrimeVue v4 project to OpenVue in one command.
-4. **Stabilize and release.** Now in **beta**. Work through the existing issue backlog, keep dependencies current, and graduate to a predictable, versioned stable release process.
+4. **Stabilize and release.** Now at **1.0.0-rc**. The API is frozen for 1.0; we are working through the remaining backlog and taking feedback before the stable release.
 5. **Grow the community.** Open governance, responsive maintainers, and a clear path for contributors.
 6. **Expand the library.** Once the foundation is stable, invest in new components and improvements.
 

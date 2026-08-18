@@ -117,7 +117,7 @@ const show = () => {
 
 ## Multiple
 
-Multiple messages are displayed by passing an array to the show method.
+Multiple messages are displayed by calling the add method for each message.
 
 ```vue
 <Toast />
@@ -195,6 +195,46 @@ const showBottomLeft = () => {
 
 const showBottomRight = () => {
     toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', group: 'br', life: 3000 });
+};
+<\/script>
+```
+</details>
+
+## Remove
+
+A specific message is removed with the remove method by passing an object with the id of the message. Define an id of your own when adding the message to be able to reference it later.
+
+```vue
+<Toast />
+<Button label="Show" @click="show()" />
+<Button label="Remove" severity="secondary" @click="remove()" />
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card flex justify-center">
+        <Toast />
+        <div class="flex flex-wrap gap-2">
+            <Button label="Show" @click="show()" />
+            <Button label="Remove" severity="secondary" @click="remove()" />
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { useToast } from "openvue/usetoast";
+
+const toast = useToast();
+
+const show = () => {
+    toast.add({ id: 'info-message', severity: 'info', summary: 'Info', detail: 'Message Content' });
+};
+
+const remove = () => {
+    toast.remove({ id: 'info-message' });
 };
 <\/script>
 ```
