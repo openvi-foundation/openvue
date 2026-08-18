@@ -125,6 +125,43 @@ describe('ColumnFilter', () => {
         wrapper.unmount();
     });
 
+    it('should keep the filter overlay open when an option of a nested Select is committed on mousedown', async () => {
+        const wrapper = mountTable();
+
+        await nextTick();
+
+        await wrapper.find('[data-pc-section="filter"] button').trigger('click');
+        await nextTick();
+
+        const columnFilter = wrapper.findComponent({ name: 'ColumnFilter' });
+        const filterOverlay = document.querySelector('.p-datatable-filter-overlay');
+        const select = filterOverlay.querySelector('[data-pc-name="pcfilteroperatordropdown"]');
+
+        select.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        select.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await nextTick();
+        await nextTick();
+
+        const option = document.querySelector('.p-select-overlay [data-pc-section="option"]');
+
+        expect(option).not.toBeNull();
+
+        // Select commits the option on mousedown and hides its overlay from a timeout, so the
+        // option is detached before the browser dispatches click. The browser then retargets that
+        // click to an ancestor still in the tree, which is outside of the filter overlay.
+        option.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        await nextTick();
+        await new Promise((resolve) => setTimeout(resolve, 20));
+
+        document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await nextTick();
+        await nextTick();
+
+        expect(columnFilter.vm.overlayVisible).toBe(true);
+
+        wrapper.unmount();
+    });
+
     it('should close the filter overlay when a genuine outside click occurs', async () => {
         const wrapper = mountTable();
 
