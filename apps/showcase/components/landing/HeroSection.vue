@@ -1,6 +1,10 @@
 <template>
     <section class="landing-hero py-20 px-8 lg:px-20">
         <div class="flex flex-col items-center relative">
+            <p class="hero-rc-note">
+                <code class="hero-rc-version">1.0.0-rc.0</code>
+                <span>Release candidate is out. 1.0.0 is next.</span>
+            </p>
             <h1 class="hero-title">
                 <span class="hero-title-line">The complete UI toolkit</span>
                 <span class="hero-title-line">for Vue and Nuxt</span>
