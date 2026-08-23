@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generatedAt": "2026-08-18",
+    "generatedAt": "2026-08-23",
     "components": [
         {
             "name": "accordion",
@@ -39584,7 +39584,7 @@
                 {
                     "id": "try",
                     "label": "Try Without Migrating",
-                    "description": "If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json. Once you decide to stay, run npx @openvue/migrate for the real rename.",
+                    "description": "If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json . Once you decide to stay, run npx @openvue/migrate for the real rename.",
                     "examples": {
                         "basic": "{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@1.0.0-rc.0\"\n    }\n}"
                     }
