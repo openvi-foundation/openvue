@@ -132,6 +132,9 @@ jobs:
                       npx --yes all-contributors-cli@6 add "$login" "$types"
                   done
 
+                  # The generator's output does not match this repo's Prettier config.
+                  npx --yes prettier@3 --write .all-contributorsrc README.md
+
             - name: Open or update the pull request
               if: steps.collect.outputs.people != '[]'
               env:
