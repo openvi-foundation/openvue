@@ -31,6 +31,11 @@
                             <template #title>{{ item.name }}</template>
                             <template #content>
                                 <p class="components-card-description">{{ item.description }}</p>
+                                <div v-if="previews[item.name]" class="components-card-preview" inert aria-hidden="true">
+                                    <ClientOnly>
+                                        <component :is="previews[item.name]" />
+                                    </ClientOnly>
+                                </div>
                             </template>
                         </Card>
                     </OpenVueNuxtLink>
@@ -43,6 +48,7 @@
 <script>
 import descriptions from '@/assets/menu/component-descriptions.json';
 import menudata from '@/assets/menu/menu.json';
+import previews from '@/doc/preview';
 
 const CATEGORY_ICONS = {
     Form: 'pi-pencil',
@@ -64,6 +70,12 @@ export default {
         };
     },
     computed: {
+        /* Static, non-interactive samples: `inert` keeps them out of tab order and pointer events.
+           They mount client side only: 90 live components cannot all hydrate cleanly, and the
+           reserved min-height means nothing shifts when they appear. */
+        previews() {
+            return previews;
+        },
         /* The sidebar menu is the single source of truth, so a new component shows up here for free. */
         categories() {
             const components = menudata.data.find((item) => item.name === 'Components');

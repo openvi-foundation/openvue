@@ -67,10 +67,106 @@
     .p-card-title {
         transition: color .2s;
     }
+
+    /* Descriptions differ in length, so the preview is pinned to the bottom
+       and its divider lines up across every card in the row. */
+    .p-card-body {
+        height: 100%;
+    }
+
+    .p-card-content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.components-card-preview {
+    margin-top: auto;
+    padding: 1rem .875rem;
+    background-color: var(--ground-background);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+    max-height: 11rem;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+
+    > * {
+        max-width: 100%;
+    }
+
+    /* Overlays normally cover the viewport; inside a card they render in place. */
+    .p-dialog-mask {
+        position: static !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Tighter than a full-size dialog so the panel reads well at card scale. */
+    .p-dialog {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        transform: none !important;
+
+        .p-dialog-header {
+            padding: .75rem .875rem;
+        }
+
+        .p-dialog-title {
+            font-size: .9375rem;
+        }
+
+        .p-dialog-content {
+            padding: 0 .875rem .875rem;
+        }
+    }
+
+    /* Drawer's own panel cannot render inline, so it is staged against a page block. */
+    .preview-drawer-scene {
+        position: relative;
+        width: 100%;
+        height: 8.5rem;
+        background-color: var(--card-background);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+
+        .p-dialog-mask {
+            position: absolute !important;
+            inset: 0;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: var(--p-mask-background);
+        }
+
+        .p-dialog.preview-drawer {
+            position: absolute !important;
+            inset-block: 0;
+            inset-inline-start: 0;
+            width: 60% !important;
+            height: 100% !important;
+            /* The theme insets edge-positioned dialogs by 1rem; a drawer sits flush instead. */
+            margin: 0 !important;
+            border-radius: 0;
+
+            .p-dialog-content {
+                overflow: hidden;
+            }
+        }
+    }
 }
 
 .components-card-description {
-    margin: 0;
+    /* margin-top:auto on the preview only absorbs leftover space, so the tallest
+       card in a row would otherwise have its text touching the block. */
+    margin: 0 0 1rem 0;
     font-size: .875rem;
     line-height: 1.45;
     color: var(--text-secondary-color);
