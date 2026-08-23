@@ -1,0 +1,84 @@
+.components-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    position: sticky;
+    top: var(--topbar-height);
+    z-index: 10;
+    padding-block: 1rem;
+    background-color: var(--ground-background);
+}
+
+.components-search {
+    max-width: 24rem;
+    width: 100%;
+}
+
+.components-category {
+    margin-bottom: 3.5rem;
+}
+
+.components-category-title {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 1.25rem 0;
+}
+
+.components-category-icon {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+
+.components-card-link {
+    display: block;
+    height: 100%;
+    border-radius: var(--p-card-border-radius);
+    @include focus-visible();
+
+    &:hover {
+        .components-card.p-card {
+            border-color: var(--primary-color);
+        }
+
+        .p-card-title {
+            color: var(--primary-text-color);
+        }
+    }
+}
+
+/* Card keeps its own surface: only the grid's equal-height requirement is imposed here.
+   The border is always present but transparent, so hovering colours it without shifting the layout. */
+.components-card.p-card {
+    height: 100%;
+    border: 1px solid transparent;
+    transition: border-color .2s;
+
+    .p-card-title {
+        transition: color .2s;
+    }
+}
+
+.components-card-description {
+    margin: 0;
+    font-size: .875rem;
+    line-height: 1.45;
+    color: var(--text-secondary-color);
+}
+
+@media screen and (max-width: 1199px) {
+    .components-toolbar {
+        position: static;
+        padding-block: 0;
+    }
+}

@@ -67,7 +67,7 @@ export default {
                     title: 'Docs',
                     links: [
                         { label: 'Get Started', to: '/setup' },
-                        { label: 'Components', to: '/introduction' },
+                        { label: 'Components', to: '/components' },
                         { label: 'Theming', to: '/theming/styled' }
                     ]
                 },

@@ -10,15 +10,15 @@
                 <span class="hero-title-line">for Vue and Nuxt</span>
             </h1>
             <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue carries PrimeVue 4.5.5 forward under the MIT license, so the library your app already depends on stays free and keeps moving.</p>
-            <div class="flex items-center gap-4">
+            <div class="flex flex-wrap items-center justify-center gap-4">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
                     <span>Get Started </span>
                     <i class="pi pi-arrow-right ms-4"></i>
                 </OpenVueNuxtLink>
-                <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
-                    <span>Give a Star</span>
-                    <i class="pi pi-star-fill ms-4 text-yellow-500"></i>
-                </a>
+                <OpenVueNuxtLink to="/components" class="linkbox">
+                    <span>Browse Components </span>
+                    <i class="pi pi-th-large ms-4"></i>
+                </OpenVueNuxtLink>
             </div>
             <div class="hero-install">
                 <span class="hero-install-prompt" aria-hidden="true">$</span>
