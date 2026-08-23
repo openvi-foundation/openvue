@@ -4,11 +4,11 @@
         margin: 0 auto;
     }
 
-    .layout-topbar-inner,
-    .layout-footer {
+    .layout-topbar-inner {
         max-width: 1728px;
         margin: 0 auto;
     }
+
 
 }
 
@@ -68,10 +68,6 @@
         padding-right: 2rem;
     }
 
-    .layout-footer {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
 }
 
 /* Laptops keep the docked sidebar: the component list stays one click away instead of behind the hamburger. */
@@ -175,10 +171,6 @@
         padding-right: 1rem;
     }
 
-    .layout-footer {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
 
     .doc-tabmenu {
         li {

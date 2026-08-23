@@ -80,6 +80,12 @@
                 </DataTable>
             </div>
         </div>
+        <div class="themes-cta">
+            <OpenVueNuxtLink to="/components" class="linkbox linkbox-primary">
+                <span>Browse all components</span>
+                <i class="pi pi-arrow-right ms-4"></i>
+            </OpenVueNuxtLink>
+        </div>
     </section>
 </template>
 
