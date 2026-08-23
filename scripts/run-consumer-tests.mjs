@@ -116,9 +116,10 @@ function assertMigrated(dir, migrationVersion) {
     if (allDependencies.primevue !== undefined) throw new Error(`${pkg.name}: primevue dependency survived migration`);
     if (allDependencies.openvue !== migrationVersion) throw new Error(`${pkg.name}: expected openvue@${migrationVersion}, received ${allDependencies.openvue}`);
 
-    const alias = pkg.overrides?.primevue ?? pkg.pnpm?.overrides?.primevue ?? pkg.resolutions?.primevue;
-
-    if (alias !== `npm:openvue@${migrationVersion}`) throw new Error(`${pkg.name}: compatibility alias is missing or incorrect`);
+    // The migration must not invent override sections; a `pnpm` field in particular is ignored by pnpm 11+.
+    if (pkg.overrides?.primevue !== undefined || pkg.pnpm !== undefined || pkg.resolutions?.primevue !== undefined) {
+        throw new Error(`${pkg.name}: migration added a primevue override; it should no longer write one`);
+    }
 
     const actionable = [];
     const reference = /(?:from\s*|import\s*\(|require\s*\()\s*['"`]primevue(?:\/|['"`])|['"`]@primevue\//;

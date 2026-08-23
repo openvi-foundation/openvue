@@ -4,7 +4,7 @@ Codemod that migrates a PrimeVue project to [OpenVue](https://github.com/openvi-
 
 ## Usage
 
-One command, from the root of your project (for monorepos, run it at the workspace root so overrides land in the right place):
+One command, from the root of your project (for monorepos, run it at the workspace root):
 
 ```sh
 npx @openvue/migrate
@@ -12,7 +12,7 @@ npx @openvue/migrate
 
 Run in a terminal, it shows a plan — detected package manager, PrimeVue version, the files and references it will change, and your git status — then asks how to proceed:
 
-- **Full migration** — rewrite files, add the compatibility override, and run your package manager's install (detected from the lockfile) so the project builds immediately.
+- **Full migration** — rewrite files and run your package manager's install (detected from the lockfile) so the project builds immediately.
 - **Files only** — rewrite files and dependencies but leave `node_modules` alone; you run the install yourself.
 - **Dry run** — show everything, write nothing.
 
@@ -26,7 +26,6 @@ Pass a mode flag (`--mode`, `--dry`, `--no-install`) or `--yes` to skip the prom
 | `--mode <mode>` | `full`, `files-only`, or `dry`; runs without prompting   |
 | `--dry`         | Report what would change without writing any files       |
 | `--no-install`  | Rewrite files but do not run the package manager install |
-| `--no-alias`    | Do not add the `primevue` -> `openvue` override          |
 | `--force`       | Do not stop on an uncommitted git working tree           |
 | `--yes`, `-y`   | Skip prompts and use defaults (full migration)           |
 
@@ -36,8 +35,7 @@ In interactive mode a dirty git tree only asks for confirmation. Non-interactive
 
 1. **Renames dependencies** in every `package.json` (monorepos supported): `dependencies`, `devDependencies`, `peerDependencies`, `optionalDependencies`, `peerDependenciesMeta`, `resolutions`, `overrides` and `pnpm.overrides`, including selector keys like `**/primevue` or `primevue@^4`. `workspace:`/`catalog:`/`npm:` protocol values are preserved, and `pnpm-workspace.yaml` catalogs are rewritten too. If both `primevue` and `openvue` entries exist, yours wins and the leftover is removed.
 2. **Rewrites module specifiers** in `.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, `.cts`, `.jsx`, `.tsx`, `.vue`, `.astro` and `.mdx` files — static imports, `import type`, `require()`, dynamic `import()`, Nuxt `modules` arrays, Vite `optimizeDeps`/`transpile` entries, and generated `components.d.ts` files. Subpath (`primevue/button`) and scoped (`@primevue/*`) specifiers are unambiguous and rewritten anywhere; a bare `'primevue'` string is only rewritten in import positions (or anywhere in `*.config.*` files), so runtime data like `provider: 'primevue'` is never touched.
-3. **Adds a compatibility override** (`"primevue": "npm:openvue@<version>"` — in `overrides`, `pnpm.overrides` or `resolutions` depending on your package manager) so third-party libraries that depend or peer-depend on `primevue` resolve to OpenVue. Remove it once your whole dependency graph is OpenVue-native, or skip it with `--no-alias`.
-4. **Audits what's left**: after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references (interpolated `import(\`primevue/${name}\`)`, CSS `@import`s, CDN urls, tsconfig `paths`) and lists each one with file and line, so it never reports success while actionable references remain.
+3. **Audits what's left**: after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references (interpolated `import(\`primevue/${name}\`)`, CSS `@import`s, CDN urls, tsconfig `paths`) and lists each one with file and line, so it never reports success while actionable references remain.
 
 The rename mapping:
 
@@ -57,12 +55,19 @@ Renamed dependencies are pinned to the exact OpenVue version while OpenVue is in
 If you just want to evaluate OpenVue first, add only the override yourself instead of running the codemod — no source changes needed:
 
 ```jsonc
-// package.json (npm / bun; use pnpm.overrides for pnpm, resolutions for yarn)
+// package.json — npm and bun; yarn uses "resolutions" instead of "overrides"
 {
     "overrides": {
         "primevue": "npm:openvue@1.0.0-rc.0"
     }
 }
+```
+
+```yaml
+# pnpm-workspace.yaml — pnpm 10.5+. pnpm 11 no longer reads the `pnpm` field
+# from package.json, so overrides belong here.
+overrides:
+    primevue: 'npm:openvue@1.0.0-rc.0'
 ```
 
 Once you decide to stay, run `npx @openvue/migrate` for the real rename.

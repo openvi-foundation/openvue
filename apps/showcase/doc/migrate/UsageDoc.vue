@@ -1,9 +1,9 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Migration is a single command, run from the root of your project. For monorepos, run it at the workspace root so overrides land in the right place.</p>
+        <p>Migration is a single command, run from the root of your project. For monorepos, run it at the workspace root.</p>
         <p>Run in a terminal, it shows a plan with the detected package manager, PrimeVue version, the files and references it will change, and your git status, then asks how to proceed:</p>
         <ul class="leading-relaxed">
-            <li><b>Full migration</b>: rewrite files, add the compatibility override, and run your package manager's install (detected from the lockfile) so the project builds immediately.</li>
+            <li><b>Full migration</b>: rewrite files and run your package manager's install (detected from the lockfile) so the project builds immediately.</li>
             <li><b>Files only</b>: rewrite files and dependencies but leave <i>node_modules</i> alone; you run the install yourself.</li>
             <li><b>Dry run</b>: show everything, write nothing.</li>
         </ul>

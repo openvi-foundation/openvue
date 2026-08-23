@@ -11,7 +11,6 @@
                 <i>modules</i> arrays, Vite <i>optimizeDeps</i> and <i>transpile</i> entries, and generated <i>components.d.ts</i> files. A bare <i>primevue</i> string is only rewritten in import positions, so runtime data like
                 <i>provider: 'primevue'</i> is never touched.
             </li>
-            <li><b>Adds a compatibility override</b>, <i>"primevue": "npm:openvue@&lt;version&gt;"</i>, so third-party libraries that depend or peer-depend on <i>primevue</i> resolve to OpenVue. Remove it once your whole dependency graph is OpenVue-native, or skip it with <i>--no-alias</i>.</li>
             <li><b>Audits what's left</b>: after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references and lists each one with file and line, so it never reports success while actionable references remain.</li>
         </ol>
         <p>The rename mapping:</p>

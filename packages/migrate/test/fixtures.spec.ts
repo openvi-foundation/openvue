@@ -58,7 +58,7 @@ describe('migrate', () => {
         expect(result.packageManager).toBe('npm');
         expect(result.warnings).toEqual([]);
         expect(result.residuals).toEqual([]);
-        expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(true);
+        expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(false);
     });
 
     it('writes nothing in dry mode but reports the same changes', () => {
@@ -107,7 +107,7 @@ describe('migrate', () => {
         expect(migrated.dependencies.openvue).toBe(OPENVUE_VERSION);
         expect(migrated.dependencies.primevue).toBeUndefined();
         expect(migrated.dependencies['@openvue/migrate']).toBe(OPENVUE_VERSION);
-        expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(true);
+        expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(false);
     });
 
     it('switches to sources-only mode when openvue is present in node_modules', () => {
@@ -124,13 +124,31 @@ describe('migrate', () => {
         expect(readFileSync(join(dir, 'src', 'App.vue'), 'utf8')).toContain(`from 'openvue/button'`);
     });
 
-    it('skips the alias when disabled', () => {
+    it('does not add a compatibility override to package.json', () => {
         const dir = copyFixture('basic');
-        const result = migrate({ dir, alias: false });
+        const result = migrate({ dir });
         const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));
 
         expect(pkg.overrides).toBeUndefined();
+        expect(pkg.resolutions).toBeUndefined();
+        expect(pkg.pnpm).toBeUndefined();
         expect(result.notes.some((note) => note.includes('npm:openvue'))).toBe(false);
+    });
+
+    // https://github.com/openvi-foundation/openvue/issues/639 — pnpm 11+ ignores the `pnpm` field in
+    // package.json and warns about it, so the migration must never create one.
+    it('does not add a pnpm field for a pnpm project', () => {
+        const dir = copyFixture('basic');
+
+        rmSync(join(dir, 'package-lock.json'));
+        writeFileSync(join(dir, 'pnpm-lock.yaml'), "lockfileVersion: '9.0'");
+
+        const result = migrate({ dir });
+        const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));
+
+        expect(result.packageManager).toBe('pnpm');
+        expect(pkg.pnpm).toBeUndefined();
+        expect(pkg.overrides).toBeUndefined();
     });
 
     it('reports residual references the rewrite could not handle', () => {

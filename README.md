@@ -26,7 +26,7 @@ OpenVue is not affiliated with PrimeTek or PrimeUI. We started this project beca
 npx @openvue/migrate
 ```
 
-It shows you a plan first (detected package manager, PrimeVue version, and every file it will change) and asks before writing anything. It renames dependencies, rewrites imports, adds a compatibility override so third-party libraries keep resolving, and audits what's left, leaving a single reviewable diff. Use `--dry` for a preview that writes nothing.
+It shows you a plan first (detected package manager, PrimeVue version, and every file it will change) and asks before writing anything. It renames dependencies, rewrites imports, and audits what's left, leaving a single reviewable diff. Use `--dry` for a preview that writes nothing.
 
 Read the full guide at [openvue.dev/migrate](https://openvue.dev/migrate) or the [`@openvue/migrate` README](packages/migrate/README.md).
 

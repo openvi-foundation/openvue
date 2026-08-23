@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, relative } from 'node:path';
-import { addCompatAlias, PackageManager, rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from './rewrite';
+import { rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from './rewrite';
 import { walk } from './walk';
 
 const SOURCE_EXTENSIONS = new Set(['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts', '.jsx', '.tsx', '.vue', '.astro', '.mdx']);
@@ -16,6 +16,8 @@ const DEPENDENCY_SECTIONS = ['dependencies', 'devDependencies', 'peerDependencie
 
 export type MigrateMode = 'full' | 'sources-only';
 
+export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
+
 // Windows editors often save package.json with a UTF-8 BOM, which JSON.parse rejects.
 function readText(file: string): string {
     const text = readFileSync(file, 'utf8');
@@ -26,7 +28,6 @@ function readText(file: string): string {
 export interface MigrateOptions {
     dir: string;
     dry?: boolean;
-    alias?: boolean;
 }
 
 export interface ChangedFile {
@@ -326,7 +327,7 @@ export function auditResiduals(dir: string, files: string[]): ResidualReference[
         const lines = readText(file).split('\n');
 
         for (let i = 0; i < lines.length; i++) {
-            // The compat alias this tool writes is the one intended remaining reference.
+            // A hand-written `npm:openvue` alias is a deliberate mapping to OpenVue, not a residual reference.
             if (RESIDUAL_REFERENCE.test(lines[i]) && !lines[i].includes('npm:openvue')) {
                 residuals.push({ file: relative(dir, file).replace(/\\/g, '/'), line: i + 1, text: lines[i].trim() });
             }
@@ -341,7 +342,7 @@ export function auditResiduals(dir: string, files: string[]): ResidualReference[
  * Pure file transformation — git preflight, install and console output live in the CLI.
  */
 export function migrate(options: MigrateOptions): MigrateResult {
-    const { dir, dry = false, alias = true } = options;
+    const { dir, dry = false } = options;
     const mode: MigrateMode = hasOpenVue(dir) ? 'sources-only' : 'full';
     const changedFiles: ChangedFile[] = [];
     const warnings: string[] = [];
@@ -432,21 +433,6 @@ export function migrate(options: MigrateOptions): MigrateResult {
                 if (!dry) writeFileSync(file, result.code);
                 changedFiles.push({ file: displayPath, changes: result.count });
             }
-        }
-    }
-
-    const rootPackageJson = join(dir, 'package.json');
-
-    if (mode === 'full' && alias && changedFiles.length > 0 && !rootPackageJsonFailed && existsSync(rootPackageJson)) {
-        try {
-            const result = addCompatAlias(readText(rootPackageJson), packageManager);
-
-            if (result.added) {
-                if (!dry) writeFileSync(rootPackageJson, result.text);
-                notes.push(`package.json: ${dry ? 'would add' : 'added'} override "primevue" -> "npm:openvue" so third-party libraries that (peer-)depend on primevue resolve to OpenVue. Remove it once your dependencies are OpenVue-native.`);
-            }
-        } catch {
-            warnings.push('package.json: could not add the primevue -> openvue compatibility override; add it manually if any of your dependencies require primevue.');
         }
     }
 
