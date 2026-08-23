@@ -1,0 +1,69 @@
+{
+    "projectName": "openvue",
+    "projectOwner": "openvi-foundation",
+    "repoType": "github",
+    "repoHost": "https://github.com",
+    "files": ["README.md"],
+    "imageSize": 100,
+    "contributorsPerLine": 7,
+    "commitConvention": "angular",
+    "commitType": "docs",
+    "contributors": [
+        {
+            "login": "NJevric",
+            "name": "Nikola Jevrić",
+            "avatar_url": "https://avatars.githubusercontent.com/u/46942531?v=4",
+            "profile": "https://github.com/NJevric",
+            "contributions": ["code", "doc", "maintenance", "infra", "review", "ideas"]
+        },
+        {
+            "login": "dekitriv",
+            "name": "dekitriv",
+            "avatar_url": "https://avatars.githubusercontent.com/u/52245546?v=4",
+            "profile": "https://github.com/dekitriv",
+            "contributions": ["code", "infra"]
+        },
+        {
+            "login": "sane6",
+            "name": "Srđan Sanadrović",
+            "avatar_url": "https://avatars.githubusercontent.com/u/57320614?v=4",
+            "profile": "https://github.com/sane6",
+            "contributions": ["code", "bug", "doc"]
+        },
+        {
+            "login": "miske11",
+            "name": "miske11",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88431819?v=4",
+            "profile": "https://github.com/miske11",
+            "contributions": ["code", "design"]
+        },
+        {
+            "login": "Tamas-hi",
+            "name": "Tamás H.",
+            "avatar_url": "https://avatars.githubusercontent.com/u/36476318?v=4",
+            "profile": "https://github.com/Tamas-hi",
+            "contributions": ["code"]
+        },
+        {
+            "login": "NikoGJ",
+            "name": "Nicolas Granjon",
+            "avatar_url": "https://avatars.githubusercontent.com/u/18424051?v=4",
+            "profile": "https://github.com/NikoGJ",
+            "contributions": ["bug"]
+        },
+        {
+            "login": "Mettbrot",
+            "name": "Mettbrot",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1036625?v=4",
+            "profile": "https://github.com/Mettbrot",
+            "contributions": ["bug"]
+        },
+        {
+            "login": "michaelw85",
+            "name": "Michael Withagen",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3629094?v=4",
+            "profile": "https://github.com/michaelw85",
+            "contributions": ["ideas"]
+        }
+    ]
+}
