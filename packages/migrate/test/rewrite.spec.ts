@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { OPENUXKIT_VERSION, OPENVUE_VERSION, renameSpecifier } from '../src/mappings';
-import { addCompatAlias, rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from '../src/rewrite';
+import { rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from '../src/rewrite';
 
 describe('renameSpecifier', () => {
     it('renames the main package and subpaths', () => {
@@ -204,37 +204,6 @@ describe('rewritePackageJson', () => {
         const result = rewritePackageJson(input);
 
         expect(result.changed).toBe(false);
-        expect(result.text).toBe(input);
-    });
-});
-
-describe('addCompatAlias', () => {
-    const alias = `npm:openvue@${OPENVUE_VERSION}`;
-
-    it('adds an npm/bun override', () => {
-        const result = addCompatAlias('{}', 'npm');
-
-        expect(result.added).toBe(true);
-        expect(JSON.parse(result.text).overrides).toEqual({ primevue: alias });
-    });
-
-    it('adds a pnpm override', () => {
-        const result = addCompatAlias('{}', 'pnpm');
-
-        expect(JSON.parse(result.text).pnpm.overrides).toEqual({ primevue: alias });
-    });
-
-    it('adds a yarn resolution', () => {
-        const result = addCompatAlias('{}', 'yarn');
-
-        expect(JSON.parse(result.text).resolutions).toEqual({ primevue: alias });
-    });
-
-    it('does not clobber an existing primevue override', () => {
-        const input = JSON.stringify({ overrides: { primevue: 'npm:openvue@0.0.1-alpha.9' } });
-        const result = addCompatAlias(input, 'npm');
-
-        expect(result.added).toBe(false);
         expect(result.text).toBe(input);
     });
 });

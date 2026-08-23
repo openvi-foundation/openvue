@@ -11,16 +11,15 @@ import { migrate, MigrateResult } from './migrate';
 export { OPENVUE_VERSION, renameSpecifier } from './mappings';
 export { auditResiduals, detectPackageManager, hasOpenVue, migrate } from './migrate';
 export type { ChangedFile, MigrateMode, MigrateOptions, MigrateResult, ResidualReference } from './migrate';
-export { addCompatAlias, rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from './rewrite';
+export { rewritePackageJson, rewriteSource, rewriteWorkspaceYaml } from './rewrite';
 
 type Mode = 'full' | 'files-only' | 'dry';
 
 const HELP = `openvue-migrate ${OPENVUE_VERSION}
 
 Migrates a PrimeVue project to OpenVue in one run: rewrites package names in
-package.json / pnpm-workspace.yaml and module specifiers in source files, adds
-a package-manager override so third-party libraries that depend on primevue
-resolve to OpenVue, and installs the migrated dependencies.
+package.json / pnpm-workspace.yaml and module specifiers in source files, and
+installs the migrated dependencies.
 
 Run without any flags in a terminal for an interactive walkthrough that shows a
 plan and lets you pick a mode. Pass a mode flag or --yes for a non-interactive
@@ -38,14 +37,13 @@ Options:
                  or dry (report only). Implies --yes.
   --dry         Report what would change without writing any files
   --no-install  Rewrite files but do not run the package manager install
-  --no-alias    Do not add the primevue -> openvue override to package.json
   --force       Do not stop on an uncommitted git working tree
   --yes, -y     Skip prompts and use defaults (full migration)
   --help        Show this help
   --version     Print the version
 `;
 
-const KNOWN_FLAGS = ['--dry', '--force', '--no-install', '--no-alias', '--yes', '-y'];
+const KNOWN_FLAGS = ['--dry', '--force', '--no-install', '--yes', '-y'];
 const MODES: Mode[] = ['full', 'files-only', 'dry'];
 
 const IS_WINDOWS = process.platform === 'win32';
@@ -354,7 +352,7 @@ function runInstall(result: MigrateResult, dir: string, log: (line: string) => v
  * Non-interactive run: identical behaviour to earlier releases. Used for CI, piped output, and
  * whenever a mode flag or --yes is passed.
  */
-function runNonInteractive(dir: string, mode: Mode, alias: boolean, force: boolean): number {
+function runNonInteractive(dir: string, mode: Mode, force: boolean): number {
     const dry = mode === 'dry';
 
     if (!dry && !force && (gitDirtyCount(dir) ?? 0) > 0) {
@@ -366,7 +364,7 @@ function runNonInteractive(dir: string, mode: Mode, alias: boolean, force: boole
     console.log(bold(`openvue-migrate ${OPENVUE_VERSION}`) + (dry ? yellow(' (dry run — no files will be written)') : ''));
     console.log(`Migrating ${dir}\n`);
 
-    const result = migrate({ dir, dry, alias });
+    const result = migrate({ dir, dry });
 
     printPlainResult(result, dry);
 
@@ -397,13 +395,13 @@ function runNonInteractive(dir: string, mode: Mode, alias: boolean, force: boole
  * Interactive run: shows a plan, lets the user pick a mode, and confirms before touching a dirty
  * working tree. Only reached when stdin/stdout are a TTY and no mode flag or --yes was passed.
  */
-async function runInteractive(dir: string, alias: boolean, force: boolean): Promise<number> {
+async function runInteractive(dir: string, force: boolean): Promise<number> {
     prompts.intro(pc.inverse(pc.cyan(` openvue-migrate ${OPENVUE_VERSION} `)));
 
     const scan = prompts.spinner();
 
     scan.start(`Scanning ${dir}`);
-    const preview = migrate({ dir, dry: true, alias });
+    const preview = migrate({ dir, dry: true });
     const dirty = gitDirtyCount(dir);
 
     scan.stop(`Scanned ${dir}`);
@@ -438,7 +436,7 @@ async function runInteractive(dir: string, alias: boolean, force: boolean): Prom
     if (!supported) prompts.log.warn('Continue only if this project already builds against PrimeVue 4.x.');
 
     const modeChoices = [
-        { value: 'full' as Mode, label: 'Full migration', hint: `rewrite + alias + ${preview.installCommand}` },
+        { value: 'full' as Mode, label: 'Full migration', hint: `rewrite + ${preview.installCommand}` },
         { value: 'files-only' as Mode, label: 'Files only', hint: 'rewrite files, no install' },
         { value: 'dry' as Mode, label: 'Dry run', hint: 'show changes, write nothing' }
     ];
@@ -491,7 +489,7 @@ async function runInteractive(dir: string, alias: boolean, force: boolean): Prom
     const apply = prompts.spinner();
 
     apply.start('Rewriting PrimeVue references');
-    const result = migrate({ dir, dry: false, alias });
+    const result = migrate({ dir, dry: false });
     const total = totalReferences(result);
 
     apply.stop(`Rewrote ${total} reference${total === 1 ? '' : 's'} in ${result.changedFiles.length} file${result.changedFiles.length === 1 ? '' : 's'}`);
@@ -579,7 +577,6 @@ async function run(): Promise<number> {
     const dryFlag = args.includes('--dry');
     const force = args.includes('--force');
     const installFlag = !args.includes('--no-install');
-    const alias = !args.includes('--no-alias');
     const yes = args.includes('--yes') || args.includes('-y');
     const unknownFlags = args.filter((arg) => arg.startsWith('-') && !KNOWN_FLAGS.includes(arg));
 
@@ -613,9 +610,9 @@ async function run(): Promise<number> {
     // which pass a mode flag or run without a TTY, fully non-interactive.
     const canPrompt = Boolean(process.stdin.isTTY && process.stdout.isTTY);
 
-    if (canPrompt && !yes && preselected === undefined) return runInteractive(dir, alias, force);
+    if (canPrompt && !yes && preselected === undefined) return runInteractive(dir, force);
 
-    return runNonInteractive(dir, preselected ?? 'full', alias, force);
+    return runNonInteractive(dir, preselected ?? 'full', force);
 }
 
 function isMainModule(): boolean {

@@ -8,6 +8,10 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Changed
+
+- `@openvue/migrate` no longer adds an automatic `primevue` -> `openvue` dependency override. It is not needed for a normal migration; add one yourself if a leftover package still requires `primevue`. ([#639](https://github.com/openvi-foundation/openvue/issues/639))
+
 ## [1.0.0-rc.0] - 2026-08-18
 
 The first release candidate. The version moves from `0.7.0-beta.0` to `1.0.0-rc.0`: the public API is what we intend to ship as 1.0, and from here we only take bug fixes and documentation until the stable release. Packages are published under the `rc` dist-tag. Report anything that looks like a regression, that is exactly what a release candidate is for.
