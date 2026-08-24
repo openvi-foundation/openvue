@@ -38,8 +38,8 @@ catalogs:
       specifier: ^1.0.0
       version: 1.0.0
     '@openuxkit/styles':
-      specifier: ^1.0.0
-      version: 1.0.0
+      specifier: ^1.0.1
+      version: 1.0.1
     '@openuxkit/themes':
       specifier: ^1.0.0
       version: 1.0.0
@@ -281,7 +281,7 @@ importers:
         version: 1.0.0
       '@openuxkit/styles':
         specifier: 'catalog:'
-        version: 1.0.0
+        version: 1.0.1
       '@openuxkit/utils':
         specifier: 'catalog:'
         version: 1.0.0
@@ -428,7 +428,7 @@ importers:
         version: 1.0.0
       '@openuxkit/styles':
         specifier: 'catalog:'
-        version: 1.0.0
+        version: 1.0.1
       '@openuxkit/utils':
         specifier: 'catalog:'
         version: 1.0.0
@@ -2053,8 +2053,8 @@ packages:
     resolution: {integrity: sha512-tXPv00g3qlhZJkDMMK2vxYFQldO5T6Y5HRISU+dfJ3/I1bV8JNx93N1aJb2SQN1xlrO/2UhsISDFYPTVMwXUFQ==}
     engines: {node: '>=12.11.0'}
 
-  '@openuxkit/styles@1.0.0':
-    resolution: {integrity: sha512-BlpOcA17ArsY3LMe7o/3SIOx+NELjZRXhAYG5n+YL+A9HTSg7EXVJCa8rCmUVDga8ILZG4A2knTifF0cDK82Wg==}
+  '@openuxkit/styles@1.0.1':
+    resolution: {integrity: sha512-zwF4Mhck6zBwpDCNI51RqPeCD1Z3dRIPgMqZg1TlQ7qjm9XBlM3ybS9u9U1zu9iyHRJndGuBQLNI3iO+AYVFdw==}
 
   '@openuxkit/themes@1.0.0':
     resolution: {integrity: sha512-OVDPf/pLTdy73ascdtQSn/8ebAzRnOM7y/d9HN8rJL7LGWhgchLYnxYJtPEp/qXh3VTOcGgfT5tpBmouxz1dxQ==}
@@ -10082,7 +10082,7 @@ snapshots:
     dependencies:
       '@openuxkit/utils': 1.0.0
 
-  '@openuxkit/styles@1.0.0':
+  '@openuxkit/styles@1.0.1':
     dependencies:
       '@openuxkit/styled': 1.0.0
 
