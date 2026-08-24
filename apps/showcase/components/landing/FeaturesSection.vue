@@ -6,11 +6,12 @@
             <div class="features-container">
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box p-6 w-full animate-duration-500">
+                        <OpenVueNuxtLink v-animateonscroll.once="{ enterClass: 'animate-fadein' }" to="/components" class="box feature-box-link p-6 w-full animate-duration-500">
                             <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-th-large !text-xl text-color"></i></div>
                             <div class="font-semibold mb-4 text-lg">80+ UI Components</div>
                             <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">The ultimate set of UI Components to assist you with 80+ impressive Vue Components.</p>
-                        </div>
+                            <span class="feature-box-cta">Browse components <i class="pi pi-arrow-right" aria-hidden="true"></i></span>
+                        </OpenVueNuxtLink>
                     </div>
                     <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
                         <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box p-6 w-full animate-duration-500">

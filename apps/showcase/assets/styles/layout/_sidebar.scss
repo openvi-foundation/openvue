@@ -1,8 +1,8 @@
 .layout-sidebar {
     position: sticky;
     inset-inline-start: 0;
-    top: 6rem;
-    height: calc(100vh - 9rem);
+    top: calc(var(--topbar-height) + 2rem);
+    height: calc(100vh - var(--topbar-height) - 5rem);
     user-select: none;
     transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
     display: flex;
@@ -188,5 +188,16 @@
             color: var(--text-secondary-color);
             margin-bottom: .25rem;
         }
+    }
+}
+
+/* The landing page has no docked column, so its sidebar exists only as the mobile drawer. */
+.landing > .layout-sidebar {
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .landing > .layout-sidebar {
+        display: flex;
     }
 }

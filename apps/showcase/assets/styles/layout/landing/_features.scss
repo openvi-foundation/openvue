@@ -2,6 +2,33 @@
     .box {
         box-shadow: var(--home-card-shadow);
     }
+    .feature-box-link {
+        display: block;
+        transition: transform .2s, box-shadow .2s;
+
+        &:hover {
+            transform: translateY(-3px);
+
+            .feature-box-cta i {
+                transform: translateX(.25rem);
+            }
+        }
+    }
+
+    .feature-box-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--primary-text-color);
+
+        i {
+            font-size: .875rem;
+            transition: transform .2s;
+        }
+    }
+
     .features-container{
         max-width: 1250px !important;
         margin-left: auto !important;

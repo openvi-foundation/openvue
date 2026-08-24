@@ -19,8 +19,9 @@
                     </button>
                 </li>
                 <li>
-                    <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="topbar-item">
+                    <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="topbar-item star-item" aria-label="Give a Star on GitHub">
                         <i class="pi pi-github"></i>
+                        <span class="star-item-label">Give a Star</span>
                     </a>
                 </li>
                 <li>

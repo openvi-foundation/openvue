@@ -114,7 +114,7 @@
 .doc-section-label {
     display: flex;
     align-items: center;
-    scroll-margin-top: 6.5rem;
+    scroll-margin-top: calc(var(--topbar-height) + 2.5rem);
 
     >a {
         color: var(--primary-text-color);
@@ -184,7 +184,7 @@
 
 .doc-section-nav-container {
     position: sticky;
-    top: 6rem;
+    top: calc(var(--topbar-height) + 2rem);
     right: 0;
     width: 14rem;
     margin: 0;
@@ -194,7 +194,7 @@
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    max-height: calc(100vh - 14rem);
+    max-height: calc(100vh - var(--topbar-height) - 10rem);
 }
 
 .doc-section-nav {
@@ -362,7 +362,7 @@
             border-bottom: 1px solid var(--border-color);
             white-space: pre-line;
             line-height: 1.5;
-            scroll-margin-top: 6.5rem;
+            scroll-margin-top: calc(var(--topbar-height) + 2.5rem);
 
             &:first-child {
                 color: var(--primary-text-color);
@@ -391,7 +391,7 @@
             i:not(.pi) {
                 font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, Liberation Mono, monospace;
                 position: relative;
-                scroll-margin-top: 6.5rem;
+                scroll-margin-top: calc(var(--topbar-height) + 2.5rem);
                 background-color: var(--mark-background);
                 color: var(--mark-text);
                 border-radius: 6px;
@@ -522,7 +522,7 @@
         border-bottom: 1px solid var(--border-color);
         white-space: pre-line;
         line-height: 1.5;
-        scroll-margin-top: 6.5rem;
+        scroll-margin-top: calc(var(--topbar-height) + 2.5rem);
 
         &:first-child {
             color: var(--primary-text-color);

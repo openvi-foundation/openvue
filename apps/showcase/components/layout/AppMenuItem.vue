@@ -50,10 +50,14 @@ export default {
     },
     methods: {
         isActiveRootmenuItem(menuitem) {
-            return (
-                menuitem.children &&
-                !menuitem.children.some((item) => item.to === `/${this.$router.currentRoute.value?.name?.replaceAll('-', '/')}` || (item.children && item.children.some((it) => it.to === `/${this.$router.currentRoute.value.name}`)))
-            );
+            if (!menuitem.children) return false;
+
+            const currentRoute = `/${this.$router.currentRoute.value?.name?.replaceAll('-', '/')}`;
+
+            /* A group is also active on its own overview page, so /components opens the Components list. */
+            if (menuitem.overviewRoute && menuitem.overviewRoute === currentRoute) return false;
+
+            return !menuitem.children.some((item) => item.to === currentRoute || (item.children && item.children.some((it) => it.to === `/${this.$router.currentRoute.value.name}`)));
         }
     }
 };

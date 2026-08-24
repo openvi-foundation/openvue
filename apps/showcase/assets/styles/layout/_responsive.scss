@@ -4,11 +4,11 @@
         margin: 0 auto;
     }
 
-    .layout-topbar-inner,
-    .layout-footer {
+    .layout-topbar-inner {
         max-width: 1728px;
         margin: 0 auto;
     }
+
 
 }
 
@@ -17,17 +17,23 @@
         padding-left: 2rem;
         padding-right: 2rem;
 
-        .menu-button {
-            display: block;
-        }
-
         .layout-topbar-logo-container {
             width: auto;
             margin-right: 0;
         }
 
+        .topbar-items .star-item {
+            width: 2.5rem;
+            padding: 0;
+            justify-content: center;
+
+            .star-item-label {
+                display: none;
+            }
+        }
+
         .topbar-items .search-item {
-            width: 2rem;
+            width: 2.5rem;
             padding: 0;
             justify-content: center;
 
@@ -35,6 +41,52 @@
             .search-item-hint {
                 display: none;
             }
+        }
+    }
+
+    .doc-section-nav-container {
+        display: none;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .layout-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+}
+
+/* Laptops keep the docked sidebar: the component list stays one click away instead of behind the hamburger. */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .layout-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .layout-sidebar {
+        flex: 0 0 220px;
+        margin-inline-end: 2rem;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .layout-topbar-inner {
+        .menu-button {
+            display: block;
         }
     }
 
@@ -78,35 +130,6 @@
         background-color: var(--p-mask-background);
     }
 
-    .doc-section-nav-container {
-        display: none;
-    }
-
-    .video-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%;
-
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .layout-content {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
-    .layout-footer {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
     .blocked-scroll {
         overflow: hidden;
         padding-right: var(--p-scrollbar-width);
@@ -148,10 +171,6 @@
         padding-right: 1rem;
     }
 
-    .layout-footer {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
 
     .doc-tabmenu {
         li {

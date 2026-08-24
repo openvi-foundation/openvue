@@ -16,7 +16,7 @@ Node.js 18 or newer. Your project must be on PrimeVue 4.x, the fork point. The t
 
 ## Try Without Migrating
 
-If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json. Once you decide to stay, run npx @openvue/migrate for the real rename.
+If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json . Once you decide to stay, run npx @openvue/migrate for the real rename.
 
 ```vue
 {
