@@ -64,6 +64,20 @@ describe('Menubar.vue', () => {
         expect(wrapper.findAll('ul.p-menubar-submenu')[0].findAll('li.p-menubar-item')[0].find('.p-menubar-item-label').text()).toBe('New');
         expect(wrapper.findAll('li.p-menubar-item').length).toBe(7);
         expect(wrapper.findAll('li.p-menubar-separator').length).toBe(1);
+
+        const menuitems = wrapper.findAll('[role="menuitem"]');
+
+        expect(menuitems.length).toBeGreaterThan(0);
+        menuitems.forEach((item) => {
+            expect(item.attributes('aria-level')).toBeUndefined();
+            expect(item.attributes('aria-setsize')).toBeTruthy();
+            expect(item.attributes('aria-posinset')).toBeTruthy();
+        });
+
+        const exportItem = menuitems.find((item) => item.attributes('aria-label') === 'Export');
+
+        expect(exportItem.attributes('aria-setsize')).toBe('3');
+        expect(exportItem.attributes('aria-posinset')).toBe('3');
     });
 
     it('should slot visible', () => {
