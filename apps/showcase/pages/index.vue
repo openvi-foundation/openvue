@@ -17,7 +17,7 @@
 
 <script>
 import { blockBodyScroll, unblockBodyScroll } from '@openuxkit/utils/dom';
-import pkg from '@/package.json';
+import pkg from '../../../packages/primevue/package.json';
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
 import ForkNoticeSection from '@/components/landing/ForkNoticeSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
