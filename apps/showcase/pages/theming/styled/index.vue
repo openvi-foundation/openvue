@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Styled Mode - OpenVue</Title>
-            <Meta name="description" content="Choose from a variety of pre-styled themes or develop your own." />
-        </Head>
+        <DocSeo title="Styled Mode - OpenVue" description="Choose from a variety of pre-styled themes or develop your own." />
 
         <div class="doc">
             <div class="doc-main">

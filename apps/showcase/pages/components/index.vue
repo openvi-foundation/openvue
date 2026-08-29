@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Components - OpenVue</Title>
-        <Meta name="description" content="Browse all OpenVue UI components by category." />
-    </Head>
+    <DocSeo title="Vue UI Components - Full Component List" description="Browse every OpenVue component for Vue 3 and Nuxt: tables, forms, overlays, menus and charts, all accessible, themeable and MIT licensed." :json-ld="jsonLd" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
@@ -90,6 +87,21 @@ export default {
                         description: descriptions[item.to] ?? ''
                     }))
             }));
+        },
+        /* An ItemList of every component page gives crawlers the full hub-to-spoke map in one
+           document, independent of how much of the grid a crawler bothers to render. */
+        jsonLd() {
+            return {
+                '@context': 'https://schema.org',
+                '@type': 'CollectionPage',
+                name: 'OpenVue Components',
+                url: `${SITE_URL}/components`,
+                mainEntity: {
+                    '@type': 'ItemList',
+                    numberOfItems: this.totalCount,
+                    itemListElement: this.categories.flatMap((category) => category.items).map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, url: `${SITE_URL}${item.to}` }))
+                }
+            };
         },
         totalCount() {
             return this.categories.reduce((count, category) => count + category.items.length, 0);

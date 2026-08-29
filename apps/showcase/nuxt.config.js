@@ -84,6 +84,14 @@ export default defineNuxtConfig({
     nitro: {
         alias
     },
+    sitemap: {
+        autoLastmod: true,
+        exclude: ['/llms/**', '/pr621-bugs/**', '/pr621-test/**'],
+        defaults: {
+            changefreq: 'weekly',
+            priority: 0.7
+        }
+    },
     routeRules: {
         '/accessibility': { redirect: { to: '/guides/accessibility', statusCode: 301 } },
         '/installation': { redirect: { to: '/vite', statusCode: 301 } },
@@ -97,24 +105,26 @@ export default defineNuxtConfig({
     app: {
         baseURL: baseUrl,
         head: {
+            htmlAttrs: { lang: 'en' },
             title: 'OpenVue - Vue UI Component Library',
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-                { name: 'description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
+                { name: 'description', content: 'OpenVue is the MIT-licensed continuation of PrimeVue: 80+ accessible, themeable UI components for Vue 3 and Nuxt, with the same API you already know.' },
                 { name: 'robots', content: 'index,follow' },
                 { name: 'twitter:card', content: 'summary_large_image' },
                 { name: 'twitter:title', content: 'OpenVue | Vue UI Component Library' },
-                { name: 'twitter:description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
-                { name: 'twitter:image', content: 'https://openvue.dev/open_vue_logo.png' },
+                { name: 'twitter:description', content: 'OpenVue is the MIT-licensed continuation of PrimeVue: 80+ accessible, themeable UI components for Vue 3 and Nuxt, with the same API you already know.' },
+                { name: 'twitter:image', content: 'https://openvue.dev/og-image.png' },
                 { property: 'og:type', content: 'website' },
                 { property: 'og:site_name', content: 'OpenVue' },
                 { property: 'og:title', content: 'OpenVue | Vue UI Component Library' },
                 { property: 'og:url', content: 'https://openvue.dev/' },
-                { property: 'og:description', content: 'The ultimate collection of design-agnostic, flexible and accessible Vue UI Components.' },
-                { property: 'og:image', content: 'https://openvue.dev/open_vue_logo.png' },
-                { property: 'og:image:width', content: '2400' },
-                { property: 'og:image:height', content: '2400' },
+                { property: 'og:description', content: 'OpenVue is the MIT-licensed continuation of PrimeVue: 80+ accessible, themeable UI components for Vue 3 and Nuxt, with the same API you already know.' },
+                { property: 'og:image', content: 'https://openvue.dev/og-image.png' },
+                { property: 'og:image:width', content: '1200' },
+                { property: 'og:image:height', content: '630' },
+                { property: 'og:locale', content: 'en_US' },
                 { property: 'og:image:alt', content: 'OpenVue - Vue UI Component Library' },
                 { property: 'og:ttl', content: '604800' }
             ],

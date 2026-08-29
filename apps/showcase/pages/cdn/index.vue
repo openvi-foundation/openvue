@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Install OpenVue with CDN</Title>
-        <Meta name="description" content="Setting up OpenVue in a project using CDN" />
-    </Head>
+    <DocSeo title="Install OpenVue with CDN" description="Setting up OpenVue in a project using CDN" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

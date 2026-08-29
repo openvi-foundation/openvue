@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Chart Playground - OpenVue</Title>
-            <Meta name="description" content="Build a chart interactively, edit its data, and copy the generated code." />
-        </Head>
+        <DocSeo title="Chart Playground - OpenVue" description="Build a chart interactively, edit its data, and copy the generated code." />
 
         <div class="doc">
             <PlaygroundDoc />

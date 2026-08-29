@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>About Us - OpenVue</Title>
-            <Meta name="description" content="Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever." />
-        </Head>
+        <DocSeo title="About Us - OpenVue" description="Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever." />
 
         <div class="doc">
             <div class="doc-main">

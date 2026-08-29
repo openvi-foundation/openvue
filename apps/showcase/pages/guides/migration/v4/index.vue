@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Migration - OpenVue</Title>
-        <Meta name="description" content="Migration Guide to OpenVue from Primevue v3" />
-    </Head>
+    <DocSeo title="Migration - OpenVue" description="Migration Guide to OpenVue from Primevue v3" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

@@ -1,6 +1,6 @@
-# team
+# About Us - OpenVue
 
-
+Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.
 
 ## Get Involved
 

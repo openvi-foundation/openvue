@@ -29,8 +29,8 @@
 
 ## Components
 
-- [mcp](https://openvue.dev/mcp): 
-- [team](https://openvue.dev/team): 
+- [About Us - OpenVue](https://openvue.dev/team): Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.
+- [MCP Server - OpenVue](https://openvue.dev/mcp): Model Context Protocol (MCP) server for OpenVue component library.
 - [Vue Accordion Component](https://openvue.dev/accordion): Accordion groups a collection of contents in panels.
 - [Vue AnimateOnScroll Directive](https://openvue.dev/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.
 - [Vue AutoComplete Component](https://openvue.dev/autocomplete): AutoComplete is an input component that provides real-time suggestions when being typed.

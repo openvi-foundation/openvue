@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>OpenIcons - OpenVue</Title>
-            <Meta name="description" content="OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons shipping 323 icons as a webfont and as tree-shakeable Vue components." />
-        </Head>
+        <DocSeo title="OpenIcons - OpenVue" description="OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons shipping 323 icons as a webfont and as tree-shakeable Vue components." />
 
         <div class="doc">
             <div class="doc-main">

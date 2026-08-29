@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Tailwind CSS - OpenVue</Title>
-        <Meta name="description" content="Integration between OpenVue and Tailwind CSS both in styled and unstyled modes" />
-    </Head>
+    <DocSeo title="Tailwind CSS - OpenVue" description="Integration between OpenVue and Tailwind CSS both in styled and unstyled modes" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

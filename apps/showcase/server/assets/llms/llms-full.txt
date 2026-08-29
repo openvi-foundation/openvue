@@ -1,6 +1,6 @@
 # PrimeVue Documentation
 
-Generated: 2026-08-23
+Generated: 2026-08-29
 
 ---
 
@@ -23987,9 +23987,9 @@ const items = ref(Array.from({ length: 100000 }, (_, i) => ({ label: \`Item #\${
 
 ---
 
-# mcp
+# MCP Server - OpenVue
 
-
+Model Context Protocol (MCP) server for OpenVue component library.
 
 ## Claude Code
 
@@ -36927,9 +36927,9 @@ Children of the component are passed as the content for templating.
 
 ---
 
-# team
+# About Us - OpenVue
 
-
+Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.
 
 ## Get Involved
 
