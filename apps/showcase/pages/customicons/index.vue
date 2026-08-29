@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Custom Icons - OpenVue</Title>
-            <Meta name="description" content="OpenVue components can be used with any icon library using the templating features." />
-        </Head>
+        <DocSeo title="Custom Icons - OpenVue" description="OpenVue components can be used with any icon library using the templating features." />
 
         <div class="doc">
             <div class="doc-main">

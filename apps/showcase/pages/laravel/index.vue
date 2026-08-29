@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Install OpenVue with Laravel</Title>
-        <Meta name="description" content="Setting up OpenVue in a Laravel project" />
-    </Head>
+    <DocSeo title="Install OpenVue with Laravel" description="Setting up OpenVue in a Laravel project" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

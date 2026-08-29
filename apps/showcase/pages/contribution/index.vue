@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Contribution - OpenVue</Title>
-            <Meta name="description" content="Accessible Vue UI Components." />
-        </Head>
+        <DocSeo title="Contribution - OpenVue" description="Accessible Vue UI Components." />
 
         <div class="doc">
             <div class="doc-main">

@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generatedAt": "2026-08-23",
+    "generatedAt": "2026-08-29",
     "components": [
         {
             "name": "accordion",
@@ -20401,8 +20401,8 @@
         },
         {
             "name": "mcp",
-            "title": "mcp",
-            "description": "",
+            "title": "MCP Server - OpenVue",
+            "description": "Model Context Protocol (MCP) server for OpenVue component library.",
             "sections": [
                 {
                     "id": "claudecode",
@@ -32040,8 +32040,8 @@
         },
         {
             "name": "team",
-            "title": "team",
-            "description": "",
+            "title": "About Us - OpenVue",
+            "description": "Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.",
             "sections": [
                 {
                     "id": "getinvolved",

@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>OpenVue - Dynamic Imports</Title>
-        <Meta name="description" content="Dynamic imports enable the loading of multiple items as needed, streamlining the import process." />
-    </Head>
+    <DocSeo title="OpenVue - Dynamic Imports" description="Dynamic imports enable the loading of multiple items as needed, streamlining the import process." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

@@ -17,7 +17,12 @@ export default [
                 defineNuxtRouteMiddleware: 'readonly',
                 defineEventHandler: 'readonly',
                 useRuntimeConfig: 'readonly',
-                useNuxtApp: 'readonly'
+                useNuxtApp: 'readonly',
+                useRoute: 'readonly',
+                useHead: 'readonly',
+                useSeoMeta: 'readonly',
+                definePageMeta: 'readonly',
+                computed: 'readonly'
             }
         },
         rules: {

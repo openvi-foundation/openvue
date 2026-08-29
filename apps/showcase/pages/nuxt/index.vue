@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Install OpenVue with Nuxt</Title>
-            <Meta name="description" content="Setting up OpenVue in a Nuxt project" />
-        </Head>
+        <DocSeo title="Install OpenVue with Nuxt" description="Setting up OpenVue in a Nuxt project" />
         <div class="doc">
             <div class="doc-main">
                 <div class="doc-intro">

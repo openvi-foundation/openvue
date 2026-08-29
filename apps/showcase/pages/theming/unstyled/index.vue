@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Unstyled - OpenVue</Title>
-            <Meta name="description" content="Theming OpenVue with alternative styling approaches." />
-        </Head>
+        <DocSeo title="Unstyled - OpenVue" description="Theming OpenVue with alternative styling approaches." />
 
         <div class="doc">
             <div class="doc-main">

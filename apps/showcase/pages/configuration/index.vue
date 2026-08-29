@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Configuration - OpenVue</Title>
-        <Meta name="description" content="Application wide configuration for OpenVue." />
-    </Head>
+    <DocSeo title="Configuration - OpenVue" description="Application wide configuration for OpenVue." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

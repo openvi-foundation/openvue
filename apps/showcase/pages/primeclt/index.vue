@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Install OpenVue with PrimeCLT</Title>
-        <Meta name="description" content="Install OpenVue with PrimeCLT" />
-    </Head>
+    <DocSeo title="Install OpenVue with PrimeCLT" description="Install OpenVue with PrimeCLT" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
