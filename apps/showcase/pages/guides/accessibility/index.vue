@@ -1,6 +1,6 @@
 <template>
     <div>
-        <DocSeo title="Accessibility - OpenVue" description="Accessible Vue UI Components." />
+        <DocSeo title="Accessibility - OpenVue" description="How OpenVue components implement WCAG 2.1 AA: keyboard navigation, screen reader support, ARIA roles and focus management." />
 
         <div class="doc">
             <div class="doc-main">

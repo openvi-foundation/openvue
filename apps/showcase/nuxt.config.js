@@ -86,7 +86,7 @@ export default defineNuxtConfig({
     },
     sitemap: {
         autoLastmod: true,
-        exclude: ['/llms/**', '/pr621-bugs/**', '/pr621-test/**'],
+        exclude: ['/llms/**'],
         defaults: {
             changefreq: 'weekly',
             priority: 0.7

@@ -29,51 +29,14 @@ import WhatItDoesDoc from '@/doc/migrate/WhatItDoesDoc.vue';
 import OptionsDoc from '@/doc/migrate/OptionsDoc.vue';
 import TryDoc from '@/doc/migrate/TryDoc.vue';
 import RequirementsDoc from '@/doc/migrate/RequirementsDoc.vue';
+import FaqDoc from '@/doc/migrate/FaqDoc.vue';
+import { faqJsonLd } from '@/doc/migrate/faq.js';
 
 export default {
     components: { DocCopyMarkdown },
     data() {
         return {
-            /* These are the questions people actually type before they commit to a fork,
-               so they are marked up for the FAQ rich result as well as answered on the page. */
-            jsonLd: {
-                '@context': 'https://schema.org',
-                '@type': 'FAQPage',
-                mainEntity: [
-                    {
-                        '@type': 'Question',
-                        name: 'Is OpenVue a drop-in replacement for PrimeVue?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Yes. OpenVue is a fork of PrimeVue 4.5.5 that keeps the public API unchanged: usePrimeVue, PrimeVueResolver, the primevue Nuxt config key, p- prefixed CSS classes and pass-through options all work exactly as before. Migrating is a package rename, not a rewrite.'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How do I migrate a PrimeVue project to OpenVue?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Run @openvue/migrate from the root of your project. It detects your package manager and PrimeVue version, shows you a plan of every file and reference it will change, and only then rewrites imports and dependencies. Monorepos, Vite, Nuxt and Laravel projects are supported, and a dry run mode writes nothing.'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'What licence is OpenVue released under?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'OpenVue is MIT licensed. PrimeVue 4.5.5 was the last release published under an open source licence, and OpenVue continues that work in the open with bug fixes, accessibility and performance improvements, support for current Vue and Nuxt releases, and new components.'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'Can I migrate from PrimeVue v3?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Not directly. The fork point is PrimeVue 4.x, and the tool stops without changing anything if it finds a different major. Apply the PrimeVue v4 migration guide first, then run @openvue/migrate.'
-                        }
-                    }
-                ]
-            },
+            jsonLd: faqJsonLd,
             docs: [
                 {
                     id: 'overview',
@@ -104,6 +67,11 @@ export default {
                     id: 'requirements',
                     label: 'Requirements',
                     component: RequirementsDoc
+                },
+                {
+                    id: 'faq',
+                    label: 'FAQ',
+                    component: FaqDoc
                 }
             ]
         };

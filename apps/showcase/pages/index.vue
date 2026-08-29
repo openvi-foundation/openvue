@@ -17,6 +17,7 @@
 
 <script>
 import { blockBodyScroll, unblockBodyScroll } from '@openuxkit/utils/dom';
+import pkg from '@/package.json';
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
 import ForkNoticeSection from '@/components/landing/ForkNoticeSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
@@ -31,7 +32,7 @@ export default {
         /* The homepage competes on two different intents: people shopping for a Vue component
            library, and people looking for where PrimeVue went. The title names both. */
         useSeo({
-            title: 'OpenVue - Vue UI Component Library, MIT-Licensed PrimeVue Fork',
+            title: 'OpenVue - Vue UI Components, MIT PrimeVue Fork',
             description: '80+ accessible, themeable components for Vue 3 and Nuxt. OpenVue continues PrimeVue 4.5.5 under the MIT license with the same API, themes and pass-through styling.',
             path: '/',
             jsonLd: {
@@ -65,7 +66,7 @@ export default {
                         operatingSystem: 'Any',
                         url: SITE_URL,
                         downloadUrl: 'https://www.npmjs.com/package/openvue',
-                        softwareVersion: '1.0.0-rc.0',
+                        softwareVersion: pkg.version,
                         license: 'https://opensource.org/licenses/MIT',
                         description: 'MIT-licensed UI component library for Vue 3 and Nuxt, continuing PrimeVue 4.5.5.',
                         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
