@@ -39564,6 +39564,12 @@
             "description": "Move an existing PrimeVue v4 project to OpenVue with one command.",
             "sections": [
                 {
+                    "id": "faq",
+                    "label": "FAQ",
+                    "description": "Is OpenVue a drop-in replacement for PrimeVue? Yes. OpenVue is a fork of PrimeVue 4.5.5 that keeps the public API unchanged: usePrimeVue , PrimeVueResolver , the primevue Nuxt config key, p- prefixed CSS classes and pass-through options all work exactly as before. Migrating is a package rename, not a rewrite. How do I migrate a PrimeVue project to OpenVue? Run @openvue/migrate from the root of your project. It detects your package manager and PrimeVue version, shows you a plan of every file and reference it will change, and only then rewrites imports and dependencies. Monorepos, Vite, Nuxt and Laravel projects are supported, and a dry run mode writes nothing. What licence is OpenVue released under? OpenVue is MIT licensed. PrimeVue 4.5.5 was the last release published under an open source licence, and OpenVue continues that work in the open with bug fixes, accessibility and performance improvements, support for current Vue and Nuxt releases, and new components. Can I migrate from PrimeVue v3? Not directly. The fork point is PrimeVue 4.x, and the tool stops without changing anything if it finds a different major. Apply the PrimeVue v4 migration guide first, then run @openvue/migrate .",
+                    "examples": null
+                },
+                {
                     "id": "options",
                     "label": "Options",
                     "description": "Option Description [dir] Directory to migrate (defaults to the current directory) --mode &lt;mode&gt; full , files-only or dry ; runs without prompting --dry Report what would change without writing any files --no-install Rewrite files but do not run the package manager install --force Do not stop on an uncommitted git working tree --yes , -y Skip prompts and use defaults (full migration) In interactive mode a dirty git tree only asks for confirmation. Non-interactively (with a mode flag, --yes or in CI) it stops unless you pass --force , so the migration stays a single reviewable, revertible diff.",

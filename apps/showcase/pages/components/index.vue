@@ -63,8 +63,24 @@ const CATEGORY_ICONS = {
 export default {
     data() {
         return {
-            query: ''
+            /* The homepage SearchAction sends crawlers and users here with ?q=, so the URL is the
+               source of truth on load and is kept in sync as the box is typed in. */
+            query: typeof this.$route.query.q === 'string' ? this.$route.query.q : ''
         };
+    },
+    watch: {
+        /* replaceState rather than router.replace: the filter is client side, and a real
+           navigation would reset scroll on every keystroke. */
+        query(value) {
+            if (!import.meta.client) return;
+
+            const url = new URL(window.location.href);
+
+            if (value) url.searchParams.set('q', value);
+            else url.searchParams.delete('q');
+
+            window.history.replaceState(window.history.state, '', url);
+        }
     },
     computed: {
         /* Static, non-interactive samples: `inert` keeps them out of tab order and pointer events.

@@ -1,5 +1,5 @@
 <template>
-    <DocSeo title="Migration - OpenVue" description="Migration Guide to OpenVue from Primevue v3" />
+    <DocSeo title="Migration - OpenVue" description="Migration guide to OpenVue from PrimeVue v3, covering the breaking changes introduced in v4." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
