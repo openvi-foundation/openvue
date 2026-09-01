@@ -10,6 +10,7 @@
         <ForkNoticeSection />
         <FeaturesSection />
         <ThemeSection />
+        <TemplatesSection />
         <AppFooter show-cta />
         <Toast />
     </div>
@@ -21,6 +22,7 @@ import pkg from '../../../packages/primevue/package.json';
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
 import ForkNoticeSection from '@/components/landing/ForkNoticeSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
+import TemplatesSection from '@/components/landing/TemplatesSection.vue';
 import ThemeSection from '@/components/landing/ThemeSection.vue';
 
 export default {
@@ -109,6 +111,7 @@ export default {
         HeroSection,
         ForkNoticeSection,
         ThemeSection,
+        TemplatesSection,
         FeaturesSection
     }
 };
