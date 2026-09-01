@@ -19,7 +19,16 @@
 
         .layout-topbar-logo-container {
             width: auto;
-            margin-right: 0;
+            margin-inline-end: 1.5rem;
+        }
+
+        /* Search and star collapse to icons here, so the nav still fits on a tighter rhythm. */
+        .layout-topbar-nav ul {
+            gap: 1.125rem;
+        }
+
+        .layout-topbar-nav-link {
+            font-size: 0.875rem;
         }
 
         .topbar-items .star-item {
@@ -27,7 +36,9 @@
             padding: 0;
             justify-content: center;
 
-            .star-item-label {
+            /* Collapsed to an icon square, so the label and the count both go. */
+            .star-item-label,
+            .star-item-count {
                 display: none;
             }
         }
@@ -87,6 +98,12 @@
     .layout-topbar-inner {
         .menu-button {
             display: block;
+        }
+
+        /* The hamburger opens the full menu from here down, so the inline nav would only
+           compete with the actions for the little width a phone has. */
+        .layout-topbar-nav {
+            display: none;
         }
     }
 

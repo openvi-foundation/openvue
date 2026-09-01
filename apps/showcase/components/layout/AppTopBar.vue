@@ -10,6 +10,18 @@
                 </OpenVueNuxtLink>
             </div>
 
+            <nav class="layout-topbar-nav" aria-label="Primary">
+                <ul>
+                    <li v-for="link in navLinks" :key="link.label">
+                        <a v-if="link.href" :href="link.href" target="_blank" rel="noopener noreferrer" class="layout-topbar-nav-link">
+                            <span>{{ link.label }}</span>
+                            <i class="pi pi-external-link" aria-hidden="true"></i>
+                        </a>
+                        <OpenVueNuxtLink v-else :to="link.to" class="layout-topbar-nav-link">{{ link.label }}</OpenVueNuxtLink>
+                    </li>
+                </ul>
+            </nav>
+
             <ul class="topbar-items">
                 <li>
                     <button type="button" class="topbar-item search-item" aria-label="Search" @click="openSearch">
@@ -22,6 +34,7 @@
                     <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="topbar-item star-item" aria-label="Give a Star on GitHub">
                         <i class="pi pi-github"></i>
                         <span class="star-item-label">Give a Star</span>
+                        <span v-if="starsLabel" class="star-item-count">{{ starsLabel }}</span>
                     </a>
                 </li>
                 <li>
@@ -55,6 +68,11 @@ import EventBus from '@/app/AppEventBus';
 
 export default {
     emits: ['menubutton-click'],
+    setup() {
+        const { starsLabel } = useGitHubStars();
+
+        return { starsLabel };
+    },
     outsideClickListener: null,
     props: {
         showMenuButton: {
@@ -64,6 +82,17 @@ export default {
     },
     scrollListener: null,
     container: null,
+    data() {
+        return {
+            /* Templates live on their own site, so that entry leaves the showcase. */
+            navLinks: [
+                { label: 'Docs', to: '/introduction' },
+                { label: 'Components', to: '/components' },
+                { label: 'Migration', to: '/migrate' },
+                { label: 'Templates', href: 'https://deni.openvue.dev/' }
+            ]
+        };
+    },
     mounted() {
         this.bindScrollListener();
     },

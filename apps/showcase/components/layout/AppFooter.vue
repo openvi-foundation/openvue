@@ -4,7 +4,7 @@
             <div class="footer-container flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                 <div>
                     <h2 class="footer-cta-title">Keep the library you already build on</h2>
-                    <p class="footer-cta-text">Free, MIT, and maintained by the people who use it.</p>
+                    <p class="footer-cta-text">Free, MIT, and maintained by the people who use it. A star helps new contributors find the project.</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
@@ -12,7 +12,9 @@
                         <i class="pi pi-arrow-right ms-4"></i>
                     </OpenVueNuxtLink>
                     <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
+                        <i class="pi pi-github me-3"></i>
                         <span>Star on GitHub</span>
+                        <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
                     </a>
                 </div>
             </div>
@@ -63,6 +65,11 @@ import pkg from '@/package.json';
 const REPO = 'https://github.com/openvi-foundation/openvue';
 
 export default {
+    setup() {
+        const { starsLabel } = useGitHubStars();
+
+        return { starsLabel };
+    },
     props: {
         /* The call to action only belongs on the landing page; docs readers have already chosen the library. */
         showCta: {

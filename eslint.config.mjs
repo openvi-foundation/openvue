@@ -126,12 +126,14 @@ export default [
         languageOptions: {
             globals: {
                 computed: 'readonly',
+                ref: 'readonly',
                 useRoute: 'readonly',
                 useRouter: 'readonly',
                 useHead: 'readonly',
                 useSeoMeta: 'readonly',
                 definePageMeta: 'readonly',
                 useSeo: 'readonly',
+                useGitHubStars: 'readonly',
                 absoluteUrl: 'readonly',
                 SITE_URL: 'readonly',
                 SITE_NAME: 'readonly'
