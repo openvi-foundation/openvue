@@ -60,17 +60,23 @@ const CATEGORY_ICONS = {
     Misc: 'pi-star'
 };
 
+/* Only a single ?q= is a search term: `?q=a&q=b` arrives as an array and filters nothing. */
+function searchTerm(q) {
+    return typeof q === 'string' ? q : '';
+}
+
 export default {
     data() {
         return {
             /* The homepage SearchAction sends crawlers and users here with ?q=, so the URL is the
                source of truth on load and is kept in sync as the box is typed in. */
-            query: typeof this.$route.query.q === 'string' ? this.$route.query.q : ''
+            query: searchTerm(this.$route.query.q)
         };
     },
     watch: {
         /* replaceState rather than router.replace: the filter is client side, and a real
-           navigation would reset scroll on every keystroke. */
+           navigation would reset scroll on every keystroke. Because $route is left untouched,
+           this never fights the $route watcher below. */
         query(value) {
             if (!import.meta.client) return;
 
@@ -80,6 +86,13 @@ export default {
             else url.searchParams.delete('q');
 
             window.history.replaceState(window.history.state, '', url);
+        },
+        /* A client-side navigation to /components?q=... while already here reuses this instance,
+           so data() does not re-run and only this puts the new term into the box. */
+        '$route.query.q'(value) {
+            const next = searchTerm(value);
+
+            if (next !== this.query) this.query = next;
         }
     },
     computed: {
