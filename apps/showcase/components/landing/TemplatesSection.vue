@@ -1,7 +1,7 @@
 <template>
-    <section class="landing-templates py-20">
+    <section id="templates" class="landing-templates py-20">
         <div class="section-header">Templates</div>
-        <p class="section-detail">Real applications built with OpenVue. Clone one, point it at your API, ship it.</p>
+        <p class="section-detail">A real application built with OpenVue. Clone it, point it at your API, ship it.</p>
         <div class="mt-16 px-8 lg:px-20">
             <div class="templates-container">
                 <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box template-card animate-duration-500">
@@ -14,7 +14,7 @@
                             <h3 class="template-title">{{ name }}</h3>
                             <Tag value="NEW" />
                         </div>
-                        <p class="template-text">Deni is a free admin dashboard template for OpenVue, built with Vite, Vue 3 and TypeScript.</p>
+                        <p class="template-text">A free admin dashboard template for OpenVue, built with Vite, Vue 3 and TypeScript.</p>
                         <ul class="template-highlights">
                             <li v-for="highlight in highlights" :key="highlight">
                                 <i class="pi pi-check" aria-hidden="true"></i><span>{{ highlight }}</span>

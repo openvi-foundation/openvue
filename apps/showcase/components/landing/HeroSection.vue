@@ -1,24 +1,21 @@
 <template>
     <section class="landing-hero py-20 px-8 lg:px-20">
         <div class="flex flex-col items-center relative">
-            <p class="hero-rc-note">
-                <code class="hero-rc-version">1.0.0-rc.0</code>
-                <span>Release candidate is out. 1.0.0 is next.</span>
-            </p>
             <h1 class="hero-title">
                 <span class="hero-title-line">The complete UI toolkit</span>
                 <span class="hero-title-line">for Vue and Nuxt</span>
             </h1>
             <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue carries PrimeVue 4.5.5 forward under the MIT license, so the library your app already depends on stays free and keeps moving.</p>
-            <div class="flex flex-wrap items-center justify-center gap-4">
+            <div class="hero-actions">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
-                    <span>Get Started </span>
+                    <span>Get Started</span>
                     <i class="pi pi-arrow-right ms-4"></i>
                 </OpenVueNuxtLink>
-                <OpenVueNuxtLink to="/components" class="linkbox">
-                    <span>Browse Components </span>
-                    <i class="pi pi-th-large ms-4"></i>
-                </OpenVueNuxtLink>
+                <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
+                    <i class="pi pi-github me-3"></i>
+                    <span>Star on GitHub</span>
+                    <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
+                </a>
             </div>
             <div class="hero-install">
                 <span class="hero-install-prompt" aria-hidden="true">$</span>
@@ -27,6 +24,7 @@
                     <i :class="['pi', copied ? 'pi-check' : 'pi-copy']"></i>
                 </button>
             </div>
+            <p class="hero-note">{{ version }} is out. 1.0.0 is next. MIT licensed, no paid tier.</p>
         </div>
         <div class="bg-surface-0 border border-black/10 dark:border-white/20 dark:bg-surface-950 w-full h-[85vh] max-h-[1040px] rounded-3xl p-6 hidden lg:flex lg:mt-20 items-start gap-6 overflow-hidden">
             <div :class="isSlimMenu ? 'w-auto' : 'w-72'" class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between">
@@ -293,11 +291,18 @@
 </template>
 
 <script>
+import pkg from '../../../../packages/primevue/package.json';
 import EventBus from '@/app/AppEventBus';
 
 export default {
+    setup() {
+        const { starsLabel } = useGitHubStars();
+
+        return { starsLabel };
+    },
     data() {
         return {
+            version: pkg.version,
             installCommand: 'npm install openvue@rc',
             copied: false,
             copyTimeout: null,

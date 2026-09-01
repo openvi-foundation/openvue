@@ -1,29 +1,6 @@
 .landing-hero {
     position: relative;
 
-    .hero-rc-note {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 0.625rem;
-        margin: 0 0 1.75rem 0;
-        font-size: 1rem;
-        font-weight: 500;
-        color: var(--text-secondary-color);
-        text-align: center;
-    }
-
-    .hero-rc-version {
-        font-family: monospace;
-        font-size: 0.875rem;
-        padding: 0.25rem 0.625rem;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        background-color: var(--card-background);
-        color: var(--text-color);
-    }
-
     .hero-title {
         font-size: 3.5rem;
         font-weight: 700;
@@ -47,6 +24,14 @@
         line-height: 1.65;
         max-width: 42rem;
         margin: 1.5rem 0 2.5rem 0;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
     }
 
     .hero-install {
@@ -97,6 +82,14 @@
         }
     }
 
+    .hero-note {
+        margin: 1.5rem 0 0 0;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text-secondary-color);
+        text-align: center;
+    }
+
     @media screen and (max-width: 768px) {
         .hero-title {
             font-size: 2.25rem;
@@ -111,15 +104,24 @@
             white-space: pre;
         }
 
-        .hero-rc-note {
-            max-width: 100%;
-            margin-bottom: 1.5rem;
-            font-size: 0.9375rem;
+        .hero-actions {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
         }
 
         .hero-install {
             max-width: 100%;
+            margin-top: 1.5rem;
             overflow-x: auto;
+        }
+
+        .hero-note {
+            font-size: 0.875rem;
+        }
+
+        .linkbox {
+            justify-content: center;
         }
     }
 
