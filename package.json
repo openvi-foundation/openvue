@@ -83,7 +83,7 @@
     },
     "pnpm": {
         "overrides": {
-            "fast-uri": ">=4.1.2",
+            "fast-uri": ">=4.1.4",
             "hono": ">=4.12.25",
             "ip-address": ">=10.3.1",
             "@vue/devtools-core>nanoid": ">=5.1.16 <6",
