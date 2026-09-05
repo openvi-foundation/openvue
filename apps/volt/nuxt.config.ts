@@ -6,8 +6,8 @@ const baseUrl = '/';
 
 const alias = {
     primevue: path.resolve(__dirname, '../../packages/primevue/src'),
-    '@primevue/core': path.resolve(__dirname, '../../packages/core/src'),
-    '@primevue/icons': path.resolve(__dirname, '../../packages/icons/src')
+    '@openvue/core': path.resolve(__dirname, '../../packages/core/src'),
+    '@openvue/icons': path.resolve(__dirname, '../../packages/icons/src')
 };
 
 // https://nuxt.com/docs/api/configuration/nuxt-config

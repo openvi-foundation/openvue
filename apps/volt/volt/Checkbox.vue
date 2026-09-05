@@ -14,9 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import CheckIcon from '@primevue/icons/check';
-import MinusIcon from '@primevue/icons/minus';
-import Checkbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'primevue/checkbox';
+import CheckIcon from '@openvue/icons/check';
+import MinusIcon from '@openvue/icons/minus';
+import Checkbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'openvue/checkbox';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

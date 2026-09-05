@@ -119,7 +119,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const importCode = ref(`import AnimateOnScroll from 'primevue/animateonscroll';
+const importCode = ref(`import AnimateOnScroll from 'openvue/animateonscroll';
 
 app.directive('animateonscroll', AnimateOnScroll);
 `);

@@ -17,6 +17,6 @@ const code1 = ref(`
 </template>
 `);
 
-const code2 = ref(`import ArrowDownIcon from '@primevue/icons/arrowdown';
+const code2 = ref(`import ArrowDownIcon from '@openvue/icons/arrowdown';
 `);
 </script>

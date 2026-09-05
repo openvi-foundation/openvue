@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import InputOtp, { type InputOtpPassThroughOptions, type InputOtpProps } from 'primevue/inputotp';
+import InputOtp, { type InputOtpPassThroughOptions, type InputOtpProps } from 'openvue/inputotp';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import MeterGroup, { type MeterGroupPassThroughOptions, type MeterGroupProps } from 'primevue/metergroup';
+import MeterGroup, { type MeterGroupPassThroughOptions, type MeterGroupProps } from 'openvue/metergroup';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

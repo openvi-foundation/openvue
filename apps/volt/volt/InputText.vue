@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import InputText, { type InputTextPassThroughOptions, type InputTextProps } from 'primevue/inputtext';
+import InputText, { type InputTextPassThroughOptions, type InputTextProps } from 'openvue/inputtext';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import StepList, { type StepListPassThroughOptions, type StepListProps } from 'primevue/steplist';
+import StepList, { type StepListPassThroughOptions, type StepListProps } from 'openvue/steplist';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

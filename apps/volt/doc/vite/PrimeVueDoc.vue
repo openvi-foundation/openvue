@@ -22,7 +22,7 @@ pnpm add primevue
 `);
 
 const code2 = ref(`import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import PrimeVue from 'openvue/config';
 
 const app = createApp(App);
 app.use(PrimeVue, {

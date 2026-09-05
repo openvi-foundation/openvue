@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import SearchIcon from '@primevue/icons/search';
-import Listbox, { type ListboxPassThroughOptions, type ListboxProps } from 'primevue/listbox';
+import SearchIcon from '@openvue/icons/search';
+import Listbox, { type ListboxPassThroughOptions, type ListboxProps } from 'openvue/listbox';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

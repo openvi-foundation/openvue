@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Avatar, { type AvatarPassThroughOptions, type AvatarProps } from 'primevue/avatar';
+import Avatar, { type AvatarPassThroughOptions, type AvatarProps } from 'openvue/avatar';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

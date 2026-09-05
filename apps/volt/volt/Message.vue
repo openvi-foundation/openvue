@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import TimesIcon from '@primevue/icons/times';
-import Message, { type MessagePassThroughOptions, type MessageProps } from 'primevue/message';
+import TimesIcon from '@openvue/icons/times';
+import Message, { type MessagePassThroughOptions, type MessageProps } from 'openvue/message';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

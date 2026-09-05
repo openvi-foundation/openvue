@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import AutoComplete from '@/volt/AutoComplete.vue';
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 import { ref } from 'vue';
 
 const selectedCity = ref(null);
@@ -85,7 +85,7 @@ const code = ref(`
 
 <script setup lang="ts">
 import AutoComplete from '@/volt/AutoComplete.vue';
-import { FilterMatchMode, FilterService } from '@primevue/core/api';
+import { FilterMatchMode, FilterService } from '@openvue/core/api';
 import { ref } from 'vue';
 
 const selectedCity = ref(null);
