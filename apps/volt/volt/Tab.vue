@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import Tab, { type TabPassThroughOptions, type TabProps } from 'primevue/tab';
+import Tab, { type TabPassThroughOptions, type TabProps } from 'openvue/tab';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

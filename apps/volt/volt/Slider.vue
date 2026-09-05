@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import Slider, { type SliderPassThroughOptions, type SliderProps } from 'primevue/slider';
+import Slider, { type SliderPassThroughOptions, type SliderProps } from 'openvue/slider';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

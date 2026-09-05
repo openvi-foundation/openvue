@@ -2,7 +2,7 @@
     <div class="flex flex-col max-w-[102rem] mx-auto">
         <div class="px-4 py-6 border border-surface-200 dark:border-surface-800 flex justify-center items-center flex-col gap-4">
             <span class="text-surface-950 dark:text-surface-0 font-bold text-4xl leading-tight text-center"> Features </span>
-            <span class="text-muted-color text-center leading-tight">The ultimate set of Ul Components powered by PrimeVue</span>
+            <span class="text-muted-color text-center leading-tight">The ultimate set of UI Components powered by OpenVue</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full md:gap-x-6 lg:gap-6">
             <div class="flex flex-col">
@@ -35,9 +35,9 @@
                             <span class="bg-primary-100 text-primary-950 dark:bg-primary-400/30 dark:text-primary-100 rounded-md h-8 w-8 inline-flex items-center justify-center">
                                 <i class="pi pi-sliders-h" />
                             </span>
-                            <span class="font-semibold text-surface-950 dark:text-surface-0">Unstyled PrimeVue</span>
+                            <span class="font-semibold text-surface-950 dark:text-surface-0">Unstyled OpenVue</span>
                         </div>
-                        <span class="text-muted-color">Powered by the Unstyled PrimeVue components with advanced customization options.</span>
+                        <span class="text-muted-color">Powered by the Unstyled OpenVue components with advanced customization options.</span>
                     </div>
                 </div>
                 <div class="h-6 lg:h-auto lg:flex-1 px-6 w-full hidden lg:block">

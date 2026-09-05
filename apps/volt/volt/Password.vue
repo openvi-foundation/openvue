@@ -19,9 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import EyeIcon from '@primevue/icons/eye';
-import EyeSlashIcon from '@primevue/icons/eyeslash';
-import Password, { type PasswordPassThroughOptions, type PasswordProps } from 'primevue/password';
+import EyeIcon from '@openvue/icons/eye';
+import EyeSlashIcon from '@openvue/icons/eyeslash';
+import Password, { type PasswordPassThroughOptions, type PasswordProps } from 'openvue/password';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

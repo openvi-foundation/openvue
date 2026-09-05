@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import ExclamationTriangeIcon from '@primevue/icons/exclamationtriangle';
-import TimesIcon from '@primevue/icons/times';
-import ConfirmDialog, { type ConfirmDialogPassThroughOptions, type ConfirmDialogProps } from 'primevue/confirmdialog';
+import ExclamationTriangeIcon from '@openvue/icons/exclamationtriangle';
+import TimesIcon from '@openvue/icons/times';
+import ConfirmDialog, { type ConfirmDialogPassThroughOptions, type ConfirmDialogProps } from 'openvue/confirmdialog';
 import { ref } from 'vue';
 import Button from './Button.vue';
 import SecondaryButton from './SecondaryButton.vue';

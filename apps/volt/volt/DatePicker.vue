@@ -95,12 +95,12 @@
 </template>
 
 <script setup>
-import CalendarIcon from '@primevue/icons/calendar';
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronLeftIcon from '@primevue/icons/chevronleft';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import ChevronUpIcon from '@primevue/icons/chevronup';
-import DatePicker from 'primevue/datepicker';
+import CalendarIcon from '@openvue/icons/calendar';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronLeftIcon from '@openvue/icons/chevronleft';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import ChevronUpIcon from '@openvue/icons/chevronup';
+import DatePicker from 'openvue/datepicker';
 import { ref } from 'vue';
 import SecondaryButton from './SecondaryButton.vue';
 import { ptViewMerge } from './utils';

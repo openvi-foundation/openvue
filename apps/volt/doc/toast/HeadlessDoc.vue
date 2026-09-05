@@ -30,7 +30,7 @@
 import Button from '@/volt/Button.vue';
 import ProgressBar from '@/volt/ProgressBar.vue';
 import Toast from '@/volt/Toast.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const toast = useToast();
@@ -96,7 +96,7 @@ const code = ref(`
 import Toast from '@/volt/Toast.vue';
 import Button from '@/volt/Button.vue';
 import ProgressBar from '@/volt/ProgressBar.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 const visible = ref(false);

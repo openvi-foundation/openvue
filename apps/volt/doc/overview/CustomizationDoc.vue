@@ -3,9 +3,9 @@
         <p>
             Customization is the most important value of Volt. Instead of CSS overrides of 3rd party UI libraries or learning design token APIs, the theming is integrated within the component for you to add customizations per your needs e.g. custom
             branding. As example, here are 3 different Select components based on Volt, first one is the
-            <a href="https://github.com/primefaces/primevue/blob/master/apps/volt/volt/select/index.vue" target="_blank" rel="noopener noreferrer">default</a>, second one is
-            <a href="https://github.com/primefaces/primevue/tree/master/apps/volt/doc/overview/select/compact.vue" target="_blank" rel="noopener noreferrer">compact</a> and third one is quite
-            <a href="https://github.com/primefaces/primevue/tree/master/apps/volt/doc/overview/select/fancy.vue" target="_blank" rel="noopener noreferrer">fancy</a>. With Volt, the convenience of Tailwind allows for the creation of custom designs.
+            <a href="https://github.com/openvi-foundation/openvue/blob/master/apps/volt/volt/select/index.vue" target="_blank" rel="noopener noreferrer">default</a>, second one is
+            <a href="https://github.com/openvi-foundation/openvue/tree/master/apps/volt/doc/overview/select/compact.vue" target="_blank" rel="noopener noreferrer">compact</a> and third one is quite
+            <a href="https://github.com/openvi-foundation/openvue/tree/master/apps/volt/doc/overview/select/fancy.vue" target="_blank" rel="noopener noreferrer">fancy</a>. With Volt, the convenience of Tailwind allows for the creation of custom designs.
             This opens up various possibilities, including the development of a in-house UI library tailored to your organization's needs.
         </p>
     </DocSectionText>
@@ -56,19 +56,4 @@ const members = ref([
     { name: 'Ioni Bowcher', image: 'ionibowcher.png', email: 'ioni@email.com', role: 'Viewer' },
     { name: 'Onyama Limba', image: 'onyamalimba.png', email: 'onyama@email.com', role: 'Viewer' }
 ]);
-
-const code = ref(`
-<template>
-    <div class="card flex justify-center">
-        <InputText v-model="value" />
-    </div>
-</template>
-
-<script setup lang="ts">
-import InputText from '@/volt/InputText.vue';
-import { ref } from 'vue';
-
-const value = ref(null);
-<\/script>
-`);
 </script>
