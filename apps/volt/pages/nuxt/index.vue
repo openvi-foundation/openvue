@@ -31,8 +31,8 @@ const docs = ref([
         component: TailwindDoc
     },
     {
-        id: 'primevue',
-        label: 'PrimeVue',
+        id: 'openvue',
+        label: 'OpenVue',
         component: PrimeVueDoc
     },
     {
