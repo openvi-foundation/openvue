@@ -30,6 +30,7 @@ The first release candidate. The version moves from `0.7.0-beta.0` to `1.0.0-rc.
 
 ### Fixed
 
+- `DataTable` preserves resized column widths when columns are hidden or shown dynamically.
 - `DataTable` supports subheader row grouping together with virtual scrolling. Group headers and footers are measured rather than assumed to be the same height as a row, so grouped rows no longer drift out of position while scrolling. Contributed by [@Tamas-hi](https://github.com/Tamas-hi). ([#621](https://github.com/openvi-foundation/openvue/pull/621))
 - `BlockUI` always removes its mask when unblocked. Blocking and unblocking in quick succession, or unmounting the component while the leave animation was still running, could leave a mask covering the page and swallowing every click. The mask is now also cleaned up when the component unmounts. ([#626](https://github.com/openvi-foundation/openvue/pull/626))
 - Showcase: the `Toast` documentation covers removing a single message by its id, and the Multiple demo no longer calls a method that does not exist. ([#628](https://github.com/openvi-foundation/openvue/pull/628), [#629](https://github.com/openvi-foundation/openvue/pull/629))

@@ -446,6 +446,8 @@ export default {
     droppedRowIndex: null,
     rowDragging: null,
     columnWidthsState: null,
+    columnWidthsByKey: null,
+    columnWidthsKeySignature: null,
     tableWidthState: null,
     columnWidthsRestored: false,
     watch: {
@@ -514,6 +516,8 @@ export default {
         this.d_columnGroups.clear();
     },
     updated() {
+        this.restoreColumnWidthsByKey();
+
         if (this.isStateful()) {
             this.saveState();
         }
@@ -1375,6 +1379,10 @@ export default {
 
             headers.forEach((header) => widths.push(getOuterWidth(header)));
 
+            widths[colIndex] = newColumnWidth;
+            nextColumnWidth && (widths[colIndex + 1] = nextColumnWidth);
+            this.cacheColumnWidthsByKey(widths);
+
             this.destroyStyleElement();
             this.createStyleElement();
 
@@ -1395,6 +1403,43 @@ export default {
             });
 
             this.styleElement.innerHTML = innerHTML;
+        },
+        getVisibleColumnKeys() {
+            if (this.headerColumnGroup) {
+                return null;
+            }
+
+            return this.columns
+                .filter((column) => !this.columnProp(column, 'hidden') && (this.rowGroupMode !== 'subheader' || this.groupRowsBy !== this.columnProp(column, 'field')))
+                .map((column, index) => this.columnProp(column, 'columnKey') || this.columnProp(column, 'field') || index);
+        },
+        cacheColumnWidthsByKey(widths) {
+            const keys = this.getVisibleColumnKeys();
+
+            if (!keys || keys.length !== widths.length) {
+                this.columnWidthsByKey = null;
+                this.columnWidthsKeySignature = null;
+                return;
+            }
+
+            this.columnWidthsByKey ||= new Map();
+            keys.forEach((key, index) => this.columnWidthsByKey.set(key, widths[index]));
+            this.columnWidthsKeySignature = JSON.stringify(keys);
+        },
+        restoreColumnWidthsByKey() {
+            if (!this.resizableColumns || !this.columnWidthsByKey) {
+                return;
+            }
+
+            const keys = this.getVisibleColumnKeys();
+            const signature = JSON.stringify(keys);
+
+            if (!keys || signature === this.columnWidthsKeySignature || !keys.every((key) => this.columnWidthsByKey.has(key))) {
+                return;
+            }
+
+            this.addColumnWidthStyles(keys.map((key) => this.columnWidthsByKey.get(key)));
+            this.columnWidthsKeySignature = signature;
         },
         bindColumnResizeEvents() {
             if (!this.documentColumnResizeListener) {
@@ -1920,6 +1965,7 @@ export default {
                 }
 
                 if (isNotEmpty(widths)) {
+                    this.cacheColumnWidthsByKey(widths);
                     this.addColumnWidthStyles(widths);
                 }
             }

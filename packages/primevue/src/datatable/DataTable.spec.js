@@ -1119,6 +1119,56 @@ describe('DataTable.vue', () => {
         expect(wrapper.find('.p-datatable-column-resize-indicator').attributes().style).toContain('display: none;');
     });
 
+    it('should preserve resized widths when a column is hidden', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({
+                columns: [
+                    { field: 'id', header: 'Id' },
+                    { field: 'code', header: 'Code' },
+                    { field: 'name', header: 'Name' }
+                ],
+                rows: smallData
+            }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns>
+                    <Column v-for="column in columns" :key="column.field" :field="column.field" :header="column.header" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, {
+            global: {
+                plugins: [PrimeVue]
+            }
+        });
+
+        const table = wrapper.vm.$refs.table;
+
+        table.cacheColumnWidthsByKey([80, 160, 240]);
+        await wrapper.setData({ columns: wrapper.vm.columns.filter((column) => column.field !== 'code') });
+        await nextTick();
+
+        expect(table.styleElement.textContent).toContain('nth-child(1)');
+        expect(table.styleElement.textContent).toContain('width: 80px');
+        expect(table.styleElement.textContent).toContain('nth-child(2)');
+        expect(table.styleElement.textContent).toContain('width: 240px');
+        expect(table.styleElement.textContent).not.toContain('width: 160px');
+
+        await wrapper.setData({
+            columns: [
+                { field: 'id', header: 'Id' },
+                { field: 'code', header: 'Code' },
+                { field: 'name', header: 'Name' }
+            ]
+        });
+        await nextTick();
+
+        expect(table.styleElement.textContent).toContain('width: 80px');
+        expect(table.styleElement.textContent).toContain('width: 160px');
+        expect(table.styleElement.textContent).toContain('width: 240px');
+    });
+
     // column reorder
     it('should reorder columns', async () => {
         await wrapper.setProps({ reorderableColumns: true });
