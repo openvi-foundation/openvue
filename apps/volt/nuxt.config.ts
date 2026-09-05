@@ -51,6 +51,9 @@ export default defineNuxtConfig({
     app: {
         baseURL: baseUrl,
         head: {
+            htmlAttrs: {
+                class: 'p-noir'
+            },
             title: 'Volt UI Component Library for Vue.js',
             meta: [
                 { charset: 'utf-8' },
