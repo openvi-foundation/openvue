@@ -28,8 +28,8 @@ import { ref } from 'vue';
 
 const docs = ref([
     {
-        id: 'primeicons',
-        label: 'PrimeIcons',
+        id: 'openicons',
+        label: 'OpenIcons',
         component: PrimeIconsDoc
     },
     {

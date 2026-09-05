@@ -246,33 +246,20 @@
         {
             "name": "Forms",
             "icon": "pi pi-check",
-            "href": "https://primevue.org/forms"
-        },
-        {
-            "name": "Figma UI Kit",
-            "icon": "pi pi-pencil",
-            "href": "https://primevue.org/uikit"
+            "href": "https://openvue.dev/forms"
         },
         {
             "name": "Templates",
             "icon": "pi pi-heart",
-            "href": "https://primevue.org/templates"
+            "href": "https://deni.openvue.dev/"
         },
         {
             "name": "Support",
             "icon": "pi pi-question",
             "children": [
                 {
-                    "name": "Discord Server",
-                    "href": "https://discord.gg/gzKFYnpmCY"
-                },
-                {
                     "name": "Forum",
-                    "href": "https://github.com/orgs/primefaces/discussions"
-                },
-                {
-                    "name": "PRO Support",
-                    "href": "https://primevue.org/support"
+                    "href": "https://github.com/orgs/openvi-foundation/discussions"
                 }
             ]
         },
@@ -282,38 +269,13 @@
             "children": [
                 {
                     "name": "About Us",
-                    "href": "https://primevue.org/team"
-                },
-                {
-                    "name": "Newsletter",
-                    "href": "https://www.primefaces.org/newsletter"
-                },
-                {
-                    "name": "PrimeGear",
-                    "href": "https://gear.primefaces.org"
+                    "href": "https://openvue.dev/team"
                 },
                 {
                     "name": "Source Code",
-                    "href": "https://github.com/primefaces/primevue/tree/master/apps/volt/volt"
-                },
-                {
-                    "name": "Store",
-                    "href": "https://www.primefaces.org/store/"
-                },
-                {
-                    "name": "Twitter",
-                    "href": "https://twitter.com/primevue"
-                },
-                {
-                    "name": "PrimeTV",
-                    "href": "https://www.youtube.com/channel/UCTgmp69aBOlLnPEqlUyetWw"
+                    "href": "https://github.com/openvi-foundation/openvue/tree/master/apps/volt"
                 }
             ]
-        },
-        {
-            "name": "PrimeBlocks",
-            "icon": "pi pi-server",
-            "href": "https://primeblocks.org"
         }
     ]
 }

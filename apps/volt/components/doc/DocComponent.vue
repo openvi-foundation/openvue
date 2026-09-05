@@ -24,21 +24,28 @@
                         </p>
                         <div v-if="isComponent" class="pt-3 flex gap-2">
                             <a
-                                :href="`https://primevue.org${originPath}/#api`"
+                                :href="`https://openvue.dev${originPath}/#api`"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm dark:bg-surface-800 dark:hover:bg-surface-700"
                                 ><span class="text-surface-900 dark:text-surface-50 font-medium">API</span><i class="pi pi-external-link text-xs! text-surface-900 dark:text-surface-50"></i
                             ></a>
                             <a
-                                :href="`https://primevue.org${originPath}/#pt`"
+                                :href="`https://openvue.dev${originPath}/#pt`"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm text-surface-900 dark:bg-surface-800 dark:hover:bg-surface-700"
                                 ><span class="text-surface-900 dark:text-surface-50 font-medium">PassThrough</span><i class="pi pi-external-link text-xs! text-surface-900 dark:text-surface-50"></i
                             ></a>
                             <a
-                                :href="`https://primevue.org${originPath}/#accessibility`"
+                                :href="`https://openvue.dev${originPath}/#playground`"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm text-surface-900 dark:bg-surface-800 dark:hover:bg-surface-700"
+                                ><span class="text-surface-900 dark:text-surface-50 font-medium">Playground</span><i class="pi pi-external-link text-xs! text-surface-900 dark:text-surface-50"></i
+                            ></a>
+                            <a
+                                :href="`https://openvue.dev${originPath}/#accessibility`"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm text-surface-900 dark:bg-surface-800 dark:hover:bg-surface-700"

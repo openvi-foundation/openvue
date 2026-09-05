@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>This example combines <i>tailwindcss-primeui</i> plugin animations with the <i>v-animateonscroll</i> directive of PrimeVue. Since Volt utilizes PrimeVue under the hood, you may take advantage of this directive as well.</p>
+        <p>This example combines <i>tailwindcss-primeui</i> plugin animations with the <i>v-animateonscroll</i> directive of OpenVue. Since Volt utilizes OpenVue under the hood, you may take advantage of this directive as well.</p>
     </DocSectionText>
     <DocSectionCode :code="importCode" lang="script" />
     <div class="card flex flex-col items-center overflow-hidden">
