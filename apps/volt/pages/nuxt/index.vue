@@ -1,13 +1,13 @@
 <template>
     <Head>
-        <Title>Setting up Volt in a Nuxt project with PrimeVue and Tailwind.</Title>
-        <Meta name="description" content="Setting up Volt in a Nuxt project with PrimeVue and Tailwind." />
+        <Title>Setting up Volt in a Nuxt project with OpenVue and Tailwind.</Title>
+        <Meta name="description" content="Setting up Volt in a Nuxt project with OpenVue and Tailwind." />
     </Head>
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
                 <h1>Installation with Nuxt</h1>
-                <p>Setting up Volt in a Nuxt project with PrimeVue and Tailwind.</p>
+                <p>Setting up Volt in a Nuxt project with OpenVue and Tailwind.</p>
             </div>
             <DocSections :docs="docs" />
         </div>
@@ -21,7 +21,7 @@ import ExampleDoc from '@/doc/nuxt/ExampleDoc.vue';
 import PrimeVueDoc from '@/doc/nuxt/PrimeVueDoc.vue';
 import RegisterDoc from '@/doc/nuxt/RegisterDoc.vue';
 import TailwindDoc from '@/doc/nuxt/TailwindDoc.vue';
-import DownloadDoc from '@/doc/vite/DownloadDoc.vue';
+import DownloadDoc from '@/doc/nuxt/DownloadDoc.vue';
 import { ref } from 'vue';
 
 const docs = ref([
