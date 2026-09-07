@@ -9,11 +9,12 @@
  */
 import type { DefineComponent, DesignToken, EmitFn, HintedString, PassThrough } from '@openvue/core';
 import type { ComponentHooks } from '@openvue/core/basecomponent';
+import type { ButtonProps } from 'openvue/button';
 import type { ColumnPassThroughOptionType } from 'openvue/column';
 import type { PaginatorPassThroughOptionType } from 'openvue/paginator';
 import type { PassThroughOptions } from 'openvue/passthrough';
 import type { TreeNode } from 'openvue/treenode';
-import { VNode } from 'vue';
+import { InputHTMLAttributes, VNode } from 'vue';
 
 export declare type TreeTablePassThroughOptionType = TreeTablePassThroughAttributes | ((options: TreeTablePassThroughMethodOptions) => TreeTablePassThroughAttributes | string) | string | null | undefined;
 
@@ -103,6 +104,56 @@ export interface TreeTableFilterMeta {
      * @see TreeTableFilterMetaData
      */
     [key: string]: string | TreeTableFilterMetaData | TreeTableOperatorFilterMetaData;
+}
+
+/**
+ * Custom treetable filter inline button props options.
+ */
+export interface TreeTableFilterButtonInlinePropsOptions {
+    /**
+     * Apply button props
+     */
+    clear: ButtonProps | undefined;
+}
+
+/**
+ * Custom treetable filter popover button props options.
+ */
+export interface TreeTableFilterButtonPopoverPropsOptions {
+    /**
+     * Add rule button props
+     */
+    addRule: ButtonProps | undefined;
+    /**
+     * Remove rule button props
+     */
+    removeRule: ButtonProps | undefined;
+    /**
+     * Apply button props
+     */
+    apply: ButtonProps | undefined;
+    /**
+     * Apply button props
+     */
+    clear: ButtonProps | undefined;
+}
+
+/**
+ * Custom treetable filter buttons' props options.
+ */
+export interface TreeTableFilterButtonPropsOptions {
+    /**
+     * Filter button props
+     */
+    filter: ButtonProps | undefined;
+    /**
+     * Inline filter buttons' options
+     */
+    inline: TreeTableFilterButtonInlinePropsOptions | undefined;
+    /**
+     * Popover filter buttons' options
+     */
+    popover: TreeTableFilterButtonPopoverPropsOptions | undefined;
 }
 
 /**
@@ -596,7 +647,10 @@ export interface TreeTableProps {
      */
     removableSort?: boolean | undefined;
     /**
-     * Filters object with key-value pairs to define the filters.
+     * Filters object with key-value pairs to define the filters. Two shapes are accepted per field:
+     * the flat form `{ name: 'value' }`, where the match mode comes from the `filterMatchMode` prop of the Column,
+     * and the DataTable form `{ name: { value, matchMode } }` or `{ name: { operator, constraints: [{ value, matchMode }] } }`, used together with `filterDisplay`.
+     * With multiple constraints, `and` applies each constraint in turn to the subtree left by the previous one, and `or` keeps every branch that satisfies any constraint.
      * @see TreeTableFilterMeta
      */
     filters?: TreeTableFilterMeta;
@@ -606,9 +660,37 @@ export interface TreeTableProps {
      */
     filterMode?: HintedString<'lenient' | 'strict'> | undefined;
     /**
+     * Layout of the filter elements. When undefined, the filter row is rendered from the Column filter slot as-is.
+     */
+    filterDisplay?: HintedString<'menu' | 'row'> | undefined;
+    /**
+     * An array of fields to use in global filtering, defaults to the filter fields of all columns.
+     */
+    globalFilterFields?: string[] | undefined;
+    /**
      * Locale to use in filtering. The default locale is the host environment's current locale.
      */
     filterLocale?: string | undefined;
+    /**
+     * Used to pass all properties of the HTMLInputElement to the focusable filter input element inside the component.
+     */
+    filterInputProps?: InputHTMLAttributes | undefined;
+    /**
+     * Used to pass all filter button property object
+     * @defaultValue {
+        filter: { severity: 'secondary', text: true, rounded: true },
+        inline: {
+            clear: { severity: 'secondary', text: true, rounded: true }
+        },
+        popover: {
+            addRule: { severity: 'info', text: true, size: 'small' },
+            removeRule: { severity: 'danger', text: true, size: 'small' },
+            apply: { size: 'small' },
+            clear: { outlined: true, size: 'small' }
+        }
+     }
+     */
+    filterButtonProps?: Partial<TreeTableFilterButtonPropsOptions> | undefined;
     /**
      * When enabled, columns can be resized using drag and drop.
      * @defaultValue false
@@ -871,6 +953,11 @@ export interface TreeTableEmitsOptions {
      * @param {TreeTableSortMeta[] | undefined | null} value - New value.
      */
     'update:multiSortMeta'(value: TreeTableSortMeta[] | undefined | null): void;
+    /**
+     * Emitted when the filters change.
+     * @param {TreeTableFilterMeta} value - New value.
+     */
+    'update:filters'(value: TreeTableFilterMeta): void;
     /**
      * Callback to invoke on pagination. Sort and Filter information is also available for lazy loading implementation.
      * @param {TreeTablePageEvent} event - Custom page event.

@@ -17,12 +17,14 @@ import ColumnToggleDoc from '@/doc/treetable/ColumnToggleDoc.vue';
 import ContextMenuDoc from '@/doc/treetable/ContextMenuDoc.vue';
 import ControlledDoc from '@/doc/treetable/ControlledDoc.vue';
 import DynamicColumnsDoc from '@/doc/treetable/DynamicColumnsDoc.vue';
-import FilterDoc from '@/doc/treetable/FilterDoc.vue';
 import GridLinesDoc from '@/doc/treetable/GridLinesDoc.vue';
 import ImportDoc from '@/doc/treetable/ImportDoc.vue';
 import LazyLoadDoc from '@/doc/treetable/LazyLoadDoc.vue';
 import SizeDoc from '@/doc/treetable/SizeDoc.vue';
 import TemplateDoc from '@/doc/treetable/TemplateDoc.vue';
+import AdvancedFilterDoc from '@/doc/treetable/filter/AdvancedFilterDoc.vue';
+import BasicFilterDoc from '@/doc/treetable/filter/BasicFilterDoc.vue';
+import RowFilterDoc from '@/doc/treetable/filter/RowFilterDoc.vue';
 import LoadingMaskDoc from '@/doc/treetable/loading/LoadingMaskDoc.vue';
 import LoadingSkeletonDoc from '@/doc/treetable/loading/LoadingSkeletonDoc.vue';
 import PaginationBasicDoc from '@/doc/treetable/pagination/PaginationBasicDoc.vue';
@@ -144,7 +146,23 @@ export default {
                 {
                     id: 'filter',
                     label: 'Filter',
-                    component: FilterDoc
+                    children: [
+                        {
+                            id: 'basic_filter',
+                            label: 'Basic',
+                            component: BasicFilterDoc
+                        },
+                        {
+                            id: 'row_filter',
+                            label: 'Row',
+                            component: RowFilterDoc
+                        },
+                        {
+                            id: 'advanced_filter',
+                            label: 'Advanced',
+                            component: AdvancedFilterDoc
+                        }
+                    ]
                 },
                 {
                     id: 'selection',

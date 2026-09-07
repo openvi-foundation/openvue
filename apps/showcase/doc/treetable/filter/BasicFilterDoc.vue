@@ -1,9 +1,9 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Filtering is enabled by adding the <i>filter</i> property to a Column. The <i>filterMode</i> specifies the filtering strategy, in <i>lenient</i> mode when the query matches a node, children of the node are not searched further as all
-            descendants of the node are included. On the other hand, in <i>strict</i> mode when the query matches a node, filtering continues on all descendants. A general filled called <i>globalFilter</i> is also provided to search all columns that
-            support filtering.
+            Filtering is enabled by adding the <i>filter</i> template to a Column and binding a flat key-value <i>filters</i> object, where the match mode of each column is defined with the <i>filterMatchMode</i> property. The
+            <i>filterMode</i> specifies the filtering strategy, in <i>lenient</i> mode when the query matches a node, children of the node are not searched further as all descendants of the node are included. On the other hand, in <i>strict</i> mode
+            when the query matches a node, filtering continues on all descendants. A general filled called <i>globalFilter</i> is also provided to search all columns that support filtering.
         </p>
     </DocSectionText>
     <DeferredDemo @load="loadDemoData">
