@@ -44,6 +44,7 @@
         {
             "name": "Components",
             "icon": "pi pi-compass",
+            "overviewRoute": "/components",
             "children": [
                 {
                     "name": "Form",
@@ -579,6 +580,12 @@
                     "to": "/customicons"
                 }
             ]
+        },
+        {
+            "name": "Templates",
+            "icon": "pi pi-desktop",
+            "href": "https://deni.openvue.dev/",
+            "badge": "NEW"
         },
         {
             "name": "Discover",

@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Animations - OpenVue</Title>
-            <Meta name="description" content="OpenVue animations guide." />
-        </Head>
+        <DocSeo title="Animations - OpenVue" description="OpenVue animations guide." />
 
         <div class="doc">
             <div class="doc-main">

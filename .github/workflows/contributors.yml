@@ -1,0 +1,163 @@
+name: Contributors
+
+# Credits the merged PR's author, plus the author of any issue it closes.
+# The base branch is protected, so changes land on one long-lived branch with a
+# single open PR that updates itself until merged.
+#
+# Everyone else (bug reporters with no linked PR, designers, translators) is
+# added by hand: npx all-contributors-cli@6 add <login> <types>
+#
+# SAFETY: pull_request_target gives fork PRs a write-capable token. Never check
+# out or run the PR's code here. Base branch only.
+
+on:
+    pull_request_target:
+        types: [closed]
+
+permissions:
+    contents: read
+
+concurrency:
+    group: contributors-${{ github.event.pull_request.base.ref }}
+
+env:
+    BRANCH: chore/contributors
+
+jobs:
+    add-contributors:
+        if: github.event.pull_request.merged == true && github.repository == 'openvi-foundation/openvue'
+        permissions:
+            contents: write
+            pull-requests: write
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ github.event.pull_request.base.ref }}
+                  fetch-depth: 0 # $BRANCH may already exist
+
+            - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+              with:
+                  node-version: 20
+
+            - name: Collect contributors
+              id: collect
+              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+              with:
+                  script: |
+                      const pr = context.payload.pull_request;
+                      const isBot = (user) => !user || user.type === 'Bot' || user.login.endsWith('[bot]');
+                      const people = new Map();
+
+                      const credit = (login, type) => {
+                          if (!people.has(login)) people.set(login, new Set());
+                          people.get(login).add(type);
+                      };
+
+                      if (!isBot(pr.user)) credit(pr.user.login, 'code');
+
+                      // Issues get linked three ways here, and all three are in use: GitHub's own
+                      // link (branch made from the issue), a closing keyword, or a plain URL under
+                      // the template's "Related issue".
+                      const body = pr.body || '';
+                      const numbers = new Set();
+
+                      const { repository } = await github.graphql(
+                          `query ($owner: String!, $repo: String!, $number: Int!) {
+                              repository(owner: $owner, name: $repo) {
+                                  pullRequest(number: $number) {
+                                      closingIssuesReferences(first: 20) { nodes { number } }
+                                  }
+                              }
+                          }`,
+                          { owner: context.repo.owner, repo: context.repo.repo, number: pr.number }
+                      );
+
+                      for (const node of repository.pullRequest.closingIssuesReferences.nodes) numbers.add(node.number);
+
+                      const keywords = /\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)/gi;
+                      const links = new RegExp(`github\\.com/${context.repo.owner}/${context.repo.repo}/issues/(\\d+)`, 'gi');
+
+                      for (const pattern of [keywords, links]) {
+                          for (const match of body.matchAll(pattern)) numbers.add(Number(match[1]));
+                      }
+
+                      for (const number of numbers) {
+                          try {
+                              const { data: issue } = await github.rest.issues.get({
+                                  owner: context.repo.owner,
+                                  repo: context.repo.repo,
+                                  issue_number: number
+                              });
+
+                              // A closing reference can point at another PR, not an issue.
+                              if (issue.pull_request || isBot(issue.user)) continue;
+
+                              credit(issue.user.login, 'bug');
+                          } catch (error) {
+                              if (error.status !== 404) throw error;
+                          }
+                      }
+
+                      const result = [...people].map(([login, types]) => ({ login, types: [...types].join(',') }));
+
+                      core.info(result.length ? `Crediting: ${result.map((r) => `${r.login} (${r.types})`).join(', ')}` : 'Nobody to credit.');
+                      core.setOutput('people', JSON.stringify(result));
+
+            - name: Switch to the contributors branch
+              if: steps.collect.outputs.people != '[]'
+              id: branch
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  open=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+
+                  if [ -n "$open" ]; then
+                      git checkout "$BRANCH"
+                  else
+                      # Start clean, discarding any branch left behind by an earlier merge.
+                      git checkout -B "$BRANCH"
+                  fi
+
+                  echo "open=$open" >> "$GITHUB_OUTPUT"
+
+            - name: Update the list
+              if: steps.collect.outputs.people != '[]'
+              env:
+                  PEOPLE: ${{ steps.collect.outputs.people }}
+                  PRIVATE_TOKEN: ${{ secrets.GITHUB_TOKEN }} # what all-contributors-cli authenticates with
+              run: |
+                  echo "$PEOPLE" | jq -r '.[] | "\(.login) \(.types)"' | while read -r login types; do
+                      echo "Adding $login ($types)"
+                      npx --yes all-contributors-cli@6 add "$login" "$types"
+                  done
+
+                  # The generator's output does not match this repo's Prettier config.
+                  npx --yes prettier@3 --write .all-contributorsrc README.md
+
+            - name: Open or update the pull request
+              if: steps.collect.outputs.people != '[]'
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  MERGED: ${{ github.event.pull_request.number }}
+              run: |
+                  if git diff --quiet; then
+                      echo "Everyone is already credited, nothing to do."
+                      exit 0
+                  fi
+
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add .all-contributorsrc README.md
+                  git commit -m "docs: add contributors for #${MERGED}"
+                  git push --force-with-lease origin "$BRANCH"
+
+                  if [ -z "${{ steps.branch.outputs.open }}" ]; then
+                      gh pr create \
+                          --base "${{ github.event.pull_request.base.ref }}" \
+                          --head "$BRANCH" \
+                          --title "docs: update contributors" \
+                          --body "Opened by the Contributors workflow. More contributors are appended here until it is merged. Close it to discard."
+                  else
+                      echo "Added to the open pull request #${{ steps.branch.outputs.open }}."
+                  fi

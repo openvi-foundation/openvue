@@ -20,7 +20,7 @@ OpenVue is a community-driven project and we appreciate any help you can provide
 
 ## Introduction
 
-OpenVue is an open source Vue UI library, dedicated to providing high-quality, versatile, and accessible UI components that help developers build better applications faster. Development Setup To begin with, clone the OpenVue repository from GitHub: Then run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase .
+OpenVue is an open source Vue UI component library, and a community-maintained continuation of PrimeVue after it was archived by its original maintainers. It is led by openvi-foundation , an independent group of developers who run this library in production and intend to keep it maintained, stable and open. OpenVue is not affiliated with PrimeTek or PrimeUI. Contributions of every size move the library forward. A bug report with a clear reproduction, a correction to a documentation page and a pull request are all worth sending. This guide covers how to set the project up locally and how the codebase is organized. Development Setup To begin with, clone the OpenVue repository from GitHub: The repository is a pnpm workspace, so install pnpm first, then install the dependencies and run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase . Note that the main component package lives in packages/primevue , a folder name kept from the fork, and is published as openvue .
 
 ## Key Points
 

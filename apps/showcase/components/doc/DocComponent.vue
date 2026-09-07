@@ -1,10 +1,5 @@
 <template>
     <div :class="['doc-component', className]">
-        <Head>
-            <Title>{{ title }}</Title>
-            <Meta name="description" :content="description" />
-        </Head>
-
         <ul class="doc-tabmenu">
             <li v-for="item in tabs" :key="item.key" :class="{ 'doc-tabmenu-active': tab === item.key }">
                 <button type="button" @click="tab = item.key">
@@ -58,6 +53,54 @@ import DocCopyMarkdown from './DocCopyMarkdown.vue';
 export default {
     components: {
         DocCopyMarkdown
+    },
+    setup(props) {
+        const route = useRoute();
+
+        /* The raw component blurb is short and reads the same for logged-out crawlers as it does
+           on the page, so we extend it with the two facts a searcher is actually deciding on. */
+        const metaDescription = computed(() => {
+            const base = (props.description || '').trim();
+            const suffix = `Free, MIT-licensed ${props.header} component for Vue 3 and Nuxt.`;
+
+            return base ? `${base} ${suffix}` : suffix;
+        });
+
+        useSeo({
+            title: props.title,
+            description: metaDescription.value,
+            path: route.path,
+            type: 'article',
+            jsonLd: {
+                '@context': 'https://schema.org',
+                '@graph': [
+                    {
+                        '@type': 'TechArticle',
+                        headline: props.title,
+                        description: props.description,
+                        url: absoluteUrl(route.path),
+                        inLanguage: 'en',
+                        isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
+                        about: {
+                            '@type': 'SoftwareSourceCode',
+                            name: props.header,
+                            programmingLanguage: 'JavaScript',
+                            runtimePlatform: 'Vue 3',
+                            codeRepository: 'https://github.com/openvi-foundation/openvue',
+                            license: 'https://opensource.org/licenses/MIT'
+                        }
+                    },
+                    {
+                        '@type': 'BreadcrumbList',
+                        itemListElement: [
+                            { '@type': 'ListItem', position: 1, name: 'OpenVue', item: SITE_URL },
+                            { '@type': 'ListItem', position: 2, name: 'Components', item: `${SITE_URL}/components` },
+                            { '@type': 'ListItem', position: 3, name: props.header, item: absoluteUrl(route.path) }
+                        ]
+                    }
+                ]
+            }
+        });
     },
     props: {
         title: null,

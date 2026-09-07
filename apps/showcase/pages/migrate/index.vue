@@ -1,8 +1,9 @@
 <template>
-    <Head>
-        <Title>Migration from PrimeVue v4 - OpenVue</Title>
-        <Meta name="description" content="Automated codemod for migrating a PrimeVue v4 project to OpenVue in one command." />
-    </Head>
+    <DocSeo
+        title="Migrate from PrimeVue to OpenVue - One Command"
+        description="PrimeVue v4 is the last open source release. @openvue/migrate rewrites your imports and package references to OpenVue in one command, with no API changes."
+        :json-ld="jsonLd"
+    />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">
@@ -28,11 +29,14 @@ import WhatItDoesDoc from '@/doc/migrate/WhatItDoesDoc.vue';
 import OptionsDoc from '@/doc/migrate/OptionsDoc.vue';
 import TryDoc from '@/doc/migrate/TryDoc.vue';
 import RequirementsDoc from '@/doc/migrate/RequirementsDoc.vue';
+import FaqDoc from '@/doc/migrate/FaqDoc.vue';
+import { faqJsonLd } from '@/doc/migrate/faq.js';
 
 export default {
     components: { DocCopyMarkdown },
     data() {
         return {
+            jsonLd: faqJsonLd,
             docs: [
                 {
                     id: 'overview',
@@ -63,6 +67,11 @@ export default {
                     id: 'requirements',
                     label: 'Requirements',
                     component: RequirementsDoc
+                },
+                {
+                    id: 'faq',
+                    label: 'FAQ',
+                    component: FaqDoc
                 }
             ]
         };

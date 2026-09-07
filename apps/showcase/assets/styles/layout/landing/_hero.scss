@@ -26,6 +26,14 @@
         margin: 1.5rem 0 2.5rem 0;
     }
 
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
     .hero-install {
         display: inline-flex;
         align-items: center;
@@ -74,6 +82,14 @@
         }
     }
 
+    .hero-note {
+        margin: 1.5rem 0 0 0;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text-secondary-color);
+        text-align: center;
+    }
+
     @media screen and (max-width: 768px) {
         .hero-title {
             font-size: 2.25rem;
@@ -83,9 +99,29 @@
             display: inline;
         }
 
+        .hero-title-line + .hero-title-line::before {
+            content: ' ';
+            white-space: pre;
+        }
+
+        .hero-actions {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
         .hero-install {
             max-width: 100%;
+            margin-top: 1.5rem;
             overflow-x: auto;
+        }
+
+        .hero-note {
+            font-size: 0.875rem;
+        }
+
+        .linkbox {
+            justify-content: center;
         }
     }
 

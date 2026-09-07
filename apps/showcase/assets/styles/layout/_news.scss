@@ -77,16 +77,16 @@
 
     .layout-sidebar,
     .doc-section-nav {
-        top: 8rem;
+        top: calc(var(--topbar-height) + 4rem);
     }
 
     .layout-content {
-        padding-top: 8rem;
+        padding-top: calc(var(--topbar-height) + 4rem);
     }
 
     .doc-section-label,
     .doc-table tbody td .doc-option-name,
     .doc-table tbody td > i {
-        scroll-margin-top: 8.5rem;
+        scroll-margin-top: calc(var(--topbar-height) + 4.5rem);
     }
 }

@@ -1,5 +1,5 @@
 .layout-content {
-    padding: 6rem 4rem 0 4rem;
+    padding: calc(var(--topbar-height) + 2rem) 4rem 0 4rem;
     display: flex;
 
     .layout-content-slot {

@@ -23,7 +23,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "We're unable to replicate your issue, if you are able to create a reproducer by using [PrimeVue Issue Template](https://stackblitz.com/edit/primevue-4-vite-issue-template) or add details please edit this issue. This issue will be closed if no activities in 20 days."
+              body: "We haven't been able to replicate this. Please edit the issue to add a minimal reproduction (a StackBlitz project or a small repository) or more detail about your setup. This issue will be closed if there is no activity in 20 days."
             });
 
       - name: Needs Upvote
@@ -35,7 +35,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "Thanks a lot for this issue! PrimeTek's own vision for PrimeVue is demanding, but community feedback is crucial in prioritization. The more upvotes help ensure this fix can be addressed quickly or the related PR can be merged soon."
+              body: "Thanks a lot for this issue! Community feedback is what drives our priorities, so upvotes on the first post help us see how many people this affects and address it sooner."
             });
 
       - name: Needs More Information
@@ -59,7 +59,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "Unfortunately, this issue cannot be fixed due to technical limitations. PrimeVue team has decided not to pursue a fix, as addressing it would introduce other complications. Thanks a lot for your understanding!"
+              body: "Unfortunately this cannot be fixed without introducing other problems, so we have decided not to pursue it. Thanks a lot for your understanding!"
             });
 
       - name: Help Wanted
@@ -71,7 +71,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "Due to PrimeTek's demanding roadmap for PrimeVue and the limited bandwidth of the core team, this issue is available for anyone to work on. [**Make sure to reference this issue in your pull request.**](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) :sparkles: Thank you for your contribution! :sparkles:"
+              body: "This issue is open for anyone to work on, and we would welcome the help. [**Make sure to reference this issue in your pull request.**](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) :sparkles: Thank you for your contribution! :sparkles:"
             });
 
       - name: Duplicate

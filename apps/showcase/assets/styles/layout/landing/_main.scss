@@ -69,6 +69,15 @@
             height: 3rem;
             justify-content: center;
         }
+
+        /* Star count rides along inside the GitHub button, set apart by a divider. */
+        .linkbox-count {
+            margin-left: 0.75rem;
+            padding-left: 0.75rem;
+            border-left: 1px solid var(--border-color);
+            color: var(--text-secondary-color);
+            font-variant-numeric: tabular-nums;
+        }
     }
 
     .section-header {

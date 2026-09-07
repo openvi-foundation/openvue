@@ -5,8 +5,8 @@ export const OPENVUE_VERSION: string = JSON.parse(readFileSync(new URL('../packa
 
 // The @openuxkit/* engine packages (the fork of @primeuix/*) version independently of openvue,
 // so renamed @openuxkit deps are pinned to this range rather than OPENVUE_VERSION. Bump when the
-// openux fork advances past its alpha line.
-export const OPENUXKIT_VERSION = '^0.0.1-alpha.1';
+// openux fork releases a new major.
+export const OPENUXKIT_VERSION = '^1.0.0';
 
 // @primevue/* packages published at the fork point. Anything else under the scope is left untouched and reported.
 export const SCOPED_PACKAGES = ['core', 'forms', 'icons', 'themes', 'nuxt-module', 'auto-import-resolver', 'metadata', 'mcp'];

@@ -1,6 +1,6 @@
 {
     "name": "@openvue/monorepo",
-    "version": "0.7.0-beta.0",
+    "version": "1.0.0-rc.0",
     "author": "OpenVue Contributors",
     "homepage": "https://github.com/openvi-foundation/openvue",
     "repository": {
@@ -83,7 +83,7 @@
     },
     "pnpm": {
         "overrides": {
-            "fast-uri": ">=4.1.2",
+            "fast-uri": ">=4.1.4",
             "hono": ">=4.12.25",
             "ip-address": ">=10.3.1",
             "@vue/devtools-core>nanoid": ">=5.1.16 <6",

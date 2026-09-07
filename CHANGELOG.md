@@ -8,6 +8,14 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Changed
+
+- `@openvue/migrate` no longer adds an automatic `primevue` -> `openvue` dependency override. It is not needed for a normal migration; add one yourself if a leftover package still requires `primevue`. ([#639](https://github.com/openvi-foundation/openvue/issues/639))
+
+## [1.0.0-rc.0] - 2026-08-18
+
+The first release candidate. The version moves from `0.7.0-beta.0` to `1.0.0-rc.0`: the public API is what we intend to ship as 1.0, and from here we only take bug fixes and documentation until the stable release. Packages are published under the `rc` dist-tag. Report anything that looks like a regression, that is exactly what a release candidate is for.
+
 ### Added
 
 - `VirtualScroller` gains a `getItemSize` prop, a callback that returns an item's height by index, so a list whose rows are not all the same height can still be virtualized. ([#621](https://github.com/openvi-foundation/openvue/pull/621))
@@ -16,6 +24,7 @@ All packages in this repository are released together under a single version.
 
 ### Changed
 
+- The `@openuxkit/*` engine packages are upgraded to 1.0.0.
 - Showcase: the icons page is built on `@openvue/openicons` and restructured around the two OpenIcons formats. ([#37](https://github.com/openvi-foundation/openvue/pull/37))
 - Showcase: the introduction and contribution pages are rewritten, and Components now sits above Configuration in the sidebar.
 
@@ -25,6 +34,7 @@ All packages in this repository are released together under a single version.
 - `DataTable` supports subheader row grouping together with virtual scrolling. Group headers and footers are measured rather than assumed to be the same height as a row, so grouped rows no longer drift out of position while scrolling. Contributed by [@Tamas-hi](https://github.com/Tamas-hi). ([#621](https://github.com/openvi-foundation/openvue/pull/621))
 - `BlockUI` always removes its mask when unblocked. Blocking and unblocking in quick succession, or unmounting the component while the leave animation was still running, could leave a mask covering the page and swallowing every click. The mask is now also cleaned up when the component unmounts. ([#626](https://github.com/openvi-foundation/openvue/pull/626))
 - Showcase: the `Toast` documentation covers removing a single message by its id, and the Multiple demo no longer calls a method that does not exist. ([#628](https://github.com/openvi-foundation/openvue/pull/628), [#629](https://github.com/openvi-foundation/openvue/pull/629))
+- `DataTable`'s advanced filter menu stays open while you use an overlay inside it, such as the match mode `Select`, a `MultiSelect` or a `DatePicker`. The menu recognises a nested overlay through its attribute selector, so being appended to the body no longer makes it look like an outside click. `Select` additionally announces the interaction on mousedown, since it commits an option and hides its overlay before the browser dispatches the click, which also fixes a `Select` nested in a `Popover`. ([#630](https://github.com/openvi-foundation/openvue/issues/630))
 
 ## [0.7.0-beta.0] - 2026-08-03
 
@@ -126,7 +136,8 @@ First OpenVue release, forked from PrimeVue 4.5.5.
 - Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
 - License copyright updated for the fork. The project remains MIT.
 
-[unreleased]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...HEAD
+[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.0.0-rc.0...HEAD
+[1.0.0-rc.0]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...1.0.0-rc.0
 [0.7.0-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...0.7.0-beta.0
 [0.0.1-beta.1]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.0...0.0.1-beta.1
 [0.0.1-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-alpha.5...0.0.1-beta.0

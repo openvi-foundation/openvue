@@ -1,9 +1,6 @@
 <template>
     <div>
-        <Head>
-            <Title>Contribution - OpenVue</Title>
-            <Meta name="description" content="Accessible Vue UI Components." />
-        </Head>
+        <DocSeo title="Contribution - OpenVue" description="How to contribute to OpenVue: report a bug, propose a component, set up the monorepo and open a pull request." />
 
         <div class="doc">
             <div class="doc-main">

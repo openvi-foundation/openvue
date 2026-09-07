@@ -11,8 +11,5 @@
         "@openvue/auto-import-resolver": "__OPENVUE_VERSION__",
         "@openvue/nuxt-module": "__OPENVUE_VERSION__",
         "vite": "^6.0.0"
-    },
-    "overrides": {
-        "primevue": "npm:openvue@__OPENVUE_VERSION__"
     }
 }

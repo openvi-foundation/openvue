@@ -294,6 +294,7 @@ const items = ref(Array.from({ length: 100000 }).map((_, i) => \`Item #\${i}\`))
 | class | any | - | Style class of the component. |
 | items | null \| any[] \| any[][] | - | An array of objects to display. |
 | itemSize | number \| number[] | - | The height/width of item according to orientation. |
+| getItemSize | null \| Function | - | Callback to determine the height of an item by its index in vertical orientation. |
 | scrollHeight | string | - | Height of the scroll viewport. |
 | scrollWidth | string | - | Width of the scroll viewport. |
 | orientation | HintedString<"both" \| "horizontal" \| "vertical"> | vertical | The orientation of scrollbar. |

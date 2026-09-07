@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Install OpenVue with Vite</Title>
-        <Meta name="description" content="Setting up OpenVue in a Vite project" />
-    </Head>
+    <DocSeo title="Install OpenVue with Vite" description="Setting up OpenVue in a Vite project" />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

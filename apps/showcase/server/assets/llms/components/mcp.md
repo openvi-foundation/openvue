@@ -1,6 +1,6 @@
-# mcp
+# MCP Server - OpenVue
 
-
+Model Context Protocol (MCP) server for OpenVue component library.
 
 ## Claude Code
 

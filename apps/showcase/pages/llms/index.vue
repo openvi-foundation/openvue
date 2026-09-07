@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>LLMs.txt - OpenVue</Title>
-        <Meta name="description" content="LLM-optimized documentation endpoints for OpenVue components." />
-    </Head>
+    <DocSeo title="LLMs.txt - OpenVue" description="LLM-optimized documentation endpoints for OpenVue components." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

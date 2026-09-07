@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>RTL - OpenVue</Title>
-        <Meta name="description" content="Right-to-Left direction support of OpenVue." />
-    </Head>
+    <DocSeo title="RTL - OpenVue" description="Right-to-Left direction support of OpenVue." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

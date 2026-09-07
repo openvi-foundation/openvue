@@ -1,0 +1,152 @@
+<template>
+    <DocSeo title="Vue UI Components - Full Component List" description="Browse every OpenVue component for Vue 3 and Nuxt: tables, forms, overlays, menus and charts, all accessible, themeable and MIT licensed." :json-ld="jsonLd" />
+    <div class="doc">
+        <div class="doc-main">
+            <div class="doc-intro">
+                <h1>Components</h1>
+                <p>{{ totalCount }} accessible, themeable components for Vue and Nuxt. Pick one to see live examples.</p>
+            </div>
+
+            <div class="components-toolbar">
+                <IconField class="components-search">
+                    <InputIcon class="pi pi-search" />
+                    <InputText v-model="query" placeholder="Search components" aria-label="Search components" fluid />
+                </IconField>
+            </div>
+
+            <Message v-if="!filteredCategories.length" severity="secondary" :closable="false">No component matches "{{ query }}".</Message>
+
+            <section v-for="category in filteredCategories" :key="category.name" class="components-category">
+                <h2 class="components-category-title">
+                    <i :class="['components-category-icon', 'pi', categoryIcon(category.name)]" aria-hidden="true"></i>
+                    <span>{{ category.name }}</span>
+                    <Badge :value="category.items.length" severity="secondary" />
+                </h2>
+                <div class="components-grid">
+                    <OpenVueNuxtLink v-for="item in category.items" :key="item.to" :to="item.to" class="components-card-link">
+                        <Card class="components-card">
+                            <template #title>{{ item.name }}</template>
+                            <template #content>
+                                <p class="components-card-description">{{ item.description }}</p>
+                                <div v-if="previews[item.name]" class="components-card-preview" inert aria-hidden="true">
+                                    <ClientOnly>
+                                        <component :is="previews[item.name]" />
+                                    </ClientOnly>
+                                </div>
+                            </template>
+                        </Card>
+                    </OpenVueNuxtLink>
+                </div>
+            </section>
+        </div>
+    </div>
+</template>
+
+<script>
+import descriptions from '@/assets/menu/component-descriptions.json';
+import menudata from '@/assets/menu/menu.json';
+import previews from '@/doc/preview';
+
+const CATEGORY_ICONS = {
+    Form: 'pi-pencil',
+    Button: 'pi-bolt',
+    Data: 'pi-table',
+    Panel: 'pi-clone',
+    Overlay: 'pi-window-maximize',
+    File: 'pi-upload',
+    Menu: 'pi-bars',
+    Messages: 'pi-comment',
+    Media: 'pi-images',
+    Misc: 'pi-star'
+};
+
+/* Only a single ?q= is a search term: `?q=a&q=b` arrives as an array and filters nothing. */
+function searchTerm(q) {
+    return typeof q === 'string' ? q : '';
+}
+
+export default {
+    data() {
+        return {
+            /* The homepage SearchAction sends crawlers and users here with ?q=, so the URL is the
+               source of truth on load and is kept in sync as the box is typed in. */
+            query: searchTerm(this.$route.query.q)
+        };
+    },
+    watch: {
+        /* replaceState rather than router.replace: the filter is client side, and a real
+           navigation would reset scroll on every keystroke. Because $route is left untouched,
+           this never fights the $route watcher below. */
+        query(value) {
+            if (!import.meta.client) return;
+
+            const url = new URL(window.location.href);
+
+            if (value) url.searchParams.set('q', value);
+            else url.searchParams.delete('q');
+
+            window.history.replaceState(window.history.state, '', url);
+        },
+        /* A client-side navigation to /components?q=... while already here reuses this instance,
+           so data() does not re-run and only this puts the new term into the box. */
+        '$route.query.q'(value) {
+            const next = searchTerm(value);
+
+            if (next !== this.query) this.query = next;
+        }
+    },
+    computed: {
+        /* Static, non-interactive samples: `inert` keeps them out of tab order and pointer events.
+           They mount client side only: 90 live components cannot all hydrate cleanly, and the
+           reserved min-height means nothing shifts when they appear. */
+        previews() {
+            return previews;
+        },
+        /* The sidebar menu is the single source of truth, so a new component shows up here for free. */
+        categories() {
+            const components = menudata.data.find((item) => item.name === 'Components');
+
+            return (components?.children ?? []).map((category) => ({
+                name: category.name,
+                items: (category.children ?? [])
+                    .filter((item) => item.to)
+                    .map((item) => ({
+                        name: item.name,
+                        to: item.to,
+                        description: descriptions[item.to] ?? ''
+                    }))
+            }));
+        },
+        /* An ItemList of every component page gives crawlers the full hub-to-spoke map in one
+           document, independent of how much of the grid a crawler bothers to render. */
+        jsonLd() {
+            return {
+                '@context': 'https://schema.org',
+                '@type': 'CollectionPage',
+                name: 'OpenVue Components',
+                url: `${SITE_URL}/components`,
+                mainEntity: {
+                    '@type': 'ItemList',
+                    numberOfItems: this.totalCount,
+                    itemListElement: this.categories.flatMap((category) => category.items).map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, url: `${SITE_URL}${item.to}` }))
+                }
+            };
+        },
+        totalCount() {
+            return this.categories.reduce((count, category) => count + category.items.length, 0);
+        },
+        filteredCategories() {
+            const query = this.query.trim().toLowerCase();
+
+            if (!query) return this.categories;
+
+            return this.categories.map((category) => ({ ...category, items: category.items.filter((item) => item.name.toLowerCase().includes(query) || item.description.toLowerCase().includes(query)) })).filter((category) => category.items.length);
+        }
+    },
+    methods: {
+        categoryIcon(name) {
+            return CATEGORY_ICONS[name] ?? 'pi-box';
+        }
+    }
+};
+</script>

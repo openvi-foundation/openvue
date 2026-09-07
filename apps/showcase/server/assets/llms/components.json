@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-08-11",
+  "generatedAt": "2026-08-29",
   "components": [
     {
       "name": "accordion",
@@ -8663,7 +8663,7 @@
             "name": "virtualScrollerOptions",
             "type": "any",
             "default": "-",
-            "description": "Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.\nNote: Currently only vertical orientation mode is supported."
+            "description": "Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.\nNote: Currently only vertical orientation mode is supported.\nWhen used with subheader row grouping, group headers are not sticky and group header/footer heights must be consistent."
           },
           {
             "name": "frozenValue",
@@ -20401,8 +20401,8 @@
     },
     {
       "name": "mcp",
-      "title": "mcp",
-      "description": "",
+      "title": "MCP Server - OpenVue",
+      "description": "Model Context Protocol (MCP) server for OpenVue component library.",
       "sections": [
         {
           "id": "claudecode",
@@ -32040,8 +32040,8 @@
     },
     {
       "name": "team",
-      "title": "team",
-      "description": "",
+      "title": "About Us - OpenVue",
+      "description": "Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.",
       "sections": [
         {
           "id": "getinvolved",
@@ -34269,7 +34269,7 @@
         {
           "id": "multiple",
           "label": "Multiple",
-          "description": "Multiple messages are displayed by passing an array to the show method.",
+          "description": "Multiple messages are displayed by calling the add method for each message.",
           "examples": {
             "basic": "<Toast />\n<Button label=\"Multiple\" @click=\"showMultiple()\" />",
             "options": "<template>\n    <div class=\"card flex justify-center\">\n        <Toast />\n        <Button label=\"Multiple\" @click=\"showMultiple()\" />\n    </div>\n</template>\n\n<script>\nexport default {\n    methods: {\n        showMultiple() {\n            this.$toast.add({ severity: 'success', summary: 'Success', detail: 'Message Content', life: 3000 });\n            this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3050 });\n            this.$toast.add({ severity: 'warn', summary: 'Warn', detail: 'Message Content', life: 3100 });\n            this.$toast.add({ severity: 'error', summary: 'Error', detail: 'Message Content', life: 3150 });\n        }\n    }\n};\n<\\/script>",
@@ -34284,6 +34284,16 @@
             "basic": "<Toast position=\"top-left\" group=\"tl\" />\n<Toast position=\"bottom-left\" group=\"bl\" />\n<Toast position=\"bottom-right\" group=\"br\" />\n\n<Button label=\"Top Left\" @click=\"showTopLeft\" />\n<Button label=\"Bottom Left\" @click=\"showBottomLeft\" />\n<Button label=\"Bottom Right\" @click=\"showBottomRight\" />",
             "options": "<template>\n    <div class=\"card flex justify-center\">\n        <Toast position=\"top-left\" group=\"tl\" />\n        <Toast position=\"bottom-left\" group=\"bl\" />\n        <Toast position=\"bottom-right\" group=\"br\" />\n\n        <div class=\"flex flex-wrap gap-2\">\n            <Button label=\"Top Left\" @click=\"showTopLeft\" />\n            <Button label=\"Bottom Left\" @click=\"showBottomLeft\" />\n            <Button label=\"Bottom Right\" @click=\"showBottomRight\" />\n        </div>\n    </div>\n</template>\n\n<script>\nexport default {\n    methods: {\n        showTopLeft() {\n            this.$toast.add({ severity: 'info', summary: 'Info Message', detail: 'Message Content', group: 'tl', life: 3000 });\n        },\n        showBottomLeft() {\n            this.$toast.add({ severity: 'warn', summary: 'Warn Message', detail: 'Message Content', group: 'bl', life: 3000 });\n        },\n        showBottomRight() {\n            this.$toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', group: 'br', life: 3000 });\n        }\n    }\n};\n<\\/script>",
             "composition": "<template>\n    <div class=\"card flex justify-center\">\n        <Toast position=\"top-left\" group=\"tl\" />\n        <Toast position=\"bottom-left\" group=\"bl\" />\n        <Toast position=\"bottom-right\" group=\"br\" />\n\n        <div class=\"flex flex-wrap gap-2\">\n            <Button label=\"Top Left\" @click=\"showTopLeft\" />\n            <Button label=\"Bottom Left\" @click=\"showBottomLeft\" />\n            <Button label=\"Bottom Right\" @click=\"showBottomRight\" />\n        </div>\n    </div>\n</template>\n\n<script setup>\nimport { useToast } from \"openvue/usetoast\";\nconst toast = useToast();\n\nconst showTopLeft = () => {\n    toast.add({ severity: 'info', summary: 'Info Message', detail: 'Message Content', group: 'tl', life: 3000 });\n};\n\nconst showBottomLeft = () => {\n    toast.add({ severity: 'warn', summary: 'Warn Message', detail: 'Message Content', group: 'bl', life: 3000 });\n};\n\nconst showBottomRight = () => {\n    toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', group: 'br', life: 3000 });\n};\n<\\/script>"
+          }
+        },
+        {
+          "id": "remove",
+          "label": "Remove",
+          "description": "A specific message is removed with the remove method by passing an object with the id of the message. Define an id of your own when adding the message to be able to reference it later.",
+          "examples": {
+            "basic": "<Toast />\n<Button label=\"Show\" @click=\"show()\" />\n<Button label=\"Remove\" severity=\"secondary\" @click=\"remove()\" />",
+            "options": "<template>\n    <div class=\"card flex justify-center\">\n        <Toast />\n        <div class=\"flex flex-wrap gap-2\">\n            <Button label=\"Show\" @click=\"show()\" />\n            <Button label=\"Remove\" severity=\"secondary\" @click=\"remove()\" />\n        </div>\n    </div>\n</template>\n\n<script>\nexport default {\n    methods: {\n        show() {\n            this.$toast.add({ id: 'info-message', severity: 'info', summary: 'Info', detail: 'Message Content' });\n        },\n        remove() {\n            this.$toast.remove({ id: 'info-message' });\n        }\n    }\n};\n<\\/script>",
+            "composition": "<template>\n    <div class=\"card flex justify-center\">\n        <Toast />\n        <div class=\"flex flex-wrap gap-2\">\n            <Button label=\"Show\" @click=\"show()\" />\n            <Button label=\"Remove\" severity=\"secondary\" @click=\"remove()\" />\n        </div>\n    </div>\n</template>\n\n<script setup>\nimport { useToast } from \"openvue/usetoast\";\n\nconst toast = useToast();\n\nconst show = () => {\n    toast.add({ id: 'info-message', severity: 'info', summary: 'Info', detail: 'Message Content' });\n};\n\nconst remove = () => {\n    toast.remove({ id: 'info-message' });\n};\n<\\/script>"
           }
         },
         {
@@ -38486,6 +38496,12 @@
             "description": "The height/width of item according to orientation."
           },
           {
+            "name": "getItemSize",
+            "type": "null | Function",
+            "default": "-",
+            "description": "Callback to determine the height of an item by its index in vertical orientation."
+          },
+          {
             "name": "scrollHeight",
             "type": "string",
             "default": "-",
@@ -38693,36 +38709,38 @@
       "name": "introduction",
       "path": "introduction",
       "title": "Introduction",
-      "description": "Next-generation UI Component suite for Vue.",
+      "description": "The Vue UI component library, continued.",
       "sections": [
         {
           "id": "accessibility",
           "label": "Accessibility",
-          "description": "OpenVue has WCAG 2.1 AA level compliance; each component has a dedicated accessibility section to document several aspects, including keyboard and screen reader support. Through communication channels such as GitHub or Discord, numerous accessibility experts worldwide continue to provide constant feedback to improve the accessibility features further. View the accessibility guide to learn more.",
+          "description": "OpenVue has WCAG 2.1 AA level compliance, and each component has a dedicated accessibility section documenting keyboard and screen reader support. Accessibility regressions are treated as bugs, so please report anything you run into. View the accessibility guide to learn more.",
           "examples": null
         },
         {
-          "id": "addons",
-          "label": "Add Ons",
-          "description": "OpenVue does not require financial sponsorships from its community and there is no paywall when using OpenVue.",
-          "examples": null
+          "id": "migration",
+          "label": "Migrating from PrimeVue",
+          "description": "An existing PrimeVue v4 project moves over with a single command, no manual find and replace required. The tool shows you a plan first, covering the detected package manager, the PrimeVue version and every file it intends to touch, then asks before writing anything. It renames dependencies, rewrites imports and leaves a single reviewable diff. Run it with --dry for a preview that writes nothing, and see the migration guide for the full walkthrough.",
+          "examples": {
+            "basic": "npx @openvue/migrate"
+          }
         },
         {
           "id": "overview",
           "label": "Overview",
-          "description": "OpenVue is a complete UI suite for Vue.js consisting of a rich set of UI components. The project's primary goal is to boost developer productivity by offering reusable solutions that are easy to tune and customize as an in-house library. OpenVue is maintained by Openvi Foundation , a community-driven organization dedicated to keeping open source UI tooling free and available to every Vue developer, forever.",
+          "description": "OpenVue is a complete UI suite for Vue.js, consisting of a rich set of components that are easy to tune and customize as an in-house library. The library is a community-maintained continuation of PrimeVue, picked up after it was archived by its original maintainers. Everything you know from PrimeVue v4 is here, under a name and a maintenance path that are not tied to a single company. OpenVue is not affiliated with PrimeTek or PrimeUI. Development is led by Openvi Foundation , an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.",
           "examples": null
         },
         {
           "id": "passthrough",
           "label": "Pass Through",
-          "description": "PassThrough is an innovative API to provide access to the internal DOM elements to add arbitrary attributes. In general, traditional UI component libraries encapsulate UI and logic with limited APIs that makes the developers dependant on the library maintainer to extend this API by adding new props or events. With Pass Through this limitation has been eliminated since, you'll be able to access the internal of the components to add events and attributes. Some common use-cases are adding test attributes, additional aria attributes, custom events and styling.",
+          "description": "Pass Through is an API that provides access to the internal DOM elements of a component to add arbitrary attributes. Traditional UI component libraries encapsulate their markup behind limited APIs, which leaves you waiting on a maintainer to add the prop or event you need. With Pass Through that limitation is gone, since you can reach the internals of a component yourself. Common use cases are test attributes, additional aria attributes, custom events and styling.",
           "examples": null
         },
         {
           "id": "theming",
           "label": "Theming",
-          "description": "OpenVue can be styled in two modes; styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants of PrimeOne design like Aura, Lara or Nora presets. Unstyled mode on the other hand, leaves the styling to you while implementing the functionality and accessibility. Unstyled mode provides full control over the styling with no boundaries by implementing a pluggable architecture to utilize CSS libraries like Tailwind CSS, Bootstrap, Bulma or your own custom CSS. We've even further built the Volt UI library that styles the components with utility classes of Tailwind. This design is future proof as OpenVue can be styled with any CSS library without actually depending on it in its core.",
+          "description": "OpenVue can be styled in two modes, styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants such as the Aura, Lara, Material and Nora presets, all driven by design tokens rather than hardcoded CSS. Unstyled mode leaves the styling to you while keeping the functionality and accessibility intact, through a pluggable architecture that works with CSS libraries like Tailwind CSS, Bootstrap and Bulma, or with your own custom CSS. This design is future proof, as OpenVue can be styled with any CSS library without depending on one in its core.",
           "examples": null
         }
       ]
@@ -39198,9 +39216,9 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenIcons is available at npm, run the following command to download it to your project. OpenIcons is currently in beta, so install it with the beta tag.",
+          "description": "OpenIcons is available at npm, run the following command to download it to your project.",
           "examples": {
-            "basic": "npm install @openvue/openicons@beta"
+            "basic": "npm install @openvue/openicons"
           }
         },
         {
@@ -39494,9 +39512,9 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
+          "description": "OpenVue is available for download on npm registry . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
-            "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes"
+            "basic": "# Using npm\nnpm install openvue@rc @openvue/themes\n\n# Using yarn\nyarn add openvue@rc @openvue/themes\n\n# Using pnpm\npnpm add openvue@rc @openvue/themes"
           }
         },
         {
@@ -39548,7 +39566,7 @@
         {
           "id": "options",
           "label": "Options",
-          "description": "Option Description [dir] Directory to migrate (defaults to the current directory) --mode &lt;mode&gt; full , files-only or dry ; runs without prompting --dry Report what would change without writing any files --no-install Rewrite files but do not run the package manager install --no-alias Do not add the primevue to openvue override --force Do not stop on an uncommitted git working tree --yes , -y Skip prompts and use defaults (full migration) In interactive mode a dirty git tree only asks for confirmation. Non-interactively (with a mode flag, --yes or in CI) it stops unless you pass --force , so the migration stays a single reviewable, revertible diff.",
+          "description": "Option Description [dir] Directory to migrate (defaults to the current directory) --mode &lt;mode&gt; full , files-only or dry ; runs without prompting --dry Report what would change without writing any files --no-install Rewrite files but do not run the package manager install --force Do not stop on an uncommitted git working tree --yes , -y Skip prompts and use defaults (full migration) In interactive mode a dirty git tree only asks for confirmation. Non-interactively (with a mode flag, --yes or in CI) it stops unless you pass --force , so the migration stays a single reviewable, revertible diff.",
           "examples": null
         },
         {
@@ -39566,15 +39584,15 @@
         {
           "id": "try",
           "label": "Try Without Migrating",
-          "description": "If you just want to evaluate OpenVue first, add only the compatibility override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, pnpm.overrides for pnpm, or resolutions for yarn. Once you decide to stay, run npx @openvue/migrate for the real rename.",
+          "description": "If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json . Once you decide to stay, run npx @openvue/migrate for the real rename.",
           "examples": {
-            "basic": "{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@0.0.1-beta.0\"\n    }\n}"
+            "basic": "{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@1.0.0-rc.0\"\n    }\n}"
           }
         },
         {
           "id": "usage",
           "label": "Usage",
-          "description": "Migration is a single command, run from the root of your project. For monorepos, run it at the workspace root so overrides land in the right place. Run in a terminal, it shows a plan with the detected package manager, PrimeVue version, the files and references it will change, and your git status, then asks how to proceed: Full migration : rewrite files, add the compatibility override, and run your package manager's install (detected from the lockfile) so the project builds immediately. Files only : rewrite files and dependencies but leave node_modules alone; you run the install yourself. Dry run : show everything, write nothing. Pass a mode flag ( --mode , --dry , --no-install ) or --yes to skip the prompt; any non-terminal run such as CI or piped output is non-interactive as well. Already installed OpenVue yourself? If openvue is found in your package.json or node_modules , the tool switches to sources-only mode: dependencies and node_modules are left completely untouched, no install runs, and only source-file imports are rewritten.",
+          "description": "Migration is a single command, run from the root of your project. For monorepos, run it at the workspace root. Run in a terminal, it shows a plan with the detected package manager, PrimeVue version, the files and references it will change, and your git status, then asks how to proceed: Full migration : rewrite files and run your package manager's install (detected from the lockfile) so the project builds immediately. Files only : rewrite files and dependencies but leave node_modules alone; you run the install yourself. Dry run : show everything, write nothing. Pass a mode flag ( --mode , --dry , --no-install ) or --yes to skip the prompt; any non-terminal run such as CI or piped output is non-interactive as well. Already installed OpenVue yourself? If openvue is found in your package.json or node_modules , the tool switches to sources-only mode: dependencies and node_modules are left completely untouched, no install runs, and only source-file imports are rewritten.",
           "examples": {
             "basic": "npx @openvue/migrate"
           }
@@ -39582,7 +39600,13 @@
         {
           "id": "whatitdoes",
           "label": "What It Does",
-          "description": "Renames dependencies in every package.json , monorepos included: dependencies , devDependencies , peerDependencies , optionalDependencies , resolutions , overrides and pnpm.overrides , including selector keys like **&#47;primevue or primevue@^4 . workspace: , catalog: and npm: protocol values are preserved, and pnpm-workspace.yaml catalogs are rewritten too. Rewrites module specifiers in .js , .ts , .vue , .jsx , .tsx , .astro , .mdx and related files: static imports, import type , require() , dynamic import() , Nuxt modules arrays, Vite optimizeDeps and transpile entries, and generated components.d.ts files. A bare primevue string is only rewritten in import positions, so runtime data like provider: 'primevue' is never touched. Adds a compatibility override , \"primevue\": \"npm:openvue@&lt;version&gt;\" , so third-party libraries that depend or peer-depend on primevue resolve to OpenVue. Remove it once your whole dependency graph is OpenVue-native, or skip it with --no-alias . Audits what's left : after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references and lists each one with file and line, so it never reports success while actionable references remain. The rename mapping: From To primevue , primevue/* openvue , openvue/* @primevue/core , @primevue/forms , @primevue/icons , @primevue/themes , @primevue/nuxt-module , @primevue/auto-import-resolver , @primevue/metadata , @primevue/mcp same names under @openvue/*",
+          "description": "Renames dependencies in every package.json , monorepos included: dependencies , devDependencies , peerDependencies , optionalDependencies , resolutions , overrides and pnpm.overrides , including selector keys like **&#47;primevue or primevue@^4 . workspace: , catalog: and npm: protocol values are preserved, and pnpm-workspace.yaml catalogs are rewritten too. Rewrites module specifiers in .js , .ts , .vue , .jsx , .tsx , .astro , .mdx and related files: static imports, import type , require() , dynamic import() , Nuxt modules arrays, Vite optimizeDeps and transpile entries, and generated components.d.ts files. A bare primevue string is only rewritten in import positions, so runtime data like provider: 'primevue' is never touched. Audits what's left : after rewriting, it scans sources, styles, HTML and tsconfig files for surviving PrimeVue references and lists each one with file and line, so it never reports success while actionable references remain. The rename mapping: From To primevue , primevue/* openvue , openvue/* @primevue/core , @primevue/forms , @primevue/icons , @primevue/themes , @primevue/nuxt-module , @primevue/auto-import-resolver , @primevue/metadata , @primevue/mcp same names under @openvue/*",
+          "examples": null
+        },
+        {
+          "id": "faq",
+          "label": "FAQ",
+          "description": "Is OpenVue a drop-in replacement for PrimeVue? Yes. OpenVue is a fork of PrimeVue 4.5.5 that keeps the public API unchanged: usePrimeVue , PrimeVueResolver , the primevue Nuxt config key, p- prefixed CSS classes and pass-through options all work exactly as before. Migrating is a package rename, not a rewrite. How do I migrate a PrimeVue project to OpenVue? Run @openvue/migrate from the root of your project. It detects your package manager and PrimeVue version, shows you a plan of every file and reference it will change, and only then rewrites imports and dependencies. Monorepos, Vite, Nuxt and Laravel projects are supported, and a dry run mode writes nothing. What licence is OpenVue released under? OpenVue is MIT licensed. PrimeVue 4.5.5 was the last release published under an open source licence, and OpenVue continues that work in the open with bug fixes, accessibility and performance improvements, and support for current Vue and Nuxt releases. Can I migrate from PrimeVue v3? Not directly. The fork point is PrimeVue 4.x, and the tool stops without changing anything if it finds a different major. Apply the PrimeVue v4 migration guide first, then run @openvue/migrate .",
           "examples": null
         }
       ]
@@ -39602,9 +39626,9 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
+          "description": "OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
-            "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\nnpm install --save-dev @openvue/nuxt-module@beta\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\nyarn add --dev @openvue/nuxt-module@beta\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes\npnpm add -D @openvue/nuxt-module@beta"
+            "basic": "# Using npm\nnpm install openvue@rc @openvue/themes\nnpm install --save-dev @openvue/nuxt-module@rc\n\n# Using yarn\nyarn add openvue@rc @openvue/themes\nyarn add --dev @openvue/nuxt-module@rc\n\n# Using pnpm\npnpm add openvue@rc @openvue/themes\npnpm add -D @openvue/nuxt-module@rc"
           }
         },
         {
@@ -39710,9 +39734,9 @@
         {
           "id": "download",
           "label": "Download",
-          "description": "OpenVue is available for download on npm registry . OpenVue is currently in beta . The API is stable; we are focused on polish and feedback before the first stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
+          "description": "OpenVue is available for download on npm registry . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.",
           "examples": {
-            "basic": "# Using npm\nnpm install openvue@beta @openvue/themes\n\n# Using yarn\nyarn add openvue@beta @openvue/themes\n\n# Using pnpm\npnpm add openvue@beta @openvue/themes"
+            "basic": "# Using npm\nnpm install openvue@rc @openvue/themes\n\n# Using yarn\nyarn add openvue@rc @openvue/themes\n\n# Using pnpm\npnpm add openvue@rc @openvue/themes"
           }
         },
         {
@@ -39870,7 +39894,7 @@
         {
           "id": "introduction",
           "label": "Introduction",
-          "description": "OpenVue is an open source Vue UI library, dedicated to providing high-quality, versatile, and accessible UI components that help developers build better applications faster. Development Setup To begin with, clone the OpenVue repository from GitHub: Then run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase .",
+          "description": "OpenVue is an open source Vue UI component library, and a community-maintained continuation of PrimeVue after it was archived by its original maintainers. It is led by openvi-foundation , an independent group of developers who run this library in production and intend to keep it maintained, stable and open. OpenVue is not affiliated with PrimeTek or PrimeUI. Contributions of every size move the library forward. A bug report with a clear reproduction, a correction to a documentation page and a pull request are all worth sending. This guide covers how to set the project up locally and how the codebase is organized. Development Setup To begin with, clone the OpenVue repository from GitHub: The repository is a pnpm workspace, so install pnpm first, then install the dependencies and run the showcase in your local environment at http://localhost:3000/ . Project Structure OpenVue utilizes a monorepo architecture, the libraries are located at packages folder and the website is at apps/showcase . Note that the main component package lives in packages/primevue , a folder name kept from the fork, and is published as openvue .",
           "examples": null
         },
         {

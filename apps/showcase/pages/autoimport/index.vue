@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Auto Import - OpenVue</Title>
-        <Meta name="description" content="On-demand OpenVue components with auto imports and tree-shaking." />
-    </Head>
+    <DocSeo title="Auto Import - OpenVue" description="On-demand OpenVue components with auto imports and tree-shaking." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

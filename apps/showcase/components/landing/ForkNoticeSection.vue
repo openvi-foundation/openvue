@@ -8,8 +8,8 @@
                     <div class="fork-notice-main p-8 lg:p-12">
                         <h3 class="fork-notice-title">Still open, still maintained</h3>
                         <p class="fork-notice-text">
-                            PrimeVue 4.5.5 is the last release published under an open source license. It powers dashboards, internal tools and products across the Vue ecosystem, and a huge amount of work went into it. OpenVue continues that
-                            work in the open under MIT, with bug fixes, accessibility and performance improvements, support for current Vue and Nuxt releases, and new components.
+                            PrimeVue 4.5.5 is the last release published under an open source license. It powers dashboards, internal tools and products across the Vue ecosystem, and a huge amount of work went into it. OpenVue continues that work in
+                            the open under MIT, with bug fixes, accessibility and performance improvements, and support for current Vue and Nuxt releases.
                         </p>
                         <div class="fork-notice-actions">
                             <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">

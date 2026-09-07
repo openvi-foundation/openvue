@@ -1086,6 +1086,24 @@ function processGuidePage(pageName) {
             if (stat.isDirectory()) {
                 // Recurse into subdirectories
                 processDocDir(entryPath, entry + '/');
+            } else if (entry === 'faq.json') {
+                // The FAQ prose lives in JSON so the page and its FAQPage structured data share one source.
+                const faqEntries = JSON.parse(fs.readFileSync(entryPath, 'utf-8'));
+                const sectionInfo = metadata.sections.find((s) => s.id === 'faq');
+
+                page.sections.push({
+                    id: prefix + 'faq',
+                    label: sectionInfo ? sectionInfo.label : 'FAQ',
+                    description: faqEntries
+                        .map((faq) =>
+                            `${faq.question} ${faq.answer}`
+                                .replace(/<[^>]+>/g, ' ')
+                                .replace(/\s+/g, ' ')
+                                .trim()
+                        )
+                        .join(' '),
+                    examples: null
+                });
             } else if (entry.endsWith('.vue') && entry.includes('Doc')) {
                 const sectionId = entry.replace('Doc.vue', '').toLowerCase();
                 const docData = parseVueDocFile(entryPath);

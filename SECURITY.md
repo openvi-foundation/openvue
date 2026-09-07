@@ -26,12 +26,12 @@ OpenVue is maintained by volunteers. We take security reports seriously, but we 
 
 ## Supported versions
 
-OpenVue is currently in beta and all packages share a single version. Only the most recent release receives fixes.
+OpenVue is currently a release candidate and all packages share a single version. Only the most recent release receives fixes.
 
-| Version               | Supported |
-| --------------------- | --------- |
-| Latest `beta` release | Yes       |
-| Earlier prereleases   | No        |
+| Version             | Supported |
+| ------------------- | --------- |
+| Latest `rc` release | Yes       |
+| Earlier prereleases | No        |
 
 Once OpenVue reaches a stable release, this table will be updated to describe the supported release line.
 

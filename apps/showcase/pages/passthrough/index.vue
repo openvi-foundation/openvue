@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>OpenVue - Pass Through</Title>
-        <Meta name="description" content="The Pass Through attributes is an API to access the internal DOM Structure of the components." />
-    </Head>
+    <DocSeo title="OpenVue - Pass Through" description="The Pass Through attributes is an API to access the internal DOM Structure of the components." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

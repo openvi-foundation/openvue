@@ -119,6 +119,28 @@ export default [
         }
     },
     {
+        /* Nuxt auto-imports these into showcase code. Scoped to the app so a library file that
+           forgets `import { computed } from 'vue'` still fails no-undef. `.vue` is deliberately
+           not matched: this flat config has no vue-eslint-parser, so those files are not linted. */
+        files: ['apps/showcase/**/*.{js,mjs}'],
+        languageOptions: {
+            globals: {
+                computed: 'readonly',
+                ref: 'readonly',
+                useRoute: 'readonly',
+                useRouter: 'readonly',
+                useHead: 'readonly',
+                useSeoMeta: 'readonly',
+                definePageMeta: 'readonly',
+                useSeo: 'readonly',
+                useGitHubStars: 'readonly',
+                absoluteUrl: 'readonly',
+                SITE_URL: 'readonly',
+                SITE_NAME: 'readonly'
+            }
+        }
+    },
+    {
         files: ['**/*.{js,mjs,cjs}'],
         plugins: {
             vue: eslintPluginVue

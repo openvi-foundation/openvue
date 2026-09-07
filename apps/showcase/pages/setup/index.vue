@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Setup - OpenVue</Title>
-        <Meta name="description" content="Setup guides for popular development environments." />
-    </Head>
+    <DocSeo title="Setup - OpenVue" description="Setup guides for popular development environments." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

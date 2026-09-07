@@ -1,26 +1,111 @@
-.layout-footer {
-    padding: 2rem 4rem;
-    margin-top: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    font-weight: 500;
-    color: var(--text-color);
-    border-top: 1px solid var(--border-color);
-
+.site-footer {
     a {
-        color: var(--primary-text-color);
-        font-weight: 700;
-        transition: outline-color .2s, border-color .2s;
-        outline-color: transparent;
-        border-radius: 6px;
-
         @include focus-visible();
+    }
+
+    /* Lines up with .layout-content so the footer sits on the same wrapper as the page above it. */
+    .footer-container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .footer-cta {
+        background-color: var(--ground-background);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 4rem 0;
+    }
+
+    .footer-cta-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin: 0;
+    }
+
+    .footer-cta-text {
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        margin: 0.75rem 0 0 0;
+    }
+
+    .footer-main {
+        background-color: var(--card-background);
+        padding: 4rem 0;
+    }
+
+    .footer-logo {
+        height: 28px;
+        width: auto;
+    }
+
+    .footer-tagline {
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        margin: 1.25rem 0 0 0;
+        max-width: 22rem;
+        line-height: 1.5;
+    }
+
+    .footer-group-title {
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-link {
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        border-radius: var(--rounded-base);
+        transition: color 0.2s;
 
         &:hover {
-            text-decoration: underline;
+            color: var(--primary-color);
         }
-        
     }
+
+    .footer-bottom {
+        background-color: var(--card-background);
+        padding-bottom: 3rem;
+
+        .footer-container {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+    }
+
+    .footer-note {
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        font-size: 0.875rem;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .site-footer .footer-container {
+        max-width: 1728px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .site-footer .footer-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .site-footer .footer-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* The landing sections are centred on a narrower measure, so its footer follows them instead. */
+.landing .site-footer .footer-container {
+    max-width: 1250px;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }

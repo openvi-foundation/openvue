@@ -64,6 +64,15 @@ describe('MegaMenu.vue', () => {
         expect(wrapper.findAll('li.p-megamenu-item')[0].findAll('span.p-megamenu-item-label')[0].text()).toBe('Videos');
         expect(wrapper.findAll('li.p-megamenu-submenu-label')[0].text()).toBe('Video 1');
         expect(wrapper.findAll('li.p-megamenu-item')[1].findAll('span.p-megamenu-item-label')[0].text()).toBe('Video 1.1');
+
+        const menuitems = wrapper.findAll('[role="menuitem"]');
+
+        expect(menuitems.length).toBeGreaterThan(0);
+        menuitems.forEach((item) => {
+            expect(item.attributes('aria-level')).toBeUndefined();
+            expect(item.attributes('aria-setsize')).toBeTruthy();
+            expect(item.attributes('aria-posinset')).toBeTruthy();
+        });
     });
 
     it('should select item', async () => {

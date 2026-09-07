@@ -1,4 +1,4 @@
-import { isUnknownScopedPackage, OPENVUE_VERSION, renameSpecifier, versionForRenamed } from './mappings';
+import { isUnknownScopedPackage, renameSpecifier, versionForRenamed } from './mappings';
 
 export interface SourceRewriteOptions {
     // In config files (nuxt.config.ts, vite.config.mjs, ...) a bare 'primevue' string is a package
@@ -186,46 +186,6 @@ export function rewritePackageJson(text: string): PackageJsonRewriteResult {
     if (!changed) return { text, changed: false, ...result, oldPrimevueRange };
 
     return { text: serializePackageJson(pkg, text), changed: true, ...result, oldPrimevueRange };
-}
-
-export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
-
-export interface AliasRewriteResult {
-    text: string;
-    added: boolean;
-}
-
-/**
- * Adds a package-manager override aliasing `primevue` to `openvue`, so third-party libraries that
- * depend on or peer-depend on `primevue` resolve to OpenVue after the migration. Without this,
- * rename-only migration breaks any project whose dependency graph references PrimeVue transitively.
- */
-export function addCompatAlias(text: string, packageManager: PackageManager): AliasRewriteResult {
-    const pkg = JSON.parse(text);
-    const alias = `npm:openvue@${OPENVUE_VERSION}`;
-
-    if (packageManager === 'yarn') {
-        pkg.resolutions = pkg.resolutions ?? {};
-
-        if (pkg.resolutions['primevue'] !== undefined) return { text, added: false };
-
-        pkg.resolutions['primevue'] = alias;
-    } else if (packageManager === 'pnpm') {
-        pkg.pnpm = pkg.pnpm ?? {};
-        pkg.pnpm.overrides = pkg.pnpm.overrides ?? {};
-
-        if (pkg.pnpm.overrides['primevue'] !== undefined) return { text, added: false };
-
-        pkg.pnpm.overrides['primevue'] = alias;
-    } else {
-        pkg.overrides = pkg.overrides ?? {};
-
-        if (pkg.overrides['primevue'] !== undefined) return { text, added: false };
-
-        pkg.overrides['primevue'] = alias;
-    }
-
-    return { text: serializePackageJson(pkg, text), added: true };
 }
 
 export interface YamlRewriteResult {

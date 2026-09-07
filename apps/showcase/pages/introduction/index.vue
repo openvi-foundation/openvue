@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>Introduction - OpenVue</Title>
-        <Meta name="description" content="The Vue UI component library, continued." />
-    </Head>
+    <DocSeo title="Introduction - OpenVue" description="The Vue UI component library, continued." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

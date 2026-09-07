@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>PrimeFlex - OpenVue</Title>
-        <Meta name="description" content="The PrimeFlex CSS library is being sunset and will no longer receive active development or maintenance." />
-    </Head>
+    <DocSeo title="PrimeFlex - OpenVue" description="The PrimeFlex CSS library is being sunset and will no longer receive active development or maintenance." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

@@ -156,6 +156,17 @@ describe('ContextMenu.vue', () => {
         expect(wrapper.find('.p-contextmenu.p-component').exists()).toBe(true);
         expect(wrapper.findAll('.p-contextmenu-item').length).toBe(5);
         expect(wrapper.findAll('.p-contextmenu-item-label')[0].text()).toBe('File');
+
+        const menuitems = wrapper.findAll('[role="menuitem"]');
+
+        expect(menuitems.length).toBe(5);
+        menuitems.forEach((item) => {
+            expect(item.attributes('aria-level')).toBeUndefined();
+            expect(item.attributes('aria-setsize')).toBe('5');
+        });
+        expect(menuitems[0].attributes('aria-posinset')).toBe('1');
+        expect(menuitems[4].attributes('aria-label')).toBe('Quit');
+        expect(menuitems[4].attributes('aria-posinset')).toBe('5');
     });
 
     it('should hide menu', async () => {

@@ -26,10 +26,6 @@
                         <td>Rewrite files but do not run the package manager install</td>
                     </tr>
                     <tr>
-                        <td><i>--no-alias</i></td>
-                        <td>Do not add the <i>primevue</i> to <i>openvue</i> override</td>
-                    </tr>
-                    <tr>
                         <td><i>--force</i></td>
                         <td>Do not stop on an uncommitted git working tree</td>
                     </tr>

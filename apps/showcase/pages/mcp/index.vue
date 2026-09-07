@@ -1,8 +1,5 @@
 <template>
-    <Head>
-        <Title>MCP Server - OpenVue</Title>
-        <Meta name="description" content="Model Context Protocol (MCP) server for OpenVue component library." />
-    </Head>
+    <DocSeo title="MCP Server - OpenVue" description="Model Context Protocol (MCP) server for OpenVue component library." />
     <div class="doc">
         <div class="doc-main">
             <div class="doc-intro">

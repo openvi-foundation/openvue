@@ -40,7 +40,6 @@ describe('ToastService', () => {
         expect(first).not.toBe(second);
     });
 
-
     it('should remove the message with the returned id', async () => {
         const id = wrapper.vm.$toast.add({ severity: 'info', summary: 'Message', detail: 'Message Content' });
 
