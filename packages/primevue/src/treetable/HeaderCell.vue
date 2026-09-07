@@ -21,6 +21,45 @@
                 <component :is="(column.children && column.children.sorticon) || sortableColumnIcon" :sorted="sortState.sorted" :sortOrder="sortState.sortOrder" :class="cx('sortIcon')" v-bind="getColumnPT('sortIcon')" />
             </span>
             <Badge v-if="isMultiSorted()" :class="cx('pcSortBadge')" v-bind="getColumnPT('pcSortBadge')" :value="getMultiSortMetaIndex() + 1" size="small" />
+            <TTColumnFilter
+                v-if="filterDisplay === 'menu' && column.children && column.children.filter"
+                :field="columnProp('filterField') || columnProp('field')"
+                :type="columnProp('dataType')"
+                display="menu"
+                :showMenu="columnProp('showFilterMenu')"
+                :filterElement="column.children && column.children.filter"
+                :filterHeaderTemplate="column.children && column.children.filterheader"
+                :filterFooterTemplate="column.children && column.children.filterfooter"
+                :filterClearTemplate="column.children && column.children.filterclear"
+                :filterApplyTemplate="column.children && column.children.filterapply"
+                :filterIconTemplate="column.children && column.children.filtericon"
+                :filterAddIconTemplate="column.children && column.children.filteraddicon"
+                :filterRemoveIconTemplate="column.children && column.children.filterremoveicon"
+                :filterClearIconTemplate="column.children && column.children.filterclearicon"
+                :filters="filters"
+                :filtersStore="filtersStore"
+                :filterInputProps="filterInputProps"
+                :filterButtonProps="filterButtonProps"
+                @filter-change="$emit('filter-change', $event)"
+                @filter-apply="$emit('filter-apply')"
+                :filterMenuStyle="columnProp('filterMenuStyle')"
+                :filterMenuClass="columnProp('filterMenuClass')"
+                :showOperator="columnProp('showFilterOperator')"
+                :showClearButton="columnProp('showClearButton')"
+                :showApplyButton="columnProp('showApplyButton')"
+                :showMatchModes="columnProp('showFilterMatchModes')"
+                :showAddButton="columnProp('showAddButton')"
+                :matchModeOptions="columnProp('filterMatchModeOptions')"
+                :maxConstraints="columnProp('maxConstraints')"
+                @operator-change="$emit('operator-change', $event)"
+                @matchmode-change="$emit('matchmode-change', $event)"
+                @constraint-add="$emit('constraint-add', $event)"
+                @constraint-remove="$emit('constraint-remove', $event)"
+                @apply-click="$emit('apply-click', $event)"
+                :column="column"
+                :unstyled="unstyled"
+                :pt="pt"
+            />
         </div>
     </th>
 </template>
@@ -34,12 +73,13 @@ import SortAmountDownIcon from '@openvue/icons/sortamountdown';
 import SortAmountUpAltIcon from '@openvue/icons/sortamountupalt';
 import Badge from 'openvue/badge';
 import { mergeProps } from 'vue';
+import ColumnFilter from './ColumnFilter.vue';
 
 export default {
     name: 'HeaderCell',
     hostName: 'TreeTable',
     extends: BaseComponent,
-    emits: ['column-click', 'column-resizestart'],
+    emits: ['column-click', 'column-resizestart', 'filter-change', 'filter-apply', 'operator-change', 'matchmode-change', 'constraint-add', 'constraint-remove', 'apply-click'],
     props: {
         column: {
             type: Object,
@@ -67,6 +107,26 @@ export default {
         },
         index: {
             type: Number,
+            default: null
+        },
+        filterDisplay: {
+            type: String,
+            default: null
+        },
+        filters: {
+            type: Object,
+            default: null
+        },
+        filtersStore: {
+            type: Object,
+            default: null
+        },
+        filterInputProps: {
+            type: null,
+            default: null
+        },
+        filterButtonProps: {
+            type: null,
             default: null
         }
     },
@@ -235,6 +295,7 @@ export default {
     },
     components: {
         Badge,
+        TTColumnFilter: ColumnFilter,
         SortAltIcon: SortAltIcon,
         SortAmountUpAltIcon: SortAmountUpAltIcon,
         SortAmountDownIcon: SortAmountDownIcon
