@@ -1119,54 +1119,355 @@ describe('DataTable.vue', () => {
         expect(wrapper.find('.p-datatable-column-resize-indicator').attributes().style).toContain('display: none;');
     });
 
-    it('should preserve resized widths when a column is hidden', async () => {
+    // column width identity
+
+    // Reasoning: mirrors resizeTableCells, which measures every header cell the selector finds, so a filter row is included exactly as it is at runtime.
+    const seedResizedWidths = (table, widthByColumn) => {
+        const headers = table.$refs.table.querySelectorAll('thead[data-pc-section="thead"] > tr > th');
+        const widths = [...headers].map((header, index) => widthByColumn[index % widthByColumn.length]);
+
+        const columnCount = table.$refs.table.querySelectorAll('thead[data-pc-section="thead"] > tr:first-child > th').length;
+
+        table.cacheColumnWidthsByKey(widths.slice(0, columnCount));
+        table.addColumnWidthStyles(widths);
+    };
+
+    const appliedWidths = (table) => {
+        const css = table.styleElement ? table.styleElement.textContent : '';
+
+        return [...css.matchAll(/th:nth-child\((\d+)\)[\s\S]*?width:\s*([\d.]+)px/g)].map((match) => Number(match[2]));
+    };
+
+    const mountToggleTable = (attrs = '') => {
         const TestComponent = defineComponent({
             components: { Column, DataTable },
-            data: () => ({
-                columns: [
-                    { field: 'id', header: 'Id' },
-                    { field: 'code', header: 'Code' },
-                    { field: 'name', header: 'Name' }
-                ],
-                rows: smallData
-            }),
+            data: () => ({ hideCode: false, rows: smallData }),
             template: `
-                <DataTable ref="table" :value="rows" resizableColumns>
-                    <Column v-for="column in columns" :key="column.field" :field="column.field" :header="column.header" />
+                <DataTable ref="table" :value="rows" resizableColumns ${attrs}>
+                    <Column field="id" header="Id" />
+                    <Column v-if="!hideCode" field="code" header="Code" />
+                    <Column field="name" header="Name" />
                 </DataTable>
             `
         });
 
-        wrapper = mount(TestComponent, {
-            global: {
-                plugins: [PrimeVue]
-            }
-        });
+        return mount(TestComponent, { global: { plugins: [PrimeVue] } });
+    };
+
+    it('should preserve resized widths when a column is hidden and when it comes back', async () => {
+        wrapper = mountToggleTable();
 
         const table = wrapper.vm.$refs.table;
 
-        table.cacheColumnWidthsByKey([80, 160, 240]);
-        await wrapper.setData({ columns: wrapper.vm.columns.filter((column) => column.field !== 'code') });
+        seedResizedWidths(table, [80, 160, 240]);
+
+        await wrapper.setData({ hideCode: true });
         await nextTick();
 
-        expect(table.styleElement.textContent).toContain('nth-child(1)');
-        expect(table.styleElement.textContent).toContain('width: 80px');
-        expect(table.styleElement.textContent).toContain('nth-child(2)');
-        expect(table.styleElement.textContent).toContain('width: 240px');
-        expect(table.styleElement.textContent).not.toContain('width: 160px');
+        expect(appliedWidths(table)).toEqual([80, 240]);
 
-        await wrapper.setData({
-            columns: [
-                { field: 'id', header: 'Id' },
-                { field: 'code', header: 'Code' },
-                { field: 'name', header: 'Name' }
-            ]
+        await wrapper.setData({ hideCode: false });
+        await nextTick();
+
+        expect(appliedWidths(table)).toEqual([80, 160, 240]);
+    });
+
+    it('should preserve resized widths when a filter row is displayed', async () => {
+        wrapper = mountToggleTable(`filterDisplay="row" :filters="{ id: { value: null, matchMode: 'contains' } }"`);
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        await wrapper.setData({ hideCode: true });
+        await nextTick();
+
+        expect(appliedWidths(table).slice(0, 2)).toEqual([80, 240]);
+    });
+
+    it('should not remap widths when two columns share a field', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ hideCode: false, rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns>
+                    <Column field="name" header="Name A" />
+                    <Column v-if="!hideCode" field="code" header="Code" />
+                    <Column field="name" header="Name B" />
+                </DataTable>
+            `
         });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        expect(table.columnWidthsByKey).toBeFalsy();
+
+        await wrapper.setData({ hideCode: true });
         await nextTick();
 
-        expect(table.styleElement.textContent).toContain('width: 80px');
-        expect(table.styleElement.textContent).toContain('width: 160px');
-        expect(table.styleElement.textContent).toContain('width: 240px');
+        // Reasoning: the widths stay as they were rather than collapsing both name columns onto one cached entry.
+        expect(appliedWidths(table)).toEqual([80, 160, 240]);
+    });
+
+    it('should keep the identified widths when a neighbouring column has no columnKey or field', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ hideId: false, rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns>
+                    <Column v-if="!hideId" field="id" header="Id" />
+                    <Column selectionMode="multiple" />
+                    <Column field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        await wrapper.setData({ hideId: true });
+        await nextTick();
+
+        // Reasoning: the selection column has no identity of its own and sizes itself, but name still keeps the width it was given.
+        expect(appliedWidths(table)).toEqual([240]);
+        expect(table.styleElement.textContent).not.toContain('th:nth-child(1)');
+    });
+
+    it('should not cache column widths measured while the table is hidden', async () => {
+        wrapper = mountToggleTable();
+
+        const table = wrapper.vm.$refs.table;
+
+        // Reasoning: a table inside a display:none container reports every column as zero wide.
+        table.cacheColumnWidthsByKey([0, 0, 0]);
+
+        expect(table.columnWidthsByKey).toBeFalsy();
+    });
+
+    it('should survive every column being toggled off', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ show: true, rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns columnResizeMode="expand">
+                    <Column v-if="show" field="id" header="Id" />
+                    <Column v-if="show" field="code" header="Code" />
+                    <Column v-if="show" field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        await wrapper.setData({ show: false });
+        await nextTick();
+
+        // Reasoning: columns is null once the last Column unregisters, so the remap has to stand down rather than throw.
+        expect(table.getVisibleColumnKeys()).toBeNull();
+        expect(table.$refs.table.style.width).toBe('');
+    });
+
+    it('should not pair a persisted width list against a different set of columns', async () => {
+        window.localStorage.setItem('dt-width-state', JSON.stringify({ columnWidths: '80,160,240' }));
+
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns stateStorage="local" stateKey="dt-width-state">
+                    <Column field="id" header="Id" />
+                    <Column field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+        await nextTick();
+
+        // Reasoning: the state was written for three columns, so pairing it against two would cache the code column width under name.
+        expect(wrapper.vm.$refs.table.columnWidthsByKey).toBeFalsy();
+
+        window.localStorage.removeItem('dt-width-state');
+    });
+
+    it('should keep a good width cache when a later measurement is unusable', async () => {
+        wrapper = mountToggleTable();
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+        table.cacheColumnWidthsByKey([0, 0, 0]);
+
+        expect([...table.columnWidthsByKey]).toEqual([
+            ['id', 80],
+            ['code', 160],
+            ['name', 240]
+        ]);
+    });
+
+    it('should keep known widths when a column without a cached width is shown', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ hideCode: true, rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns>
+                    <Column field="id" header="Id" />
+                    <Column v-if="!hideCode" field="code" header="Code" />
+                    <Column field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 240]);
+
+        await wrapper.setData({ hideCode: false });
+        await nextTick();
+
+        // Reasoning: id and name keep their resized widths and code sizes itself, rather than code inheriting the width of name.
+        const css = table.styleElement.textContent;
+
+        expect(appliedWidths(table)).toEqual([80, 240]);
+        expect(css).toContain('th:nth-child(1)');
+        expect(css).not.toContain('th:nth-child(2)');
+        expect(css).toContain('th:nth-child(3)');
+    });
+
+    it('should reuse a single style element while columns are toggled', async () => {
+        wrapper = mountToggleTable();
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        const styleCount = document.head.querySelectorAll('style').length;
+
+        for (let index = 0; index < 6; index++) {
+            await wrapper.setData({ hideCode: index % 2 === 0 });
+            await nextTick();
+        }
+
+        expect(document.head.querySelectorAll('style').length).toBe(styleCount);
+    });
+
+    it('should follow the remaining columns with the table width in expand mode', async () => {
+        wrapper = mountToggleTable('columnResizeMode="expand"');
+
+        const table = wrapper.vm.$refs.table;
+
+        seedResizedWidths(table, [80, 160, 240]);
+
+        await wrapper.setData({ hideCode: true });
+        await nextTick();
+
+        expect(table.$refs.table.style.width).toBe('320px');
+        expect(table.$refs.table.style.minWidth).toBe('320px');
+    });
+
+    const mountStatefulTable = (withCode) => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns stateStorage="local" stateKey="dt-keyed-state">
+                    <Column field="id" header="Id" />
+                    ${withCode ? '<Column field="code" header="Code" />' : ''}
+                    <Column field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        return mount(TestComponent, { global: { plugins: [PrimeVue] } });
+    };
+
+    it('should persist resized widths against the column they belong to', async () => {
+        wrapper = mountStatefulTable(true);
+        wrapper.vm.$refs.table.cacheColumnWidthsByKey([80, 160, 240]);
+        wrapper.vm.$refs.table.saveState();
+
+        const stored = JSON.parse(window.localStorage.getItem('dt-keyed-state'));
+
+        expect(stored.columnWidthsByKey).toEqual({ id: 80, code: 160, name: 240 });
+
+        wrapper.unmount();
+        window.localStorage.removeItem('dt-keyed-state');
+    });
+
+    it('should restore persisted widths onto the right columns when the visible set changed', async () => {
+        window.localStorage.setItem('dt-keyed-state', JSON.stringify({ columnWidths: '80,160,240', columnWidthsByKey: { id: 80, code: 160, name: 240 } }));
+
+        wrapper = mountStatefulTable(false);
+        await nextTick();
+
+        // Reasoning: name keeps its own 240 rather than inheriting the 160 that belonged to the hidden code column.
+        expect(appliedWidths(wrapper.vm.$refs.table)).toEqual([80, 240]);
+
+        window.localStorage.removeItem('dt-keyed-state');
+    });
+
+    it('should keep widths for columns that are hidden when the state is written', async () => {
+        window.localStorage.setItem('dt-keyed-state', JSON.stringify({ columnWidthsByKey: { id: 80, code: 160, name: 240 } }));
+
+        wrapper = mountStatefulTable(false);
+        await nextTick();
+        wrapper.vm.$refs.table.saveState();
+
+        const stored = JSON.parse(window.localStorage.getItem('dt-keyed-state'));
+
+        // Reasoning: code is not on screen, but dropping it would lose its width for good once it is shown again.
+        expect(stored.columnWidthsByKey).toEqual({ id: 80, code: 160, name: 240 });
+
+        window.localStorage.removeItem('dt-keyed-state');
+    });
+
+    it('should still restore state written before widths were keyed', async () => {
+        window.localStorage.setItem('dt-keyed-state', JSON.stringify({ columnWidths: '80,160,240' }));
+
+        wrapper = mountStatefulTable(true);
+        await nextTick();
+
+        expect(appliedWidths(wrapper.vm.$refs.table)).toEqual([80, 160, 240]);
+
+        window.localStorage.removeItem('dt-keyed-state');
+    });
+
+    it('should not persist a width for a column without a columnKey or field', async () => {
+        const TestComponent = defineComponent({
+            components: { Column, DataTable },
+            data: () => ({ rows: smallData }),
+            template: `
+                <DataTable ref="table" :value="rows" resizableColumns stateStorage="local" stateKey="dt-keyed-state">
+                    <Column field="id" header="Id" />
+                    <Column selectionMode="multiple" />
+                    <Column field="name" header="Name" />
+                </DataTable>
+            `
+        });
+
+        wrapper = mount(TestComponent, { global: { plugins: [PrimeVue] } });
+        wrapper.vm.$refs.table.cacheColumnWidthsByKey([80, 160, 240]);
+        wrapper.vm.$refs.table.saveState();
+
+        const stored = JSON.parse(window.localStorage.getItem('dt-keyed-state'));
+
+        // Reasoning: the selection column is tracked by array index in memory, which would point at a different column after a reload.
+        expect(stored.columnWidthsByKey).toEqual({ id: 80, name: 240 });
+
+        window.localStorage.removeItem('dt-keyed-state');
     });
 
     // column reorder
