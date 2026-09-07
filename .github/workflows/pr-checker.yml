@@ -66,30 +66,30 @@ jobs:
                           body: "Thanks a lot for your contribution! But, Unit tests failed. You can check the unit tests with the command 'pnpm run test:unit' and commit the changes."
                       });
 
-            - name: Add Label
-              if: ${{ failure() }}
-              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-              with:
-                  script: |
-                      await github.rest.issues.addLabels({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          issue_number: context.issue.number,
-                          labels: ['Resolution: Needs Revision']
-                      });
+            # - name: Add Label
+            #   if: ${{ failure() }}
+            #   uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+            #   with:
+            #       script: |
+            #           await github.rest.issues.addLabels({
+            #               owner: context.repo.owner,
+            #               repo: context.repo.repo,
+            #               issue_number: context.issue.number,
+            #               labels: ['Resolution: Needs Revision']
+            #           });
 
-            - name: Remove Label
-              if: ${{ success() }}
-              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-              with:
-                  script: |
-                      try {
-                          await github.rest.issues.removeLabel({
-                              owner: context.repo.owner,
-                              repo: context.repo.repo,
-                              issue_number: context.issue.number,
-                              name: 'Resolution: Needs Revision'
-                          });
-                      } catch (error) {
-                          if (error.status !== 404) throw error;
-                      }
+            # - name: Remove Label
+            #   if: ${{ success() }}
+            #   uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+            #   with:
+            #       script: |
+            #           try {
+            #               await github.rest.issues.removeLabel({
+            #                   owner: context.repo.owner,
+            #                   repo: context.repo.repo,
+            #                   issue_number: context.issue.number,
+            #                   name: 'Resolution: Needs Revision'
+            #               });
+            #           } catch (error) {
+            #               if (error.status !== 404) throw error;
+            #           }
