@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 import { CarService } from '~/service/CarService';
 
@@ -51,7 +51,7 @@ const code = ref(`
 <script setup lang="ts">
 import { CarService } from '@/service/CarService';
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 
 const cars = ref(null);

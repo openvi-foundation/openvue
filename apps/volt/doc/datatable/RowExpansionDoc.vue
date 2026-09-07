@@ -77,8 +77,8 @@ import Button from '@/volt/Button.vue';
 import DataTable from '@/volt/DataTable.vue';
 import Rating from '@/volt/Rating.vue';
 import Tag from '@/volt/Tag.vue';
-import Column from 'primevue/column';
-import { useToast } from 'primevue/usetoast';
+import Column from 'openvue/column';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 import { ProductService } from '~/service/ProductService';
 
@@ -212,8 +212,8 @@ import Button from '@/volt/Button.vue';
 import DataTable from '@/volt/DataTable.vue';
 import Rating from '@/volt/Rating.vue';
 import Tag from '@/volt/Tag.vue';
-import Column from 'primevue/column';
-import { useToast } from 'primevue/usetoast';
+import Column from 'openvue/column';
+import { useToast } from 'openvue/usetoast';
 import { ref, onMounted } from 'vue';
 
 const products = ref(null);

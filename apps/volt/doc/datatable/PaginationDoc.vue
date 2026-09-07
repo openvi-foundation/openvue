@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 import { CustomerService } from '~/service/CustomerService';
 
@@ -70,7 +70,7 @@ const code = ref(`
 <script setup lang="ts">
 import { CustomerService } from '@/service/CustomerService';
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref, onMounted } from 'vue';
 
 const customers = ref(null);

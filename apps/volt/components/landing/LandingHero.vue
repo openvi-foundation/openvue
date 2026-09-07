@@ -18,7 +18,7 @@
                                 <div class="text-surface-950 dark:text-surface-0 font-bold text-4xl sm:text-6xl lg:text-7xl text-left leading-tight">Craft Your Own</div>
                                 <div class="text-primary font-bold text-4xl sm:text-6xl lg:text-7xl text-left leading-tight">UI Component Library</div>
                             </div>
-                            <p class="text-muted-color text-base sm:text-xl max-w-2xl text-left leading-relaxed !m-0">Explore a suite of fully customizable, accessible components powered by the Unstyled PrimeVue Core and Tailwind CSS v4.</p>
+                            <p class="text-muted-color text-base sm:text-xl max-w-2xl text-left leading-relaxed !m-0">Explore a suite of fully customizable, accessible components powered by the Unstyled OpenVue Core and Tailwind CSS v4.</p>
                         </div>
 
                         <div class="flex justify-start">

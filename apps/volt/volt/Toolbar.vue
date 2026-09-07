@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Toolbar, { type ToolbarPassThroughOptions, type ToolbarProps } from 'primevue/toolbar';
+import Toolbar, { type ToolbarPassThroughOptions, type ToolbarProps } from 'openvue/toolbar';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

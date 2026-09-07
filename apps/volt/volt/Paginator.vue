@@ -42,11 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import AngleDoubleLeftIcon from '@primevue/icons/angledoubleleft';
-import AngleDoubleRightIcon from '@primevue/icons/angledoubleright';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
-import Paginator, { type PaginatorPassThroughOptions, type PaginatorProps } from 'primevue/paginator';
+import AngleDoubleLeftIcon from '@openvue/icons/angledoubleleft';
+import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
+import Paginator, { type PaginatorPassThroughOptions, type PaginatorProps } from 'openvue/paginator';
 import {ref} from 'vue'
 import SecondaryButton from './SecondaryButton.vue';
 import { ptViewMerge } from './utils';

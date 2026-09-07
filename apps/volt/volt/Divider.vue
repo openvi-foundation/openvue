@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Divider, { type DividerPassThroughOptions, type DividerProps } from 'primevue/divider';
+import Divider, { type DividerPassThroughOptions, type DividerProps } from 'openvue/divider';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

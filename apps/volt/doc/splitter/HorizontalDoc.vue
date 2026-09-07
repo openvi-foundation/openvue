@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import Splitter from '@/volt/Splitter.vue';
-import SplitterPanel from 'primevue/splitterpanel';
+import SplitterPanel from 'openvue/splitterpanel';
 import { ref } from 'vue';
 
 const code = ref(`
@@ -28,7 +28,7 @@ const code = ref(`
 
 <script setup lang="ts">
 import Splitter from '@/volt/Splitter.vue';
-import SplitterPanel from 'primevue/splitterpanel';
+import SplitterPanel from 'openvue/splitterpanel';
 <\/script>
 `);
 </script>

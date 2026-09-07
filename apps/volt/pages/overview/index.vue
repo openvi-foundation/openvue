@@ -2,14 +2,14 @@
     <div>
         <Head>
             <Title>Overview - Volt</Title>
-            <Meta name="description" content="Volt is a UI component library crafted with Unstyled PrimeVue Core and Tailwind CSS." />
+            <Meta name="description" content="Volt is a UI component library crafted with Unstyled OpenVue Core and Tailwind CSS." />
         </Head>
 
         <div class="doc">
             <div class="doc-main">
                 <div class="doc-intro">
                     <h1>Overview</h1>
-                    <p>Volt is a UI component library crafted with Unstyled PrimeVue Core and Tailwind CSS.</p>
+                    <p>Volt is a UI component library crafted with Unstyled OpenVue Core and Tailwind CSS.</p>
                 </div>
                 <DocSections :docs="docs" />
             </div>

@@ -35,17 +35,12 @@
                     <div id="docsearch"></div>
                 </li>
                 <li>
-                    <a href="https://github.com/primefaces/primevue/tree/master/apps/volt/volt" target="_blank" rel="noopener noreferrer" class="topbar-item">
+                    <a href="https://github.com/openvi-foundation/openvue/tree/master/apps/volt/volt" target="_blank" rel="noopener noreferrer" class="topbar-item">
                         <i class="pi pi-github"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://discord.gg/gzKFYnpmCY" target="_blank" rel="noopener noreferrer" class="topbar-item">
-                        <i class="pi pi-discord"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/orgs/primefaces/discussions" target="_blank" rel="noopener noreferrer" class="topbar-item">
+                    <a href="https://github.com/orgs/openvi-foundation/discussions" target="_blank" rel="noopener noreferrer" class="topbar-item">
                         <i class="pi pi-comments"></i>
                     </a>
                 </li>

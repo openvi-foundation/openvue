@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 const code1 = ref(`import {createApp} from 'vue';
-import ConfirmationService from 'primevue/confirmationservice';
+import ConfirmationService from 'openvue/confirmationservice';
 
 const app = createApp(App);
 app.use(ConfirmationService);
@@ -25,7 +25,7 @@ const code2 = ref(`
 
 const code3 = ref(`
 <script setup lang="ts">
-import { useConfirm } from "primevue/useconfirm";
+import { useConfirm } from "openvue/useconfirm";
 
 const confirm = useConfirm();
 <\/script>

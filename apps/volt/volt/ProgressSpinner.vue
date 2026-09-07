@@ -14,7 +14,7 @@
 import ProgressSpinner, {
     type ProgressSpinnerPassThroughOptions,
     type ProgressSpinnerProps
-} from 'primevue/progressspinner'
+} from 'openvue/progressspinner'
 import { ref } from 'vue'
 import { ptViewMerge } from './utils'
 

@@ -10,8 +10,8 @@
 
 <script setup lang="ts">
 import Button from '@/volt/Button.vue';
-import { useConfirm } from 'primevue/useconfirm';
-import { useToast } from 'primevue/usetoast';
+import { useConfirm } from 'openvue/useconfirm';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const confirm = useConfirm();
@@ -47,8 +47,8 @@ const code = ref(`
 
 <script setup lang="ts">
 import Button from '@/volt/Button.vue';
-import { useConfirm } from 'primevue/useconfirm';
-import { useToast } from 'primevue/usetoast';
+import { useConfirm } from 'openvue/useconfirm';
+import { useToast } from 'openvue/usetoast';
 
 const confirm = useConfirm();
 const toast = useToast();

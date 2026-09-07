@@ -7,6 +7,7 @@ OpenVue forked from PrimeVue at 4.5.5. Pre-fork history is in [CHANGELOG_PRIMEVU
 All packages in this repository are released together under a single version.
 
 ## [Unreleased]
+- Volt UI fork of OpenVue
 
 ### Changed
 

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Tag, { type TagPassThroughOptions, type TagProps } from 'primevue/tag';
+import Tag, { type TagPassThroughOptions, type TagProps } from 'openvue/tag';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

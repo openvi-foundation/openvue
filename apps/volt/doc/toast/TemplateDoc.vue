@@ -24,7 +24,7 @@
 import Avatar from '@/volt/Avatar.vue';
 import Button from '@/volt/Button.vue';
 import Toast from '@/volt/Toast.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const toast = useToast();
@@ -69,7 +69,7 @@ const code = ref(`
 import Toast from '@/volt/Toast.vue';
 import Avatar from '@/volt/Avatar.vue';
 import Button from '@/volt/Button.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const toast = useToast();

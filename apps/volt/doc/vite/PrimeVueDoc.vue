@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>PrimeVue is available for download on <a href="https://www.npmjs.com/package/primevue" target="_blank" rel="noopener noreferrer">npm registry</a>.</p>
+        <p>OpenVue is available for download on <a href="https://www.npmjs.com/package/openvue" target="_blank" rel="noopener noreferrer">npm registry</a>.</p>
         <DocSectionCode :code="code1" lang="bash" />
-        <p>Configure PrimeVue to enable the unstyled mode that disables the default design token based theming globally.</p>
+        <p>Configure OpenVue to enable the unstyled mode that disables the default design token based theming globally.</p>
         <DocSectionCode :code="code2" lang="script" />
     </DocSectionText>
 </template>
@@ -12,20 +12,20 @@ import { ref } from 'vue';
 
 const code1 = ref(`
 # Using npm
-npm install primevue
+npm install openvue@rc @openvue/themes
 
 # Using yarn
-yarn add primevue
+yarn add openvue@rc @openvue/themes
 
 # Using pnpm
-pnpm add primevue
+pnpm add openvue@rc @openvue/themes
 `);
 
 const code2 = ref(`import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 
 const app = createApp(App);
-app.use(PrimeVue, {
+app.use(OpenVue, {
     unstyled: true
 });
 `);

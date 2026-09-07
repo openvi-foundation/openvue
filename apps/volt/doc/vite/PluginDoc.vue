@@ -8,7 +8,7 @@ import { ref } from 'vue';
 
 const code = ref(`
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import PrimeVue from 'openvue/config';
 
 const app = createApp(App);
 app.use(PrimeVue, {

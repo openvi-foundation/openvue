@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import StepItem, { type StepItemPassThroughOptions, type StepItemProps } from 'primevue/stepitem';
+import StepItem, { type StepItemPassThroughOptions, type StepItemProps } from 'openvue/stepitem';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

@@ -1,7 +1,7 @@
 import { reactive } from 'vue';
 
 const layoutState = reactive({
-    primary: 'violet',
+    primary: 'noir',
     surface: 'zinc',
     darkTheme: false,
     codeSandbox: false,

@@ -46,12 +46,12 @@
 </template>
 
 <script setup lang="ts">
-import AngleDoubleLeftIcon from '@primevue/icons/angledoubleleft';
-import AngleDoubleRightIcon from '@primevue/icons/angledoubleright';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
-import SpinnerIcon from '@primevue/icons/spinner';
-import DataTable, { type DataTablePassThroughOptions, type DataTableProps } from 'primevue/datatable';
+import AngleDoubleLeftIcon from '@openvue/icons/angledoubleleft';
+import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
+import SpinnerIcon from '@openvue/icons/spinner';
+import DataTable, { type DataTablePassThroughOptions, type DataTableProps } from 'openvue/datatable';
 import { ref } from 'vue';
 import SecondaryButton from './SecondaryButton.vue';
 import { ptViewMerge } from './utils';

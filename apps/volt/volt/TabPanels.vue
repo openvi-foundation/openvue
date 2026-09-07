@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import TabPanels, { type TabPanelsPassThroughOptions, type TabPanelsProps } from 'primevue/tabpanels';
+import TabPanels, { type TabPanelsPassThroughOptions, type TabPanelsProps } from 'openvue/tabpanels';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

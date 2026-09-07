@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import AngleDown from '@primevue/icons/search';
-import Select from 'primevue/select';
+import AngleDown from '@openvue/icons/search';
+import Select from 'openvue/select';
 import { ref } from 'vue';
 
 const theme = ref({

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import ToggleButton, { type ToggleButtonPassThroughOptions, type ToggleButtonProps } from 'primevue/togglebutton';
+import ToggleButton, { type ToggleButtonPassThroughOptions, type ToggleButtonProps } from 'openvue/togglebutton';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 
