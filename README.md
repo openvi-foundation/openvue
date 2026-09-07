@@ -10,7 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -115,6 +115,8 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
     </tr>
     <tr>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/wahpiangle"><img src="https://avatars.githubusercontent.com/u/116425066?v=4?s=64" width="64px;" alt="Quan Ming"/><br /><sub><b>Quan Ming</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=wahpiangle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/pupuking723"><img src="https://avatars.githubusercontent.com/u/169750518?v=4?s=64" width="64px;" alt="pupuking723"/><br /><sub><b>pupuking723</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=pupuking723" title="Code">💻</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://caddev.info/"><img src="https://avatars.githubusercontent.com/u/93262194?v=4?s=64" width="64px;" alt="Dylan"/><br /><sub><b>Dylan</b></sub></a><br /><a href="#ideas-DJ-caddev" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
