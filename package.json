@@ -38,7 +38,7 @@
         "build:showcase": "pnpm --filter showcase build",
         "build:llm": "pnpm --filter showcase build:llmdocs",
         "build:volt": "pnpm --filter volt build",
-        "build:apidoc": "pnpm --filter themes build:tokens && pnpm --filter showcase build:apidoc",
+        "build:apidoc": "pnpm --filter showcase build:apidoc",
         "dev": "pnpm --filter showcase dev",
         "preview": "pnpm --filter showcase preview",
         "hot:dev": "DEV_ENV=hot pnpm --filter showcase dev",
@@ -54,6 +54,7 @@
         "test:contracts": "pnpm run test:artifacts:pack && pnpm run verify:dist && node scripts/verify-package-contracts.mjs",
         "test:artifacts:pack": "node scripts/run-consumer-tests.mjs --pack-only",
         "test:consumers": "node scripts/run-consumer-tests.mjs",
+        "test:designer-smoke": "node scripts/designer-smoke.mjs",
         "test:consumers:browser": "node scripts/run-consumer-tests.mjs --browser"
     },
     "devDependencies": {

@@ -236,7 +236,7 @@ function extractCodeExamples(content) {
  * Parse a single Vue documentation file
  */
 function parseVueDocFile(filePath) {
-    const content = fs.readFileSync(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, 'utf-8').replace(/\r\n/g, '\n');
     const description = extractTextFromTemplate(content);
     const codeExamples = extractCodeExamples(content);
 
@@ -1085,7 +1085,7 @@ function processGuidePage(pageName) {
 
             if (stat.isDirectory()) {
                 // Recurse into subdirectories
-                processDocDir(entryPath, entry + '/');
+                processDocDir(entryPath, prefix + entry + '/');
             } else if (entry === 'faq.json') {
                 // The FAQ prose lives in JSON so the page and its FAQPage structured data share one source.
                 const faqEntries = JSON.parse(fs.readFileSync(entryPath, 'utf-8'));
@@ -1128,6 +1128,16 @@ function processGuidePage(pageName) {
     }
 
     processDocDir(docDir);
+
+    const sectionIds = new Set();
+
+    for (const section of page.sections) {
+        if (sectionIds.has(section.id)) {
+            throw new Error(`Duplicate guide section: ${pageName}/${section.id}`);
+        }
+
+        sectionIds.add(section.id);
+    }
 
     return page;
 }

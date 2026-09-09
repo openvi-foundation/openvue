@@ -18,13 +18,23 @@ let exports = {
     }
 };
 
-fs.readdirSync(path.resolve(__root, INPUT_DIR + 'presets'), { withFileTypes: true })
+const presetsDir = path.resolve(__root, INPUT_DIR + 'presets');
+
+fs.readdirSync(presetsDir, { withFileTypes: true })
     .filter((dir) => dir.isDirectory())
     .forEach(({ name: folderName }) => {
-        exports[`./${folderName}/*`] = {
-            types: `./types/*/index.d.ts`,
-            import: `./${folderName}/*/index.mjs`
-        };
+        // Only presets that ship per-component entries get a wildcard subpath. Presets built as
+        // a single definePreset() derivative have no subdirectories, so emitting one would
+        // publish an entry pointing at files that never exist; the './*' catch-all below is what
+        // serves their root subpath.
+        const hasComponentEntries = fs.readdirSync(path.resolve(presetsDir, folderName), { withFileTypes: true }).some((entry) => entry.isDirectory());
+
+        if (hasComponentEntries) {
+            exports[`./${folderName}/*`] = {
+                types: `./types/*/index.d.ts`,
+                import: `./${folderName}/*/index.mjs`
+            };
+        }
     });
 exports['./*'] = {
     types: './*/index.d.ts',
@@ -35,4 +45,4 @@ const pkgJson = JSON.parse(fs.readFileSync(pkg, { encoding: 'utf8', flag: 'r' })
 
 pkgJson.publishConfig.exports = exports;
 
-fs.writeFileSync(pkg, JSON.stringify(pkgJson, null, 4));
+fs.writeFileSync(pkg, JSON.stringify(pkgJson, null, 4) + '\n');

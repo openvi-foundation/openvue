@@ -136,7 +136,9 @@ const iconIndex = await import(pathToFileURL(join(installedIcons, 'index.mjs')).
 
 if (Object.keys(iconIndex).length < iconDirectories.length) fail(`icon root exports ${Object.keys(iconIndex).length} values for ${iconDirectories.length} icon entry points`);
 
-for (const preset of ['aura', 'lara', 'material', 'nora']) {
+const themePresets = ['aura', 'lara', 'material', 'nora'];
+
+for (const preset of themePresets) {
     const presetRoot = join(contractDir, 'node_modules', '@openvue', 'themes', preset, 'index.mjs');
     const umd = join(contractDir, 'node_modules', '@openvue', 'themes', 'umd', `${preset}.min.js`);
 
@@ -238,5 +240,5 @@ if (failures.length > 0) {
     process.exit(1);
 }
 
-console.log(`Package contracts passed: ${packages.length} packages, ${importedModules} ESM entry points, ${metadata.components.length} components, ${iconDirectories.length} icons, 4 themes, and MCP stdio.`);
+console.log(`Package contracts passed: ${packages.length} packages, ${importedModules} ESM entry points, ${metadata.components.length} components, ${iconDirectories.length} icons, ${themePresets.length} themes, and MCP stdio.`);
 rmSync(contractDir, { recursive: true, force: true });

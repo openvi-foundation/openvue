@@ -6,6 +6,64 @@ Setting up OpenVue in a Nuxt project.
 
 The auto import feature registers components automatically with tree shaking support. Defaults to true , when disabled use include/exclude options of components and directives for manual registration. Use the prefix in components and directives to add a prefix for registration.
 
+## components
+
+When autoImport is disabled, use the include and exclude for manual registration. The components to import and register are defined with the include option using a string array. When the value is ignored or set using the * alias, all of the components are registered. In case all components are imported, particular components can still be excluded with the exclude option. By default, for compatibility reasons, Chart and Editor components are excluded. To include them simply set the exclude option to an empty list. Use the prefix option to give a prefix to the registered component names. Component registration can be customized further by implementing the name function that gets an object representing the import metadata. name is the label of the component, as is the default export name and from is the import path.
+
+## composables
+
+Determines the composables to use, when default value is ignored or set as * all composables are imported.
+
+## directives
+
+When autoImport is disabled, use the include and exclude for manual registration. The names of the directives to import and register are provided using the include property. When the value is ignored or set using the * alias, all of the directives are registered. Similar to components, certain directives can be excluded and name registration can be customized.
+
+## importPT
+
+Configures the global pass through import path. mycustompt.js file defines the configuration and exports it.
+
+## importTheme
+
+Configures the theme configuration path for the customizations of a theme in styled mode. The mytheme.js file contains the theme configuration.
+
+## options
+
+Main configuration settings of OpenVue, refer to the configuration documentation for details.
+
+```vue
+import Aura from '@openvue/themes/aura';
+
+export default defineNuxtConfig({
+    modules: [
+        '@openvue/nuxt-module'
+    ],
+    primevue: {
+        options: {
+            ripple: true,
+            inputVariant: 'filled',
+            theme: {
+                preset: Aura,
+                options: {
+                    prefix: 'p',
+                    darkModeSelector: 'system',
+                    cssLayer: false
+                }
+            }
+        }
+    }
+})
+```
+
+## Use Open Vue
+
+The module installs the OpenVue plugin by default. Disable this option if you prefer to configure OpenVue manually e.g. with a Nuxt plugin.
+
+```vue
+primevue: {
+    usePrimeVue: true | false
+}
+```
+
 ## Download
 
 OpenVue is available for download on npm registry along with the official @openvue/nuxt-module . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
@@ -71,63 +129,5 @@ The nuxt-primevue module registers the components automatically with tree-shakin
 
 ```vue
 <Button label="Verify" />
-```
-
-## components
-
-When autoImport is disabled, use the include and exclude for manual registration. The components to import and register are defined with the include option using a string array. When the value is ignored or set using the * alias, all of the components are registered. In case all components are imported, particular components can still be excluded with the exclude option. By default, for compatibility reasons, Chart and Editor components are excluded. To include them simply set the exclude option to an empty list. Use the prefix option to give a prefix to the registered component names. Component registration can be customized further by implementing the name function that gets an object representing the import metadata. name is the label of the component, as is the default export name and from is the import path.
-
-## composables
-
-Determines the composables to use, when default value is ignored or set as * all composables are imported.
-
-## directives
-
-When autoImport is disabled, use the include and exclude for manual registration. The names of the directives to import and register are provided using the include property. When the value is ignored or set using the * alias, all of the directives are registered. Similar to components, certain directives can be excluded and name registration can be customized.
-
-## importPT
-
-Configures the global pass through import path. mycustompt.js file defines the configuration and exports it.
-
-## importTheme
-
-Configures the theme configuration path for the customizations of a theme in styled mode. The mytheme.js file contains the theme configuration.
-
-## options
-
-Main configuration settings of OpenVue, refer to the configuration documentation for details.
-
-```vue
-import Aura from '@openvue/themes/aura';
-
-export default defineNuxtConfig({
-    modules: [
-        '@openvue/nuxt-module'
-    ],
-    primevue: {
-        options: {
-            ripple: true,
-            inputVariant: 'filled',
-            theme: {
-                preset: Aura,
-                options: {
-                    prefix: 'p',
-                    darkModeSelector: 'system',
-                    cssLayer: false
-                }
-            }
-        }
-    }
-})
-```
-
-## Use Open Vue
-
-The module installs the OpenVue plugin by default. Disable this option if you prefer to configure OpenVue manually e.g. with a Nuxt plugin.
-
-```vue
-primevue: {
-    usePrimeVue: true | false
-}
 ```
 
