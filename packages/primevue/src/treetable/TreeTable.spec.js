@@ -87,7 +87,7 @@ const treeTableOf = (wrapper) => wrapper.findComponent(TreeTable);
 
 const advancedTemplate = `
     <TreeTable :value="nodes" v-model:filters="filters" :filterMode="filterMode" :filterDisplay="filterDisplay" :globalFilterFields="globalFilterFields">
-        <Column field="name" header="Name" expander>
+        <Column field="name" header="Name" expander :sortable="sortableName">
             <template v-if="withFilterSlots" #filter="{ filterModel }">
                 <input class="name-filter" type="text" v-model="filterModel.value" />
             </template>
@@ -112,12 +112,12 @@ const rowFilters = () => ({
 });
 
 // the filter slots use the filterDisplay scope (filterModel), so they are only rendered for the filterDisplay tests
-const mountAdvanced = ({ filters, filterMode = 'lenient', filterDisplay = null, globalFilterFields = null, withFilterSlots = !!filterDisplay } = {}) =>
+const mountAdvanced = ({ filters, filterMode = 'lenient', filterDisplay = null, globalFilterFields = null, withFilterSlots = !!filterDisplay, sortableName = false } = {}) =>
     mount(
         {
             components: { TreeTable, Column },
             data() {
-                return { nodes: createNodes(), filters, filterMode, filterDisplay, globalFilterFields, withFilterSlots };
+                return { nodes: createNodes(), filters, filterMode, filterDisplay, globalFilterFields, withFilterSlots, sortableName };
             },
             template: advancedTemplate
         },
@@ -382,6 +382,26 @@ describe('TreeTable', () => {
             expect(headerRows.length).toBe(1);
             expect(headerRows[0].findAll('.p-treetable-filter.p-treetable-popover-filter').length).toBe(2);
             expect(headerRows[0].findAll('.p-treetable-column-filter-button').length).toBe(2);
+
+            wrapper.unmount();
+        });
+
+        it('should open the filter menu without sorting when the column is sortable', async () => {
+            const wrapper = mountAdvanced({ filters: menuFilters(), filterDisplay: 'menu', sortableName: true });
+
+            await nextTick();
+
+            const treeTable = treeTableOf(wrapper);
+
+            expect(wrapper.find('th[data-p-sortable-column="true"] .p-treetable-column-filter-button').exists()).toBe(true);
+
+            await wrapper.find('.p-treetable-column-filter-button').trigger('click');
+            await nextTick();
+
+            expect(document.querySelector('.p-treetable-filter-overlay')).not.toBeNull();
+            expect(treeTable.vm.d_sortField).toBeNull();
+            expect(treeTable.emitted('update:sortField')).toBeUndefined();
+            expect(treeTable.emitted('sort')).toBeUndefined();
 
             wrapper.unmount();
         });
