@@ -231,7 +231,7 @@
 
 <script>
 import { cn } from '@openuxkit/utils';
-import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isRTL, setAttribute } from '@openuxkit/utils/dom';
+import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isClickable, isRTL, setAttribute } from '@openuxkit/utils/dom';
 import { localeComparator, resolveFieldData, sort } from '@openuxkit/utils/object';
 import { FilterMatchMode, FilterOperator, FilterService } from '@openvue/core/api';
 import { getVNodeProp, HelperSet } from '@openvue/core/utils';
@@ -474,7 +474,7 @@ export default {
                     getAttribute(targetNode, 'data-pc-section') === 'sorticon' ||
                     getAttribute(targetNode.parentElement, 'data-pc-section') === 'sorticon' ||
                     getAttribute(targetNode.parentElement.parentElement, 'data-pc-section') === 'sorticon' ||
-                    targetNode.closest('[data-p-sortable-column="true"]')
+                    (targetNode.closest('[data-p-sortable-column="true"]') && !targetNode.closest('[data-pc-section="columnfilterbutton"]') && !isClickable(event.target))
                 ) {
                     clearSelection();
 
