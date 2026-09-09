@@ -94,9 +94,20 @@ import { landingCustomers } from '@/service/LandingCustomers';
 import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 /* Seeded synchronously so the server-rendered homepage carries real rows. An empty table that
-   reads "No customers found." in the initial HTML looks like an error page to search engines. */
+   reads "No customers found." in the initial HTML looks like an error page to search engines.
+
+   The date is built from its parts on purpose. `new Date('2015-09-13')` is midnight UTC, and
+   toLocaleDateString then prints the day before in any timezone west of Greenwich, so the server
+   on UTC and a browser in the Americas disagreed on every date cell and hydration reported a
+   mismatch. Local midnight formats to the same calendar date everywhere. */
+function parseLocalDate(value) {
+    const [year, month, day] = value.split('-').map(Number);
+
+    return new Date(year, month - 1, day);
+}
+
 function seedCustomers() {
-    return landingCustomers.map((customer) => ({ ...customer, date: new Date(customer.date) }));
+    return landingCustomers.map((customer) => ({ ...customer, date: parseLocalDate(customer.date) }));
 }
 
 export default {
