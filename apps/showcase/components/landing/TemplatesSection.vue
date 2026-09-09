@@ -4,7 +4,7 @@
         <p class="section-detail">A real application built with OpenVue. Clone it, point it at your API, ship it.</p>
         <div class="mt-16 px-8 lg:px-20">
             <div class="templates-container">
-                <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box template-card animate-duration-500">
+                <div class="box template-card">
                     <a v-if="showPreview" :href="demoUrl" target="_blank" rel="noopener noreferrer" class="template-preview" :aria-label="`Open the ${name} live demo`">
                         <img :src="previewSrc" :alt="`${name} admin dashboard template built with OpenVue`" width="1907" height="916" loading="lazy" @error="onPreviewError" />
                     </a>

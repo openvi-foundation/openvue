@@ -4,7 +4,7 @@
         <p class="section-detail">A fork of PrimeVue 4.5.5, kept alive and moving forward.</p>
         <div class="mt-16 px-8 lg:px-20">
             <div class="fork-notice-container">
-                <div v-animateonscroll.once="{ enterClass: 'animate-fadein' }" class="box flex flex-col lg:flex-row animate-duration-500">
+                <div class="box flex flex-col lg:flex-row">
                     <div class="fork-notice-main p-8 lg:p-12">
                         <h3 class="fork-notice-title">Still open, still maintained</h3>
                         <p class="fork-notice-text">
