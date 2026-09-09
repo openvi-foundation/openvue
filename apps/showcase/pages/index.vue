@@ -1,7 +1,7 @@
 <template>
     <div :class="containerClass">
         <!--<AppNews />-->
-        <AppTopBar @menubutton-click="onMenuButtonClick" />
+        <AppTopBar @menubutton-click="onMenuButtonClick" :showDesigner="false" />
         <Transition name="px-modal">
             <div v-if="sidebarActive" class="layout-mask" @click="onMaskClick"></div>
         </Transition>
