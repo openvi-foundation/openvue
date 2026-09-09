@@ -104,12 +104,12 @@
                     </div>
                 </div>
             </div>
-            <OverviewApp v-if="selectedSampleAppsSidebarNav === 'Overview'" />
-            <ChatApp v-if="selectedSampleAppsSidebarNav === 'Chat'" />
-            <MoviesApp v-if="selectedSampleAppsSidebarNav === 'Movies'" />
-            <CardsApp v-if="selectedSampleAppsSidebarNav === 'Cards'" />
-            <InboxApp v-if="selectedSampleAppsSidebarNav === 'Inbox'" />
-            <CustomersApp v-if="selectedSampleAppsSidebarNav === 'Customers'" />
+            <LazyOverviewApp v-if="selectedSampleAppsSidebarNav === 'Overview'" />
+            <LazyChatApp v-if="selectedSampleAppsSidebarNav === 'Chat'" />
+            <LazyMoviesApp v-if="selectedSampleAppsSidebarNav === 'Movies'" />
+            <LazyCardsApp v-if="selectedSampleAppsSidebarNav === 'Cards'" />
+            <LazyInboxApp v-if="selectedSampleAppsSidebarNav === 'Inbox'" />
+            <LazyCustomersApp v-if="selectedSampleAppsSidebarNav === 'Customers'" />
 
             <Drawer
                 v-model:visible="visibleRight"

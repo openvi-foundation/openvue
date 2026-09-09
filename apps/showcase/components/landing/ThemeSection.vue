@@ -90,15 +90,13 @@
 </template>
 
 <script>
-import { CustomerService } from '@/service/CustomerService';
+import { landingCustomers } from '@/service/LandingCustomers';
 import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
 /* Seeded synchronously so the server-rendered homepage carries real rows. An empty table that
    reads "No customers found." in the initial HTML looks like an error page to search engines. */
 function seedCustomers() {
-    return CustomerService.getData()
-        .slice(0, 200)
-        .map((customer) => ({ ...customer, date: new Date(customer.date) }));
+    return landingCustomers.map((customer) => ({ ...customer, date: new Date(customer.date) }));
 }
 
 export default {

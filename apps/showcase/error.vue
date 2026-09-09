@@ -17,7 +17,14 @@
 <script>
 /* Nuxt renders this view for every error, not only missing pages. Naming the real status keeps a
    transient runtime failure from being indexed as "Page Not Found", and the noindex tag keeps any
-   error view out of search results altogether. */
+   error view out of search results altogether.
+
+   The head is only rewritten when the error itself was server-rendered, or when the client
+   navigated to a missing page. A runtime failure in the browser after a successful server render
+   (a script chunk Google's renderer did not download, a hydration error) must not retag the page:
+   the server already sent the right title and robots meta, and Google indexes the rendered DOM. */
+const CHUNK_LOAD_ERROR = /dynamically imported module|Importing a module script failed|Loading chunk|Loading CSS chunk/i;
+
 export default {
     props: {
         error: {
@@ -28,10 +35,18 @@ export default {
     setup(props) {
         const statusCode = Number(props.error?.statusCode) || 500;
 
-        useHead({
-            title: statusCode === 404 ? 'Page Not Found | OpenVue' : `Error ${statusCode} | OpenVue`,
-            meta: [{ name: 'robots', content: 'noindex,nofollow' }]
-        });
+        if (import.meta.server || statusCode === 404) {
+            useHead({
+                title: statusCode === 404 ? 'Page Not Found | OpenVue' : `Error ${statusCode} | OpenVue`,
+                meta: [{ name: 'robots', content: 'noindex,nofollow' }]
+            });
+        }
+
+        /* A chunk that failed to download is almost always a stale tab after a deploy. One reload
+           fetches the current build; reloadNuxtApp refuses to loop within ten seconds. */
+        if (import.meta.client && CHUNK_LOAD_ERROR.test(props.error?.message || '')) {
+            reloadNuxtApp({ persistState: true });
+        }
     },
     computed: {
         statusCode() {
