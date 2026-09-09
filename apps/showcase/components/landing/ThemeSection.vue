@@ -93,10 +93,18 @@
 import { CustomerService } from '@/service/CustomerService';
 import { FilterMatchMode, FilterOperator } from '@openvue/core/api';
 
+/* Seeded synchronously so the server-rendered homepage carries real rows. An empty table that
+   reads "No customers found." in the initial HTML looks like an error page to search engines. */
+function seedCustomers() {
+    return CustomerService.getData()
+        .slice(0, 200)
+        .map((customer) => ({ ...customer, date: new Date(customer.date) }));
+}
+
 export default {
     data() {
         return {
-            customers: null,
+            customers: seedCustomers(),
             selectedCustomers: null,
             filters: {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -109,16 +117,9 @@ export default {
                 activity: { value: null, matchMode: FilterMatchMode.BETWEEN },
                 verified: { value: null, matchMode: FilterMatchMode.EQUALS }
             },
-            loading: true,
+            loading: false,
             representativeAvatars: ['amyelsner.png', 'annafali.png', 'asiyajavayant.png', 'bernardodominic.png', 'elwinsharvill.png', 'ionibowcher.png', 'ivanmagalhaes.png', 'onyamalimba.png', 'stephenshaw.png', 'xuxuefeng.png']
         };
-    },
-    mounted() {
-        CustomerService.getCustomersLarge().then((data) => {
-            this.customers = data;
-            this.customers.forEach((customer) => (customer.date = new Date(customer.date)));
-            this.loading = false;
-        });
     },
     methods: {
         avatarFor(image) {
