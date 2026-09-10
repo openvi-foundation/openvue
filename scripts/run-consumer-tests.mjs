@@ -136,18 +136,27 @@ function assertMigrated(dir, migrationVersion) {
     if (actionable.length > 0) throw new Error(`${pkg.name}: actionable PrimeVue references survived migration:\n${actionable.slice(0, 20).join('\n')}`);
 }
 
-function pointAtTarballs(dir, tarballs) {
+function pointAtTarballs(dir, tarballs, manager) {
     const pkg = readPackage(dir);
+    const specifiers = Object.fromEntries(Object.entries(tarballs).map(([name, tarball]) => [name, `file:${tarball.replace(/\\/g, '/')}`]));
 
     pkg.devDependencies ??= {};
 
-    for (const [name, tarball] of Object.entries(tarballs)) {
+    for (const [name, specifier] of Object.entries(specifiers)) {
         const home = ['dependencies', 'optionalDependencies'].find((section) => pkg[section]?.[name] !== undefined) ?? 'devDependencies';
 
         for (const section of ['dependencies', 'devDependencies', 'optionalDependencies']) delete pkg[section]?.[name];
 
-        pkg[home][name] = `file:${tarball.replace(/\\/g, '/')}`;
+        pkg[home][name] = specifier;
     }
+
+    // The packed manifests depend on each other by exact version, and those transitive ranges are not
+    // covered by the direct file: entries above. npm happens to dedupe them onto the tarball it already
+    // installed; pnpm keeps file: resolutions separate and would fetch that version from the registry,
+    // which both defeats the point of testing local artifacts and fails outright before a release is
+    // published. Overriding every OpenVue package keeps the whole tree on the tarballs under test.
+    if (manager === 'pnpm') pkg.pnpm = { ...pkg.pnpm, overrides: { ...pkg.pnpm?.overrides, ...specifiers } };
+    else pkg.overrides = { ...pkg.overrides, ...specifiers };
 
     // The compatibility alias was asserted above. Local file dependencies cannot use npm's alias
     // protocol, so remove it only in this disposable install manifest.
@@ -167,6 +176,12 @@ function assertLocalResolution(dir) {
 
     if (/workspace:|link:/.test(text)) throw new Error(`${basename(dir)}: lockfile contains a workspace/link dependency`);
     if (/https?:[^\s"']*(?:\/openvue-|\/@openvue\/|\/openvue\/)/i.test(text)) throw new Error(`${basename(dir)}: an OpenVue package resolved from a remote registry`);
+
+    // A registry resolution leaves no URL in a pnpm lockfile, only a `name@version` key, so the check
+    // above cannot see it. Every OpenVue entry outside the importers section must carry a file: version.
+    const registryEntry = text.match(/^\s*'?(?:openvue|@openvue\/[^@'\s]+)'?@(?!file:)\S*:/m);
+
+    if (registryEntry) throw new Error(`${basename(dir)}: an OpenVue package resolved from a remote registry: ${registryEntry[0].trim()}`);
 
     for (const name of Object.keys(publishable)) {
         const packageFile = join(dir, 'node_modules', ...name.split('/'), 'package.json');
@@ -521,7 +536,7 @@ async function testFixture(name, index, tarballs, migrationVersion) {
     assertMigrated(dir, migrationVersion);
     assertSnapshotUnchanged(dir, afterFirstMigration, pkg.name);
     removeInstallState(dir);
-    pointAtTarballs(dir, tarballs);
+    pointAtTarballs(dir, tarballs, manager);
     runPackage(manager, 'install', dir);
     assertLocalResolution(dir);
     runPackage(manager, 'typecheck', dir);
