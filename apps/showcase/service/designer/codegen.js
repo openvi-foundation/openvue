@@ -1,0 +1,222 @@
+/**
+ * Theme code generation.
+ *
+ * Emits a preset module (TypeScript or JavaScript) and the portable JSON document. Output is
+ * plain text — nothing here is evaluated, and the designer never executes user-supplied code.
+ *
+ * By default only the diff against the base preset is emitted, so a generated theme stays small
+ * and keeps inheriting upstream changes to its base.
+ *
+ * @module service/designer/codegen
+ */
+
+import { deepDiff, findRemovedPaths } from './diff';
+import { toExportShape } from './document';
+
+/** Base presets the designer can derive from, mapped to their import specifier. */
+const BASE_IMPORTS = {
+    Aura: '@openvue/themes/aura',
+    Lara: '@openvue/themes/lara',
+    Material: '@openvue/themes/material',
+    Nora: '@openvue/themes/nora'
+};
+
+const IDENTIFIER_PATTERN = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
+
+/**
+ * @param {string} name
+ * @returns {string} a filename-safe slug
+ */
+export function slugify(name) {
+    const slug = String(name || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+    return slug || 'theme';
+}
+
+/**
+ * @param {string} name
+ * @returns {string} a valid PascalCase JS identifier
+ */
+export function toIdentifier(name) {
+    const parts = String(name || '')
+        .replace(/[^A-Za-z0-9]+/g, ' ')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1));
+
+    const identifier = parts.join('');
+
+    if (!identifier || /^[0-9]/.test(identifier)) {
+        return 'CustomTheme';
+    }
+
+    return identifier;
+}
+
+/**
+ * @param {string} value
+ * @returns {string} a single-quoted, escaped string literal
+ */
+function quote(value) {
+    return (
+        "'" +
+        value
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'")
+            .replace(/\r/g, '\\r')
+            .replace(/\n/g, '\\n')
+            .replace(/\u2028/g, '\\u2028')
+            .replace(/\u2029/g, '\\u2029') +
+        "'"
+    );
+}
+
+// Metadata arrives from JSON and share links. Keep it inside one comment line.
+function commentText(value) {
+    return String(value ?? '')
+        .replace(/\*\//g, '* /')
+        .replace(/[\r\n\u2028\u2029]/g, ' ');
+}
+
+/**
+ * @param {string} key
+ * @returns {string} the key as written in an object literal
+ */
+function formatKey(key) {
+    return IDENTIFIER_PATTERN.test(key) ? key : quote(key);
+}
+
+/**
+ * Serialize a JSON-safe value as a source-code literal.
+ *
+ * @param {*} value
+ * @param {number} depth
+ * @returns {string}
+ */
+function serialize(value, depth) {
+    const pad = ' '.repeat(depth * 4);
+    const padInner = ' '.repeat((depth + 1) * 4);
+
+    if (value === null) {
+        return 'null';
+    }
+
+    if (typeof value === 'string') {
+        return quote(value);
+    }
+
+    if (typeof value === 'number' || typeof value === 'boolean') {
+        return String(value);
+    }
+
+    if (Array.isArray(value)) {
+        if (!value.length) {
+            return '[]';
+        }
+
+        return '[\n' + value.map((item) => padInner + serialize(item, depth + 1)).join(',\n') + '\n' + pad + ']';
+    }
+
+    const keys = Object.keys(value);
+
+    if (!keys.length) {
+        return '{}';
+    }
+
+    return '{\n' + keys.map((key) => padInner + formatKey(key) + ': ' + serialize(value[key], depth + 1)).join(',\n') + '\n' + pad + '}';
+}
+
+/**
+ * Generate a preset module.
+ *
+ * `satisfies Preset` is applied to the overrides literal rather than the `definePreset()` result:
+ * the return type comes from the styled engine and is not guaranteed assignable to `Preset`,
+ * while the literal is exactly what the annotation is useful for.
+ *
+ * @param {import('./document').ThemeDocument} doc
+ * @param {object} [options]
+ * @param {'diff'|'full'} [options.mode]
+ * @param {'ts'|'js'} [options.language]
+ * @param {object} [options.basePreset] required when mode is 'diff'
+ * @param {boolean} [options.satisfies] emit the `satisfies Preset` annotation (TypeScript only)
+ * @returns {string}
+ */
+export function toPresetSource(doc, { mode = 'diff', language = 'ts', basePreset = null, satisfies = true } = {}) {
+    const baseName = Object.prototype.hasOwnProperty.call(BASE_IMPORTS, doc.base) ? doc.base : 'Aura';
+    const specifier = BASE_IMPORTS[baseName];
+    const candidate = toIdentifier(doc.name);
+    const identifier = [baseName, 'Preset', 'Reflect'].includes(candidate) ? candidate + 'Theme' : candidate;
+    const overrides = mode === 'diff' && basePreset ? deepDiff(basePreset, doc.preset) : doc.preset;
+    const removed = mode === 'diff' && basePreset ? findRemovedPaths(basePreset, doc.preset) : [];
+    const typescript = language === 'ts';
+    const useSatisfies = typescript && satisfies;
+    const lines = [];
+
+    lines.push('/**');
+    lines.push(' * ' + commentText(doc.name) + ' — generated by the OpenVue Theme Designer.');
+    lines.push(' *');
+    lines.push(' * Typography is a preview-only setting and is intentionally not part of the preset.');
+    lines.push(' * Apply these at the document level in your own application:');
+    lines.push(' *   font-family: ' + commentText(doc.config.font_family));
+    lines.push(' *   root font-size: ' + commentText(doc.config.font_size));
+    lines.push(' */');
+    lines.push("import { definePreset } from '@openvue/themes';");
+    if (mode !== 'full') lines.push('import ' + baseName + " from '" + specifier + "';");
+
+    if (useSatisfies) {
+        lines.push("import type { Preset } from '@openvue/themes';");
+    }
+
+    lines.push('');
+    lines.push('const overrides = ' + serialize(overrides, 0) + (useSatisfies ? ' satisfies Preset' : '') + ';');
+    lines.push('');
+    lines.push('export const ' + identifier + ' = definePreset(' + (mode === 'full' ? '' : baseName + ', ') + 'overrides);');
+
+    for (const path of removed) {
+        const parent =
+            identifier +
+            path
+                .slice(0, -1)
+                .map((key) => '[' + quote(key) + ']')
+                .join('');
+
+        lines.push('Reflect.deleteProperty(' + parent + ', ' + quote(path[path.length - 1]) + ');');
+    }
+
+    lines.push('');
+    lines.push('export default ' + identifier + ';');
+    lines.push('');
+
+    return lines.join('\n');
+}
+
+/**
+ * Generate the portable JSON document.
+ *
+ * @param {import('./document').ThemeDocument} doc
+ * @param {string} [libraryVersion]
+ * @returns {string}
+ */
+export function toThemeJson(doc, libraryVersion = '') {
+    return JSON.stringify(toExportShape(doc, libraryVersion), null, 4) + '\n';
+}
+
+/**
+ * @param {import('./document').ThemeDocument} doc
+ * @param {'ts'|'js'|'json'} kind
+ * @returns {string}
+ */
+export function toFileName(doc, kind) {
+    const slug = slugify(doc.name);
+
+    if (kind === 'json') {
+        return slug + '.openvue-theme.json';
+    }
+
+    return slug + '.preset.' + kind;
+}

@@ -84,17 +84,38 @@
                                 :sortOrder="d_sortOrder"
                                 :multiSortMeta="d_multiSortMeta"
                                 :sortMode="sortMode"
+                                :filters="d_filters"
+                                :filtersStore="filters"
+                                :filterDisplay="filterDisplay"
+                                :filterInputProps="filterInputProps"
+                                :filterButtonProps="headerFilterButtonProps"
                                 @column-click="onColumnHeaderClick($event)"
                                 @column-resizestart="onColumnResizeStart($event)"
+                                @filter-change="onFilterChange"
+                                @filter-apply="onFilterApply"
                                 :index="i"
                                 :unstyled="unstyled"
                                 :pt="pt"
                             ></TTHeaderCell>
                         </template>
                     </tr>
-                    <tr v-if="hasColumnFilter()" v-bind="ptm('headerRow')">
+                    <tr v-if="filterDisplay === 'row' || (!filterDisplay && hasColumnFilter())" v-bind="ptm('headerRow')">
                         <template v-for="(col, i) of columns" :key="columnProp(col, 'columnKey') || columnProp(col, 'field') || i">
-                            <th v-if="!columnProp(col, 'hidden')" :class="getFilterColumnHeaderClass(col)" :style="[columnProp(col, 'style'), columnProp(col, 'filterHeaderStyle')]" v-bind="ptm('headerCell', ptHeaderCellOptions(col))">
+                            <TTFilterHeaderCell
+                                v-if="filterDisplay === 'row' && !columnProp(col, 'hidden')"
+                                :column="col"
+                                :index="i"
+                                display="row"
+                                :filters="d_filters"
+                                :filtersStore="filters"
+                                :filterInputProps="filterInputProps"
+                                :filterButtonProps="headerFilterButtonProps"
+                                @filter-change="onFilterChange"
+                                @filter-apply="onFilterApply"
+                                :unstyled="unstyled"
+                                :pt="pt"
+                            />
+                            <th v-else-if="!columnProp(col, 'hidden')" :class="getFilterColumnHeaderClass(col)" :style="[columnProp(col, 'style'), columnProp(col, 'filterHeaderStyle')]" v-bind="ptm('headerCell', ptHeaderCellOptions(col))">
                                 <component v-if="col.children && col.children.filter" :is="col.children.filter" :column="col" :index="i" />
                             </th>
                         </template>
@@ -210,13 +231,14 @@
 
 <script>
 import { cn } from '@openuxkit/utils';
-import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isRTL, setAttribute } from '@openuxkit/utils/dom';
+import { addStyle, clearSelection, find, getAttribute, getIndex, getOffset, getOuterWidth, isClickable, isRTL, setAttribute } from '@openuxkit/utils/dom';
 import { localeComparator, resolveFieldData, sort } from '@openuxkit/utils/object';
-import { FilterService } from '@openvue/core/api';
+import { FilterMatchMode, FilterOperator, FilterService } from '@openvue/core/api';
 import { getVNodeProp, HelperSet } from '@openvue/core/utils';
 import SpinnerIcon from '@openvue/icons/spinner';
 import Paginator from 'openvue/paginator';
 import BaseTreeTable from './BaseTreeTable.vue';
+import FilterHeaderCell from './FilterHeaderCell.vue';
 import FooterCell from './FooterCell.vue';
 import HeaderCell from './HeaderCell.vue';
 import TreeTableRow from './TreeTableRow.vue';
@@ -240,6 +262,7 @@ export default {
         'update:multiSortMeta',
         'sort',
         'filter',
+        'update:filters',
         'column-resize-end',
         'update:contextMenuSelection',
         'row-contextmenu'
@@ -257,6 +280,7 @@ export default {
             d_sortField: this.sortField,
             d_sortOrder: this.sortOrder,
             d_multiSortMeta: this.multiSortMeta ? [...this.multiSortMeta] : [],
+            d_filters: this.cloneFilters(this.filters),
             hasASelectedNode: false,
             d_columns: new HelperSet({ type: 'Column' })
         };
@@ -283,6 +307,12 @@ export default {
         },
         multiSortMeta(newValue) {
             this.d_multiSortMeta = newValue;
+        },
+        filters: {
+            deep: true,
+            handler: function (newValue) {
+                this.d_filters = this.cloneFilters(newValue);
+            }
         }
     },
     beforeUnmount() {
@@ -444,7 +474,7 @@ export default {
                     getAttribute(targetNode, 'data-pc-section') === 'sorticon' ||
                     getAttribute(targetNode.parentElement, 'data-pc-section') === 'sorticon' ||
                     getAttribute(targetNode.parentElement.parentElement, 'data-pc-section') === 'sorticon' ||
-                    targetNode.closest('[data-p-sortable-column="true"]')
+                    (targetNode.closest('[data-p-sortable-column="true"]') && !targetNode.closest('[data-pc-section="columnfilterbutton"]') && !isClickable(event.target))
                 ) {
                     clearSelection();
 
@@ -528,30 +558,28 @@ export default {
             return sort(value1, value2, this.d_multiSortMeta[index].order, comparer);
         },
         filter(value) {
-            let filteredNodes = [];
             const strict = this.filterMode === 'strict';
+            const activeFilters = this.getActiveFilters(this.filters);
+            const hasGlobalFilter = Object.prototype.hasOwnProperty.call(activeFilters, 'global');
+            let filteredNodes = value;
 
-            for (let node of value) {
-                let copyNode = { ...node };
-                let localMatch = true;
-                let globalMatch = false;
+            if (Object.keys(activeFilters).length > 0) {
+                const globalFilterFields = hasGlobalFilter ? this.globalFilterFields || this.columns.map((col) => this.columnProp(col, 'filterField') || this.columnProp(col, 'field')) : [];
 
-                for (let j = 0; j < this.columns.length; j++) {
-                    let col = this.columns[j];
-                    let filterField = this.columnProp(col, 'filterField') || this.columnProp(col, 'field');
+                filteredNodes = [];
+
+                for (let node of value) {
+                    let copyNode = { ...node };
+                    let localMatch = true;
+                    let globalMatch = false;
 
                     //local
-                    if (Object.prototype.hasOwnProperty.call(this.filters, filterField)) {
-                        let filterMatchMode = this.columnProp(col, 'filterMatchMode') || 'startsWith';
-                        let filterValue = this.filters[filterField];
-                        let filterConstraint = FilterService.filters[filterMatchMode];
-                        let paramsWithoutNode = { filterField, filterValue, filterConstraint, strict };
+                    for (let j = 0; j < this.columns.length; j++) {
+                        let col = this.columns[j];
+                        let filterField = this.columnProp(col, 'filterField') || this.columnProp(col, 'field');
 
-                        if (
-                            (strict && !(this.findFilteredNodes(copyNode, paramsWithoutNode) || this.isFilterMatched(copyNode, paramsWithoutNode))) ||
-                            (!strict && !(this.isFilterMatched(copyNode, paramsWithoutNode) || this.findFilteredNodes(copyNode, paramsWithoutNode)))
-                        ) {
-                            localMatch = false;
+                        if (Object.prototype.hasOwnProperty.call(activeFilters, filterField)) {
+                            localMatch = this.isColumnFilterMatched(copyNode, col, filterField, activeFilters[filterField], strict);
                         }
 
                         if (!localMatch) {
@@ -560,39 +588,129 @@ export default {
                     }
 
                     //global
-                    if (this.hasGlobalFilter() && !globalMatch) {
-                        let copyNodeForGlobal = { ...copyNode };
-                        let filterValue = this.filters['global'];
-                        let filterConstraint = FilterService.filters['contains'];
-                        let globalFilterParamsWithoutNode = { filterField, filterValue, filterConstraint, strict };
+                    if (localMatch && hasGlobalFilter) {
+                        const globalFilterMeta = activeFilters['global'];
+                        const filterValue = this.isFilterMetaObject(globalFilterMeta) ? globalFilterMeta.value : globalFilterMeta;
+                        const filterConstraint = this.resolveFilterConstraint(this.isFilterMetaObject(globalFilterMeta) ? globalFilterMeta.matchMode || FilterMatchMode.CONTAINS : FilterMatchMode.CONTAINS);
 
-                        if (
-                            (strict && (this.findFilteredNodes(copyNodeForGlobal, globalFilterParamsWithoutNode) || this.isFilterMatched(copyNodeForGlobal, globalFilterParamsWithoutNode))) ||
-                            (!strict && (this.isFilterMatched(copyNodeForGlobal, globalFilterParamsWithoutNode) || this.findFilteredNodes(copyNodeForGlobal, globalFilterParamsWithoutNode)))
-                        ) {
-                            globalMatch = true;
-                            copyNode = copyNodeForGlobal;
+                        for (let filterField of globalFilterFields) {
+                            let copyNodeForGlobal = { ...copyNode };
+
+                            if (this.isNodeFilterMatched(copyNodeForGlobal, { filterField, filterValue, filterConstraint, strict })) {
+                                globalMatch = true;
+                                copyNode = copyNodeForGlobal;
+                                break;
+                            }
                         }
                     }
-                }
 
-                let matches = localMatch;
-
-                if (this.hasGlobalFilter()) {
-                    matches = localMatch && globalMatch;
-                }
-
-                if (matches) {
-                    filteredNodes.push(copyNode);
+                    if (hasGlobalFilter ? localMatch && globalMatch : localMatch) {
+                        filteredNodes.push(copyNode);
+                    }
                 }
             }
 
-            let filterEvent = this.createLazyLoadEvent(event);
+            let filterEvent = this.createLazyLoadEvent();
 
             filterEvent.filteredValue = filteredNodes;
             this.$emit('filter', filterEvent);
 
             return filteredNodes;
+        },
+        isFilterMetaObject(filterMeta) {
+            return filterMeta !== null && typeof filterMeta === 'object';
+        },
+        resolveFilterConstraint(matchMode) {
+            return FilterService.filters[matchMode || FilterMatchMode.STARTS_WITH];
+        },
+        isColumnFilterMatched(node, col, filterField, filterMeta, strict) {
+            if (!this.isFilterMetaObject(filterMeta)) {
+                // legacy flat value, the match mode comes from the column
+                return this.isNodeFilterMatched(node, { filterField, filterValue: filterMeta, filterConstraint: this.resolveFilterConstraint(this.columnProp(col, 'filterMatchMode')), strict });
+            }
+
+            if (filterMeta.operator) {
+                const constraints = filterMeta.constraints;
+
+                if (filterMeta.operator === FilterOperator.OR) {
+                    // single pass with a combined predicate, keeps every branch matching any constraint
+                    const filterConstraint = (dataFieldValue, filterValue, filterLocale) => constraints.some((constraint) => this.resolveFilterConstraint(constraint.matchMode)(dataFieldValue, constraint.value, filterLocale));
+
+                    return this.isNodeFilterMatched(node, { filterField, filterValue: null, filterConstraint, strict });
+                }
+
+                // each constraint prunes the subtree left by the previous one
+                return constraints.every((constraint) => this.isNodeFilterMatched(node, { filterField, filterValue: constraint.value, filterConstraint: this.resolveFilterConstraint(constraint.matchMode), strict }));
+            }
+
+            return this.isNodeFilterMatched(node, { filterField, filterValue: filterMeta.value, filterConstraint: this.resolveFilterConstraint(filterMeta.matchMode || this.columnProp(col, 'filterMatchMode')), strict });
+        },
+        isNodeFilterMatched(node, paramsWithoutNode) {
+            // evaluation order matters, findFilteredNodes prunes the children of the node copy
+            return paramsWithoutNode.strict ? !!(this.findFilteredNodes(node, paramsWithoutNode) || this.isFilterMatched(node, paramsWithoutNode)) : !!(this.isFilterMatched(node, paramsWithoutNode) || this.findFilteredNodes(node, paramsWithoutNode));
+        },
+        getActiveFilters(filters) {
+            const removeEmptyFilters = ([key, value]) => {
+                if (!this.isFilterMetaObject(value)) {
+                    return [key, value];
+                }
+
+                if (value.constraints) {
+                    const filteredConstraints = value.constraints.filter((constraint) => constraint.value !== null);
+
+                    if (filteredConstraints.length > 0) {
+                        return [key, { ...value, constraints: filteredConstraints }];
+                    }
+                } else if (value.value !== null) {
+                    return [key, value];
+                }
+
+                return undefined;
+            };
+
+            const filterValidEntries = (entry) => entry !== undefined;
+            const entries = Object.entries(filters || {})
+                .map(removeEmptyFilters)
+                .filter(filterValidEntries);
+
+            return Object.fromEntries(entries);
+        },
+        cloneFilters(filters) {
+            let cloned = {};
+
+            if (filters) {
+                Object.entries(filters).forEach(([prop, value]) => {
+                    if (!this.isFilterMetaObject(value)) {
+                        cloned[prop] = value;
+                    } else if (value.operator) {
+                        cloned[prop] = {
+                            operator: value.operator,
+                            constraints: value.constraints.map((constraint) => {
+                                return { ...constraint };
+                            })
+                        };
+                    } else {
+                        cloned[prop] = { ...value };
+                    }
+                });
+            }
+
+            return cloned;
+        },
+        onFilterChange(filters) {
+            this.d_filters = filters;
+        },
+        onFilterApply() {
+            this.d_first = 0;
+            this.$emit('update:first', this.d_first);
+            this.$emit('update:filters', this.d_filters);
+
+            if (this.lazy) {
+                const filterEvent = this.createLazyLoadEvent();
+
+                filterEvent.filters = this.d_filters;
+                this.$emit('filter', filterEvent);
+            }
         },
         findFilteredNodes(node, paramsWithoutNode) {
             if (node) {
@@ -834,6 +952,23 @@ export default {
         columns() {
             return this.d_columns.get(this);
         },
+        headerFilterButtonProps() {
+            return {
+                filter: { severity: 'secondary', text: true, rounded: true },
+                ...this.filterButtonProps,
+                inline: {
+                    clear: { severity: 'secondary', text: true, rounded: true },
+                    ...this.filterButtonProps.inline
+                },
+                popover: {
+                    addRule: { severity: 'info', text: true, size: 'small' },
+                    removeRule: { severity: 'danger', text: true, size: 'small' },
+                    apply: { size: 'small' },
+                    clear: { outlined: true, size: 'small' },
+                    ...this.filterButtonProps.popover
+                }
+            };
+        },
         processedData() {
             if (this.lazy) {
                 return this.value;
@@ -925,6 +1060,7 @@ export default {
         TTRow: TreeTableRow,
         TTPaginator: Paginator,
         TTHeaderCell: HeaderCell,
+        TTFilterHeaderCell: FilterHeaderCell,
         TTFooterCell: FooterCell,
         SpinnerIcon: SpinnerIcon
     }

@@ -138,6 +138,35 @@ export default {
             type: String,
             default: undefined
         },
+        filterDisplay: {
+            type: String,
+            default: null
+        },
+        globalFilterFields: {
+            type: Array,
+            default: null
+        },
+        filterInputProps: {
+            type: null,
+            default: null
+        },
+        filterButtonProps: {
+            type: Object,
+            default() {
+                return {
+                    filter: { severity: 'secondary', text: true, rounded: true },
+                    inline: {
+                        clear: { severity: 'secondary', text: true, rounded: true }
+                    },
+                    popover: {
+                        addRule: { severity: 'info', text: true, size: 'small' },
+                        removeRule: { severity: 'danger', text: true, size: 'small' },
+                        apply: { size: 'small' },
+                        clear: { outlined: true, size: 'small' }
+                    }
+                };
+            }
+        },
         resizableColumns: {
             type: Boolean,
             default: false

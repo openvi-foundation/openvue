@@ -13,7 +13,23 @@ const $appState = {
             sourceType: 'options-api',
             newsActive: false,
             announcement: null,
-            storageKey: 'openvue'
+            storageKey: 'openvue',
+            // Left empty here on purpose: this plugin also runs on the server, where there is no
+            // localStorage. AppDesigner hydrates it client-side to avoid a hydration mismatch.
+            designer: {
+                active: false,
+                activeView: 'dashboard',
+                activeTab: '0',
+                theme: {
+                    id: null,
+                    name: null,
+                    base: null,
+                    preset: null,
+                    config: null
+                },
+                acTokens: [],
+                themes: []
+            }
         });
     }
 };

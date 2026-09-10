@@ -55,16 +55,25 @@
 import EventBus from '@/app/AppEventBus';
 import { $t, updatePreset, updateSurfacePalette } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
-import Lara from '@openvue/themes/lara';
-import Material from '@openvue/themes/material';
-import Nora from '@openvue/themes/nora';
 
-const presets = {
-    Aura,
-    Material,
-    Lara,
-    Nora
+/* Aura is the default preset and already part of the app theme. The other three are only fetched
+   when a visitor picks them: each preset is close to 100 KB, and shipping all four on every page
+   put the whole set on the landing page that never needs them. */
+const presets = { Aura };
+
+const presetLoaders = {
+    Lara: () => import('@openvue/themes/lara'),
+    Material: () => import('@openvue/themes/material'),
+    Nora: () => import('@openvue/themes/nora')
 };
+
+async function loadPreset(name) {
+    if (!presets[name] && presetLoaders[name]) {
+        presets[name] = (await presetLoaders[name]()).default;
+    }
+
+    return presets[name];
+}
 
 export default {
     data() {
@@ -301,9 +310,10 @@ export default {
         onRippleChange(value) {
             this.$primevue.config.ripple = value;
         },
-        onPresetChange(value) {
+        async onPresetChange(value) {
+            const preset = await loadPreset(value);
+
             this.$appState.preset = value;
-            const preset = presets[value];
             const surfacePalette = this.surfaces.find((s) => s.name === this.selectedSurfaceColor)?.palette;
 
             $t().preset(preset).preset(this.getPresetExt()).surfacePalette(surfacePalette).use({ useDefaultOptions: true });
@@ -338,7 +348,8 @@ export default {
             return this.$appState.surface;
         },
         primaryColors() {
-            const presetPalette = presets[this.$appState.preset].primitive;
+            /* Falls back to Aura while a lazily loaded preset is still on its way. */
+            const presetPalette = (presets[this.$appState.preset] || Aura).primitive;
             const colors = ['emerald', 'green', 'lime', 'orange', 'amber', 'yellow', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
             const palettes = [{ name: 'noir', palette: {} }];
 

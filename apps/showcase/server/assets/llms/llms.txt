@@ -16,6 +16,7 @@
 - [Migration from PrimeVue v4](https://openvue.dev/migrate): Move an existing PrimeVue v4 project to OpenVue with one command.
 - [Install OpenVue with Nuxt](https://openvue.dev/nuxt): Setting up OpenVue in a Nuxt project.
 - [Install OpenVue with Vite](https://openvue.dev/vite): Setting up OpenVue in a Vite project.
+- [Theme Designer](https://openvue.dev/designer): Design a theme visually and export it as ready-to-use code. Free, MIT-licensed, and entirely local.
 - [Tailwind CSS](https://openvue.dev/tailwind): Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.
 - [Contribution Guide](https://openvue.dev/contribution): Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
 - [Setup](https://openvue.dev/setup): Installation guides for popular development environments.

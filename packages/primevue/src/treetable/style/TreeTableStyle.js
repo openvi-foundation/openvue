@@ -30,20 +30,62 @@ const classes = {
         }
     ],
     thead: 'p-treetable-thead',
-    headerCell: ({ instance, props }) => [
-        'p-treetable-header-cell',
-        {
-            'p-treetable-sortable-column': instance.columnProp('sortable'),
-            'p-treetable-resizable-column': props.resizableColumns,
-            'p-treetable-column-sorted': instance.columnProp('sortable') ? instance.isColumnSorted() : false,
-            'p-treetable-frozen-column': instance.columnProp('frozen')
-        }
-    ],
+    headerCell: ({ instance, props, filterCell }) =>
+        filterCell
+            ? [
+                  'p-treetable-header-cell',
+                  {
+                      'p-treetable-frozen-column': instance.columnProp('frozen')
+                  }
+              ]
+            : [
+                  'p-treetable-header-cell',
+                  {
+                      'p-treetable-sortable-column': instance.columnProp('sortable'),
+                      'p-treetable-resizable-column': props.resizableColumns,
+                      'p-treetable-column-sorted': instance.columnProp('sortable') ? instance.isColumnSorted() : false,
+                      'p-treetable-frozen-column': instance.columnProp('frozen')
+                  }
+              ],
     columnResizer: 'p-treetable-column-resizer',
     columnHeaderContent: 'p-treetable-column-header-content',
     columnTitle: 'p-treetable-column-title',
     sortIcon: 'p-treetable-sort-icon',
     pcSortBadge: 'p-treetable-sort-badge',
+    filter: ({ props }) => [
+        'p-treetable-filter',
+        {
+            'p-treetable-inline-filter': props.display === 'row',
+            'p-treetable-popover-filter': props.display === 'menu'
+        }
+    ],
+    filterElementContainer: 'p-treetable-filter-element-container',
+    pcColumnFilterButton: 'p-treetable-column-filter-button',
+    pcColumnFilterClearButton: 'p-treetable-column-filter-clear-button',
+    filterOverlay: ({ props }) => [
+        'p-treetable-filter-overlay p-component',
+        {
+            'p-treetable-filter-overlay-popover': props.display === 'menu'
+        }
+    ],
+    filterConstraintList: 'p-treetable-filter-constraint-list',
+    filterConstraint: ({ instance, matchMode }) => [
+        'p-treetable-filter-constraint',
+        {
+            'p-treetable-filter-constraint-selected': matchMode && instance.isRowMatchModeSelected(matchMode.value)
+        }
+    ],
+    filterConstraintSeparator: 'p-treetable-filter-constraint-separator',
+    filterOperator: 'p-treetable-filter-operator',
+    pcFilterOperatorDropdown: 'p-treetable-filter-operator-dropdown',
+    filterRuleList: 'p-treetable-filter-rule-list',
+    filterRule: 'p-treetable-filter-rule',
+    pcFilterConstraintDropdown: 'p-treetable-filter-constraint-dropdown',
+    pcFilterRemoveRuleButton: 'p-treetable-filter-remove-rule-button',
+    pcFilterAddRuleButton: 'p-treetable-filter-add-rule-button',
+    filterButtonbar: 'p-treetable-filter-buttonbar',
+    pcFilterClearButton: 'p-treetable-filter-clear-button',
+    pcFilterApplyButton: 'p-treetable-filter-apply-button',
     tbody: 'p-treetable-tbody',
     row: ({ props, instance }) => [
         {

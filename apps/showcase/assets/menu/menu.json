@@ -489,6 +489,11 @@
                     "to": "/theming/unstyled"
                 },
                 {
+                    "name": "Theme Designer",
+                    "to": "/designer",
+                    "badge": "NEW"
+                },
+                {
                     "name": "Tailwind CSS",
                     "icon": "pi pi-star",
                     "to": "/tailwind"

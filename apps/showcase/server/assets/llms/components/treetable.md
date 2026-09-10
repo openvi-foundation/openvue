@@ -254,97 +254,6 @@ const columns = ref([
 ```
 </details>
 
-## FilterDoc
-
-Filtering is enabled by adding the filter property to a Column. The filterMode specifies the filtering strategy, in lenient mode when the query matches a node, children of the node are not searched further as all descendants of the node are included. On the other hand, in strict mode when the query matches a node, filtering continues on all descendants. A general filled called globalFilter is also provided to search all columns that support filtering.
-
-```vue
-<SelectButton v-model="filterMode" optionLabel="label" dataKey="label" :options="filterOptions" />
-<TreeTable :value="nodes" :filters="filters" :filterMode="filterMode.value">
-    <template #header>
-        <div class="flex justify-end">
-            <IconField>
-                <InputIcon class="pi pi-search" />
-                <InputText v-model="filters['global']" placeholder="Global Search" />
-            </IconField>
-        </div>
-    </template>
-    <template #empty> No customers found.</template>
-    <Column field="name" header="Name" expander style="min-width: 12rem">
-        <template #filter>
-            <InputText v-model="filters['name']" type="text" placeholder="Filter by name" />
-        </template>
-    </Column>
-    <Column field="size" header="Size" style="min-width: 12rem">
-        <template #filter>
-            <InputText v-model="filters['size']" type="text" placeholder="Filter by size" />
-        </template>
-    </Column>
-    <Column field="type" header="Type" style="min-width: 12rem">
-        <template #filter>
-            <InputText v-model="filters['type']" type="text" placeholder="Filter by type" />
-        </template>
-    </Column>
-</TreeTable>
-```
-
-<details>
-<summary>Composition API Example</summary>
-
-```vue
-<template>
-    <div class="card">
-        <div class="flex justify-center mb-6">
-            <SelectButton v-model="filterMode" optionLabel="label" dataKey="label" :options="filterOptions" />
-        </div>
-        <TreeTable :value="nodes" :filters="filters" :filterMode="filterMode.value">
-            <template #header>
-                <div class="flex justify-end">
-                    <IconField>
-                        <InputIcon class="pi pi-search" />
-                        <InputText v-model="filters['global']" placeholder="Global Search" />
-                    </IconField>
-                </div>
-            </template>
-            <template #empty> No customers found.</template>
-            <Column field="name" header="Name" expander style="min-width: 12rem">
-                <template #filter>
-                    <InputText v-model="filters['name']" type="text" placeholder="Filter by name" />
-                </template>
-            </Column>
-            <Column field="size" header="Size" style="min-width: 12rem">
-                <template #filter>
-                    <InputText v-model="filters['size']" type="text" placeholder="Filter by size" />
-                </template>
-            </Column>
-            <Column field="type" header="Type" style="min-width: 12rem">
-                <template #filter>
-                    <InputText v-model="filters['type']" type="text" placeholder="Filter by type" />
-                </template>
-            </Column>
-        </TreeTable>
-    </div>
-</template>
-
-<script setup>
-import { ref, onMounted } from 'vue';
-import { NodeService } from '@/service/NodeService';
-
-onMounted(() => {
-    NodeService.getTreeTableNodes().then((data) => (nodes.value = data));
-});
-
-const nodes = ref();
-const filters = ref({});
-const filterMode = ref({ label: 'Lenient', value: 'lenient' });
-const filterOptions = ref([
-    { label: 'Lenient', value: 'lenient' },
-    { label: 'Strict', value: 'strict' }
-]);
-<\/script>
-```
-</details>
-
 ## GridLinesDoc
 
 Enabling showGridlines displays grid lines.
@@ -650,9 +559,13 @@ const nodes = ref();
 | multiSortMeta | null \| TreeTableSortMeta[] | - | An array of SortMeta objects to sort the data by default in multiple sort mode. |
 | sortMode | HintedString<"single" \| "multiple"> | single | Defines whether sorting works on single column or on multiple columns. |
 | removableSort | boolean | false | When enabled, columns can have an un-sorted state. |
-| filters | TreeTableFilterMeta | - | Filters object with key-value pairs to define the filters. |
+| filters | TreeTableFilterMeta | - | Filters object with key-value pairs to define the filters. Two shapes are accepted per field: the flat form  `{ name: 'value' }` , where the match mode comes from the  `filterMatchMode`  prop of the Column, and the DataTable form  `{ name: { value, matchMode } }`  or  `{ name: { operator, constraints: [{ value, matchMode }] } }` , used together with  `filterDisplay` . With multiple constraints,  `and`  applies each constraint in turn to the subtree left by the previous one, and  `or`  keeps every branch that satisfies any constraint. |
 | filterMode | HintedString<"lenient" \| "strict"> | lenient | Mode for filtering. |
+| filterDisplay | HintedString<"menu" \| "row"> | - | Layout of the filter elements. When undefined, the filter row is rendered from the Column filter slot as-is. |
+| globalFilterFields | string[] | - | An array of fields to use in global filtering, defaults to the filter fields of all columns. |
 | filterLocale | string | - | Locale to use in filtering. The default locale is the host environment's current locale. |
+| filterInputProps | InputHTMLAttributes | - | Used to pass all properties of the HTMLInputElement to the focusable filter input element inside the component. |
+| filterButtonProps | Partial<TreeTableFilterButtonPropsOptions> | - | Used to pass all filter button property object |
 | resizableColumns | boolean | false | When enabled, columns can be resized using drag and drop. |
 | columnResizeMode | HintedString<"fit" \| "expand"> | fit | Defines whether the overall table width should change on column resize. |
 | indentation | number | 1 | Indentation factor as rem value for children nodes. |
@@ -791,6 +704,32 @@ const nodes = ref();
 | treetable.node.toggle.button.focus.ring.color | --p-treetable-node-toggle-button-focus-ring-color | Focus ring color of node toggle button |
 | treetable.node.toggle.button.focus.ring.offset | --p-treetable-node-toggle-button-focus-ring-offset | Focus ring offset of node toggle button |
 | treetable.node.toggle.button.focus.ring.shadow | --p-treetable-node-toggle-button-focus-ring-shadow | Focus ring shadow of node toggle button |
+| treetable.filter.inline.gap | --p-treetable-filter-inline-gap | Inline gap of filter |
+| treetable.filter.overlay.select.background | --p-treetable-filter-overlay-select-background | Overlay select background of filter |
+| treetable.filter.overlay.select.border.color | --p-treetable-filter-overlay-select-border-color | Overlay select border color of filter |
+| treetable.filter.overlay.select.border.radius | --p-treetable-filter-overlay-select-border-radius | Overlay select border radius of filter |
+| treetable.filter.overlay.select.color | --p-treetable-filter-overlay-select-color | Overlay select color of filter |
+| treetable.filter.overlay.select.shadow | --p-treetable-filter-overlay-select-shadow | Overlay select shadow of filter |
+| treetable.filter.overlay.popover.background | --p-treetable-filter-overlay-popover-background | Overlay popover background of filter |
+| treetable.filter.overlay.popover.border.color | --p-treetable-filter-overlay-popover-border-color | Overlay popover border color of filter |
+| treetable.filter.overlay.popover.border.radius | --p-treetable-filter-overlay-popover-border-radius | Overlay popover border radius of filter |
+| treetable.filter.overlay.popover.color | --p-treetable-filter-overlay-popover-color | Overlay popover color of filter |
+| treetable.filter.overlay.popover.shadow | --p-treetable-filter-overlay-popover-shadow | Overlay popover shadow of filter |
+| treetable.filter.overlay.popover.padding | --p-treetable-filter-overlay-popover-padding | Overlay popover padding of filter |
+| treetable.filter.overlay.popover.gap | --p-treetable-filter-overlay-popover-gap | Overlay popover gap of filter |
+| treetable.filter.rule.border.color | --p-treetable-filter-rule-border-color | Rule border color of filter |
+| treetable.filter.constraint.list.padding | --p-treetable-filter-constraint-list-padding | Constraint list padding of filter |
+| treetable.filter.constraint.list.gap | --p-treetable-filter-constraint-list-gap | Constraint list gap of filter |
+| treetable.filter.constraint.focus.background | --p-treetable-filter-constraint-focus-background | Constraint focus background of filter |
+| treetable.filter.constraint.selected.background | --p-treetable-filter-constraint-selected-background | Constraint selected background of filter |
+| treetable.filter.constraint.selected.focus.background | --p-treetable-filter-constraint-selected-focus-background | Constraint selected focus background of filter |
+| treetable.filter.constraint.color | --p-treetable-filter-constraint-color | Constraint color of filter |
+| treetable.filter.constraint.focus.color | --p-treetable-filter-constraint-focus-color | Constraint focus color of filter |
+| treetable.filter.constraint.selected.color | --p-treetable-filter-constraint-selected-color | Constraint selected color of filter |
+| treetable.filter.constraint.selected.focus.color | --p-treetable-filter-constraint-selected-focus-color | Constraint selected focus color of filter |
+| treetable.filter.constraint.separator.border.color | --p-treetable-filter-constraint-separator-border-color | Constraint separator border color of filter |
+| treetable.filter.constraint.padding | --p-treetable-filter-constraint-padding | Constraint padding of filter |
+| treetable.filter.constraint.border.radius | --p-treetable-filter-constraint-border-radius | Constraint border radius of filter |
 | treetable.paginator.top.border.color | --p-treetable-paginator-top-border-color | Border color of paginator top |
 | treetable.paginator.top.border.width | --p-treetable-paginator-top-border-width | Border width of paginator top |
 | treetable.paginator.bottom.border.color | --p-treetable-paginator-bottom-border-color | Border color of paginator bottom |

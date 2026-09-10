@@ -79078,6 +79078,91 @@
                     ],
                     "methods": []
                 },
+                "TreeTableFilterButtonInlinePropsOptions": {
+                    "description": "Custom treetable filter inline button props options.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "clear",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Apply button props"
+                        }
+                    ],
+                    "methods": []
+                },
+                "TreeTableFilterButtonPopoverPropsOptions": {
+                    "description": "Custom treetable filter popover button props options.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "addRule",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Add rule button props"
+                        },
+                        {
+                            "name": "removeRule",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Remove rule button props"
+                        },
+                        {
+                            "name": "apply",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Apply button props"
+                        },
+                        {
+                            "name": "clear",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Apply button props"
+                        }
+                    ],
+                    "methods": []
+                },
+                "TreeTableFilterButtonPropsOptions": {
+                    "description": "Custom treetable filter buttons' props options.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "filter",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "any",
+                            "default": "",
+                            "description": "Filter button props"
+                        },
+                        {
+                            "name": "inline",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "undefined | TreeTableFilterButtonInlinePropsOptions",
+                            "default": "",
+                            "description": "Inline filter buttons' options"
+                        },
+                        {
+                            "name": "popover",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "undefined | TreeTableFilterButtonPopoverPropsOptions",
+                            "default": "",
+                            "description": "Popover filter buttons' options"
+                        }
+                    ],
+                    "methods": []
+                },
                 "TreeTableSortEvent": {
                     "description": "Custom sort event.",
                     "relatedProp": "TreeTableEmitsOptions.sort",
@@ -80018,7 +80103,7 @@
                             "readonly": false,
                             "type": "TreeTableFilterMeta",
                             "default": "",
-                            "description": "Filters object with key-value pairs to define the filters."
+                            "description": "Filters object with key-value pairs to define the filters. Two shapes are accepted per field:\nthe flat form  `{ name: 'value' }` , where the match mode comes from the  `filterMatchMode`  prop of the Column,\nand the DataTable form  `{ name: { value, matchMode } }`  or  `{ name: { operator, constraints: [{ value, matchMode }] } }` , used together with  `filterDisplay` .\nWith multiple constraints,  `and`  applies each constraint in turn to the subtree left by the previous one, and  `or`  keeps every branch that satisfies any constraint."
                         },
                         {
                             "name": "filterMode",
@@ -80029,12 +80114,44 @@
                             "description": "Mode for filtering."
                         },
                         {
+                            "name": "filterDisplay",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "HintedString<\"menu\" | \"row\">",
+                            "default": "",
+                            "description": "Layout of the filter elements. When undefined, the filter row is rendered from the Column filter slot as-is."
+                        },
+                        {
+                            "name": "globalFilterFields",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "string[]",
+                            "default": "",
+                            "description": "An array of fields to use in global filtering, defaults to the filter fields of all columns."
+                        },
+                        {
                             "name": "filterLocale",
                             "optional": true,
                             "readonly": false,
                             "type": "string",
                             "default": "",
                             "description": "Locale to use in filtering. The default locale is the host environment's current locale."
+                        },
+                        {
+                            "name": "filterInputProps",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "InputHTMLAttributes",
+                            "default": "",
+                            "description": "Used to pass all properties of the HTMLInputElement to the focusable filter input element inside the component."
+                        },
+                        {
+                            "name": "filterButtonProps",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "Partial<TreeTableFilterButtonPropsOptions>",
+                            "default": "",
+                            "description": "Used to pass all filter button property object"
                         },
                         {
                             "name": "resizableColumns",
@@ -80394,6 +80511,19 @@
                             "description": "Emitted when the multiSortMeta changes."
                         },
                         {
+                            "name": "update:filters",
+                            "parameters": [
+                                {
+                                    "name": "value",
+                                    "optional": false,
+                                    "type": "TreeTableFilterMeta",
+                                    "description": "New value."
+                                }
+                            ],
+                            "returnType": "void",
+                            "description": "Emitted when the filters change."
+                        },
+                        {
                             "name": "page",
                             "parameters": [
                                 {
@@ -80535,6 +80665,18 @@
                 },
                 "TreeTableFilterMeta": {
                     "description": "Custom filter metadata.",
+                    "props": []
+                },
+                "TreeTableFilterButtonInlinePropsOptions": {
+                    "description": "Custom treetable filter inline button props options.",
+                    "props": []
+                },
+                "TreeTableFilterButtonPopoverPropsOptions": {
+                    "description": "Custom treetable filter popover button props options.",
+                    "props": []
+                },
+                "TreeTableFilterButtonPropsOptions": {
+                    "description": "Custom treetable filter buttons' props options.",
                     "props": []
                 },
                 "TreeTableSortEvent": {

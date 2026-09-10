@@ -52,6 +52,11 @@
                     </button>
                     <AppConfigurator />
                 </li>
+                <li v-if="showDesigner">
+                    <button type="button" class="topbar-item" @click="toggleDesigner" aria-label="Theme Designer" title="Theme Designer">
+                        <i class="pi pi-sliders-h"></i>
+                    </button>
+                </li>
                 <li v-if="showMenuButton" class="menu-button">
                     <button type="button" class="topbar-item menu-button" @click="onMenuButtonClick" aria-haspopup aria-label="Menu">
                         <i class="pi pi-bars"></i>
@@ -76,6 +81,12 @@ export default {
     outsideClickListener: null,
     props: {
         showMenuButton: {
+            type: Boolean,
+            default: true
+        },
+        // The designer drawer is mounted by the documentation layout, so the button is hidden on
+        // pages that use the bare layout and would have nothing to open.
+        showDesigner: {
             type: Boolean,
             default: true
         }
@@ -110,6 +121,9 @@ export default {
         },
         toggleDarkMode() {
             EventBus.emit('dark-mode-toggle', { dark: !this.$appState.darkTheme });
+        },
+        toggleDesigner() {
+            this.$appState.designer.active = !this.$appState.designer.active;
         },
         bindScrollListener() {
             if (!this.scrollListener) {

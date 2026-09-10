@@ -446,6 +446,9 @@ export default {
     droppedRowIndex: null,
     rowDragging: null,
     columnWidthsState: null,
+    columnWidthsByKeyState: null,
+    columnWidthsByKey: null,
+    columnWidthsKeys: null,
     tableWidthState: null,
     columnWidthsRestored: false,
     watch: {
@@ -514,6 +517,8 @@ export default {
         this.d_columnGroups.clear();
     },
     updated() {
+        this.restoreColumnWidthsByKey();
+
         if (this.isStateful()) {
             this.saveState();
         }
@@ -1334,21 +1339,9 @@ export default {
                 } else if (this.columnResizeMode === 'expand') {
                     const tableWidth = this.$refs.table.offsetWidth + delta + 'px';
 
-                    const updateTableWidth = (el) => {
-                        !!el && (el.style.width = el.style.minWidth = tableWidth);
-                    };
-
                     // Reasoning: resize table cells before updating the table width so that it can use existing computed cell widths and adjust only the one column.
                     this.resizeTableCells(newColumnWidth);
-                    updateTableWidth(this.$refs.table);
-
-                    if (!this.virtualScrollerDisabled) {
-                        const body = this.$refs.bodyRef && this.$refs.bodyRef.$el;
-                        const frozenBody = this.$refs.frozenBodyRef && this.$refs.frozenBodyRef.$el;
-
-                        updateTableWidth(body);
-                        updateTableWidth(frozenBody);
-                    }
+                    this.updateTableWidth(tableWidth);
                 }
 
                 this.$emit('column-resize-end', {
@@ -1372,29 +1365,80 @@ export default {
             let colIndex = getIndex(this.resizeColumnElement);
             let widths = [];
             let headers = find(this.$refs.table, 'thead[data-pc-section="thead"] > tr > th');
+            let columnCount = this.resizeColumnElement.parentElement.children.length;
 
             headers.forEach((header) => widths.push(getOuterWidth(header)));
 
-            this.destroyStyleElement();
-            this.createStyleElement();
+            widths[colIndex] = newColumnWidth;
+            nextColumnWidth && (widths[colIndex + 1] = nextColumnWidth);
 
-            let innerHTML = '';
-            let selector = `[data-pc-name="datatable"][${this.$attrSelector}] > [data-pc-section="tablecontainer"] ${this.virtualScrollerDisabled ? '' : '> [data-pc-name="virtualscroller"]'} > table[data-pc-section="table"]`;
+            this.cacheColumnWidthsByKey(widths.slice(0, columnCount));
+            this.addColumnWidthStyles(widths);
+        },
+        getVisibleColumnKeys() {
+            if (this.headerColumnGroup) {
+                return null;
+            }
 
-            widths.forEach((width, index) => {
-                let colWidth = index === colIndex ? newColumnWidth : nextColumnWidth && index === colIndex + 1 ? nextColumnWidth : width;
-                let style = `width: ${colWidth}px !important; max-width: ${colWidth}px !important`;
+            const keys = [];
 
-                innerHTML += `
-                    ${selector} > thead[data-pc-section="thead"] > tr > th:nth-child(${index + 1}),
-                    ${selector} > tbody[data-pc-section="tbody"] > tr > td:nth-child(${index + 1}),
-                    ${selector} > tfoot[data-pc-section="tfoot"] > tr > td:nth-child(${index + 1}) {
-                        ${style}
-                    }
-                `;
+            (this.columns || []).forEach((column, index) => {
+                if (this.columnProp(column, 'hidden') || (this.rowGroupMode === 'subheader' && this.groupRowsBy === this.columnProp(column, 'field'))) {
+                    return;
+                }
+
+                keys.push(this.columnProp(column, 'columnKey') || this.columnProp(column, 'field') || index);
             });
 
-            this.styleElement.innerHTML = innerHTML;
+            return keys.length > 0 && new Set(keys).size === keys.length ? keys : null;
+        },
+        cacheColumnWidthsByKey(widths) {
+            const keys = this.getVisibleColumnKeys();
+            const values = (keys || []).map((key, index) => parseFloat(widths[index]));
+
+            if (!keys || widths.length !== keys.length || values.some((value) => !isFinite(value) || value <= 0)) {
+                return;
+            }
+
+            this.columnWidthsByKey ||= new Map();
+            keys.forEach((key, index) => this.columnWidthsByKey.set(key, values[index]));
+            this.columnWidthsKeys = keys;
+        },
+        restoreColumnWidthsByKey() {
+            if (!this.resizableColumns || !this.columnWidthsByKey) {
+                return;
+            }
+
+            const keys = this.getVisibleColumnKeys();
+
+            if (!keys || this.isSameColumnWidthKeys(keys) || !keys.some((key) => this.columnWidthsByKey.has(key))) {
+                return;
+            }
+
+            const widths = keys.map((key) => this.columnWidthsByKey.get(key));
+
+            this.addColumnWidthStyles(widths);
+
+            if (this.columnResizeMode === 'expand' && widths.every((width) => width !== undefined)) {
+                this.updateTableWidth(widths.reduce((total, width) => total + width, 0) + 'px');
+            }
+
+            this.columnWidthsKeys = keys;
+        },
+        isSameColumnWidthKeys(keys) {
+            return !!this.columnWidthsKeys && this.columnWidthsKeys.length === keys.length && this.columnWidthsKeys.every((key, index) => key === keys[index]);
+        },
+        updateTableWidth(width) {
+            const applyWidth = (el) => {
+                !!el && (el.style.width = el.style.minWidth = width);
+            };
+
+            applyWidth(this.$refs.table);
+
+            if (!this.virtualScrollerDisabled) {
+                applyWidth(this.$refs.bodyRef && this.$refs.bodyRef.$el);
+                applyWidth(this.$refs.frozenBodyRef && this.$refs.frozenBodyRef.$el);
+            }
         },
         bindColumnResizeEvents() {
             if (!this.documentColumnResizeListener) {
@@ -1847,6 +1891,10 @@ export default {
                     this.columnWidthsState = parsedState.columnWidths;
                     restoredState.columnWidths = this.columnWidthsState;
                 }
+                if (typeof parsedState.columnWidthsByKey === 'object' && parsedState.columnWidthsByKey !== null) {
+                    this.columnWidthsByKeyState = parsedState.columnWidthsByKey;
+                    restoredState.columnWidthsByKey = this.columnWidthsByKeyState;
+                }
                 if (typeof parsedState.tableWidth === 'string') {
                     this.tableWidthState = parsedState.tableWidth;
                     restoredState.tableWidth = this.tableWidthState;
@@ -1886,9 +1934,23 @@ export default {
             headers.forEach((header) => widths.push(getOuterWidth(header)));
             state.columnWidths = widths.join(',');
 
+            const widthsByKey = this.getPersistableColumnWidths();
+
+            widthsByKey && (state.columnWidthsByKey = widthsByKey);
+
             if (this.columnResizeMode === 'expand') {
                 state.tableWidth = getOuterWidth(this.$refs.table) + 'px';
             }
+        },
+        getPersistableColumnWidths() {
+            const widths = {};
+
+            this.columnWidthsByKey &&
+                this.columnWidthsByKey.forEach((width, key) => {
+                    typeof key === 'string' && (widths[key] = width);
+                });
+
+            return Object.keys(widths).length ? widths : null;
         },
         addColumnWidthStyles(widths) {
             this.createStyleElement();
@@ -1897,6 +1959,10 @@ export default {
             let selector = `[data-pc-name="datatable"][${this.$attrSelector}] > [data-pc-section="tablecontainer"] ${this.virtualScrollerDisabled ? '' : '> [data-pc-name="virtualscroller"]'} > table[data-pc-section="table"]`;
 
             widths.forEach((width, index) => {
+                if (width === undefined) {
+                    return;
+                }
+
                 let style = `width: ${width}px !important; max-width: ${width}px !important`;
 
                 innerHTML += `
@@ -1911,15 +1977,28 @@ export default {
             this.styleElement.innerHTML = innerHTML;
         },
         restoreColumnWidths() {
+            if (this.columnResizeMode === 'expand' && this.tableWidthState) {
+                this.$refs.table.style.width = this.tableWidthState;
+                this.$refs.table.style.minWidth = this.tableWidthState;
+            }
+
+            const entries = Object.entries(this.columnWidthsByKeyState || {})
+                .map(([key, width]) => [key, parseFloat(width)])
+                .filter(([, width]) => isFinite(width) && width > 0);
+
+            if (entries.length) {
+                this.columnWidthsByKey = new Map(entries);
+                this.columnWidthsKeys = null;
+                this.restoreColumnWidthsByKey();
+
+                return;
+            }
+
             if (this.columnWidthsState) {
                 let widths = this.columnWidthsState.split(',');
 
-                if (this.columnResizeMode === 'expand' && this.tableWidthState) {
-                    this.$refs.table.style.width = this.tableWidthState;
-                    this.$refs.table.style.minWidth = this.tableWidthState;
-                }
-
                 if (isNotEmpty(widths)) {
+                    this.cacheColumnWidthsByKey(widths);
                     this.addColumnWidthStyles(widths);
                 }
             }
@@ -2026,6 +2105,10 @@ export default {
             this.d_columnOrder = columnOrder;
         },
         createStyleElement() {
+            if (this.styleElement) {
+                return;
+            }
+
             this.styleElement = document.createElement('style');
             this.styleElement.type = 'text/css';
             setAttribute(this.styleElement, 'nonce', this.$primevue?.config?.csp?.nonce);

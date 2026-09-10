@@ -64,6 +64,27 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/3629094?v=4",
             "profile": "https://github.com/michaelw85",
             "contributions": ["ideas"]
+        },
+        {
+            "login": "wahpiangle",
+            "name": "Quan Ming",
+            "avatar_url": "https://avatars.githubusercontent.com/u/116425066?v=4",
+            "profile": "https://github.com/wahpiangle",
+            "contributions": ["code"]
+        },
+        {
+            "login": "pupuking723",
+            "name": "pupuking723",
+            "avatar_url": "https://avatars.githubusercontent.com/u/169750518?v=4",
+            "profile": "https://github.com/pupuking723",
+            "contributions": ["code"]
+        },
+        {
+            "login": "DJ-caddev",
+            "name": "Dylan",
+            "avatar_url": "https://avatars.githubusercontent.com/u/93262194?v=4",
+            "profile": "https://caddev.info/",
+            "contributions": ["ideas"]
         }
     ]
 }
