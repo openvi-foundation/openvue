@@ -9,8 +9,9 @@ describe('generated Nuxt documentation', () => {
         const download = sections.find((section) => section.id === 'download');
 
         expect(new Set(ids).size).toBe(ids.length);
-        expect(download.examples.basic).toContain('openvue@rc');
-        expect(download.examples.basic).toContain('@openvue/nuxt-module@rc');
+        expect(download.examples.basic).toContain('npm install openvue @openvue/themes');
+        expect(download.examples.basic).toContain('@openvue/nuxt-module');
         expect(JSON.stringify(sections)).not.toContain('@beta');
+        expect(JSON.stringify(sections)).not.toContain('@rc');
     });
 });

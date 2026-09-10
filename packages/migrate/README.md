@@ -48,7 +48,7 @@ The rename mapping:
 
 Left untouched on purpose: `primeicons`, `primeflex`, `tailwindcss-primeui`. The `primevue` Nuxt config key also stays, because OpenVue's Nuxt module kept it.
 
-Renamed dependencies are pinned to the exact OpenVue version while OpenVue is in prerelease; once stable releases start, the codemod will emit caret ranges instead.
+`openvue` and the `@openvue/*` packages are pinned to the exact version the codemod ships with, so a migration is reproducible. The `@openuxkit/*` engine packages get a caret range instead, because they version independently of OpenVue. Widen either range yourself afterwards if you prefer.
 
 ## Try OpenVue without changing any code
 
@@ -58,7 +58,7 @@ If you just want to evaluate OpenVue first, add only the override yourself inste
 // package.json — npm and bun; yarn uses "resolutions" instead of "overrides"
 {
     "overrides": {
-        "primevue": "npm:openvue@1.0.0-rc.0"
+        "primevue": "npm:openvue@1.0.0"
     }
 }
 ```
@@ -67,7 +67,7 @@ If you just want to evaluate OpenVue first, add only the override yourself inste
 # pnpm-workspace.yaml — pnpm 10.5+. pnpm 11 no longer reads the `pnpm` field
 # from package.json, so overrides belong here.
 overrides:
-    primevue: 'npm:openvue@1.0.0-rc.0'
+    primevue: 'npm:openvue@1.0.0'
 ```
 
 Once you decide to stay, run `npx @openvue/migrate` for the real rename.
