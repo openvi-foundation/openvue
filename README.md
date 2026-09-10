@@ -82,8 +82,10 @@ Our priority is stability first, growth second. In order:
 2. ~~**Launch the OpenVue website.**~~ Done: [openvue.dev](https://openvue.dev) is live with the full documentation and interactive component demos.
 3. ~~**Ship a PrimeVue migration tool.**~~ Done: [`npx @openvue/migrate`](https://openvue.dev/migrate) moves a PrimeVue v4 project to OpenVue in one command.
 4. ~~**Stabilize and release.**~~ Done: **1.0.0** is out. The public API is stable and follows semantic versioning from here.
-5. **Grow the community.** Open governance, responsive maintainers, and a clear path for contributors.
-6. **Expand the library.** Once the foundation is stable, invest in new components and improvements.
+5. **Work through the backlog.** Open issues, accessibility and performance come before new surface area.
+6. **Bring Volt back.** The Tailwind-native components you copy into your own codebase, rebuilt under the OpenVue name.
+7. **Ship a new theme.** A preset of our own, alongside the four inherited from upstream.
+8. **Release 2.0.** Composition API, Vapor mode and TypeScript at the source. Existing applications keep working: OpenVue is getting full Vapor compatibility, but traditional virtual DOM rendering and Options API support are not going anywhere.
 
 ## Contributing
 
