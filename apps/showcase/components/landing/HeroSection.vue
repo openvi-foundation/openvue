@@ -24,7 +24,7 @@
                     <i :class="['pi', copied ? 'pi-check' : 'pi-copy']"></i>
                 </button>
             </div>
-            <p class="hero-note">{{ version }} is out. 1.0.0 is next. MIT licensed, no paid tier.</p>
+            <p class="hero-note">{{ version }} is out. MIT licensed, no paid tier.</p>
         </div>
         <div class="bg-surface-0 border border-black/10 dark:border-white/20 dark:bg-surface-950 w-full h-[85vh] max-h-[1040px] rounded-3xl p-6 hidden lg:flex lg:mt-20 items-start gap-6 overflow-hidden">
             <div :class="isSlimMenu ? 'w-auto' : 'w-72'" class="rounded-2xl p-5 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between">
@@ -303,7 +303,7 @@ export default {
     data() {
         return {
             version: pkg.version,
-            installCommand: 'npm install openvue@rc',
+            installCommand: 'npm install openvue',
             copied: false,
             copyTimeout: null,
             lineChartData: {},

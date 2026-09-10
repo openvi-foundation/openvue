@@ -4,17 +4,17 @@ Setting up OpenVue in a Vite project.
 
 ## Download
 
-OpenVue is available for download on npm registry . OpenVue is currently a release candidate . The public API is what we intend to ship as 1.0; only bug fixes and documentation land before the stable release. The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
+OpenVue is available for download on npm registry . The theming API is also published as @openuxkit/themes , the engine package that @openvue/themes is built on. Both provide the same presets and utilities, so you may substitute one for the other. See theme packages for details.
 
 ```vue
 # Using npm
-npm install openvue@rc @openvue/themes
+npm install openvue @openvue/themes
 
 # Using yarn
-yarn add openvue@rc @openvue/themes
+yarn add openvue @openvue/themes
 
 # Using pnpm
-pnpm add openvue@rc @openvue/themes
+pnpm add openvue @openvue/themes
 ```
 
 ## Examples

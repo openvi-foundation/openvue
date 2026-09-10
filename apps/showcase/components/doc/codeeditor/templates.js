@@ -3,8 +3,7 @@ import { services } from './services';
 
 const OpenVue = {
     version: '^4.0.0',
-    description:
-        'OpenVue is an open source UI library for Vue featuring a rich set of 80+ components, a theme designer, various theme alternatives such as Material, Bootstrap, Tailwind, premium templates and professional support. In addition, it integrates with PrimeBlock, which has 500+ ready to use UI blocks to build spectacular applications in no time.'
+    description: 'OpenVue is an open source UI library for Vue featuring a rich set of 80+ components, a visual theme designer, and theme presets such as Aura, Material, Lara and Nora. It is MIT licensed and works with Vue 3, Nuxt and Vite.'
 };
 
 const app_dependencies = pkg ? pkg.devDependencies : {};
