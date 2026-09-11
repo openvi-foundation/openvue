@@ -215,10 +215,4 @@ export declare type FormFieldEmits = EmitFn<FormFieldEmitsOptions>;
  */
 declare const FormField: DefineComponent<FormFieldProps, FormFieldSlots, FormFieldEmits>;
 
-declare module 'vue' {
-    export interface GlobalComponents {
-        FormField: DefineComponent<FormFieldProps, FormFieldSlots, FormFieldEmits>;
-    }
-}
-
 export default FormField;
