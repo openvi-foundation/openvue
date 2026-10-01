@@ -1049,10 +1049,4 @@ declare const Column: DefineComponent<ColumnProps, ColumnSlots, ColumnEmits>;
 
 export type ColumnNode = { props: ColumnProps };
 
-declare module 'vue' {
-    export interface GlobalComponents {
-        Column: DefineComponent<ColumnProps, ColumnSlots, ColumnEmits>;
-    }
-}
-
 export default Column;
