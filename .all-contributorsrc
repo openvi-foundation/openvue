@@ -28,7 +28,7 @@
             "name": "Srđan Sanadrović",
             "avatar_url": "https://avatars.githubusercontent.com/u/57320614?v=4",
             "profile": "https://github.com/sane6",
-            "contributions": ["code", "bug", "doc"]
+            "contributions": ["bug"]
         },
         {
             "login": "miske11",
@@ -85,6 +85,13 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/93262194?v=4",
             "profile": "https://caddev.info/",
             "contributions": ["ideas"]
+        },
+        {
+            "login": "AntekOlszewski",
+            "name": "AntekOlszewski",
+            "avatar_url": "https://avatars.githubusercontent.com/u/73691558?v=4",
+            "profile": "https://github.com/AntekOlszewski",
+            "contributions": ["code"]
         }
     ]
 }

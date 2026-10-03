@@ -10,8 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Components**](https://openvue.dev/components) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
@@ -105,7 +104,7 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
     <tr>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/NJevric"><img src="https://avatars.githubusercontent.com/u/46942531?v=4?s=64" width="64px;" alt="Nikola Jevrić"/><br /><sub><b>Nikola Jevrić</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=NJevric" title="Code">💻</a> <a href="https://github.com/openvi-foundation/openvue/commits?author=NJevric" title="Documentation">📖</a> <a href="#maintenance-NJevric" title="Maintenance">🚧</a> <a href="#infra-NJevric" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/openvi-foundation/openvue/pulls?q=is%3Apr+reviewed-by%3ANJevric" title="Reviewed Pull Requests">👀</a> <a href="#ideas-NJevric" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/dekitriv"><img src="https://avatars.githubusercontent.com/u/52245546?v=4?s=64" width="64px;" alt="dekitriv"/><br /><sub><b>dekitriv</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=dekitriv" title="Code">💻</a> <a href="#infra-dekitriv" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-      <td align="center" valign="top" width="12.5%"><a href="https://github.com/sane6"><img src="https://avatars.githubusercontent.com/u/57320614?v=4?s=64" width="64px;" alt="Srđan Sanadrović"/><br /><sub><b>Srđan Sanadrović</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=sane6" title="Code">💻</a> <a href="https://github.com/openvi-foundation/openvue/issues?q=author%3Asane6" title="Bug reports">🐛</a> <a href="https://github.com/openvi-foundation/openvue/commits?author=sane6" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/sane6"><img src="https://avatars.githubusercontent.com/u/57320614?v=4?s=64" width="64px;" alt="Srđan Sanadrović"/><br /><sub><b>Srđan Sanadrović</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/issues?q=author%3Asane6" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/miske11"><img src="https://avatars.githubusercontent.com/u/88431819?v=4?s=64" width="64px;" alt="miske11"/><br /><sub><b>miske11</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=miske11" title="Code">💻</a> <a href="#design-miske11" title="Design">🎨</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/Tamas-hi"><img src="https://avatars.githubusercontent.com/u/36476318?v=4?s=64" width="64px;" alt="Tamás H."/><br /><sub><b>Tamás H.</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=Tamas-hi" title="Code">💻</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/NikoGJ"><img src="https://avatars.githubusercontent.com/u/18424051?v=4?s=64" width="64px;" alt="Nicolas Granjon"/><br /><sub><b>Nicolas Granjon</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/issues?q=author%3ANikoGJ" title="Bug reports">🐛</a></td>
@@ -116,6 +115,7 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/wahpiangle"><img src="https://avatars.githubusercontent.com/u/116425066?v=4?s=64" width="64px;" alt="Quan Ming"/><br /><sub><b>Quan Ming</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=wahpiangle" title="Code">💻</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/pupuking723"><img src="https://avatars.githubusercontent.com/u/169750518?v=4?s=64" width="64px;" alt="pupuking723"/><br /><sub><b>pupuking723</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=pupuking723" title="Code">💻</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://caddev.info/"><img src="https://avatars.githubusercontent.com/u/93262194?v=4?s=64" width="64px;" alt="Dylan"/><br /><sub><b>Dylan</b></sub></a><br /><a href="#ideas-DJ-caddev" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/AntekOlszewski"><img src="https://avatars.githubusercontent.com/u/73691558?v=4?s=64" width="64px;" alt="AntekOlszewski"/><br /><sub><b>AntekOlszewski</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=AntekOlszewski" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
