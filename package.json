@@ -84,9 +84,9 @@
     },
     "pnpm": {
         "overrides": {
-            "fast-uri": ">=4.1.4",
-            "hono": ">=4.12.25",
-            "ip-address": ">=10.3.1",
+            "fast-uri": ">=4.1.5",
+            "hono": ">=4.13.7",
+            "ip-address": ">=10.7.1",
             "@vue/devtools-core>nanoid": ">=5.1.16 <6",
             "postcss>nanoid": ">=3.3.18 <4",
             "postcss": ">=8.5.18"
@@ -113,6 +113,7 @@
                 "GHSA-qffp-2rhf-9h96",
                 "GHSA-r6q2-hw4h-h46w",
                 "GHSA-v56q-mh7h-f735",
+                "GHSA-vfj7-8cjw-p6xm",
                 "GHSA-w7jw-789q-3m8p",
                 "GHSA-xvcm-6775-5m9r"
             ]
