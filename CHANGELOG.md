@@ -9,6 +9,8 @@ All packages in this repository are released together under a single version.
 ## [Unreleased]
 
 ### Fixes
+
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
 - Fix populating time in DatePicker when using 24-hour format
 
 ## [1.0.0] - 2026-09-10

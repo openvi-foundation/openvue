@@ -97,6 +97,7 @@ import AngleDownIcon from '@openvue/icons/angledown';
 import AngleUpIcon from '@openvue/icons/angleup';
 import TimesIcon from '@openvue/icons/times';
 import InputText from 'openvue/inputtext';
+import { addDecimal, compareDecimal, negateDecimal, toDecimalString } from './InputNumberDecimal';
 import BaseInputNumber from './BaseInputNumber.vue';
 
 export default {
@@ -162,6 +163,9 @@ export default {
             this.updateConstructParser(newValue, oldValue);
         },
         maxFractionDigits(newValue, oldValue) {
+            this.updateConstructParser(newValue, oldValue);
+        },
+        roundingMode(newValue, oldValue) {
             this.updateConstructParser(newValue, oldValue);
         },
         suffix(newValue, oldValue) {
@@ -274,9 +278,12 @@ export default {
                     return value;
                 }
 
+                // Intl.NumberFormat formats decimal strings exactly; '-0' is kept so the typed minus survives
+                let valueStr = value === '-0' ? value : (toDecimalString(value) ?? value);
+
                 if (this.format) {
                     let formatter = new Intl.NumberFormat(this.locale, this.getOptions());
-                    let formattedValue = formatter.format(value);
+                    let formattedValue = formatter.format(valueStr);
 
                     if (this.prefix) {
                         formattedValue = this.prefix + formattedValue;
@@ -289,7 +296,7 @@ export default {
                     return formattedValue;
                 }
 
-                return value.toString();
+                return valueStr.toString();
             }
 
             return '';
@@ -311,9 +318,11 @@ export default {
                     // Minus sign
                     return filteredText;
 
-                let parsedValue = +filteredText;
+                // kept as a decimal string, +filteredText would round past Number.MAX_SAFE_INTEGER
+                let parsedValue = toDecimalString(filteredText);
 
-                return isNaN(parsedValue) ? null : parsedValue;
+                // keep the minus of '-0' until the fraction is typed
+                return parsedValue === '0' && filteredText.startsWith('-') ? '-0' : parsedValue;
             }
 
             return null;
@@ -332,28 +341,19 @@ export default {
 
             this.spin(event, dir);
         },
-        addWithPrecision(base, increment) {
-            const baseStr = base.toString();
-            const stepStr = increment.toString();
-
-            const baseDecimalPlaces = baseStr.includes('.') ? baseStr.split('.')[1].length : 0;
-            const stepDecimalPlaces = stepStr.includes('.') ? stepStr.split('.')[1].length : 0;
-
-            const maxDecimalPlaces = Math.max(baseDecimalPlaces, stepDecimalPlaces);
-            const precision = Math.pow(10, maxDecimalPlaces);
-
-            return Math.round((base + increment) * precision) / precision;
-        },
         spin(event, dir) {
             if (this.$refs.input) {
-                let step = this.step * dir;
-                let currentValue = this.parseValue(this.$refs.input.$el.value) || 0;
-                let newValue = this.validateValue(this.addWithPrecision(currentValue, step));
+                let step = (dir < 0 ? negateDecimal(this.step) : toDecimalString(this.step)) ?? '0';
+                let inputValue = this.$refs.input.$el.value;
+                let parsedValue = this.parseValue(inputValue);
+                let currentValue = parsedValue === null || parsedValue === '-' ? '0' : parsedValue;
+                let newValue = this.validateValue(addDecimal(currentValue, step));
 
                 this.updateInput(newValue, null, 'spin');
                 this.updateModel(event, newValue);
 
-                this.handleOnInput(event, currentValue, newValue);
+                // formatted text on purpose, re-parsing a plain decimal breaks locales that group with '.'
+                this.handleOnInput(event, inputValue, newValue);
             }
         },
         onUpButtonMouseDown(event) {
@@ -517,7 +517,7 @@ export default {
                                 newValueStr = inputValue.slice(0, selectionStart - 1) + insertedText + inputValue.slice(selectionStart);
                             } else if (decimalCharIndexWithoutPrefix === 1) {
                                 newValueStr = inputValue.slice(0, selectionStart - 1) + '0' + inputValue.slice(selectionStart);
-                                newValueStr = this.parseValue(newValueStr) > 0 ? newValueStr : '';
+                                newValueStr = compareDecimal(this.parseValue(newValueStr), 0) === 1 ? newValueStr : '';
                             } else {
                                 newValueStr = inputValue.slice(0, selectionStart - 1) + inputValue.slice(selectionStart);
                             }
@@ -559,7 +559,7 @@ export default {
                                 newValueStr = inputValue.slice(0, selectionStart) + insertedText + inputValue.slice(selectionStart + 1);
                             } else if (decimalCharIndexWithoutPrefix === 1) {
                                 newValueStr = inputValue.slice(0, selectionStart) + '0' + inputValue.slice(selectionStart + 1);
-                                newValueStr = this.parseValue(newValueStr) > 0 ? newValueStr : '';
+                                newValueStr = compareDecimal(this.parseValue(newValueStr), 0) === 1 ? newValueStr : '';
                             } else {
                                 newValueStr = inputValue.slice(0, selectionStart) + inputValue.slice(selectionStart + 1);
                             }
@@ -636,7 +636,7 @@ export default {
             this.$refs.input.$el.focus();
         },
         allowMinusSign() {
-            return this.min === null || this.min < 0;
+            return this.min === null || compareDecimal(this.min, 0) === -1;
         },
         isMinusSign(char) {
             if (this._minusSign.test(char) || char === '-') {
@@ -861,8 +861,11 @@ export default {
         },
         handleOnInput(event, currentValue, newValue) {
             if (this.isValueChanged(currentValue, newValue)) {
-                this.$emit('input', { originalEvent: event, value: newValue, formattedValue: currentValue });
-                this.formField.onInput?.({ originalEvent: event, value: newValue });
+                // same type as the model value, a lone minus is passed through
+                let value = newValue === '-' ? newValue : this.toModelValue(newValue);
+
+                this.$emit('input', { originalEvent: event, value, formattedValue: currentValue });
+                this.formField.onInput?.({ originalEvent: event, value });
             }
         },
         isValueChanged(currentValue, newValue) {
@@ -873,7 +876,10 @@ export default {
             if (newValue != null) {
                 let parsedCurrentValue = typeof currentValue === 'string' ? this.parseValue(currentValue) : currentValue;
 
-                return newValue !== parsedCurrentValue;
+                let result = compareDecimal(newValue, parsedCurrentValue);
+
+                // not a decimal on either side, e.g. a lone minus: compare as before
+                return result === null ? newValue !== parsedCurrentValue : result !== 0;
             }
 
             return false;
@@ -883,12 +889,19 @@ export default {
                 return null;
             }
 
-            if (this.min != null && value < this.min) {
-                return this.min;
+            value = toDecimalString(value);
+
+            if (value === null) {
+                return null;
             }
 
-            if (this.max != null && value > this.max) {
-                return this.max;
+            // exact comparison, so bounds past Number.MAX_SAFE_INTEGER are honoured
+            if (this.min != null && compareDecimal(value, this.min) === -1) {
+                return toDecimalString(this.min);
+            }
+
+            if (this.max != null && compareDecimal(value, this.max) === 1) {
+                return toDecimalString(this.max);
             }
 
             return value;
@@ -999,8 +1012,60 @@ export default {
 
             return 0;
         },
+        roundValue(value, roundingMode) {
+            let options = this.numberFormat.resolvedOptions();
+            let formatter = new Intl.NumberFormat('en-US', {
+                useGrouping: false,
+                minimumFractionDigits: options.minimumFractionDigits,
+                maximumFractionDigits: options.maximumFractionDigits,
+                roundingMode: roundingMode ?? options.roundingMode
+            });
+
+            return toDecimalString(formatter.format(value));
+        },
+        fitValue(value) {
+            // past Number.MAX_VALUE the format can only show ∞
+            if (compareDecimal(value, Number.MAX_VALUE) === 1) {
+                value = toDecimalString(Number.MAX_VALUE);
+            } else if (compareDecimal(value, -Number.MAX_VALUE) === -1) {
+                value = toDecimalString(-Number.MAX_VALUE);
+            }
+
+            // without a format the field shows the value as it is
+            if (!this.format) {
+                return value;
+            }
+
+            let roundedValue = this.roundValue(value);
+
+            // a bound finer than the format rounds towards the inside, so the value stays within min and max
+            if (this.max != null && compareDecimal(roundedValue, this.max) === 1) {
+                return this.roundValue(value, 'floor');
+            }
+
+            if (this.min != null && compareDecimal(roundedValue, this.min) === -1) {
+                return this.roundValue(value, 'ceil');
+            }
+
+            return roundedValue;
+        },
+        toModelValue(value) {
+            let valueStr = toDecimalString(value);
+
+            if (valueStr === null) {
+                return null;
+            }
+
+            // the model holds what the field shows
+            valueStr = this.fitValue(valueStr);
+
+            let numberValue = Number(valueStr);
+
+            // a number whenever it holds every digit, the decimal string only when it would not
+            return toDecimalString(numberValue) === valueStr ? numberValue : valueStr;
+        },
         updateModel(event, value) {
-            this.writeValue(value, event);
+            this.writeValue(this.toModelValue(value), event);
         },
         onInputFocus(event) {
             this.focused = true;
@@ -1034,10 +1099,15 @@ export default {
             }
         },
         maxBoundry() {
-            return this.d_value >= this.max;
+            // null means no value or no bound, `null >= 0` would disable the button
+            let result = compareDecimal(this.d_value, this.max);
+
+            return result !== null && result >= 0;
         },
         minBoundry() {
-            return this.d_value <= this.min;
+            let result = compareDecimal(this.d_value, this.min);
+
+            return result !== null && result <= 0;
         }
     },
     computed: {
