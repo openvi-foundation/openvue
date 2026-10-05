@@ -23,7 +23,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "We haven't been able to replicate this. Please edit the issue to add a minimal reproduction (a StackBlitz project or a small repository) or more detail about your setup. This issue will be closed if there is no activity in 20 days."
+              body: "We haven't been able to replicate this. Please edit the issue to add a minimal reproduction or more detail about your setup. You can start from the [OpenVue reproducer](https://stackblitz.com/github/openvi-foundation/openvue-reproducer?file=src%2FApp.vue) on StackBlitz, or share a small repository."
             });
 
       - name: Needs Upvote
@@ -47,7 +47,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "More information is needed to find a solution. A runnable StackBlitz example and additional details would be helpful."
+              body: "More information is needed to find a solution. A runnable example and additional details would be helpful. You can start from the [OpenVue reproducer](https://stackblitz.com/github/openvi-foundation/openvue-reproducer?file=src%2FApp.vue) on StackBlitz."
             });
 
       - name: Wontfix
