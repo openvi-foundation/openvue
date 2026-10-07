@@ -2,7 +2,20 @@
     "name": "@openvue/themes",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "",
+    "description": "Design-token theme presets for OpenVue, including Aura, Lara, Material and Nora.",
+    "keywords": [
+        "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
+        "themes",
+        "design tokens",
+        "theming",
+        "aura",
+        "material"
+    ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {

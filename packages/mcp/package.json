@@ -2,7 +2,7 @@
     "name": "@openvue/mcp",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "Model Context Protocol (MCP) server for PrimeVue component library",
+    "description": "Model Context Protocol (MCP) server for OpenVue, giving AI assistants accurate component, props, events, slots and theming documentation.",
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {
@@ -14,14 +14,18 @@
         "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
-        "primevue",
         "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
         "mcp",
         "model-context-protocol",
         "ai",
         "llm",
-        "vue",
-        "components"
+        "claude",
+        "cursor"
     ],
     "bin": {
         "openvue-mcp": "./dist/index.js"

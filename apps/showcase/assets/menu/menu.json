@@ -16,6 +16,10 @@
                     "name": "PrimeVue Migration",
                     "to": "/migrate",
                     "badge": "NEW"
+                },
+                {
+                    "name": "PrimeVue Alternative",
+                    "to": "/primevue-alternative"
                 }
             ]
         },

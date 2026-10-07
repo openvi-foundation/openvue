@@ -1,7 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            OpenVue is an open source Vue UI component library, and a community-maintained fork of PrimeVue 4.5.5, started after the original project was archived by its maintainers. It is led by
+            OpenVue is an open source Vue UI component library, and a community-maintained fork of PrimeVue 4.5.5, started after its original maintainers ended active open source development and moved new releases to a commercial license. It is led
+            by
             <a href="https://github.com/openvi-foundation" target="_blank" rel="noopener noreferrer">openvi-foundation</a>, an independent group of developers who run this library in production and intend to keep it maintained, stable and open.
             OpenVue is not affiliated with PrimeTek or PrimeUI.
         </p>

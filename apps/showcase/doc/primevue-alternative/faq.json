@@ -1,0 +1,22 @@
+[
+    {
+        "question": "Is OpenVue a drop-in replacement for PrimeVue 4?",
+        "answer": "Yes. OpenVue is a fork of PrimeVue 4.5.5 with the same components and public API. Switching renames packages and imports, and <a href=\"/migrate\" class=\"doc-link\">@openvue/migrate</a> does that for you in one command."
+    },
+    {
+        "question": "Is OpenVue free for commercial use?",
+        "answer": "Yes. OpenVue is MIT licensed, with no paid tier, no per-developer fee and no revenue limits."
+    },
+    {
+        "question": "Does OpenVue work with Nuxt and Tailwind CSS?",
+        "answer": "Yes. The <a href=\"/nuxt\" class=\"doc-link\">Nuxt module</a> auto-imports components and works with SSR, and OpenVue integrates with <a href=\"/tailwind\" class=\"doc-link\">Tailwind CSS</a> in both styled and unstyled modes."
+    },
+    {
+        "question": "Can I migrate a PrimeVue 5 project?",
+        "answer": "The migration tool supports PrimeVue 4.x projects only, since 4.5.5 is the fork point. Projects on version 5 need to be checked by hand."
+    },
+    {
+        "question": "Who maintains OpenVue?",
+        "answer": "The <a href=\"/team\" class=\"doc-link\">Openvi Foundation</a>, an independent group of developers who use the library in production, together with outside contributors. OpenVue is not affiliated with PrimeTek."
+    }
+]

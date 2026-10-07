@@ -2,7 +2,16 @@
     "name": "@openvue/core",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "",
+    "description": "Core runtime for OpenVue with the plugin, base components, configuration and theming plumbing shared by every OpenVue component.",
+    "keywords": [
+        "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
+        "ui library"
+    ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {

@@ -1,4 +1,6 @@
-# PrimeVue
+# OpenVue
+
+> OpenVue is an MIT-licensed, community-maintained fork of PrimeVue 4.5.5 with 80+ accessible, themeable UI components for Vue 3 and Nuxt and the same API as PrimeVue 4.
 
 ## Guides
 
@@ -14,6 +16,7 @@
 - [Install OpenVue with CDN](https://openvue.dev/cdn): Setting up OpenVue in a project using CDN.
 - [Install OpenVue with Laravel](https://openvue.dev/laravel): Setting up OpenVue in a Laravel project.
 - [Migration from PrimeVue v4](https://openvue.dev/migrate): Move an existing PrimeVue v4 project to OpenVue with one command.
+- [PrimeVue Alternative](https://openvue.dev/primevue-alternative): PrimeVue 5 ships under a commercial license, and PrimeVue 4 now gets security fixes only. OpenVue keeps the PrimeVue 4 line alive with the same components and API, MIT licensed and actively maintained. Your code stays as it is.
 - [Install OpenVue with Nuxt](https://openvue.dev/nuxt): Setting up OpenVue in a Nuxt project.
 - [Install OpenVue with Vite](https://openvue.dev/vite): Setting up OpenVue in a Vite project.
 - [Theme Designer](https://openvue.dev/designer): Design a theme visually and export it as ready-to-use code. Free, MIT-licensed, and entirely local.
