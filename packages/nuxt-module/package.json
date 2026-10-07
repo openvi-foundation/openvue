@@ -2,7 +2,7 @@
     "name": "@openvue/nuxt-module",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "Nuxt module for PrimeVue",
+    "description": "Nuxt module for OpenVue that auto-imports components and directives, configures themes and works with SSR.",
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {
@@ -14,13 +14,15 @@
         "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
+        "openvue",
         "vue",
-        "vue.js",
         "vue3",
         "nuxt",
-        "nuxt3",
         "primevue",
-        "openvue"
+        "primevue alternative",
+        "nuxt-module",
+        "nuxt3",
+        "nuxt4"
     ],
     "type": "module",
     "sideEffects": false,

@@ -20,7 +20,7 @@
 
 ## About
 
-OpenVue is a community-maintained fork of PrimeVue 4.5.5, one of the most widely adopted Vue.js component libraries, following its archival by the original maintainers. The project is stewarded by [openvi-foundation](https://github.com/openvi-foundation), an independent organization of experienced developers who use this library in production and are committed to keeping it maintained, stable, and open.
+OpenVue is a community-maintained fork of PrimeVue 4.5.5, one of the most widely adopted Vue.js component libraries, started after its original maintainers ended active open source development and moved new releases to a commercial license. The project is stewarded by [openvi-foundation](https://github.com/openvi-foundation), an independent organization of experienced developers who use this library in production and are committed to keeping it maintained, stable, and open.
 
 OpenVue is not affiliated with PrimeTek or PrimeUI. We started this project because a library with this much adoption, and this many teams depending on it, deserves a maintenance path that isn't tied to any single company's plans.
 

@@ -358,6 +358,7 @@ function getAllComponents() {
         'migrate',
         'nuxt',
         'passthrough',
+        'primevue-alternative',
         'setup',
         'tailwind',
         'vite'
@@ -752,7 +753,7 @@ function generateJsonOutput(components, apiDocs, guidePages = []) {
  * Generate Markdown output for AI context
  */
 function generateMarkdownOutput(components, apiDocs, guidePages = []) {
-    let markdown = '# PrimeVue Documentation\n\n';
+    let markdown = '# OpenVue Documentation\n\n';
 
     markdown += `Generated: ${new Date().toISOString().split('T')[0]}\n\n`;
     markdown += '---\n\n';
@@ -931,6 +932,7 @@ const GUIDE_PAGES = [
     'cdn',
     'laravel',
     'migrate',
+    'primevue-alternative',
     'nuxt',
     'vite',
     'designer',
@@ -1212,7 +1214,7 @@ function generateGuideMarkdownFiles(pages) {
  * Update llms.txt to include guide pages
  */
 function generateLlmsTxtWithGuides(components, guidePages) {
-    let content = '# PrimeVue\n\n';
+    let content = '# OpenVue\n\n> OpenVue is an MIT-licensed, community-maintained fork of PrimeVue 4.5.5 with 80+ accessible, themeable UI components for Vue 3 and Nuxt and the same API as PrimeVue 4.\n\n';
 
     // Guides section
     content += '## Guides\n\n';
@@ -1248,7 +1250,7 @@ function generateLlmsTxtWithGuides(components, guidePages) {
  * Main execution
  */
 function main() {
-    console.log('🚀 Building PrimeVue LLM Documentation (Enhanced)...\n');
+    console.log('🚀 Building OpenVue LLM Documentation (Enhanced)...\n');
 
     console.log('📖 Parsing component documentation...');
     const components = getAllComponents();

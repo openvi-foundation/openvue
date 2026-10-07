@@ -2,7 +2,20 @@
     "name": "@openvue/forms",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "",
+    "description": "Form state management and validation for OpenVue, with resolvers for Zod, Yup, Valibot, Joi and Superstruct.",
+    "keywords": [
+        "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
+        "forms",
+        "validation",
+        "zod",
+        "yup",
+        "valibot"
+    ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {

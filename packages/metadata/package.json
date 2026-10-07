@@ -2,7 +2,17 @@
     "name": "@openvue/metadata",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "",
+    "description": "Machine-readable metadata for OpenVue components, composables and directives, used to generate docs and the OpenVue MCP server.",
+    "keywords": [
+        "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
+        "metadata",
+        "api"
+    ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {

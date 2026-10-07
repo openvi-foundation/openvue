@@ -19,6 +19,9 @@
                             <div class="flex-1">
                                 <h1>{{ header }}</h1>
                                 <p>{{ description }}</p>
+                                <p class="text-sm text-muted-color">
+                                    Coming from PrimeVue? Compare <NuxtLink to="/primevue-alternative" class="doc-link">your options</NuxtLink> or <NuxtLink to="/migrate" class="doc-link">migrate in one command</NuxtLink>.
+                                </p>
                             </div>
                             <DocCopyMarkdown :componentName="getComponentName()" class="flex-shrink-0" />
                         </div>

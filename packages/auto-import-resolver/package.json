@@ -2,7 +2,19 @@
     "name": "@openvue/auto-import-resolver",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "",
+    "description": "unplugin-vue-components resolver for OpenVue with on-demand, tree-shaken auto imports of OpenVue components and directives.",
+    "keywords": [
+        "openvue",
+        "vue",
+        "vue3",
+        "nuxt",
+        "primevue",
+        "primevue alternative",
+        "unplugin-vue-components",
+        "auto-import",
+        "resolver",
+        "vite"
+    ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {
