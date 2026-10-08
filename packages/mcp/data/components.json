@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generatedAt": "2026-10-07",
+    "generatedAt": "2026-10-08",
     "components": [
         {
             "name": "accordion",
@@ -39669,7 +39669,7 @@
                 {
                     "id": "nextsteps",
                     "label": "Next Steps",
-                    "description": "Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
+                    "description": "Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
                     "examples": null
                 },
                 {
@@ -39847,7 +39847,7 @@
                 {
                     "id": "nextsteps",
                     "label": "Next Steps",
-                    "description": "Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes",
+                    "description": "Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes",
                     "examples": null
                 },
                 {
@@ -39949,7 +39949,7 @@
                 {
                     "id": "nextsteps",
                     "label": "Next Steps",
-                    "description": "Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
+                    "description": "Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes",
                     "examples": null
                 },
                 {
