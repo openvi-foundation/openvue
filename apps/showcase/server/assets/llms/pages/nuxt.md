@@ -34,7 +34,7 @@ In nuxt.config file, add the @openvue/nuxt-module to the modules section and def
 
 ## Next Steps
 
-Welcome to the Prime UI Ecosystem! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
+Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Customization of styles Pass through attributes
 
 ## Styled Mode
 

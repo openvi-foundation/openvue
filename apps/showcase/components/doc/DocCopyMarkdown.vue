@@ -49,7 +49,7 @@ export default {
             if (typeof window !== 'undefined') {
                 return window.location.origin;
             }
-            return 'https://primevue.org';
+            return 'https://openvue.dev';
         },
         pageName() {
             const segments = this.$route.path.split('/').filter(Boolean);
