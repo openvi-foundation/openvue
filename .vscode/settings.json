@@ -23,7 +23,6 @@
     "[scss]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "vue.server.hybridMode": "typeScriptPluginOnly",
     "search.exclude": {
         "**/dist": true,
         "**/node_modules": true,
