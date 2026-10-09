@@ -106,6 +106,13 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/73691558?v=4",
             "profile": "https://github.com/AntekOlszewski",
             "contributions": ["code"]
+        },
+        {
+            "login": "Bharath314",
+            "name": "Bharath Valaboju",
+            "avatar_url": "https://avatars.githubusercontent.com/u/69413757?v=4",
+            "profile": "https://github.com/Bharath314",
+            "contributions": ["code", "bug"]
         }
     ]
 }
