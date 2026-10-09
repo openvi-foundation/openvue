@@ -15,7 +15,7 @@ export default {
                 basic: `
 {
     "context_servers": {
-        "primevue": {
+        "openvue": {
             "command": {
                 "path": "npx",
                 "args": ["-y", "@openvue/mcp"]
