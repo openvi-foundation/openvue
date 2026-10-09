@@ -17,7 +17,7 @@
         "editor.formatOnSave": true
     },
     "[json]": {
-        "editor.defaultFormatter": "pretesbenptier.prettier-vscode",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
     },
     "[scss]": {
