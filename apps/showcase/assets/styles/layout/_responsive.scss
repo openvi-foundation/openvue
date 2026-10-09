@@ -108,48 +108,7 @@
     }
 
     .layout-sidebar {
-        top: 0;
-        inset-inline-start: 0;
-        position: fixed;
-        z-index: 1102;
-        height: 100%;
-        transform: translateX(-100%);
-        background-color: var(--mobile-menu-background);
-        backdrop-filter: blur(20px);
-        width: 300px;
-
-        &:dir(rtl) {
-            transform: translateX(100%);
-        }
-
-        nav {
-            padding: 1rem 1rem;
-        }
-
-        &.active {
-            transform: translateX(0);
-        }
-    }
-
-    .layout-news-active {
-        .layout-sidebar {
-            top: 0;
-        }
-    }
-
-    .layout-mask {
-        z-index: 1101;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: var(--p-mask-background);
-    }
-
-    .blocked-scroll {
-        overflow: hidden;
-        padding-right: var(--p-scrollbar-width);
+        display: none;
     }
 }
 

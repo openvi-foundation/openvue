@@ -1,5 +1,5 @@
 <template>
-    <aside class="layout-sidebar" :class="{ active: active }">
+    <aside class="layout-sidebar">
         <nav>
             <ol class="layout-menu">
                 <AppMenuItem :menu="menu"></AppMenuItem>
@@ -12,12 +12,6 @@
 import menudata from '@/assets/menu/menu.json';
 import AppMenuItem from './AppMenuItem.vue';
 export default {
-    props: {
-        active: {
-            type: Boolean,
-            default: true
-        }
-    },
     data() {
         return {
             menu: menudata.data
