@@ -10,7 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Components**](https://openvue.dev/components) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
@@ -118,6 +118,7 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
       <td align="center" valign="top" width="12.5%"><a href="https://jakubpotocky.sk/"><img src="https://avatars.githubusercontent.com/u/16275303?v=4?s=64" width="64px;" alt="Jakub Potocký"/><br /><sub><b>Jakub Potocký</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=Jacobs63" title="Code">💻</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/posti85"><img src="https://avatars.githubusercontent.com/u/17066163?v=4?s=64" width="64px;" alt="José Antonio Postigo"/><br /><sub><b>José Antonio Postigo</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/issues?q=author%3Aposti85" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/AntekOlszewski"><img src="https://avatars.githubusercontent.com/u/73691558?v=4?s=64" width="64px;" alt="AntekOlszewski"/><br /><sub><b>AntekOlszewski</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=AntekOlszewski" title="Code">💻</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/Bharath314"><img src="https://avatars.githubusercontent.com/u/69413757?v=4?s=64" width="64px;" alt="Bharath Valaboju"/><br /><sub><b>Bharath Valaboju</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=Bharath314" title="Code">💻</a> <a href="https://github.com/openvi-foundation/openvue/issues?q=author%3ABharath314" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
