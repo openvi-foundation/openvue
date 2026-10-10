@@ -17665,7 +17665,7 @@ FileUpload is an advanced uploader with dragdrop support, multi file uploads, au
 
 ## Accessibility
 
-Screen Reader FileUpload uses a hidden native input element with type="file" for screen readers. Keyboard Support Interactive elements of the uploader are buttons, visit the Button accessibility section for more information.
+Screen Reader FileUpload uses a hidden native input element with type="file" for screen readers. Use the inputId property to assign an identifier to the native input so that it can be associated with a custom label element via the for attribute. Note that a label is not keyboard focusable, so when replacing the default choose button, provide a focusable element such as a Button that invokes the chooseCallback of the template. Keyboard Support Interactive elements of the uploader are buttons, visit the Button accessibility section for more information.
 
 ## Advanced
 
@@ -17749,6 +17749,60 @@ FileUpload basic mode provides a simpler UI as an alternative to default advance
 <FileUpload ref="fileupload" mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" />
 <Button label="Upload" @click="upload" severity="secondary" />
 ```
+
+## CustomLabelDoc
+
+The inputId property is passed to the underlying native file input so that it can be associated with a custom label . Clicking the label opens the native file dialog, which is useful when the default header is not sufficient. Alternatively, the empty and header templates receive a chooseCallback to open the dialog programmatically, and the same functionality is available via the exposed choose method.
+
+**Basic Usage:**
+
+```vue
+<FileUpload inputId="custom-label-upload" name="demo[]" url="/api/upload" @upload="onUpload" :multiple="true" accept="image/*" :maxFileSize="1000000">
+    <template #empty="{ chooseCallback }">
+        <div class="flex items-center justify-center flex-col gap-2">
+            <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color" />
+            <p class="mt-4 mb-0">
+                Drag and drop files here or
+                <label for="custom-label-upload" class="text-primary font-semibold cursor-pointer hover:underline">browse folders</label>
+            </p>
+            <Button label="Select Images" icon="pi pi-images" @click="chooseCallback()" variant="text" size="small" />
+        </div>
+    </template>
+</FileUpload>
+```
+
+<details>
+<summary>Composition API Example</summary>
+
+```vue
+<template>
+    <div class="card">
+        <Toast />
+        <FileUpload inputId="custom-label-upload" name="demo[]" url="/api/upload" @upload="onUpload" :multiple="true" accept="image/*" :maxFileSize="1000000">
+            <template #empty="{ chooseCallback }">
+                <div class="flex items-center justify-center flex-col gap-2">
+                    <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color" />
+                    <p class="mt-4 mb-0">
+                        Drag and drop files here or
+                        <label for="custom-label-upload" class="text-primary font-semibold cursor-pointer hover:underline">browse folders</label>
+                    </p>
+                    <Button label="Select Images" icon="pi pi-images" @click="chooseCallback()" variant="text" size="small" />
+                </div>
+            </template>
+        </FileUpload>
+    </div>
+</template>
+
+<script setup>
+import { useToast } from "openvue/usetoast";
+const toast = useToast();
+
+const onUpload = () => {
+    toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+};
+<\/script>
+```
+</details>
 
 ## CustomUploadDoc
 
@@ -17993,6 +18047,7 @@ const formatSize = (bytes) => {
 | Name | Type | Default | Description |
 |------|------|---------|-------------|
 | name | string | - | Name of the request parameter to identify the files at backend. |
+| inputId | string | - | Identifier of the underlying input element. Can be used to associate a custom label with the native file input. |
 | url | string | - | Remote url to upload the files. |
 | mode | HintedString<"advanced" \| "basic"> | advanced | Defines the UI of the component, possible values are 'advanced' and 'basic'. |
 | multiple | boolean | false | Used to select multiple files at once from file dialog. |

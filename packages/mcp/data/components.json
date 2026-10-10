@@ -13461,7 +13461,7 @@
                 {
                     "id": "accessibility",
                     "label": "Accessibility",
-                    "description": "Screen Reader FileUpload uses a hidden native input element with type=\"file\" for screen readers. Keyboard Support Interactive elements of the uploader are buttons, visit the Button accessibility section for more information.",
+                    "description": "Screen Reader FileUpload uses a hidden native input element with type=\"file\" for screen readers. Use the inputId property to assign an identifier to the native input so that it can be associated with a custom label element via the for attribute. Note that a label is not keyboard focusable, so when replacing the default choose button, provide a focusable element such as a Button that invokes the chooseCallback of the template. Keyboard Support Interactive elements of the uploader are buttons, visit the Button accessibility section for more information.",
                     "examples": null
                 },
                 {
@@ -13492,6 +13492,16 @@
                         "basic": "<FileUpload ref=\"fileupload\" mode=\"basic\" name=\"demo[]\" url=\"/api/upload\" accept=\"image/*\" :maxFileSize=\"1000000\" @upload=\"onUpload\" />\n<Button label=\"Upload\" @click=\"upload\" severity=\"secondary\" />",
                         "options": "<template>\n    <Toast />\n    <div class=\"card flex flex-wrap gap-6 items-center justify-between\">\n        <FileUpload ref=\"fileupload\" mode=\"basic\" name=\"demo[]\" url=\"/api/upload\" accept=\"image/*\" :maxFileSize=\"1000000\" @upload=\"onUpload\" />\n        <Button label=\"Upload\" @click=\"upload\" severity=\"secondary\" />\n    </div>\n</template>\n\n<script>\nexport default {\n    methods: {\n        upload() {\n            this.$refs.fileupload.upload();\n        },\n        onUpload() {\n            this.$toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });\n        }\n    }\n};\n<\\/script>",
                         "composition": "<template>\n    <Toast />\n    <div class=\"card flex flex-wrap gap-6 items-center justify-between\">\n        <FileUpload ref=\"fileupload\" mode=\"basic\" name=\"demo[]\" url=\"/api/upload\" accept=\"image/*\" :maxFileSize=\"1000000\" @upload=\"onUpload\" />\n        <Button label=\"Upload\" @click=\"upload\" severity=\"secondary\" />\n    </div>\n</template>\n\n<script setup>\nimport { ref } from 'vue';\nimport { useToast } from \"openvue/usetoast\";\nconst toast = useToast();\nconst fileupload = ref();\n\nconst upload = () => {\n    fileupload.value.upload();\n};\n\nconst onUpload = () => {\n    toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });\n};\n<\\/script>"
+                    }
+                },
+                {
+                    "id": "customlabel",
+                    "label": "CustomLabelDoc",
+                    "description": "The inputId property is passed to the underlying native file input so that it can be associated with a custom label . Clicking the label opens the native file dialog, which is useful when the default header is not sufficient. Alternatively, the empty and header templates receive a chooseCallback to open the dialog programmatically, and the same functionality is available via the exposed choose method.",
+                    "examples": {
+                        "basic": "<FileUpload inputId=\"custom-label-upload\" name=\"demo[]\" url=\"/api/upload\" @upload=\"onUpload\" :multiple=\"true\" accept=\"image/*\" :maxFileSize=\"1000000\">\n    <template #empty=\"{ chooseCallback }\">\n        <div class=\"flex items-center justify-center flex-col gap-2\">\n            <i class=\"pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color\" />\n            <p class=\"mt-4 mb-0\">\n                Drag and drop files here or\n                <label for=\"custom-label-upload\" class=\"text-primary font-semibold cursor-pointer hover:underline\">browse folders</label>\n            </p>\n            <Button label=\"Select Images\" icon=\"pi pi-images\" @click=\"chooseCallback()\" variant=\"text\" size=\"small\" />\n        </div>\n    </template>\n</FileUpload>",
+                        "options": "<template>\n    <div class=\"card\">\n        <Toast />\n        <FileUpload inputId=\"custom-label-upload\" name=\"demo[]\" url=\"/api/upload\" @upload=\"onUpload\" :multiple=\"true\" accept=\"image/*\" :maxFileSize=\"1000000\">\n            <template #empty=\"{ chooseCallback }\">\n                <div class=\"flex items-center justify-center flex-col gap-2\">\n                    <i class=\"pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color\" />\n                    <p class=\"mt-4 mb-0\">\n                        Drag and drop files here or\n                        <label for=\"custom-label-upload\" class=\"text-primary font-semibold cursor-pointer hover:underline\">browse folders</label>\n                    </p>\n                    <Button label=\"Select Images\" icon=\"pi pi-images\" @click=\"chooseCallback()\" variant=\"text\" size=\"small\" />\n                </div>\n            </template>\n        </FileUpload>\n    </div>\n</template>\n\n<script>\nexport default {\n    methods: {\n        onUpload() {\n            this.$toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });\n        }\n    }\n};\n<\\/script>",
+                        "composition": "<template>\n    <div class=\"card\">\n        <Toast />\n        <FileUpload inputId=\"custom-label-upload\" name=\"demo[]\" url=\"/api/upload\" @upload=\"onUpload\" :multiple=\"true\" accept=\"image/*\" :maxFileSize=\"1000000\">\n            <template #empty=\"{ chooseCallback }\">\n                <div class=\"flex items-center justify-center flex-col gap-2\">\n                    <i class=\"pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color\" />\n                    <p class=\"mt-4 mb-0\">\n                        Drag and drop files here or\n                        <label for=\"custom-label-upload\" class=\"text-primary font-semibold cursor-pointer hover:underline\">browse folders</label>\n                    </p>\n                    <Button label=\"Select Images\" icon=\"pi pi-images\" @click=\"chooseCallback()\" variant=\"text\" size=\"small\" />\n                </div>\n            </template>\n        </FileUpload>\n    </div>\n</template>\n\n<script setup>\nimport { useToast } from \"openvue/usetoast\";\nconst toast = useToast();\n\nconst onUpload = () => {\n    toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });\n};\n<\\/script>"
                     }
                 },
                 {
@@ -13530,6 +13540,12 @@
                         "type": "string",
                         "default": "-",
                         "description": "Name of the request parameter to identify the files at backend."
+                    },
+                    {
+                        "name": "inputId",
+                        "type": "string",
+                        "default": "-",
+                        "description": "Identifier of the underlying input element. Can be used to associate a custom label with the native file input."
                     },
                     {
                         "name": "url",

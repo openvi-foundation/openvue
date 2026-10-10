@@ -329,6 +329,10 @@ export interface FileUploadProps {
      */
     name?: string | undefined;
     /**
+     * Identifier of the underlying input element. Can be used to associate a custom label with the native file input.
+     */
+    inputId?: string | undefined;
+    /**
      * Remote url to upload the files.
      */
     url?: string | undefined;
@@ -539,8 +543,30 @@ export interface FileUploadSlots {
     }): VNode[];
     /**
      * Custom content when there is no selected file.
+     * @param {Object} scope - empty slot's params.
      */
-    empty(): VNode[];
+    empty(scope: {
+        /**
+         * Files to upload.
+         */
+        files: File[];
+        /**
+         * Uploaded files.
+         */
+        uploadedFiles: File[];
+        /**
+         * Choose function
+         */
+        chooseCallback: () => void;
+        /**
+         * Upload function
+         */
+        uploadCallback: () => void;
+        /**
+         *  Clear function
+         */
+        clearCallback: () => void;
+    }): VNode[];
     /**
      * Custom choose icon template.
      */
@@ -640,6 +666,18 @@ export interface FileUploadMethods {
      * @memberof FileUpload
      */
     upload(): void;
+    /**
+     * Opens the native file selection dialog.
+     *
+     * @memberof FileUpload
+     */
+    choose(): void;
+    /**
+     * Clears the selected files.
+     *
+     * @memberof FileUpload
+     */
+    clear(): void;
 }
 
 /**

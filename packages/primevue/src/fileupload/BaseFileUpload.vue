@@ -10,6 +10,10 @@ export default {
             type: String,
             default: null
         },
+        inputId: {
+            type: String,
+            default: null
+        },
         url: {
             type: String,
             default: null

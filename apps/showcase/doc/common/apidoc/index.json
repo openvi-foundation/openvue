@@ -30873,6 +30873,14 @@
                             "description": "Name of the request parameter to identify the files at backend."
                         },
                         {
+                            "name": "inputId",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "string",
+                            "default": "",
+                            "description": "Identifier of the underlying input element. Can be used to associate a custom label with the native file input."
+                        },
+                        {
                             "name": "url",
                             "optional": true,
                             "readonly": false,
@@ -31156,7 +31164,14 @@
                         },
                         {
                             "name": "empty",
-                            "parameters": [],
+                            "parameters": [
+                                {
+                                    "name": "scope",
+                                    "optional": false,
+                                    "type": "{\n  \t <span class=\"ml-3 doc-option-parameter-name\">files</span>: <span class=\"doc-option-parameter-type\">File</span>, <span class=\"doc-option-parameter-type\">// Files to upload.</span>\n  \t <span class=\"ml-3 doc-option-parameter-name\">uploadedFiles</span>: <span class=\"doc-option-parameter-type\">File</span>, <span class=\"doc-option-parameter-type\">// Uploaded files.</span>\n \t <span class=\"ml-3 doc-option-parameter-name\">chooseCallback</span>: <span class=\"doc-option-parameter-type\">() &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Choose function</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">uploadCallback</span>: <span class=\"doc-option-parameter-type\">() &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Upload function</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">clearCallback</span>: <span class=\"doc-option-parameter-type\">() &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Clear function</span>\n}",
+                                    "description": "empty slot's params."
+                                }
+                            ],
                             "returnType": "VNode<RendererNode, RendererElement, Object>[]",
                             "description": "Custom content when there is no selected file."
                         },
@@ -31344,6 +31359,18 @@
                             "parameters": [],
                             "returnType": "void",
                             "description": "Upload file."
+                        },
+                        {
+                            "name": "choose",
+                            "parameters": [],
+                            "returnType": "void",
+                            "description": "Opens the native file selection dialog."
+                        },
+                        {
+                            "name": "clear",
+                            "parameters": [],
+                            "returnType": "void",
+                            "description": "Clears the selected files."
                         }
                     ]
                 }

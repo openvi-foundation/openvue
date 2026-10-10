@@ -15,6 +15,7 @@ import AccessibilityDoc from '@/doc/fileupload/AccessibilityDoc.vue';
 import AdvancedDoc from '@/doc/fileupload/AdvancedDoc.vue';
 import AutoDoc from '@/doc/fileupload/AutoDoc.vue';
 import BasicDoc from '@/doc/fileupload/BasicDoc.vue';
+import CustomLabelDoc from '@/doc/fileupload/CustomLabelDoc.vue';
 import CustomUploadDoc from '@/doc/fileupload/CustomUploadDoc.vue';
 import ImportDoc from '@/doc/fileupload/ImportDoc.vue';
 import TemplateDoc from '@/doc/fileupload/TemplateDoc.vue';
@@ -49,6 +50,11 @@ export default {
                     id: 'template',
                     label: 'Template',
                     component: TemplateDoc
+                },
+                {
+                    id: 'custom-label',
+                    label: 'Custom Label',
+                    component: CustomLabelDoc
                 },
                 {
                     id: 'custom-upload',
