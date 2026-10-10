@@ -85,13 +85,13 @@
                             <div v-for="(month, groupIndex) of months" :key="month.month + month.year" :class="cx('calendar')" v-bind="ptm('calendar')">
                                 <div :class="cx('header')" v-bind="ptm('header')">
                                     <slot name="header"></slot>
-                                    <slot name="prevbutton" :actionCallback="(event) => onPrevButtonClick(event)" :keydownCallback="(event) => onContainerButtonKeydown(event)">
+                                    <slot name="prevbutton" :actionCallback="(event) => onPrevButtonClick(event)" :keydownCallback="(event) => onContainerButtonKeydown(event)" :ariaLabel="prevButtonAriaLabel">
                                         <Button
                                             v-show="groupIndex === 0"
                                             :ref="previousButtonRef"
                                             :class="cx('pcPrevButton')"
                                             :disabled="disabled"
-                                            :aria-label="currentView === 'year' ? $primevue.config.locale.prevDecade : currentView === 'month' ? $primevue.config.locale.prevYear : $primevue.config.locale.prevMonth"
+                                            :aria-label="prevButtonAriaLabel"
                                             :unstyled="unstyled"
                                             @click="onPrevButtonClick"
                                             @keydown="onContainerButtonKeydown"
@@ -167,13 +167,13 @@
                                             <slot name="decade" :years="yearPickerValues"> {{ yearPickerValues[0].value }} - {{ yearPickerValues[yearPickerValues.length - 1].value }} </slot>
                                         </span>
                                     </div>
-                                    <slot name="nextbutton" :actionCallback="(event) => onNextButtonClick(event)" :keydownCallback="(event) => onContainerButtonKeydown(event)">
+                                    <slot name="nextbutton" :actionCallback="(event) => onNextButtonClick(event)" :keydownCallback="(event) => onContainerButtonKeydown(event)" :ariaLabel="nextButtonAriaLabel">
                                         <Button
                                             v-show="numberOfMonths === 1 ? true : groupIndex === numberOfMonths - 1"
                                             :ref="nextButtonRef"
                                             :class="cx('pcNextButton')"
                                             :disabled="disabled"
-                                            :aria-label="currentView === 'year' ? $primevue.config.locale.nextDecade : currentView === 'month' ? $primevue.config.locale.nextYear : $primevue.config.locale.nextMonth"
+                                            :aria-label="nextButtonAriaLabel"
                                             :unstyled="unstyled"
                                             @click="onNextButtonClick"
                                             @keydown="onContainerButtonKeydown"
@@ -1037,6 +1037,31 @@ export default {
         },
         incrementDecade() {
             this.currentYear = this.currentYear + 10;
+        },
+        getNavigatorAriaLabel(direction) {
+            const locale = this.$primevue.config.locale;
+            const isNext = direction > 0;
+            let label, target;
+
+            if (this.currentView === 'year') {
+                const decadeStart = this.currentYear - (this.currentYear % 10) + direction * 10;
+
+                label = isNext ? locale.nextDecade : locale.prevDecade;
+                target = `${decadeStart} - ${decadeStart + 9}`;
+            } else if (this.currentView === 'month') {
+                label = isNext ? locale.nextYear : locale.prevYear;
+                target = `${this.currentYear + direction}`;
+            } else {
+                // when multiple months are displayed, the next button reveals the month after the last visible one
+                const date = new Date(this.currentYear, this.currentMonth + (isNext ? this.numberOfMonths : -1), 1);
+                const monthName = this.monthNames?.[date.getMonth()];
+                const year = date.getFullYear();
+
+                label = isNext ? locale.nextMonth : locale.prevMonth;
+                target = !monthName ? `${year}` : locale.showMonthAfterYear ? `${year} ${monthName}` : `${monthName} ${year}`;
+            }
+
+            return [label, target].filter(Boolean).join(', ');
         },
         switchToMonthView(event) {
             this.currentView = 'month';
@@ -3204,6 +3229,12 @@ export default {
         },
         monthNames() {
             return this.$primevue.config.locale.monthNames;
+        },
+        prevButtonAriaLabel() {
+            return this.getNavigatorAriaLabel(-1);
+        },
+        nextButtonAriaLabel() {
+            return this.getNavigatorAriaLabel(1);
         },
         switchViewButtonDisabled() {
             return this.numberOfMonths > 1 || this.disabled;

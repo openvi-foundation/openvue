@@ -885,6 +885,10 @@ export interface DatePickerSlots {
          * @param {Event} event - Browser event
          */
         keydownCallback: (event: Event) => void;
+        /**
+         * Accessible label describing where the button navigates to, e.g. 'Previous Month, September 2026'.
+         */
+        ariaLabel: string;
     }): VNode[];
     /**
      * Custom next button template
@@ -901,6 +905,10 @@ export interface DatePickerSlots {
          * @param {Event} event - Browser event
          */
         keydownCallback: (event: Event) => void;
+        /**
+         * Accessible label describing where the button navigates to, e.g. 'Next Month, November 2026'.
+         */
+        ariaLabel: string;
     }): VNode[];
     /**
      * Custom buttonbar template
