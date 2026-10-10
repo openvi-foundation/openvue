@@ -157,4 +157,46 @@ describe('DatePicker.vue', () => {
         expect(value.getMinutes()).toBe(30);
         expect(wrapper.vm.pm).toBe(true);
     });
+
+    describe('navigator button aria-labels', () => {
+        const prevLabel = () => wrapper.find('.p-datepicker-prev-button').attributes('aria-label');
+        const nextLabel = () => wrapper.find('.p-datepicker-next-button').attributes('aria-label');
+
+        beforeEach(async () => {
+            await wrapper.setProps({ inline: true });
+            await wrapper.setData({ currentMonth: 0, currentYear: 2026 });
+        });
+
+        it('should include the target month in date view', () => {
+            expect(prevLabel()).toBe('Previous Month, December 2025');
+            expect(nextLabel()).toBe('Next Month, February 2026');
+        });
+
+        it('should include the target year in month view', async () => {
+            await wrapper.setData({ currentView: 'month' });
+
+            expect(prevLabel()).toBe('Previous Year, 2025');
+            expect(nextLabel()).toBe('Next Year, 2027');
+        });
+
+        it('should include the target decade in year view', async () => {
+            await wrapper.setData({ currentView: 'year' });
+
+            expect(prevLabel()).toBe('Previous Decade, 2010 - 2019');
+            expect(nextLabel()).toBe('Next Decade, 2030 - 2039');
+        });
+
+        it('should point the next button past the last visible month', async () => {
+            await wrapper.setProps({ numberOfMonths: 2 });
+
+            expect(nextLabel()).toBe('Next Month, March 2026');
+        });
+
+        it('should update after navigating', async () => {
+            await wrapper.find('.p-datepicker-next-button').trigger('click');
+
+            expect(prevLabel()).toBe('Previous Month, January 2026');
+            expect(nextLabel()).toBe('Next Month, March 2026');
+        });
+    });
 });
