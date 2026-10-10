@@ -10,6 +10,7 @@ All packages in this repository are released together under a single version.
 
 ### Fixed
 
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
 - Fix populating time in DatePicker when using 24-hour format
 - `InputNumber` no longer changes the number you type after an initial `0`. With a suffix such as `" kg"` the second digit cleared the field, and in currency fields typing `1250` into `$0.00` gave `$1.25`. Contributed by [@AntekOlszewski](https://github.com/AntekOlszewski). ([#665](https://github.com/openvi-foundation/openvue/pull/665))
 

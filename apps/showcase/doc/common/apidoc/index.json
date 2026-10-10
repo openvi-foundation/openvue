@@ -37763,7 +37763,7 @@
                             "readonly": false,
                             "type": "number",
                             "default": "",
-                            "description": "Current value state as a number.",
+                            "description": "Current value state as a number, or a decimal string when a number cannot hold the value exactly.",
                             "deprecated": "since 4.2.0. Use 'd_value' instead."
                         },
                         {
@@ -37772,7 +37772,7 @@
                             "readonly": false,
                             "type": "number",
                             "default": "",
-                            "description": "Current value state as a number."
+                            "description": "Current value state as a number, or a decimal string when a number cannot hold the value exactly."
                         },
                         {
                             "name": "focused",
@@ -37835,15 +37835,15 @@
                             "name": "modelValue",
                             "optional": true,
                             "readonly": false,
-                            "type": "Nullable<number>",
+                            "type": "Nullable<InputNumberValue>",
                             "default": "",
-                            "description": "Value of the component."
+                            "description": "Value of the component.\n\nA string is treated as an exact decimal, which is how values beyond\nNumber.MAX_SAFE_INTEGER are carried without losing digits."
                         },
                         {
                             "name": "defaultValue",
                             "optional": true,
                             "readonly": false,
-                            "type": "Nullable<number>",
+                            "type": "Nullable<InputNumberValue>",
                             "default": "",
                             "description": "The default value for the input when not controlled by  `modelValue` ."
                         },
@@ -38021,25 +38021,25 @@
                             "name": "min",
                             "optional": true,
                             "readonly": false,
-                            "type": "number",
+                            "type": "InputNumberValue",
                             "default": "",
-                            "description": "Minimum boundary value."
+                            "description": "Minimum boundary value. A string is treated as an exact decimal."
                         },
                         {
                             "name": "max",
                             "optional": true,
                             "readonly": false,
-                            "type": "number",
+                            "type": "InputNumberValue",
                             "default": "",
-                            "description": "Maximum boundary value."
+                            "description": "Maximum boundary value. A string is treated as an exact decimal."
                         },
                         {
                             "name": "step",
                             "optional": true,
                             "readonly": false,
-                            "type": "number",
+                            "type": "InputNumberValue",
                             "default": "1",
-                            "description": "Step factor to increment/decrement the value."
+                            "description": "Step factor to increment/decrement the value. A string is treated as an exact decimal."
                         },
                         {
                             "name": "allowEmpty",
@@ -38286,7 +38286,7 @@
                                     "name": "value",
                                     "optional": false,
                                     "type": "number",
-                                    "description": "New value."
+                                    "description": "New value. A decimal string when a number cannot hold it exactly, e.g. beyond Number.MAX_SAFE_INTEGER."
                                 }
                             ],
                             "returnType": "void",
@@ -38299,7 +38299,7 @@
                                     "name": "value",
                                     "optional": false,
                                     "type": "number",
-                                    "description": "New value."
+                                    "description": "New value. A decimal string when a number cannot hold it exactly, e.g. beyond Number.MAX_SAFE_INTEGER."
                                 }
                             ],
                             "returnType": "void",
@@ -38418,6 +38418,10 @@
             "values": {
                 "RoundingMode": {
                     "values": "\"ceil\" | \"floor\" | \"expand\" | \"trunc\" | \"halfCeil\" | \"halfFloor\" | \"halfExpand\" | \"halfTrunc\" | \"halfEven\""
+                },
+                "InputNumberValue": {
+                    "values": "number | string",
+                    "description": "A numeric value accepted by InputNumber.\n\nStrings are read as exact decimals, so values that a double cannot hold — anything beyond\nNumber.MAX_SAFE_INTEGER, or a fraction with more significant digits than a double carries —\nkeep every digit the user typed."
                 },
                 "InputNumberPassThroughOptionType": {
                     "values": "InputNumberPassThroughAttributes | (options: InputNumberPassThroughMethodOptions) => undefined | string | null | undefined"

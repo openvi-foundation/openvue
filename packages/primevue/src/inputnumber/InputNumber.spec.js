@@ -93,6 +93,206 @@ describe('InputNumber.vue', () => {
         expect(wrapper.find('input.p-inputnumber-input').element._value).toBe('%20');
     });
 
+    it('should step 0.1 without floating point drift', async () => {
+        await wrapper.setProps({ modelValue: 0, step: 0.1, minFractionDigits: 1 });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        for (let i = 0; i < 10; i++) {
+            await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+        }
+
+        const emitted = wrapper.emitted()['update:modelValue'].map(([value]) => value);
+
+        // as doubles this drifts to 0.30000000000000004 and ends on 0.9999999999999999
+        expect(emitted).toEqual([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]);
+    });
+
+    it('should step by a step written in exponent notation', async () => {
+        await wrapper.setProps({ modelValue: 0, step: 1e-7, maxFractionDigits: 7 });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue']).toEqual([[1e-7], [2e-7]]);
+    });
+
+    it('should round the value to the fraction digits the field shows', async () => {
+        await wrapper.setProps({ locale: 'en-US', maxFractionDigits: 2 });
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '1.005' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([1.01]);
+
+        await wrapper.setProps({ roundingMode: 'floor' });
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '1.009' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][1]).toEqual([1]);
+    });
+
+    it('should round a bound finer than the format towards the inside', async () => {
+        await wrapper.setProps({ locale: 'en-US', maxFractionDigits: 3, min: '0.0004', max: '1.2345' });
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '5' }, preventDefault: () => {} });
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '-5' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue']).toEqual([[1.234], [0.001]]);
+    });
+
+    it('should not round when the field is not formatted', async () => {
+        await wrapper.setProps({ locale: 'en-US', format: false, modelValue: 0, step: 0.0001 });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue']).toEqual([[0.0001], [0.0002]]);
+    });
+
+    it('should keep a bound past Number.MAX_VALUE within what the format can show', async () => {
+        await wrapper.setProps({ max: '1' + '0'.repeat(400) });
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '9'.repeat(401) }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([Number.MAX_VALUE]);
+    });
+
+    it('should keep the value within what the format can show', async () => {
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '1' + '0'.repeat(309) }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([Number.MAX_VALUE]);
+        expect(wrapper.find('input.p-inputnumber-input').element.value).not.toContain('∞');
+    });
+
+    it('should not report a change for a lone minus sign', () => {
+        expect(wrapper.vm.isValueChanged('-', '-')).toBe(false);
+    });
+
+    it('should emit a number whenever it holds the value exactly', async () => {
+        await wrapper.setProps({ locale: 'en-US', maxFractionDigits: 2 });
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '12' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([12]);
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '0.1' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][1]).toEqual([0.1]);
+    });
+
+    it('should preserve digits beyond Number.MAX_SAFE_INTEGER', async () => {
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '123456789012345678' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['123456789012345678']);
+
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '999999999999999999' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['999999999999999999']);
+    });
+
+    it('should step exactly beyond Number.MAX_SAFE_INTEGER', async () => {
+        await wrapper.setProps({ modelValue: '123456789012345678' });
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: '123456789012345678' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['123456789012345679']);
+    });
+
+    it('should accept a string modelValue and render it exactly', async () => {
+        await wrapper.setProps({ modelValue: '123456789012345678', locale: 'en-US' });
+
+        expect(wrapper.find('input.p-inputnumber-input').element._value).toBe('123,456,789,012,345,678');
+    });
+
+    it('should clamp against string boundaries exactly', async () => {
+        await wrapper.setProps({ modelValue: '999999999999999998', max: '999999999999999999' });
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: '999999999999999998' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['999999999999999999']);
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: '999999999999999999' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][1]).toEqual(['999999999999999999']);
+    });
+
+    it('should keep the minus sign after typing a negative zero', async () => {
+        await wrapper.setProps({ modelValue: null });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        input.setSelectionRange(0, 0);
+
+        await wrapper.vm.onInputKeyPress({ key: '-', preventDefault: () => {} });
+        await wrapper.vm.onInputKeyPress({ key: '0', preventDefault: () => {} });
+
+        expect(input.value).toBe('-0');
+    });
+
+    it('should emit a canonical zero for a typed negative zero', async () => {
+        await wrapper.vm.onInputKeyDown({ code: 'Enter', target: { value: '-0' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([0]);
+    });
+
+    it('should not report a spurious change when spinning in a group-separator locale', async () => {
+        // the locale groups with '.', so re-parsing '10.5' would read it as 105
+        await wrapper.setProps({ modelValue: 10.5, locale: 'de-DE', max: 10.5, step: 1, minFractionDigits: 1 });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: input, preventDefault: () => {} });
+
+        expect(wrapper.emitted().input).toBeUndefined();
+    });
+
+    it('should step down across zero by 0.1 without floating point drift', async () => {
+        await wrapper.setProps({ modelValue: 0.3, step: 0.1, minFractionDigits: 1 });
+
+        const input = wrapper.find('input.p-inputnumber-input').element;
+
+        for (let i = 0; i < 5; i++) {
+            await wrapper.vm.onInputKeyDown({ code: 'ArrowDown', target: input, preventDefault: () => {} });
+        }
+
+        const emitted = wrapper.emitted()['update:modelValue'].map(([value]) => value);
+
+        // as doubles 0.3 - 0.1 is 0.19999999999999998
+        expect(emitted).toEqual([0.2, 0.1, 0, -0.1, -0.2]);
+    });
+
+    it('should invert a negative string step when spinning', async () => {
+        await wrapper.setProps({ modelValue: 5, step: '-2' });
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowDown', target: { value: 5 }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([7]);
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: 7 }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue'][1]).toEqual([5]);
+    });
+
+    it('should switch between a number and a string as the value crosses what a number holds', async () => {
+        await wrapper.setProps({ modelValue: 9007199254740991 });
+
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: '9007199254740991' }, preventDefault: () => {} });
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowUp', target: { value: '9007199254740992' }, preventDefault: () => {} });
+        await wrapper.vm.onInputKeyDown({ code: 'ArrowDown', target: { value: '9007199254740993' }, preventDefault: () => {} });
+
+        expect(wrapper.emitted()['update:modelValue']).toEqual([[9007199254740992], ['9007199254740993'], [9007199254740992]]);
+    });
+
+    it('should compare a non-string current value exactly', () => {
+        expect(wrapper.vm.isValueChanged(10.5, '10.50')).toBe(false);
+        expect(wrapper.vm.isValueChanged(10.5, '10.6')).toBe(true);
+        expect(wrapper.vm.isValueChanged(null, '1')).toBe(true);
+    });
+
     describe('typing over initial zero', () => {
         const type = async (input, key) => {
             await wrapper.vm.onInputKeyPress({ key, preventDefault: () => {} });
