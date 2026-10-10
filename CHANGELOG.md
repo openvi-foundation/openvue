@@ -11,6 +11,7 @@ All packages in this repository are released together under a single version.
 ### Fixed
 
 - Fix populating time in DatePicker when using 24-hour format
+- `DatePicker` previous and next buttons now tell screen reader users where they navigate to, e.g. "Next Month, November 2026" instead of just "Next Month". The labels reuse existing locale keys, so translations need no changes.
 - `InputNumber` no longer changes the number you type after an initial `0`. With a suffix such as `" kg"` the second digit cleared the field, and in currency fields typing `1250` into `$0.00` gave `$1.25`. Contributed by [@AntekOlszewski](https://github.com/AntekOlszewski). ([#665](https://github.com/openvi-foundation/openvue/pull/665))
 
 ## [1.0.0] - 2026-09-10
