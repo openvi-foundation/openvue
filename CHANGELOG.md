@@ -14,7 +14,7 @@ All packages in this repository are released together under a single version.
 - `DatePicker` previous and next buttons now tell screen reader users where they navigate to, e.g. "Next Month, November 2026" instead of just "Next Month". The labels reuse existing locale keys, so translations need no changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
 - `DatePicker` time picker now announces the new time to screen readers when the hour, minute, second or AM/PM changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
 - `InputNumber` no longer changes the number you type after an initial `0`. With a suffix such as `" kg"` the second digit cleared the field, and in currency fields typing `1250` into `$0.00` gave `$1.25`. Contributed by [@AntekOlszewski](https://github.com/AntekOlszewski). ([#665](https://github.com/openvi-foundation/openvue/pull/665))
-- Fix InputMask update:modelValue emitting stale value upon clearing when unmask is set to true.   
+- Fix InputMask update:modelValue emitting stale value upon clearing when unmask is set to true.
 - Pressing tab no longer toggles options in MultiSelect. Tabbing past a MultiSelect after mount doesn't toggle the first option anymore either.
 
 ## [1.0.0] - 2026-09-10
