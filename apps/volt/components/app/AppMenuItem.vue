@@ -1,13 +1,6 @@
 <template>
     <li v-for="(menuitem, index) in menu" :key="`_root${index}`">
-        <template v-if="menuitem.name === 'PrimeBlocks'">
-            <a v-if="menuitem.href" :href="menuitem.href" target="_blank" rel="noopener noreferrer" class="cursor-pointer relative">
-                <img v-if="layoutState.darkTheme" src="https://primefaces.org/cdn/primevue/images/primeblocks/primeblocks-menu-dark.jpg" class="w-full rounded-xl" />
-                <img v-else src="https://primefaces.org/cdn/primevue/images/primeblocks/primeblocks-menu-light.jpg" class="w-full rounded-xl" />
-                <span value="New" class="bg-yellow-400 text-black absolute end-2 top-3 text-xs font-bold rounded-md px-1 py-1 leading-none">NEW</span>
-            </a>
-        </template>
-        <template v-else>
+        <template>
             <button v-if="menuitem.children && root" v-styleclass="{ selector: '@next', enterFromClass: 'hidden', enterActiveClass: 'animate-slidedown', leaveToClass: 'hidden', leaveActiveClass: 'animate-slideup' }" type="button">
                 <span class="menu-icon">
                     <i :class="menuitem.icon"></i>
@@ -58,7 +51,6 @@ const props = defineProps({
 });
 
 const router = useRouter();
-const { layoutState } = useLayout();
 
 const isActiveRootmenuItem = (menuitem: { children?: Array<{ to?: string; item?: any; children?: any }> }) => {
     return (

@@ -20,8 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import TimesCircleIcon from '@primevue/icons/timescircle';
-import Chip, { type ChipPassThroughOptions, type ChipProps } from 'primevue/chip';
+import TimesCircleIcon from '@openvue/icons/timescircle';
+import Chip, { type ChipPassThroughOptions, type ChipProps } from 'openvue/chip';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

@@ -2,7 +2,7 @@
     <DocSectionText v-bind="$attrs">
         <p>
             Labels are translated at component level by <i>promptLabel</i>, <i>weakLabel</i>, <i>mediumLabel</i> and <i>strongLabel</i> properties. In order to apply global translations for all Password components in the application, refer to the
-            <a href="https://primevue.org/configuration/#locale" target="_blank" rel="noopener noreferrer">locale</a> documentation.
+            <a href="https://openvue.dev/configuration/#locale" target="_blank" rel="noopener noreferrer">locale</a> documentation.
         </p>
     </DocSectionText>
     <div class="card flex justify-center">

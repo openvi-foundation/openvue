@@ -20,10 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import ChevronRightIcon from '@primevue/icons/chevronright';
-import SearchIcon from '@primevue/icons/search';
-import Tree, { type TreePassThroughOptions, type TreeProps } from 'primevue/tree';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import ChevronRightIcon from '@openvue/icons/chevronright';
+import SearchIcon from '@openvue/icons/search';
+import Tree, { type TreePassThroughOptions, type TreeProps } from 'openvue/tree';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

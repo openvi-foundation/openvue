@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>The <i>@</i> alias is recommended to refer to a source folder in your application where Volt components are located as a subfolder. Without this alias, tedious relative paths like <i>../../</i> may be required.</p>
+        <p>The <i>@</i> alias is recommended to refer to a source folder in your application where OpenVolt components are located as a subfolder. Without this alias, tedious relative paths like <i>../../</i> may be required.</p>
     </DocSectionText>
     <DocSectionCode :code="code" lang="script" />
 </template>

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import StepPanel, { type StepPanelPassThroughOptions, type StepPanelProps } from 'primevue/steppanel';
+import StepPanel, { type StepPanelPassThroughOptions, type StepPanelProps } from 'openvue/steppanel';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

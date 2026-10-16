@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import Button from '@/volt/Button.vue';
 import SecondaryButton from '@/volt/SecondaryButton.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const toast = useToast();
@@ -38,7 +38,7 @@ const code = ref(`
 import Toast from '@/volt/Toast.vue';
 import Button from '@/volt/Button.vue';
 import SecondaryButton from '@/volt/SecondaryButton.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 
 const toast = useToast();
 

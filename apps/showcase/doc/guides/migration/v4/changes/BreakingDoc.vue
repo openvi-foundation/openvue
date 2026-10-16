@@ -26,8 +26,8 @@
         <ul class="flex flex-col gap-2 leading-normal">
             <li>Themes under the <i class="mark">primevue/resources</i> path, migration to new styled mode is necessary.</li>
             <li>
-                The legacy Tailwind preset at <i class="mark">primevue/passthrough/tailwind</i>, migrate to the <a href="https://volt.primevue.org" target="_blank" rel="noopener noreferrer" class="doc-link">Volt</a> project if you'd like to style
-                OpenVue with Tailwind CSS.
+                The legacy Tailwind preset at <i class="mark">primevue/passthrough/tailwind</i>, migrate to the <a href="https://openvolt.openvue.dev" target="_blank" rel="noopener noreferrer" class="doc-link">OpenVolt</a> project if you'd like to
+                style OpenVue with Tailwind CSS.
             </li>
         </ul>
 

@@ -1,8 +1,8 @@
-import AnimateOnScroll from 'primevue/animateonscroll';
-import PrimeVue from 'primevue/config';
-import ConfirmationService from 'primevue/confirmationservice';
-import StyleClass from 'primevue/styleclass';
-import ToastService from 'primevue/toastservice';
+import AnimateOnScroll from 'openvue/animateonscroll';
+import PrimeVue from 'openvue/config';
+import ConfirmationService from 'openvue/confirmationservice';
+import StyleClass from 'openvue/styleclass';
+import ToastService from 'openvue/toastservice';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, {

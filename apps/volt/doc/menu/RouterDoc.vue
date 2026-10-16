@@ -43,7 +43,7 @@ const items = ref([
     {
         label: 'External',
         icon: 'pi pi-home',
-        url: 'https://primevue.org/'
+        url: 'https://openvue.dev/'
     }
 ]);
 
@@ -89,7 +89,7 @@ const items = ref([
     {
         label: 'External',
         icon: 'pi pi-home',
-        url: 'https://primevue.org/'
+        url: 'https://openvue.dev/'
     }
 ]);
 <\/script>

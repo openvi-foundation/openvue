@@ -1,15 +1,15 @@
 <template>
     <div>
         <Head>
-            <Title>Icons - Volt</Title>
-            <Meta name="description" content="Volt components can be used with any icon library using the templating features." />
+            <Title>Icons - OpenVolt</Title>
+            <Meta name="description" content="OpenVolt components can be used with any icon library using the templating features." />
         </Head>
 
         <div class="doc">
             <div class="doc-main">
                 <div class="doc-intro">
                     <h1>Icons</h1>
-                    <p>Volt components can be used with any icon library using the templating features.</p>
+                    <p>OpenVolt components can be used with any icon library using the templating features.</p>
                 </div>
                 <DocSections :docs="docs" />
             </div>
@@ -28,8 +28,8 @@ import { ref } from 'vue';
 
 const docs = ref([
     {
-        id: 'primeicons',
-        label: 'PrimeIcons',
+        id: 'openicons',
+        label: 'OpenIcons',
         component: PrimeIconsDoc
     },
     {

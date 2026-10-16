@@ -23,8 +23,8 @@
 <script setup lang="ts">
 import Button from '@/volt/Button.vue';
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
-import { useToast } from 'primevue/usetoast';
+import Column from 'openvue/column';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 import { ProductService } from '~/service/ProductService';
 
@@ -59,8 +59,8 @@ const code = ref(`
 import { ProductService } from '@/service/ProductService';
 import DataTable from '@/volt/DataTable.vue';
 import Button from '@/volt/Button.vue';
-import Column from 'primevue/column';
-import { useToast } from 'primevue/usetoast';
+import Column from 'openvue/column';
+import { useToast } from 'openvue/usetoast';
 import { ref, onMounted } from 'vue';
 
 const products = ref(null);

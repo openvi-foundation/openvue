@@ -210,6 +210,9 @@ importers:
 
   apps/volt:
     dependencies:
+      '@openvue/themes':
+        specifier: workspace:*
+        version: link:../../packages/themes
       chart.js:
         specifier: catalog:app
         version: 4.5.1
@@ -223,6 +226,9 @@ importers:
         specifier: catalog:app
         version: 2.0.0
     devDependencies:
+      '@openvue/nuxt-module':
+        specifier: workspace:*
+        version: link:../../packages/nuxt-module
       '@stackblitz/sdk':
         specifier: ^1.8.2
         version: 1.11.1

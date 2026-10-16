@@ -8,10 +8,10 @@ import { ref } from 'vue';
 
 const code = ref(`
 import { createApp } from 'vue';
-import PrimeVue from 'primevue/config';
+import OpenVue from 'openvue/config';
 
 const app = createApp(App);
-app.use(PrimeVue, {
+app.use(OpenVue, {
     unstyled: true
 });
 `);

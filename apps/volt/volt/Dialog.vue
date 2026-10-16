@@ -28,10 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import TimesIcon from '@primevue/icons/times';
-import WindowMaximizeIcon from '@primevue/icons/windowmaximize';
-import WindowMinimizeIcon from '@primevue/icons/windowminimize';
-import Dialog, { type DialogPassThroughOptions, type DialogProps } from 'primevue/dialog';
+import TimesIcon from '@openvue/icons/times';
+import WindowMaximizeIcon from '@openvue/icons/windowmaximize';
+import WindowMinimizeIcon from '@openvue/icons/windowminimize';
+import Dialog, { type DialogPassThroughOptions, type DialogProps } from 'openvue/dialog';
 import { ref } from 'vue';
 import SecondaryButton from './SecondaryButton.vue';
 import { ptViewMerge } from './utils';

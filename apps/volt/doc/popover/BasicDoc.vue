@@ -10,7 +10,7 @@
                 <div>
                     <span class="font-medium block mb-2">Share this document</span>
                     <div class="flex items-stretch w-full">
-                        <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly pt:root="flex-1 rounded-e-none rounded-s-md"></InputText>
+                        <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly pt:root="flex-1 rounded-e-none rounded-s-md"></InputText>
                         <span class="flex items-center justify-center w-10 border-y border-e border-surface-300 dark:border-surface-700 bg-surface-0 dark:bg-surface-950 text-surface-400 rounded-e-md">
                             <i class="pi pi-copy"></i>
                         </span>
@@ -74,7 +74,7 @@ const code = ref(`
                 <div>
                     <span class="font-medium block mb-2">Share this document</span>
                     <div class="flex items-stretch w-full">
-                        <InputText value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly pt:root="flex-1 rounded-e-none rounded-s-md"></InputText>
+                        <InputText value="https://openvue.dev/12323ff26t2g243g423g234gg52hy25XADXAG3" readonly pt:root="flex-1 rounded-e-none rounded-s-md"></InputText>
                         <span class="flex items-center justify-center w-10 border-y border-e border-surface-300 dark:border-surface-700 bg-surface-0 dark:bg-surface-950 text-surface-400 rounded-e-md">
                             <i class="pi pi-copy"></i>
                         </span>

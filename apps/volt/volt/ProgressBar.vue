@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import ProgressBar, { type ProgressBarPassThroughOptions, type ProgressBarProps } from 'primevue/progressbar';
+import ProgressBar, { type ProgressBarPassThroughOptions, type ProgressBarProps } from 'openvue/progressbar';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

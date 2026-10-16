@@ -42,11 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import AngleDoubleLeftIcon from '@primevue/icons/angledoubleleft';
-import AngleDoubleRightIcon from '@primevue/icons/angledoubleright';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
-import DataView, { type DataViewPassThroughOptions, type DataViewProps } from 'primevue/dataview';
+import AngleDoubleLeftIcon from '@openvue/icons/angledoubleleft';
+import AngleDoubleRightIcon from '@openvue/icons/angledoubleright';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
+import DataView, { type DataViewPassThroughOptions, type DataViewProps } from 'openvue/dataview';
 import { ref } from 'vue';
 import SecondaryButton from './SecondaryButton.vue';
 import { ptViewMerge } from './utils';

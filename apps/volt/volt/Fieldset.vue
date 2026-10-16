@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import MinusIcon from '@primevue/icons/minus';
-import PlusIcon from '@primevue/icons/plus';
-import Fieldset, { type FieldsetPassThroughOptions, type FieldsetProps } from 'primevue/fieldset';
+import MinusIcon from '@openvue/icons/minus';
+import PlusIcon from '@openvue/icons/plus';
+import Fieldset, { type FieldsetPassThroughOptions, type FieldsetProps } from 'openvue/fieldset';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

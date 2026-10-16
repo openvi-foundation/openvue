@@ -43,7 +43,7 @@ export default {
                 },
                 {
                     id: 'volt',
-                    label: 'Volt UI',
+                    label: 'OpenVolt',
                     component: VoltDoc
                 },
                 {

@@ -36,8 +36,8 @@ import Button from '@/volt/Button.vue';
 import Paginator from '@/volt/Paginator.vue';
 import SecondaryButton from '@/volt/SecondaryButton.vue';
 import Select from '@/volt/Select.vue';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
 import { ref } from 'vue';
 
 const rowsPerPage = ref([
@@ -79,8 +79,8 @@ import Button from '@/volt/Button.vue';
 import SecondaryButton from '@/volt/SecondaryButton.vue';
 import Paginator from '@/volt/Paginator.vue';
 import Select from '@/volt/Select.vue';
-import AngleLeftIcon from '@primevue/icons/angleleft';
-import AngleRightIcon from '@primevue/icons/angleright';
+import AngleLeftIcon from '@openvue/icons/angleleft';
+import AngleRightIcon from '@openvue/icons/angleright';
 import { ref } from 'vue';
 
 const rowsPerPage = ref([

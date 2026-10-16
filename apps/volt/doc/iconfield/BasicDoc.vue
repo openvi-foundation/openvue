@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Volt does not come with a standalone IconField component. Instead, it offers a sample implementation using Tailwind as a starting point. You can either directly incorporate this into your projects or use it as a basis to develop your own
-            customized component.
+            OpenVolt does not come with a standalone IconField component. Instead, it offers a sample implementation using Tailwind as a starting point. You can either directly incorporate this into your projects or use it as a basis to develop your
+            own customized component.
         </p>
     </DocSectionText>
     <div class="card flex flex-wrap justify-center gap-4">

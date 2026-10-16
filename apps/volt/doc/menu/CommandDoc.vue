@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import Menu from '@/volt/Menu.vue';
-import { useToast } from 'primevue/usetoast';
+import { useToast } from 'openvue/usetoast';
 import { ref } from 'vue';
 
 const toast = useToast();
@@ -43,7 +43,7 @@ const code = ref(`
 import Menu from '@/volt/Menu.vue';
 import Toast from '@/volt/Toast.vue';
 import { ref } from "vue";
-import { useToast } from "primevue/usetoast";
+import { useToast } from "openvue/usetoast";
 
 const toast = useToast();
 const items = ref([
