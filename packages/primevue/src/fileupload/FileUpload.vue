@@ -1,6 +1,6 @@
 <template>
     <div v-if="isAdvanced" :class="cx('root')" v-bind="ptmi('root')">
-        <input ref="fileInput" type="file" @change="onFileSelect" :multiple="multiple" :accept="accept" :disabled="chooseDisabled" v-bind="ptm('input')" />
+        <input :id="inputId" ref="fileInput" type="file" @change="onFileSelect" :multiple="multiple" :accept="accept" :disabled="chooseDisabled" v-bind="ptm('input')" />
         <div :class="cx('header')" v-bind="ptm('header')">
             <slot name="header" :files="files" :uploadedFiles="uploadedFiles" :chooseCallback="choose" :uploadCallback="uploader" :clearCallback="clear">
                 <Button
@@ -81,7 +81,7 @@
                     {{ basicFileChosenLabel }}
                 </span>
             </slot>
-            <input ref="fileInput" type="file" :accept="accept" :disabled="disabled" :multiple="multiple" @change="onFileSelect" @focus="onFocus" @blur="onBlur" v-bind="ptm('input')" />
+            <input :id="inputId" ref="fileInput" type="file" :accept="accept" :disabled="disabled" :multiple="multiple" @change="onFileSelect" @focus="onFocus" @blur="onBlur" v-bind="ptm('input')" />
         </div>
     </div>
 </template>

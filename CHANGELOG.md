@@ -8,6 +8,10 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Added
+
+- Added `inputId` prop to `FileUpload` that sets the `id` of its file input.
+
 ### Fixed
 
 - Fix populating time in DatePicker when using 24-hour format
