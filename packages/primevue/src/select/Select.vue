@@ -16,6 +16,8 @@
             role="combobox"
             :aria-label="ariaLabel"
             :aria-labelledby="ariaLabelledby"
+            :aria-describedby="ariaDescribedby"
+            :aria-required="ariaRequired || undefined"
             aria-haspopup="listbox"
             :aria-expanded="overlayVisible"
             :aria-controls="overlayVisible ? $id + '_list' : undefined"
@@ -38,7 +40,9 @@
             :tabindex="!disabled ? tabindex : -1"
             role="combobox"
             :aria-label="ariaLabel || (label === 'p-emptylabel' ? undefined : label)"
-            :aria-labelledby="ariaLabelledby"
+            :aria-labelledby="ariaLabelledby || associatedLabelledby"
+            :aria-describedby="ariaDescribedby"
+            :aria-required="ariaRequired || undefined"
             aria-haspopup="listbox"
             :aria-expanded="overlayVisible"
             :aria-controls="$id + '_list'"
@@ -54,7 +58,9 @@
             <slot name="value" :value="d_value" :placeholder="placeholder">{{ label === 'p-emptylabel' ? '&nbsp;' : (label ?? 'empty') }}</slot>
         </span>
         <slot v-if="isClearIconVisible" name="clearicon" :class="cx('clearIcon')" :clearCallback="onClearClick">
-            <component :is="clearIcon ? 'i' : 'TimesIcon'" ref="clearIcon" :class="[cx('clearIcon'), clearIcon]" @click="onClearClick" v-bind="ptm('clearIcon')" data-pc-section="clearicon" />
+            <button ref="clearIcon" type="button" :class="cx('clearIcon')" :style="sx('clearIcon')" :aria-label="clearText" @click="onClearClick" v-bind="ptm('clearIcon')" data-pc-section="clearicon">
+                <component :is="clearIcon ? 'i' : 'TimesIcon'" :class="clearIcon" aria-hidden="true" />
+            </button>
         </slot>
         <div :class="cx('dropdown')" v-bind="ptm('dropdown')">
             <slot v-if="loading" name="loadingicon" :class="cx('loadingIcon')">
@@ -208,7 +214,7 @@
 
 <script>
 import { cn } from '@openuxkit/utils';
-import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isAndroid, isTouchDevice, isVisible, relativePosition } from '@openuxkit/utils/dom';
+import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isAndroid, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
 import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterService } from '@openvue/core/api';
@@ -237,6 +243,8 @@ export default {
     scrollHandler: null,
     resizeListener: null,
     labelClickListener: null,
+    labelElement: null,
+    labelElementIdGenerated: false,
     matchMediaOrientationListener: null,
     overlay: null,
     list: null,
@@ -251,7 +259,8 @@ export default {
             focusedOptionIndex: -1,
             filterValue: null,
             overlayVisible: false,
-            queryOrientation: null
+            queryOrientation: null,
+            associatedLabelId: null
         };
     },
     watch: {
@@ -260,6 +269,15 @@ export default {
         },
         options() {
             this.autoUpdateModel();
+        },
+        labelId() {
+            this.rebindLabelClickListener();
+        },
+        inputId() {
+            this.rebindLabelClickListener();
+        },
+        editable() {
+            this.rebindLabelClickListener();
         }
     },
     mounted() {
@@ -501,8 +519,16 @@ export default {
             this.clicked = true;
         },
         onClearClick(event) {
+            const shouldRefocusInput = document.activeElement === this.$refs.clearIcon;
+
             this.updateModel(event, null);
             this.resetFilterOnClear && (this.filterValue = null);
+
+            if (shouldRefocusInput) {
+                this.$nextTick(() => {
+                    focus(this.$refs.focusInput);
+                });
+            }
         },
         onFirstHiddenFocus(event) {
             const focusableEl = event.relatedTarget === this.$refs.focusInput ? getFirstFocusableElement(this.overlay, ':not([data-p-hidden-focusable="true"])') : this.$refs.focusInput;
@@ -831,25 +857,53 @@ export default {
         },
         bindLabelClickListener() {
             if (!this.editable && !this.labelClickListener) {
-                const label = document.querySelector(`label[for="${this.labelId}"]`);
+                const label = this.findLabelElement();
 
-                if (label && isVisible(label)) {
+                if (label) {
                     this.labelClickListener = () => {
                         focus(this.$refs.focusInput);
                     };
 
                     label.addEventListener('click', this.labelClickListener);
+                    this.labelElement = label;
+
+                    // A span is not labelable, so the label is linked with aria-labelledby, which needs an id on the label
+                    if (!label.id && !this.ariaLabel && !this.ariaLabelledby) {
+                        label.id = `${this.$id}_label`;
+                        this.labelElementIdGenerated = true;
+                    }
+
+                    this.associatedLabelId = label.id || null;
                 }
             }
         },
         unbindLabelClickListener() {
             if (this.labelClickListener) {
-                const label = document.querySelector(`label[for="${this.labelId}"]`);
+                this.labelElement.removeEventListener('click', this.labelClickListener);
 
-                if (label && isVisible(label)) {
-                    label.removeEventListener('click', this.labelClickListener);
+                if (this.labelElementIdGenerated && this.labelElement.id === `${this.$id}_label`) {
+                    this.labelElement.removeAttribute('id');
                 }
+
+                this.labelClickListener = null;
+                this.labelElement = null;
+                this.labelElementIdGenerated = false;
+                this.associatedLabelId = null;
             }
+        },
+        rebindLabelClickListener() {
+            this.unbindLabelClickListener();
+            this.$nextTick(() => this.bindLabelClickListener());
+        },
+        findLabelElement() {
+            const id = this.labelId || this.inputId;
+            const root = this.$el?.getRootNode?.();
+
+            if (!id || !root?.querySelectorAll) {
+                return null;
+            }
+
+            return Array.from(root.querySelectorAll('label[for]')).find((label) => label.htmlFor === id) || null;
         },
         bindMatchMediaOrientationListener() {
             if (!this.matchMediaOrientationListener) {
@@ -1078,6 +1132,13 @@ export default {
         },
         selectedMessageText() {
             return this.$filled ? this.selectionMessageText.replaceAll('{0}', '1') : this.emptySelectionMessageText;
+        },
+        associatedLabelledby() {
+            // An explicit ariaLabel keeps precedence over a label found through its for attribute
+            return this.ariaLabel ? null : this.associatedLabelId;
+        },
+        clearText() {
+            return this.$primevue.config.locale.clear;
         },
         focusedOptionId() {
             return this.focusedOptionIndex !== -1 ? `${this.$id}_${this.focusedOptionIndex}` : null;

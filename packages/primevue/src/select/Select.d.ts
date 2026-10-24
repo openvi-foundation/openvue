@@ -549,6 +549,15 @@ export interface SelectProps {
      */
     ariaLabelledby?: string | undefined;
     /**
+     * Identifier of the element, or space separated identifiers of the elements, that describe the component such as a help text or a validation message.
+     */
+    ariaDescribedby?: string | undefined;
+    /**
+     * Indicates that a value must be selected before the form can be submitted.
+     * @defaultValue null
+     */
+    ariaRequired?: boolean | 'true' | 'false' | undefined;
+    /**
      * Form control object, typically used for handling validation and form state.
      */
     formControl?: Record<string, any> | undefined;

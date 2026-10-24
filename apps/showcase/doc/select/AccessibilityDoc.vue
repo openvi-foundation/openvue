@@ -2,13 +2,24 @@
     <DocSectionText id="accessibility" label="Accessibility" v-bind="$attrs">
         <h3>Screen Reader</h3>
         <p>
-            Value to describe the component can either be provided with <i>aria-labelledby</i> or <i>aria-label</i> props. The select element has a <i>combobox</i> role in addition to <i>aria-haspopup</i> and <i>aria-expanded</i> attributes. If the
-            editable option is enabled <i>aria-autocomplete</i> is also added. The relation between the combobox and the popup is created with <i>aria-controls</i> and <i>aria-activedescendant</i> attribute is used to instruct screen reader which
-            option to read during keyboard navigation within the popup list.
+            Value to describe the component can be provided with a <i>label</i> element whose <i>for</i> attribute matches the <i>labelId</i> property, or with the <i>aria-labelledby</i> or <i>aria-label</i> props. A matching label is linked to the
+            select element with <i>aria-labelledby</i>, and clicking it moves focus to the select element. The select element has a <i>combobox</i> role in addition to <i>aria-haspopup</i> and <i>aria-expanded</i> attributes. If the editable option
+            is enabled <i>aria-autocomplete</i> is also added. The relation between the combobox and the popup is created with <i>aria-controls</i> and <i>aria-activedescendant</i> attribute is used to instruct screen reader which option to read
+            during keyboard navigation within the popup list.
+        </p>
+        <p>
+            Unless the <i>editable</i> option is enabled, the select element is not a native form field, so browser tools such as Chrome DevTools report a <i>label</i> whose <i>for</i> attribute points to it as incorrect. The warning is expected and
+            does not affect screen readers. To avoid it, give the <i>label</i> an <i>id</i> instead of a <i>for</i> attribute and reference it with the <i>aria-labelledby</i> prop. As with native form fields, clicking a label without <i>for</i> does
+            not move focus to the select element.
         </p>
         <p>
             The popup list has an id that refers to the <i>aria-controls</i> attribute of the <i>combobox</i> element and uses <i>listbox</i> as the role. Each list item has an <i>option</i> role, an id to match the <i>aria-activedescendant</i> of
             the input element along with <i>aria-label</i>, <i>aria-selected</i> and <i>aria-disabled</i> attributes.
+        </p>
+
+        <p>
+            Help text or a validation message can be associated with the <i>aria-describedby</i> prop, and <i>aria-required</i> indicates that a value must be selected. Both are applied to the element with the <i>combobox</i> role. When
+            <i>showClear</i> is enabled, the clear icon is a button labelled with the <i>clear</i> key of the locale API.
         </p>
 
         <p>If filtering is enabled, <i>filterInputProps</i> can be defined to give <i>aria-*</i> props to the filter input element.</p>
@@ -27,15 +38,15 @@
                 <tbody>
                     <tr>
                         <td><i>tab</i></td>
-                        <td>Moves focus to the select element.</td>
+                        <td>Moves focus to the select element, then to the clear button when present.</td>
                     </tr>
                     <tr>
                         <td><i>space</i></td>
-                        <td>Opens the popup and moves visual focus to the selected option, if there is none then first option receives the focus.</td>
+                        <td>Opens the popup and moves visual focus to the selected option, if there is none then first option receives the focus. Clears the value when the clear button is focused.</td>
                     </tr>
                     <tr>
                         <td><i>enter</i></td>
-                        <td>Opens the popup and moves visual focus to the selected option, if there is none then first option receives the focus.</td>
+                        <td>Opens the popup and moves visual focus to the selected option, if there is none then first option receives the focus. Clears the value when the clear button is focused.</td>
                     </tr>
                     <tr>
                         <td><i>down arrow</i></td>
@@ -185,10 +196,14 @@ export default {
         return {
             code: {
                 basic: `
-<span id="dd1"></span>Options</span>
-<select aria-labelledby="dd1" />
+<label for="dd1">Options</label>
+<Select labelId="dd1" aria-describedby="dd1-help" aria-required="true" />
+<small id="dd1-help">Choose one of the options.</small>
 
-<select aria-label="Options" />
+<label id="dd2">Options</label>
+<Select aria-labelledby="dd2" />
+
+<Select aria-label="Options" />
 `
             }
         };

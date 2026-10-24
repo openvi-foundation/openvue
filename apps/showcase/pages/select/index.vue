@@ -28,6 +28,7 @@ import GroupDoc from '@/doc/select/GroupDoc.vue';
 import IftaLabelDoc from '@/doc/select/IftaLabelDoc.vue';
 import ImportDoc from '@/doc/select/ImportDoc.vue';
 import InvalidDoc from '@/doc/select/InvalidDoc.vue';
+import LabelDoc from '@/doc/select/LabelDoc.vue';
 import LazyVirtualScrollDoc from '@/doc/select/LazyVirtualScrollDoc.vue';
 import LoadingStateDoc from '@/doc/select/LoadingStateDoc.vue';
 import PlaygroundDoc from '@/doc/select/PlaygroundDoc.vue';
@@ -105,6 +106,11 @@ export default {
                     id: 'iftalabel',
                     label: 'Ifta Label',
                     component: IftaLabelDoc
+                },
+                {
+                    id: 'label',
+                    label: 'Label',
+                    component: LabelDoc
                 },
                 {
                     id: 'clearicon',

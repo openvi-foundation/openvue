@@ -1,6 +1,32 @@
 import { style } from '@openuxkit/styles/select';
 import BaseStyle from '@openvue/core/base/style';
 
+const buttonReset = {
+    border: 'none',
+    background: 'transparent',
+    padding: 0,
+    cursor: 'pointer',
+    font: 'inherit'
+};
+
+const inlineStyles = {
+    clearIcon: buttonReset
+};
+
+const clearButtonStyle = `
+    .p-select-clear-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: max(2px, dt('select.border.radius') - dt('select.padding.x'));
+    }
+
+    .p-select-clear-icon:focus-visible {
+        outline: dt('select.focus.ring.width') dt('select.focus.ring.style') dt('select.focus.ring.color');
+        outline-offset: dt('select.focus.ring.offset');
+    }
+`;
+
 const classes = {
     root: ({ instance, props, state }) => [
         'p-select p-component p-inputwrapper',
@@ -51,6 +77,7 @@ const classes = {
 
 export default BaseStyle.extend({
     name: 'select',
-    style,
-    classes
+    style: style + clearButtonStyle,
+    classes,
+    inlineStyles
 });

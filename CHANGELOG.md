@@ -13,10 +13,13 @@ All packages in this repository are released together under a single version.
 ### Added
 
 - New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
+- `Select` gains `ariaDescribedby` and `ariaRequired` props for linking help text or a validation message and for marking a value as required. Writing them as `aria-describedby` and `aria-required` attributes works too. They used to land on the wrapper element, where screen readers ignored them; they are now set on the element with the `combobox` role.
 
 ### Fixed
 
 - Fix populating time in DatePicker when using 24-hour format
+- `Select` is now named by its `<label>`. A label whose `for` matches `labelId` (or the deprecated `inputId`) is linked with `aria-labelledby`, so screen readers announce "City" instead of the selected option or placeholder, and voice control can reach the field by its label. Clicking the label focuses the Select with `inputId` as well, and also when the label was hidden while the Select mounted. A label without an `id` gets one generated. An explicit `ariaLabel` or `ariaLabelledby` still takes precedence.
+- `Select` clear icon is now a button that keyboard and screen reader users can reach. It is labelled with the `clear` locale key, and focus returns to the Select after clearing. The `clearIcon` pass-through options and `p-select-clear-icon` class now belong to the button, and a custom `clearIcon` class is applied to the icon inside it.
 - `DatePicker` previous and next buttons now tell screen reader users where they navigate to, e.g. "Next Month, November 2026" instead of just "Next Month". The labels reuse existing locale keys, so translations need no changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
 - `DatePicker` time picker now announces the new time to screen readers when the hour, minute, second or AM/PM changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
 - `InputChips` no longer types the separator into the input when a duplicate chip is rejected. ([#602](https://github.com/openvi-foundation/openvue/issues/602))

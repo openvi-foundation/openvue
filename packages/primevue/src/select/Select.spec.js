@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { flushPromises, mount } from '@vue/test-utils';
 import PrimeVue from 'openvue/config';
 import { h } from 'vue';
 import Select from './Select.vue';
@@ -94,7 +94,22 @@ describe('clear checks', () => {
     });
 
     it('should have correct icon', () => {
-        expect(wrapper.find('.p-select-clear-icon').classes()).toContain('pi-discord');
+        expect(wrapper.find('.p-select-clear-icon i').classes()).toContain('pi-discord');
+    });
+
+    it('should render the clear icon as a labelled button', () => {
+        const clearButton = wrapper.find('.p-select-clear-icon');
+
+        expect(clearButton.element.tagName).toBe('BUTTON');
+        expect(clearButton.attributes('type')).toBe('button');
+        expect(clearButton.attributes('aria-label')).toBe('Clear');
+        expect(clearButton.find('i').attributes('aria-hidden')).toBe('true');
+    });
+
+    it('should clear the value when the clear button is clicked', async () => {
+        await wrapper.find('.p-select-clear-icon').trigger('click');
+
+        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([null]);
     });
 });
 
@@ -364,5 +379,157 @@ describe('filter checks', () => {
         await wrapper.setData({ filterValue: 'c' });
 
         expect(wrapper.findAll('.p-select-option').length).toBe(2);
+    });
+});
+
+describe('label checks', () => {
+    const cities = [
+        { name: 'New York', code: 'NY' },
+        { name: 'Rome', code: 'RM' }
+    ];
+    let label;
+    let wrapper;
+
+    const mountSelect = async (props) => {
+        wrapper = mount(Select, {
+            attachTo: document.body,
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    teleport: true
+                }
+            },
+            props: { options: cities, optionLabel: 'name', placeholder: 'Select a City', ...props }
+        });
+
+        await wrapper.vm.$nextTick();
+    };
+
+    beforeEach(() => {
+        label = document.createElement('label');
+        label.htmlFor = 'city';
+        label.textContent = 'City';
+        document.body.appendChild(label);
+    });
+
+    afterEach(() => {
+        wrapper?.unmount();
+        label.remove();
+    });
+
+    it('should be labelled by a label whose for matches labelId', async () => {
+        await mountSelect({ labelId: 'city' });
+
+        expect(label.id).toBeTruthy();
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBe(label.id);
+    });
+
+    it('should be labelled by a label whose for matches the deprecated inputId', async () => {
+        await mountSelect({ inputId: 'city' });
+
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBe(label.id);
+    });
+
+    it('should keep the existing id of the label', async () => {
+        label.id = 'city-label';
+        await mountSelect({ labelId: 'city' });
+
+        expect(label.id).toBe('city-label');
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBe('city-label');
+    });
+
+    it('should focus when the label is clicked', async () => {
+        await mountSelect({ inputId: 'city' });
+
+        label.click();
+
+        expect(document.activeElement).toBe(wrapper.find('.p-select-label').element);
+    });
+
+    it('should prefer ariaLabelledby and ariaLabel over the label', async () => {
+        await mountSelect({ labelId: 'city', ariaLabelledby: 'other-label' });
+
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBe('other-label');
+        wrapper.unmount();
+
+        await mountSelect({ labelId: 'city', ariaLabel: 'Destination' });
+
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBeUndefined();
+        expect(wrapper.find('.p-select-label').attributes('aria-label')).toBe('Destination');
+        expect(label.hasAttribute('id')).toBe(false);
+    });
+
+    it('should follow a labelId that changes after mount', async () => {
+        await mountSelect({ labelId: 'other' });
+
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBeUndefined();
+
+        await wrapper.setProps({ labelId: 'city' });
+        await flushPromises();
+
+        expect(wrapper.find('.p-select-label').attributes('aria-labelledby')).toBe(label.id);
+    });
+
+    it('should remove the generated label id on unmount', async () => {
+        await mountSelect({ labelId: 'city' });
+        wrapper.unmount();
+        wrapper = null;
+
+        expect(label.hasAttribute('id')).toBe(false);
+    });
+
+    it('should leave the label to the native input when editable', async () => {
+        await mountSelect({ labelId: 'city', editable: true });
+
+        expect(wrapper.find('input.p-select-label').attributes('aria-labelledby')).toBeUndefined();
+        expect(label.hasAttribute('id')).toBe(false);
+    });
+});
+
+describe('aria attribute checks', () => {
+    it.each([false, true])('should pass aria-describedby and aria-required to the combobox when editable is %s', (editable) => {
+        const wrapper = mount(Select, {
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    teleport: true
+                }
+            },
+            props: { editable, ariaDescribedby: 'city-help', ariaRequired: true }
+        });
+        const combobox = wrapper.find('[role="combobox"]');
+
+        expect(combobox.attributes('aria-describedby')).toBe('city-help');
+        expect(combobox.attributes('aria-required')).toBe('true');
+        expect(wrapper.find('.p-select').attributes('aria-describedby')).toBeUndefined();
+    });
+
+    it('should accept aria-describedby and aria-required written as attributes', () => {
+        const wrapper = mount(Select, {
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    teleport: true
+                }
+            },
+            attrs: { 'aria-describedby': 'city-help', 'aria-required': 'true' }
+        });
+        const combobox = wrapper.find('[role="combobox"]');
+
+        expect(combobox.attributes('aria-describedby')).toBe('city-help');
+        expect(combobox.attributes('aria-required')).toBe('true');
+    });
+
+    it('should not render aria-required by default', () => {
+        const wrapper = mount(Select, {
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    teleport: true
+                }
+            }
+        });
+
+        expect(wrapper.find('[role="combobox"]').attributes('aria-required')).toBeUndefined();
     });
 });

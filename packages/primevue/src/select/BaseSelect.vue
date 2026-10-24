@@ -168,6 +168,14 @@ export default {
         ariaLabelledby: {
             type: String,
             default: null
+        },
+        ariaDescribedby: {
+            type: String,
+            default: null
+        },
+        ariaRequired: {
+            type: [Boolean, String],
+            default: null
         }
     },
     style: SelectStyle,
