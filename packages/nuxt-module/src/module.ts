@@ -2,7 +2,7 @@ import { addPlugin, addPluginTemplate, addTemplate, createResolver, defineNuxtMo
 import { isNotEmpty } from '@openuxkit/utils';
 import { PrimeVueResolver } from '@openvue/auto-import-resolver';
 import type { MetaType } from '@openvue/metadata';
-import { normalize } from 'pathe';
+import { join, normalize } from 'pathe';
 import Components from 'unplugin-vue-components/nuxt';
 import { register } from './register';
 import type { ModuleOptions } from './types';
@@ -65,7 +65,14 @@ export default defineNuxtModule<ModuleOptions>({
         let registeredStyles: MetaType[] = registered.styles;
 
         if (autoImport) {
-            const dts = isNotEmpty(moduleOptions.components?.prefix) || isNotEmpty(moduleOptions.directives?.prefix);
+            const hasPrefix = isNotEmpty(moduleOptions.components?.prefix) || isNotEmpty(moduleOptions.directives?.prefix);
+            // Keep the generated declarations in the build dir instead of the project root
+            const dts = hasPrefix ? join(nuxt.options.buildDir, 'primevue-components.d.ts') : false;
+
+            dts &&
+                nuxt.hook('prepare:types', ({ references }) => {
+                    references.push({ path: dts });
+                });
 
             Components(
                 {
