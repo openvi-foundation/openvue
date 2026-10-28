@@ -67,6 +67,48 @@ describe('MultiSelect.vue', () => {
         expect(wrapper.findAll('li.p-multiselect-option')[1].attributes()['data-p-selected']).toBe('true');
     });
 
+    it('should show the placeholder when the selected value is not among the options', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['XX'] });
+
+        expect(wrapper.find('.p-multiselect-label').text()).toBe('Select Cities');
+    });
+
+    it('should skip selected values that are not among the options', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['NY', 'XX', 'RM'] });
+
+        expect(wrapper.find('.p-multiselect-label').text()).toBe('New York, Rome');
+    });
+
+    it('should not count selected values that are not among the options', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['NY', 'XX', 'RM'], maxSelectedLabels: 1 });
+
+        expect(wrapper.find('.p-multiselect-label').text()).toBe('2 items selected');
+    });
+
+    it('should not show chips for selected values that are not among the options', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['NY', 'XX'], display: 'chip' });
+
+        expect(wrapper.findAll('.p-multiselect-chip-item').length).toBe(1);
+    });
+
+    it('should show the placeholder in chip mode when the selected value is not among the options', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['XX'], display: 'chip' });
+
+        expect(wrapper.find('.p-multiselect-label').text()).toBe('Select Cities');
+    });
+
+    it('should show the empty label when the selected value is not among the options and there is no placeholder', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['XX'], placeholder: null });
+
+        expect(wrapper.find('.p-multiselect-label').classes()).toContain('p-multiselect-label-empty');
+    });
+
+    it('should show the placeholder once in chip mode while loading', async () => {
+        await wrapper.setProps({ optionValue: 'code', modelValue: ['NY'], display: 'chip', loading: true, options: [] });
+
+        expect(wrapper.find('.p-multiselect-label').text()).toBe('Select Cities');
+    });
+
     it('should not toggle the focused option on Tab', async () => {
         const selectedOptions = wrapper.vm.options.slice(0, 3);
 
