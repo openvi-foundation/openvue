@@ -6,6 +6,10 @@ PrimeVue 5 ships under a commercial license, and PrimeVue 4 now gets security fi
 
 OpenVue starts from the PrimeVue 4.5.5 source, so moving over is a rename rather than a rewrite. Stays the same Changes Component names, props, events and slots primevue becomes openvue usePrimeVue , PrimeVueResolver and the primevue Nuxt config key @primevue/* packages become @openvue/* p- prefixed CSS classes, pass-through options and unstyled mode PrimeIcons is replaced by OpenIcons , with a compatibility stylesheet that keeps pi pi-* classes working Aura, Lara and Nora theme presets and design tokens Theme presets are imported from @openvue/themes
 
+## FAQ
+
+Is OpenVue a drop-in replacement for PrimeVue 4? Yes. OpenVue is a fork of PrimeVue 4.5.5 with the same components and public API. Switching renames packages and imports, and @openvue/migrate does that for you in one command. Is OpenVue free for commercial use? Yes. OpenVue is MIT licensed, with no paid tier, no per-developer fee and no revenue limits. Does OpenVue work with Nuxt and Tailwind CSS? Yes. The Nuxt module auto-imports components and works with SSR, and OpenVue integrates with Tailwind CSS in both styled and unstyled modes. Can I migrate a PrimeVue 5 project? The migration tool supports PrimeVue 4.x projects only, since 4.5.5 is the fork point. Projects on version 5 need to be checked by hand. Who maintains OpenVue? The Openvi Foundation , an independent group of developers who use the library in production, together with outside contributors. OpenVue is not affiliated with PrimeTek.
+
 ## Will OpenVue Last?
 
 It's the right question to ask about any fork. Here is what protects you. Run by people who depend on it. OpenVue is maintained by the Openvi Foundation , developers who run this library in production themselves, together with outside contributors whose fixes are credited in every release. The whole stack is open. The theming engine and the icon set are maintained alongside the components, and OpenVue has no runtime dependency on any PrimeTek package. Your worst case is fine. Everything is MIT. Whatever happens, the version you install keeps working, and anyone can pick the code up and continue it, the same way OpenVue continued PrimeVue 4. Everything happens in public. Issues, pull requests and decisions are on GitHub , so you can judge the project's health yourself at any time.
@@ -44,8 +48,4 @@ npx @openvue/migrate
 ## Why Teams Switch
 
 Nothing to rewrite Same components, props, events, slots, pass-through and themes as PrimeVue 4.5.5. Switching is a package rename that one command does for you. MIT, no license fees No per-developer pricing, no revenue limits, no license keys. Every package is MIT, and a license change elsewhere cannot reach code you already have. Still moving forward Ten releases since July 2026, a stable 1.0 in September, and fixes and features landing every few weeks from a growing group of contributors.
-
-## FAQ
-
-Is OpenVue a drop-in replacement for PrimeVue 4? Yes. OpenVue is a fork of PrimeVue 4.5.5 with the same components and public API. Switching renames packages and imports, and @openvue/migrate does that for you in one command. Is OpenVue free for commercial use? Yes. OpenVue is MIT licensed, with no paid tier, no per-developer fee and no revenue limits. Does OpenVue work with Nuxt and Tailwind CSS? Yes. The Nuxt module auto-imports components and works with SSR, and OpenVue integrates with Tailwind CSS in both styled and unstyled modes. Can I migrate a PrimeVue 5 project? The migration tool supports PrimeVue 4.x projects only, since 4.5.5 is the fork point. Projects on version 5 need to be checked by hand. Who maintains OpenVue? The Openvi Foundation , an independent group of developers who use the library in production, together with outside contributors. OpenVue is not affiliated with PrimeTek.
 

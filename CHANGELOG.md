@@ -8,6 +8,8 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-29
+
 ### Added
 
 - New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
@@ -180,7 +182,8 @@ First OpenVue release, forked from PrimeVue 4.5.5.
 - Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
 - License copyright updated for the fork. The project remains MIT.
 
-[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.0.0...HEAD
+[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/openvi-foundation/openvue/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/openvi-foundation/openvue/compare/1.0.0-rc.0...1.0.0
 [1.0.0-rc.0]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...1.0.0-rc.0
 [0.7.0-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...0.7.0-beta.0

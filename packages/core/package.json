@@ -1,6 +1,6 @@
 {
     "name": "@openvue/core",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "Core runtime for OpenVue with the plugin, base components, configuration and theming plumbing shared by every OpenVue component.",
     "keywords": [

@@ -1,6 +1,6 @@
 {
     "name": "@openvue/mcp",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "Model Context Protocol (MCP) server for OpenVue, giving AI assistants accurate component, props, events, slots and theming documentation.",
     "homepage": "https://openvue.dev",
