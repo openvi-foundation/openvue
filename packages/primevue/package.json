@@ -2,7 +2,7 @@
     "name": "openvue",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "OpenVue is an open source, MIT-licensed UI library for Vue 3 and Nuxt with 80+ accessible components, a visual theme designer, Aura, Lara, Material and Nora theme presets, and an unstyled mode for Tailwind. It is a community-maintained continuation of PrimeVue 4.",
+    "description": "OpenVue is an open source, MIT-licensed UI library for Vue 3 and Nuxt with 80+ accessible components, a visual theme designer, Aura, Lara, Material, Nora and Nide theme presets, and an unstyled mode for Tailwind. It is a community-maintained continuation of PrimeVue 4.",
     "homepage": "https://openvue.dev",
     "license": "MIT",
     "repository": {

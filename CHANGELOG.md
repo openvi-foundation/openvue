@@ -13,6 +13,7 @@ All packages in this repository are released together under a single version.
 ### Added
 
 - New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
+- Nide, a fifth theme preset in the style of shadcn/ui: a neutral palette with a near-black primary (near-white in dark mode), hairline borders, soft 3px focus rings, segmented Tabs and SelectButton, Sonner-style toasts and Alert-style messages. Controls follow shadcn/ui's sizes (14px text in 36px buttons and fields at the default 16px root), so Nide renders more compactly than the other presets; checkboxes and radio buttons are one step larger (18px), with shadcn/ui's 16px as the small size. Use it like any other preset with `import Nide from '@openvue/themes/nide'`, or as a foundation in the Theme Designer. It is maintained in OpenVue, layered on Aura's tokens, and ships only with `@openvue/themes` (including `umd/nide.min.js` for CDN use).
 
 ### Fixed
 
