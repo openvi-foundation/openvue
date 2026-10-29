@@ -4,6 +4,7 @@ import { definePreset } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
 import Lara from '@openvue/themes/lara';
 import Material from '@openvue/themes/material';
+import Nide from '@openvue/themes/nide';
 import Nora from '@openvue/themes/nora';
 import { toPresetSource } from '../../service/designer/codegen';
 import { createDocument } from '../../service/designer/document';
@@ -11,7 +12,7 @@ import { deepDiff, findRemovedPaths } from '../../service/designer/diff';
 import { applySharedRemovals, decodeShare, encodeShare } from '../../service/designer/share';
 import { importThemeJson } from '../../service/designer/importer';
 
-const bases = { Aura, Lara, Material, Nora };
+const bases = { Aura, Lara, Material, Nora, Nide };
 
 // Compile the complete module before evaluating its body with the real theme engine.
 async function evaluateExport(doc, options = {}, marker = {}) {
@@ -48,7 +49,7 @@ describe('generated theme modules', () => {
         expect(marker).toEqual({});
     });
 
-    it.each(['Aura', 'Lara', 'Material', 'Nora', 'Preset', 'Reflect'])('supports a theme called %s', async (name) => {
+    it.each(['Aura', 'Lara', 'Material', 'Nora', 'Nide', 'Preset', 'Reflect'])('supports a theme called %s', async (name) => {
         const base = bases[name] ? name : 'Aura';
         const doc = createDocument({ name, base, preset: bases[base] });
 

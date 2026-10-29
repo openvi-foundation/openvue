@@ -5,8 +5,8 @@
             package that <i>@openvue/themes</i> is built on, published by the OpenUXKit project.
         </p>
         <p>
-            The two expose the same presets (Aura, Lara, Material and Nora) and the same utility API (<i>definePreset</i>, <i>usePreset</i>, <i>updatePreset</i>, <i>updatePrimaryPalette</i>, <i>updateSurfacePalette</i>, <i>palette</i>, <i>$dt</i> and
-            <i>$t</i>), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary.
+            The two expose the same presets (Aura, Lara, Material, Nora and Nide) and the same utility API (<i>definePreset</i>, <i>usePreset</i>, <i>updatePreset</i>, <i>updatePrimaryPalette</i>, <i>updateSurfacePalette</i>, <i>palette</i>,
+            <i>$dt</i> and <i>$t</i>), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary.
         </p>
         <h3>Installation</h3>
         <p>Install whichever package you prefer alongside OpenVue.</p>

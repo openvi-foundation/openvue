@@ -91,7 +91,7 @@ for (const directory of packages) {
     for (const file of walk(installedDist)) {
         if (!/index\.mjs$/.test(file) || file === entry) continue;
 
-        const themeMatch = directory === 'themes' ? /[\\/](?:aura|lara|material|nora)[\\/]([^\\/]+)[\\/]index\.mjs$/.exec(file) : null;
+        const themeMatch = directory === 'themes' ? /[\\/](?:aura|lara|material|nide|nora)[\\/]([^\\/]+)[\\/]index\.mjs$/.exec(file) : null;
         const typeFile = themeMatch ? join(installedDist, 'types', themeMatch[1], 'index.d.ts') : file.replace(/\.mjs$/, '.d.ts');
 
         if (!existsSync(typeFile)) fail(`${relative(root, file)} has no matching index.d.ts`);
@@ -136,7 +136,7 @@ const iconIndex = await import(pathToFileURL(join(installedIcons, 'index.mjs')).
 
 if (Object.keys(iconIndex).length < iconDirectories.length) fail(`icon root exports ${Object.keys(iconIndex).length} values for ${iconDirectories.length} icon entry points`);
 
-const themePresets = ['aura', 'lara', 'material', 'nora'];
+const themePresets = ['aura', 'lara', 'material', 'nide', 'nora'];
 
 for (const preset of themePresets) {
     const presetRoot = join(contractDir, 'node_modules', '@openvue', 'themes', preset, 'index.mjs');

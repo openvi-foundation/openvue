@@ -2,7 +2,7 @@
     "name": "@openvue/themes",
     "version": "1.0.0",
     "author": "OpenVue Contributors",
-    "description": "Design-token theme presets for OpenVue, including Aura, Lara, Material and Nora.",
+    "description": "Design-token theme presets for OpenVue, including Aura, Lara, Material, Nora and Nide.",
     "keywords": [
         "openvue",
         "vue",
@@ -14,7 +14,8 @@
         "design tokens",
         "theming",
         "aura",
-        "material"
+        "material",
+        "nide"
     ],
     "homepage": "https://openvue.dev",
     "license": "MIT",
@@ -36,6 +37,7 @@
         "./aura": "./src/presets/aura/index.js",
         "./lara": "./src/presets/lara/index.js",
         "./material": "./src/presets/material/index.js",
+        "./nide": "./src/presets/nide/index.js",
         "./nora": "./src/presets/nora/index.js",
         "./aura/*": {
             "types": "./types/*/index.d.ts",
@@ -48,6 +50,10 @@
         "./material/*": {
             "types": "./types/*/index.d.ts",
             "import": "./src/presets/material/*/index.js"
+        },
+        "./nide/*": {
+            "types": "./types/*/index.d.ts",
+            "import": "./src/presets/nide/*/index.js"
         },
         "./nora/*": {
             "types": "./types/*/index.d.ts",
@@ -74,6 +80,10 @@
             "./material/*": {
                 "types": "./types/*/index.d.ts",
                 "import": "./material/*/index.mjs"
+            },
+            "./nide/*": {
+                "types": "./types/*/index.d.ts",
+                "import": "./nide/*/index.mjs"
             },
             "./nora/*": {
                 "types": "./types/*/index.d.ts",

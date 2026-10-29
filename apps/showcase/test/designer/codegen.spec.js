@@ -153,6 +153,7 @@ describe('designer/codegen', () => {
             expect(toPresetSource(doc({ base: 'Lara' }), { mode: 'diff', basePreset: BASE })).toContain("import Lara from '@openvue/themes/lara';");
             expect(toPresetSource(doc({ base: 'Material' }), { mode: 'diff', basePreset: BASE })).toContain("import Material from '@openvue/themes/material';");
             expect(toPresetSource(doc({ base: 'Nora' }), { mode: 'diff', basePreset: BASE })).toContain("import Nora from '@openvue/themes/nora';");
+            expect(toPresetSource(doc({ base: 'Nide' }), { mode: 'diff', basePreset: BASE })).toContain("import Nide from '@openvue/themes/nide';");
         });
 
         // Guards against emitting source that parses but means the wrong thing.
