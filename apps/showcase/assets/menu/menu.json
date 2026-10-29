@@ -493,6 +493,11 @@
                     "to": "/theming/unstyled"
                 },
                 {
+                    "name": "Theme Builder",
+                    "to": "/theme",
+                    "badge": "NEW"
+                },
+                {
                     "name": "Theme Designer",
                     "to": "/designer",
                     "badge": "NEW"

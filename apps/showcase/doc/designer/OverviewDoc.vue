@@ -13,5 +13,9 @@
             The designer edits a <b>preset</b>, the same object you would otherwise hand-write and pass to <i>definePreset</i>. Nothing it produces is designer-specific: an exported theme is ordinary source code with no runtime dependency on this
             tool.
         </p>
+        <p>
+            For a quicker start, the <NuxtLink to="/theme">Theme Builder</NuxtLink> offers a handful of curated styles and a few high-level knobs (base preset, colours, radius, font, component defaults) with a full-page live preview. Its
+            <i>Refine in the Theme Designer</i> action opens the result here, so you can begin with a recipe and finish at the token level.
+        </p>
     </DocSectionText>
 </template>

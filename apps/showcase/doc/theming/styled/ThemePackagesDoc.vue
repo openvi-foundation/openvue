@@ -6,7 +6,8 @@
         </p>
         <p>
             The two expose the same presets (Aura, Lara, Material and Nora) and the same utility API (<i>definePreset</i>, <i>usePreset</i>, <i>updatePreset</i>, <i>updatePrimaryPalette</i>, <i>updateSurfacePalette</i>, <i>palette</i>, <i>$dt</i> and
-            <i>$t</i>), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary.
+            <i>$t</i>), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary. The Nide preset is the exception: it is maintained in OpenVue and ships only with
+            <i>@openvue/themes</i>.
         </p>
         <h3>Installation</h3>
         <p>Install whichever package you prefer alongside OpenVue.</p>

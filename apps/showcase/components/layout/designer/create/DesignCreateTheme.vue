@@ -40,23 +40,33 @@ export default {
         return {
             themeName: null,
             basePreset: 'Aura',
+            creating: false,
             presetOptions: [
                 { label: 'Aura', value: 'Aura', description: 'The balanced default.' },
                 { label: 'Lara', value: 'Lara', description: 'Rounded and friendly.' },
                 { label: 'Nora', value: 'Nora', description: 'Sharp and corporate.' },
-                { label: 'Material', value: 'Material', description: 'Material Design flavour.' }
+                { label: 'Material', value: 'Material', description: 'Material Design flavour.' },
+                { label: 'Nide', value: 'Nide', description: 'Neutral, in the style of shadcn/ui.' }
             ]
         };
     },
     methods: {
-        createThemeFromPreset() {
+        async createThemeFromPreset() {
+            if (this.creating) return;
+
             if (this.themeName == null || !this.themeName.trim().length) {
                 this.$toast.add({ severity: 'error', summary: 'Error', detail: 'Name is required', life: 3000 });
 
                 return;
             }
 
-            this.designerService.createTheme({ name: this.themeName.trim(), base: this.basePreset });
+            this.creating = true;
+
+            try {
+                await this.designerService.createTheme({ name: this.themeName.trim(), base: this.basePreset });
+            } finally {
+                this.creating = false;
+            }
 
             this.$appState.designer.activeTab = '0';
             this.$appState.designer.activeView = 'editor';

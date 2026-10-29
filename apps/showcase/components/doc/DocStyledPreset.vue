@@ -17,7 +17,7 @@
                         <td :class="`doc-option-preset-name-${preset.toLowerCase()}`">{{ preset }}</td>
                         <td :class="`doc-option-preset-implementation-${preset.toLowerCase()}`">
                             <a
-                                :href="`https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${$attrs.data}/index.ts`"
+                                :href="implementationUrl(preset)"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm dark:bg-surface-800 dark:hover:bg-surface-700"
@@ -28,7 +28,7 @@
                         </td>
                         <td :class="`doc-option-preset-type-${preset.toLowerCase()}`">
                             <a
-                                :href="`https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${$attrs.data}/index.d.ts`"
+                                :href="typesUrl(preset)"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="inline-flex rounded-full px-3 py-1 bg-surface-200 hover:bg-surface-300 transition-all duration-200 gap-2 items-center text-sm dark:bg-surface-800 dark:hover:bg-surface-700"
@@ -49,8 +49,24 @@ export default {
     data() {
         return {
             headers: ['Preset', 'Implementation', 'Types'],
-            presets: ['Aura', 'Lara', 'Nora', 'Material']
+            presets: ['Aura', 'Lara', 'Nora', 'Material', 'Nide']
         };
+    },
+    methods: {
+        implementationUrl(preset) {
+            if (preset === 'Nide') {
+                return `https://github.com/openvi-foundation/openvue/blob/master/packages/themes/src/presets/nide/${this.$attrs.data}/index.js`;
+            }
+
+            return `https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${this.$attrs.data}/index.ts`;
+        },
+        typesUrl(preset) {
+            if (preset === 'Nide') {
+                return `https://github.com/openvi-foundation/openvue/blob/master/packages/themes/types/${this.$attrs.data}/index.d.ts`;
+            }
+
+            return `https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${this.$attrs.data}/index.d.ts`;
+        }
     }
 };
 </script>

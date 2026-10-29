@@ -28,7 +28,7 @@ export default {
         return {
             features: [
                 { icon: 'pi-th-large', title: '80+ components', short: 'Inputs, tables, overlays and menus.', text: 'Inputs, data tables, trees, overlays, menus and charts, built and tested together.', to: '/components' },
-                { icon: 'pi-palette', title: 'Styled or unstyled', short: 'Theme presets or your own CSS.', text: 'Start from Aura, Lara or Nora and adjust design tokens, or turn styles off and bring your own.', to: '/theming/styled' },
+                { icon: 'pi-palette', title: 'Styled or unstyled', short: 'Five presets or your own CSS.', text: 'Start from one of five presets and adjust design tokens, or turn styles off and bring your own.', to: '/theming/styled' },
                 { icon: 'pi-sliders-h', title: 'Pass-through', short: 'Style any element inside.', text: 'Reach any element inside a component to add classes or attributes, without forking it.', to: '/passthrough' },
                 { icon: 'pi-check-square', title: 'Forms', short: 'Zod, Yup and Valibot validation.', text: 'Validation with Zod, Yup, Valibot or your own resolver, wired into every input.', to: '/forms' },
                 { icon: 'pi-eye', title: 'Accessibility', short: 'Keyboard and ARIA built in.', text: 'Keyboard navigation, focus management and ARIA attributes, designed around the WCAG guidelines.', to: '/guides/accessibility' },
