@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import RadioButton from './RadioButton.vue';
+import RadioButtonStyle from './style/RadioButtonStyle';
 
 describe('RadioButton.vue', () => {
     let wrapper;
@@ -71,5 +72,16 @@ describe('RadioButton.vue', () => {
 
         expect(wrapper.vm.focus).toBeFalsy();
         expect(wrapper.emitted().blur.length).toEqual(1);
+    });
+
+    it('draws the dot in a layer covering the whole ring', () => {
+        expect(RadioButtonStyle.style).toMatch(/\.p-radiobutton-icon \{\s*position: absolute;\s*inset: 0;\s*margin: auto;\s*width: auto;\s*height: auto;/);
+        expect(RadioButtonStyle.style).toContain('mask-image: radial-gradient(circle closest-side, #000 calc(0.5em - 0.5px), transparent calc(0.5em + 0.5px))');
+    });
+
+    it('resets the dot size with the selectors the base style sizes it with', () => {
+        const sizing = [...RadioButtonStyle.style.matchAll(/([^{}]+)\{[^}]*\bwidth:/g)].map((match) => match[1].trim()).filter((selector) => selector.includes('p-radiobutton-icon'));
+
+        expect(sizing).toEqual(['.p-radiobutton-icon', '.p-radiobutton-sm .p-radiobutton-icon', '.p-radiobutton-lg .p-radiobutton-icon', '.p-radiobutton-icon', '.p-radiobutton-sm .p-radiobutton-icon,\n    .p-radiobutton-lg .p-radiobutton-icon']);
     });
 });
