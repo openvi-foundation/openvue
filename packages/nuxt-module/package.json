@@ -1,6 +1,6 @@
 {
     "name": "@openvue/nuxt-module",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "Nuxt module for OpenVue that auto-imports components and directives, configures themes and works with SSR.",
     "homepage": "https://openvue.dev",

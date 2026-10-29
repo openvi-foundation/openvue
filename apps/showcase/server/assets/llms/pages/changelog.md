@@ -4,6 +4,8 @@ Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All pack
 
 ## Unreleased
 
+## 1.1.0 - 2026-10-29
+
 ### Added
 
 - New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
