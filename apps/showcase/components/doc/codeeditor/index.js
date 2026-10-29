@@ -1,5 +1,5 @@
 import sdk from '@stackblitz/sdk';
-import { getThemeApp, getVueApp } from './templates';
+import { getVueApp } from './templates';
 
 const useCodeSandbox = (language, code, service, extPages, dependencies, component, extFiles) => {
     const getSandboxParameters = (sourceType) => {
@@ -65,25 +65,4 @@ const useStackBlitz = (language, code, service, extPages, dependencies, componen
     }
 };
 
-const useStackBlitzTheme = (generatedFiles, { title = 'OpenVue Theme' } = {}) => {
-    const { files, dependencies, sourceFileName } = getThemeApp({ files: generatedFiles, title, description: title });
-    const flat = {};
-
-    Object.entries(files).forEach(([path, file]) => (flat[path] = typeof file.content === 'object' ? JSON.stringify(file.content, null, 2) : file.content));
-
-    sdk.openProject(
-        {
-            title,
-            template: 'node',
-            description: 'A theme made with the OpenVue Theme Builder. ' + 'OpenVue is an open source UI library for Vue featuring 80+ components, MIT licensed, for Vue 3, Nuxt and Vite.',
-            dependencies,
-            files: flat
-        },
-        {
-            newWindow: true,
-            openFile: [sourceFileName]
-        }
-    );
-};
-
-export { useCodeSandbox, useStackBlitz, useStackBlitzTheme };
+export { useCodeSandbox, useStackBlitz };

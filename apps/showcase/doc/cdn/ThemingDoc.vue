@@ -6,7 +6,7 @@
     <DocSectionText>
         <p>
             The presets are also served from <i>@openuxkit/themes</i>, the engine package that <i>@openvue/themes</i> is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register
-            on an <i>OpenUXKit</i> global rather than <i>OpenVue</i>, so reference them as <i>OpenUXKit.Themes.Aura</i> when configuring the theme. Nide is only available from <i>@openvue/themes</i>.
+            on an <i>OpenUXKit</i> global rather than <i>OpenVue</i>, so reference them as <i>OpenUXKit.Themes.Aura</i> when configuring the theme.
         </p>
         <DocSectionCode :code="codeAlt" hideToggleCode hideStackBlitz />
     </DocSectionText>

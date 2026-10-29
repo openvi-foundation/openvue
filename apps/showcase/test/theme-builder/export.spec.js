@@ -97,11 +97,6 @@ describe('theme-builder/export', () => {
             expect(new Set(imports).size).toBe(imports.length);
             expect(setup).toMatch(/import \w+Theme from '\.\/theme';/);
         });
-
-        it('sets a dark mode class only when asked', () => {
-            expect(toVueSetup({ input: 'outlined' }, 'Plum')).not.toContain('darkModeSelector');
-            expect(toVueSetup({ input: 'filled' }, 'Plum', { darkModeSelector: '.p-dark' })).toContain("preset: Plum,\n        options: {\n            darkModeSelector: '.p-dark'\n        }\n    },\n    inputVariant: 'filled'\n});");
-        });
     });
 
     describe('Nuxt', () => {

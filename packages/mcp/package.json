@@ -58,7 +58,7 @@
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.31.0",
         "@openuxkit/mcp": "catalog:",
-        "zod": "^3.25.76"
+        "zod": "^4.6.7"
     },
     "devDependencies": {
         "tsup": "^8.1.0"

@@ -5,7 +5,7 @@ export const BASES = [
     { value: 'Lara', description: 'Rounded and friendly.' },
     { value: 'Nora', description: 'Sharp and corporate.' },
     { value: 'Material', description: 'Material Design flavour.' },
-    { value: 'Nide', description: 'Neutral, in the style of shadcn/ui.' }
+    { value: 'Nide', description: 'Neutral and minimal.' }
 ];
 
 export const PRIMARY_COLORS = ['noir', 'emerald', 'green', 'lime', 'orange', 'amber', 'yellow', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
@@ -104,7 +104,7 @@ export function primaryScheme(base, primary) {
     const noir = primary === 'noir';
 
     if (base === 'Nide') {
-        // Selections stay neutral in Nide, as in shadcn/ui.
+        // Selections stay neutral in Nide.
         return {
             light: {
                 primary: noir

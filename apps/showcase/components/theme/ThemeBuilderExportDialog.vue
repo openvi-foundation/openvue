@@ -54,16 +54,6 @@
             <div class="theme-builder-export-footer">
                 <div class="theme-builder-export-footer-group">
                     <Button label="Refine in the Theme Designer" icon="pi pi-pen-to-square" severity="secondary" outlined size="small" @click="$emit('designer', themeName)" />
-                    <Button
-                        label="Open in StackBlitz"
-                        icon="pi pi-bolt"
-                        severity="secondary"
-                        outlined
-                        size="small"
-                        :disabled="!files || !stackBlitzReady"
-                        :title="stackBlitzReady ? 'A runnable Vite project with this theme' : 'Nide is not on npm yet, so StackBlitz cannot install it'"
-                        @click="openStackBlitz"
-                    />
                 </div>
                 <div class="theme-builder-export-footer-group">
                     <Button :label="copied === 'link' ? 'Link copied' : 'Copy share link'" :icon="copied === 'link' ? 'pi pi-check' : 'pi pi-link'" severity="secondary" text size="small" @click="copy(shareLink, 'link')" />
@@ -85,10 +75,9 @@
 </template>
 
 <script>
-import { useStackBlitzTheme } from '@/components/doc/codeeditor';
 import { loadBase } from '@/service/theme/bases';
 import { buildPresetExt } from '@/service/theme/compile';
-import { toAgentPrompt, toExportFiles, toVueSetup } from '@/service/theme/export';
+import { toAgentPrompt, toExportFiles } from '@/service/theme/export';
 import { resolveFontUrl } from '@/service/theme/fonts';
 import { isSameRecipe } from '@/service/theme/recipe';
 import { definePreset } from '@openvue/themes';
@@ -187,12 +176,6 @@ export default {
         downloadAll() {
             // Browsers drop some downloads from a burst.
             this.files[this.framework].forEach((file, index) => setTimeout(() => this.download(file), index * 150));
-        },
-        openStackBlitz() {
-            const setup = toVueSetup(this.recipe, this.themeName, { darkModeSelector: '.p-dark' });
-            const files = this.files.vue.map((file) => ({ path: file.name.replace(/^src\/(theme|main)\.js$/, 'src/$1.ts'), content: file.name === 'src/main.js' ? setup : file.code }));
-
-            useStackBlitzTheme(files, { title: this.themeName });
         }
     },
     computed: {
@@ -201,10 +184,6 @@ export default {
         },
         current() {
             return this.files ? this.files[this.framework][this.fileIndex] || this.files[this.framework][0] : null;
-        },
-        // The StackBlitz project installs @openvue/themes from npm, which does not ship Nide yet.
-        stackBlitzReady() {
-            return this.recipe.base !== 'Nide';
         }
     }
 };

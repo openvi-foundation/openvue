@@ -41,10 +41,9 @@ function configLines(recipe, indent) {
     return lines.map((line, index) => (index < lines.length - 1 ? line + ',' : line));
 }
 
-export function toVueSetup(recipe, name, { darkModeSelector } = {}) {
+export function toVueSetup(recipe, name) {
     const identifier = setupIdentifier(name);
-    const theme = darkModeSelector ? [`        preset: ${identifier},`, '        options: {', `            darkModeSelector: '${darkModeSelector}'`, '        }'] : [`        preset: ${identifier}`];
-    const options = ['    theme: {', ...theme, '    }'];
+    const options = ['    theme: {', `        preset: ${identifier}`, '    }'];
     const extra = configLines(recipe, '    ');
 
     if (extra.length) {

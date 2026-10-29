@@ -55,14 +55,14 @@ export default {
     methods: {
         implementationUrl(preset) {
             if (preset === 'Nide') {
-                return `https://github.com/openvi-foundation/openvue/blob/master/packages/themes/src/presets/nide/${this.$attrs.data}/index.js`;
+                return `https://github.com/openvi-foundation/openux/blob/main/packages/themes/src/presets/nide/${this.$attrs.data}/index.ts`;
             }
 
             return `https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${this.$attrs.data}/index.ts`;
         },
         typesUrl(preset) {
             if (preset === 'Nide') {
-                return `https://github.com/openvi-foundation/openvue/blob/master/packages/themes/types/${this.$attrs.data}/index.d.ts`;
+                return `https://github.com/openvi-foundation/openux/blob/main/packages/themes/src/presets/nide/${this.$attrs.data}/index.d.ts`;
             }
 
             return `https://github.com/primefaces/primeuix/blob/main/packages/themes/src/presets/${preset.toLowerCase()}/${this.$attrs.data}/index.d.ts`;

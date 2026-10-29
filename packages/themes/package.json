@@ -15,8 +15,7 @@
         "theming",
         "aura",
         "material",
-        "nide",
-        "shadcn"
+        "nide"
     ],
     "homepage": "https://openvue.dev",
     "license": "MIT",

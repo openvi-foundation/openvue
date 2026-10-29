@@ -46,7 +46,7 @@ export default {
                 { label: 'Lara', value: 'Lara', description: 'Rounded and friendly.' },
                 { label: 'Nora', value: 'Nora', description: 'Sharp and corporate.' },
                 { label: 'Material', value: 'Material', description: 'Material Design flavour.' },
-                { label: 'Nide', value: 'Nide', description: 'Neutral, in the style of shadcn/ui.' }
+                { label: 'Nide', value: 'Nide', description: 'Neutral and minimal.' }
             ]
         };
     },

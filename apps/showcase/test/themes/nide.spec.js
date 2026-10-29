@@ -208,12 +208,11 @@ describe('themes/nide', () => {
         expect(NideButton).toBe(Nide.components.button);
     });
 
-    it('keeps the shadcn/ui radius scale', () => {
+    it('keeps its radius scale', () => {
         expect(Nide.primitive.borderRadius).toEqual({ none: '0', xs: '4px', sm: '6px', md: '8px', lg: '10px', xl: '14px' });
     });
 
-    // iOS zooms into a focused field whose text is under 16px, so every field Nide sets at text-sm
-    // goes back to 16px below 768px, like shadcn/ui's `text-base md:text-sm`.
+    // iOS zooms into a focused field whose text is under 16px, so every field Nide sets at 14px goes back to 16px below 768px.
     it.each([
         ['inputtext', '.p-inputtext:not(.p-inputtext-sm, .p-inputtext-lg)'],
         ['textarea', '.p-textarea:not(.p-textarea-sm, .p-textarea-lg)'],
