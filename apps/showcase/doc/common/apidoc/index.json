@@ -31127,6 +31127,14 @@
                             "type": "boolean",
                             "default": "false",
                             "description": "When enabled, it removes component related styles in the core."
+                        },
+                        {
+                            "name": "inputId",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "string",
+                            "default": "",
+                            "description": "Identifier of the underlying input element."
                         }
                     ],
                     "methods": []

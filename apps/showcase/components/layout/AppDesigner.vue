@@ -42,9 +42,6 @@
 import EventBus from '@/app/AppEventBus';
 import { $dt, definePreset, usePreset } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
-import Lara from '@openvue/themes/lara';
-import Material from '@openvue/themes/material';
-import Nora from '@openvue/themes/nora';
 import { toFileName, toPresetSource, toThemeJson } from '@/service/designer/codegen';
 import { deepDiff, findRemovedPaths, isEqual } from '@/service/designer/diff';
 import { SCHEMA_VERSION, THEME_FORMAT, cloneDocument, clonePlain, createDocument } from '@/service/designer/document';
@@ -53,8 +50,7 @@ import { importThemeJson, importThemeObject } from '@/service/designer/importer'
 import { getPath, setPath } from '@/service/designer/path';
 import { encodeShare, decodeShare, applySharedRemovals } from '@/service/designer/share';
 import * as storage from '@/service/designer/storage';
-
-const basePresets = { Aura, Lara, Material, Nora };
+import { loadBase, loadedBase } from '@/service/theme/bases';
 
 export default {
     provide() {
@@ -107,6 +103,7 @@ export default {
             const doc = storage.loadTheme(activeId);
 
             if (doc) {
+                await loadBase(doc.base);
                 this.activateTheme(doc, { apply: true });
                 this.$appState.designer.activeView = 'editor';
             }
@@ -123,15 +120,15 @@ export default {
             this.deferredTabs = true;
         },
         getBasePreset(name) {
-            return basePresets[name] || Aura;
+            return loadedBase(name) || Aura;
         },
         listThemes() {
             this.$appState.designer.themes = storage.listThemes();
 
             return this.$appState.designer.themes;
         },
-        createTheme({ name, base }) {
-            const doc = createDocument({ name, base, preset: basePresets[base] || Aura });
+        async createTheme({ name, base }) {
+            const doc = createDocument({ name, base, preset: await loadBase(base) });
 
             this.persist(doc);
             this.activateTheme(doc, { apply: true });
@@ -140,10 +137,11 @@ export default {
 
             return doc;
         },
-        loadTheme(id) {
+        async loadTheme(id) {
             const doc = storage.loadTheme(id);
 
             if (doc) {
+                await loadBase(doc.base);
                 this.activateTheme(doc, { apply: true });
                 this.history.clear();
                 this.syncHistoryState();
@@ -231,6 +229,8 @@ export default {
             EventBus.emit('theme-palette-change');
         },
         activateTheme(doc, { apply = true } = {}) {
+            if (this.$appState.siteRecipe) this.$siteTheme.release();
+
             this.$appState.designer.theme = {
                 format: doc.format,
                 schemaVersion: doc.schemaVersion,
@@ -335,12 +335,13 @@ export default {
             }
 
             const { name, base, diff, removed, config } = result.payload;
+            const basePreset = await loadBase(base);
             const imported = importThemeObject({
                 format: THEME_FORMAT,
                 schemaVersion: SCHEMA_VERSION,
                 name: typeof name === 'string' ? name : 'Shared Theme',
                 base: typeof base === 'string' ? base : 'Aura',
-                preset: applySharedRemovals(definePreset(this.getBasePreset(base), diff || {}), removed),
+                preset: applySharedRemovals(definePreset(basePreset, diff || {}), removed),
                 config: config || undefined
             });
 

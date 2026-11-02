@@ -1,6 +1,6 @@
 {
     "name": "@openvue/forms",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "Form state management and validation for OpenVue, with resolvers for Zod, Yup, Valibot, Joi and Superstruct.",
     "keywords": [

@@ -2,11 +2,12 @@ import { describe, expect, it } from 'vitest';
 import Aura from '@openvue/themes/aura';
 import Lara from '@openvue/themes/lara';
 import Material from '@openvue/themes/material';
+import Nide from '@openvue/themes/nide';
 import Nora from '@openvue/themes/nora';
 import { validatePreset } from '../../service/designer/validate';
 
 /** Every preset the designer offers as a starting point. */
-const ALL_PRESETS = { Aura, Lara, Material, Nora };
+const ALL_PRESETS = { Aura, Lara, Material, Nora, Nide };
 
 describe('themes/presets', () => {
     // The validator blocks export on unresolved references, so a false positive here would make
