@@ -101,6 +101,7 @@ export default defineNuxtConfig({
     routeRules: {
         '/accessibility': { redirect: { to: '/guides/accessibility', statusCode: 301 } },
         '/installation': { redirect: { to: '/vite', statusCode: 301 } },
+        '/icons': { redirect: { to: 'https://openicons.openvue.dev/', statusCode: 301 } },
         ...markdownRedirects
     },
     primevue: {

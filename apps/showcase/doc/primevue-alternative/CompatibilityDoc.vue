@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td><i>p-</i> prefixed CSS classes, pass-through options and unstyled mode</td>
-                        <td>PrimeIcons is replaced by <NuxtLink to="/icons" class="doc-link">OpenIcons</NuxtLink>, with a compatibility stylesheet that keeps <i>pi pi-*</i> classes working</td>
+                        <td>PrimeIcons is replaced by <a href="https://openicons.openvue.dev/" target="_blank" rel="noopener noreferrer" class="doc-link">OpenIcons</a>, with a compatibility stylesheet that keeps <i>pi pi-*</i> classes working</td>
                     </tr>
                     <tr>
                         <td>Aura, Lara and Nora theme presets and design tokens</td>

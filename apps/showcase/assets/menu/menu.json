@@ -586,7 +586,7 @@
             "children": [
                 {
                     "name": "OpenIcons",
-                    "to": "/icons",
+                    "href": "https://openicons.openvue.dev/",
                     "badge": "NEW"
                 },
                 {
@@ -594,12 +594,6 @@
                     "to": "/customicons"
                 }
             ]
-        },
-        {
-            "name": "Templates",
-            "icon": "pi pi-desktop",
-            "href": "https://deni.openvue.dev/",
-            "badge": "NEW"
         },
         {
             "name": "Discover",
