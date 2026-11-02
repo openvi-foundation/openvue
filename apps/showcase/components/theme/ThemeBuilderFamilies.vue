@@ -1,6 +1,6 @@
 <template>
     <div class="theme-builder-families">
-        <section class="theme-builder-family" aria-labelledby="tbf-buttons">
+        <section class="theme-builder-family theme-builder-family-buttons" aria-labelledby="tbf-buttons">
             <h3 id="tbf-buttons">Buttons</h3>
             <div class="theme-builder-family-row">
                 <Button label="Save" />
@@ -30,116 +30,7 @@
             </div>
         </section>
 
-        <section class="theme-builder-family" aria-labelledby="tbf-forms">
-            <h3 id="tbf-forms">Forms</h3>
-            <div class="theme-builder-family-grid">
-                <FloatLabel variant="on">
-                    <InputText id="tbf-name" v-model="form.name" fluid />
-                    <label for="tbf-name">Full name</label>
-                </FloatLabel>
-                <IconField>
-                    <InputIcon class="pi pi-search" />
-                    <InputText v-model="form.search" placeholder="Search" aria-label="Search" fluid />
-                </IconField>
-                <Password v-model="form.password" :feedback="false" toggleMask placeholder="Password" fluid aria-label="Password" />
-                <InputNumber v-model="form.amount" mode="currency" currency="EUR" locale="en-IE" fluid aria-label="Amount" />
-                <Select v-model="form.country" :options="countries" placeholder="Country" fluid aria-label="Country" />
-                <DatePicker v-model="form.date" showIcon iconDisplay="input" placeholder="Pick a date" fluid aria-label="Date" />
-                <MultiSelect v-model="form.tags" :options="tags" display="chip" placeholder="Tags" fluid aria-label="Tags" class="theme-builder-span" />
-                <InputGroup class="theme-builder-span">
-                    <InputGroupAddon>https://</InputGroupAddon>
-                    <InputText v-model="form.site" aria-label="Website" />
-                    <InputGroupAddon>.com</InputGroupAddon>
-                </InputGroup>
-                <div class="theme-builder-span flex flex-col gap-1">
-                    <InputText v-model="form.email" invalid placeholder="Email" aria-label="Email" fluid />
-                    <Message severity="error" size="small" variant="simple">Enter a valid email address.</Message>
-                </div>
-                <Textarea v-model="form.note" rows="2" placeholder="Add a note" fluid aria-label="Note" class="theme-builder-span" />
-            </div>
-        </section>
-
-        <section class="theme-builder-family" aria-labelledby="tbf-selection">
-            <h3 id="tbf-selection">Selection</h3>
-            <div class="theme-builder-family-row">
-                <span class="flex items-center gap-2"><Checkbox v-model="choice.terms" inputId="tbf-terms" binary /><label for="tbf-terms">Accept terms</label></span>
-                <span class="flex items-center gap-2"><RadioButton v-model="choice.billing" inputId="tbf-monthly" value="monthly" /><label for="tbf-monthly">Monthly</label></span>
-                <span class="flex items-center gap-2"><RadioButton v-model="choice.billing" inputId="tbf-yearly" value="yearly" /><label for="tbf-yearly">Yearly</label></span>
-                <span class="flex items-center gap-2"><ToggleSwitch v-model="choice.alerts" inputId="tbf-alerts" /><label for="tbf-alerts">Alerts</label></span>
-            </div>
-            <div class="theme-builder-family-row">
-                <SelectButton v-model="choice.view" :options="['Day', 'Week', 'Month']" :allowEmpty="false" aria-label="Calendar view" />
-                <ToggleButton v-model="choice.bold" onLabel="Bold" offLabel="Bold" onIcon="pi pi-check" offIcon="pi pi-times" aria-label="Bold" />
-                <Rating v-model="choice.rating" />
-            </div>
-            <div class="theme-builder-family-row theme-builder-family-slider">
-                <Slider v-model="choice.volume" aria-label="Volume" class="flex-1" />
-                <Knob v-model="choice.volume" :size="64" aria-label="Volume" />
-            </div>
-        </section>
-
-        <section class="theme-builder-family" aria-labelledby="tbf-data">
-            <h3 id="tbf-data">Data</h3>
-            <DataTable v-model:selection="selectedOrders" :value="orders" dataKey="id" size="small" paginator :rows="4" removableSort>
-                <Column selectionMode="multiple" headerStyle="width: 2.5rem" />
-                <Column field="id" header="Order" sortable />
-                <Column field="customer" header="Customer" sortable />
-                <Column field="status" header="Status">
-                    <template #body="{ data }">
-                        <Tag :value="data.status" :severity="statusSeverity[data.status]" />
-                    </template>
-                </Column>
-                <Column field="total" header="Total" />
-            </DataTable>
-        </section>
-
-        <section class="theme-builder-family" aria-labelledby="tbf-navigation">
-            <h3 id="tbf-navigation">Navigation</h3>
-            <Breadcrumb :home="{ icon: 'pi pi-home' }" :model="breadcrumb" />
-            <Tabs value="overview" class="mt-2">
-                <TabList>
-                    <Tab value="overview">Overview</Tab>
-                    <Tab value="activity">Activity</Tab>
-                    <Tab value="settings">Settings</Tab>
-                </TabList>
-                <TabPanels>
-                    <TabPanel value="overview"><p class="m-0 text-muted-color">Three projects need review this week.</p></TabPanel>
-                    <TabPanel value="activity"><p class="m-0 text-muted-color">No new activity.</p></TabPanel>
-                    <TabPanel value="settings"><p class="m-0 text-muted-color">Settings are saved automatically.</p></TabPanel>
-                </TabPanels>
-            </Tabs>
-            <Paginator :rows="10" :totalRecords="120" :pageLinkSize="3" class="mt-2" />
-        </section>
-
-        <section class="theme-builder-family" aria-labelledby="tbf-feedback">
-            <h3 id="tbf-feedback">Feedback</h3>
-            <div class="flex flex-col gap-2">
-                <Message severity="success" icon="pi pi-check-circle">Deployment finished in 42 seconds.</Message>
-                <Message severity="info" icon="pi pi-info-circle">A new version is available.</Message>
-                <Message severity="warn" icon="pi pi-exclamation-triangle">Your trial ends in three days.</Message>
-                <Message severity="error" icon="pi pi-times-circle">The payment method was declined.</Message>
-            </div>
-            <div class="theme-builder-family-row">
-                <Tag value="New" />
-                <Tag value="Paid" severity="success" />
-                <Tag value="Pending" severity="warn" />
-                <Tag value="Overdue" severity="danger" />
-                <Badge value="8" />
-                <OverlayBadge value="3" severity="danger"><i class="pi pi-bell text-xl text-muted-color" aria-label="3 notifications"></i></OverlayBadge>
-                <ProgressSpinner style="width: 1.75rem; height: 1.75rem" strokeWidth="6" aria-label="Loading" />
-            </div>
-            <ProgressBar :value="64" class="mt-3" />
-            <div class="theme-builder-family-row">
-                <Skeleton width="2.5rem" height="2.5rem" shape="circle" />
-                <div class="flex-1 flex flex-col gap-2">
-                    <Skeleton width="60%" />
-                    <Skeleton width="85%" />
-                </div>
-                <Button label="Show toast" icon="pi pi-bell" outlined size="small" @click="$toast.add({ severity: 'success', summary: 'Saved', detail: 'Your changes are live.', life: 3000 })" />
-            </div>
-        </section>
-
-        <section class="theme-builder-family" aria-labelledby="tbf-overlays">
+        <section class="theme-builder-family theme-builder-family-overlays" aria-labelledby="tbf-overlays">
             <h3 id="tbf-overlays">Overlays</h3>
             <div class="theme-builder-family-row">
                 <Button label="Dialog" icon="pi pi-window-maximize" severity="secondary" @click="dialogVisible = true" />
@@ -175,7 +66,81 @@
             <Menu ref="menu" :model="menuItems" popup />
         </section>
 
-        <section class="theme-builder-family" aria-labelledby="tbf-panels">
+        <section class="theme-builder-family theme-builder-family-forms" aria-labelledby="tbf-forms">
+            <h3 id="tbf-forms">Forms</h3>
+            <div class="theme-builder-family-grid">
+                <FloatLabel variant="on">
+                    <InputText id="tbf-name" v-model="form.name" fluid />
+                    <label for="tbf-name">Full name</label>
+                </FloatLabel>
+                <IconField>
+                    <InputIcon class="pi pi-search" />
+                    <InputText v-model="form.search" placeholder="Search" aria-label="Search" fluid />
+                </IconField>
+                <Password v-model="form.password" :feedback="false" toggleMask placeholder="Password" fluid aria-label="Password" />
+                <InputNumber v-model="form.amount" mode="currency" currency="EUR" locale="en-IE" fluid aria-label="Amount" />
+                <Select v-model="form.country" :options="countries" placeholder="Country" fluid aria-label="Country" />
+                <DatePicker v-model="form.date" showIcon iconDisplay="input" placeholder="Pick a date" fluid aria-label="Date" />
+                <MultiSelect v-model="form.tags" :options="tags" display="chip" placeholder="Tags" fluid aria-label="Tags" class="theme-builder-span" />
+                <InputGroup class="theme-builder-span">
+                    <InputGroupAddon>https://</InputGroupAddon>
+                    <InputText v-model="form.site" aria-label="Website" />
+                    <InputGroupAddon>.com</InputGroupAddon>
+                </InputGroup>
+                <div class="theme-builder-span flex flex-col gap-1">
+                    <InputText v-model="form.email" invalid placeholder="Email" aria-label="Email" fluid />
+                    <Message severity="error" size="small" variant="simple">Enter a valid email address.</Message>
+                </div>
+                <Textarea v-model="form.note" rows="2" placeholder="Add a note" fluid aria-label="Note" class="theme-builder-span" />
+            </div>
+        </section>
+
+        <section class="theme-builder-family theme-builder-family-feedback" aria-labelledby="tbf-feedback">
+            <h3 id="tbf-feedback">Feedback</h3>
+            <div class="flex flex-col gap-2">
+                <Message severity="success" icon="pi pi-check-circle">Deployment finished in 42 seconds.</Message>
+                <Message severity="info" icon="pi pi-info-circle">A new version is available.</Message>
+                <Message severity="warn" icon="pi pi-exclamation-triangle">Your trial ends in three days.</Message>
+                <Message severity="error" icon="pi pi-times-circle">The payment method was declined.</Message>
+            </div>
+            <div class="theme-builder-family-row">
+                <Tag value="New" />
+                <Tag value="Paid" severity="success" />
+                <Tag value="Pending" severity="warn" />
+                <Tag value="Overdue" severity="danger" />
+                <Badge value="8" />
+                <OverlayBadge value="3" severity="danger"><i class="pi pi-bell text-xl text-muted-color" aria-label="3 notifications"></i></OverlayBadge>
+            </div>
+            <div class="theme-builder-family-row theme-builder-family-progress">
+                <ProgressBar :value="64" class="flex-1" />
+                <ProgressSpinner style="width: 2rem; height: 2rem" strokeWidth="5" aria-label="Loading" />
+            </div>
+            <div class="theme-builder-family-row">
+                <Skeleton width="2.5rem" height="2.5rem" shape="circle" />
+                <div class="flex-1 flex flex-col gap-2">
+                    <Skeleton width="60%" />
+                    <Skeleton width="85%" />
+                </div>
+                <Button label="Show toast" icon="pi pi-bell" outlined size="small" @click="$toast.add({ severity: 'success', summary: 'Saved', detail: 'Your changes are live.', life: 3000 })" />
+            </div>
+        </section>
+
+        <section class="theme-builder-family theme-builder-family-data" aria-labelledby="tbf-data">
+            <h3 id="tbf-data">Data</h3>
+            <DataTable v-model:selection="selectedOrders" :value="orders" dataKey="id" size="small" paginator :rows="4" removableSort>
+                <Column selectionMode="multiple" headerStyle="width: 2.5rem" />
+                <Column field="id" header="Order" sortable />
+                <Column field="customer" header="Customer" sortable />
+                <Column field="status" header="Status">
+                    <template #body="{ data }">
+                        <Tag :value="data.status" :severity="statusSeverity[data.status]" />
+                    </template>
+                </Column>
+                <Column field="total" header="Total" />
+            </DataTable>
+        </section>
+
+        <section class="theme-builder-family theme-builder-family-panels" aria-labelledby="tbf-panels">
             <h3 id="tbf-panels">Panels and media</h3>
             <Accordion value="0">
                 <AccordionPanel value="0">
@@ -187,7 +152,7 @@
                     <AccordionContent><p class="m-0 text-muted-color">Yes. Open it in the designer and edit any token.</p></AccordionContent>
                 </AccordionPanel>
             </Accordion>
-            <div class="theme-builder-family-row">
+            <div class="theme-builder-family-row theme-builder-family-foot">
                 <AvatarGroup>
                     <Avatar v-for="index of [1, 4, 7]" :key="index" :image="avatar(index)" shape="circle" />
                     <Avatar label="+4" shape="circle" />
@@ -195,6 +160,43 @@
                 <Chip label="Design" icon="pi pi-palette" />
                 <Chip label="Vue" removable />
             </div>
+        </section>
+
+        <section class="theme-builder-family theme-builder-family-selection" aria-labelledby="tbf-selection">
+            <h3 id="tbf-selection">Selection</h3>
+            <div class="theme-builder-family-row">
+                <span class="flex items-center gap-2"><Checkbox v-model="choice.terms" inputId="tbf-terms" binary /><label for="tbf-terms">Accept terms</label></span>
+                <span class="flex items-center gap-2"><RadioButton v-model="choice.billing" inputId="tbf-monthly" value="monthly" /><label for="tbf-monthly">Monthly</label></span>
+                <span class="flex items-center gap-2"><RadioButton v-model="choice.billing" inputId="tbf-yearly" value="yearly" /><label for="tbf-yearly">Yearly</label></span>
+                <span class="flex items-center gap-2"><ToggleSwitch v-model="choice.alerts" inputId="tbf-alerts" /><label for="tbf-alerts">Alerts</label></span>
+            </div>
+            <div class="theme-builder-family-row">
+                <SelectButton v-model="choice.view" :options="['Day', 'Week', 'Month']" :allowEmpty="false" aria-label="Calendar view" />
+                <ToggleButton v-model="choice.bold" onLabel="Bold" offLabel="Bold" onIcon="pi pi-check" offIcon="pi pi-times" aria-label="Bold" />
+                <Rating v-model="choice.rating" />
+            </div>
+            <div class="theme-builder-family-row theme-builder-family-slider">
+                <Slider v-model="choice.volume" aria-label="Volume" class="flex-1" />
+                <Knob v-model="choice.volume" :size="64" aria-label="Volume" />
+            </div>
+        </section>
+
+        <section class="theme-builder-family theme-builder-family-navigation" aria-labelledby="tbf-navigation">
+            <h3 id="tbf-navigation">Navigation</h3>
+            <Breadcrumb :home="{ icon: 'pi pi-home' }" :model="breadcrumb" />
+            <Tabs value="overview">
+                <TabList>
+                    <Tab value="overview">Overview</Tab>
+                    <Tab value="activity">Activity</Tab>
+                    <Tab value="settings">Settings</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel value="overview"><p class="m-0 text-muted-color">Three projects need review this week.</p></TabPanel>
+                    <TabPanel value="activity"><p class="m-0 text-muted-color">No new activity.</p></TabPanel>
+                    <TabPanel value="settings"><p class="m-0 text-muted-color">Settings are saved automatically.</p></TabPanel>
+                </TabPanels>
+            </Tabs>
+            <Paginator :rows="10" :totalRecords="120" :pageLinkSize="3" class="theme-builder-family-foot" />
         </section>
     </div>
 </template>

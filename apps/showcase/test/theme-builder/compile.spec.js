@@ -5,8 +5,8 @@ import Lara from '@openvue/themes/lara';
 import Material from '@openvue/themes/material';
 import Nide from '@openvue/themes/nide';
 import Nora from '@openvue/themes/nora';
-import AppConfigurator from '../../components/layout/AppConfigurator.vue';
 import { BASES, PRIMARY_COLORS, RECIPE_COMPONENTS, SURFACES, buildPresetExt, primaryPalette, scaleRadius, scaleSpacing, swatchColor } from '../../service/theme/compile';
+import { presetExtension } from '../../service/theme/presets';
 import { scopedThemeCss } from '../../service/theme/scope';
 
 const PRESETS = { Aura, Lara, Material, Nora, Nide };
@@ -211,14 +211,7 @@ describe('theme-studio/compile', () => {
         });
 
         function configuratorExt(base, primary) {
-            const methods = AppConfigurator.methods;
-            const context = {
-                $appState: { preset: base },
-                selectedPrimaryColor: primary,
-                primaryColors: PRIMARY_COLORS.map((name) => ({ name, palette: name === 'noir' ? {} : PRESETS[base].primitive[name] }))
-            };
-
-            return methods.getPresetExt.call(context);
+            return presetExtension({ preset: base, primary });
         }
 
         it.each(BASES.map((base) => [base.value]))('%s', (base) => {

@@ -1,44 +1,51 @@
 <template>
     <div class="config-panel hidden">
         <div class="config-panel-content">
+            <!-- Same swatches and surface chips as the Theme Builder, so both places read alike. -->
             <div class="config-panel-settings">
-                <div class="config-panel-styles-head">
-                    <span class="config-panel-label">Style</span>
-                    <OpenVueNuxtLink to="/theme" class="theme-styles-link">Customize<i class="pi pi-arrow-right" aria-hidden="true"></i></OpenVueNuxtLink>
+                <div id="config-primary" class="config-panel-field-label">
+                    <span class="config-panel-label">Primary</span>
+                    <span v-if="primaryLabel" class="theme-builder-field-value">{{ primaryLabel }}</span>
                 </div>
-                <ThemeStyleGrid :active="wornStyle" @select="applyStyle" />
-            </div>
-            <div class="config-panel-colors">
-                <span class="config-panel-label">Primary</span>
-                <div>
+                <div class="theme-builder-swatches" role="radiogroup" aria-labelledby="config-primary">
                     <button
                         v-for="primaryColor of primaryColors"
                         :key="primaryColor.name"
                         type="button"
-                        :title="primaryColor.name"
+                        role="radio"
+                        :class="['theme-builder-swatch', { 'theme-builder-swatch-active': isActivePrimary(primaryColor) }]"
+                        :style="{ background: primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColor.palette['500'] }"
+                        :aria-label="colorName(primaryColor.name)"
+                        :aria-checked="isActivePrimary(primaryColor)"
+                        :title="colorName(primaryColor.name)"
                         @click="updateColors('primary', primaryColor)"
-                        :class="{ 'active-color': !siteThemeWorn && selectedPrimaryColor === primaryColor.name }"
-                        :style="{ backgroundColor: `${primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColor.palette['500']}` }"
-                    ></button>
-                </div>
-            </div>
-            <div class="config-panel-colors">
-                <span class="config-panel-label">Surface</span>
-                <div>
-                    <button
-                        v-for="surface of surfaces"
-                        :key="surface.name"
-                        type="button"
-                        :title="surface.name"
-                        @click="updateColors('surface', surface)"
-                        :class="{ 'active-color': !siteThemeWorn && (selectedSurfaceColor || defaultSurfaceColor) === surface.name }"
-                        :style="{ backgroundColor: `${surface.palette['500']}` }"
                     ></button>
                 </div>
             </div>
             <div class="config-panel-settings">
+                <div id="config-surface" class="config-panel-field-label">
+                    <span class="config-panel-label">Surface</span>
+                    <span v-if="surfaceLabel" class="theme-builder-field-value">{{ surfaceLabel }}</span>
+                </div>
+                <div class="theme-builder-surfaces" role="radiogroup" aria-labelledby="config-surface">
+                    <button
+                        v-for="surface of surfaces"
+                        :key="surface.name"
+                        type="button"
+                        role="radio"
+                        :class="['theme-builder-surface', { 'theme-builder-surface-active': isActiveSurface(surface) }]"
+                        :aria-checked="isActiveSurface(surface)"
+                        :title="colorName(surface.name)"
+                        @click="updateColors('surface', surface)"
+                    >
+                        <span class="theme-builder-surface-dot" :style="{ background: `linear-gradient(135deg, ${surface.palette[200]} 50%, ${surface.palette[700]} 50%)` }" aria-hidden="true"></span>
+                        <span class="theme-builder-surface-name">{{ colorName(surface.name) }}</span>
+                    </button>
+                </div>
+            </div>
+            <div class="config-panel-settings">
                 <span class="config-panel-label">Theme</span>
-                <SelectButton :modelValue="siteThemeWorn ? null : $appState.preset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" size="small" />
+                <SelectButton :modelValue="selectedPreset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" size="small" />
             </div>
             <div class="flex">
                 <div class="flex-1">
@@ -54,64 +61,33 @@
                     </div>
                 </div>
             </div>
+            <Button as="router-link" to="/theme" label="Theme Builder" icon="pi pi-arrow-right" iconPos="right" fluid @click="closePanel" />
         </div>
     </div>
 </template>
 
 <script>
 import EventBus from '@/app/AppEventBus';
-import { $t, updatePreset, updateSurfacePalette } from '@openvue/themes';
+import { updatePreset, updateSurfacePalette } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
-import { PRIMARY_COLORS, SURFACES, primaryPalette, primaryScheme } from '@/service/theme/compile';
-import { presetRecipe } from '@/service/theme/recipe';
-import { wornPresetName } from '@/service/theme/site';
-
-// Loaded on demand: each preset is close to 100 KB.
-const presets = { Aura };
-
-const presetLoaders = {
-    Lara: () => import('@openvue/themes/lara'),
-    Material: () => import('@openvue/themes/material'),
-    Nora: () => import('@openvue/themes/nora'),
-    Nide: () => import('@openvue/themes/nide')
-};
-
-async function loadPreset(name) {
-    if (!presets[name] && presetLoaders[name]) {
-        presets[name] = (await presetLoaders[name]()).default;
-    }
-
-    return presets[name];
-}
+import { PRIMARY_COLORS, SURFACES } from '@/service/theme/compile';
+import { PRESET_OPTIONS, applySitePreset, loadedPresets, presetExtension, releaseSiteTheme, selectedPreset } from '@/service/theme/presets';
 
 export default {
     data() {
         return {
-            presetOptions: [
-                { label: 'Aura', value: 'Aura' },
-                { label: 'Material', value: 'Material' },
-                { label: 'Lara', value: 'Lara' },
-                { label: 'Nora', value: 'Nora' },
-                { label: 'Nide', value: 'Nide' }
-            ],
+            presetOptions: PRESET_OPTIONS,
             surfaces: Object.entries(SURFACES).map(([name, palette]) => ({ name, palette })),
             isRTL: false
         };
     },
     methods: {
-        getPresetExt() {
-            const base = this.$appState.preset;
-            const primary = this.selectedPrimaryColor;
-
-            document.documentElement.style.setProperty('--logo-color', primary === 'noir' ? 'var(--text-secondary-color)' : 'var(--primary-color)');
-
-            return { semantic: { primary: primaryPalette(primary), colorScheme: primaryScheme(base, primary) } };
-        },
         releaseSiteTheme() {
-            if (this.$appState.siteRecipe) this.$siteTheme.release({ restoreDefault: true });
+            releaseSiteTheme(this.$appState, this.$siteTheme);
         },
-        applyStyle(preset) {
-            this.$siteTheme.apply(presetRecipe(preset));
+        // The panel is opened by StyleClass on the topbar button; it stays open across client-side navigation unless hidden here.
+        closePanel() {
+            this.$el.classList.add('hidden');
         },
         updateColors(type, color) {
             this.releaseSiteTheme();
@@ -126,27 +102,27 @@ export default {
         },
         applyTheme(type, color) {
             if (type === 'primary') {
-                updatePreset(this.getPresetExt());
+                updatePreset(presetExtension(this.$appState));
             } else if (type === 'surface') {
                 updateSurfacePalette(color.palette);
             }
 
             EventBus.emit('theme-palette-change');
         },
+        colorName(name) {
+            return name === 'noir' ? 'Ink' : name.charAt(0).toUpperCase() + name.slice(1);
+        },
+        isActivePrimary(color) {
+            return !this.siteThemeWorn && this.selectedPrimaryColor === color.name;
+        },
+        isActiveSurface(surface) {
+            return !this.siteThemeWorn && (this.selectedSurfaceColor || this.defaultSurfaceColor) === surface.name;
+        },
         onRippleChange(value) {
             this.$primevue.config.ripple = value;
         },
-        async onPresetChange(value) {
-            this.releaseSiteTheme();
-            this.$appState.preset = value;
-
-            const preset = await loadPreset(value);
-
-            if (this.$appState.preset !== value) return;
-
-            const surfacePalette = this.surfaces.find((s) => s.name === this.selectedSurfaceColor)?.palette;
-
-            $t().preset(preset).preset(this.getPresetExt()).surfacePalette(surfacePalette).use({ useDefaultOptions: true });
+        onPresetChange(value) {
+            applySitePreset(this.$appState, this.$siteTheme, value);
         },
         onRTLChange(value) {
             if (!document.startViewTransition) {
@@ -177,11 +153,17 @@ export default {
         selectedSurfaceColor() {
             return this.$appState.surface;
         },
+        primaryLabel() {
+            return this.siteThemeWorn ? null : this.colorName(this.selectedPrimaryColor);
+        },
+        surfaceLabel() {
+            return this.siteThemeWorn ? null : this.colorName(this.selectedSurfaceColor || this.defaultSurfaceColor);
+        },
+        selectedPreset() {
+            return selectedPreset(this.$appState);
+        },
         siteThemeWorn() {
             return !!this.$appState.siteRecipe;
-        },
-        wornStyle() {
-            return wornPresetName(this.$appState);
         },
         defaultSurfaceColor() {
             if (this.$appState.preset === 'Nide') return 'neutral';
@@ -189,7 +171,7 @@ export default {
             return this.$appState.darkTheme ? 'zinc' : 'slate';
         },
         primaryColors() {
-            const presetPalette = (presets[this.$appState.preset] || Aura).primitive;
+            const presetPalette = (loadedPresets[this.$appState.preset] || Aura).primitive;
 
             return PRIMARY_COLORS.map((name) => ({ name, palette: name === 'noir' ? {} : presetPalette[name] }));
         }

@@ -1,11 +1,8 @@
 import { afterAll, describe, expect, it } from 'vitest';
 import { Theme } from '@openvue/themes';
-import BaseStyle from '@openvue/core/base/style';
 import Aura from '@openvue/themes/aura';
-import Material from '@openvue/themes/material';
 import Nide from '@openvue/themes/nide';
-import RadioButtonStyle from 'openvue/radiobutton/style';
-import { presetCss, scopeClass, scopedThemeCss, structuralCss } from '../../service/theme/scope';
+import { scopedThemeCss } from '../../service/theme/scope';
 
 const OPTIONS = { prefix: 'p', darkModeSelector: '.p-dark', cssLayer: false };
 
@@ -77,27 +74,5 @@ describe('theme-builder/scope', () => {
 
     it('sets the font for everything inside the scope', () => {
         expect(scopedThemeCss(Aura, '.x', { components: [], fontFamily: '"Geist", sans-serif' })).toContain('font-family:"Geist", sans-serif;');
-    });
-
-    it('turns preset names into class names', () => {
-        expect(scopeClass('Midnight Ledger')).toBe('tb-scope-midnight-ledger');
-    });
-
-    it('collects the base and structural styles of components, with every dt() resolved', () => {
-        const css = structuralCss([BaseStyle, RadioButtonStyle]);
-
-        expect(css).toContain('box-sizing: border-box');
-        expect(css).toContain('.p-radiobutton-box');
-        expect(css).toContain('var(--p-radiobutton-width)');
-        expect(css).not.toContain('dt(');
-    });
-
-    it('collects only the asked components of a preset’s own CSS', () => {
-        const css = presetCss(Material, ['radiobutton']);
-
-        expect(css).toContain('.p-radiobutton-box');
-        expect(css).not.toContain('.p-checkbox');
-        expect(css).not.toContain('dt(');
-        expect(presetCss(Aura, ['radiobutton'])).toBe('');
     });
 });

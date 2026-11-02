@@ -1,9 +1,5 @@
 <template>
     <div class="theme-builder-controls">
-        <ThemeBuilderSection title="Structure" :summary="recipe.base">
-            <ThemeBuilderChoice :modelValue="recipe.base" :options="bases" stacked ariaLabelledby="tb-section-structure" @update:modelValue="change({ base: $event })" />
-        </ThemeBuilderSection>
-
         <ThemeBuilderSection
             title="Colours"
             :summary="colorLabel(recipe.primary) + ' · ' + surfaceLabel"
@@ -15,7 +11,7 @@
                     <span>Primary</span>
                     <span class="theme-builder-field-value">{{ colorLabel(recipe.primary) }}</span>
                 </div>
-                <div class="theme-builder-swatches" role="radiogroup" aria-labelledby="tb-primary">
+                <div class="theme-builder-swatches" role="radiogroup" aria-labelledby="tb-primary" @keydown="onArrowKey($event, primaryColors, recipe.primary, (primary) => change({ primary }))">
                     <button
                         v-for="color of primaryColors"
                         :key="color"
@@ -25,19 +21,20 @@
                         :style="{ background: primarySwatch(color) }"
                         :aria-label="colorLabel(color)"
                         :aria-checked="color === recipe.primary"
+                        :tabindex="color === primaryTabStop ? 0 : -1"
                         :title="colorLabel(color)"
                         @click="change({ primary: color })"
                     ></button>
                     <label
                         :class="['theme-builder-swatch', 'theme-builder-swatch-custom', { 'theme-builder-swatch-active': customPrimary }]"
                         :style="customPrimary ? { background: recipe.primary } : null"
-                        :title="customPrimary ? recipe.primary : 'Pick any colour'"
+                        :title="customPrimary ? recipe.primary : 'Pick any colour. It gets a button shade that passes WCAG AA.'"
                     >
                         <i v-if="!customPrimary" class="pi pi-plus" aria-hidden="true"></i>
                         <input type="color" class="theme-builder-color-input" :value="customPrimary ? recipe.primary : '#6366f1'" aria-label="Custom primary colour" @input="change({ primary: $event.target.value.toLowerCase() })" />
                     </label>
                 </div>
-                <p class="theme-builder-hint">Custom colours get a button shade that passes WCAG AA in light and dark mode.</p>
+                <p v-if="customPrimary" class="theme-builder-hint">Custom colours get a button shade that passes WCAG AA in light and dark mode.</p>
             </div>
 
             <div class="theme-builder-field">
@@ -45,24 +42,32 @@
                     <span>Surface</span>
                     <span class="theme-builder-field-value">{{ surfaceLabel }}</span>
                 </div>
-                <div class="theme-builder-swatches" role="radiogroup" aria-labelledby="tb-surface">
+                <div class="theme-builder-surfaces" role="radiogroup" aria-labelledby="tb-surface" @keydown="onArrowKey($event, surfaces, recipe.surface, (surface) => change({ surface }))">
                     <button
                         v-for="surface of surfaces"
                         :key="surface"
                         type="button"
                         role="radio"
-                        :class="['theme-builder-swatch', { 'theme-builder-swatch-active': surface === recipe.surface, 'theme-builder-swatch-default': surface === 'default' }]"
-                        :style="surface === 'default' ? null : { background: surfaceSwatch(surface) }"
-                        :aria-label="surface === 'default' ? recipe.base + ' default' : capitalize(surface)"
+                        :class="['theme-builder-surface', { 'theme-builder-surface-active': surface === recipe.surface }]"
                         :aria-checked="surface === recipe.surface"
+                        :tabindex="surface === recipe.surface ? 0 : -1"
                         :title="surface === 'default' ? recipe.base + ' default' : capitalize(surface)"
                         @click="change({ surface })"
-                    ></button>
+                    >
+                        <span :class="['theme-builder-surface-dot', { 'theme-builder-surface-dot-default': surface === 'default' }]" :style="surface === 'default' ? null : { background: surfaceSwatch(surface) }" aria-hidden="true"></span>
+                        <span class="theme-builder-surface-name">{{ surface === 'default' ? 'Default' : capitalize(surface) }}</span>
+                    </button>
                 </div>
             </div>
         </ThemeBuilderSection>
 
-        <ThemeBuilderSection title="Typography" :summary="fontLabel + ' · ' + recipe.scale + 'px'" :modified="recipe.font !== defaults.font || recipe.scale !== defaults.scale" @reset="change({ font: defaults.font, scale: defaults.scale })">
+        <ThemeBuilderSection
+            title="Typography"
+            :summary="fontLabel + ' · ' + recipe.scale + 'px'"
+            :modified="recipe.font !== defaults.font || recipe.scale !== defaults.scale"
+            @reset="change({ font: defaults.font, scale: defaults.scale })"
+            :defaultOpen="false"
+        >
             <div class="theme-builder-field">
                 <div id="tb-font" class="theme-builder-field-label">
                     <span>Font</span>
@@ -84,6 +89,7 @@
             :summary="radiusValue + 'px · ' + capitalize(recipe.density) + ' · ' + capitalize(recipe.input)"
             :modified="recipe.radius !== defaults.radius || recipe.density !== defaults.density || recipe.input !== defaults.input"
             @reset="change({ radius: defaults.radius, density: defaults.density, input: defaults.input })"
+            :defaultOpen="false"
         >
             <div class="theme-builder-field">
                 <div id="tb-radius" class="theme-builder-field-label">
@@ -114,7 +120,9 @@
             </div>
         </ThemeBuilderSection>
 
-        <ThemeBuilderSection title="Focus ring" :summary="optionLabel(focusOptions, recipe.focus)" :modified="recipe.focus !== defaults.focus" @reset="change({ focus: defaults.focus })">
+        <div class="theme-builder-group-label">Advanced</div>
+
+        <ThemeBuilderSection title="Focus ring" :summary="optionLabel(focusOptions, recipe.focus)" :modified="recipe.focus !== defaults.focus" @reset="change({ focus: defaults.focus })" :defaultOpen="false">
             <ThemeBuilderChoice :modelValue="recipe.focus" :options="focusOptions" ariaLabelledby="tb-section-focus-ring" @update:modelValue="change({ focus: $event })">
                 <template #option="{ option }">
                     <span class="theme-builder-ring-demo" :style="ringStyle(option.value)" aria-hidden="true"></span>
@@ -129,6 +137,7 @@
             :summary="optionLabel(motionOptions, recipe.motion) + (recipe.ripple ? ' · Ripple' : '')"
             :modified="recipe.motion !== defaults.motion || recipe.ripple !== defaults.ripple"
             @reset="change({ motion: defaults.motion, ripple: defaults.ripple })"
+            :defaultOpen="false"
         >
             <div class="theme-builder-field">
                 <div id="tb-motion" class="theme-builder-field-label">
@@ -151,6 +160,7 @@
             :summary="optionLabel(shadowOptions, recipe.shadow) + ' · ' + optionLabel(maskOptions, recipe.mask) + ' mask'"
             :modified="recipe.shadow !== defaults.shadow || recipe.mask !== defaults.mask || recipe.disabled !== defaults.disabled"
             @reset="change({ shadow: defaults.shadow, mask: defaults.mask, disabled: defaults.disabled })"
+            :defaultOpen="false"
         >
             <div class="theme-builder-field">
                 <div id="tb-shadow" class="theme-builder-field-label">
@@ -186,7 +196,7 @@
 </template>
 
 <script>
-import { BASES, DENSITIES, DISABLED_MAX, DISABLED_MIN, FOCUS_RINGS, MOTIONS, PRIMARY_COLORS, SHADOWS, SURFACES, isCustomColor } from '@/service/theme/compile';
+import { DENSITIES, DISABLED_MAX, DISABLED_MIN, FOCUS_RINGS, MOTIONS, PRIMARY_COLORS, SHADOWS, SURFACES, isCustomColor } from '@/service/theme/compile';
 import { DEFAULT_RECIPE, FOCUS_OPTIONS, INPUT_VARIANTS, MASK_OPTIONS, MOTION_OPTIONS, RADIUS_MAX, RADIUS_MIN, SCALES, SHADOW_OPTIONS, SURFACE_OPTIONS } from '@/service/theme/recipe';
 import Aura from '@openvue/themes/aura';
 
@@ -232,7 +242,6 @@ export default {
     data() {
         return {
             defaults: DEFAULT_RECIPE,
-            bases: BASES.map((base) => ({ value: base.value, label: base.value, hint: base.description })),
             primaryColors: PRIMARY_COLORS,
             surfaces: SURFACE_OPTIONS,
             scales: SCALES.map((value) => ({ value, label: String(value), title: value + 'px' })),
@@ -252,6 +261,22 @@ export default {
         change(changes) {
             this.$emit('change', changes);
         },
+        // Arrow keys move the choice inside a swatch group, as in ThemeBuilderChoice; Tab enters and leaves the group once.
+        onArrowKey(event, values, current, select) {
+            const forward = ['ArrowRight', 'ArrowDown'].includes(event.key);
+            const backward = ['ArrowLeft', 'ArrowUp'].includes(event.key);
+
+            if ((!forward && !backward) || !event.target.matches('[role="radio"]')) return;
+
+            event.preventDefault();
+
+            const step = (forward ? 1 : -1) * (document.documentElement.dir === 'rtl' && ['ArrowRight', 'ArrowLeft'].includes(event.key) ? -1 : 1);
+            const index = (Math.max(0, values.indexOf(current)) + step + values.length) % values.length;
+            const radios = event.currentTarget.querySelectorAll('[role="radio"]');
+
+            select(values[index]);
+            this.$nextTick(() => radios[index]?.focus());
+        },
         capitalize(value) {
             return value.charAt(0).toUpperCase() + value.slice(1);
         },
@@ -264,8 +289,9 @@ export default {
         primarySwatch(color) {
             return color === 'noir' ? 'var(--text-color)' : Aura.primitive[color][500];
         },
+        // Light and dark ends of the palette, so the tint shows; the 500 shades all read as the same grey.
         surfaceSwatch(surface) {
-            return SURFACES[surface][500];
+            return `linear-gradient(135deg, ${SURFACES[surface][200]} 50%, ${SURFACES[surface][700]} 50%)`;
         },
         ringStyle(value) {
             const ring = FOCUS_RINGS[value];
@@ -281,6 +307,9 @@ export default {
         }
     },
     computed: {
+        primaryTabStop() {
+            return this.primaryColors.includes(this.recipe.primary) ? this.recipe.primary : this.primaryColors[0];
+        },
         customPrimary() {
             return isCustomColor(this.recipe.primary);
         },

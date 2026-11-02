@@ -3,27 +3,40 @@
         <AppTopBar :showDesigner="false" :showConfigurator="false" />
         <ClientOnly>
             <div class="theme-builder-workspace">
-                <aside class="theme-builder-sidebar" aria-label="Theme settings">
+                <aside id="tb-settings" :class="['theme-builder-sidebar', { 'theme-builder-sidebar-open': settingsOpen }]" aria-label="Theme settings">
                     <div class="theme-builder-sidebar-head">
                         <div class="theme-builder-sidebar-title">
                             <h1>Theme Builder</h1>
-                            <span :class="['theme-builder-badge', { 'theme-builder-badge-custom': !activeName }]">{{ activeName ?? 'Custom' }}</span>
+                            <span :class="['theme-builder-badge', { 'theme-builder-badge-custom': !themeLabel }]">{{ themeLabel ?? 'Custom' }}</span>
                         </div>
                         <div class="theme-builder-sidebar-actions">
                             <button type="button" class="theme-builder-icon-button" :disabled="!canUndo" aria-label="Undo" title="Undo (Ctrl+Z)" @click="undo"><i class="pi pi-undo" aria-hidden="true"></i></button>
                             <button type="button" class="theme-builder-icon-button theme-builder-redo" :disabled="!canRedo" aria-label="Redo" title="Redo (Ctrl+Shift+Z)" @click="redo"><i class="pi pi-undo" aria-hidden="true"></i></button>
                             <button type="button" class="theme-builder-icon-button" :disabled="isDefault" aria-label="Reset to default" title="Reset to default" @click="resetTheme"><i class="pi pi-replay" aria-hidden="true"></i></button>
+                            <button ref="settingsClose" type="button" class="theme-builder-icon-button theme-builder-settings-close" aria-label="Close settings" title="Close" @click="closeSettings">
+                                <i class="pi pi-times" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
 
                     <div class="theme-builder-sidebar-scroll">
-                        <ThemeBuilderSection title="Presets" :summary="activeName ?? 'Custom'">
-                            <ThemeBuilderPresets :activeName="activeName" @select="setRecipe" />
+                        <ThemeBuilderSection title="Base theme" :summary="recipe.base">
+                            <ThemeBuilderChoice :modelValue="recipe.base" :options="bases" stacked ariaLabelledby="tb-section-base-theme" @update:modelValue="onChange({ base: $event })">
+                                <template #option="{ option }">
+                                    <span class="theme-builder-choice-label">{{ option.label }}</span>
+                                    <span v-if="option.isNew" class="theme-builder-new-tag">New</span>
+                                    <span class="theme-builder-choice-hint">{{ option.hint }}</span>
+                                </template>
+                            </ThemeBuilderChoice>
+                        </ThemeBuilderSection>
+                        <ThemeBuilderSection title="Presets" :summary="themeLabel ?? 'Custom'" :defaultOpen="false">
+                            <ThemeStyleGrid :active="activeName" grouped @select="setRecipe(presetRecipe($event))" />
                             <p class="theme-builder-preset-note">{{ presetNote }}</p>
                         </ThemeBuilderSection>
                         <ThemeBuilderControls :recipe="recipe" :base="baseInfo" @change="onChange" />
                     </div>
                 </aside>
+                <div v-if="settingsOpen" class="theme-builder-backdrop" aria-hidden="true" @click="closeSettings"></div>
 
                 <main class="theme-builder-canvas">
                     <div class="theme-builder-canvas-bar">
@@ -42,14 +55,9 @@
                             </button>
                         </div>
                         <div class="theme-builder-canvas-actions">
-                            <button
-                                type="button"
-                                class="theme-builder-icon-button"
-                                :aria-label="$appState.darkTheme ? 'Preview in light mode' : 'Preview in dark mode'"
-                                :title="$appState.darkTheme ? 'Light mode' : 'Dark mode'"
-                                @click="toggleDarkMode"
-                            >
-                                <i :class="['pi', $appState.darkTheme ? 'pi-sun' : 'pi-moon']" aria-hidden="true"></i>
+                            <button ref="settingsToggle" type="button" class="theme-builder-button theme-builder-settings-toggle" aria-controls="tb-settings" :aria-expanded="settingsOpen" @click="openSettings">
+                                <i class="pi pi-sliders-h" aria-hidden="true"></i>
+                                <span>Customize</span>
                             </button>
                             <button type="button" class="theme-builder-button" @click="copyLink">
                                 <i :class="['pi', linkCopied ? 'pi-check' : 'pi-link']" aria-hidden="true"></i>
@@ -70,7 +78,7 @@
                 </main>
             </div>
 
-            <ThemeBuilderExportDialog v-model:visible="exportVisible" :recipe="recipe" :presetName="activeName" :shareLink="shareLink" @designer="openDesigner" />
+            <ThemeBuilderExportDialog v-model:visible="exportVisible" :recipe="recipe" :presetName="themeLabel" :shareLink="shareLink" @designer="openDesigner" />
 
             <template #fallback>
                 <div class="theme-builder-workspace theme-builder-workspace-loading" aria-busy="true"></div>
@@ -81,17 +89,22 @@
 </template>
 
 <script>
-import EventBus from '@/app/AppEventBus';
 import { encodeShare } from '@/service/designer/share';
 import { getActiveId } from '@/service/designer/storage';
 import { loadBase } from '@/service/theme/bases';
-import { buildPresetExt } from '@/service/theme/compile';
+import { BASES, buildPresetExt } from '@/service/theme/compile';
 import { toDesignerPayload } from '@/service/theme/export';
-import { DEFAULT_RECIPE, PRESETS, createRecipeHistory, decodeRecipe, encodeRecipe, findPreset, isSameRecipe, normalizeRecipe } from '@/service/theme/recipe';
+import { DEFAULT_RECIPE, PRESETS, createRecipeHistory, decodeRecipe, encodeRecipe, findPreset, isSameRecipe, normalizeRecipe, presetRecipe } from '@/service/theme/recipe';
 import { readSiteTheme } from '@/service/theme/site';
 import { definePreset } from '@openvue/themes';
 
 const HEAD_ATTRIBUTE = 'data-theme-builder';
+
+// Where the builder starts when nothing is shared or worn: the site default on Nide. DEFAULT_RECIPE stays the
+// site's own look (Aura), since presets, persistence and the share link are measured against it.
+const START_RECIPE = Object.freeze({ ...DEFAULT_RECIPE, base: 'Nide' });
+
+const BASE_OPTIONS = [...BASES].sort((a, b) => (b.value === 'Nide') - (a.value === 'Nide')).map((base) => ({ value: base.value, label: base.value, hint: base.description, isNew: base.value === 'Nide' }));
 
 export default {
     setup() {
@@ -107,7 +120,8 @@ export default {
     },
     data() {
         return {
-            recipe: { ...DEFAULT_RECIPE },
+            recipe: { ...START_RECIPE },
+            bases: BASE_OPTIONS,
             view: 'components',
             views: [
                 { value: 'components', label: 'Components', icon: 'pi pi-th-large' },
@@ -118,7 +132,9 @@ export default {
             canUndo: false,
             canRedo: false,
             exportVisible: false,
-            linkCopied: false
+            linkCopied: false,
+            // Narrow screens only: the settings become a drawer over the preview.
+            settingsOpen: false
         };
     },
     created() {
@@ -137,7 +153,7 @@ export default {
         const shared = decodeRecipe(window.location.hash);
         const worn = this.$appState.siteRecipe || (getActiveId() ? null : readSiteTheme());
 
-        this.setRecipe(shared || worn || DEFAULT_RECIPE, { persist: !!shared });
+        this.setRecipe(shared || worn || START_RECIPE, { persist: !!shared });
     },
     beforeUnmount() {
         window.removeEventListener('hashchange', this.onHashChange);
@@ -204,7 +220,7 @@ export default {
             this.hashTimer = setTimeout(this.writeHash, 250);
         },
         writeHash() {
-            const url = window.location.pathname + window.location.search + (isSameRecipe(this.recipe, DEFAULT_RECIPE) ? '' : '#' + encodeRecipe(this.recipe));
+            const url = window.location.pathname + window.location.search + (this.isDefault ? '' : '#' + encodeRecipe(this.recipe));
 
             this.hashTimer = null;
 
@@ -217,7 +233,21 @@ export default {
 
             if (next && !isSameRecipe(next, this.recipe)) this.setRecipe(next);
         },
+        openSettings() {
+            this.settingsOpen = true;
+            this.$nextTick(() => this.$refs.settingsClose?.focus());
+        },
+        closeSettings() {
+            this.settingsOpen = false;
+            this.$nextTick(() => this.$refs.settingsToggle?.focus());
+        },
         onKeyDown(event) {
+            if (event.key === 'Escape' && this.settingsOpen) {
+                this.closeSettings();
+
+                return;
+            }
+
             const target = event.target;
             const editing = target && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
             const key = event.key.toLowerCase();
@@ -228,6 +258,9 @@ export default {
 
             if (key === 'y' || event.shiftKey) this.redo();
             else this.undo();
+        },
+        presetRecipe(preset) {
+            return presetRecipe(preset);
         },
         onChange(changes) {
             this.setRecipe({ ...this.recipe, ...changes });
@@ -243,11 +276,8 @@ export default {
             if (next) this.setRecipe(next, { record: false });
         },
         resetTheme() {
-            this.setRecipe(DEFAULT_RECIPE);
+            this.setRecipe(START_RECIPE);
             this.$toast.add({ severity: 'info', summary: 'Back to the default theme', detail: 'Undo brings your theme back.', life: 3000 });
-        },
-        toggleDarkMode() {
-            EventBus.emit('dark-mode-toggle', { dark: !this.$appState.darkTheme });
         },
         async copyLink() {
             try {
@@ -275,15 +305,24 @@ export default {
             return findPreset(this.recipe)?.name ?? null;
         },
         isDefault() {
-            return isSameRecipe(this.recipe, DEFAULT_RECIPE);
+            return isSameRecipe(this.recipe, START_RECIPE);
+        },
+        // The starting theme is no preset, but it is not the user's own either.
+        themeLabel() {
+            return this.activeName ?? (this.isDefault ? START_RECIPE.base : null);
         },
         presetNote() {
             const preset = findPreset(this.recipe);
 
-            return preset ? preset.description : `Your own theme. Every preset is a starting point: pick one of the ${PRESETS.length} and adjust it below.`;
+            if (preset) return preset.description;
+
+            if (this.isDefault) return `${START_RECIPE.base} with the default settings. Pick a preset or adjust anything below.`;
+
+            return `Your own theme. Every preset is a starting point: pick one of the ${PRESETS.length} and adjust it below.`;
         },
         shareLink() {
-            return window.location.origin + '/theme' + (this.isDefault ? '' : '#' + encodeRecipe(this.recipe));
+            // Always spelled out: a bare /theme opens the recipient's own worn theme, not this one.
+            return window.location.origin + '/theme#' + encodeRecipe(this.recipe);
         }
     }
 };
