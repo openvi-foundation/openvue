@@ -16,6 +16,15 @@ export declare class HelperSet {
     get(parentInstance?: any, slots?: any): any[] | null | undefined;
 }
 
+export declare class SafeTriangle {
+    constructor(delay?: number);
+    bind(): void;
+    unbind(): void;
+    defer(event: MouseEvent, target: Element | null | undefined, callback: () => void): boolean;
+    isPending(): boolean;
+    cancel(): void;
+}
+
 /**
  * @deprecated since v4.3.0. Use `uuid` from @openuxkit/utils instead.
  * @param {string} prefix

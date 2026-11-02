@@ -60,6 +60,7 @@
 import { findSingle, focus, isTouchDevice } from '@openuxkit/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
+import { SafeTriangle } from '@openvue/core/utils';
 import BarsIcon from '@openvue/icons/bars';
 import BaseMenubar from './BaseMenubar.vue';
 import MenubarSub from './MenubarSub.vue';
@@ -70,6 +71,7 @@ export default {
     inheritAttrs: false,
     emits: ['focus', 'blur'],
     matchMediaListener: null,
+    safeTriangle: null,
     data() {
         return {
             mobileActive: false,
@@ -90,6 +92,12 @@ export default {
                 this.unbindOutsideClickListener();
                 this.unbindResizeListener();
             }
+
+            if (isNotEmpty(newPath)) {
+                this.bindSafeTriangle();
+            } else {
+                this.unbindSafeTriangle();
+            }
         }
     },
     outsideClickListener: null,
@@ -103,6 +111,7 @@ export default {
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
         this.unbindMatchMediaListener();
+        this.unbindSafeTriangle();
 
         if (this.container) {
             ZIndex.clear(this.container);
@@ -183,6 +192,8 @@ export default {
         },
         onKeyDown(event) {
             const metaKey = event.metaKey || event.ctrlKey;
+
+            this.safeTriangle && this.safeTriangle.cancel();
 
             switch (event.code) {
                 case 'ArrowDown':
@@ -293,14 +304,21 @@ export default {
             }
         },
         onItemMouseEnter(event) {
-            if (this.dirty) {
+            if (this.dirty && !this.deferItemChange(event)) {
                 this.onItemChange(event, 'hover');
             }
         },
         onItemMouseMove(event) {
-            if (this.focused) {
+            if (this.focused && !(this.safeTriangle && this.safeTriangle.isPending())) {
                 this.changeFocusedItemIndex(event, event.processedItem.index);
             }
+        },
+        deferItemChange(event) {
+            const { originalEvent, processedItem } = event;
+            const activeItem = this.activeItemPath.find((p) => p.parentKey === processedItem.parentKey);
+            const submenu = activeItem && activeItem.key !== processedItem.key ? findSingle(this.menubar, `[id="${this.$id}_${activeItem.key}_list"]`) : null;
+
+            return !!this.safeTriangle && this.safeTriangle.defer(originalEvent, submenu, () => this.onItemChange(event, 'hover'));
         },
         menuButtonClick(event) {
             this.toggle(event);
@@ -477,6 +495,18 @@ export default {
             if (this.resizeListener) {
                 window.removeEventListener('resize', this.resizeListener);
                 this.resizeListener = null;
+            }
+        },
+        bindSafeTriangle() {
+            if (!this.safeTriangle) {
+                this.safeTriangle = new SafeTriangle();
+            }
+
+            this.safeTriangle.bind();
+        },
+        unbindSafeTriangle() {
+            if (this.safeTriangle) {
+                this.safeTriangle.unbind();
             }
         },
         bindMatchMediaListener() {

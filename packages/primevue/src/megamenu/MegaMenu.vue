@@ -62,6 +62,7 @@
 import { findSingle, focus, isTouchDevice } from '@openuxkit/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
+import { SafeTriangle } from '@openvue/core/utils';
 import BarsIcon from '@openvue/icons/bars';
 import BaseMegaMenu from './BaseMegaMenu.vue';
 import MegaMenuSub from './MegaMenuSub.vue';
@@ -74,6 +75,7 @@ export default {
     outsideClickListener: null,
     resizeListener: null,
     matchMediaListener: null,
+    safeTriangle: null,
     container: null,
     menubar: null,
     searchTimeout: null,
@@ -94,9 +96,11 @@ export default {
             if (isNotEmpty(newItem)) {
                 this.bindOutsideClickListener();
                 this.bindResizeListener();
+                this.bindSafeTriangle();
             } else {
                 this.unbindOutsideClickListener();
                 this.unbindResizeListener();
+                this.unbindSafeTriangle();
             }
         }
     },
@@ -108,6 +112,7 @@ export default {
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
         this.unbindMatchMediaListener();
+        this.unbindSafeTriangle();
     },
     methods: {
         getItemProp(item, name) {
@@ -196,6 +201,8 @@ export default {
             }
 
             const metaKey = event.metaKey || event.ctrlKey;
+
+            this.safeTriangle && this.safeTriangle.cancel();
 
             switch (event.code) {
                 case 'ArrowDown':
@@ -295,9 +302,16 @@ export default {
             }
         },
         onItemMouseEnter(event) {
-            if (!this.mobileActive && this.dirty) {
+            if (!this.mobileActive && this.dirty && !this.deferItemChange(event)) {
                 this.onItemChange(event);
             }
+        },
+        deferItemChange(event) {
+            const { originalEvent, processedItem } = event;
+            const activeItem = this.activeItem;
+            const overlay = activeItem && activeItem.parentKey === processedItem.parentKey && activeItem.key !== processedItem.key ? findSingle(this.menubar, `[id="${this.$id}_${activeItem.key}"] > [data-pc-section="overlay"]`) : null;
+
+            return !!this.safeTriangle && this.safeTriangle.defer(originalEvent, overlay, () => this.onItemChange(event));
         },
         menuButtonClick(event) {
             this.toggle(event);
@@ -489,6 +503,18 @@ export default {
             if (this.resizeListener) {
                 window.removeEventListener('resize', this.resizeListener);
                 this.resizeListener = null;
+            }
+        },
+        bindSafeTriangle() {
+            if (!this.safeTriangle) {
+                this.safeTriangle = new SafeTriangle();
+            }
+
+            this.safeTriangle.bind();
+        },
+        unbindSafeTriangle() {
+            if (this.safeTriangle) {
+                this.safeTriangle.unbind();
             }
         },
         bindMatchMediaListener() {

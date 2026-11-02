@@ -45,7 +45,7 @@
 import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice } from '@openuxkit/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, SafeTriangle } from '@openvue/core/utils';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
 import BaseTieredMenu from './BaseTieredMenu.vue';
@@ -60,6 +60,7 @@ export default {
     matchMediaListener: null,
     scrollHandler: null,
     resizeListener: null,
+    safeTriangle: null,
     target: null,
     container: null,
     menubar: null,
@@ -88,6 +89,12 @@ export default {
                     this.unbindResizeListener();
                 }
             }
+
+            if (isNotEmpty(newPath)) {
+                this.bindSafeTriangle();
+            } else {
+                this.unbindSafeTriangle();
+            }
         }
     },
     mounted() {
@@ -97,6 +104,7 @@ export default {
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
         this.unbindMatchMediaListener();
+        this.unbindSafeTriangle();
 
         if (this.scrollHandler) {
             this.scrollHandler.destroy();
@@ -185,6 +193,8 @@ export default {
             }
 
             const metaKey = event.metaKey || event.ctrlKey;
+
+            this.safeTriangle && this.safeTriangle.cancel();
 
             switch (event.code) {
                 case 'ArrowDown':
@@ -304,14 +314,21 @@ export default {
             }
         },
         onItemMouseEnter(event) {
-            if (this.dirty) {
+            if (this.dirty && !this.deferItemChange(event)) {
                 this.onItemChange(event, 'hover');
             }
         },
         onItemMouseMove(event) {
-            if (this.focused) {
+            if (this.focused && !(this.safeTriangle && this.safeTriangle.isPending())) {
                 this.changeFocusedItemIndex(event, event.processedItem.index);
             }
+        },
+        deferItemChange(event) {
+            const { originalEvent, processedItem } = event;
+            const activeItem = this.activeItemPath.find((p) => p.parentKey === processedItem.parentKey);
+            const submenu = activeItem && activeItem.key !== processedItem.key ? findSingle(this.menubar, `[id="${this.$id}_${activeItem.key}_list"]`) : null;
+
+            return !!this.safeTriangle && this.safeTriangle.defer(originalEvent, submenu, () => this.onItemChange(event, 'hover'));
         },
         onArrowDownKey(event) {
             const itemIndex = this.focusedItemInfo.index !== -1 ? this.findNextItemIndex(this.focusedItemInfo.index) : this.findFirstFocusedItemIndex();
@@ -502,6 +519,18 @@ export default {
             if (this.resizeListener) {
                 window.removeEventListener('resize', this.resizeListener);
                 this.resizeListener = null;
+            }
+        },
+        bindSafeTriangle() {
+            if (!this.safeTriangle) {
+                this.safeTriangle = new SafeTriangle();
+            }
+
+            this.safeTriangle.bind();
+        },
+        unbindSafeTriangle() {
+            if (this.safeTriangle) {
+                this.safeTriangle.unbind();
             }
         },
         bindMatchMediaListener() {

@@ -24,6 +24,7 @@ All packages in this repository are released together under a single version.
 - Fix InputMask update:modelValue emitting stale value upon clearing when unmask is set to true.
 - Inputs inside a `Form` with `initialValues` no longer jump back to the initial value when cleared. ([#686](https://github.com/openvi-foundation/openvue/pull/686))
 - Pressing tab no longer toggles options in MultiSelect. Tabbing past a MultiSelect after mount doesn't toggle the first option anymore either.
+- `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
 - `Tree` lazy loading now works while filtering: `node-expand` and `node-collapse` pass the node from `value` instead of a filtered copy. ([#585](https://github.com/openvi-foundation/openvue/issues/585))
 
 ## [1.0.0] - 2026-09-10

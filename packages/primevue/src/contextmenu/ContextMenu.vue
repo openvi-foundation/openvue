@@ -38,6 +38,7 @@
 import { addStyle, findSingle, focus, getHiddenElementOuterHeight, getHiddenElementOuterWidth, getViewport, isTouchDevice } from '@openuxkit/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
+import { SafeTriangle } from '@openvue/core/utils';
 import Portal from 'openvue/portal';
 import BaseContextMenu from './BaseContextMenu.vue';
 import ContextMenuSub from './ContextMenuSub.vue';
@@ -52,6 +53,7 @@ export default {
     resizeListener: null,
     documentContextMenuListener: null,
     matchMediaListener: null,
+    safeTriangle: null,
     pageX: null,
     pageY: null,
     container: null,
@@ -76,6 +78,12 @@ export default {
                 this.unbindOutsideClickListener();
                 this.unbindResizeListener();
             }
+
+            if (isNotEmpty(newPath)) {
+                this.bindSafeTriangle();
+            } else {
+                this.unbindSafeTriangle();
+            }
         }
     },
     mounted() {
@@ -90,6 +98,7 @@ export default {
         this.unbindOutsideClickListener();
         this.unbindDocumentContextMenuListener();
         this.unbindMatchMediaListener();
+        this.unbindSafeTriangle();
 
         if (this.container && this.autoZIndex) {
             ZIndex.clear(this.container);
@@ -158,6 +167,8 @@ export default {
         },
         onKeyDown(event) {
             const metaKey = event.metaKey || event.ctrlKey;
+
+            this.safeTriangle && this.safeTriangle.cancel();
 
             switch (event.code) {
                 case 'ArrowDown':
@@ -258,12 +269,21 @@ export default {
             }
         },
         onItemMouseEnter(event) {
-            this.onItemChange(event, 'hover');
+            if (!this.deferItemChange(event)) {
+                this.onItemChange(event, 'hover');
+            }
         },
         onItemMouseMove(event) {
-            if (this.focused) {
+            if (this.focused && !(this.safeTriangle && this.safeTriangle.isPending())) {
                 this.changeFocusedItemIndex(event, event.processedItem.index);
             }
+        },
+        deferItemChange(event) {
+            const { originalEvent, processedItem } = event;
+            const activeItem = this.activeItemPath.find((p) => p.parentKey === processedItem.parentKey);
+            const submenu = activeItem && activeItem.key !== processedItem.key ? findSingle(this.list, `[id="${this.$id}_${activeItem.key}_list"]`) : null;
+
+            return !!this.safeTriangle && this.safeTriangle.defer(originalEvent, submenu, () => this.onItemChange(event, 'hover'));
         },
         onArrowDownKey(event) {
             const itemIndex = this.focusedItemInfo.index !== -1 ? this.findNextItemIndex(this.focusedItemInfo.index) : this.findFirstFocusedItemIndex();
@@ -467,6 +487,18 @@ export default {
             if (this.documentContextMenuListener) {
                 document.removeEventListener('contextmenu', this.documentContextMenuListener);
                 this.documentContextMenuListener = null;
+            }
+        },
+        bindSafeTriangle() {
+            if (!this.safeTriangle) {
+                this.safeTriangle = new SafeTriangle();
+            }
+
+            this.safeTriangle.bind();
+        },
+        unbindSafeTriangle() {
+            if (this.safeTriangle) {
+                this.safeTriangle.unbind();
             }
         },
         bindMatchMediaListener() {
