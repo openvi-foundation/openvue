@@ -59,28 +59,3 @@ export function scopedThemeCss(preset, selector, { components, darkSelector = '.
 
     return rules.join('\n');
 }
-
-// For shadow roots, which page stylesheets do not reach; variables still inherit from the host.
-export function structuralCss(styles) {
-    return styles
-        .flatMap((module) => [module.style, module.css])
-        .map(resolveCss)
-        .filter(Boolean)
-        .join('\n');
-}
-
-export function presetCss(preset, components) {
-    const entries = { ...(preset.directives || {}), ...(preset.components || {}) };
-
-    return [preset.css, ...components.map((name) => entries[name]?.css)].map(resolveCss).filter(Boolean).join('\n');
-}
-
-export function scopeClass(name) {
-    return (
-        'tb-scope-' +
-        String(name)
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-|-$/g, '')
-    );
-}

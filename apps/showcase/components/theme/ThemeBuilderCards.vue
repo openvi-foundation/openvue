@@ -21,39 +21,9 @@
         </Card>
 
         <Card class="theme-builder-card">
-            <template #title>
-                <div class="flex items-center justify-between gap-2">
-                    <span>Revenue</span>
-                    <Tag value="+14.2%" severity="success" />
-                </div>
-            </template>
-            <template #content>
-                <div class="text-3xl font-semibold">€24,580</div>
-                <div class="text-sm text-muted-color mt-1">Up from €21,520 last month</div>
-                <div class="theme-builder-bars" role="img" aria-label="Revenue per month">
-                    <span v-for="(value, index) of revenue" :key="index" :class="['theme-builder-bar', { 'theme-builder-bar-current': index === revenue.length - 1 }]" :style="{ height: value + '%' }"></span>
-                </div>
-            </template>
-        </Card>
-
-        <Card class="theme-builder-card">
             <template #title>Schedule</template>
             <template #content>
                 <DatePicker v-model="date" inline class="theme-builder-datepicker" />
-            </template>
-        </Card>
-
-        <Card class="theme-builder-card">
-            <template #title>Team</template>
-            <template #subtitle>Who can edit this project.</template>
-            <template #content>
-                <ul class="flex flex-col gap-3 list-none p-0 m-0">
-                    <li v-for="member of members" :key="member.name" class="flex items-center gap-3">
-                        <Avatar :image="member.avatar" shape="circle" />
-                        <span class="flex-1 min-w-0 font-medium truncate">{{ member.name }}</span>
-                        <Select v-model="member.role" :options="roles" size="small" :aria-label="'Role of ' + member.name" />
-                    </li>
-                </ul>
             </template>
         </Card>
 
@@ -77,6 +47,48 @@
         </Card>
 
         <Card class="theme-builder-card">
+            <template #title>Activity</template>
+            <template #content>
+                <Timeline :value="activity" class="theme-builder-timeline">
+                    <template #content="{ item }">
+                        <div class="font-medium">{{ item.title }}</div>
+                        <div class="text-sm text-muted-color mb-3">{{ item.time }}</div>
+                    </template>
+                </Timeline>
+            </template>
+        </Card>
+
+        <Card class="theme-builder-card">
+            <template #title>
+                <div class="flex items-center justify-between gap-2">
+                    <span>Revenue</span>
+                    <Tag value="+14.2%" severity="success" />
+                </div>
+            </template>
+            <template #content>
+                <div class="text-3xl font-semibold">€24,580</div>
+                <div class="text-sm text-muted-color mt-1">Up from €21,520 last month</div>
+                <div class="theme-builder-bars" role="img" aria-label="Revenue per month">
+                    <span v-for="(value, index) of revenue" :key="index" :class="['theme-builder-bar', { 'theme-builder-bar-current': index === revenue.length - 1 }]" :style="{ height: value + '%' }"></span>
+                </div>
+            </template>
+        </Card>
+
+        <Card class="theme-builder-card">
+            <template #title>Team</template>
+            <template #subtitle>Who can edit this project.</template>
+            <template #content>
+                <ul class="flex flex-col gap-3 list-none p-0 m-0">
+                    <li v-for="member of members" :key="member.name" class="flex items-center gap-3">
+                        <Avatar :image="member.avatar" shape="circle" />
+                        <span class="flex-1 min-w-0 font-medium truncate">{{ member.name }}</span>
+                        <Select v-model="member.role" :options="roles" size="small" :aria-label="'Role of ' + member.name" />
+                    </li>
+                </ul>
+            </template>
+        </Card>
+
+        <Card class="theme-builder-card">
             <template #title>Uploads</template>
             <template #content>
                 <ul class="flex flex-col gap-4 list-none p-0 m-0">
@@ -88,18 +100,6 @@
                         <ProgressBar :value="file.progress" :showValue="false" class="theme-builder-progress" />
                     </li>
                 </ul>
-            </template>
-        </Card>
-
-        <Card class="theme-builder-card">
-            <template #title>Activity</template>
-            <template #content>
-                <Timeline :value="activity" class="theme-builder-timeline">
-                    <template #content="{ item }">
-                        <div class="font-medium">{{ item.title }}</div>
-                        <div class="text-sm text-muted-color mb-3">{{ item.time }}</div>
-                    </template>
-                </Timeline>
             </template>
         </Card>
 

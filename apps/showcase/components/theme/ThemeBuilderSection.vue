@@ -26,13 +26,17 @@ export default {
             type: String,
             default: ''
         },
-        modified: Boolean
+        modified: Boolean,
+        defaultOpen: {
+            type: Boolean,
+            default: true
+        }
     },
     data() {
         const id = 'tb-section-' + this.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
         return {
-            open: true,
+            open: this.defaultOpen,
             headingId: id,
             bodyId: id + '-body'
         };

@@ -2,6 +2,7 @@
     <div :class="containerClass">
         <!--<AppNews />-->
         <AppTopBar :showDesigner="false" />
+        <AnnouncementBar />
         <HeroSection />
         <MigrationSection />
         <FeaturesSection />
@@ -14,6 +15,7 @@
 
 <script>
 import pkg from '../../../packages/primevue/package.json';
+import AnnouncementBar from '@/components/landing/AnnouncementBar.vue';
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
 import MigrationSection from '@/components/landing/MigrationSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
@@ -84,6 +86,7 @@ export default {
         }
     },
     components: {
+        AnnouncementBar,
         HeroSection,
         MigrationSection,
         ThemeSection,
