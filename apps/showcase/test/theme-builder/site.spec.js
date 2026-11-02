@@ -64,9 +64,13 @@ describe('theme-builder/site', () => {
         globalThis.localStorage = browser.localStorage;
         globalThis.document = browser.document;
         Theme.setTheme({ preset: Aura, options: { prefix: 'p', darkModeSelector: '.p-dark' } });
+        // The service defers its saves and style cleanup; fake timers keep them from firing after the fake browser is gone.
+        vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
     });
 
     afterEach(() => {
+        vi.clearAllTimers();
+        vi.useRealTimers();
         delete globalThis.window;
         delete globalThis.localStorage;
         delete globalThis.document;
