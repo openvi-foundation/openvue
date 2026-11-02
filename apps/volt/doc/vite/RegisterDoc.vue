@@ -1,6 +1,6 @@
 <template>
     <DocSectionText v-bind="$attrs">
-        <p>Register the Volt components locally or globally. Visit the <a href="https://vuejs.org/guide/components/registration">component registration</a> to learn more.</p>
+        <p>Register the OpenVolt components locally or globally. Visit the <a href="https://vuejs.org/guide/components/registration">component registration</a> to learn more.</p>
     </DocSectionText>
     <DocSectionCode :code="code" />
     <div class="card flex justify-center">

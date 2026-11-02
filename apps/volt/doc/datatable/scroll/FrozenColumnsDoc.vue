@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
 import ToggleButton from '@/volt/ToggleButton.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 import { CustomerService } from '~/service/CustomerService';
 
@@ -72,7 +72,7 @@ const code = ref(`
 import { CustomerService } from '@/service/CustomerService';
 import DataTable from '@/volt/DataTable.vue';
 import ToggleButton from '@/volt/ToggleButton.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 
 const customers = ref(null);

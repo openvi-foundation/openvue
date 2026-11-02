@@ -19,9 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import AngleDownIcon from '@primevue/icons/angledown';
-import AngleUpIcon from '@primevue/icons/angleup';
-import InputNumber, { type InputNumberPassThroughOptions, type InputNumberProps } from 'primevue/inputnumber';
+import AngleDownIcon from '@openvue/icons/angledown';
+import AngleUpIcon from '@openvue/icons/angleup';
+import InputNumber, { type InputNumberPassThroughOptions, type InputNumberProps } from 'openvue/inputnumber';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

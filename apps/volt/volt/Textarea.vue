@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import Textarea, { type TextareaPassThroughOptions, type TextareaProps } from 'primevue/textarea';
+import Textarea, { type TextareaPassThroughOptions, type TextareaProps } from 'openvue/textarea';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

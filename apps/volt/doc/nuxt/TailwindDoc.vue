@@ -1,11 +1,11 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Volt requires Tailwind CSS v4+ for theming. The prerequisite steps are covered by the <a href="https://tailwindcss.com/docs/guides/vite#vue" target="_blank" rel="noopener noreferrer">Install Tailwind CSS with Vite</a> guide. If you have
-            Vite and Tailwind configured successfully, follow the next steps.
+            OpenVolt requires Tailwind CSS v4+ for theming. The prerequisite steps are covered by the <a href="https://tailwindcss.com/docs/guides/vite#vue" target="_blank" rel="noopener noreferrer">Install Tailwind CSS with Vite</a> guide. If you
+            have Vite and Tailwind configured successfully, follow the next steps.
         </p>
         <p>
-            After successfully installing Tailwind, proceed with the installation of the <a href="https://primevue.org/tailwind/#extensions" target="_blank" rel="noopener noreferrer">tailwindcss-primeui</a> plugin. This plugin extends Tailwind with
+            After successfully installing Tailwind, proceed with the installation of the <a href="https://openvue.dev/tailwind/#extensions" target="_blank" rel="noopener noreferrer">tailwindcss-primeui</a> plugin. This plugin extends Tailwind with
             new utility classes such as <i>text-primary</i>, <i>bg-surface-500</i>, and adds new variants with the <i>p-</i> prefix including <i>p-selected</i>.
         </p>
         <p>In addition <a href="https://www.npmjs.com/package/tailwind-merge" target="_blank" rel="noopener noreferrer">tailwind-merge</a> utility is required for efficient handling of external class merging.</p>

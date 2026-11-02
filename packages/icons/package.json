@@ -1,6 +1,6 @@
 {
     "name": "@openvue/icons",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "SVG icon components used internally by OpenVue components.",
     "keywords": [

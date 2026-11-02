@@ -228,7 +228,13 @@ export default {
                 if (this.allowDuplicate || value.indexOf(item) === -1) {
                     value.push(item);
                     this.updateModel(event, value, preventDefault);
+
+                    return;
                 }
+            }
+
+            if (preventDefault) {
+                event.preventDefault();
             }
         },
         removeItem(event, index) {

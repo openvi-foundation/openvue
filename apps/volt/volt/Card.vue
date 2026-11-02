@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Card, { type CardPassThroughOptions, type CardProps } from 'primevue/card';
+import Card, { type CardPassThroughOptions, type CardProps } from 'openvue/card';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

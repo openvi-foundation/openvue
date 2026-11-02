@@ -147,13 +147,14 @@ export default {
         },
         onNodeToggle(node) {
             const key = node.key;
+            const sourceNode = this.valueToRender === this.value ? node : this.findNodeByKey(this.value, key) || node;
 
             if (this.d_expandedKeys[key]) {
                 delete this.d_expandedKeys[key];
-                this.$emit('node-collapse', node);
+                this.$emit('node-collapse', sourceNode);
             } else {
                 this.d_expandedKeys[key] = true;
-                this.$emit('node-expand', node);
+                this.$emit('node-expand', sourceNode);
             }
 
             this.d_expandedKeys = { ...this.d_expandedKeys };
@@ -307,6 +308,17 @@ export default {
         onValueChanged(event) {
             this.dragNodeSubNodes.splice(this.dragNodeIndex, 1);
             this.$emit('update:value', event.nodes);
+        },
+        findNodeByKey(nodes, key) {
+            for (let node of nodes || []) {
+                if (node.key === key) return node;
+
+                const found = this.findNodeByKey(node.children, key);
+
+                if (found) return found;
+            }
+
+            return null;
         },
         isDescendantOf(node, target) {
             if (!node || !node.children) {

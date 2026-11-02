@@ -82,13 +82,13 @@ Our priority is stability first, growth second. In order:
 3. ~~**Ship a PrimeVue migration tool.**~~ Done: [`npx @openvue/migrate`](https://openvue.dev/migrate) moves a PrimeVue v4 project to OpenVue in one command.
 4. ~~**Stabilize and release.**~~ Done: **1.0.0** is out. The public API is stable and follows semantic versioning from here.
 5. **Work through the backlog.** Open issues, accessibility and performance come before new surface area.
-6. **Bring Volt back.** The Tailwind-native components you copy into your own codebase, rebuilt under the OpenVue name.
-7. **Ship a new theme.** A preset of our own, alongside the four inherited from upstream.
+6. ~~**Bring Volt back.**~~ Done: [OpenVolt](https://openvolt.openvue.dev) is live, and `npx openvolt-vue` copies the Tailwind-native components into your own codebase.
+7. ~~**Ship a new theme.**~~ Done: [Nide](https://openvue.dev/theming/styled) ships beside Aura, Lara, Material and Nora, and the [Theme Builder](https://openvue.dev/theme) builds a theme from any of them.
 8. **Release 2.0.** Composition API, Vapor mode and TypeScript at the source. Existing applications keep working: OpenVue is getting full Vapor compatibility, but traditional virtual DOM rendering and Options API support are not going anywhere.
 
 ## Contributing
 
-We're building the initial maintainer team now. If you're an experienced developer interested in helping maintain or grow this library, issues and pull requests are open, and we'd welcome the help.
+OpenVue is maintained by the openvi-foundation team together with a growing community of contributors. Bug reports, fixes, documentation improvements and feature proposals are all welcome.
 
 Start with the [contributing guide](CONTRIBUTING.md) for the development setup and how changes get reviewed. Participation is covered by our [code of conduct](CODE_OF_CONDUCT.md). To report a security issue, follow the [security policy](SECURITY.md) rather than opening an issue.
 

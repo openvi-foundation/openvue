@@ -56,9 +56,9 @@
 
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';
-import Row from 'primevue/row';
+import Column from 'openvue/column';
+import ColumnGroup from 'openvue/columngroup';
+import Row from 'openvue/row';
 import { ref } from 'vue';
 
 const sales = ref(null);
@@ -150,9 +150,9 @@ const code = ref(`
 
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
-import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';
-import Row from 'primevue/row';
+import Column from 'openvue/column';
+import ColumnGroup from 'openvue/columngroup';
+import Row from 'openvue/row';
 import { ref } from 'vue';
 
 const sales = ref([

@@ -56,7 +56,7 @@
 <script setup lang="ts">
 import DataTable from '@/volt/DataTable.vue';
 import Skeleton from '@/volt/Skeleton.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 import { CarService } from '~/service/CarService';
 
@@ -148,7 +148,7 @@ const code = ref(`
 import { CarService } from '@/service/CarService';
 import DataTable from '@/volt/DataTable.vue';
 import Skeleton from '@/volt/Skeleton.vue';
-import Column from 'primevue/column';
+import Column from 'openvue/column';
 import { ref } from 'vue';
 
 const cars = ref(null);

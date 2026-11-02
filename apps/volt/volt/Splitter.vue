@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import Splitter, { type SplitterPassThroughOptions, type SplitterProps } from 'primevue/splitter';
+import Splitter, { type SplitterPassThroughOptions, type SplitterProps } from 'openvue/splitter';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 
