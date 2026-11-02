@@ -34,6 +34,7 @@ const composables = [
         usage: `import { useStyle } from 'openvue/usestyle';\nuseStyle(css, { name: 'my-styles' });`,
         example: `useStyle('.my-class { color: red; }', { name: 'custom' });`
     },
+    // usePrimeVue keeps its name, OpenVue stays API-compatible with PrimeVue 4
     {
         name: 'usePrimeVue',
         description: 'Access PrimeVue configuration',
@@ -55,7 +56,7 @@ async function run() {
         loadComponentsData: async () => ComponentJson as ComponentsData
     });
 
-    server.registerTool('list_composables', { description: 'List all available PrimeVue composables with their descriptions' }, async () => ({
+    server.registerTool('list_composables', { description: 'List all available OpenVue composables with their descriptions' }, async () => ({
         content: [
             {
                 type: 'text' as const,
@@ -78,7 +79,7 @@ async function run() {
     server.registerTool(
         'get_composable',
         {
-            description: 'Get detailed information about a specific PrimeVue composable',
+            description: 'Get detailed information about a specific OpenVue composable',
             inputSchema: { name: z.string().describe("Composable name (e.g., 'useToast', 'useConfirm')") }
         },
         async ({ name }) => {

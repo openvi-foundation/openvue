@@ -67,6 +67,58 @@ describe('MultiSelect.vue', () => {
         expect(wrapper.findAll('li.p-multiselect-option')[1].attributes()['data-p-selected']).toBe('true');
     });
 
+    it('should not toggle the focused option on Tab', async () => {
+        const selectedOptions = wrapper.vm.options.slice(0, 3);
+
+        await wrapper.setProps({
+            modelValue: selectedOptions,
+            showToggleAll: false
+        });
+
+        wrapper.vm.overlayVisible = true;
+        wrapper.vm.focusedOptionIndex = 0;
+        vi.spyOn(wrapper.vm, 'hasFocusableElements').mockReturnValue(false);
+
+        const hideSpy = vi.spyOn(wrapper.vm, 'hide');
+
+        wrapper.vm.onTabKey({ shiftKey: false, preventDefault: vi.fn() });
+
+        expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+        expect(hideSpy).toHaveBeenCalledWith(wrapper.vm.filter);
+    });
+
+    it('should not toggle the first option when tabbing past a closed MultiSelect', async () => {
+        const options = [
+            { name: 'New York', code: 'NY' },
+            { name: 'Rome', code: 'RM' },
+            { name: 'London', code: 'LDN' }
+        ];
+        const tabWrapper = mount(MultiSelect, {
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    teleport: true
+                }
+            },
+            props: {
+                modelValue: [options[0]],
+                options,
+                optionLabel: 'name',
+                autoOptionFocus: true
+            }
+        });
+
+        expect(tabWrapper.vm.overlayVisible).toBe(false);
+        expect(tabWrapper.vm.focusedOptionIndex).toBe(0);
+
+        await tabWrapper.find('input[role="combobox"]').trigger('keydown', { code: 'Tab', key: 'Tab' });
+
+        expect(tabWrapper.emitted('update:modelValue')).toBeUndefined();
+        expect(tabWrapper.vm.overlayVisible).toBe(false);
+
+        tabWrapper.unmount();
+    });
+
     it('should chip work', async () => {
         await wrapper.setProps({
             display: 'chip',

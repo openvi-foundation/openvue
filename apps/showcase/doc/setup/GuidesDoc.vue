@@ -1,7 +1,7 @@
 <template>
     <DocSectionText v-bind="$attrs"></DocSectionText>
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="col-span-6 md:col-span-3">
             <div class="card">
                 <NuxtLink to="/vite">
                     <span class="images">
@@ -57,7 +57,7 @@
                 </NuxtLink>
             </div>
         </div>
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="col-span-6 md:col-span-3">
             <div class="card">
                 <NuxtLink to="/nuxt">
                     <span class="images">
@@ -81,7 +81,7 @@
                 </NuxtLink>
             </div>
         </div>
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="col-span-6 md:col-span-3">
             <div class="card flex-1">
                 <NuxtLink to="/laravel">
                     <span class="images">
@@ -103,7 +103,7 @@
                 </NuxtLink>
             </div>
         </div>
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="col-span-6 md:col-span-3">
             <div class="card">
                 <NuxtLink to="/cdn">
                     <span class="images">
@@ -131,6 +131,7 @@
 <style scoped>
 .card {
     padding: 0;
+    margin-bottom: 0;
     min-height: 15rem;
     display: flex;
     align-items: center;
@@ -182,5 +183,19 @@
 
 .card:hover .title {
     color: var(--text-color);
+}
+
+@media (hover: none) {
+    .card svg {
+        opacity: 0;
+    }
+
+    .card svg.original {
+        opacity: 1;
+    }
+
+    .card .title {
+        color: var(--text-color);
+    }
 }
 </style>

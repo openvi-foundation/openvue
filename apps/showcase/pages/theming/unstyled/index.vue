@@ -55,7 +55,7 @@ export default {
                 },
                 {
                     id: 'volt',
-                    label: 'Volt',
+                    label: 'OpenVolt',
                     component: VoltDoc
                 }
             ]

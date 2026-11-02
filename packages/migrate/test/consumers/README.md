@@ -4,6 +4,8 @@ These directories are intentionally pre-migration PrimeVue applications. The tes
 
 The six fixtures cover manual Vite imports, Vite auto-imports, Nuxt SSR, Laravel with Blade and Vite, Laravel with Inertia, and Volt with Tailwind CSS 4. Their package managers and PrimeVue 4 ranges are deliberately varied to exercise version inference and lockfile handling.
 
+The Volt fixture copies the OpenVolt components from `apps/volt/volt` instead of keeping its own. The `asPrimeVue` copy option points their imports back at `primevue` and `@primevue/*`, so the baseline matches a project that still uses PrimeVue's Volt.
+
 Run the complete contract suite from the repository root:
 
 ```sh

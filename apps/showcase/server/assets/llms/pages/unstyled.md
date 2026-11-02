@@ -54,7 +54,7 @@ app.use(OpenVue, {
 
 Unstyled mode is enabled for the whole suite by enabling unstyled option during OpenVue installation. Alternatively even in the default styled mode, a particular component can still be used as unstyled by adding the unstyled prop of the component.
 
-## Volt
+## OpenVolt
 
-Tailwind CSS is perfect fit for the unstyled mode, PrimeTek has initiated a new UI library called Volt based on the unstyled OpenVue and Tailwind CSS v4. Volt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within Volt are essentially wrapped versions of the unstyled OpenVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
+Tailwind CSS is perfect fit for the unstyled mode, OpenVue offers a companion UI library called OpenVolt , the community continuation of PrimeTek's Volt, based on the unstyled OpenVue and Tailwind CSS v4. OpenVolt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within OpenVolt are essentially wrapped versions of the unstyled OpenVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
 

@@ -14,7 +14,7 @@
                     fill="var(--p-text-color)"
                 />
             </svg>
-            <InputText placeholder="Volt" pt:root="ps-10" />
+            <InputText placeholder="OpenVolt" pt:root="ps-10" />
         </div>
     </div>
     <DocSectionCode :code="code" />
@@ -31,7 +31,7 @@ const code = ref(`
             <svg width="14" height="16" viewBox="0 0 35 40" fill="none" class="absolute top-1/2 -mt-2 text-surface-400 leading-none start-3 z-1" xmlns="http://www.w3.org/2000/svg">
                 ...
             </svg>
-            <InputText placeholder="Volt" pt:root="ps-10" />
+            <InputText placeholder="OpenVolt" pt:root="ps-10" />
         </div>
     </div>
 </template>

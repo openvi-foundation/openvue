@@ -1,4 +1,6 @@
+import Form from '@openvue/forms/form';
 import { mount } from '@vue/test-utils';
+import { h, nextTick } from 'vue';
 import InputNumber from './InputNumber.vue';
 
 describe('InputNumber.vue', () => {
@@ -167,6 +169,53 @@ describe('InputNumber.vue', () => {
 
             expect(await type(input, '5')).toEqual({ value: '1.50 kg', caret: 3 });
             expect(await type(input, '7')).toEqual({ value: '1.57 kg', caret: 4 });
+        });
+    });
+
+    describe('inside Form with initialValues', () => {
+        let formWrapper;
+
+        beforeEach(() => {
+            formWrapper = mount({ render: () => h(Form, { initialValues: { amount: 555 } }, () => h(InputNumber, { name: 'amount' })) }, { attachTo: document.body });
+        });
+
+        afterEach(() => {
+            formWrapper.unmount();
+        });
+
+        it('should stay empty after deleting the last character', async () => {
+            const inputNumber = formWrapper.findComponent(InputNumber);
+            const input = formWrapper.find('input.p-inputnumber-input').element;
+
+            expect(input.value).toBe('555');
+
+            for (const expected of ['55', '5', '']) {
+                input.setSelectionRange(input.value.length, input.value.length);
+                await inputNumber.vm.onInputKeyDown({ code: 'Backspace', target: input, preventDefault: () => {} });
+                await nextTick();
+
+                expect(input.value).toBe(expected);
+            }
+
+            await inputNumber.vm.onInputBlur({ target: input });
+            await nextTick();
+
+            expect(input.value).toBe('');
+        });
+
+        it('should match standalone v-model behavior when deleting the last character', async () => {
+            const standalone = mount(InputNumber, { props: { modelValue: 555 }, attachTo: document.body });
+            const input = standalone.find('input.p-inputnumber-input').element;
+
+            for (let i = 0; i < 3; i++) {
+                input.setSelectionRange(input.value.length, input.value.length);
+                await standalone.vm.onInputKeyDown({ code: 'Backspace', target: input, preventDefault: () => {} });
+                await nextTick();
+            }
+
+            expect(input.value).toBe('');
+
+            standalone.unmount();
         });
     });
 });

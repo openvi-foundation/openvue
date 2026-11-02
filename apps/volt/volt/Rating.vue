@@ -19,9 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import StarIcon from '@primevue/icons/star';
-import StarFillIcon from '@primevue/icons/starfill';
-import Rating, { type RatingPassThroughOptions, type RatingProps } from 'primevue/rating';
+import StarIcon from '@openvue/icons/star';
+import StarFillIcon from '@openvue/icons/starfill';
+import Rating, { type RatingPassThroughOptions, type RatingProps } from 'openvue/rating';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

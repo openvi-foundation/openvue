@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { reactive } from 'vue';
 import Tree from './Tree.vue';
 
 describe('Tree.vue', () => {
@@ -99,6 +100,30 @@ describe('Tree.vue', () => {
 
         expect(filterEvent.filteredNodes).toBeDefined();
         expect(Array.isArray(filterEvent.filteredNodes)).toBe(true);
+    });
+
+    it('emits the node from value on expand while filtering so lazy loading can update it', async () => {
+        const nodes = reactive([
+            { key: '0', label: 'Node 0', leaf: false },
+            { key: '1', label: 'Node 1', leaf: false }
+        ]);
+
+        wrapper = mount(Tree, {
+            props: {
+                value: nodes,
+                filter: true,
+                filterBy: 'label',
+                'onNode-expand': (node) => {
+                    node.children = [{ key: '0-0', label: 'Node 0 child' }];
+                }
+            }
+        });
+
+        await wrapper.find('input.p-inputtext').setValue('0');
+        await wrapper.find('.p-tree-node-toggle-button').trigger('click');
+
+        expect(wrapper.emitted('node-expand')[0][0]).toBe(nodes[0]);
+        expect(wrapper.text()).toContain('Node 0 child');
     });
 
     it('should render icon', ({ expect }) => {

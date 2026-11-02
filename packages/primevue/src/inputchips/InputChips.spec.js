@@ -31,6 +31,32 @@ describe('InputChips.vue', () => {
         expect(wrapper.find('.p-chip-label').text()).toBe('PrimeVue');
     });
 
+    it('should prevent separator key when the chip is a rejected duplicate', async () => {
+        await wrapper.setProps({ modelValue: ['foo'], separator: ',', allowDuplicate: false });
+
+        const input = wrapper.find('input');
+
+        input.element.value = 'foo';
+
+        const event = new KeyboardEvent('keydown', { key: ',', code: 'Comma', cancelable: true });
+
+        input.element.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(true);
+        expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+    });
+
+    it('should prevent separator key on empty input', async () => {
+        await wrapper.setProps({ separator: ',' });
+
+        const event = new KeyboardEvent('keydown', { key: ',', code: 'Comma', cancelable: true });
+
+        wrapper.find('input').element.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(true);
+        expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+    });
+
     it('should have correct custom chip removal icon', async () => {
         await wrapper.setProps({
             modelValue: ['foo', 'bar'],

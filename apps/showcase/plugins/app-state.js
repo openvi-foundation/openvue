@@ -8,6 +8,7 @@ const $appState = {
             preset: 'Aura',
             primary: 'noir',
             surface: null,
+            siteRecipe: null,
             darkTheme: false,
             codeSandbox: false,
             sourceType: 'options-api',

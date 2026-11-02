@@ -15,7 +15,7 @@ export default {
                 basic: `
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }

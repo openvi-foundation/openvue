@@ -1,6 +1,6 @@
 {
     "name": "volt",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "private": true,
     "author": "OpenVue Contributors",
     "description": "",
@@ -15,7 +15,6 @@
         "url": "https://github.com/openvi-foundation/openvue/issues"
     },
     "keywords": [
-        "primevue",
         "openvue",
         "vue",
         "vue.js",
@@ -37,14 +36,16 @@
         "typecheck": "vue-tsc --noEmit"
     },
     "dependencies": {
-        "@docsearch/js": "catalog:app",
-        "primeicons": "catalog:",
-        "openvue": "workspace:*",
+        "@openvue/themes": "workspace:*",
         "chart.js": "catalog:app",
+        "openvue": "workspace:*",
+        "primeicons": "catalog:",
         "quill": "catalog:app"
     },
     "devDependencies": {
+        "@openvue/nuxt-module": "workspace:*",
         "@stackblitz/sdk": "^1.8.2",
+        "@tailwindcss/vite": "^4",
         "autoprefixer": "^10",
         "jsdom": "^19.0.0",
         "nuxt": "catalog:app",
@@ -54,7 +55,6 @@
         "tailwind-merge": "^3.0.2",
         "tailwindcss": "^4",
         "tailwindcss-primeui": "catalog:",
-        "@tailwindcss/vite": "^4",
         "typedoc": "0.27.9",
         "vite": "catalog:app",
         "vue-tsc": "^2.2.8"

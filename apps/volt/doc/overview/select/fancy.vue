@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import Select from 'primevue/select';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import Select from 'openvue/select';
 import { ref } from 'vue';
 
 const theme = ref({

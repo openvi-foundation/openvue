@@ -24277,6 +24277,14 @@
                             "description": "Used to pass attributes to the aria year's DOM element."
                         },
                         {
+                            "name": "hiddenTime",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "DatePickerPassThroughOptionType",
+                            "default": "",
+                            "description": "Used to pass attributes to the aria time's DOM element."
+                        },
+                        {
                             "name": "hooks",
                             "optional": true,
                             "readonly": false,
@@ -25165,7 +25173,7 @@
                                 {
                                     "name": "scope",
                                     "optional": false,
-                                    "type": "{\n \t <span class=\"ml-3 doc-option-parameter-name\">actionCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Action function.</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">keydownCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Keydown function.</span>\n}",
+                                    "type": "{\n \t <span class=\"ml-3 doc-option-parameter-name\">actionCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Action function.</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">keydownCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Keydown function.</span>\n \t <span class=\"ml-3 doc-option-parameter-name\">ariaLabel</span>: <span class=\"doc-option-parameter-type\">string</span>, <span class=\"doc-option-parameter-type\">// Accessible label describing where the button navigates to, e.g. 'Previous Month, September 2026'.</span>\n }",
                                     "description": "button slot's params."
                                 }
                             ],
@@ -25178,7 +25186,7 @@
                                 {
                                     "name": "scope",
                                     "optional": false,
-                                    "type": "{\n \t <span class=\"ml-3 doc-option-parameter-name\">actionCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Action function.</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">keydownCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Keydown function.</span>\n}",
+                                    "type": "{\n \t <span class=\"ml-3 doc-option-parameter-name\">actionCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Action function.</span>\n\t <span class=\"ml-3 doc-option-parameter-name\">keydownCallback</span>: <span class=\"doc-option-parameter-type\">(<span class=\"doc-option-parameter-name\">event</span>: Event) &rArr; void</span>, <span class=\"doc-option-parameter-type\">// Keydown function.</span>\n \t <span class=\"ml-3 doc-option-parameter-name\">ariaLabel</span>: <span class=\"doc-option-parameter-type\">string</span>, <span class=\"doc-option-parameter-type\">// Accessible label describing where the button navigates to, e.g. 'Next Month, November 2026'.</span>\n }",
                                     "description": "button slot's params."
                                 }
                             ],

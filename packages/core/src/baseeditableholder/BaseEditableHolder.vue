@@ -1,5 +1,5 @@
 <script>
-import { isNotEmpty } from '@openuxkit/utils';
+import { isEmpty, isNotEmpty } from '@openuxkit/utils';
 import BaseComponent from '@openvue/core/basecomponent';
 
 export default {
@@ -73,7 +73,7 @@ export default {
         $formDefaultValue: {
             immediate: true,
             handler(newValue) {
-                this.d_value !== newValue && (this.d_value = newValue);
+                isEmpty(this.d_value) && this.d_value !== newValue && (this.d_value = newValue);
             }
         },
         $formValue: {
@@ -119,7 +119,7 @@ export default {
             return this.$formControl?.novalidate;
         },
         $formDefaultValue() {
-            return this.findNonEmpty(this.d_value, this.$pcFormField?.initialValue, this.$pcForm?.initialValues?.[this.$formName]);
+            return this.findNonEmpty(this.$pcFormField?.initialValue, this.$pcForm?.initialValues?.[this.$formName]);
         },
         $formValue() {
             return this.findNonEmpty(this.$pcFormField?.$field?.value, this.$pcForm?.getFieldState(this.$formName)?.value);

@@ -93,7 +93,7 @@ export default {
                     title: 'Project',
                     links: [
                         { label: 'Issues', href: `${REPO}/issues`, external: true },
-                        { label: 'Changelog', href: `${REPO}/releases`, external: true },
+                        { label: 'Changelog', to: '/changelog' },
                         { label: 'Source Code', href: REPO, external: true }
                     ]
                 },

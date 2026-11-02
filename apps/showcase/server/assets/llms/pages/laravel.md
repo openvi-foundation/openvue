@@ -23,7 +23,7 @@ We've created various samples for the popular options in the Vue ecosystem. Visi
 
 ## Next Steps
 
-Welcome to the Openvi! Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
+Once you have OpenVue up and running, we recommend exploring the following resources to gain a deeper understanding of the library. Global configuration Auto imports with tree-shaking Customization of styles Pass through attributes
 
 ## Plugin
 

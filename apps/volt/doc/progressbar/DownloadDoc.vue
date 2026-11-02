@@ -6,6 +6,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const code = ref(`npx volt-vue add ProgressBar
+const code = ref(`npx openvolt-vue add ProgressBar
 `);
 </script>

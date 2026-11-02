@@ -127,7 +127,7 @@
             <div class="flex flex-col items-center justify-center">
                 <Avatar image="/demo/images/landing/avatars/avatar-02.svg" class="w-32 h-32" size="xlarge" shape="circle" />
                 <div class="leading-6 font-medium text-color mt-4 w-full text-center">OpenVue</div>
-                <div class="leading-5 text-sm text-muted-color mt-1 w-full text-center">@primetek</div>
+                <div class="leading-5 text-sm text-muted-color mt-1 w-full text-center">@openvue</div>
                 <div class="flex items-center justify-center flex-wrap gap-1 mt-4">
                     <Button icon="pi pi-phone text-muted-color" severity="secondary" text />
                     <Button icon="pi pi-video text-muted-color" severity="secondary" text />

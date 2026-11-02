@@ -31,7 +31,8 @@
         "copy": [
             {
                 "from": "apps/volt/volt",
-                "to": "src/volt"
+                "to": "src/volt",
+                "asPrimeVue": true
             }
         ]
     }

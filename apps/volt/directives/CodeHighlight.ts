@@ -5,7 +5,7 @@ const highlightElement = (codeElement: HTMLElement) => {
         codeElement.parentElement?.setAttribute('tabindex', '-1');
 
         /*window.Prism.languages.bash = Prism.languages.extend('bash', {
-            command: /\b(npx|volt-vue|add|npm)\b/,
+            command: /\b(npx|openvolt-vue|add|npm)\b/,
             component: /\b(.*)\b/
         });
 

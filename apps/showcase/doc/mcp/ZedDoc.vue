@@ -14,14 +14,15 @@ export default {
             code: {
                 basic: `
 {
-    "context_servers": {
-        "primevue": {
-            "command": {
-                "path": "npx",
-                "args": ["-y", "@openvue/mcp"]
-            }
-        }
+  "context_servers": {
+    "openvue": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openvue/mcp"
+      ]
     }
+  }
 }
 `
             }

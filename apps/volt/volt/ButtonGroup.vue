@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import ButtonGroup, { type ButtonGroupPassThroughOptions, type ButtonGroupProps } from 'primevue/buttongroup';
+import ButtonGroup, { type ButtonGroupPassThroughOptions, type ButtonGroupProps } from 'openvue/buttongroup';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

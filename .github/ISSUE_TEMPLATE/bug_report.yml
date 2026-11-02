@@ -32,7 +32,9 @@ body:
       label: Reproducer
       placeholder: 'https://stackblitz.com/edit/...'
       description: >-
-        A link to a minimal reproduction of the bug. Issues without a
+        A link to a minimal reproduction of the bug. Start from the
+        [OpenVue reproducer](https://stackblitz.com/github/openvi-foundation/openvue-reproducer?file=src%2FApp.vue),
+        click Fork in StackBlitz and paste the URL here. Issues without a
         reproducer take much longer to triage.
     validations:
       required: true

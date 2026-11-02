@@ -10,7 +10,7 @@ Thanks for considering a contribution. OpenVue is maintained by a small team of 
 
 ## Reporting a bug
 
-Use the **Bug report** issue template. It asks for a minimal reproducer (StackBlitz or CodeSandbox both work) and your environment details. Reports without a reproducer take much longer to triage and may sit longer as a result.
+Use the **Bug report** issue template. It asks for a minimal reproducer and your environment details. The easiest way to make one is the [OpenVue reproducer](https://stackblitz.com/github/openvi-foundation/openvue-reproducer?file=src%2FApp.vue): edit `src/App.vue` until it shows the bug, fork it in StackBlitz and paste the link. Reports without a reproducer take much longer to triage and may sit longer as a result.
 
 ## Proposing a feature
 

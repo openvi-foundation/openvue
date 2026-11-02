@@ -6,6 +6,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const code = ref(`npx volt-vue add Stepper StepList Step StepPanels StepPanel StepItem
+const code = ref(`npx openvolt-vue add Stepper StepList Step StepPanels StepPanel StepItem
 `);
 </script>

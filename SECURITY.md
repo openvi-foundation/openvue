@@ -33,7 +33,7 @@ All packages in OpenVue share a single version. Only the most recent release rec
 | Latest 1.x release | Yes       |
 | Earlier releases   | No        |
 
-Vulnerabilities inherited from PrimeVue are in scope for OpenVue if they still affect a current OpenVue release. The archived upstream project is not maintained, so please report those here rather than to PrimeVue.
+Vulnerabilities inherited from PrimeVue are in scope for OpenVue if they still affect a current OpenVue release. Please report those here as well, because a fix released upstream does not reach OpenVue on its own.
 
 ## Scope
 

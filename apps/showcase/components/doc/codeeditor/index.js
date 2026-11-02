@@ -46,7 +46,7 @@ const useStackBlitz = (language, code, service, extPages, dependencies, componen
         template: 'node',
         description: embedded
             ? "This example demonstrates how to style components with Tailwind CSS using OpenVue's unstyled property. As mentioned in the OpenVue documentation, components can be styled or have HTML attributes added using a global or inline pass through approach. In this example, we utilize the global PT approach with Tailwind CSS."
-            : '**\n OpenVue is an open source UI library for Vue featuring a rich set of 80+ components, a visual theme designer, and theme presets such as Aura, Material, Lara and Nora. It is MIT licensed and works with Vue 3, Nuxt and Vite.',
+            : '**\n OpenVue is an open source UI library for Vue featuring a rich set of 80+ components, a visual theme designer, and theme presets such as Aura, Material, Lara, Nora and Nide. It is MIT licensed and works with Vue 3, Nuxt and Vite.',
         dependencies: stackBlitzParameters.dependencies,
         files
     };
