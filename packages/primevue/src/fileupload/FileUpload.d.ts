@@ -473,6 +473,10 @@ export interface FileUploadProps {
      * @defaultValue false
      */
     unstyled?: boolean;
+    /**
+     * Identifier of the underlying input element.
+     */
+    inputId?: string | undefined;
 }
 
 /**

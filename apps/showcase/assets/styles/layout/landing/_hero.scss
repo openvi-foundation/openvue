@@ -105,6 +105,17 @@
         color: var(--text-secondary-color);
     }
 
+    .hero-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 0;
+    }
+
+    .hero-theme-switch {
+        display: flex;
+    }
+
     /* Live component panel */
     .hero-showcase {
         display: grid;

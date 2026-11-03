@@ -83,7 +83,7 @@ Our priority is stability first, growth second. In order:
 4. ~~**Stabilize and release.**~~ Done: **1.0.0** is out. The public API is stable and follows semantic versioning from here.
 5. **Work through the backlog.** Open issues, accessibility and performance come before new surface area.
 6. ~~**Bring Volt back.**~~ Done: [OpenVolt](https://openvolt.openvue.dev) is live, and `npx openvolt-vue` copies the Tailwind-native components into your own codebase.
-7. **Ship a new theme.** A preset of our own, alongside the four inherited from upstream.
+7. ~~**Ship a new theme.**~~ Done: [Nide](https://openvue.dev/theming/styled) ships beside Aura, Lara, Material and Nora, and the [Theme Builder](https://openvue.dev/theme) builds a theme from any of them.
 8. **Release 2.0.** Composition API, Vapor mode and TypeScript at the source. Existing applications keep working: OpenVue is getting full Vapor compatibility, but traditional virtual DOM rendering and Options API support are not going anywhere.
 
 ## Contributing

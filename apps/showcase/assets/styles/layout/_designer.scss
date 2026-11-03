@@ -114,6 +114,9 @@
 
     .p-tabs {
         .p-tablist-tab-list {
+            width: auto;
+            padding: 0;
+            border-radius: 0;
             background: transparent;
             border-style: solid;
             border-color: var(--border-color);
@@ -126,9 +129,13 @@
             border-color: var(--border-color);
             color: var(--text-secondary-color);
             padding: 1rem 1.125rem;
+            font-size: inherit;
             font-weight: 600;
+            line-height: inherit;
             transition: none;
             margin: 0 0 -1px 0;
+            border-radius: 0;
+            flex-grow: 0;
 
             &:focus-visible {
                 outline: 1px solid var(--designer-focus-outline-color);
@@ -146,6 +153,7 @@
             background: transparent;
             border-color: var(--high-contrast-text-color);
             color: var(--high-contrast-text-color);
+            box-shadow: none;
         }
 
         .p-tablist-active-bar {
@@ -182,7 +190,9 @@
             background: transparent;
             border-width: 0;
             border-color: unset;
+            font-size: inherit;
             font-weight: 600;
+            line-height: inherit;
             border-radius: 4px;
             transition: none;
 
@@ -216,6 +226,7 @@
         .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader {
             background: transparent;
             color: var(--text-color);
+            text-decoration: none;
         }
 
         .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled) .p-accordionheader:hover .p-accordionheader-toggle-icon,
@@ -228,6 +239,7 @@
             border-color: var(--border-color);
             background-color: transparent;
             color: inherit;
+            font-size: inherit;
             padding: 0 1.125rem 1.125rem 1.125rem;
         }
     }

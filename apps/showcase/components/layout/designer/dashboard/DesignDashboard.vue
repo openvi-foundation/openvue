@@ -97,8 +97,8 @@ export default {
         openNewTheme() {
             this.$appState.designer.activeView = 'create_theme';
         },
-        loadTheme(theme) {
-            if (this.designerService.loadTheme(theme.id)) {
+        async loadTheme(theme) {
+            if (await this.designerService.loadTheme(theme.id)) {
                 this.$appState.designer.activeTab = '0';
                 this.$appState.designer.activeView = 'editor';
             }

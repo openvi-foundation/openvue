@@ -1,6 +1,6 @@
 {
     "name": "@openvue/auto-import-resolver",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "OpenVue Contributors",
     "description": "unplugin-vue-components resolver for OpenVue with on-demand, tree-shaken auto imports of OpenVue components and directives.",
     "keywords": [

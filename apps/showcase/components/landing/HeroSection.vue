@@ -25,78 +25,84 @@
                 <p class="hero-note">{{ version }} is out. MIT licensed, no paid tier.</p>
             </div>
 
-            <!-- Real components, not screenshots: they follow the theme, palette and dark mode set in the topbar. -->
-            <div class="hero-showcase">
-                <div class="hero-stack">
-                    <div class="hero-card hero-card-optional">
-                        <div class="hero-card-title">New project</div>
-                        <div class="hero-field">
-                            <label for="hero-project-name">Project name</label>
-                            <InputText id="hero-project-name" v-model="project.name" size="small" fluid />
-                        </div>
-                        <div class="hero-field">
-                            <span id="hero-framework-label">Framework</span>
-                            <SelectButton v-model="project.framework" :options="frameworks" :allowEmpty="false" aria-labelledby="hero-framework-label" size="small" fluid />
-                        </div>
-                        <div class="hero-field">
-                            <label for="hero-theme">Theme</label>
-                            <Select v-model="project.theme" inputId="hero-theme" :options="themes" size="small" fluid />
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <Checkbox v-model="project.typescript" inputId="hero-typescript" binary />
-                            <label for="hero-typescript">Use TypeScript</label>
-                        </div>
-                        <div class="hero-card-footer">
-                            <Button label="Reset" size="small" severity="secondary" text @click="resetProject" />
-                            <Button label="Create" size="small" icon="pi pi-check" :disabled="!project.name" @click="createProject" />
-                        </div>
-                    </div>
-
-                    <div class="hero-card hero-card-optional">
-                        <div class="flex items-center justify-between gap-4">
-                            <div class="hero-card-title">Storage</div>
-                            <Tag :value="`${storageUsed} of 100 GB`" severity="secondary" />
-                        </div>
-                        <MeterGroup :value="storage" />
-                    </div>
-
-                    <div class="hero-card" :class="layerClass('verify')" :style="layerStyle('verify')" @pointerdown="bringToFront('verify')" @focusin="bringToFront('verify')">
-                        <div>
-                            <div class="hero-card-title">Verify your email</div>
-                            <p class="hero-card-text">Enter the 4 digit code we sent you.</p>
-                        </div>
-                        <InputOtp v-model="otp" :length="4" integerOnly size="small" />
-                        <Button label="Verify" size="small" severity="secondary" fluid @click="verifyOtp" />
-                    </div>
+            <div class="hero-preview">
+                <div class="hero-theme-switch">
+                    <SelectButton :modelValue="selectedPreset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" aria-label="Theme" size="small" />
                 </div>
 
-                <div class="hero-stack">
-                    <div class="hero-card hero-card-calendar hero-card-optional">
-                        <div class="hero-card-title">Release date</div>
-                        <DatePicker v-model="releaseDate" inline class="hero-calendar" />
-                    </div>
+                <!-- Real components, not screenshots: they follow the theme picked above and the palette and dark mode set in the topbar. -->
+                <div class="hero-showcase">
+                    <div class="hero-stack">
+                        <div class="hero-card hero-card-optional">
+                            <div class="hero-card-title">New project</div>
+                            <div class="hero-field">
+                                <label for="hero-project-name">Project name</label>
+                                <InputText id="hero-project-name" v-model="project.name" size="small" fluid />
+                            </div>
+                            <div class="hero-field">
+                                <span id="hero-framework-label">Framework</span>
+                                <SelectButton v-model="project.framework" :options="frameworks" :allowEmpty="false" aria-labelledby="hero-framework-label" size="small" fluid />
+                            </div>
+                            <div class="hero-field">
+                                <label for="hero-theme">Theme</label>
+                                <Select v-model="project.theme" inputId="hero-theme" :options="themes" size="small" fluid />
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <Checkbox v-model="project.typescript" inputId="hero-typescript" binary />
+                                <label for="hero-typescript">Use TypeScript</label>
+                            </div>
+                            <div class="hero-card-footer">
+                                <Button label="Reset" size="small" severity="secondary" text @click="resetProject" />
+                                <Button label="Create" size="small" icon="pi pi-check" :disabled="!project.name" @click="createProject" />
+                            </div>
+                        </div>
 
-                    <div class="hero-card" :class="layerClass('notifications')" :style="layerStyle('notifications')" @pointerdown="bringToFront('notifications')" @focusin="bringToFront('notifications')">
-                        <div class="hero-card-title">Notifications</div>
-                        <div v-for="item of notifications" :key="item.id" class="hero-toggle-row">
-                            <label :for="`hero-notify-${item.id}`">
-                                <span class="hero-toggle-label">{{ item.label }}</span>
-                                <span class="hero-toggle-detail">{{ item.detail }}</span>
-                            </label>
-                            <ToggleSwitch v-model="item.enabled" :inputId="`hero-notify-${item.id}`" />
+                        <div class="hero-card hero-card-optional">
+                            <div class="flex items-center justify-between gap-4">
+                                <div class="hero-card-title">Storage</div>
+                                <Tag :value="`${storageUsed} of 100 GB`" severity="secondary" />
+                            </div>
+                            <MeterGroup :value="storage" />
+                        </div>
+
+                        <div class="hero-card" :class="layerClass('verify')" :style="layerStyle('verify')" @pointerdown="bringToFront('verify')" @focusin="bringToFront('verify')">
+                            <div>
+                                <div class="hero-card-title">Verify your email</div>
+                                <p class="hero-card-text">Enter the 4 digit code we sent you.</p>
+                            </div>
+                            <InputOtp v-model="otp" :length="4" integerOnly size="small" />
+                            <Button label="Verify" size="small" severity="secondary" fluid @click="verifyOtp" />
                         </div>
                     </div>
 
-                    <div class="hero-card" :class="layerClass('team')" :style="layerStyle('team')" @pointerdown="bringToFront('team')" @focusin="bringToFront('team')">
-                        <div class="flex items-center justify-between gap-4">
-                            <div class="hero-card-title">Team</div>
-                            <Tag :value="`${seats} seats`" severity="secondary" />
+                    <div class="hero-stack">
+                        <div class="hero-card hero-card-calendar hero-card-optional">
+                            <div class="hero-card-title">Release date</div>
+                            <DatePicker v-model="releaseDate" inline class="hero-calendar" />
                         </div>
-                        <AvatarGroup>
-                            <Avatar v-for="avatar of avatars" :key="avatar" :image="`/demo/images/landing/avatars/${avatar}.svg`" shape="circle" />
-                            <Avatar v-if="seats > avatars.length" :label="`+${seats - avatars.length}`" shape="circle" />
-                        </AvatarGroup>
-                        <Slider v-model="seats" :min="avatars.length" :max="50" aria-label="Seats" />
+
+                        <div class="hero-card" :class="layerClass('notifications')" :style="layerStyle('notifications')" @pointerdown="bringToFront('notifications')" @focusin="bringToFront('notifications')">
+                            <div class="hero-card-title">Notifications</div>
+                            <div v-for="item of notifications" :key="item.id" class="hero-toggle-row">
+                                <label :for="`hero-notify-${item.id}`">
+                                    <span class="hero-toggle-label">{{ item.label }}</span>
+                                    <span class="hero-toggle-detail">{{ item.detail }}</span>
+                                </label>
+                                <ToggleSwitch v-model="item.enabled" :inputId="`hero-notify-${item.id}`" />
+                            </div>
+                        </div>
+
+                        <div class="hero-card" :class="layerClass('team')" :style="layerStyle('team')" @pointerdown="bringToFront('team')" @focusin="bringToFront('team')">
+                            <div class="flex items-center justify-between gap-4">
+                                <div class="hero-card-title">Team</div>
+                                <Tag :value="`${seats} seats`" severity="secondary" />
+                            </div>
+                            <AvatarGroup>
+                                <Avatar v-for="avatar of avatars" :key="avatar" :image="`/demo/images/landing/avatars/${avatar}.svg`" shape="circle" />
+                                <Avatar v-if="seats > avatars.length" :label="`+${seats - avatars.length}`" shape="circle" />
+                            </AvatarGroup>
+                            <Slider v-model="seats" :min="avatars.length" :max="50" aria-label="Seats" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,6 +111,7 @@
 </template>
 
 <script>
+import { PRESET_OPTIONS, applySitePreset, selectedPreset } from '@/service/theme/presets';
 import pkg from '../../../../packages/primevue/package.json';
 
 const defaultProject = () => ({ name: 'my-app', framework: 'Nuxt', theme: 'Aura', typescript: true });
@@ -127,6 +134,7 @@ export default {
             copied: false,
             copyTimeout: null,
             project: defaultProject(),
+            presetOptions: PRESET_OPTIONS,
             frameworks: ['Vue', 'Nuxt'],
             themes: ['Aura', 'Lara', 'Nora'],
             storage: [
@@ -148,6 +156,9 @@ export default {
         };
     },
     computed: {
+        selectedPreset() {
+            return selectedPreset(this.$appState);
+        },
         storageUsed() {
             return this.storage.reduce((sum, item) => sum + item.value, 0);
         }
@@ -158,6 +169,9 @@ export default {
         }
     },
     methods: {
+        onPresetChange(value) {
+            applySitePreset(this.$appState, this.$siteTheme, value);
+        },
         bringToFront(key) {
             if (this.layerOrder[this.layerOrder.length - 1] === key) return;
 
