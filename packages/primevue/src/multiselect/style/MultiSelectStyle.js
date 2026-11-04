@@ -27,7 +27,7 @@ const classes = {
         'p-multiselect-label',
         {
             'p-placeholder': instance.label === props.placeholder,
-            'p-multiselect-label-empty': !props.placeholder && !instance.$filled
+            'p-multiselect-label-empty': !props.placeholder && !instance.selectedValues.length
         }
     ],
     clearIcon: 'p-multiselect-clear-icon',
