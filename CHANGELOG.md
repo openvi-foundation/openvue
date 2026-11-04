@@ -12,6 +12,10 @@ All packages in this repository are released together under a single version.
 
 - Added `inputId` prop to `FileUpload` that sets the `id` of its file input.
 
+### Fixed
+
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
+
 ## [1.1.0] - 2026-10-29
 
 ### Added
