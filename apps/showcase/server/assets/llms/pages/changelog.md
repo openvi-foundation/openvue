@@ -4,6 +4,16 @@ Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All pack
 
 ## Unreleased
 
+## 1.1.1 - 2026-11-04
+
+### Added
+
+- Added `inputId` prop to `FileUpload` that sets the `id` of its file input.
+
+### Fixed
+
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
+
 ## 1.1.0 - 2026-10-29
 
 ### Added
@@ -23,6 +33,7 @@ Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All pack
 - Inputs inside a `Form` with `initialValues` no longer jump back to the initial value when cleared. ([#686](https://github.com/openvi-foundation/openvue/pull/686))
 - Pressing tab no longer toggles options in MultiSelect. Tabbing past a MultiSelect after mount doesn't toggle the first option anymore either.
 - The `RadioButton` dot no longer sits a pixel off-centre at fractional display scaling such as 125% or 175%. The dot is now drawn at the icon's `font-size` (the `radiobutton.icon.size` tokens) on a layer covering the whole ring. Custom CSS that sizes `.p-radiobutton-icon` with `width` and `height` keeps working for dots up to the token size; to make the dot larger than that, set `font-size` or the tokens instead.
+- Fix MultiSelect label showing null for values missing from options
 - `Tree` lazy loading now works while filtering: `node-expand` and `node-collapse` pass the node from `value` instead of a filtered copy. ([#585](https://github.com/openvi-foundation/openvue/issues/585))
 
 ## 1.0.0 - 2026-09-10
