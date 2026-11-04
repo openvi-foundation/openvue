@@ -120,6 +120,13 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/104310686?v=4",
             "profile": "https://github.com/Pshnychnyi",
             "contributions": ["code", "bug"]
+        },
+        {
+            "login": "ariccadonna-doxee",
+            "name": "Alessandro Riccadonna",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2885522?v=4",
+            "profile": "https://www.doxee.com/",
+            "contributions": ["code"]
         }
     ]
 }
