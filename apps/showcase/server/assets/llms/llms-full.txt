@@ -1,6 +1,6 @@
 # OpenVue Documentation
 
-Generated: 2026-10-08
+Generated: 2026-11-04
 
 ---
 
@@ -32,7 +32,7 @@ Pass Through is an API that provides access to the internal DOM elements of a co
 
 ## Theming
 
-OpenVue can be styled in two modes, styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants such as the Aura, Lara, Material and Nora presets, all driven by design tokens rather than hardcoded CSS. Unstyled mode leaves the styling to you while keeping the functionality and accessibility intact, through a pluggable architecture that works with CSS libraries like Tailwind CSS, Bootstrap and Bulma, or with your own custom CSS. This design is future proof, as OpenVue can be styled with any CSS library without depending on one in its core.
+OpenVue can be styled in two modes, styled or unstyled. Styled mode is based on pre-skinned components with opinionated theme variants such as the Aura, Lara, Material, Nora and Nide presets, all driven by design tokens rather than hardcoded CSS. Unstyled mode leaves the styling to you while keeping the functionality and accessibility intact, through a pluggable architecture that works with CSS libraries like Tailwind CSS, Bootstrap and Bulma, or with your own custom CSS. This design is future proof, as OpenVue can be styled with any CSS library without depending on one in its core.
 
 ---
 
@@ -198,7 +198,7 @@ Choose from a variety of pre-styled themes or develop your own.
 
 ## Architecture
 
-OpenVue is a design agnostic library so unlike some other UI libraries it does not enforce a certain styling such as material design. Styling is decoupled from the components using the themes instead. A theme consists of two parts; base and preset . The base is the style rules with CSS variables as placeholders whereas the preset is a set of design tokens to feed a base by mapping the tokens to CSS variables. A base may be configured with different presets, currently Aura, Material, Lara and Nora are the available built-in options. The core of the styled mode architecture is based on a concept named design token , a preset defines the token configuration in 3 tiers; primitive , semantic and component . Primitive Tokens Primitive tokens have no context, a color palette is a good example for a primitive token such as blue-50 to blue-900 . A token named blue-500 may be used as the primary color, the background of a message however on its own, the name of the token does not indicate context. Usually they are utilized by the semantic tokens. Semantic Tokens Semantic tokens define content and their names indicate where they are utilized, a well known example of a semantic token is the primary.color . Semantic tokens map to primitive tokens or other semantic tokens. The colorScheme token group is a special variable to define tokens based on the color scheme active in the application, this allows defining different tokens based on the color scheme like dark mode. Component Tokens Component tokens are isolated tokens per component such as inputtext.background or button.color that map to the semantic tokens. As an example, button.background component token maps to the primary.color semantic token which maps to the green.500 primitive token. Best Practices Use primitive tokens when defining the core color palette and semantic tokens to specify the common design elements such as focus ring, primary colors and surfaces. Components tokens should only be used when customizing a specific component. By defining your own design tokens as a custom preset, you'll be able to define your own style without touching CSS. Overriding the OpenVue components using style classes is not a best practice and should be the last resort, design tokens are the suggested approach.
+OpenVue is a design agnostic library so unlike some other UI libraries it does not enforce a certain styling such as material design. Styling is decoupled from the components using the themes instead. A theme consists of two parts; base and preset . The base is the style rules with CSS variables as placeholders whereas the preset is a set of design tokens to feed a base by mapping the tokens to CSS variables. A base may be configured with different presets, currently Aura, Material, Lara, Nora and Nide are the available built-in options. The core of the styled mode architecture is based on a concept named design token , a preset defines the token configuration in 3 tiers; primitive , semantic and component . Primitive Tokens Primitive tokens have no context, a color palette is a good example for a primitive token such as blue-50 to blue-900 . A token named blue-500 may be used as the primary color, the background of a message however on its own, the name of the token does not indicate context. Usually they are utilized by the semantic tokens. Semantic Tokens Semantic tokens define content and their names indicate where they are utilized, a well known example of a semantic token is the primary.color . Semantic tokens map to primitive tokens or other semantic tokens. The colorScheme token group is a special variable to define tokens based on the color scheme active in the application, this allows defining different tokens based on the color scheme like dark mode. Component Tokens Component tokens are isolated tokens per component such as inputtext.background or button.color that map to the semantic tokens. As an example, button.background component token maps to the primary.color semantic token which maps to the green.500 primitive token. Best Practices Use primitive tokens when defining the core color palette and semantic tokens to specify the common design elements such as focus ring, primary colors and surfaces. Components tokens should only be used when customizing a specific component. By defining your own design tokens as a custom preset, you'll be able to define your own style without touching CSS. Overriding the OpenVue components using style classes is not a best practice and should be the last resort, design tokens are the suggested approach.
 
 ## C S S Modules
 
@@ -214,7 +214,7 @@ OpenVue uses the system as the default darkModeSelector in theme configuration. 
 
 ## Presets
 
-Aura, Material, Lara and Nora are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap and Nora is inspired by enterprise applications. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch.
+Aura, Material, Lara, Nora and Nide are the available built-in options, created to demonstrate the power of the design-agnostic theming. Aura is a standalone design language, Material follows Google Material Design v2, Lara is based on Bootstrap, Nora is inspired by enterprise applications and Nide is a neutral, minimal design language. Visit the source code to learn more about the structure of presets. You may use them out of the box with modifications or utilize them as reference in case you need to build your own presets from scratch. To start from a built-in preset without writing tokens by hand, the Theme Builder previews all five with your own colours, radius and font, and exports the result as a small definePreset file.
 
 ## Reserved Keys
 
@@ -236,7 +236,7 @@ Design tokens can be scoped to a certain component using the dt property. In thi
 
 ## Theme Packages
 
-Presets and the theming API are distributed in two interchangeable packages. @openvue/themes is the OpenVue branded distribution and the one used throughout this documentation. @openuxkit/themes is the underlying engine package that @openvue/themes is built on, published by the OpenUXKit project. The two expose the same presets (Aura, Lara, Material and Nora) and the same utility API ( definePreset , usePreset , updatePreset , updatePrimaryPalette , updateSurfacePalette , palette , $dt and $t ), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary. Installation Install whichever package you prefer alongside OpenVue. Usage Only the module specifier differs, the imported values are identical. Which one to choose Use @openvue/themes if you want your dependencies to track OpenVue releases, it is versioned and released together with the component library. Use @openuxkit/themes if you are already consuming other @openuxkit/* engine packages directly, or if you want to pick up engine level theming updates without waiting for an OpenVue release.
+Presets and the theming API are distributed in two interchangeable packages. @openvue/themes is the OpenVue branded distribution and the one used throughout this documentation. @openuxkit/themes is the underlying engine package that @openvue/themes is built on, published by the OpenUXKit project. The two expose the same presets (Aura, Lara, Material, Nora and Nide) and the same utility API ( definePreset , usePreset , updatePreset , updatePrimaryPalette , updateSurfacePalette , palette , $dt and $t ), so every example on this page works with either import path. Pick one and use it consistently, installing both is unnecessary. Installation Install whichever package you prefer alongside OpenVue. Usage Only the module specifier differs, the imported values are identical. Which one to choose Use @openvue/themes if you want your dependencies to track OpenVue releases, it is versioned and released together with the component library. Use @openuxkit/themes if you are already consuming other @openuxkit/* engine packages directly, or if you want to pick up engine level theming updates without waiting for an OpenVue release.
 
 ## Options
 
@@ -778,9 +778,9 @@ app.use(OpenVue, {
 
 Unstyled mode is enabled for the whole suite by enabling unstyled option during OpenVue installation. Alternatively even in the default styled mode, a particular component can still be used as unstyled by adding the unstyled prop of the component.
 
-## Volt
+## OpenVolt
 
-Tailwind CSS is perfect fit for the unstyled mode, PrimeTek has initiated a new UI library called Volt based on the unstyled OpenVue and Tailwind CSS v4. Volt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within Volt are essentially wrapped versions of the unstyled OpenVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
+Tailwind CSS is perfect fit for the unstyled mode, OpenVue offers a companion UI library called OpenVolt , the community continuation of PrimeTek's Volt, based on the unstyled OpenVue and Tailwind CSS v4. OpenVolt follows the code ownership model where the components are located in the application codebase rather than node_modules. All components within OpenVolt are essentially wrapped versions of the unstyled OpenVue equivalents, with an added layer of theming through Tailwind CSS v4. This approach, along with the templating features, offers complete control over the theming and presentation.
 
 ---
 
@@ -908,89 +908,6 @@ Section names prefixed with pc denote OpenVue components, distinguishing them fr
 ## UsePassThrough
 
 An existing pass through configuration is customized with the usePassThrough utility. The first parameter is the object to customize, the second parameter is the customizations and the final parameter is the merge strategy. The mergeSections defines whether the sections from the main configuration gets added and the mergeProps controls whether to override or merge the defined props. Defaults are true for mergeSections and false for mergeProps .
-
----
-
-# Icons
-
-OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.
-
-## Migration from PrimeIcons
-
-The class prefix changed from pi to oi in this release. Existing markup keeps working through a compatibility stylesheet that aliases every .pi-* class onto the OpenIcons font, so migrating from the primeicons package is a one line dependency swap and nothing in your templates has to change. That entry point loads openicons-compat.css , which is also importable directly. To move to the new prefix, import @openvue/openicons/openicons.css instead and rename pi pi-check to oi oi-check throughout. Both stylesheets can be loaded at once during a gradual migration. One icon was removed rather than renamed: pi-prime was the PrimeTek logo mark, which the MIT license does not cover. OpenIcons is stewarded by the OpenVi Foundation and is not affiliated with PrimeTek or PrimeUI.
-
-## Vue Components
-
-The webfont loads all 323 glyphs to show one, cannot be multicolored, and places icons in the text layer where screen readers meet them. For Vue 3 applications, @openvue/openicons-vue ships each icon as a tree-shakeable SVG component instead, so importing two icons costs under 1KB. Components default to 1em and currentColor , so they follow the surrounding text exactly as the font does. They are aria-hidden unless given a title , which promotes them to role="img" with an accessible name.
-
-```vue
-<script setup>
-import OiCheck from '@openvue/openicons-vue/icons/OiCheck';
-<\/script>
-
-<template>
-    <OiCheck />
-    <OiCheck :size="32" title="Saved" />
-<\/template>
-```
-
-## Constants
-
-Constants API is available to reference icons easily when used programmatically. The exported values still resolve to the legacy pi-&#123;icon&#125; class names, which the compatibility stylesheet maps onto the OpenIcons font.
-
-```vue
-<template>
-    <div class="card flex justify-center">
-        <Menu :model="items" />
-    </div>
-</template>
-
-<script>
-import { PrimeIcons } from '@openvue/core/api';
-
-export default {
-    data() {
-        return {
-            items: [
-                {
-                    label: 'File',
-                    items: [
-                        { label: 'New', icon: PrimeIcons.PLUS },
-                        { label: 'Open', icon: PrimeIcons.DOWNLOAD }
-                    ]
-                }
-            ]
-        };
-    }
-};
-<\/script>
-```
-
-## Download
-
-OpenIcons is available at npm, run the following command to download it to your project.
-
-```vue
-npm install @openvue/openicons
-```
-
-## Import
-
-CSS file of the icon library needs to be imported at the entry point of your application. This stylesheet defines the oi prefix only. If your application still uses pi class names, from markup written against PrimeIcons or from the constants API , import the compatibility stylesheet instead.
-
-## List
-
-Here is the full list of OpenIcons. More icons will be added periodically and you may also request new icons at the issue tracker.
-
-## Webfont
-
-Once the stylesheet is imported, reference an icon by class on an element such as i or span . Icons inherit font-size and color from their parent, so they scale with the surrounding text. The oi-fw class gives an icon a fixed width, which is useful for aligning lists of menu items.
-
-```vue
-<i class="oi oi-check"></i>
-<i class="oi oi-spin oi-spinner"></i>
-<i class="oi oi-search" style="font-size: 1.5rem; color: var(--p-primary-color)"></i>
-```
 
 ---
 
@@ -1427,7 +1344,7 @@ https://unpkg.com/@openvue/themes/umd/aura.min.js
 
 ## Theming
 
-Include the theme preset via a script element, valid options are Aura, Lara, Nora and Material. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global. The presets are also served from @openuxkit/themes , the engine package that @openvue/themes is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register on an OpenUXKit global rather than OpenVue , so reference them as OpenUXKit.Themes.Aura when configuring the theme.
+Include the theme preset via a script element, valid options are Aura, Lara, Nora, Material and Nide. The theme script must be placed after the OpenVue script, otherwise the preset is not registered on the OpenVue global. The presets are also served from @openuxkit/themes , the engine package that @openvue/themes is built on. Unlike the module builds these are not drop in replacements over CDN: the files are unminified and the presets register on an OpenUXKit global rather than OpenVue , so reference them as OpenUXKit.Themes.Aura when configuring the theme.
 
 ```vue
 <!-- <script src="https://unpkg.com/@openvue/themes/umd/{preset}.min.js"><\/script> -->
@@ -1436,6 +1353,7 @@ Include the theme preset via a script element, valid options are Aura, Lara, Nor
 <script src="https://unpkg.com/@openvue/themes/umd/lara.min.js"><\/script>
 <script src="https://unpkg.com/@openvue/themes/umd/nora.min.js"><\/script>
 <script src="https://unpkg.com/@openvue/themes/umd/material.min.js"><\/script>
+<script src="https://unpkg.com/@openvue/themes/umd/nide.min.js"><\/script>
 ```
 
 ---
@@ -1848,7 +1766,7 @@ OpenVue adds design tokens as it evolves. A theme created against an earlier rel
 
 ## Overview
 
-The Theme Designer is a visual editor for the OpenVue theming API. Pick a built-in preset as a foundation, edit primitive, semantic and per-component design tokens, watch the entire documentation site restyle as you type, then export the result as a preset file you can drop into your application. It is part of OpenVue and licensed MIT, like the rest of the library. There is no account, no license key, no theme limit and no paid tier. Open it from the icon in the top bar on any page. The designer edits a preset , the same object you would otherwise hand-write and pass to definePreset . Nothing it produces is designer-specific: an exported theme is ordinary source code with no runtime dependency on this tool.
+The Theme Designer is a visual editor for the OpenVue theming API. Pick a built-in preset as a foundation, edit primitive, semantic and per-component design tokens, watch the entire documentation site restyle as you type, then export the result as a preset file you can drop into your application. It is part of OpenVue and licensed MIT, like the rest of the library. There is no account, no license key, no theme limit and no paid tier. Open it from the icon in the top bar on any page. The designer edits a preset , the same object you would otherwise hand-write and pass to definePreset . Nothing it produces is designer-specific: an exported theme is ordinary source code with no runtime dependency on this tool. For a quicker start, the Theme Builder offers a handful of curated styles and a few high-level knobs (base preset, colours, radius, font, component defaults) with a full-page live preview. Its Refine in the Theme Designer action opens the result here, so you can begin with a recipe and finish at the token level.
 
 ## Privacy and Storage
 
@@ -1885,15 +1803,15 @@ Tailwind utilities may not be able to override the default styling of components
 
 ## Overview
 
-Tailwind CSS is a popular CSS framework based on a utility-first design. The core provides flexible CSS classes with predefined CSS rules to build your own UI elements. For example, instead of an opinionated btn class as in Bootstrap, Tailwind offers primitive classes like bg-blue-500 , rounded and p-4 to apply a button. Tailwind is an outstanding CSS library, however it lacks a true comprehensive UI suite when combined with Vue.js, this is where OpenVue comes in by providing a wide range of highly accessible and feature rich UI component library. The core of OpenVue does not depend on Tailwind CSS, instead we provide the necessary integration points such as the primeui tailwind plugin or a spin-off UI library called Volt based on unstyled OpenVue. Tailwind CSS and OpenVue can be used together via two main approaches to choose from. First approach is using Tailwind CSS around the styled OpenVue components as demonstrated in the samples section below. The second alternative approach takes the integration a step further by replacing the default design token based styled mode with the unstyled mode and utilizing Tailwind CSS within the component internals via pass-through feature. A spin-off library from the PrimeTek UI ecosystem has been created based on this advanced integration called VOLT .
+Tailwind CSS is a popular CSS framework based on a utility-first design. The core provides flexible CSS classes with predefined CSS rules to build your own UI elements. For example, instead of an opinionated btn class as in Bootstrap, Tailwind offers primitive classes like bg-blue-500 , rounded and p-4 to apply a button. Tailwind is an outstanding CSS library, however it lacks a true comprehensive UI suite when combined with Vue.js, this is where OpenVue comes in by providing a wide range of highly accessible and feature rich UI component library. The core of OpenVue does not depend on Tailwind CSS, instead we provide the necessary integration points such as the primeui tailwind plugin or a spin-off UI library called OpenVolt based on unstyled OpenVue. Tailwind CSS and OpenVue can be used together via two main approaches to choose from. First approach is using Tailwind CSS around the styled OpenVue components as demonstrated in the samples section below. The second alternative approach takes the integration a step further by replacing the default design token based styled mode with the unstyled mode and utilizing Tailwind CSS within the component internals via pass-through feature. A companion library called OpenVolt is built on this advanced integration.
 
 ## Plugin
 
 The tailwindcss-primeui is an official plugin by PrimeTek to provide first class integration between a Prime UI library like OpenVue and Tailwind CSS. It is designed to work both in styled and unstyled modes. In styled mode, for instance the semantic colors such as primary and surfaces are provided as Tailwind utilities e.g. bg-primary , text-surface-500 , text-muted-color . If you haven't already done so, start by integrating Tailwind into your project. Detailed steps for this process can be found in the Tailwind documentation . After successfully installing Tailwind, proceed with the installation of the PrimeUI plugin. This single npm package comes with two libraries: the CSS version is compatible with Tailwind v4, while the JS version is designed for Tailwind v3. Tailwind v4 In the CSS file that contains the tailwindcss import, add the tailwindcss-primeui import as well. Tailwind v3 Use the plugins option in your Tailwind config file to configure the plugin.
 
-## Volt UI
+## OpenVolt
 
-Volt is ideal for developers who prefer customizing component styles using Tailwind CSS rather than the default design token-based styling. If you do not have this use case and prefer the default styled mode for OpenVue, while using Tailwind CSS only for other requirements such as layout, you can proceed to the next section. Volt is an open source UI component library implemented with the Unstyled OpenVue components and Tailwind CSS. Volt follows the Code Ownership model where the components live in your application code base as your own UI library rather than imported from node_modules as a 3rd party. Main benefit of this approach is full control over styling and ease of customization. Internally a Volt component wraps its OpenVue counterpart, removes the default design token based theming and applies Tailwind utility classes via the pass through attributes feature. Volt components are designed to be customized with Tailwind CSS and do not require separate updates. They serve as wrappers around OpenVue components, so maintenance is handled simply by updating the OpenVue version.
+OpenVolt is ideal for developers who prefer customizing component styles using Tailwind CSS rather than the default design token-based styling. If you do not have this use case and prefer the default styled mode for OpenVue, while using Tailwind CSS only for other requirements such as layout, you can proceed to the next section. OpenVolt is an open source UI component library implemented with the Unstyled OpenVue components and Tailwind CSS. OpenVolt follows the Code Ownership model where the components live in your application code base as your own UI library rather than imported from node_modules as a 3rd party. Main benefit of this approach is full control over styling and ease of customization. Internally an OpenVolt component wraps its OpenVue counterpart, removes the default design token based theming and applies Tailwind utility classes via the pass through attributes feature. OpenVolt components are designed to be customized with Tailwind CSS and do not require separate updates. They serve as wrappers around OpenVue components, so maintenance is handled simply by updating the OpenVue version.
 
 ## Color Palette
 
@@ -2035,6 +1953,199 @@ The project offers an organization structure involving contributors and the core
 
 ---
 
+# Changelog
+
+Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All packages ship together under one version.
+
+## Unreleased
+
+## 1.1.1 - 2026-11-04
+
+### Added
+
+- Added `inputId` prop to `FileUpload` that sets the `id` of its file input.
+
+### Fixed
+
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
+
+## 1.1.0 - 2026-10-29
+
+### Added
+
+- New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
+- Showcase: the Theme Builder at `/theme`, a quicker way into theming than the Designer. Pick one of a dozen curated styles that span all five base presets, or set the base, primary and surface colours (including any hex colour, expanded to a full palette), font and root size, corner radius, density, input variant, focus ring, motion, ripple, shadows, backdrop and disabled opacity yourself, previewed in light and dark mode. The whole page is the preview: a grid of components and the landing page's sample applications restyle as you change settings, and the theme you choose then dresses the whole documentation site. The curated styles are also one click away in the top bar's colour configurator, and a compact version of the builder in the home page hero changes the base, colour, font and corners in place. The export is three small files (the preset as a diff against its base, `main.js` or `nuxt.config.ts`, and a stylesheet for typography), with copy, download, a share link whose URL is the complete theme, and _Copy for AI agent_, a short prompt with the theme files and the one setup change, for a coding agent adding the theme to an existing project. _Refine in the Theme Designer_ hands the result to the Theme Designer for token-level edits. Everything runs in the browser; the only requests that leave the page are for fonts, from Google Fonts.
+- Nide, a fifth theme preset: a neutral palette with a near-black primary (near-white in dark mode), hairline borders, soft 3px focus rings, segmented Tabs and SelectButton, card-style toasts and bordered messages. Controls are compact (14px text in 36px buttons and fields at the default 16px root), so Nide renders smaller than the other presets; checkboxes and radio buttons are 18px, and 16px in the small size. Use it like any other preset with `import Nide from '@openvue/themes/nide'`, or as a foundation in the Theme Designer. It is layered on Aura's tokens and comes from `@openuxkit/themes` 1.2.0, so both `@openvue/themes` and `@openuxkit/themes` include it (`umd/nide.min.js` for CDN use).
+
+### Fixed
+
+- Fix populating time in DatePicker when using 24-hour format
+- `DatePicker` previous and next buttons now tell screen reader users where they navigate to, e.g. "Next Month, November 2026" instead of just "Next Month". The labels reuse existing locale keys, so translations need no changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
+- `DatePicker` time picker now announces the new time to screen readers when the hour, minute, second or AM/PM changes. ([#679](https://github.com/openvi-foundation/openvue/pull/679))
+- `InputChips` no longer types the separator into the input when a duplicate chip is rejected. ([#602](https://github.com/openvi-foundation/openvue/issues/602))
+- `InputNumber` no longer changes the number you type after an initial `0`. With a suffix such as `" kg"` the second digit cleared the field, and in currency fields typing `1250` into `$0.00` gave `$1.25`. Contributed by [@AntekOlszewski](https://github.com/AntekOlszewski). ([#665](https://github.com/openvi-foundation/openvue/pull/665))
+- Fix InputMask update:modelValue emitting stale value upon clearing when unmask is set to true.
+- Inputs inside a `Form` with `initialValues` no longer jump back to the initial value when cleared. ([#686](https://github.com/openvi-foundation/openvue/pull/686))
+- Pressing tab no longer toggles options in MultiSelect. Tabbing past a MultiSelect after mount doesn't toggle the first option anymore either.
+- The `RadioButton` dot no longer sits a pixel off-centre at fractional display scaling such as 125% or 175%. The dot is now drawn at the icon's `font-size` (the `radiobutton.icon.size` tokens) on a layer covering the whole ring. Custom CSS that sizes `.p-radiobutton-icon` with `width` and `height` keeps working for dots up to the token size; to make the dot larger than that, set `font-size` or the tokens instead.
+- Fix MultiSelect label showing null for values missing from options
+- `Tree` lazy loading now works while filtering: `node-expand` and `node-collapse` pass the node from `value` instead of a filtered copy. ([#585](https://github.com/openvi-foundation/openvue/issues/585))
+
+## 1.0.0 - 2026-09-10
+
+The first stable release. The public API is what OpenVue commits to for the 1.x line, and the packages now publish under the `latest` dist-tag, so a plain `npm install openvue` gives you 1.0.0 instead of a prerelease. From here the project follows semantic versioning: additions go in minor releases, fixes in patch releases, and anything that breaks your code waits for 2.0.
+
+### Added
+
+- `TreeTable` gains the filtering modes `DataTable` already had. A new `filterDisplay` prop turns on either a filter row under the header (`"row"`) or a filter menu with advanced multi-constraint rules (`"menu"`), and `globalFilterFields`, `filterInputProps` and `filterButtonProps` come with it. The filter styles and their design tokens ship in every preset, so Aura, Lara, Material and Nora all style the new filter UI. ([#638](https://github.com/openvi-foundation/openvue/issues/638))
+- The Theme Designer, a visual editor for the theming API, is now part of the showcase. Pick a preset as a foundation, edit primitive, semantic and per-component tokens, watch the documentation site restyle as you type, then export the result as an ordinary preset file. It is MIT licensed like the rest of OpenVue, with no account, no license key, no theme limit and no paid tier. It makes no network requests: themes are kept in your browser's local storage and every export, share link and migration is computed on your machine. Open it from the sliders icon in the top bar. ([#655](https://github.com/openvi-foundation/openvue/pull/655))
+- Showcase: a components gallery, reachable from the landing page and the footer, with a live preview on every card.
+- Showcase: an application template, Deni.
+- The contributors who have helped build OpenVue are now credited in the README and kept up to date automatically.
+
+### Changed
+
+- `@openvue/migrate` no longer adds an automatic `primevue` -> `openvue` dependency override. It is not needed for a normal migration; add one yourself if a leftover package still requires `primevue`. ([#639](https://github.com/openvi-foundation/openvue/issues/639))
+- The `@openuxkit/styles` and `@openuxkit/themes` engine packages are upgraded to 1.1.0, which is where the TreeTable filter styles and the two `Toast` and `Image` fixes below come from.
+- Showcase: a reworked navigation bar and landing hero, the full footer on every page, and fuller SEO metadata across the site.
+- Volt: `AccordionHeader` imported its two chevron icons under each other's names, which cancelled out against a matching swap in the template. Both are corrected, so the code now says what it does. Rendering is unchanged. Contributed by [@wahpiangle](https://github.com/wahpiangle). ([#650](https://github.com/openvi-foundation/openvue/pull/650))
+
+### Fixed
+
+- `DataTable` keeps a resized column width attached to its own column when columns are hidden or shown. Widths were stored positionally, so hiding a column shifted every width after it onto the wrong column. Widths are now tracked per column, remapped as the visible set changes, and persisted that way, so a reload no longer pairs a stored width with the wrong column. A column is tracked when it has a `columnKey` or a `field` that is unique among the visible columns; grouped headers and columns that share a field keep the previous positional behaviour, and state written by earlier versions is still restored. Contributed by [@pupuking723](https://github.com/pupuking723). ([#627](https://github.com/openvi-foundation/openvue/pull/627))
+- `TreeTable` no longer sorts a column when you click that column's filter menu button. The button sits inside the sortable header, so opening a filter menu also reordered the rows underneath it.
+- `ContextMenu`, `MegaMenu`, `Menubar` and `TieredMenu` no longer set `aria-level` on their items. The attribute is not valid on the `menuitem` role and made screen readers announce a nesting depth that is not part of the menu pattern. ([#645](https://github.com/openvi-foundation/openvue/pull/645))
+- `Toast` no longer nudges the messages under it in the last frame of a dismissal. A leaving message collapsed its height and margin but held on to its border width, so the rest of the stack shifted by a couple of pixels as it vanished, and the animation did not keep its final frame. The border now collapses with everything else and the animation holds where it ends.
+- `Toast` and `Image` apply their backdrop blur in Safari and other WebKit browsers, which still need the `-webkit-backdrop-filter` prefix. The surface behind a toast and the toolbar over an image preview were rendering unblurred there.
+- Showcase: dates in the landing page tables render identically in every timezone, instead of shifting by a day depending on where you are.
+- Showcase: the homepage stays indexable when the client render fails, so a transient error no longer costs the page its search listing.
+- Showcase: the error page and several landing sections no longer overflow horizontally on narrow viewports.
+
+## 1.0.0-rc.0 - 2026-08-18
+
+The first release candidate. The version moves from `0.7.0-beta.0` to `1.0.0-rc.0`: the public API is what we intend to ship as 1.0, and from here we only take bug fixes and documentation until the stable release. Packages are published under the `rc` dist-tag. Report anything that looks like a regression, that is exactly what a release candidate is for.
+
+### Added
+
+- `VirtualScroller` gains a `getItemSize` prop, a callback that returns an item's height by index, so a list whose rows are not all the same height can still be virtualized. ([#621](https://github.com/openvi-foundation/openvue/pull/621))
+- Showcase: a Playground tab on the form components, the button components, and the panel components (Accordion, Card, DeferredContent, Divider, Fieldset, Panel, ScrollPanel, Splitter, Stepper, Tabs and Toolbar). Each one generates the code for whatever you set up in it, as a complete single file component in both the Composition and Options API. ([#622](https://github.com/openvi-foundation/openvue/pull/622), [#623](https://github.com/openvi-foundation/openvue/pull/623), [#624](https://github.com/openvi-foundation/openvue/pull/624))
+- Showcase: a guide for migrating charts from PrimeVue.
+
+### Changed
+
+- The `@openuxkit/*` engine packages are upgraded to 1.0.0.
+- Showcase: the icons page is built on `@openvue/openicons` and restructured around the two OpenIcons formats. ([#37](https://github.com/openvi-foundation/openvue/pull/37))
+- Showcase: the introduction and contribution pages are rewritten, and Components now sits above Configuration in the sidebar.
+
+### Fixed
+
+- `DataTable` supports subheader row grouping together with virtual scrolling. Group headers and footers are measured rather than assumed to be the same height as a row, so grouped rows no longer drift out of position while scrolling. Contributed by [@Tamas-hi](https://github.com/Tamas-hi). ([#621](https://github.com/openvi-foundation/openvue/pull/621))
+- `BlockUI` always removes its mask when unblocked. Blocking and unblocking in quick succession, or unmounting the component while the leave animation was still running, could leave a mask covering the page and swallowing every click. The mask is now also cleaned up when the component unmounts. ([#626](https://github.com/openvi-foundation/openvue/pull/626))
+- Showcase: the `Toast` documentation covers removing a single message by its id, and the Multiple demo no longer calls a method that does not exist. ([#628](https://github.com/openvi-foundation/openvue/pull/628), [#629](https://github.com/openvi-foundation/openvue/pull/629))
+- `DataTable`'s advanced filter menu stays open while you use an overlay inside it, such as the match mode `Select`, a `MultiSelect` or a `DatePicker`. The menu recognises a nested overlay through its attribute selector, so being appended to the body no longer makes it look like an outside click. `Select` additionally announces the interaction on mousedown, since it commits an option and hides its overlay before the browser dispatches the click, which also fixes a `Select` nested in a `Popover`. ([#630](https://github.com/openvi-foundation/openvue/issues/630))
+
+## 0.7.0-beta.0 - 2026-08-03
+
+The version jumps from `0.0.1-beta.1` to `0.7.0-beta.0` to reflect the project's actual maturity. Nothing was released between the two. Packages remain pre-1.0 and continue to be published under the `beta` dist-tag.
+
+### Added
+
+- `Chart` now follows the active theme, reading colors, fonts, grid and border values from the design tokens instead of relying on Chart.js defaults, and restyling itself when the preset changes or dark mode is toggled. Controlled by a new `themed` prop, enabled by default.
+- `Chart` ships TypeScript definitions.
+- `Password` gains `showPasswordLabel` and `hidePasswordLabel` props for labelling the mask toggle.
+- `chart.js` and `quill` are declared as optional `peerDependencies`, so package managers surface the expected version instead of leaving it undocumented.
+- `Chart` logs an actionable error when `chart.js` is not installed, rather than failing silently.
+- Showcase: a chart playground covering every chart type, a reworked landing hero, topbar and footer, and an About page.
+- `SECURITY.md` describing how to report a vulnerability.
+- `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1).
+- This changelog, backfilled with the release history from alpha.1 onward.
+
+### Changed
+
+- Documentation links in TypeScript definitions now point to openvue.dev instead of primevue.org, so editor tooltips reference the maintained docs.
+- `Chart` requires Chart.js 4.5 or newer.
+- Charts pick up a default look derived from the theme. Existing charts that relied on Chart.js default styling will look different; pass `:themed="false"` to opt out.
+
+### Removed
+
+- **Breaking:** `Chart`'s `generateLegend()` method. It called a Chart.js 2 API that has not existed since Chart.js 3, so it threw whenever it was called. Use the `plugins` option to customise legends.
+
+### Fixed
+
+- `Chart`'s `getCanvas()` returned `undefined` because it read a property that was never assigned.
+- `Chart` no longer builds an instance against a detached canvas when the component unmounts before the async `chart.js` import resolves.
+- `Chart` now reflects replaced `data` and `options` objects, which previously did not reach the underlying instance.
+- The `Password` mask toggle fired twice when a custom slot was used.
+- The show/hide and clear buttons on `Password` are now keyboard accessible.
+
+## 0.0.1-beta.1 - 2026-07-27
+
+### Changed
+
+- Replaced the `@primeuix/*` engine dependencies with the forked `@openuxkit/*` packages (`styled`, `utils`, `styles`, `themes`, `forms`, `mcp`), completing the move off upstream packages. Theme presets and the public theming API continue to come from `@openvue/themes`; `@openuxkit/themes` supplies `/tokens` and `/types`.
+- `@openvue/migrate` now rewrites `@primeuix/*` imports to `@openuxkit/*` as part of a migration.
+- Showcase theming documentation updated for the OpenUXKit packages.
+
+## 0.0.1-beta.0 - 2026-07-23
+
+### Changed
+
+- Promoted the packages from alpha to beta. The component API is considered stable from this point; remaining work is polish toward a stable release.
+- Refined the `@openvue/migrate` CLI output and styling.
+
+### Fixed
+
+- Typo on the showcase About page.
+
+## 0.0.1-alpha.5 - 2026-07-23
+
+### Added
+
+- End-to-end consumer test suite covering real Vite, Nuxt, Laravel (Vite and Inertia), and Volt projects, exercised in CI on every pull request. Packages are packed as tarballs and installed the way a consumer would install them.
+- `scripts/verify-package-contracts.mjs` and `scripts/verify-dist.mjs`, which fail the build if a published artifact still references `primevue`.
+
+### Changed
+
+- `@openvue/migrate` is now interactive: it prints a plan covering the detected package manager, the PrimeVue version, and every file it will touch, then asks for confirmation before writing.
+
+## 0.0.1-alpha.4 - 2026-07-20
+
+### Added
+
+- UMD build and CDN support, so OpenVue can be used from a `<script>` tag without a bundler.
+- CDN setup documentation on the showcase.
+
+## 0.0.1-alpha.3 - 2026-07-20
+
+### Fixed
+
+- `@openvue/auto-import-resolver` resolved components to `primevue/...` paths instead of `openvue/...`.
+- The `openvue` root barrel (`index.mjs` / `index.d.ts`) still self-referenced `primevue/...`, which broke Vite resolution and produced `Module '"openvue"' has no exported member 'useToast'` under `tsc`.
+- The `@openvue/icons` barrel generator still emitted `@primevue/icons/...` templates, regenerating a broken barrel on every build.
+
+## 0.0.1-alpha.2 - 2026-07-17
+
+### Added
+
+- Announcement page on openvue.dev covering the fork, the roadmap, and install instructions.
+
+## 0.0.1-alpha.1 - 2026-07-17
+
+First OpenVue release, forked from PrimeVue 4.5.5.
+
+### Added
+
+- `@openvue/migrate`, a CLI that moves a PrimeVue v4 project to OpenVue in one command. It renames dependencies, rewrites imports across JavaScript, TypeScript, Vue, Astro, and MDX, adds a compatibility override so third-party packages that still depend on PrimeVue keep resolving, and reports anything needing manual attention. Supports npm, pnpm, Yarn, Bun, and monorepos, with `--dry`, sources-only, no-install, no-alias, and force modes. Refuses to run against a dirty Git tree unless forced.
+- Contributing guide and OpenVue issue templates.
+
+### Changed
+
+- Renamed the published packages: `primevue` is now `openvue`, and `@primevue/*` is now `@openvue/*`.
+- Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
+- License copyright updated for the fork. The project remains MIT.
+
+---
+
 # Setup
 
 Installation guides for popular development environments.
@@ -2078,7 +2189,7 @@ Create .cursor/mcp.json in your project or ~/.cursor/mcp.json for global configu
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -2128,7 +2239,7 @@ Create .vscode/mcp.json in your project or ~/Library/Application Support/Code/Us
 ```vue
 {
     "servers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -2143,7 +2254,7 @@ Edit ~/.codeium/windsurf/mcp_config.json to add the OpenVue MCP server.
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -2157,14 +2268,15 @@ Add to your Zed settings at ~/.config/zed/settings.json (Linux) or ~/Library/App
 
 ```vue
 {
-    "context_servers": {
-        "primevue": {
-            "command": {
-                "path": "npx",
-                "args": ["-y", "@openvue/mcp"]
-            }
-        }
+  "context_servers": {
+    "openvue": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openvue/mcp"
+      ]
     }
+  }
 }
 ```
 
@@ -2426,7 +2538,7 @@ The most notable feature is the new styled mode implementation. Previous iterati
 
 ## Breaking
 
-SASS Themes The styled mode theming has been reimplemented from scratch based on an all-new architecture. The theme.css and the primevue/resources do not exist anymore, so any imports of these assets needs to be removed. If you had a custom theme for v3, the theme needs to be recreated using the new APIs. See the customization section at styled mode for details. Removed Components TriStateCheckbox | Use Checkbox with indeterminate option. DataViewLayoutOptions | Use SelectButton instead. Removed APIs switchTheme function, use the new APIs like usePreset instead to dynamic theme switching. Relocated APIs Imports from primevue/api have been relocated to @primevue/core/api . Removed Files Themes under the primevue/resources path, migration to new styled mode is necessary. The legacy Tailwind preset at primevue/passthrough/tailwind , migrate to the Volt project if you'd like to style OpenVue with Tailwind CSS. Message and InlineMessage InlineMessage is deprecated due to overlap with the Message . The spacing, closable and life properties of the Message have breaking changes to provide InlineMessage functionality. Default margin is removed, closable is false by default and messages do not disappear automatically. PT Section Names The experimental PassThrough feature is not production ready, there are changes on the PT section names due to alignment with CSS classes for certain components. If when component element is another OpenVue component pc prefix is added for indication. Review the Pass Through section of a component for the new API. The Tailwind CSS presets for the unstyled mode are not updated to v4 yet. Removed Features Sidebar/Drawer size property is removed, use a responsive class utilty as replacement, demos have new examples. Rating cancel prop is removed as toggling the selected star value clears it. Inplace closable is removed in favor of templating and closeCallback prop. Removed Style Classes .p-link , use a button in link mode. .p-highlight , each component have its own class such as .p-select-option-selected . .p-fluid , use the new built-in fluid property of the supported components or the Fluid component. Nuxt Module The nuxt-primevue module has been replaced with the new @primevue/nuxt-module . The old module is still maintained for v3 users. PrimeFlex CSS In case you are using PrimeFlex CSS library, upgrade to PrimeFlex v4 since PrimeFlex v3 is not compatible with OpenVue v4+.
+SASS Themes The styled mode theming has been reimplemented from scratch based on an all-new architecture. The theme.css and the primevue/resources do not exist anymore, so any imports of these assets needs to be removed. If you had a custom theme for v3, the theme needs to be recreated using the new APIs. See the customization section at styled mode for details. Removed Components TriStateCheckbox | Use Checkbox with indeterminate option. DataViewLayoutOptions | Use SelectButton instead. Removed APIs switchTheme function, use the new APIs like usePreset instead to dynamic theme switching. Relocated APIs Imports from primevue/api have been relocated to @primevue/core/api . Removed Files Themes under the primevue/resources path, migration to new styled mode is necessary. The legacy Tailwind preset at primevue/passthrough/tailwind , migrate to the OpenVolt project if you'd like to style OpenVue with Tailwind CSS. Message and InlineMessage InlineMessage is deprecated due to overlap with the Message . The spacing, closable and life properties of the Message have breaking changes to provide InlineMessage functionality. Default margin is removed, closable is false by default and messages do not disappear automatically. PT Section Names The experimental PassThrough feature is not production ready, there are changes on the PT section names due to alignment with CSS classes for certain components. If when component element is another OpenVue component pc prefix is added for indication. Review the Pass Through section of a component for the new API. The Tailwind CSS presets for the unstyled mode are not updated to v4 yet. Removed Features Sidebar/Drawer size property is removed, use a responsive class utilty as replacement, demos have new examples. Rating cancel prop is removed as toggling the selected star value clears it. Inplace closable is removed in favor of templating and closeCallback prop. Removed Style Classes .p-link , use a button in link mode. .p-highlight , each component have its own class such as .p-select-option-selected . .p-fluid , use the new built-in fluid property of the supported components or the Fluid component. Nuxt Module The nuxt-primevue module has been replaced with the new @primevue/nuxt-module . The old module is still maintained for v3 users. PrimeFlex CSS In case you are using PrimeFlex CSS library, upgrade to PrimeFlex v4 since PrimeFlex v3 is not compatible with OpenVue v4+.
 
 ## Compatible
 
@@ -13756,7 +13868,7 @@ DatePicker is a form component for date inputs.
 
 ## Accessibility
 
-Screen Reader Value to describe the component can either be provided via label tag combined with inputId prop or using aria-labelledby , aria-label props. The input element has combobox role in addition to aria-autocomplete as "none", aria-haspopup as "dialog" and aria-expanded attributes. The relation between the input and the popup is created with aria-controls attribute that refers to the id of the popup. The optional datepicker button requires includes aria-haspopup , aria-expanded for states along with aria-controls to define the relation between the popup and the button. The value to read is retrieved from the chooseDate key of the aria property from the locale API. This label is also used for the aria-label of the popup as well. When there is a value selected, it is formatted and appended to the label to be able to notify users about the current value. Popup has a dialog role along with aria-modal and aria-label . The navigation buttons at the header has an aria-label retrieved from the prevYear , nextYear , prevMonth , nextMonth , prevDecade and nextDecade keys of the locale aria API. Similarly month picker button uses the chooseMonth and year picker button uses the chooseYear keys. Main date table uses grid role that contains th elements with col as the scope along with abbr tag resolving to the full name of the month. Each date cell has an aria-label referring to the full date value. Buttons at the footer utilize their readable labels as aria-label as well. Selected date also receives the aria-selected attribute. Timepicker spinner buttons get their labels for aria-label from the aria locale API using the prevHour , nextHour , prevMinute , nextMinute , prevSecond , nextSecond , am and pm keys. DatePicker also includes a hidden section that is only available to screen readers with aria-live as "polite". This element is updated when the selected date changes to instruct the user about the current date selected. Choose Date Button Keyboard Support Key Function space Opens popup and moves focus to the selected date, if there is none focuses on today. enter Opens popup and moves focus to the selected date, if there is none focuses on today. Popup Keyboard Support Key Function escape Closes the popup and moves focus to the input element. tab Moves focus to the next focusable element within the popup. shift + tab Moves focus to the next focusable element within the popup. Header Buttons Keyboard Support Key Function enter Triggers the button action. space Triggers the button action. Date Grid Keyboard Support Key Function enter Selects the date, closes the popup and moves focus to the input element. space Closes the popup and moves focus to the input element. up arrow Moves focus to the same day of the previous week. alt + up arrow Closes the popup and moves focus to the input element. down arrow Moves focus to the same day of the next week. right arrow Moves focus to the next day. left arrow Moves focus to the previous day. home Moves focus to the first day of the current week. end Moves focus to the last day of the current week. page up Changes the date to previous month in date picker mode. Moves to previous year in month picker mode and previous decade in year picker. shift + page up Changes the date to previous year in date picker mode. Has no effect in month or year picker. page down Changes the date to next month in date picker mode. Moves to next year in month picker mode and next decade in year picker. shift + page down Changes the date to next year in date picker mode. Has no effect in month or year picker. Footer Buttons Keyboard Support Key Function enter Triggers the button action. space Triggers the button action.
+Screen Reader Value to describe the component can either be provided via label tag combined with inputId prop or using aria-labelledby , aria-label props. The input element has combobox role in addition to aria-autocomplete as "none", aria-haspopup as "dialog" and aria-expanded attributes. The relation between the input and the popup is created with aria-controls attribute that refers to the id of the popup. The optional datepicker button requires includes aria-haspopup , aria-expanded for states along with aria-controls to define the relation between the popup and the button. The value to read is retrieved from the chooseDate key of the aria property from the locale API. This label is also used for the aria-label of the popup as well. When there is a value selected, it is formatted and appended to the label to be able to notify users about the current value. Popup has a dialog role along with aria-modal and aria-label . The navigation buttons at the header has an aria-label retrieved from the prevYear , nextYear , prevMonth , nextMonth , prevDecade and nextDecade keys of the locale aria API, followed by the month, year or decade the button navigates to such as Next Month, November 2026 . Similarly month picker button uses the chooseMonth and year picker button uses the chooseYear keys. Main date table uses grid role that contains th elements with col as the scope along with abbr tag resolving to the full name of the month. Each date cell has an aria-label referring to the full date value. Buttons at the footer utilize their readable labels as aria-label as well. Selected date also receives the aria-selected attribute. Timepicker spinner buttons get their labels for aria-label from the aria locale API using the prevHour , nextHour , prevMinute , nextMinute , prevSecond , nextSecond , am and pm keys. DatePicker also includes a hidden section that is only available to screen readers with aria-live as "polite". This element is updated when the selected date changes to instruct the user about the current date selected. The timepicker has a similar section that announces the new time whenever the hour, minute, second or am/pm value changes. Choose Date Button Keyboard Support Key Function space Opens popup and moves focus to the selected date, if there is none focuses on today. enter Opens popup and moves focus to the selected date, if there is none focuses on today. Popup Keyboard Support Key Function escape Closes the popup and moves focus to the input element. tab Moves focus to the next focusable element within the popup. shift + tab Moves focus to the next focusable element within the popup. Header Buttons Keyboard Support Key Function enter Triggers the button action. space Triggers the button action. Date Grid Keyboard Support Key Function enter Selects the date, closes the popup and moves focus to the input element. space Closes the popup and moves focus to the input element. up arrow Moves focus to the same day of the previous week. alt + up arrow Closes the popup and moves focus to the input element. down arrow Moves focus to the same day of the next week. right arrow Moves focus to the next day. left arrow Moves focus to the previous day. home Moves focus to the first day of the current week. end Moves focus to the last day of the current week. page up Changes the date to previous month in date picker mode. Moves to previous year in month picker mode and previous decade in year picker. shift + page up Changes the date to previous year in date picker mode. Has no effect in month or year picker. page down Changes the date to next month in date picker mode. Moves to next year in month picker mode and next decade in year picker. shift + page down Changes the date to next year in date picker mode. Has no effect in month or year picker. Footer Buttons Keyboard Support Key Function enter Triggers the button action. space Triggers the button action.
 
 **Basic Usage:**
 
@@ -14724,6 +14836,7 @@ const date = ref();
 | hiddenSelectedDay | DatePickerPassThroughOptionType | Used to pass attributes to the aria selected day's DOM element. |
 | hiddenMonth | DatePickerPassThroughOptionType | Used to pass attributes to the aria month's DOM element. |
 | hiddenYear | DatePickerPassThroughOptionType | Used to pass attributes to the aria year's DOM element. |
+| hiddenTime | DatePickerPassThroughOptionType | Used to pass attributes to the aria time's DOM element. |
 | hooks | any | Used to manage all lifecycle hooks. |
 | transition | DatePickerPassThroughTransitionType | Used to control Vue Transition API. |
 
@@ -18024,6 +18137,7 @@ const formatSize = (bytes) => {
 | pt | PassThrough<FileUploadPassThroughOptions> | - | Used to pass attributes to DOM elements inside the component. |
 | ptOptions | any | - | Used to configure passthrough(pt) options of the component. |
 | unstyled | boolean | false | When enabled, it removes component related styles in the core. |
+| inputId | string | - | Identifier of the underlying input element. |
 
 ## Pass Through Options
 
@@ -21786,8 +21900,8 @@ const value = ref(50);
 
 | Name | Type | Default | Description |
 |------|------|---------|-------------|
-| modelValue | Nullable<number> | - | Value of the component. |
-| defaultValue | Nullable<number> | - | The default value for the input when not controlled by  `modelValue` . |
+| modelValue | Nullable<InputNumberValue> | - | Value of the component.  A string is treated as an exact decimal, which is how values beyond Number.MAX_SAFE_INTEGER are carried without losing digits. |
+| defaultValue | Nullable<InputNumberValue> | - | The default value for the input when not controlled by  `modelValue` . |
 | name | string | - | The name attribute for the element, typically used in form submissions. |
 | format | boolean | true | Whether to format the value. |
 | showButtons | boolean | false | Displays spinner buttons. |
@@ -21809,9 +21923,9 @@ const value = ref(50);
 | minFractionDigits | number | - | The minimum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number and percent formatting is 0; the default for currency formatting is the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information). |
 | maxFractionDigits | number | - | The maximum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number formatting is the larger of minimumFractionDigits and 3; the default for currency formatting is the larger of minimumFractionDigits and the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information). |
 | roundingMode | RoundingMode | - | How decimals should be rounded. The default value is  `"halfExpand"` , [further information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#roundingmode). |
-| min | number | - | Minimum boundary value. |
-| max | number | - | Maximum boundary value. |
-| step | number | 1 | Step factor to increment/decrement the value. |
+| min | InputNumberValue | - | Minimum boundary value. A string is treated as an exact decimal. |
+| max | InputNumberValue | - | Maximum boundary value. A string is treated as an exact decimal. |
+| step | InputNumberValue | 1 | Step factor to increment/decrement the value. A string is treated as an exact decimal. |
 | allowEmpty | boolean | true | Determines whether the input field is empty. |
 | highlightOnFocus | boolean | false | Highlights automatically the input value. |
 | showClear | boolean | false | When enabled, a clear icon is displayed to clear the value. |
@@ -24105,7 +24219,7 @@ Create .cursor/mcp.json in your project or ~/.cursor/mcp.json for global configu
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -24161,7 +24275,7 @@ Create .vscode/mcp.json in your project or ~/Library/Application Support/Code/Us
 ```vue
 {
     "servers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -24178,7 +24292,7 @@ Edit ~/.codeium/windsurf/mcp_config.json to add the OpenVue MCP server.
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -24194,14 +24308,15 @@ Add to your Zed settings at ~/.config/zed/settings.json (Linux) or ~/Library/App
 
 ```vue
 {
-    "context_servers": {
-        "primevue": {
-            "command": {
-                "path": "npx",
-                "args": ["-y", "@openvue/mcp"]
-            }
-        }
+  "context_servers": {
+    "openvue": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openvue/mcp"
+      ]
     }
+  }
 }
 ```
 
@@ -40476,22 +40591,16 @@ const onNodeExpand = (node) => {
         node.loading = true;
 
         setTimeout(() => {
-            let _node = { ...node };
-
-            _node.children = [];
+            node.children = [];
 
             for (let i = 0; i < 3; i++) {
-                _node.children.push({
+                node.children.push({
                     key: node.key + '-' + i,
                     label: 'Lazy ' + node.label + '-' + i
                 });
             }
 
-            let _nodes = { ...nodes.value };
-
-            _nodes[parseInt(node.key, 10)] = { ..._node, loading: false };
-
-            nodes.value = _nodes;
+            node.loading = false;
         }, 500);
     }
 };
@@ -41533,18 +41642,16 @@ const onNodeExpand = (node) => {
         node.loading = true;
 
         setTimeout(() => {
-            let _node = { ...node };
-
-            _node.children = [];
+            node.children = [];
 
             for (let i = 0; i < 3; i++) {
-                _node.children.push({
+                node.children.push({
                     key: node.key + '-' + i,
                     label: 'Lazy ' + node.label + '-' + i
                 });
             }
 
-            nodes.value[parseInt(node.key, 10)] = { ..._node, loading: false };
+            node.loading = false;
         }, 500);
     }
 };

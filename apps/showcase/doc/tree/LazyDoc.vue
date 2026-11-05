@@ -44,22 +44,16 @@ export default {
                 node.loading = true;
 
                 setTimeout(() => {
-                    let _node = { ...node };
-
-                    _node.children = [];
+                    node.children = [];
 
                     for (let i = 0; i < 3; i++) {
-                        _node.children.push({
+                        node.children.push({
                             key: node.key + '-' + i,
                             label: 'Lazy ' + node.label + '-' + i
                         });
                     }
 
-                    let _nodes = { ...this.nodes };
-
-                    _nodes[parseInt(node.key, 10)] = { ..._node, loading: false };
-
-                    this.nodes = _nodes;
+                    node.loading = false;
                 }, 500);
             }
         },
@@ -115,22 +109,16 @@ const onNodeExpand = (node) => {
         node.loading = true;
 
         setTimeout(() => {
-            let _node = { ...node };
-
-            _node.children = [];
+            node.children = [];
 
             for (let i = 0; i < 3; i++) {
-                _node.children.push({
+                node.children.push({
                     key: node.key + '-' + i,
                     label: 'Lazy ' + node.label + '-' + i
                 });
             }
 
-            let _nodes = { ...nodes.value };
-
-            _nodes[parseInt(node.key, 10)] = { ..._node, loading: false };
-
-            nodes.value = _nodes;
+            node.loading = false;
         }, 500);
     }
 };
@@ -175,22 +163,16 @@ const initiateNodes = () => {
                 node.loading = true;
 
                 setTimeout(() => {
-                    let _node = { ...node };
-
-                    _node.children = [];
+                    node.children = [];
 
                     for (let i = 0; i < 3; i++) {
-                        _node.children.push({
+                        node.children.push({
                             key: node.key + '-' + i,
                             label: 'Lazy ' + node.label + '-' + i
                         });
                     }
 
-                    let _nodes = { ...this.nodes };
-
-                    _nodes[parseInt(node.key, 10)] = { ..._node, loading: false };
-
-                    this.nodes = _nodes;
+                    node.loading = false;
                 }, 500);
             }
         },

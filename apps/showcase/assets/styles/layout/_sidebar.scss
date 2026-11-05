@@ -140,6 +140,11 @@
                         --p-focus-ring-offset: -1px;
                         @include focus-visible();
 
+                        .menu-external-icon {
+                            font-size: 0.75rem;
+                            margin-inline-start: 0.5rem;
+                        }
+
                         &:hover {
                             border-inline-start-color: var(--hover-border-color);
                         }

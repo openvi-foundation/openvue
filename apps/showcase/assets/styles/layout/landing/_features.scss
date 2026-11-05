@@ -1,37 +1,159 @@
 .landing-features {
-    .box {
-        box-shadow: var(--home-card-shadow);
+    .features-container {
+        max-width: 1250px;
+        margin: 0 auto;
     }
-    .feature-box-link {
-        display: block;
-        transition: transform .2s, box-shadow .2s;
+
+    .features-header {
+        max-width: 40rem;
+        margin: 0 auto 3.5rem auto;
+        text-align: center;
+    }
+
+    .features-title {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.25;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .features-detail {
+        margin: 1rem 0 0 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.6;
+        color: var(--text-secondary-color);
+    }
+
+    /* Hairlines between cells come from the 1px gap showing the grid background through. */
+    .features-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        background: var(--border-color);
+        box-shadow: var(--home-card-shadow);
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @media screen and (min-width: 1200px) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    .feature {
+        display: flex;
+        flex-direction: column;
+        padding: 1.75rem;
+        background: var(--card-background);
+        color: var(--text-color);
+        transition: background-color 0.2s;
+        @include focus-visible();
+
+        &:focus-visible {
+            outline-offset: -2px;
+        }
 
         &:hover {
-            transform: translateY(-3px);
+            background: var(--hover-background);
 
-            .feature-box-cta i {
-                transform: translateX(.25rem);
+            .feature-arrow {
+                opacity: 1;
             }
         }
     }
 
-    .feature-box-cta {
-        display: inline-flex;
+    .feature-head {
+        display: flex;
         align-items: center;
-        gap: .5rem;
-        margin-top: 1rem;
-        font-weight: 600;
-        color: var(--primary-text-color);
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+    }
 
-        i {
-            font-size: .875rem;
-            transition: transform .2s;
+    .feature-icon {
+        font-size: 1.25rem;
+        color: var(--text-color);
+    }
+
+    .feature-arrow {
+        font-size: 0.875rem;
+        color: var(--text-secondary-color);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    .feature-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    .feature-text {
+        margin: 0.5rem 0 0 0;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        line-height: 1.6;
+        color: var(--text-secondary-color);
+    }
+
+    .feature-text-short {
+        display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .features-title {
+            font-size: 1.75rem;
+        }
+
+        .feature-arrow {
+            opacity: 1;
         }
     }
 
-    .features-container{
-        max-width: 1250px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+    /* Phones: two columns with a short line each, instead of eight full-width cards in a row. */
+    @media screen and (max-width: 767px) {
+        .features-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .features-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .feature {
+            padding: 1.125rem;
+        }
+
+        .feature-head {
+            margin-bottom: 0.875rem;
+        }
+
+        .feature-arrow {
+            display: none;
+        }
+
+        .feature-title {
+            font-size: 0.9375rem;
+        }
+
+        .feature-text {
+            margin-top: 0.25rem;
+            font-size: 0.8125rem;
+            line-height: 1.45;
+        }
+
+        .feature-text-full {
+            display: none;
+        }
+
+        .feature-text-short {
+            display: inline;
+        }
     }
 }

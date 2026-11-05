@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Volt ConfirmDialog utilizes the PrimeVue ConfirmDialog in headless mode, as a result you have full control over the presentation. In order to customize the default UI modify the <i>container</i> template in <i>confirmdialog/index.vue</i>.
-            The default UI is displayed below.
+            OpenVolt ConfirmDialog utilizes the OpenVue ConfirmDialog in headless mode, as a result you have full control over the presentation. In order to customize the default UI modify the <i>container</i> template in
+            <i>confirmdialog/index.vue</i>. The default UI is displayed below.
         </p>
         <DocSectionCode :code="code" />
     </DocSectionText>

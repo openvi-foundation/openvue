@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import ToggleSwitch, { type ToggleSwitchPassThroughOptions, type ToggleSwitchProps } from 'primevue/toggleswitch';
+import ToggleSwitch, { type ToggleSwitchPassThroughOptions, type ToggleSwitchProps } from 'openvue/toggleswitch';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

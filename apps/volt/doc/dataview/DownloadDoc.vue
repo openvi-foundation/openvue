@@ -6,6 +6,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const code = ref(`npx volt-vue add DataView
+const code = ref(`npx openvolt-vue add DataView
 `);
 </script>

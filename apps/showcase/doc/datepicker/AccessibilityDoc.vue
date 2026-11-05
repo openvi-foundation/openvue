@@ -13,7 +13,8 @@
 
         <p>
             Popup has a <i>dialog</i> role along with <i>aria-modal</i> and <i>aria-label</i>. The navigation buttons at the header has an <i>aria-label</i> retrieved from the <i>prevYear</i>, <i>nextYear</i>, <i>prevMonth</i>, <i>nextMonth</i>,
-            <i>prevDecade</i> and <i>nextDecade</i> keys of the locale aria API. Similarly month picker button uses the <i>chooseMonth</i> and year picker button uses the <i>chooseYear</i> keys.
+            <i>prevDecade</i> and <i>nextDecade</i> keys of the locale aria API, followed by the month, year or decade the button navigates to such as <i>Next Month, November 2026</i>. Similarly month picker button uses the <i>chooseMonth</i> and
+            year picker button uses the <i>chooseYear</i> keys.
         </p>
 
         <p>
@@ -26,7 +27,10 @@
             <i>pm</i> keys.
         </p>
 
-        <p>DatePicker also includes a hidden section that is only available to screen readers with <i>aria-live</i> as "polite". This element is updated when the selected date changes to instruct the user about the current date selected.</p>
+        <p>
+            DatePicker also includes a hidden section that is only available to screen readers with <i>aria-live</i> as "polite". This element is updated when the selected date changes to instruct the user about the current date selected. The
+            timepicker has a similar section that announces the new time whenever the hour, minute, second or am/pm value changes.
+        </p>
 
         <DocSectionCode :code="code" hideToggleCode hideStackBlitz v-bind="$attrs" />
 

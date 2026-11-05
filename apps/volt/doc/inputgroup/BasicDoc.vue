@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Volt does not come with a standalone InputGroup component. Instead, it offers a sample implementation using Tailwind as a starting point. You can either directly incorporate this into your projects or use it as a basis to develop your own
-            customized component.
+            OpenVolt does not come with a standalone InputGroup component. Instead, it offers a sample implementation using Tailwind as a starting point. You can either directly incorporate this into your projects or use it as a basis to develop your
+            own customized component.
         </p>
     </DocSectionText>
     <div class="card grid grid-cols-1 md:grid-cols-2 gap-4">

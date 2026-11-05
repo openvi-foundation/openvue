@@ -25,11 +25,11 @@
 </template>
 
 <script setup lang="ts">
-import ChevronDownIcon from '@primevue/icons/chevrondown';
-import SearchIcon from '@primevue/icons/search';
-import SpinnerIcon from '@primevue/icons/spinner';
-import TimesIcon from '@primevue/icons/times';
-import Select, { type SelectPassThroughOptions, type SelectProps } from 'primevue/select';
+import ChevronDownIcon from '@openvue/icons/chevrondown';
+import SearchIcon from '@openvue/icons/search';
+import SpinnerIcon from '@openvue/icons/spinner';
+import TimesIcon from '@openvue/icons/times';
+import Select, { type SelectPassThroughOptions, type SelectProps } from 'openvue/select';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
 

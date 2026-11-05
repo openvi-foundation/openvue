@@ -618,8 +618,8 @@ const value = ref(50);
 
 | Name | Type | Default | Description |
 |------|------|---------|-------------|
-| modelValue | Nullable<number> | - | Value of the component. |
-| defaultValue | Nullable<number> | - | The default value for the input when not controlled by  `modelValue` . |
+| modelValue | Nullable<InputNumberValue> | - | Value of the component.  A string is treated as an exact decimal, which is how values beyond Number.MAX_SAFE_INTEGER are carried without losing digits. |
+| defaultValue | Nullable<InputNumberValue> | - | The default value for the input when not controlled by  `modelValue` . |
 | name | string | - | The name attribute for the element, typically used in form submissions. |
 | format | boolean | true | Whether to format the value. |
 | showButtons | boolean | false | Displays spinner buttons. |
@@ -641,9 +641,9 @@ const value = ref(50);
 | minFractionDigits | number | - | The minimum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number and percent formatting is 0; the default for currency formatting is the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information). |
 | maxFractionDigits | number | - | The maximum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number formatting is the larger of minimumFractionDigits and 3; the default for currency formatting is the larger of minimumFractionDigits and the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information). |
 | roundingMode | RoundingMode | - | How decimals should be rounded. The default value is  `"halfExpand"` , [further information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#roundingmode). |
-| min | number | - | Minimum boundary value. |
-| max | number | - | Maximum boundary value. |
-| step | number | 1 | Step factor to increment/decrement the value. |
+| min | InputNumberValue | - | Minimum boundary value. A string is treated as an exact decimal. |
+| max | InputNumberValue | - | Maximum boundary value. A string is treated as an exact decimal. |
+| step | InputNumberValue | 1 | Step factor to increment/decrement the value. A string is treated as an exact decimal. |
 | allowEmpty | boolean | true | Determines whether the input field is empty. |
 | highlightOnFocus | boolean | false | Highlights automatically the input value. |
 | showClear | boolean | false | When enabled, a clear icon is displayed to clear the value. |

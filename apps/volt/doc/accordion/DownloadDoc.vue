@@ -6,6 +6,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const code = ref(`npx volt-vue add Accordion AccordionPanel AccordionHeader AccordionContent
+const code = ref(`npx openvolt-vue add Accordion AccordionPanel AccordionHeader AccordionContent
 `);
 </script>

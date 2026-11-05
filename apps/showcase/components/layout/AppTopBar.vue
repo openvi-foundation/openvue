@@ -42,11 +42,13 @@
                         <i :class="['pi', { 'pi-moon': $appState.darkTheme, 'pi-sun': !$appState.darkTheme }]"></i>
                     </button>
                 </li>
-                <li>
+                <li v-if="showConfigurator">
                     <button
                         v-styleclass="{ selector: '@next', enterFromClass: 'hidden', enterActiveClass: 'px-overlay-enter-active', leaveToClass: 'hidden', leaveActiveClass: 'px-overlay-leave-active', hideOnOutsideClick: true }"
                         type="button"
                         class="topbar-item config-item"
+                        aria-label="Styles and colours"
+                        title="Styles and colours"
                     >
                         <i class="pi pi-palette"></i>
                     </button>
@@ -90,18 +92,24 @@ export default {
         showDesigner: {
             type: Boolean,
             default: true
+        },
+        showConfigurator: {
+            type: Boolean,
+            default: true
         }
     },
     scrollListener: null,
     container: null,
     data() {
         return {
-            /* Templates live on their own site, so that entry leaves the showcase. */
+            /* OpenVolt and Templates live on their own sites, so those entries leave the showcase. */
             navLinks: [
                 { label: 'Docs', to: '/introduction', panel: 'docs', icon: 'pi pi-book' },
                 { label: 'Components', to: '/components', panel: 'components', icon: 'pi pi-th-large' },
+                { label: 'Theme Builder', to: '/theme', icon: 'pi pi-palette' },
                 { label: 'Migration', to: '/migrate', icon: 'pi pi-arrow-right-arrow-left' },
-                { label: 'Templates', href: 'https://deni.openvue.dev/', icon: 'pi pi-desktop' }
+                { label: 'Templates', href: 'https://deni.openvue.dev/', icon: 'pi pi-desktop' },
+                { label: 'OpenVolt', href: 'https://openvolt.openvue.dev/', icon: 'pi pi-bolt' }
             ],
             mobileMenuActive: false
         };

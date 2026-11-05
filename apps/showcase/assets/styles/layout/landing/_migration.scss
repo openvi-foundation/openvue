@@ -1,0 +1,245 @@
+.landing-migration {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--hover-background);
+
+    .migration-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        gap: 3rem;
+        max-width: 1250px;
+        margin: 0 auto;
+
+        @media screen and (min-width: 1024px) {
+            grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+            gap: 5rem;
+        }
+    }
+
+    .migration-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .migration-title {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.25;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .migration-text {
+        margin: 1rem 0 0 0;
+        color: var(--text-secondary-color);
+        font-weight: 500;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+    }
+
+    .migration-points {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 1.75rem 0 0 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            color: var(--text-color);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        i {
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            color: var(--p-green-600);
+        }
+    }
+
+    .migration-command {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        max-width: 100%;
+        margin-top: 2.25rem;
+        padding: 0.625rem 0.625rem 0.625rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: var(--card-background);
+    }
+
+    .migration-command-prompt {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        color: var(--text-secondary-color);
+    }
+
+    .migration-command-text {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+
+    .migration-command-copy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        color: var(--text-secondary-color);
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        cursor: pointer;
+        transition:
+            color 0.2s,
+            background-color 0.2s;
+        @include focus-visible();
+
+        i {
+            font-size: 0.875rem;
+        }
+
+        &:hover {
+            color: var(--text-color);
+            background-color: var(--hover-background);
+        }
+    }
+
+    .migration-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        border-radius: 4px;
+        @include focus-visible();
+
+        i {
+            font-size: 0.875rem;
+        }
+
+        &:hover span {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+    }
+
+    .migration-diff {
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        background: var(--card-background);
+        box-shadow: var(--home-card-shadow);
+        overflow: hidden;
+
+        .p-tablist-tab-list {
+            background: transparent;
+        }
+
+        .p-tab {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .p-tabpanels {
+            padding: 0;
+            background: transparent;
+        }
+    }
+
+    .migration-diff-body {
+        margin: 0;
+        padding: 1rem 0;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 0.875rem;
+        line-height: 1.75;
+        color: var(--text-color);
+    }
+
+    .migration-diff-line {
+        display: block;
+        min-height: 1.75em;
+        padding-right: 1.25rem;
+        white-space: pre;
+
+        mark {
+            color: inherit;
+            border-radius: 3px;
+        }
+
+        &.is-del {
+            background: color-mix(in srgb, var(--p-red-500) 6%, transparent);
+
+            mark {
+                background: color-mix(in srgb, var(--p-red-500) 22%, transparent);
+            }
+        }
+
+        &.is-add {
+            background: color-mix(in srgb, var(--p-green-500) 7%, transparent);
+
+            mark {
+                background: color-mix(in srgb, var(--p-green-500) 25%, transparent);
+            }
+        }
+    }
+
+    .migration-diff-sign {
+        display: inline-block;
+        width: 2.5rem;
+        text-align: center;
+        user-select: none;
+        color: var(--text-secondary-color);
+
+        .is-del > & {
+            color: var(--p-red-600);
+        }
+
+        .is-add > & {
+            color: var(--p-green-600);
+        }
+    }
+
+    .migration-diff-footer {
+        padding: 0.75rem 1.25rem;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-secondary-color);
+    }
+
+    @media screen and (max-width: 768px) {
+        .migration-title {
+            font-size: 1.75rem;
+        }
+
+        .migration-command {
+            overflow-x: auto;
+        }
+    }
+}
+
+.p-dark .landing-migration {
+    .migration-points i {
+        color: var(--p-green-400);
+    }
+
+    .migration-diff-line.is-del .migration-diff-sign {
+        color: var(--p-red-400);
+    }
+
+    .migration-diff-line.is-add .migration-diff-sign {
+        color: var(--p-green-400);
+    }
+}

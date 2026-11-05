@@ -69,6 +69,19 @@ function walk(dir) {
     });
 }
 
+// Copied sources such as the OpenVolt components import openvue; point them back at PrimeVue so the
+// baseline matches what an existing PrimeVue project has before it runs the migration.
+function revertToPrimeVue(dir) {
+    const specifier = /(['"])(openvue|@openvue\/(?:core|forms|icons))((?:\/[^'"]*)?)\1/g;
+
+    for (const file of walk(dir)) {
+        const source = readFileSync(file, 'utf8');
+        const reverted = source.replace(specifier, (match, quote, name, path) => `${quote}${name.replace('openvue', 'primevue')}${path}${quote}`);
+
+        if (reverted !== source) writeFileSync(file, reverted);
+    }
+}
+
 function snapshot(dir) {
     return Object.fromEntries(walk(dir).map((file) => [relative(dir, file), readFileSync(file)]));
 }
@@ -502,7 +515,10 @@ async function testFixture(name, index, tarballs, migrationVersion) {
     cpSync(source, dir, { recursive: true });
     const pkg = readPackage(dir);
 
-    for (const copy of pkg.openvueTest.copy ?? []) cpSync(join(root, copy.from), join(dir, copy.to), { recursive: true });
+    for (const copy of pkg.openvueTest.copy ?? []) {
+        cpSync(join(root, copy.from), join(dir, copy.to), { recursive: true });
+        if (copy.asPrimeVue) revertToPrimeVue(join(dir, copy.to));
+    }
 
     const manager = pkg.openvueTest.packageManager;
 

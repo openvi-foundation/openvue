@@ -9,7 +9,6 @@
 - [Styled Mode](https://openvue.dev/styled): Choose from a variety of pre-styled themes or develop your own.
 - [Unstyled Mode](https://openvue.dev/unstyled): Theming OpenVue with alternative styling approaches.
 - [Pass Through](https://openvue.dev/passthrough): The Pass Through attributes is an API to access the internal DOM Structure of the components.
-- [Icons](https://openvue.dev/icons): OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.
 - [Custom Icons](https://openvue.dev/customicons): OpenVue components can be used with any icon library using the templating features.
 - [Forms](https://openvue.dev/forms): The OpenVue Forms library provides comprehensive form state management with built-in validation support.
 - [Auto Import](https://openvue.dev/autoimport): On-demand OpenVue components with auto imports and tree-shaking.
@@ -22,6 +21,7 @@
 - [Theme Designer](https://openvue.dev/designer): Design a theme visually and export it as ready-to-use code. Free, MIT-licensed, and entirely local.
 - [Tailwind CSS](https://openvue.dev/tailwind): Integration between OpenVue and Tailwind CSS both in styled and unstyled modes.
 - [Contribution Guide](https://openvue.dev/contribution): Welcome to the OpenVue Contribution Guide and thank you for considering contributing.
+- [Changelog](https://openvue.dev/changelog): Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All packages ship together under one version.
 - [Setup](https://openvue.dev/setup): Installation guides for popular development environments.
 - [LLMs.txt](https://openvue.dev/llms): LLM-optimized documentation endpoints for OpenVue components.
 - [MCP Server](https://openvue.dev/mcp): Model Context Protocol (MCP) server for OpenVue component library. Provides AI assistants with comprehensive access to OpenVue component documentation.

@@ -1,8 +1,8 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>
-            Volt components leverage the <a href="https://www.npmjs.com/package/tailwind-merge" target="_blank" rel="noopener noreferrer">tailwind-merge</a> utility to combine custom classes with default ones efficiently. This feature is particularly
-            useful when you want to customize individual components by integrating external classes.
+            OpenVolt components leverage the <a href="https://www.npmjs.com/package/tailwind-merge" target="_blank" rel="noopener noreferrer">tailwind-merge</a> utility to combine custom classes with default ones efficiently. This feature is
+            particularly useful when you want to customize individual components by integrating external classes.
         </p>
         <p>
             The classes passed to the <i>pt:{section}:class</i> attributes are automatically merged with the default classes. It's important to note that the regular class attribute might not be applied due to its lower precedence. However, the

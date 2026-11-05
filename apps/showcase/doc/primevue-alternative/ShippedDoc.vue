@@ -1,7 +1,7 @@
 <template>
     <!-- Kept as static markup rather than v-for so scripts/build-llm-docs.mjs, which parses templates, sees the text. -->
     <DocSectionText v-bind="$attrs">
-        <p>A fork is only worth switching to if it keeps shipping. Here are a few highlights from the <a href="https://github.com/openvi-foundation/openvue/blob/master/CHANGELOG.md" target="_blank" rel="noopener noreferrer">changelog</a>.</p>
+        <p>A fork is only worth switching to if it keeps shipping. Here are a few highlights from the <NuxtLink to="/changelog" class="doc-link">changelog</NuxtLink>.</p>
         <ul class="leading-relaxed">
             <li>
                 <b>Theme Designer, free.</b> Edit every design token visually, watch the docs restyle as you type, and export a preset. No account, no license key, runs entirely in your browser.

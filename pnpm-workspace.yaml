@@ -7,8 +7,8 @@ catalog:
     '@openuxkit/utils': ^1.0.0
     '@openuxkit/forms': ^1.0.0
     '@openuxkit/styles': ^1.1.0
-    '@openuxkit/themes': ^1.1.0
-    '@openuxkit/mcp': ^1.0.0
+    '@openuxkit/themes': ^1.2.0
+    '@openuxkit/mcp': ^1.1.0
     'tailwindcss-primeui': ^0.6.1
     'primeicons': ^7.0.0
     '@openvue/openicons': ^1.0.0
@@ -19,6 +19,5 @@ catalogs:
         'vite': 6.0.11
         'sass': 1.45.0
         'sass-loader': 8.0.2
-        '@docsearch/js': ^3
         'chart.js': ^4.5.0
         'quill': 2.0.0

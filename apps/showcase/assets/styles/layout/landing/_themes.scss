@@ -1,14 +1,218 @@
 .landing-themes {
+    .themes-container {
+        max-width: 1250px;
+        margin: 0 auto;
+    }
+
+    .themes-header {
+        max-width: 40rem;
+        margin: 0 auto 3.5rem auto;
+        text-align: center;
+    }
+
+    .themes-title {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.25;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .themes-detail {
+        margin: 1rem 0 0 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.6;
+        color: var(--text-secondary-color);
+    }
+
     .table-container {
-        width: 1250px;
+        width: 100%;
         box-shadow: var(--home-card-shadow);
+
+        /* Between phone and laptop width the columns cannot fit; let the box scroll sideways instead of clipping them. */
+        @media screen and (max-width: 1023px) {
+            overflow-x: auto !important;
+        }
+    }
+
+    .themes-more {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem 1.5rem;
+        margin-top: 2rem;
+        font-weight: 500;
+    }
+
+    .themes-more-label {
+        color: var(--text-secondary-color);
+    }
+
+    .themes-more-link,
+    .themes-more-all {
+        color: var(--text-color);
+        border-radius: 4px;
+        text-underline-offset: 4px;
+        @include focus-visible();
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .themes-more-all {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+
+        i {
+            font-size: 0.875rem;
+        }
+    }
+
+    .themes-mobile,
+    .themes-detail-mobile {
+        display: none;
+    }
+
+    /* Phone stand-in for the table: summary, search, status filter, a virtual list and a bottom sheet. */
+    .customers-mobile {
+        gap: 1rem;
+        padding: 1.25rem 1.25rem 0 1.25rem;
+        overflow: hidden;
+        box-shadow: var(--home-card-shadow);
+    }
+
+    .customers-mobile-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .customers-mobile-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .customers-mobile-summary {
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: var(--text-secondary-color);
+    }
+
+    .customers-mobile-filters {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .customers-mobile-status {
+        flex: 0 0 8.5rem;
+    }
+
+    .customers-mobile-list {
+        height: 26rem;
+        margin: 0 -1.25rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .customers-mobile-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        height: 72px;
+        padding: 0 1.25rem;
+        border: 0 none;
+        border-bottom: 1px solid var(--border-color);
+        background: transparent;
+        color: var(--text-color);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        @include focus-visible();
+
+        &:focus-visible {
+            outline-offset: -2px;
+        }
+
+        &:active {
+            background: var(--hover-background);
+        }
+    }
+
+    .customers-mobile-main,
+    .customers-mobile-side {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .customers-mobile-main {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .customers-mobile-side {
+        flex-shrink: 0;
+        align-items: flex-end;
+    }
+
+    .customers-mobile-name {
+        overflow: hidden;
+        font-weight: 600;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .customers-mobile-meta {
+        font-size: 0.8125rem;
+        color: var(--text-secondary-color);
+    }
+
+    .customers-mobile-balance {
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .customers-mobile-empty {
+        padding: 3rem 0 4rem 0;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        color: var(--text-secondary-color);
+    }
+
+    @media screen and (max-width: 768px) {
+        .themes-title {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .table-container,
+        .themes-detail-desktop {
+            display: none;
+        }
+
+        .themes-mobile {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .themes-detail-mobile {
+            display: inline;
+        }
     }
 }
 
-.landing-themes {
-    .themes-cta {
-        display: flex;
-        justify-content: center;
-        margin-top: 3rem;
-    }
+/* The Drawer is teleported to body, so its sizing cannot sit under .landing-themes. */
+.customers-mobile-sheet.p-drawer-bottom {
+    height: auto;
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
 }

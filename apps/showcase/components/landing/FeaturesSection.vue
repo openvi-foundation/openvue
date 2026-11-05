@@ -1,69 +1,42 @@
 <template>
-    <section class="landing-features py-20">
-        <div class="section-header">Features</div>
-        <p class="section-detail">OpenVue is the most complete solution for your UI requirements.</p>
-        <div class="mt-16 px-8 lg:px-20">
-            <div class="features-container">
-                <div class="grid grid-cols-12 gap-4">
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <OpenVueNuxtLink to="/components" class="box feature-box-link p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-th-large !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">80+ UI Components</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">The ultimate set of UI Components to assist you with 80+ impressive Vue Components.</p>
-                            <span class="feature-box-cta">Browse components <i class="pi pi-arrow-right" aria-hidden="true"></i></span>
-                        </OpenVueNuxtLink>
+    <section class="landing-features py-20 px-8 lg:px-20">
+        <div class="features-container">
+            <div class="features-header">
+                <h2 class="features-title">Everything an application needs</h2>
+                <p class="features-detail">Components, theming, forms and tooling, built to work together and released under one MIT license.</p>
+            </div>
+            <div class="features-grid">
+                <OpenVueNuxtLink v-for="feature of features" :key="feature.title" :to="feature.to" :target="feature.external ? '_blank' : undefined" class="feature">
+                    <div class="feature-head">
+                        <i :class="['pi', feature.icon, 'feature-icon']" aria-hidden="true"></i>
+                        <i :class="['pi', feature.external ? 'pi-arrow-up-right' : 'pi-arrow-right', 'feature-arrow']" aria-hidden="true"></i>
                     </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-palette !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Styled or Unstyled</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">Pre-built themes, or implement your design system with the CSS library of your choice like TailwindCSS.</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-users !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Community</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">Connect with other open source community members, collaborate and have a voice in the roadmap.</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-eye !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Accessibility</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">Compliant with the Web Content Accessibility Guidelines (WCAG 2.0).</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-heart !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Free & Open Source</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">MIT licensed with no paid tiers or locked features, built and maintained in the open.</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-mobile !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Mobile</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">First class support for responsive design led by touch optimized elements.</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-bolt !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Nuxt Ready</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">First-class Nuxt module with auto-imports so you can get a project up and running in minutes.</p>
-                        </div>
-                    </div>
-                    <div class="col-span-12 md:col-span-6 xl:col-span-3 flex justify-center">
-                        <div class="box p-6 w-full">
-                            <div class="w-12 h-12 mb-4 flex items-center justify-center rounded-xl border border-surface bg-emphasis" aria-hidden="true"><i class="pi pi-code !text-xl text-color"></i></div>
-                            <div class="font-semibold mb-4 text-lg">Typescript</div>
-                            <p class="m-0 text-surface-500 dark:text-surface-400 font-medium">Top-notch support for Typescript types and tooling assistance.</p>
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="feature-title">{{ feature.title }}</h3>
+                    <p class="feature-text">
+                        <span class="feature-text-full">{{ feature.text }}</span>
+                        <span class="feature-text-short">{{ feature.short }}</span>
+                    </p>
+                </OpenVueNuxtLink>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            features: [
+                { icon: 'pi-th-large', title: '80+ components', short: 'Inputs, tables, overlays and menus.', text: 'Inputs, data tables, trees, overlays, menus and charts, built and tested together.', to: '/components' },
+                { icon: 'pi-palette', title: 'Styled or unstyled', short: 'Five presets or your own CSS.', text: 'Start from one of five presets and adjust design tokens, or turn styles off and bring your own.', to: '/theming/styled' },
+                { icon: 'pi-sliders-h', title: 'Pass-through', short: 'Style any element inside.', text: 'Reach any element inside a component to add classes or attributes, without forking it.', to: '/passthrough' },
+                { icon: 'pi-check-square', title: 'Forms', short: 'Zod, Yup and Valibot validation.', text: 'Validation with Zod, Yup, Valibot or your own resolver, wired into every input.', to: '/forms' },
+                { icon: 'pi-eye', title: 'Accessibility', short: 'Keyboard and ARIA built in.', text: 'Keyboard navigation, focus management and ARIA attributes, designed around the WCAG guidelines.', to: '/guides/accessibility' },
+                { icon: 'pi-bolt', title: 'Nuxt module', short: 'Auto-imports and SSR.', text: 'Auto-imports components and directives, with server-side rendering out of the box.', to: '/nuxt' },
+                { icon: 'pi-code', title: 'TypeScript', short: 'Typed props, events and slots.', text: 'Typed props, events, slots and pass-through options for every component.', to: '/setup' },
+                { icon: 'pi-heart', title: 'MIT licensed', short: 'No paid tier or locked features.', text: 'No paid tier and no locked features. Developed in the open on GitHub.', to: 'https://github.com/openvi-foundation/openvue', external: true }
+            ]
+        };
+    }
+};
+</script>

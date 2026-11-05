@@ -11,6 +11,7 @@ const PAGES_DIR = path.resolve(__dirname, '../pages');
 const API_DOC_PATH = path.resolve(__dirname, '../doc/common/apidoc/index.json');
 const OUTPUT_DIR = path.resolve(__dirname, '../server/assets/llms');
 const MCP_DATA_DIR = path.resolve(__dirname, '../../../packages/mcp/data');
+const CHANGELOG_PATH = path.resolve(__dirname, '../../../CHANGELOG.md');
 
 // Mapping for components where route name doesn't match API interface name
 const COMPONENT_NAME_MAP = {
@@ -347,6 +348,7 @@ function getAllComponents() {
         'forms',
         'autoimport',
         'cdn',
+        'changelog',
         'configuration',
         'contribution',
         'customicons',
@@ -742,8 +744,12 @@ function generateJsonOutput(components, apiDocs, guidePages = []) {
 
     const mcpOutputPath = path.join(MCP_DATA_DIR, 'components.json');
 
+    // The changelog quotes old primevue/... specifiers on purpose, which verify-dist rejects in the
+    // published MCP bundle; release notes are not component knowledge, so the MCP server skips them.
+    const mcpOutput = { ...output, pages: output.pages.filter((page) => page.name !== 'changelog') };
+
     // 4-space indent + trailing newline to match prettier, which checks this file
-    fs.writeFileSync(mcpOutputPath, JSON.stringify(output, null, 4) + '\n', 'utf-8');
+    fs.writeFileSync(mcpOutputPath, JSON.stringify(mcpOutput, null, 4) + '\n', 'utf-8');
     console.log(`✓ Generated JSON output: ${mcpOutputPath}`);
 
     return output;
@@ -938,6 +944,7 @@ const GUIDE_PAGES = [
     'designer',
     'tailwind',
     'contribution',
+    'changelog',
     'setup',
     'llms',
     'mcp',
@@ -1041,6 +1048,29 @@ function getPageMetadata(pageName) {
 }
 
 /**
+ * The changelog page renders CHANGELOG.md at runtime, so its sections come from the file instead of doc components.
+ */
+function getChangelogSections() {
+    const markdown = fs.readFileSync(CHANGELOG_PATH, 'utf-8').replace(/\r\n/g, '\n');
+    const body = markdown.replace(/^\[[^\]]+\]:.*$/gm, '').trim();
+
+    return body
+        .split(/^## /m)
+        .slice(1)
+        .map((chunk) => {
+            const [heading, ...rest] = chunk.split('\n');
+            const version = heading.match(/^\[([^\]]+)\]/)?.[1] ?? heading;
+
+            return {
+                id: version.toLowerCase(),
+                label: heading.replace(/^\[([^\]]+)\]/, '$1').trim(),
+                description: rest.join('\n').trim(),
+                examples: null
+            };
+        });
+}
+
+/**
  * Process a guide/documentation page
  */
 function processGuidePage(pageName) {
@@ -1048,6 +1078,16 @@ function processGuidePage(pageName) {
 
     if (!metadata) {
         return null;
+    }
+
+    if (pageName === 'changelog') {
+        return {
+            name: metadata.simpleName,
+            fullPath: pageName,
+            title: metadata.title,
+            description: metadata.description,
+            sections: getChangelogSections()
+        };
     }
 
     // Find doc directory - handle nested paths like 'guides/accessibility'

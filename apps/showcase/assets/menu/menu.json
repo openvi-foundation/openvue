@@ -493,6 +493,11 @@
                     "to": "/theming/unstyled"
                 },
                 {
+                    "name": "Theme Builder",
+                    "to": "/theme",
+                    "badge": "NEW"
+                },
+                {
                     "name": "Theme Designer",
                     "to": "/designer",
                     "badge": "NEW"
@@ -581,7 +586,7 @@
             "children": [
                 {
                     "name": "OpenIcons",
-                    "to": "/icons",
+                    "href": "https://openicons.openvue.dev/",
                     "badge": "NEW"
                 },
                 {
@@ -589,12 +594,6 @@
                     "to": "/customicons"
                 }
             ]
-        },
-        {
-            "name": "Templates",
-            "icon": "pi pi-desktop",
-            "href": "https://deni.openvue.dev/",
-            "badge": "NEW"
         },
         {
             "name": "Discover",
@@ -610,7 +609,7 @@
                 },
                 {
                     "name": "Changelog",
-                    "href": "https://github.com/openvi-foundation/openvue/blob/master/CHANGELOG.md"
+                    "to": "/changelog"
                 },
                 {
                     "name": "Contribution",

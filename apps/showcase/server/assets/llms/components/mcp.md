@@ -13,7 +13,7 @@ Create .cursor/mcp.json in your project or ~/.cursor/mcp.json for global configu
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -63,7 +63,7 @@ Create .vscode/mcp.json in your project or ~/Library/Application Support/Code/Us
 ```vue
 {
     "servers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -78,7 +78,7 @@ Edit ~/.codeium/windsurf/mcp_config.json to add the OpenVue MCP server.
 ```vue
 {
     "mcpServers": {
-        "primevue": {
+        "openvue": {
             "command": "npx",
             "args": ["-y", "@openvue/mcp"]
         }
@@ -92,14 +92,15 @@ Add to your Zed settings at ~/.config/zed/settings.json (Linux) or ~/Library/App
 
 ```vue
 {
-    "context_servers": {
-        "primevue": {
-            "command": {
-                "path": "npx",
-                "args": ["-y", "@openvue/mcp"]
-            }
-        }
+  "context_servers": {
+    "openvue": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openvue/mcp"
+      ]
     }
+  }
 }
 ```
 
