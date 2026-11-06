@@ -65,10 +65,7 @@ describe('InputText.vue', () => {
                         Form,
                         { initialValues: { name: 'abc' }, onSubmit: () => {} },
                         {
-                            default: () =>
-                                visible.value
-                                    ? h(FormField, { name: 'name', initialValue: 'abc' }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) })
-                                    : null
+                            default: () => (visible.value ? h(FormField, { name: 'name', initialValue: 'abc' }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) }) : null)
                         }
                     );
             }
@@ -115,10 +112,7 @@ describe('InputText.vue', () => {
                             onSubmit: () => {}
                         },
                         {
-                            default: () =>
-                                items.value.map((item, index) =>
-                                    h(FormField, { key: item.id, name: `items.${index}.name`, initialValue: item.name }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) })
-                                )
+                            default: () => items.value.map((item, index) => h(FormField, { key: item.id, name: `items.${index}.name`, initialValue: item.name }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) }))
                         }
                     );
             }
@@ -126,6 +120,7 @@ describe('InputText.vue', () => {
 
         const wrapper = mount(DynamicForm, { attachTo: document.body });
         const form = wrapper.findComponent(Form);
+
         const flush = async () => {
             await nextTick();
             await nextTick();
