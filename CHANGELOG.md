@@ -8,6 +8,10 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Fixed
+
+- `Form` unregisters fields when they are removed from the DOM, so dynamic arrays no longer keep stale values or validation errors. ([#74](https://github.com/openvi-foundation/openvue/issues/74))
+
 ## [1.1.1] - 2026-11-04
 
 ### Added

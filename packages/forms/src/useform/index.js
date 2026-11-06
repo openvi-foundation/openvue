@@ -240,6 +240,49 @@ export const useForm = (options = {}) => {
         if (_states[field] !== undefined) _states[field].value = value;
     };
 
+    const unregister = (field) => {
+        if (!field || !fields[field]) return;
+
+        fields[field]._watcher.stop();
+        delete fields[field];
+        delete _states[field];
+    };
+
+    const pendingRenames = [];
+    let renameScheduled = false;
+
+    const renameField = (from, to, options) => {
+        if (!from || !to || from === to) return;
+
+        pendingRenames.push({
+            from,
+            to,
+            options: options ?? fields[from]?.options,
+            state: _states[from]
+        });
+
+        if (renameScheduled) return;
+
+        renameScheduled = true;
+        queueMicrotask(() => {
+            const batch = pendingRenames.splice(0);
+
+            renameScheduled = false;
+
+            for (const { from } of batch) {
+                unregister(from);
+            }
+
+            for (const { to, options, state } of batch) {
+                if (state === undefined) continue;
+
+                unregister(to);
+                _states[to] = state;
+                defineField(to, options);
+            }
+        });
+    };
+
     const getFieldState = (field) => {
         return fields[field]?.states;
     };
@@ -256,6 +299,8 @@ export const useForm = (options = {}) => {
 
     return {
         defineField,
+        unregister,
+        renameField,
         setFieldValue,
         getFieldState,
         handleSubmit,

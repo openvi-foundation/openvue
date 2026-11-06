@@ -234,6 +234,11 @@ export interface FormSlots {
              */
             register: (field: string, options: any) => any;
             /**
+             * Unregisters a field and clears its value and validation state.
+             * @param field - Field name.
+             */
+            unregister: (field: string) => void;
+            /**
              * Resets the entire form state, clearing values and validation statuses.
              */
             reset: () => void;
