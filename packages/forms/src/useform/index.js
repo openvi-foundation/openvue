@@ -240,6 +240,14 @@ export const useForm = (options = {}) => {
         if (_states[field] !== undefined) _states[field].value = value;
     };
 
+    const unregister = (field) => {
+        if (!field || !fields[field]) return;
+
+        fields[field]._watcher.stop();
+        delete fields[field];
+        delete _states[field];
+    };
+
     const getFieldState = (field) => {
         return fields[field]?.states;
     };
@@ -256,6 +264,7 @@ export const useForm = (options = {}) => {
 
     return {
         defineField,
+        unregister,
         setFieldValue,
         getFieldState,
         handleSubmit,

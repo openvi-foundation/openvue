@@ -1,6 +1,6 @@
 <template>
     <form ref="formRef" @submit.prevent="onSubmit" @reset.prevent="onReset" :class="cx('root')" v-bind="ptmi('root')">
-        <slot :register :valid :reset v-bind="states" />
+        <slot :register :unregister :valid :reset v-bind="states" />
     </form>
 </template>
 

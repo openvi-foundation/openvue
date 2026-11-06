@@ -1,6 +1,7 @@
 import Form from '@openvue/forms/form';
+import FormField from '@openvue/forms/formfield';
 import { mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
+import { defineComponent, h, nextTick, ref } from 'vue';
 import InputText from './InputText.vue';
 
 describe('InputText.vue', () => {
@@ -50,6 +51,43 @@ describe('InputText.vue', () => {
         }
 
         expect(inputText.vm.$filled).toBe(false);
+
+        wrapper.unmount();
+    });
+
+    it('should unregister FormField when removed from the DOM', async () => {
+        const visible = ref(true);
+        let formApi;
+
+        const DynamicForm = defineComponent({
+            setup() {
+                return () =>
+                    h(
+                        Form,
+                        { initialValues: { name: 'abc' }, onSubmit: () => {} },
+                        {
+                            default: (slotProps) => {
+                                formApi = slotProps;
+
+                                return visible.value
+                                    ? h(FormField, { name: 'name', initialValue: 'abc' }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) })
+                                    : null;
+                            }
+                        }
+                    );
+            }
+        });
+
+        const wrapper = mount(DynamicForm, { attachTo: document.body });
+
+        await nextTick();
+        expect(formApi.getFieldState('name')?.value).toBe('abc');
+
+        visible.value = false;
+        await nextTick();
+
+        expect(formApi.getFieldState('name')).toBeUndefined();
+        expect(formApi.fields.name).toBeUndefined();
 
         wrapper.unmount();
     });

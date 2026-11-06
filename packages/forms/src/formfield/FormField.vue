@@ -25,6 +25,9 @@ export default {
             }
         }
     },
+    beforeUnmount() {
+        this.$pcForm?.unregister?.(this.name);
+    },
     computed: {
         formControl() {
             return {
