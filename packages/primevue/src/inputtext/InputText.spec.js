@@ -57,7 +57,6 @@ describe('InputText.vue', () => {
 
     it('should unregister FormField when removed from the DOM', async () => {
         const visible = ref(true);
-        let formApi;
 
         const DynamicForm = defineComponent({
             setup() {
@@ -66,28 +65,103 @@ describe('InputText.vue', () => {
                         Form,
                         { initialValues: { name: 'abc' }, onSubmit: () => {} },
                         {
-                            default: (slotProps) => {
-                                formApi = slotProps;
-
-                                return visible.value
+                            default: () =>
+                                visible.value
                                     ? h(FormField, { name: 'name', initialValue: 'abc' }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) })
-                                    : null;
-                            }
+                                    : null
                         }
                     );
             }
         });
 
         const wrapper = mount(DynamicForm, { attachTo: document.body });
+        const form = wrapper.findComponent(Form);
 
         await nextTick();
-        expect(formApi.getFieldState('name')?.value).toBe('abc');
+        expect(form.vm.getFieldState('name')?.value).toBe('abc');
 
         visible.value = false;
         await nextTick();
+        await nextTick();
 
-        expect(formApi.getFieldState('name')).toBeUndefined();
-        expect(formApi.fields.name).toBeUndefined();
+        expect(form.vm.getFieldState('name')).toBeUndefined();
+        expect(form.vm.fields.name).toBeUndefined();
+
+        wrapper.unmount();
+    });
+
+    it('should reindex FormField names when an array item is removed', async () => {
+        const items = ref([
+            { id: 1, name: 'A' },
+            { id: 2, name: 'B' },
+            { id: 3, name: 'C' },
+            { id: 4, name: 'D' },
+            { id: 5, name: 'E' }
+        ]);
+
+        const DynamicForm = defineComponent({
+            setup() {
+                return () =>
+                    h(
+                        Form,
+                        {
+                            initialValues: {
+                                'items.0.name': 'A',
+                                'items.1.name': 'B',
+                                'items.2.name': 'C',
+                                'items.3.name': 'D',
+                                'items.4.name': 'E'
+                            },
+                            onSubmit: () => {}
+                        },
+                        {
+                            default: () =>
+                                items.value.map((item, index) =>
+                                    h(FormField, { key: item.id, name: `items.${index}.name`, initialValue: item.name }, { default: (fieldSlot) => h(InputText, { ...fieldSlot.props }) })
+                                )
+                        }
+                    );
+            }
+        });
+
+        const wrapper = mount(DynamicForm, { attachTo: document.body });
+        const form = wrapper.findComponent(Form);
+        const flush = async () => {
+            await nextTick();
+            await nextTick();
+        };
+
+        await nextTick();
+
+        // middle
+        items.value = [items.value[0], items.value[2], items.value[3], items.value[4]];
+        await flush();
+
+        expect(Object.keys(form.vm.fields).sort()).toEqual(['items.0.name', 'items.1.name', 'items.2.name', 'items.3.name']);
+        expect(form.vm.getFieldState('items.0.name')?.value).toBe('A');
+        expect(form.vm.getFieldState('items.1.name')?.value).toBe('C');
+        expect(form.vm.getFieldState('items.2.name')?.value).toBe('D');
+        expect(form.vm.getFieldState('items.3.name')?.value).toBe('E');
+        expect(form.vm.getFieldState('items.4.name')).toBeUndefined();
+
+        // first
+        items.value = [items.value[1], items.value[2], items.value[3]];
+        await flush();
+
+        expect(Object.keys(form.vm.fields).sort()).toEqual(['items.0.name', 'items.1.name', 'items.2.name']);
+        expect(form.vm.getFieldState('items.0.name')?.value).toBe('C');
+        expect(form.vm.getFieldState('items.1.name')?.value).toBe('D');
+        expect(form.vm.getFieldState('items.2.name')?.value).toBe('E');
+        expect(form.vm.getFieldState('items.3.name')).toBeUndefined();
+
+        // last
+        items.value = [items.value[0], items.value[1]];
+        await flush();
+
+        expect(Object.keys(form.vm.fields).sort()).toEqual(['items.0.name', 'items.1.name']);
+        expect(form.vm.getFieldState('items.0.name')?.value).toBe('C');
+        expect(form.vm.getFieldState('items.1.name')?.value).toBe('D');
+        expect(form.vm.getFieldState('items.2.name')).toBeUndefined();
 
         wrapper.unmount();
     });

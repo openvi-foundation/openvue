@@ -303,11 +303,6 @@ export interface FormInstance {
      */
     setValues: (values: Record<string, any>) => void;
     /**
-     * Unregisters a field and clears its value and validation state.
-     * @param field Field name.
-     */
-    unregister: (field: string) => void;
-    /**
      * Resets the entire form state, clearing values and validation statuses.
      */
     reset: () => void;
