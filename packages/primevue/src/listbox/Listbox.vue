@@ -588,11 +588,31 @@ export default {
         findSelectedOptionIndex() {
             if (this.$filled) {
                 if (this.multiple) {
+                    // Index the options by selection key once, so each selected value is found without scanning every option.
+                    // The first option wins for a repeated key, the same option findIndex would return.
+                    const optionIndexes = new Map();
+
+                    this.visibleOptions.forEach((option, index) => {
+                        if (!this.isValidOption(option)) return;
+
+                        const key = this.getSelectionKey(this.getOptionValue(option));
+
+                        !optionIndexes.has(key) && optionIndexes.set(key, index);
+                    });
+
+                    // Newest selected value first.
                     for (let index = this.d_value.length - 1; index >= 0; index--) {
                         const value = this.d_value[index];
-                        const matchedOptionIndex = this.visibleOptions.findIndex((option) => this.isValidSelectedOption(option) && this.isEquals(value, this.getOptionValue(option)));
+                        const matchedOptionIndex = optionIndexes.get(this.getSelectionKey(value));
 
-                        if (matchedOptionIndex > -1) return matchedOptionIndex;
+                        if (matchedOptionIndex !== undefined) return matchedOptionIndex;
+
+                        // Same fallback as isSelected: an equal copy of an option object has a different key.
+                        if (!this.equalityKey && typeof value === 'object' && value !== null) {
+                            const copyIndex = this.visibleOptions.findIndex((option) => this.isValidOption(option) && this.isEquals(value, this.getOptionValue(option)));
+
+                            if (copyIndex > -1) return copyIndex;
+                        }
                     }
                 } else {
                     return this.visibleOptions.findIndex((option) => this.isValidSelectedOption(option));

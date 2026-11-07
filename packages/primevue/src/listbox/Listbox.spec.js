@@ -344,6 +344,30 @@ describe('Listbox.vue', () => {
             expect(wrapper.vm.findSelectedOptionIndex()).toBe(1);
         });
 
+        it('should skip selected values that match no option in findSelectedOptionIndex', () => {
+            const wrapper = mountListbox({ multiple: true, dataKey: 'code', modelValue: [{ code: 'RM' }, { code: 'XX' }] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(1);
+        });
+
+        it('should return the first of several options with the same value from findSelectedOptionIndex', () => {
+            const options = [...cities(), { name: 'Rome (again)', code: 'RM' }];
+            const wrapper = mountListbox({ multiple: true, options, optionValue: 'code', modelValue: ['RM'] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(1);
+        });
+
+        it('should keep the selection order when references and equal copies are mixed in findSelectedOptionIndex', async () => {
+            const options = cities();
+            const wrapper = mountListbox({ multiple: true, options, modelValue: [options[1], { ...options[3] }] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(3);
+
+            await wrapper.setProps({ modelValue: [{ ...options[3] }, options[1]] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(1);
+        });
+
         it('should skip disabled options in findSelectedOptionIndex', () => {
             const options = cities();
 
