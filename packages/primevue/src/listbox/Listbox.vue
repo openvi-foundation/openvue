@@ -143,6 +143,7 @@ import InputIcon from 'openvue/inputicon';
 import InputText from 'openvue/inputtext';
 import Ripple from 'openvue/ripple';
 import VirtualScroller from 'openvue/virtualscroller';
+import { toRaw } from 'vue';
 import BaseListbox from './BaseListbox.vue';
 
 export default {
@@ -550,11 +551,23 @@ export default {
         isEquals(value1, value2) {
             return equals(value1, value2, this.equalityKey);
         },
+        // Values with the same key are always equal for isEquals: same dataKey field, or the same value or object.
+        // toRaw gives a reactive proxy the same key as its original object.
+        getSelectionKey(value) {
+            return this.equalityKey ? resolveFieldData(value, this.equalityKey) : toRaw(value);
+        },
         isSelected(option) {
             const optionValue = this.getOptionValue(option);
 
-            if (this.multiple) return (this.d_value || []).some((value) => this.isEquals(value, optionValue));
-            else return this.isEquals(this.d_value, optionValue);
+            if (!this.multiple) return this.isEquals(this.d_value, optionValue);
+
+            if (this.selectedKeys.has(this.getSelectionKey(optionValue))) return true;
+
+            // Without an equalityKey, objects are compared by deep equality. An equal copy of the option has a different
+            // key, so it can only be found by comparing against each selected value.
+            const mayMatchEqualCopy = !this.equalityKey && typeof optionValue === 'object' && optionValue !== null;
+
+            return mayMatchEqualCopy && (this.d_value || []).some((value) => this.isEquals(value, optionValue));
         },
         findFirstOptionIndex() {
             return this.visibleOptions.findIndex((option) => this.isValidOption(option));
@@ -730,6 +743,12 @@ export default {
         },
         equalityKey() {
             return this.optionValue ? null : this.dataKey;
+        },
+        // The selection keys of the selected values in multiple mode, so isSelected doesn't have to compare each option
+        // against every selected value. Reading d_value through its reactive proxy makes in-place changes to the array
+        // (push, splice) rebuild the set.
+        selectedKeys() {
+            return new Set((this.d_value || []).map((value) => this.getSelectionKey(value)));
         },
         searchFields() {
             return this.filterFields || [this.optionLabel];
