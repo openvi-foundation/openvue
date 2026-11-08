@@ -146,6 +146,11 @@ import VirtualScroller from 'openvue/virtualscroller';
 import { toRaw } from 'vue';
 import BaseListbox from './BaseListbox.vue';
 
+// Named so usesCustomEquality can tell whether a component that extends Listbox replaced it.
+function isEquals(value1, value2) {
+    return equals(value1, value2, this.equalityKey);
+}
+
 export default {
     name: 'Listbox',
     extends: BaseListbox,
@@ -548,9 +553,7 @@ export default {
         isValidSelectedOption(option) {
             return this.isValidOption(option) && this.isSelected(option);
         },
-        isEquals(value1, value2) {
-            return equals(value1, value2, this.equalityKey);
-        },
+        isEquals,
         // Values with the same key are always equal for isEquals: same dataKey field, or the same value or object.
         // toRaw gives a reactive proxy the same key as its original object.
         getSelectionKey(value) {
@@ -564,8 +567,9 @@ export default {
             if (this.selectedKeys.has(this.getSelectionKey(optionValue))) return true;
 
             // Without an equalityKey, objects are compared by deep equality. An equal copy of the option has a different
-            // key, so it can only be found by comparing against each selected value.
-            const mayMatchEqualCopy = !this.equalityKey && typeof optionValue === 'object' && optionValue !== null;
+            // key, so it can only be found by comparing against each selected value. The same goes for any value when
+            // a component extending Listbox overrides isEquals with its own rule.
+            const mayMatchEqualCopy = this.usesCustomEquality || (!this.equalityKey && typeof optionValue === 'object' && optionValue !== null);
 
             return mayMatchEqualCopy && (this.d_value || []).some((value) => this.isEquals(value, optionValue));
         },
@@ -607,8 +611,9 @@ export default {
 
                         if (matchedOptionIndex !== undefined) return matchedOptionIndex;
 
-                        // Same fallback as isSelected: an equal copy of an option object has a different key.
-                        if (!this.equalityKey && typeof value === 'object' && value !== null) {
+                        // Same fallback as isSelected: an equal copy of an option object, or a value only an overridden
+                        // isEquals matches, has a different key.
+                        if (this.usesCustomEquality || (!this.equalityKey && typeof value === 'object' && value !== null)) {
                             const copyIndex = this.visibleOptions.findIndex((option) => this.isValidOption(option) && this.isEquals(value, this.getOptionValue(option)));
 
                             if (copyIndex > -1) return copyIndex;
@@ -763,6 +768,11 @@ export default {
         },
         equalityKey() {
             return this.optionValue ? null : this.dataKey;
+        },
+        // True when a component extending Listbox overrides isEquals. Selection keys can't follow its rule, so lookups
+        // that miss the keys fall back to calling isEquals.
+        usesCustomEquality() {
+            return this.$options.methods?.isEquals !== isEquals;
         },
         // The selection keys of the selected values in multiple mode, so isSelected doesn't have to compare each option
         // against every selected value. Reading d_value through its reactive proxy makes in-place changes to the array

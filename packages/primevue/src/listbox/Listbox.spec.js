@@ -310,6 +310,33 @@ describe('Listbox.vue', () => {
         });
     });
 
+    describe('overridden isEquals', () => {
+        // A component that extends Listbox with its own equality rule, here case-insensitive codes.
+        const CaseInsensitiveListbox = {
+            extends: Listbox,
+            render: Listbox.render,
+            methods: {
+                isEquals(value1, value2) {
+                    return String(value1).toLowerCase() === String(value2).toLowerCase();
+                }
+            }
+        };
+
+        const mountCaseInsensitive = (props) => mount(CaseInsensitiveListbox, { props: { options: cities(), optionLabel: 'name', multiple: true, optionValue: 'code', ...props } });
+
+        it('should use the overridden isEquals to show selected options', () => {
+            const wrapper = mountCaseInsensitive({ modelValue: ['rm', 'prs'] });
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome', 'Paris']);
+        });
+
+        it('should use the overridden isEquals in findSelectedOptionIndex', () => {
+            const wrapper = mountCaseInsensitive({ modelValue: ['ny', 'prs'] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(4);
+        });
+    });
+
     describe('single selection', () => {
         it('should match a primitive value', () => {
             const wrapper = mountListbox({ optionValue: 'code', modelValue: 'RM' });
