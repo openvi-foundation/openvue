@@ -169,6 +169,17 @@ describe('Listbox.vue', () => {
             expect(selectedLabels(wrapper)).toEqual(['Rome', 'Paris']);
         });
 
+        it('should not compare each option against every selected value while rendering', async () => {
+            // Guards #560: a per-row scan of the selection made rendering slow with many selected options.
+            const wrapper = mountListbox({ multiple: true, optionValue: 'code', modelValue: ['RM'] });
+            const isEquals = vi.spyOn(wrapper.vm, 'isEquals');
+
+            await wrapper.setProps({ modelValue: ['RM', 'PRS'] });
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome', 'Paris']);
+            expect(isEquals).not.toHaveBeenCalled();
+        });
+
         it('should match option objects by reference', () => {
             const options = cities();
             const wrapper = mountListbox({ multiple: true, options, modelValue: [options[1], options[4]] });
