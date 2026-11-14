@@ -254,8 +254,9 @@ export default {
                 this.prefixChar = this.prefix;
             } else {
                 const formatter = new Intl.NumberFormat(this.locale, { style: this.mode, currency: this.currency, currencyDisplay: this.currencyDisplay });
+                const one = new Intl.NumberFormat(this.locale).format(1);
 
-                this.prefixChar = formatter.format(1).split('1')[0];
+                this.prefixChar = formatter.format(1).split(one)[0];
             }
 
             return new RegExp(`${this.escapeRegExp(this.prefixChar || '')}`, 'g');
@@ -265,8 +266,9 @@ export default {
                 this.suffixChar = this.suffix;
             } else {
                 const formatter = new Intl.NumberFormat(this.locale, { style: this.mode, currency: this.currency, currencyDisplay: this.currencyDisplay, minimumFractionDigits: 0, maximumFractionDigits: 0, roundingMode: this.roundingMode });
+                const one = new Intl.NumberFormat(this.locale).format(1);
 
-                this.suffixChar = formatter.format(1).split('1')[1];
+                this.suffixChar = formatter.format(1).split(one)[1];
             }
 
             return new RegExp(`${this.escapeRegExp(this.suffixChar || '')}`, 'g');
@@ -600,7 +602,7 @@ export default {
                 return;
             }
 
-            let char = event.key;
+            let char = event.key.replace(this._numeral, this._index);
             let isDecimalSign = this.isDecimalSign(char);
             const isMinusSign = this.isMinusSign(char);
 
