@@ -51,6 +51,15 @@ describe('InputNumber.vue', () => {
         expect(wrapper.emitted().input[0][0].value).toBe(11);
     });
 
+    it('is keypress called when pressed a number in the locale numbering system', async () => {
+        await wrapper.setProps({ locale: 'fa-IR' });
+        wrapper.find('input.p-inputnumber-input').element.setSelectionRange(1, 1);
+
+        await wrapper.vm.onInputKeyPress({ key: '۲', preventDefault: () => {} });
+
+        expect(wrapper.emitted().input[0][0].value).toBe(12);
+    });
+
     it('is keypress called when pressed minus', async () => {
         wrapper.find('input.p-inputnumber-input').element.setSelectionRange(0, 0);
 
