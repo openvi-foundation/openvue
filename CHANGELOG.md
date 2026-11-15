@@ -15,6 +15,7 @@ All packages in this repository are released together under a single version.
 ### Fixed
 
 - `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
 
 ## [1.1.1] - 2026-11-04
 

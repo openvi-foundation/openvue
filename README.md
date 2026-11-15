@@ -10,7 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Components**](https://openvue.dev/components) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
@@ -123,6 +123,7 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
     </tr>
     <tr>
       <td align="center" valign="top" width="12.5%"><a href="https://www.doxee.com/"><img src="https://avatars.githubusercontent.com/u/2885522?v=4?s=64" width="64px;" alt="Alessandro Riccadonna"/><br /><sub><b>Alessandro Riccadonna</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=ariccadonna-doxee" title="Code">💻</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://sayportfolio.vercel.app/"><img src="https://avatars.githubusercontent.com/u/240962040?v=4?s=64" width="64px;" alt="Sai Asish Y"/><br /><sub><b>Sai Asish Y</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=SAY-5" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
