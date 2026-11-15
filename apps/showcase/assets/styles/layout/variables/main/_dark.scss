@@ -5,8 +5,6 @@
     --primary-hover-color: var(--p-primary-hover-color);
     --text-color: var(--p-surface-0);
     --text-secondary-color: var(--p-surface-400);
-    --glow-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png), radial-gradient(50% 50% at center -25px, var(--p-primary-color) 0%, #000000 100%);
-    --glow-blend: hard-light, color-dodge;
     --topbar-sticky-background: rgba(0, 0, 0, .3);
     --card-border: 1px solid transparent;
     --card-background: var(--p-surface-900);
@@ -22,6 +20,19 @@
     --selection-background: var(--p-surface-700);
     --selection-text-color: var(--p-surface-0);
     --code-button-text-color: var(--p-surface-300);
+    --doc-code-scheme: dark;
+    --doc-code-background: var(--p-surface-900);
+    --doc-code-border: var(--p-surface-800);
+    --doc-code-text: var(--p-surface-0);
+    --doc-code-muted: #bfdbfe;
+    --doc-code-tag: #93c5fd;
+    --doc-code-keyword: #bbf7d0;
+    --doc-code-accent: #fde68a;
+    --doc-diff-del-background: rgb(239 68 68 / 0.12);
+    --doc-diff-del-text: #fca5a5;
+    --doc-diff-add-background: rgb(34 197 94 / 0.12);
+    --doc-diff-add-text: #86efac;
+    --doc-check-color: #4ade80;
     --logo-color: var(--text-secondary-color);
     --designer-primary-color: #ffffff;
     --designer-primary-emphasis-color: #f3f4f6;

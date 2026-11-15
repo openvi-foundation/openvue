@@ -1,9 +1,9 @@
 <template>
-    <section class="landing-migration py-20 px-8 lg:px-20">
+    <section class="landing-migration landing-section">
         <div class="migration-grid">
             <div class="migration-content">
-                <h2 class="migration-title">Coming from PrimeVue 4?</h2>
-                <p class="migration-text">Same components, props, slots, themes and pass-through API. Only the package names change, and one command rewrites them for you.</p>
+                <h2 class="landing-section-title">Coming from PrimeVue 4?</h2>
+                <p class="landing-section-detail">Same components, props, slots, themes and pass-through API. Only the package names change, and one command rewrites them for you.</p>
                 <ul class="migration-points">
                     <li v-for="point of points" :key="point">
                         <i class="pi pi-check" aria-hidden="true"></i>

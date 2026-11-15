@@ -5,7 +5,7 @@
         :json-ld="jsonLd"
     />
     <div class="doc">
-        <div class="doc-main">
+        <div class="doc-main alt-page">
             <div class="doc-intro">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div class="flex-1">
@@ -16,6 +16,11 @@
                         </p>
                     </div>
                     <DocCopyMarkdown docType="page" class="flex-shrink-0" />
+                </div>
+
+                <div class="alt-hero-actions">
+                    <Button as="router-link" to="/migrate" label="Migrate in one command" icon="pi pi-arrow-right" iconPos="right" />
+                    <Button as="a" href="#try" label="Try it without changing code" severity="secondary" variant="outlined" @click.prevent="scrollTo('try')" />
                 </div>
             </div>
             <DocSections :docs="docs" />
@@ -48,16 +53,6 @@ export default {
                     component: WhyDoc
                 },
                 {
-                    id: 'shipped',
-                    label: 'Shipped Since the Fork',
-                    component: ShippedDoc
-                },
-                {
-                    id: 'try',
-                    label: 'Try It Without Risk',
-                    component: TryDoc
-                },
-                {
                     id: 'compatibility',
                     label: 'What Changes',
                     component: CompatibilityDoc
@@ -68,9 +63,19 @@ export default {
                     component: OptionsDoc
                 },
                 {
+                    id: 'shipped',
+                    label: 'Shipped Since the Fork',
+                    component: ShippedDoc
+                },
+                {
                     id: 'longevity',
                     label: 'Will OpenVue Last?',
                     component: LongevityDoc
+                },
+                {
+                    id: 'try',
+                    label: 'Try It Without Risk',
+                    component: TryDoc
                 },
                 {
                     id: 'faq',
@@ -84,6 +89,12 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        scrollTo(id) {
+            document.getElementById(id)?.parentElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', `#${id}`);
+        }
     }
 };
 </script>

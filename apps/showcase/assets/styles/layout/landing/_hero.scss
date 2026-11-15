@@ -1,73 +1,64 @@
+/* Centred statement over a wide stage of live components. The stage is the page's one repeated material:
+   a recessed well (hover background, hairline, large radius) that holds real OpenVue components on cards.
+   The bento tiles further down use the same well for their demos. */
 .landing-hero {
     position: relative;
-    padding-top: 5rem;
-    padding-bottom: 6rem;
+    padding: 5.5rem 1.5rem 0 1.5rem;
+    overflow-x: clip;
 
-    .hero-grid {
-        display: grid;
-        max-width: 1250px;
-        margin: 0 auto;
-        grid-template-columns: minmax(0, 1fr);
-        align-items: center;
-        gap: 4rem;
-
-        @media screen and (min-width: 1200px) {
-            grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
-        }
-    }
-
-    .hero-content {
+    .hero-intro {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        max-width: 56rem;
+        margin: 0 auto;
+        text-align: center;
     }
 
     .hero-title {
-        font-size: 3.75rem;
+        margin: 0;
+        font-size: clamp(2.5rem, 1.4rem + 4.2vw, 4.75rem);
         font-weight: 700;
-        line-height: 1.15;
-        letter-spacing: -0.025em;
+        line-height: 1.04;
+        letter-spacing: -0.035em;
         text-wrap: balance;
         color: var(--high-contrast-text-color);
-        margin: 0;
     }
 
     .hero-subtitle {
-        color: var(--text-secondary-color);
+        max-width: 40rem;
+        margin: 1.75rem 0 2.5rem 0;
+        font-size: 1.1875rem;
         font-weight: 500;
-        font-size: 1.125rem;
-        line-height: 1.65;
-        max-width: 36rem;
-        margin: 1.5rem 0 2.5rem 0;
+        line-height: 1.6;
+        text-wrap: pretty;
+        color: var(--text-secondary-color);
     }
 
     .hero-actions {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        gap: 1rem;
+        justify-content: center;
+        gap: 0.75rem;
     }
 
     .hero-install {
         display: inline-flex;
         align-items: center;
-        gap: 0.75rem;
-        margin-top: 2rem;
-        padding: 0.625rem 0.625rem 0.625rem 1rem;
-        border: 1px solid var(--border-color);
+        gap: 0.5rem;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        padding: 0.375rem 0.375rem 0.375rem 1rem;
         border-radius: 10px;
-        background-color: var(--card-background);
-    }
-
-    .hero-install-prompt {
-        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
-        color: var(--text-secondary-color);
+        background-color: var(--hover-background);
     }
 
     .hero-install-command {
         font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+        font-size: 0.875rem;
         color: var(--text-color);
         white-space: nowrap;
+        overflow-x: auto;
     }
 
     .hero-install-copy {
@@ -80,7 +71,7 @@
         padding: 0;
         color: var(--text-secondary-color);
         background-color: transparent;
-        border: 1px solid transparent;
+        border: 0 none;
         border-radius: 6px;
         cursor: pointer;
         transition:
@@ -94,48 +85,72 @@
 
         &:hover {
             color: var(--text-color);
-            background-color: var(--hover-background);
+            background-color: var(--card-background);
         }
     }
 
-    .hero-note {
-        margin: 1.25rem 0 0 0;
-        font-size: 0.9375rem;
-        font-weight: 500;
-        color: var(--text-secondary-color);
-    }
-
-    .hero-preview {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        min-width: 0;
+    /* Stage */
+    .hero-stage-wrap {
+        max-width: 1280px;
+        margin: 4.5rem auto 0 auto;
     }
 
     .hero-theme-switch {
         display: flex;
-    }
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
 
-    /* Live component panel */
-    .hero-showcase {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        align-items: start;
-        gap: 1rem;
-        padding: 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 16px;
-        background: var(--hover-background);
-
-        @media screen and (min-width: 640px) {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        > span {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-secondary-color);
         }
     }
 
-    .hero-stack {
+    .hero-stage {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        align-items: start;
+        gap: 1rem;
+        height: 40rem;
+        padding: 1.25rem 1.25rem 0 1.25rem;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        border-bottom: 0 none;
+        border-radius: 20px 20px 0 0;
+        background: var(--hover-background);
+        /* The columns end at different heights; the fade turns the ragged edge into a stage that runs on under the fold. */
+        mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent);
+    }
+
+    .hero-col {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        min-width: 0;
+        animation: hero-col-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+        /* Staggered tops give the stage its mosaic; the delays follow the same order. */
+        &:nth-child(1) {
+            margin-top: 2.5rem;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+
+        &:nth-child(3) {
+            margin-top: 4rem;
+            animation-delay: 0.12s;
+        }
+
+        &:nth-child(4) {
+            margin-top: 1.25rem;
+            animation-delay: 0.18s;
+        }
     }
 
     .hero-card {
@@ -151,81 +166,16 @@
         font-size: 0.875rem;
     }
 
-    /* Phones: the tall cards drop out and the rest float loosely over the hero, each in its own spot,
-       overlapping only at the edges. Tapping or focusing a card brings it forward and stops it moving. */
-    @media screen and (max-width: 639px) {
-        overflow-x: clip;
-
-        .hero-showcase {
-            position: relative;
-            display: block;
-            height: 23rem;
-            padding: 0;
-            border: 0 none;
-            background: transparent;
-        }
-
-        .hero-stack {
-            display: contents;
-        }
-
-        .hero-card-optional {
-            display: none;
-        }
-
-        .hero-card {
-            position: absolute;
-            width: 80%;
-            animation: hero-card-float 7s ease-in-out infinite;
-            transition:
-                rotate 0.4s ease,
-                box-shadow 0.4s ease;
-
-            &:not(.is-front) {
-                cursor: pointer;
-            }
-
-            &.is-front {
-                rotate: 0deg;
-                box-shadow: var(--home-templates-block-shadow);
-                animation-play-state: paused;
-            }
-        }
-
-        .hero-layer-verify {
-            top: 0;
-            left: 0;
-            rotate: -2deg;
-            animation-duration: 8s;
-            animation-delay: -3s;
-        }
-
-        .hero-layer-notifications {
-            top: 6.5rem;
-            right: 0;
-            rotate: 1.5deg;
-        }
-
-        .hero-layer-team {
-            top: 15rem;
-            left: 0.75rem;
-            rotate: -1deg;
-            animation-duration: 9s;
-            animation-delay: -5s;
-        }
-    }
-
-    @media screen and (max-width: 639px) and (prefers-reduced-motion: reduce) {
-        .hero-card {
-            animation: none;
-            transition: none;
-        }
-    }
-
     .hero-card-title {
         font-size: 0.9375rem;
         font-weight: 600;
         color: var(--text-color);
+    }
+
+    .hero-card-text {
+        margin: 0.375rem 0 0 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary-color);
     }
 
     .hero-field {
@@ -239,49 +189,6 @@
             font-weight: 500;
             color: var(--text-secondary-color);
         }
-    }
-
-    .hero-card-text {
-        margin: 0.375rem 0 0 0;
-        font-size: 0.875rem;
-        color: var(--text-secondary-color);
-    }
-
-    /* The inline calendar brings its own panel chrome; let the card provide it instead. */
-    .hero-card-calendar {
-        gap: 0.75rem;
-        padding-bottom: 1rem;
-    }
-
-    .hero-calendar,
-    .hero-calendar .p-datepicker-panel {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .hero-calendar .p-datepicker-panel {
-        padding: 0;
-        border: 0 none;
-        background: transparent;
-    }
-
-    .hero-calendar .p-datepicker-header {
-        padding-top: 0;
-        background: transparent;
-    }
-
-    .hero-calendar .p-datepicker-day-view {
-        margin: 0;
-    }
-
-    .hero-calendar .p-datepicker-day {
-        width: 2rem;
-        height: 2rem;
-        font-size: 0.8125rem;
-    }
-
-    .hero-calendar .p-datepicker-day-cell {
-        padding: 0.125rem;
     }
 
     .hero-card-footer {
@@ -317,9 +224,77 @@
         color: var(--text-secondary-color);
     }
 
-    @media screen and (max-width: 768px) {
-        .hero-title {
-            font-size: 2.25rem;
+    .hero-color-value {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+        font-size: 0.8125rem;
+        color: var(--text-secondary-color);
+        text-transform: uppercase;
+    }
+
+    /* The inline calendar, tree and color picker bring their own panel chrome; the card provides it instead. */
+    .hero-calendar,
+    .hero-calendar .p-datepicker-panel {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .hero-calendar .p-datepicker-panel {
+        padding: 0;
+        border: 0 none;
+        background: transparent;
+    }
+
+    .hero-calendar .p-datepicker-header {
+        padding-top: 0;
+        background: transparent;
+    }
+
+    .hero-calendar .p-datepicker-day-view {
+        margin: 0;
+    }
+
+    .hero-calendar .p-datepicker-day {
+        width: 1.875rem;
+        height: 1.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .hero-calendar .p-datepicker-day-cell {
+        padding: 0.125rem;
+    }
+
+    .hero-tree {
+        padding: 0;
+        background: transparent;
+        font-size: 0.875rem;
+    }
+
+    .hero-colorpicker .p-colorpicker-panel {
+        width: 100%;
+        border: 0 none;
+        background: transparent;
+    }
+
+    /* Tablets: two columns. */
+    @media screen and (max-width: 1199px) and (min-width: 640px) {
+        .hero-stage {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            height: 46rem;
+        }
+
+        .hero-col:nth-child(n + 3) {
+            display: none;
+        }
+    }
+
+    /* Phones: every card stays, in one row you swipe through edge to edge. The next card peeking in at the
+       right edge is the cue that the row scrolls. */
+    @media screen and (max-width: 639px) {
+        padding: 3.5rem 1rem 0 1rem;
+
+        .hero-subtitle {
+            font-size: 1.0625rem;
+            margin: 1.25rem 0 2rem 0;
         }
 
         .hero-actions {
@@ -328,29 +303,80 @@
             align-items: stretch;
         }
 
-        .hero-install {
-            max-width: 100%;
-            margin-top: 1.5rem;
-            overflow-x: auto;
-        }
-
-        .hero-note {
-            font-size: 0.875rem;
-        }
-
         .linkbox {
             justify-content: center;
+        }
+
+        .hero-install {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .hero-install-copy {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+
+        .hero-stage-wrap {
+            margin: 3rem -1rem 0 -1rem;
+        }
+
+        /* Five presets do not fit 360px; the switch scrolls sideways instead of wrapping. */
+        .hero-theme-switch {
+            flex-direction: column;
+            gap: 0.625rem;
+            padding: 0 1rem;
+
+            .p-selectbutton {
+                max-width: 100%;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+        }
+
+        .hero-stage {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            height: auto;
+            padding: 1rem;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 1rem;
+            scrollbar-width: none;
+            border-right: 0 none;
+            border-left: 0 none;
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 0;
+            mask-image: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .hero-col,
+        .hero-col:nth-child(n + 3) {
+            display: contents;
+        }
+
+        .hero-card {
+            flex: 0 0 82%;
+            scroll-snap-align: start;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-col {
+            animation: none;
         }
     }
 }
 
-@keyframes hero-card-float {
-    0%,
-    100% {
-        translate: 0 0;
-    }
-
-    50% {
-        translate: 0 -6px;
+@keyframes hero-col-rise {
+    from {
+        translate: 0 2rem;
+        opacity: 0.4;
     }
 }

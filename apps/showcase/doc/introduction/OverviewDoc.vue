@@ -6,7 +6,7 @@
             a name and a maintenance path that are not tied to a single company. OpenVue is not affiliated with PrimeTek or PrimeUI.
         </p>
         <p class="mb-0">
-            Development is led by <NuxtLink to="/team">Openvi Foundation</NuxtLink>, an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.
+            Development is led by <NuxtLink to="/team">OpenVi Foundation</NuxtLink>, an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.
         </p>
     </DocSectionText>
 </template>

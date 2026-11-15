@@ -1,16 +1,3 @@
-@media screen and (min-width: 1920px) {
-    .layout-content {
-        max-width: 1728px;
-        margin: 0 auto;
-    }
-
-    .layout-topbar-inner {
-        max-width: 1728px;
-        margin: 0 auto;
-    }
-
-
-}
 
 @media screen and (max-width: 1199px) {
     .layout-topbar-inner {
@@ -74,23 +61,20 @@
         }
     }
 
-    .layout-content {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    :root {
+        --docs-gutter: 2rem;
     }
 
 }
 
 /* Laptops keep the docked sidebar: the component list stays one click away instead of behind the hamburger. */
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
-    .layout-content {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    :root {
+        --docs-sidebar-width: 14rem;
     }
 
-    .layout-sidebar {
-        flex: 0 0 220px;
-        margin-inline-end: 2rem;
+    .layout-content .layout-content-slot {
+        padding-inline-start: 2.5rem;
     }
 }
 
@@ -109,6 +93,10 @@
 
     .layout-sidebar {
         display: none;
+    }
+
+    .layout-content .layout-content-slot {
+        padding-inline-start: 0;
     }
 }
 
@@ -142,9 +130,8 @@
         }
     }
 
-    .layout-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
+    :root {
+        --docs-gutter: 1rem;
     }
 
 

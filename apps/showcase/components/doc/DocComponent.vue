@@ -1,12 +1,21 @@
 <template>
     <div :class="['doc-component', className]">
-        <ul class="doc-tabmenu">
+        <header class="doc-intro doc-component-header">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div class="flex-1">
+                    <h1>{{ header }}</h1>
+                    <p>{{ description }}</p>
+                    <p>Coming from PrimeVue? Compare <NuxtLink to="/primevue-alternative" class="doc-link">your options</NuxtLink> or <NuxtLink to="/migrate" class="doc-link">migrate in one command</NuxtLink>.</p>
+                </div>
+                <DocCopyMarkdown :componentName="getComponentName()" class="flex-shrink-0" />
+            </div>
+        </header>
+
+        <ul class="doc-tabmenu" aria-label="Documentation sections">
             <li v-for="item in tabs" :key="item.key" :class="{ 'doc-tabmenu-active': tab === item.key }">
-                <button type="button" @click="tab = item.key">
-                    <span class="inline-flex items-center gap-2">
-                        {{ item.label }}
-                        <Tag v-if="item.isNew" value="New" severity="success" />
-                    </span>
+                <button type="button" :aria-current="tab === item.key ? 'true' : null" @click="tab = item.key">
+                    {{ item.label }}
+                    <Tag v-if="item.isNew" value="New" severity="success" class="doc-tabmenu-new" />
                 </button>
             </li>
         </ul>
@@ -14,18 +23,6 @@
         <div class="doc-tabpanels">
             <div v-show="tab === 'features'" class="doc-tabpanel">
                 <div class="doc-main">
-                    <div class="doc-intro">
-                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                            <div class="flex-1">
-                                <h1>{{ header }}</h1>
-                                <p>{{ description }}</p>
-                                <p class="text-sm text-muted-color">
-                                    Coming from PrimeVue? Compare <NuxtLink to="/primevue-alternative" class="doc-link">your options</NuxtLink> or <NuxtLink to="/migrate" class="doc-link">migrate in one command</NuxtLink>.
-                                </p>
-                            </div>
-                            <DocCopyMarkdown :componentName="getComponentName()" class="flex-shrink-0" />
-                        </div>
-                    </div>
                     <DocSections :docs="componentDocs" />
                 </div>
                 <DocSectionNav :docs="componentDocs" />
@@ -130,11 +127,11 @@ export default {
         /* A tab appears only when the page supplied its content, and its key is also its URL hash. */
         tabs() {
             return [
-                { key: 'features', label: 'FEATURES' },
-                { key: 'playground', label: 'PLAYGROUND', when: this.playgroundDocs },
+                { key: 'features', label: 'Features' },
+                { key: 'playground', label: 'Playground', when: this.playgroundDocs },
                 { key: 'api', label: 'API' },
-                { key: 'theming', label: 'THEMING', when: this.themingDocs },
-                { key: 'pt', label: 'PASS THROUGH', when: this.ptTabComponent }
+                { key: 'theming', label: 'Theming', when: this.themingDocs },
+                { key: 'pt', label: 'Pass Through', when: this.ptTabComponent }
             ]
                 .filter((item) => !('when' in item) || item.when)
                 .map((item) => ({ ...item, isNew: this.newTabs.includes(item.key) }));

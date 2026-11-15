@@ -1,9 +1,5 @@
 <template>
     <div class="doc-main">
-        <div class="doc-intro">
-            <h2 class="text-[1.75rem]">{{ header }} API</h2>
-            <p>{{ description }}</p>
-        </div>
         <DocSections :docs="docs" />
     </div>
     <DocSectionNav :docs="docs" />

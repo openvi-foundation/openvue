@@ -1,11 +1,24 @@
+/* Docs shell: sidebar | reading column | outline, centred as one block so the topbar,
+   sidebar edge and content share the same left line at every width. */
+:root {
+    --docs-max-width: 100rem;
+    --docs-gutter: 4rem;
+    --docs-sidebar-width: 15rem;
+    /* No reading cap: the content fills the space between the sidebar and the outline, so the outline's
+       right edge lines up with the topbar's. Set a length here to bring a cap back. */
+    --docs-measure: none;
+}
+
 .layout-content {
-    padding: calc(var(--topbar-height) + 2rem) 4rem 0 4rem;
     display: flex;
+    max-width: var(--docs-max-width);
+    margin: 0 auto;
+    padding: var(--topbar-height) var(--docs-gutter) 0;
 
     .layout-content-slot {
         flex: 1 1 auto;
-        width: 1%;
-        padding-top: .5rem;
+        min-width: 0;
+        padding: 2.5rem 0 5rem 3rem;
     }
 }
 

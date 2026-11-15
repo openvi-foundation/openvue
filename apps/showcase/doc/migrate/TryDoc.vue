@@ -10,6 +10,9 @@
 </template>
 
 <script>
+import pkg from '../../../../packages/primevue/package.json';
+
+/* Always the current release, read from the package so it never goes stale. */
 export default {
     data() {
         return {
@@ -17,7 +20,7 @@ export default {
                 basic: `
 {
     "overrides": {
-        "primevue": "npm:openvue@1.0.0"
+        "primevue": "npm:openvue@${pkg.version}"
     }
 }
 `
