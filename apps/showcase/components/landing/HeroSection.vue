@@ -2,7 +2,7 @@
     <section class="landing-hero">
         <div class="hero-intro">
             <h1 class="hero-title">The complete UI toolkit for Vue and Nuxt</h1>
-            <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue carries PrimeVue 4.5.5 forward under the MIT license, so the library your app already depends on stays free and keeps moving.</p>
+            <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue is an MIT-licensed fork of PrimeVue 4.5.5, so the library your app already depends on stays free and keeps moving.</p>
             <div class="hero-actions">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
                     <span>Get Started</span>
