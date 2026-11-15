@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import PrimeVue from 'openvue/config';
+import OverlayEventBus from 'openvue/overlayeventbus';
 import DatePicker from './DatePicker.vue';
 
 describe('DatePicker.vue', () => {
@@ -225,6 +226,52 @@ describe('DatePicker.vue', () => {
             await wrapper.setData({ currentHour: 10 });
 
             expect(liveTime().text()).toBe('10:05');
+        });
+    });
+
+    describe('nested overlays', () => {
+        let nestedOverlay;
+
+        beforeEach(async () => {
+            await wrapper.setData({ overlayVisible: true });
+            wrapper.vm.onOverlayEnter(wrapper.vm.overlay);
+            wrapper.vm.onOverlayEnterComplete();
+
+            nestedOverlay = document.createElement('div');
+            document.body.appendChild(nestedOverlay);
+        });
+
+        afterEach(() => {
+            wrapper.vm.onOverlayLeave();
+            nestedOverlay.remove();
+        });
+
+        const mousedownOnNestedOverlay = (emitterTarget) => {
+            const event = new MouseEvent('mousedown', { bubbles: true });
+
+            nestedOverlay.addEventListener('mousedown', (e) => OverlayEventBus.emit('overlay-click', { originalEvent: e, target: emitterTarget }), { once: true });
+            nestedOverlay.dispatchEvent(event);
+        };
+
+        it('should stay open when an overlay of a component inside the panel is clicked', () => {
+            const footer = wrapper.vm.overlay.querySelector('.p-datepicker-buttonbar') || wrapper.vm.overlay.firstElementChild;
+
+            mousedownOnNestedOverlay(footer);
+
+            expect(wrapper.vm.overlayVisible).toBe(true);
+        });
+
+        it('should close when an overlay of a component outside the panel is clicked', () => {
+            mousedownOnNestedOverlay(document.body);
+
+            expect(wrapper.vm.overlayVisible).toBe(false);
+        });
+
+        it('should close on a regular outside click after a nested overlay click', () => {
+            mousedownOnNestedOverlay(wrapper.vm.overlay.firstElementChild);
+            document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+
+            expect(wrapper.vm.overlayVisible).toBe(false);
         });
     });
 });
