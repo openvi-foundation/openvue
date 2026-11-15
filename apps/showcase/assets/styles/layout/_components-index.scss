@@ -34,10 +34,33 @@
     font-size: 1rem;
 }
 
+/* Columns follow the width the page actually has (sidebar or not), not the viewport. */
+.doc-main-wide:has(.components-grid) {
+    container-type: inline-size;
+}
+
 .components-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
+}
+
+@container (min-width: 32rem) {
+    .components-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@container (min-width: 46rem) {
+    .components-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@container (min-width: 62rem) {
+    .components-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
 .components-card-link {

@@ -8,7 +8,7 @@
         grid-template-columns: minmax(0, 1fr);
         align-items: center;
         gap: 3rem;
-        max-width: 1250px;
+        max-width: 1280px;
         margin: 0 auto;
 
         @media screen and (min-width: 1024px) {
@@ -23,21 +23,7 @@
         align-items: flex-start;
     }
 
-    .migration-title {
-        margin: 0;
-        font-size: 2rem;
-        line-height: 1.25;
-        font-weight: 700;
-        color: var(--text-color);
-    }
 
-    .migration-text {
-        margin: 1rem 0 0 0;
-        color: var(--text-secondary-color);
-        font-weight: 500;
-        font-size: 1.0625rem;
-        line-height: 1.7;
-    }
 
     .migration-points {
         display: flex;
@@ -220,9 +206,6 @@
     }
 
     @media screen and (max-width: 768px) {
-        .migration-title {
-            font-size: 1.75rem;
-        }
 
         .migration-command {
             overflow-x: auto;

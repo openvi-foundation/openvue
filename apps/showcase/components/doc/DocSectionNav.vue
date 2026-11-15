@@ -1,5 +1,6 @@
 <template>
-    <div class="doc-section-nav-container">
+    <nav class="doc-section-nav-container" aria-labelledby="doc-section-nav-title">
+        <p id="doc-section-nav-title" class="doc-section-nav-title">On this page</p>
         <ul ref="nav" class="doc-section-nav">
             <li v-for="doc of docs" :key="doc.label" :class="['navbar-item', { 'active-navbar-item': activeId === doc.id }]">
                 <div class="navbar-item-content">
@@ -19,7 +20,7 @@
                 </template>
             </li>
         </ul>
-    </div>
+    </nav>
 </template>
 
 <script>

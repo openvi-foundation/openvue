@@ -10,63 +10,57 @@
         <table class="doc-table">
             <thead>
                 <tr>
-                    <th v-for="header in Object.keys(data[0])" :key="header">
-                        <template v-if="header !== 'readonly' && header !== 'optional' && header !== 'deprecated'">
-                            {{ header }}
-                        </template>
-                    </th>
+                    <th v-for="header in columns" :key="header">{{ header }}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="prop in data" :key="prop">
-                    <td v-for="[k, v] in Object.entries(prop)" :key="k" :style="{ 'max-width': k === 'default' || k === 'returnType' ? '200px' : undefined }">
-                        <template v-if="k !== 'readonly' && k !== 'optional' && k !== 'deprecated'">
-                            <span v-if="k === 'name'" :id="id + '.' + v" class="doc-option-name" :class="{ 'line-through cursor-pointer': !!prop.deprecated }" :title="prop.deprecated">
-                                {{ v }}<NuxtLink :to="`/${$router.currentRoute.value.name}/#${id}.${v}`" class="doc-option-link"> <i class="pi pi-link"></i> </NuxtLink>
-                            </span>
+                    <td v-for="[k, v] in columns.map((key) => [key, prop[key]])" :key="k" :style="{ 'max-width': k === 'default' || k === 'returnType' ? '200px' : undefined }">
+                        <span v-if="k === 'name'" :id="id + '.' + v" class="doc-option-name" :class="{ 'line-through cursor-pointer': !!prop.deprecated }" :title="prop.deprecated">
+                            {{ v }}<NuxtLink :to="`/${$router.currentRoute.value.name}/#${id}.${v}`" class="doc-option-link"> <i class="pi pi-link"></i> </NuxtLink>
+                        </span>
 
-                            <template v-else-if="k === 'type'">
-                                <template v-for="(value, i) in getType(v)" :key="value">
-                                    <span v-if="i !== 0" class="doc-option-type">{{ ' | ' }}</span>
-                                    <NuxtLink v-if="isLinkType(value)" :to="setLinkPath(value)" class="doc-option-type doc-option-link">{{ value }}</NuxtLink
-                                    ><span v-else class="doc-option-type">{{ value === 'T' ? 'any' : value }}</span>
-                                </template>
+                        <template v-else-if="k === 'type'">
+                            <template v-for="(value, i) in getType(v)" :key="value">
+                                <span v-if="i !== 0" class="doc-option-type">{{ ' | ' }}</span>
+                                <NuxtLink v-if="isLinkType(value)" :to="setLinkPath(value)" class="doc-option-type doc-option-link">{{ value }}</NuxtLink
+                                ><span v-else class="doc-option-type">{{ value === 'T' ? 'any' : value }}</span>
                             </template>
+                        </template>
 
-                            <template v-else-if="k === 'options'">
-                                <template v-for="val in v" :key="val.name">
-                                    <div class="doc-option-type-options-container">
-                                        {{ val.name }}: <span class="doc-option-type-options doc-option-type">{{ val.type === 'T' || (val.type.includes('\<T') && !val.type.includes('\<Tr')) ? 'any' : val.type }}</span>
-                                    </div>
-                                </template>
-                            </template>
-
-                            <template v-else-if="k === 'parameters'">
-                                <div class="doc-option-params">
-                                    <span v-if="v.name" class="doc-option-parameter-name"> {{ v.name }}: </span>
-                                    <template v-for="(value, i) in getType(v.type)" :key="value">
-                                        {{ i !== 0 ? ' | ' : '' }}<NuxtLink v-if="isLinkType(value)" :to="setLinkPath(value)" class="doc-option-link doc-option-parameter-type"> {{ value }} </NuxtLink>
-                                        <span v-else :class="{ 'doc-option-parameter-type': label === 'Emits' }" v-html="value"> </span>
-                                    </template>
+                        <template v-else-if="k === 'options'">
+                            <template v-for="val in v" :key="val.name">
+                                <div class="doc-option-type-options-container">
+                                    {{ val.name }}: <span class="doc-option-type-options doc-option-type">{{ val.type === 'T' || (val.type.includes('\<T') && !val.type.includes('\<Tr')) ? 'any' : val.type }}</span>
                                 </div>
                             </template>
+                        </template>
 
-                            <div v-else-if="k === 'default'" :id="id + '.' + k" :class="['doc-option-default', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
-                                {{ v === '' || v === undefined ? 'null' : v }}
+                        <template v-else-if="k === 'parameters'">
+                            <div class="doc-option-params">
+                                <span v-if="v.name" class="doc-option-parameter-name"> {{ v.name }}: </span>
+                                <template v-for="(value, i) in getType(v.type)" :key="value">
+                                    {{ i !== 0 ? ' | ' : '' }}<NuxtLink v-if="isLinkType(value)" :to="setLinkPath(value)" class="doc-option-link doc-option-parameter-type"> {{ value }} </NuxtLink>
+                                    <span v-else :class="{ 'doc-option-parameter-type': label === 'Emits' }" v-html="value"> </span>
+                                </template>
                             </div>
+                        </template>
 
-                            <div v-else-if="k === 'returnType'" :id="id + '.' + k" :class="['doc-option-return-type', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
-                                {{ v }}
-                            </div>
+                        <div v-else-if="k === 'default'" :id="id + '.' + k" :class="['doc-option-default', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
+                            {{ v === '' || v === undefined ? 'null' : v }}
+                        </div>
 
-                            <div v-else-if="k === 'CSS Variable'" :id="id + '.' + k" :class="['doc-option-css-variable', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
-                                {{ v }}
-                            </div>
+                        <div v-else-if="k === 'returnType'" :id="id + '.' + k" :class="['doc-option-return-type', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
+                            {{ v }}
+                        </div>
 
-                            <template v-else>
-                                <span v-if="typeof v === 'string' && v?.includes('<a')" :id="id + '.' + k" class="doc-option-description" v-html="v"> </span>
-                                <span v-else :id="id + '.' + k" class="doc-option-description">{{ v }} </span>
-                            </template>
+                        <div v-else-if="k === 'CSS Variable'" :id="id + '.' + k" :class="['doc-option-css-variable', $appState.darkTheme ? 'doc-option-dark' : 'doc-option-light']">
+                            {{ v }}
+                        </div>
+
+                        <template v-else>
+                            <span v-if="typeof v === 'string' && v?.includes('<a')" :id="id + '.' + k" class="doc-option-description" v-html="v"> </span>
+                            <span v-else :id="id + '.' + k" class="doc-option-description">{{ v }} </span>
                         </template>
                     </td>
                 </tr>
@@ -167,6 +161,11 @@ export default {
         }
     },
     computed: {
+        /* readonly, optional and deprecated are row metadata, not columns: rendering them as empty
+           cells made the description stop being the last column and widened every table. */
+        columns() {
+            return Object.keys(this.data[0] || {}).filter((key) => !['readonly', 'optional', 'deprecated'].includes(key));
+        },
         componentLevel() {
             if (this.label === 'Interfaces' || this.label === 'Events') {
                 return 2;

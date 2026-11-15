@@ -4,9 +4,10 @@
         <AppTopBar />
         <div class="layout-content">
             <app-menu />
-            <div class="layout-content-slot">
+            <main class="layout-content-slot">
                 <slot></slot>
-            </div>
+                <DocPager />
+            </main>
         </div>
         <AppFooter />
         <Toast />
@@ -20,7 +21,10 @@
 </template>
 
 <script>
+import DocPager from '@/components/doc/DocPager.vue';
+
 export default {
+    components: { DocPager },
     watch: {
         $route: {
             immediate: true,
@@ -47,7 +51,7 @@ export default {
     computed: {
         containerClass() {
             return [
-                'layout-wrapper',
+                'layout-wrapper layout-docs',
                 {
                     'layout-news-active': this.$appState.newsActive
                 }

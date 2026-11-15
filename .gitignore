@@ -40,3 +40,7 @@ docs/plans
 docs/superpowers
 CLAUDE.md
 *.tsbuildinfo
+
+# Impeccable design-tool context (local only)
+apps/showcase/PRODUCT.md
+apps/showcase/.impeccable/

@@ -3,6 +3,28 @@
     --topbar-height: 4.5rem;
 }
 
+/* On docs pages the bar is always the page's top edge: a solid ground and a hairline, no state change
+   on scroll, and its content lines up with the docs block below it. */
+.layout-docs {
+    --topbar-height: 4rem;
+
+    .layout-topbar {
+        border-bottom-color: var(--border-color);
+        background-color: var(--topbar-sticky-background);
+        backdrop-filter: blur(12px) saturate(160%);
+
+        &.layout-topbar-sticky {
+            box-shadow: none;
+        }
+    }
+
+    .layout-topbar-inner {
+        max-width: var(--docs-max-width);
+        margin: 0 auto;
+        padding: 0 var(--docs-gutter);
+    }
+}
+
 .layout-topbar {
     position: fixed;
     top: 0;
@@ -154,7 +176,7 @@
             }
         }
 
-        .topbar-item:not(.search-item):not(.config-item):not(.star-item) {
+        .topbar-item:not(.search-item):not(.star-item) {
             border-color: transparent;
             background-color: transparent;
 
@@ -165,10 +187,12 @@
         }
 
         .config-item {
-            background-color: var(--primary-color);
+            border-color: transparent;
+            background-color: transparent;
 
-            i {
-                color: var(--primary-contrast-color);
+            &:hover {
+                border-color: transparent;
+                background-color: var(--hover-background);
             }
         }
 

@@ -4,6 +4,15 @@ Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All pack
 
 ## Unreleased
 
+### Changed
+
+- `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+
+### Fixed
+
+- `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
+
 ## 1.1.1 - 2026-11-04
 
 ### Added
