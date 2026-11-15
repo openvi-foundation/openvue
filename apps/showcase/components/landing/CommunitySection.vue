@@ -1,7 +1,7 @@
 <template>
     <section class="landing-community landing-section">
         <div class="community-content">
-            <h2 class="landing-section-title">Free, and built in the open</h2>
+            <h2 class="landing-section-title">Open source, MIT licensed</h2>
             <p class="landing-section-detail">
                 OpenVue is MIT licensed with no paid tier. It keeps moving because people use it, report issues and send pull requests.
                 <template v-if="usage"> {{ usage }}</template>
