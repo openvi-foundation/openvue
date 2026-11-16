@@ -599,6 +599,8 @@ export default {
     timePickerChange: false,
     scrollHandler: null,
     outsideClickListener: null,
+    selfClick: false,
+    overlayEventListener: null,
     resizeListener: null,
     matchMediaListener: null,
     matchMediaOrientationListener: null,
@@ -720,6 +722,11 @@ export default {
         }
 
         this.destroyResponsiveStyleElement();
+
+        if (this.overlayEventListener) {
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
+        }
 
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
@@ -946,6 +953,15 @@ export default {
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
 
             this.alignOverlay();
+
+            // Issue: #571
+            this.overlayEventListener = (e) => {
+                if (this.overlay && this.overlay.contains(e.target)) {
+                    this.selfClick = true;
+                }
+            };
+
+            OverlayEventBus.on('overlay-click', this.overlayEventListener);
             this.$emit('show');
         },
         onOverlayEnterComplete() {
@@ -963,6 +979,8 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
             this.$emit('hide');
 
             this.overlay = null;
@@ -1095,9 +1113,11 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
                         this.overlayVisible = false;
                     }
+
+                    this.selfClick = false;
                 };
 
                 document.addEventListener('mousedown', this.outsideClickListener);
@@ -1107,6 +1127,7 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('mousedown', this.outsideClickListener);
                 this.outsideClickListener = null;
+                this.selfClick = false;
             }
         },
         bindScrollListener() {
@@ -1186,6 +1207,10 @@ export default {
         isOutsideClicked(event) {
             const composedPath = event.composedPath();
             return !(this.$el.isSameNode(event.target) || this.isNavIconClicked(event) || composedPath.includes(this.$el) || composedPath.includes(this.overlay));
+        },
+        isNestedOverlayVisible() {
+            // Issue: #571
+            return !!this.overlay?.querySelector('[aria-expanded="true"]');
         },
         isNavIconClicked(event) {
             return (this.previousButton && (this.previousButton.isSameNode(event.target) || this.previousButton.contains(event.target))) || (this.nextButton && (this.nextButton.isSameNode(event.target) || this.nextButton.contains(event.target)));
