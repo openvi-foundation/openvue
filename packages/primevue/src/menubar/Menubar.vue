@@ -276,6 +276,8 @@ export default {
             this.activeItemPath = activeItemPath;
         },
         onItemClick(event) {
+            this.safeTriangle && this.safeTriangle.cancel();
+
             const { originalEvent, processedItem } = event;
             const grouped = this.isProccessedItemGroup(processedItem);
             const root = isEmpty(processedItem.parent);

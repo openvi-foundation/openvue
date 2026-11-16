@@ -287,6 +287,8 @@ export default {
             });
         },
         onItemClick(event) {
+            this.safeTriangle && this.safeTriangle.cancel();
+
             const { originalEvent, processedItem } = event;
             const grouped = this.isProccessedItemGroup(processedItem);
             const root = isEmpty(processedItem.parent);

@@ -156,4 +156,27 @@ describe('TieredMenu.vue safe triangle', () => {
         expect(isActive('File')).toBe(false);
         expect(isActive('Edit')).toBe(true);
     });
+
+    it('should drop a deferred hover once an item is clicked', async () => {
+        pointerMove(90, 30);
+        await itemContent(3).trigger('mouseenter', { clientX: 95, clientY: 45 });
+        pointerMove(95, 45);
+
+        expect(wrapper.vm.safeTriangle.isPending()).toBe(true);
+
+        // otherwise the timer replays the hover and can reopen a submenu the user just closed
+        await itemContent(3).trigger('click');
+
+        expect(isActive('Edit')).toBe(true);
+        expect(wrapper.vm.safeTriangle.isPending()).toBe(false);
+    });
+
+    it('should ignore positions that did not come from a mouse', async () => {
+        // touch taps fire mouseenter without a mouse pointermove before it
+        await itemContent(0).trigger('mouseenter', { clientX: 90, clientY: 30 });
+        await itemContent(3).trigger('mouseenter', { clientX: 95, clientY: 45 });
+
+        expect(isActive('File')).toBe(false);
+        expect(isActive('Edit')).toBe(true);
+    });
 });

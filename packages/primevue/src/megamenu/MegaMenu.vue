@@ -277,6 +277,8 @@ export default {
             isFocus && focus(this.menubar);
         },
         onItemClick(event) {
+            this.safeTriangle && this.safeTriangle.cancel();
+
             const { originalEvent, processedItem } = event;
             const grouped = this.isProccessedItemGroup(processedItem);
             const root = isEmpty(processedItem.parent);

@@ -50,8 +50,6 @@ export default class SafeTriangle {
         const point = { x: event.clientX, y: event.clientY };
         const apex = this.pending ? this.pending.apex : this.findApex(point);
 
-        this.track(point);
-
         if (!target || !apex || !isInsideSafeArea(apex, target.getBoundingClientRect(), point)) {
             this.cancel();
 
