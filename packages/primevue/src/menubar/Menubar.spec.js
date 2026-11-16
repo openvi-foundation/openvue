@@ -86,3 +86,66 @@ describe('Menubar.vue', () => {
         expect(wrapper.find('.p-menubar-end').text()).toBe('End Slot');
     });
 });
+
+describe('Menubar.vue safe triangle', () => {
+    let wrapper;
+
+    const rect = (left, top, right, bottom) => () => ({ left, top, right, bottom, width: right - left, height: bottom - top });
+
+    const pointerMove = (x, y) => {
+        const event = new MouseEvent('pointermove', { clientX: x, clientY: y });
+
+        Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+        document.dispatchEvent(event);
+    };
+
+    const itemContent = (label) => wrapper.find(`li[aria-label="${label}"] > [data-pc-section="itemcontent"]`);
+
+    const isActive = (label) => wrapper.find(`li[aria-label="${label}"]`).attributes('data-p-active') === 'true';
+
+    // root items sit side by side, the submenu under File is wider than File itself
+    beforeEach(async () => {
+        vi.useFakeTimers();
+
+        wrapper = mount(Menubar, {
+            global: {
+                stubs: {
+                    'router-link': true
+                }
+            },
+            props: {
+                model: [
+                    { label: 'File', items: [{ label: 'New' }, { label: 'Open' }] },
+                    { label: 'Edit', items: [{ label: 'Cut' }] }
+                ]
+            }
+        });
+
+        await itemContent('File').trigger('click');
+
+        itemContent('File').element.getBoundingClientRect = rect(0, 0, 100, 40);
+        itemContent('Edit').element.getBoundingClientRect = rect(100, 0, 200, 40);
+        wrapper.find('li[aria-label="File"] > [data-pc-section="submenu"]').element.getBoundingClientRect = rect(0, 40, 150, 200);
+    });
+
+    afterEach(() => {
+        wrapper.unmount();
+        vi.useRealTimers();
+    });
+
+    it('should keep the submenu open while moving diagonally towards it', async () => {
+        pointerMove(95, 30);
+        await itemContent('Edit').trigger('mouseenter', { clientX: 105, clientY: 38 });
+
+        expect(isActive('File')).toBe(true);
+        expect(isActive('Edit')).toBe(false);
+    });
+
+    it('should switch immediately when moving away from the submenu', async () => {
+        pointerMove(95, 20);
+        await itemContent('Edit').trigger('mouseenter', { clientX: 105, clientY: 20 });
+
+        expect(isActive('File')).toBe(false);
+        expect(isActive('Edit')).toBe(true);
+    });
+});

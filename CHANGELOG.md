@@ -11,6 +11,7 @@ All packages in this repository are released together under a single version.
 ### Changed
 
 - `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
 
 ### Fixed
 
