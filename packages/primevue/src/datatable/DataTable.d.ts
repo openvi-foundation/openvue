@@ -1698,10 +1698,4 @@ export interface DataTableMethods {
  */
 declare const DataTable: DefineComponent<DataTableProps, DataTableSlots, DataTableEmits, DataTableMethods>;
 
-declare module 'vue' {
-    export interface GlobalComponents {
-        DataTable: DefineComponent<DataTableProps, DataTableSlots, DataTableEmits, DataTableMethods>;
-    }
-}
-
 export default DataTable;

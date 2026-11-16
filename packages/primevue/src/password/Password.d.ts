@@ -495,10 +495,4 @@ export declare type PasswordEmits = EmitFn<PasswordEmitsOptions>;
  */
 declare const Password: DefineComponent<PasswordProps, PasswordSlots, PasswordEmits>;
 
-declare module 'vue' {
-    export interface GlobalComponents {
-        Password: DefineComponent<PasswordProps, PasswordSlots, PasswordEmits>;
-    }
-}
-
 export default Password;
