@@ -273,5 +273,20 @@ describe('DatePicker.vue', () => {
 
             expect(wrapper.vm.overlayVisible).toBe(false);
         });
+
+        it('should stay open on an outside click while an overlay of a component inside the panel is open', () => {
+            const combobox = document.createElement('span');
+
+            combobox.setAttribute('aria-expanded', 'true');
+            wrapper.vm.overlay.appendChild(combobox);
+            document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+
+            expect(wrapper.vm.overlayVisible).toBe(true);
+
+            combobox.setAttribute('aria-expanded', 'false');
+            document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+
+            expect(wrapper.vm.overlayVisible).toBe(false);
+        });
     });
 });

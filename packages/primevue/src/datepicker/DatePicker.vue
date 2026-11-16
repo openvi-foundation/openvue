@@ -1113,7 +1113,7 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && !this.selfClick && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
                         this.overlayVisible = false;
                     }
 
@@ -1207,6 +1207,10 @@ export default {
         isOutsideClicked(event) {
             const composedPath = event.composedPath();
             return !(this.$el.isSameNode(event.target) || this.isNavIconClicked(event) || composedPath.includes(this.$el) || composedPath.includes(this.overlay));
+        },
+        isNestedOverlayVisible() {
+            // Issue: #571
+            return !!this.overlay?.querySelector('[aria-expanded="true"]');
         },
         isNavIconClicked(event) {
             return (this.previousButton && (this.previousButton.isSameNode(event.target) || this.previousButton.contains(event.target))) || (this.nextButton && (this.nextButton.isSameNode(event.target) || this.nextButton.contains(event.target)));
