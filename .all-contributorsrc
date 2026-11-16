@@ -14,14 +14,14 @@
             "name": "Nikola Jevrić",
             "avatar_url": "https://avatars.githubusercontent.com/u/46942531?v=4",
             "profile": "https://github.com/NJevric",
-            "contributions": ["code", "doc", "maintenance", "infra", "review", "ideas"]
+            "contributions": ["code", "doc", "maintenance", "infra", "review", "ideas", "design", "test", "tool", "security", "projectManagement"]
         },
         {
             "login": "dekitriv",
             "name": "dekitriv",
             "avatar_url": "https://avatars.githubusercontent.com/u/52245546?v=4",
             "profile": "https://github.com/dekitriv",
-            "contributions": ["code", "infra"]
+            "contributions": ["code", "infra", "maintenance", "design", "tool", "test", "doc", "review"]
         },
         {
             "login": "sane6",
@@ -38,32 +38,11 @@
             "contributions": ["code", "design"]
         },
         {
-            "login": "Tamas-hi",
-            "name": "Tamás H.",
-            "avatar_url": "https://avatars.githubusercontent.com/u/36476318?v=4",
-            "profile": "https://github.com/Tamas-hi",
-            "contributions": ["code"]
-        },
-        {
-            "login": "NikoGJ",
-            "name": "Nicolas Granjon",
-            "avatar_url": "https://avatars.githubusercontent.com/u/18424051?v=4",
-            "profile": "https://github.com/NikoGJ",
-            "contributions": ["bug"]
-        },
-        {
-            "login": "Mettbrot",
-            "name": "Mettbrot",
-            "avatar_url": "https://avatars.githubusercontent.com/u/1036625?v=4",
-            "profile": "https://github.com/Mettbrot",
-            "contributions": ["bug"]
-        },
-        {
-            "login": "michaelw85",
-            "name": "Michael Withagen",
-            "avatar_url": "https://avatars.githubusercontent.com/u/3629094?v=4",
-            "profile": "https://github.com/michaelw85",
-            "contributions": ["ideas"]
+            "login": "Bharath314",
+            "name": "Bharath Valaboju",
+            "avatar_url": "https://avatars.githubusercontent.com/u/69413757?v=4",
+            "profile": "https://github.com/Bharath314",
+            "contributions": ["code", "bug"]
         },
         {
             "login": "wahpiangle",
@@ -73,34 +52,6 @@
             "contributions": ["code"]
         },
         {
-            "login": "pupuking723",
-            "name": "pupuking723",
-            "avatar_url": "https://avatars.githubusercontent.com/u/169750518?v=4",
-            "profile": "https://github.com/pupuking723",
-            "contributions": ["code"]
-        },
-        {
-            "login": "DJ-caddev",
-            "name": "Dylan",
-            "avatar_url": "https://avatars.githubusercontent.com/u/93262194?v=4",
-            "profile": "https://caddev.info/",
-            "contributions": ["ideas"]
-        },
-        {
-            "login": "Jacobs63",
-            "name": "Jakub Potocký",
-            "avatar_url": "https://avatars.githubusercontent.com/u/16275303?v=4",
-            "profile": "https://jakubpotocky.sk/",
-            "contributions": ["code"]
-        },
-        {
-            "login": "posti85",
-            "name": "José Antonio Postigo",
-            "avatar_url": "https://avatars.githubusercontent.com/u/17066163?v=4",
-            "profile": "https://github.com/posti85",
-            "contributions": ["bug"]
-        },
-        {
             "login": "AntekOlszewski",
             "name": "AntekOlszewski",
             "avatar_url": "https://avatars.githubusercontent.com/u/73691558?v=4",
@@ -108,11 +59,18 @@
             "contributions": ["code"]
         },
         {
-            "login": "Bharath314",
-            "name": "Bharath Valaboju",
-            "avatar_url": "https://avatars.githubusercontent.com/u/69413757?v=4",
-            "profile": "https://github.com/Bharath314",
-            "contributions": ["code", "bug"]
+            "login": "Tamas-hi",
+            "name": "Tamás H.",
+            "avatar_url": "https://avatars.githubusercontent.com/u/36476318?v=4",
+            "profile": "https://github.com/Tamas-hi",
+            "contributions": ["code"]
+        },
+        {
+            "login": "Jacobs63",
+            "name": "Jakub Potocký",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16275303?v=4",
+            "profile": "https://jakubpotocky.sk/",
+            "contributions": ["code"]
         },
         {
             "login": "Pshnychnyi",
@@ -141,6 +99,48 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/74963455?v=4",
             "profile": "https://github.com/tokainz",
             "contributions": ["code"]
+        },
+        {
+            "login": "pupuking723",
+            "name": "pupuking723",
+            "avatar_url": "https://avatars.githubusercontent.com/u/169750518?v=4",
+            "profile": "https://github.com/pupuking723",
+            "contributions": ["code"]
+        },
+        {
+            "login": "NikoGJ",
+            "name": "Nicolas Granjon",
+            "avatar_url": "https://avatars.githubusercontent.com/u/18424051?v=4",
+            "profile": "https://github.com/NikoGJ",
+            "contributions": ["bug"]
+        },
+        {
+            "login": "Mettbrot",
+            "name": "Mettbrot",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1036625?v=4",
+            "profile": "https://github.com/Mettbrot",
+            "contributions": ["bug"]
+        },
+        {
+            "login": "michaelw85",
+            "name": "Michael Withagen",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3629094?v=4",
+            "profile": "https://github.com/michaelw85",
+            "contributions": ["ideas"]
+        },
+        {
+            "login": "DJ-caddev",
+            "name": "Dylan",
+            "avatar_url": "https://avatars.githubusercontent.com/u/93262194?v=4",
+            "profile": "https://caddev.info/",
+            "contributions": ["ideas"]
+        },
+        {
+            "login": "posti85",
+            "name": "José Antonio Postigo",
+            "avatar_url": "https://avatars.githubusercontent.com/u/17066163?v=4",
+            "profile": "https://github.com/posti85",
+            "contributions": ["bug"]
         }
     ]
 }
