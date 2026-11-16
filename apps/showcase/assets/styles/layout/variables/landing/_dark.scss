@@ -15,5 +15,13 @@
     --home-blocks-bar-bg:var(--p-surface-700);
     --home-blocks-bar-button-bg:var(--p-surface-700);
     --home-blocks-circle-bg:var(--p-surface-800);
-    --home-announcement-cta-color:var(--primary-text-color);
+    --landing-background:var(--p-surface-950);
+    --landing-accent:var(--p-primary-500);
+    --landing-accent-strong:var(--primary-color);
+    --landing-accent-strong-hover:var(--primary-hover-color);
+    --landing-accent-contrast:var(--primary-contrast-color);
+    --landing-accent-text:var(--p-primary-300);
+    --landing-accent-tint:color-mix(in srgb, var(--landing-accent) 14%, var(--p-surface-950));
+    --landing-stage-background:linear-gradient(180deg, color-mix(in srgb, var(--landing-accent) 10%, var(--p-surface-950)), color-mix(in srgb, var(--landing-accent) 2%, var(--p-surface-950)) 70%);
+    --landing-stage-border:color-mix(in srgb, var(--landing-accent) 28%, var(--p-surface-950));
 }

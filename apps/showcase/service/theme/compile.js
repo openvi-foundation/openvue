@@ -1,4 +1,5 @@
 import { palette } from '@openvue/themes';
+import { BRAND_PALETTE } from '@/themes/brand';
 
 export const BASES = [
     { value: 'Aura', description: 'The balanced default.' },
@@ -8,7 +9,7 @@ export const BASES = [
     { value: 'Nide', description: 'Neutral and minimal.' }
 ];
 
-export const PRIMARY_COLORS = ['noir', 'emerald', 'green', 'lime', 'orange', 'amber', 'yellow', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
+export const PRIMARY_COLORS = ['openvue', 'noir', 'emerald', 'green', 'lime', 'orange', 'amber', 'yellow', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
 
 export const SURFACES = {
     slate: { 0: '#ffffff', 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a', 950: '#020617' },
@@ -83,8 +84,18 @@ export function isCustomColor(value) {
     return typeof value === 'string' && HEX_COLOR.test(value);
 }
 
+export function primaryLabel(primary) {
+    if (isCustomColor(primary)) return primary.toUpperCase();
+
+    if (primary === 'openvue') return 'OpenVue';
+
+    return primary === 'noir' ? 'Ink' : primary.charAt(0).toUpperCase() + primary.slice(1);
+}
+
 export function swatchColor(primary) {
     if (isCustomColor(primary)) return primary;
+
+    if (primary === 'openvue') return BRAND_PALETTE[500];
 
     return primary === 'noir' ? 'var(--text-color)' : `var(--p-${primary}-500)`;
 }
@@ -92,6 +103,10 @@ export function swatchColor(primary) {
 export function primaryPalette(primary) {
     if (isCustomColor(primary)) {
         return palette(primary);
+    }
+
+    if (primary === 'openvue') {
+        return { ...BRAND_PALETTE };
     }
 
     const source = primary === 'noir' ? 'surface' : primary;

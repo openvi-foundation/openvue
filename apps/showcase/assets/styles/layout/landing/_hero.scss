@@ -25,6 +25,10 @@
         color: var(--high-contrast-text-color);
     }
 
+    .hero-title-accent {
+        color: var(--landing-accent-text);
+    }
+
     .hero-subtitle {
         max-width: 40rem;
         margin: 1.75rem 0 2.5rem 0;
@@ -97,17 +101,8 @@
 
     .hero-theme-switch {
         display: flex;
-        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
         margin-bottom: 1.25rem;
-
-        > span {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--text-secondary-color);
-        }
     }
 
     .hero-stage {
@@ -118,10 +113,10 @@
         height: 40rem;
         padding: 1.25rem 1.25rem 0 1.25rem;
         overflow: hidden;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--landing-stage-border);
         border-bottom: 0 none;
         border-radius: 20px 20px 0 0;
-        background: var(--hover-background);
+        background: var(--landing-stage-background);
         /* The columns end at different heights; the fade turns the ragged edge into a stage that runs on under the fold. */
         mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent);
     }
@@ -323,8 +318,6 @@
 
         /* Five presets do not fit 360px; the switch scrolls sideways instead of wrapping. */
         .hero-theme-switch {
-            flex-direction: column;
-            gap: 0.625rem;
             padding: 0 1rem;
 
             .p-selectbutton {
