@@ -29,6 +29,10 @@
                         <td><i>backspace</i></td>
                         <td>Deletes the input and moves focus to the previous input element.</td>
                     </tr>
+                    <tr>
+                        <td><i>delete</i></td>
+                        <td>Deletes the input, shifts the following inputs to the left and keeps focus on the current input element.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
