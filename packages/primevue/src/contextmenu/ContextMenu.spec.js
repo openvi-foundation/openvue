@@ -181,3 +181,69 @@ describe('ContextMenu.vue', () => {
         expect(wrapper.find('.p-contextmenu.p-component').exists()).toBe(false);
     });
 });
+
+describe('ContextMenu.vue safe triangle', () => {
+    let wrapper;
+
+    const rect = (left, top, right, bottom) => () => ({ left, top, right, bottom, width: right - left, height: bottom - top });
+
+    const pointerMove = (x, y) => {
+        const event = new MouseEvent('pointermove', { clientX: x, clientY: y });
+
+        Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+        document.dispatchEvent(event);
+    };
+
+    const itemContent = (label) => wrapper.find(`li[aria-label="${label}"] > [data-pc-section="itemcontent"]`);
+
+    const isActive = (label) => wrapper.find(`li[aria-label="${label}"]`).attributes('data-p-active') === 'true';
+
+    // root items are stacked 40px rows, File's submenu opens to their right
+    beforeEach(async () => {
+        vi.useFakeTimers();
+
+        wrapper = mount(ContextMenu, {
+            global: {
+                plugins: [PrimeVue],
+                stubs: {
+                    'router-link': true,
+                    teleport: true
+                }
+            },
+            props: {
+                model: [
+                    { label: 'File', items: [{ label: 'New' }, { label: 'Open' }] },
+                    { label: 'Edit', items: [{ label: 'Cut' }] }
+                ]
+            }
+        });
+
+        await wrapper.setData({ visible: true });
+        await itemContent('File').trigger('mouseenter');
+
+        itemContent('File').element.getBoundingClientRect = rect(0, 0, 100, 40);
+        itemContent('Edit').element.getBoundingClientRect = rect(0, 40, 100, 80);
+        wrapper.find('li[aria-label="File"] > [data-pc-section="submenu"]').element.getBoundingClientRect = rect(100, 0, 250, 120);
+    });
+
+    afterEach(() => {
+        wrapper.unmount();
+        vi.useRealTimers();
+    });
+
+    it('should keep the submenu open while moving diagonally towards it', async () => {
+        pointerMove(90, 30);
+        await itemContent('Edit').trigger('mouseenter', { clientX: 95, clientY: 45 });
+
+        expect(isActive('File')).toBe(true);
+        expect(isActive('Edit')).toBe(false);
+    });
+
+    it('should switch immediately when moving away from the submenu', async () => {
+        pointerMove(50, 30);
+        await itemContent('Edit').trigger('mouseenter', { clientX: 50, clientY: 45 });
+
+        expect(isActive('File')).toBe(false);
+        expect(isActive('Edit')).toBe(true);
+    });
+});

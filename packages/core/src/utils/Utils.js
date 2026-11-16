@@ -1,6 +1,7 @@
 export * from '@openuxkit/utils';
 export { default as ConnectedOverlayScrollHandler } from './ConnectedOverlayScrollHandler';
 export { default as HelperSet } from './HelperSet';
+export { default as SafeTriangle } from './SafeTriangle';
 export { default as UniqueComponentId } from './UniqueComponentId';
 
 export function getVNodeProp(vnode, prop) {
