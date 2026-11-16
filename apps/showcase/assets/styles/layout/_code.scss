@@ -29,22 +29,23 @@ pre[class*="language-"] {
     padding: 0;
     max-height: 40rem;
     overflow: auto;
-    color-scheme: dark;
+    color-scheme: var(--doc-code-scheme);
 
     &:before, &:after {
         display: none !important;
     }
 
     code {
-        border-inline-start: 1rem solid transparent;
         box-shadow: none;
         margin: 0;
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.65;
+        border: 1px solid var(--doc-code-border);
         border-radius: 10px;
-        color: #ffffff;
+        color: var(--doc-code-text);
         max-height: inherit;
         height: inherit;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
         display: block;
         overflow: auto;
 
@@ -53,11 +54,12 @@ pre[class*="language-"] {
         .token.prolog,
         .token.doctype,
         .token.cdata {
-            color: #bbf7d0;
+            color: var(--doc-code-muted);
+            font-style: italic;
         }
 
         .token.punctuation {
-            color: #bfdbfe;
+            color: var(--doc-code-muted);
         }
 
         .token.property,
@@ -68,7 +70,7 @@ pre[class*="language-"] {
         .token.constant,
         .token.symbol,
         .token.deleted {
-            color: #93c5fd;
+            color: var(--doc-code-tag);
         }
 
         .token.selector,
@@ -78,31 +80,31 @@ pre[class*="language-"] {
         .token.function,
         .token.builtin,
         .token.inserted {
-            color: #eff6ff;
+            color: var(--doc-code-text);
         }
 
         .token.operator,
         .token.entity,
         .token.url,
         .token.variable {
-            color: #ffffff;
+            color: var(--doc-code-text);
         }
 
         .token.atrule,
         .token.attr-value,
         .token.keyword,
         .token.class-name {
-            color: #bbf7d0;
+            color: var(--doc-code-keyword);
         }
 
         .token.regex,
         .token.important {
-            color: #fde68a;
+            color: var(--doc-code-accent);
         }
 
         .language-css .token.string,
         .style .token.string {
-            color: #fde68a;
+            color: var(--doc-code-accent);
         }
 
         .token.important {
@@ -128,6 +130,6 @@ pre[class*="language-"] {
 
 pre[class*="language-"] {
     code {
-        background: var(--code-background);
+        background: var(--doc-code-background);
     }
 }

@@ -8,11 +8,32 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
-- Volt UI fork of OpenVue
+### Changed
+
+- `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+
+### Fixed
+
+- `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
+
+## [1.1.1] - 2026-11-04
+
+### Added
+
+- Added `inputId` prop to `FileUpload` that sets the `id` of its file input.
+
+### Fixed
+
+- `InputNumber` no longer rounds the value you type. A number past `Number.MAX_SAFE_INTEGER` is emitted as an exact decimal string instead of a rounded number, every other value is still emitted as a number, and the emitted value always matches what the field shows. ([#490](https://github.com/openvi-foundation/openvue/issues/490))
+
+## [1.1.0] - 2026-10-29
 
 ### Added
 
 - New `openvolt-vue` CLI. `npx openvolt-vue add Button` copies OpenVolt components into your project. The components ship inside the package, so they always match your openvue version.
+- Showcase: the Theme Builder at `/theme`, a quicker way into theming than the Designer. Pick one of a dozen curated styles that span all five base presets, or set the base, primary and surface colours (including any hex colour, expanded to a full palette), font and root size, corner radius, density, input variant, focus ring, motion, ripple, shadows, backdrop and disabled opacity yourself, previewed in light and dark mode. The whole page is the preview: a grid of components and the landing page's sample applications restyle as you change settings, and the theme you choose then dresses the whole documentation site. The curated styles are also one click away in the top bar's colour configurator, and a compact version of the builder in the home page hero changes the base, colour, font and corners in place. The export is three small files (the preset as a diff against its base, `main.js` or `nuxt.config.ts`, and a stylesheet for typography), with copy, download, a share link whose URL is the complete theme, and _Copy for AI agent_, a short prompt with the theme files and the one setup change, for a coding agent adding the theme to an existing project. _Refine in the Theme Designer_ hands the result to the Theme Designer for token-level edits. Everything runs in the browser; the only requests that leave the page are for fonts, from Google Fonts.
+- Nide, a fifth theme preset: a neutral palette with a near-black primary (near-white in dark mode), hairline borders, soft 3px focus rings, segmented Tabs and SelectButton, card-style toasts and bordered messages. Controls are compact (14px text in 36px buttons and fields at the default 16px root), so Nide renders smaller than the other presets; checkboxes and radio buttons are 18px, and 16px in the small size. Use it like any other preset with `import Nide from '@openvue/themes/nide'`, or as a foundation in the Theme Designer. It is layered on Aura's tokens and comes from `@openuxkit/themes` 1.2.0, so both `@openvue/themes` and `@openuxkit/themes` include it (`umd/nide.min.js` for CDN use).
 
 ### Fixed
 
@@ -25,6 +46,8 @@ All packages in this repository are released together under a single version.
 - Inputs inside a `Form` with `initialValues` no longer jump back to the initial value when cleared. ([#686](https://github.com/openvi-foundation/openvue/pull/686))
 - Pressing tab no longer toggles options in MultiSelect. Tabbing past a MultiSelect after mount doesn't toggle the first option anymore either.
 - `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
+- The `RadioButton` dot no longer sits a pixel off-centre at fractional display scaling such as 125% or 175%. The dot is now drawn at the icon's `font-size` (the `radiobutton.icon.size` tokens) on a layer covering the whole ring. Custom CSS that sizes `.p-radiobutton-icon` with `width` and `height` keeps working for dots up to the token size; to make the dot larger than that, set `font-size` or the tokens instead.
+- Fix MultiSelect label showing null for values missing from options
 - `Tree` lazy loading now works while filtering: `node-expand` and `node-collapse` pass the node from `value` instead of a filtered copy. ([#585](https://github.com/openvi-foundation/openvue/issues/585))
 
 ## [1.0.0] - 2026-09-10
@@ -180,7 +203,9 @@ First OpenVue release, forked from PrimeVue 4.5.5.
 - Rebranded the showcase as OpenVue, with a fork notice explaining the project's relationship to PrimeVue, and removed the PrimeTek commercial pages and assets.
 - License copyright updated for the fork. The project remains MIT.
 
-[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.0.0...HEAD
+[unreleased]: https://github.com/openvi-foundation/openvue/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/openvi-foundation/openvue/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/openvi-foundation/openvue/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/openvi-foundation/openvue/compare/1.0.0-rc.0...1.0.0
 [1.0.0-rc.0]: https://github.com/openvi-foundation/openvue/compare/0.7.0-beta.0...1.0.0-rc.0
 [0.7.0-beta.0]: https://github.com/openvi-foundation/openvue/compare/0.0.1-beta.1...0.7.0-beta.0

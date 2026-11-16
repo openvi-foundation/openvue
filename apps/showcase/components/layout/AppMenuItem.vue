@@ -16,7 +16,15 @@
                 <i :class="menuitem.icon"></i>
             </span>
             <span>{{ menuitem.name }}</span>
-            <Tag v-if="menuitem.badge" :value="menuitem.badge"></Tag>
+            <span class="sr-only">(opens in a new tab)</span>
+            <span v-if="root" class="menu-toggle">
+                <Tag v-if="menuitem.badge" :value="menuitem.badge"></Tag>
+                <i class="menu-toggle-icon pi pi-external-link" aria-hidden="true"></i>
+            </span>
+            <template v-else>
+                <i class="menu-external-icon pi pi-external-link" aria-hidden="true"></i>
+                <Tag v-if="menuitem.badge" :value="menuitem.badge"></Tag>
+            </template>
         </a>
 
         <OpenVueNuxtLink v-if="menuitem.to" :to="menuitem.to" :class="{ 'router-link-active': menuitem.to === $route.fullPath }">

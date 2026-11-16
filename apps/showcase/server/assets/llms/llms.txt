@@ -9,7 +9,6 @@
 - [Styled Mode](https://openvue.dev/styled): Choose from a variety of pre-styled themes or develop your own.
 - [Unstyled Mode](https://openvue.dev/unstyled): Theming OpenVue with alternative styling approaches.
 - [Pass Through](https://openvue.dev/passthrough): The Pass Through attributes is an API to access the internal DOM Structure of the components.
-- [Icons](https://openvue.dev/icons): OpenIcons is the default icon library of OpenVue, a community-maintained continuation of PrimeIcons with 323 icons. It is optional as OpenVue components can use any icon with templating.
 - [Custom Icons](https://openvue.dev/customicons): OpenVue components can be used with any icon library using the templating features.
 - [Forms](https://openvue.dev/forms): The OpenVue Forms library provides comprehensive form state management with built-in validation support.
 - [Auto Import](https://openvue.dev/autoimport): On-demand OpenVue components with auto imports and tree-shaking.
@@ -34,7 +33,7 @@
 
 ## Components
 
-- [About Us - OpenVue](https://openvue.dev/team): Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.
+- [About OpenVue | Maintained by the OpenVi Foundation](https://openvue.dev/team): OpenVue is the MIT-licensed continuation of PrimeVue 4, maintained in the open by the OpenVi Foundation alongside OpenUXKit, OpenIcons and OpenVolt.
 - [MCP Server - OpenVue](https://openvue.dev/mcp): Model Context Protocol (MCP) server for OpenVue component library.
 - [Vue Accordion Component](https://openvue.dev/accordion): Accordion groups a collection of contents in panels.
 - [Vue AnimateOnScroll Directive](https://openvue.dev/animateonscroll): AnimateOnScroll is used to apply animations to elements when entering or leaving the viewport during scrolling.

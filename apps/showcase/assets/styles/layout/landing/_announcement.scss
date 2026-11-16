@@ -1,0 +1,64 @@
+/* Full-width bar directly under the fixed topbar. It scrolls away with the page.
+   A light tint of the primary colour, so it follows the palette picked in the configurator without competing with the primary hero button. */
+.landing-announcement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+    /* .landing pads 4rem for the topbar, which is slightly taller; close the gap so the bar starts where the topbar ends. */
+    margin-top: calc(var(--topbar-height) - 4rem);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 45%, var(--ground-background));
+    background: color-mix(in srgb, var(--primary-color) 20%, var(--ground-background));
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    @include focus-visible();
+
+    &:hover .landing-announcement-cta {
+        text-decoration: underline;
+    }
+}
+
+.landing-announcement-tag {
+    flex-shrink: 0;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: var(--primary-contrast-color);
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.landing-announcement-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-shrink: 0;
+    color: var(--home-announcement-cta-color);
+    font-weight: 700;
+
+    .pi {
+        font-size: 0.75rem;
+    }
+}
+
+.landing-announcement-short {
+    display: none;
+}
+
+@media screen and (max-width: 639px) {
+    .landing-announcement {
+        font-size: 0.875rem;
+    }
+
+    .landing-announcement-full {
+        display: none;
+    }
+
+    .landing-announcement-short {
+        display: inline;
+    }
+}

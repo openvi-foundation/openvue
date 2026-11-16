@@ -10,7 +10,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [**Documentation**](https://openvue.dev) · [**Setup**](https://openvue.dev/setup) · [**Components**](https://openvue.dev/components) · [**Migrate from PrimeVue**](https://openvue.dev/migrate) · [**Changelog**](CHANGELOG.md)
@@ -83,7 +83,7 @@ Our priority is stability first, growth second. In order:
 4. ~~**Stabilize and release.**~~ Done: **1.0.0** is out. The public API is stable and follows semantic versioning from here.
 5. **Work through the backlog.** Open issues, accessibility and performance come before new surface area.
 6. ~~**Bring Volt back.**~~ Done: [OpenVolt](https://openvolt.openvue.dev) is live, and `npx openvolt-vue` copies the Tailwind-native components into your own codebase.
-7. **Ship a new theme.** A preset of our own, alongside the four inherited from upstream.
+7. ~~**Ship a new theme.**~~ Done: [Nide](https://openvue.dev/theming/styled) ships beside Aura, Lara, Material and Nora, and the [Theme Builder](https://openvue.dev/theme) builds a theme from any of them.
 8. **Release 2.0.** Composition API, Vapor mode and TypeScript at the source. Existing applications keep working: OpenVue is getting full Vapor compatibility, but traditional virtual DOM rendering and Options API support are not going anywhere.
 
 ## Contributing
@@ -119,6 +119,11 @@ Everyone who has helped build OpenVue since the fork: code, docs, design, bug re
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/posti85"><img src="https://avatars.githubusercontent.com/u/17066163?v=4?s=64" width="64px;" alt="José Antonio Postigo"/><br /><sub><b>José Antonio Postigo</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/issues?q=author%3Aposti85" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/AntekOlszewski"><img src="https://avatars.githubusercontent.com/u/73691558?v=4?s=64" width="64px;" alt="AntekOlszewski"/><br /><sub><b>AntekOlszewski</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=AntekOlszewski" title="Code">💻</a></td>
       <td align="center" valign="top" width="12.5%"><a href="https://github.com/Bharath314"><img src="https://avatars.githubusercontent.com/u/69413757?v=4?s=64" width="64px;" alt="Bharath Valaboju"/><br /><sub><b>Bharath Valaboju</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=Bharath314" title="Code">💻</a> <a href="https://github.com/openvi-foundation/openvue/issues?q=author%3ABharath314" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/Pshnychnyi"><img src="https://avatars.githubusercontent.com/u/104310686?v=4?s=64" width="64px;" alt="Artem"/><br /><sub><b>Artem</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=Pshnychnyi" title="Code">💻</a> <a href="https://github.com/openvi-foundation/openvue/issues?q=author%3APshnychnyi" title="Bug reports">🐛</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="12.5%"><a href="https://www.doxee.com/"><img src="https://avatars.githubusercontent.com/u/2885522?v=4?s=64" width="64px;" alt="Alessandro Riccadonna"/><br /><sub><b>Alessandro Riccadonna</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=ariccadonna-doxee" title="Code">💻</a></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://sayportfolio.vercel.app/"><img src="https://avatars.githubusercontent.com/u/240962040?v=4?s=64" width="64px;" alt="Sai Asish Y"/><br /><sub><b>Sai Asish Y</b></sub></a><br /><a href="https://github.com/openvi-foundation/openvue/commits?author=SAY-5" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

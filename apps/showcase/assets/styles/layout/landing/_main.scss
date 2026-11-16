@@ -80,6 +80,44 @@
         }
     }
 
+    /* Shared section rhythm for the homepage: one container width, left-aligned headers, more space above a heading than below it. */
+    .landing-section {
+        padding: 7rem 1.5rem;
+
+        @media screen and (max-width: 767px) {
+            padding: 4.5rem 1rem;
+        }
+    }
+
+    .landing-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .landing-section-header {
+        max-width: 44rem;
+        margin-bottom: 3rem;
+    }
+
+    .landing-section-title {
+        margin: 0;
+        font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+        color: var(--high-contrast-text-color);
+    }
+
+    .landing-section-detail {
+        margin: 1rem 0 0 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.6;
+        text-wrap: pretty;
+        color: var(--text-secondary-color);
+    }
+
     .section-header {
         font-size: 2rem;
         color: var(--text-color);

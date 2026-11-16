@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { BOOT_SCRIPT } from './service/theme/boot.js';
 
 const baseUrl = '/';
 
@@ -82,7 +83,11 @@ export default defineNuxtConfig({
         }
     },
     nitro: {
-        alias
+        alias,
+        externals: {
+            // Otherwise Node loads the workspace theme sources natively and warns MODULE_TYPELESS_PACKAGE_JSON.
+            inline: [/[\\/]themes[\\/]app-theme\.js$/]
+        }
     },
     sitemap: {
         // A build-time lastmod stamps every URL with the same date on each deploy, which Google treats as unreliable and ignores.
@@ -96,6 +101,7 @@ export default defineNuxtConfig({
     routeRules: {
         '/accessibility': { redirect: { to: '/guides/accessibility', statusCode: 301 } },
         '/installation': { redirect: { to: '/vite', statusCode: 301 } },
+        '/icons': { redirect: { to: 'https://openicons.openvue.dev/', statusCode: 301 } },
         ...markdownRedirects
     },
     primevue: {
@@ -137,6 +143,11 @@ export default defineNuxtConfig({
                 {
                     src: baseUrl + 'scripts/prism.js',
                     'data-manual': true
+                },
+                // Paints the stored Theme Builder theme before hydration, so a reload does not flash the default.
+                {
+                    innerHTML: BOOT_SCRIPT,
+                    tagPosition: 'head'
                 }
             ]
         }

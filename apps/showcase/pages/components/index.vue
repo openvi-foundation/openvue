@@ -1,7 +1,7 @@
 <template>
     <DocSeo title="Vue UI Components - Full Component List" description="Browse every OpenVue component for Vue 3 and Nuxt: tables, forms, overlays, menus and charts, all accessible, themeable and MIT licensed." :json-ld="jsonLd" />
     <div class="doc">
-        <div class="doc-main">
+        <div class="doc-main doc-main-wide">
             <div class="doc-intro">
                 <h1>Components</h1>
                 <p>{{ totalCount }} accessible, themeable components for Vue and Nuxt. Pick one to see live examples.</p>

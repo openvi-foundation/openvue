@@ -1,39 +1,45 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>You don't have to commit to anything to find out whether OpenVue works for your app.</p>
-        <ol class="leading-relaxed">
-            <li><b>Test it with zero code changes.</b> Add a package override so your existing <i>primevue</i> imports resolve to OpenVue, run your app and your tests. Delete the override to go back.</li>
-            <li><b>Preview the migration.</b> <i>npx @openvue/migrate --dry</i> lists every file and dependency it would change, and writes nothing.</li>
-            <li><b>Migrate for real.</b> <i>npx @openvue/migrate</i> asks before writing, and the result is one git diff you can review and revert like any other change.</li>
+
+        <ol class="alt-steps">
+            <li class="alt-step">
+                <h3>Test it with zero code changes</h3>
+                <p>Add a package override so your existing <code>primevue</code> imports resolve to OpenVue, run your app and your tests. Delete the override to go back.</p>
+                <DocSectionCode :code="code" hideToggleCode hideStackBlitz />
+            </li>
+            <li class="alt-step">
+                <h3>Preview the migration</h3>
+                <p><code>npx @openvue/migrate --dry</code> lists every file and dependency it would change, and writes nothing.</p>
+            </li>
+            <li class="alt-step">
+                <h3>Migrate for real</h3>
+                <p><code>npx @openvue/migrate</code> asks before writing, and the result is one git diff you can review and revert like any other change.</p>
+            </li>
         </ol>
-    </DocSectionText>
-    <DocSectionCode :code="code" hideToggleCode hideStackBlitz />
-    <div class="doc-section-description">
-        <p class="mb-0">
+
+        <p class="alt-after">
             For pnpm and yarn overrides, monorepos and every option, see the <NuxtLink to="/migrate" class="doc-link">migration guide</NuxtLink>. Starting a new project instead? Follow the
             <NuxtLink to="/setup" class="doc-link">setup guide</NuxtLink>.
         </p>
-    </div>
+    </DocSectionText>
 </template>
 
 <script>
+import pkg from '../../../../packages/primevue/package.json';
+
 export default {
+    inheritAttrs: false,
     data() {
         return {
             code: {
                 basic: `
-// 1. try OpenVue without touching your code (package.json, npm and bun)
+// package.json, npm and bun
 {
     "overrides": {
-        "primevue": "npm:openvue@1.0.0"
+        "primevue": "npm:openvue@${pkg.version}"
     }
 }
-
-// 2. preview what the migration changes
-npx @openvue/migrate --dry
-
-// 3. migrate
-npx @openvue/migrate
 `
             }
         };

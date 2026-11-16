@@ -351,6 +351,7 @@ const formatSize = (bytes) => {
 | pt | PassThrough<FileUploadPassThroughOptions> | - | Used to pass attributes to DOM elements inside the component. |
 | ptOptions | any | - | Used to configure passthrough(pt) options of the component. |
 | unstyled | boolean | false | When enabled, it removes component related styles in the core. |
+| inputId | string | - | Identifier of the underlying input element. |
 
 ## Pass Through Options
 

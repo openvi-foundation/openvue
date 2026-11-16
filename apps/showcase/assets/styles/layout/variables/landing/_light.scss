@@ -15,4 +15,6 @@
     --home-blocks-bar-bg:var(--p-surface-300);
     --home-blocks-bar-button-bg:var(--p-surface-0);
     --home-blocks-circle-bg:var(--p-surface-300);
+    /* 800, not 600: the announcement bar's primary tint is strong enough that lighter shades drop below AA. */
+    --home-announcement-cta-color:var(--p-primary-800);
 }

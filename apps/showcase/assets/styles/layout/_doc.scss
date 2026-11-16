@@ -1,11 +1,14 @@
+/* Inline code: mono at a hair under body size on a faint well, so it marks a token without breaking the line. */
 @mixin mark() {
-    border-radius: 6px;
-    padding: 2px 6px;
-    font-size: 1rem;
-    font-weight: 500;
+    border: 1px solid var(--doc-code-border);
+    border-radius: 4px;
+    padding: 0 0.3125rem;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 0.875em;
+    font-weight: 400;
     font-style: normal;
-    background: var(--mark-background);
-    color: var(--mark-text);
+    background: var(--doc-code-background);
+    color: var(--high-contrast-text-color);
 }
 
 .mark {
@@ -17,6 +20,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+    gap: 1.75rem;
     margin-bottom: 2rem;
     overflow: auto;
     position: relative;
@@ -42,17 +46,17 @@
             border: 0 none;
             display: flex;
             align-items: center;
-            padding-block: 0 1rem;
-            padding-inline: 2rem;
+            padding-block: 0 0.875rem;
+            padding-inline: 0;
             text-align: center;
-            color: var(--text-color);
+            color: var(--text-secondary-color);
             font-size: 1rem;
-            letter-spacing: 1px;
+            font-weight: 500;
             cursor: pointer;
             margin: 0;
             transition: outline-color 0.2s, border-color 0.2s;
             outline-color: transparent;
-            border-bottom: 1px solid transparent;
+            border-bottom: 2px solid transparent;
             border-start-end-radius: 6px;
             border-start-start-radius: 6px;
             white-space: nowrap;
@@ -60,7 +64,7 @@
             @include focus-visible();
 
             &:hover {
-                border-bottom-color: var(--hover-border-color);
+                color: var(--high-contrast-text-color);
             }
 
             &:focus {
@@ -69,10 +73,14 @@
 
         }
 
+        .doc-tabmenu-new {
+            margin-inline-start: 0.5rem;
+        }
+
         &.doc-tabmenu-active {
             button {
-                border-bottom-color: var(--primary-text-color);
-                color: var(--primary-text-color);
+                border-bottom-color: var(--high-contrast-text-color);
+                color: var(--high-contrast-text-color);
             }
         }
     }
@@ -92,18 +100,128 @@
     flex-shrink: 1;
     flex-basis: 0;
     min-width: 0;
+    max-width: var(--docs-measure);
+
+    /* Each documented section opens on a hairline, so a long component page scans as a list of parts. */
+    > section:not(.components-category) {
+        padding-block: 2.5rem 2rem;
+
+        + section {
+            border-top: 1px solid var(--border-color);
+        }
+
+        &:first-of-type {
+            padding-top: 1rem;
+        }
+    }
+}
+
+/* Index pages (grids, no outline) take the full content width instead of the reading measure. */
+.doc-main.doc-main-wide,
+/* Component tabs after Features (Playground, API, Theming, Pass Through) are tools and wide
+   tables, not prose, so they keep the full width too. */
+.doc-tabpanels > .doc-tabpanel:not(:first-child) .doc-main {
+    max-width: none;
+}
+
+.doc-pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: var(--docs-measure);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.doc-pager-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+    transition: border-color 0.15s;
+    outline-color: transparent;
+    @include focus-visible();
+
+    &:hover {
+        border-color: var(--hover-border-color);
+    }
+}
+
+.doc-pager-next {
+    grid-column: 2;
+    align-items: flex-end;
+    text-align: end;
+}
+
+.doc-pager-direction {
+    color: var(--text-secondary-color);
+    font-size: 0.875rem;
+}
+
+.doc-pager-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--high-contrast-text-color);
+    font-size: 1.0714rem;
+    font-weight: 600;
+
+    i {
+        font-size: 0.8125rem;
+        color: var(--text-secondary-color);
+    }
 }
 
 .doc-intro {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+
+    h1 {
+        margin-bottom: 0.75rem;
+        font-size: 2.25rem;
+        font-weight: 650;
+        letter-spacing: -0.022em;
+        line-height: 1.15;
+        text-wrap: balance;
+    }
 
     p {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
+        line-height: 1.6;
+        max-width: 48rem;
+        color: var(--text-secondary-color);
         margin: 0;
+
+        /* Only the first paragraph is the lead; follow-up notes drop to body size. */
+        + p {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
         a {
             @include doc-link();
         }
+    }
+}
+
+/* The component header sits above the tabs now, so each tab's own "X Theming" / "X Playground"
+   title would repeat it. The title goes; a tab's explanatory paragraph stays. */
+.doc-component-header {
+    margin-bottom: 2rem;
+}
+
+.doc-tabpanels .doc-intro {
+    > h1,
+    > h2 {
+        display: none;
+    }
+
+    &:not(:has(p)) {
+        display: none;
     }
 }
 
@@ -114,12 +232,24 @@
 .doc-section-label {
     display: flex;
     align-items: center;
+    letter-spacing: -0.012em;
+
+    &:is(h2) {
+        font-size: 1.5rem;
+        margin-bottom: 0.875rem;
+    }
+
+    &:is(h3) {
+        font-size: 1.1875rem;
+        margin-top: 2.25rem;
+    }
     scroll-margin-top: calc(var(--topbar-height) + 2.5rem);
 
     >a {
-        color: var(--primary-text-color);
+        color: var(--text-secondary-color);
+        font-weight: 400;
         opacity: 0.7;
-        margin-inline-start: 1rem;
+        margin-inline-start: 0.625rem;
         display: none;
         transition: outline-color 0.2s, border-color 0.2s, opacity 0.2s;
         outline-color: transparent;
@@ -149,6 +279,7 @@
 .doc-section-description {
     >p {
         font-size: 1.125rem;
+        line-height: 1.7;
 
         i {
             @include mark();
@@ -184,33 +315,44 @@
 
 .doc-section-nav-container {
     position: sticky;
-    top: calc(var(--topbar-height) + 2rem);
+    top: calc(var(--topbar-height) + 2.5rem);
     right: 0;
+    flex: 0 0 14rem;
     width: 14rem;
     margin: 0;
     padding-block: 0.25rem;
     padding-inline: 0;
-    margin-inline-start: 4rem;
+    /* Sits right after the reading column; free width on very wide screens goes to the far edge, not between them. */
+    margin-inline-start: 0;
+    padding-inline-start: 3.5rem;
+    box-sizing: content-box;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     max-height: calc(100vh - var(--topbar-height) - 10rem);
 }
 
+.doc-section-nav-title {
+    margin: 0 0 0.75rem;
+    color: var(--high-contrast-text-color);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
 .doc-section-nav {
     list-style: none;
-    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
 
     >.navbar-item {
         .navbar-item-content {
             border-inline-start: 1px solid var(--border-color);
-            padding-inline-start: .25rem;
-            transition: all .2s;
-
-            &:hover {
-                border-inline-start-color: var(--hover-border-color);
-            }
+            transition: border-color .15s;
         }
     }
 
@@ -219,18 +361,16 @@
             display: flex;
 
             button {
-                font-size: 1rem;
+                font-size: 0.9375rem;
+                line-height: 1.45;
                 text-align: start;
                 background: transparent;
                 margin: 0;
                 border: 0 none;
-                padding-block: 0.25rem;
-                padding-inline: 1rem;
+                padding-block: 0.3125rem;
+                padding-inline: 0.875rem 0;
                 color: var(--text-secondary-color);
-                white-space: nowrap;
                 min-width: 0;
-                overflow: hidden;
-                text-overflow: ellipsis;
                 transition: outline-color 0.2s, border-color .2s;
                 outline-color: transparent;
                 cursor: pointer;
@@ -248,10 +388,11 @@
 
         &.active-navbar-item {
             >.navbar-item-content {
-                border-color: var(--primary-text-color);
+                border-color: var(--high-contrast-text-color);
 
                 button {
-                    color: var(--primary-text-color);
+                    color: var(--high-contrast-text-color);
+                    font-weight: 500;
                 }
             }
         }
@@ -283,11 +424,87 @@
         margin-bottom: 1rem;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-within {
         .doc-section-code-buttons {
             display: flex;
         }
     }
+
+    /* Folded: a few lines of code fading into the well, with one control to open it. */
+    &.is-collapsed {
+        pre[class*="language-"] {
+            max-height: 15rem;
+            overflow: hidden;
+
+            code {
+                overflow: hidden;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        .doc-section-code-body {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset-inline: 1px;
+                bottom: 0;
+                height: 5rem;
+                background: linear-gradient(to bottom, transparent, var(--doc-code-background));
+                pointer-events: none;
+            }
+        }
+    }
+
+    &.is-collapsible pre[class*="language-"] code {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.doc-section-code-expand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.625rem;
+    border: 1px solid var(--doc-code-border);
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    background: var(--doc-code-background);
+    color: var(--text-secondary-color);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s;
+    --p-focus-ring-offset: -2px;
+    @include focus-visible();
+
+    i {
+        font-size: 0.75rem;
+    }
+
+    &:hover {
+        color: var(--high-contrast-text-color);
+    }
+}
+
+/* A demo and its code are one example: the code hangs off the bottom of the preview card. */
+.card:has(+ .doc-section-code) {
+    margin-bottom: 0;
+    border-bottom-width: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.card + .doc-section-code pre[class*="language-"] code {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .doc-section-code-buttons {
@@ -295,33 +512,37 @@
     align-items: center;
     justify-content: end;
     z-index: 1;
-    top: .75rem;
-    right: .75rem;
-    gap: .5rem;
+    top: .625rem;
+    right: .625rem;
+    gap: .125rem;
     display: none;
-    background: rgba(255, 255, 255, .05);
-    border-radius: 10px;
+    background: var(--card-background);
+    border-radius: 8px;
     padding: 2px;
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, .1);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
 
     button {
         outline: 0 none;
-        border-radius: 8px;
+        border-radius: 6px;
         outline-offset: 0;
         background-color: transparent;
-        transition: background-color .2s, box-shadow .2s;
+        transition: background-color .15s, color .15s;
         border: 0 none;
-        color: var(--code-button-text-color);
+        color: var(--text-secondary-color);
+        font-size: 0.875rem;
         cursor: pointer;
+        --p-focus-ring-offset: -1px;
+        @include focus-visible();
 
         &:hover {
-            background-color: rgba(255, 255, 255, .1);
-            color: var(--code-button-text-color);
+            background-color: var(--hover-background);
+            color: var(--high-contrast-text-color);
         }
 
         &.code-active {
-            color: #bbf7d0;
+            background-color: var(--hover-background);
+            color: var(--high-contrast-text-color);
         }
     }
 }
@@ -340,7 +561,6 @@
 .doc-table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 960px;
     margin-bottom: 1.5rem;
 
     th {
@@ -459,6 +679,32 @@
                 font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, Liberation Mono, monospace;
             }
         }
+    }
+}
+
+/* Doc tables wrap to their column instead of scrolling sideways. The first column (keys, prop
+   names) stays on one line at the width it needs, the description always keeps room to read,
+   and the wrapper only scrolls when a table truly cannot fit (phones). */
+.doc-table {
+    th:first-child,
+    tbody td:first-child {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    th:last-child:not(:first-child),
+    tbody td:last-child:not(:first-child) {
+        min-width: 16rem;
+    }
+
+    /* Long values break only when they truly overflow; short ones (null, false, 'auto') never split. */
+    tbody td:not(:first-child) {
+        overflow-wrap: break-word;
+    }
+
+    .doc-option-default,
+    .doc-option-return-type {
+        white-space: nowrap;
     }
 }
 

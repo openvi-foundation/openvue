@@ -14,7 +14,7 @@ const extractDescription = (to) => {
 
     const content = fs.readFileSync(pagePath, { encoding: 'utf-8' });
 
-    return content.match(/\bdescription="([^"]+)"/)?.[1] ?? content.match(/name="description"\s+content="([^"]+)"/)?.[1] ?? null;
+    return content.match(/\bdescription="([^"]+)"/)?.[1] ?? content.match(/name="description"\s+content="([^"]+)"/)?.[1] ?? content.match(/useSeo\(\{[^}]*?\bdescription:\s*'([^']+)'/)?.[1] ?? null;
 };
 
 const toEntry = (item, trail) => ({

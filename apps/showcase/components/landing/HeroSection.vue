@@ -1,34 +1,52 @@
 <template>
-    <section class="landing-hero px-8 lg:px-20">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <h1 class="hero-title">The complete UI toolkit for Vue and Nuxt</h1>
-                <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue carries PrimeVue 4.5.5 forward under the MIT license, so the library your app already depends on stays free and keeps moving.</p>
-                <div class="hero-actions">
-                    <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
-                        <span>Get Started</span>
-                        <i class="pi pi-arrow-right ms-4"></i>
-                    </OpenVueNuxtLink>
-                    <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
-                        <i class="pi pi-github me-3"></i>
-                        <span>Star on GitHub</span>
-                        <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
-                    </a>
-                </div>
-                <div class="hero-install">
-                    <span class="hero-install-prompt" aria-hidden="true">$</span>
-                    <code class="hero-install-command">{{ installCommand }}</code>
-                    <button type="button" class="hero-install-copy" :aria-label="`Copy ${installCommand} to clipboard`" @click="copyInstallCommand">
-                        <i :class="['pi', copied ? 'pi-check' : 'pi-copy']"></i>
-                    </button>
-                </div>
-                <p class="hero-note">{{ version }} is out. MIT licensed, no paid tier.</p>
+    <section class="landing-hero">
+        <div class="hero-intro">
+            <h1 class="hero-title">The complete UI toolkit for Vue and Nuxt</h1>
+            <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue is an MIT-licensed fork of PrimeVue 4.5.5, so the library your app already depends on stays free and keeps moving.</p>
+            <div class="hero-actions">
+                <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
+                    <span>Get Started</span>
+                    <i class="pi pi-arrow-right ms-4"></i>
+                </OpenVueNuxtLink>
+                <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
+                    <i class="pi pi-github me-3"></i>
+                    <span>Star on GitHub</span>
+                    <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
+                </a>
+            </div>
+            <div class="hero-install">
+                <code class="hero-install-command">{{ installCommand }}</code>
+                <button type="button" class="hero-install-copy" :aria-label="`Copy ${installCommand} to clipboard`" @click="copyInstallCommand">
+                    <i :class="['pi', copied ? 'pi-check' : 'pi-copy']"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-stage-wrap">
+            <div class="hero-theme-switch">
+                <span id="hero-theme-label">Try a theme</span>
+                <SelectButton :modelValue="selectedPreset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" aria-labelledby="hero-theme-label" size="small" />
             </div>
 
-            <!-- Real components, not screenshots: they follow the theme, palette and dark mode set in the topbar. -->
-            <div class="hero-showcase">
-                <div class="hero-stack">
-                    <div class="hero-card hero-card-optional">
+            <!-- Real components, not screenshots: they follow the theme picked above and the palette and dark mode set in the topbar. -->
+            <div class="hero-stage">
+                <div class="hero-col">
+                    <div class="hero-card">
+                        <div class="hero-card-title">Release date</div>
+                        <DatePicker v-model="releaseDate" inline class="hero-calendar" />
+                    </div>
+                    <div class="hero-card">
+                        <div>
+                            <div class="hero-card-title">Verify your email</div>
+                            <p class="hero-card-text">Enter the 4 digit code we sent you.</p>
+                        </div>
+                        <InputOtp v-model="otp" :length="4" integerOnly size="small" />
+                        <Button label="Verify" size="small" severity="secondary" fluid @click="verifyOtp" />
+                    </div>
+                </div>
+
+                <div class="hero-col">
+                    <div class="hero-card">
                         <div class="hero-card-title">New project</div>
                         <div class="hero-field">
                             <label for="hero-project-name">Project name</label>
@@ -51,32 +69,17 @@
                             <Button label="Create" size="small" icon="pi pi-check" :disabled="!project.name" @click="createProject" />
                         </div>
                     </div>
-
-                    <div class="hero-card hero-card-optional">
+                    <div class="hero-card">
                         <div class="flex items-center justify-between gap-4">
                             <div class="hero-card-title">Storage</div>
                             <Tag :value="`${storageUsed} of 100 GB`" severity="secondary" />
                         </div>
                         <MeterGroup :value="storage" />
                     </div>
-
-                    <div class="hero-card" :class="layerClass('verify')" :style="layerStyle('verify')" @pointerdown="bringToFront('verify')" @focusin="bringToFront('verify')">
-                        <div>
-                            <div class="hero-card-title">Verify your email</div>
-                            <p class="hero-card-text">Enter the 4 digit code we sent you.</p>
-                        </div>
-                        <InputOtp v-model="otp" :length="4" integerOnly size="small" />
-                        <Button label="Verify" size="small" severity="secondary" fluid @click="verifyOtp" />
-                    </div>
                 </div>
 
-                <div class="hero-stack">
-                    <div class="hero-card hero-card-calendar hero-card-optional">
-                        <div class="hero-card-title">Release date</div>
-                        <DatePicker v-model="releaseDate" inline class="hero-calendar" />
-                    </div>
-
-                    <div class="hero-card" :class="layerClass('notifications')" :style="layerStyle('notifications')" @pointerdown="bringToFront('notifications')" @focusin="bringToFront('notifications')">
+                <div class="hero-col">
+                    <div class="hero-card">
                         <div class="hero-card-title">Notifications</div>
                         <div v-for="item of notifications" :key="item.id" class="hero-toggle-row">
                             <label :for="`hero-notify-${item.id}`">
@@ -86,8 +89,14 @@
                             <ToggleSwitch v-model="item.enabled" :inputId="`hero-notify-${item.id}`" />
                         </div>
                     </div>
+                    <div class="hero-card">
+                        <div class="hero-card-title">Project files</div>
+                        <Tree v-model:expandedKeys="expandedFiles" :value="files" class="hero-tree" />
+                    </div>
+                </div>
 
-                    <div class="hero-card" :class="layerClass('team')" :style="layerStyle('team')" @pointerdown="bringToFront('team')" @focusin="bringToFront('team')">
+                <div class="hero-col">
+                    <div class="hero-card">
                         <div class="flex items-center justify-between gap-4">
                             <div class="hero-card-title">Team</div>
                             <Tag :value="`${seats} seats`" severity="secondary" />
@@ -98,6 +107,17 @@
                         </AvatarGroup>
                         <Slider v-model="seats" :min="avatars.length" :max="50" aria-label="Seats" />
                     </div>
+                    <div class="hero-card">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="hero-card-title">Brand color</div>
+                            <span class="hero-color-value">#{{ brandColor }}</span>
+                        </div>
+                        <ColorPicker v-model="brandColor" inline class="hero-colorpicker" aria-label="Brand color" />
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-title">How was setup?</div>
+                        <Rating v-model="rating" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,9 +125,12 @@
 </template>
 
 <script>
-import pkg from '../../../../packages/primevue/package.json';
+import { PRESET_OPTIONS, applySitePreset, selectedPreset } from '@/service/theme/presets';
 
 const defaultProject = () => ({ name: 'my-app', framework: 'Nuxt', theme: 'Aura', typescript: true });
+
+const file = (key, label, icon = 'pi pi-file') => ({ key, label, icon });
+const folder = (key, label, children) => ({ key, label, icon: 'pi pi-folder', children });
 
 export default {
     setup() {
@@ -122,11 +145,11 @@ export default {
         releaseDate.setDate(releaseDate.getDate() + 7);
 
         return {
-            version: pkg.version,
             installCommand: 'npm install openvue @openvue/themes',
             copied: false,
             copyTimeout: null,
             project: defaultProject(),
+            presetOptions: PRESET_OPTIONS,
             frameworks: ['Vue', 'Nuxt'],
             themes: ['Aura', 'Lara', 'Nora'],
             storage: [
@@ -141,13 +164,23 @@ export default {
                 { id: 'security', label: 'Security', detail: 'Advisories for your dependencies', enabled: true },
                 { id: 'digest', label: 'Weekly digest', detail: 'A summary every Monday', enabled: false }
             ],
+            files: [
+                folder('components', 'components', [file('components/AppHeader.vue', 'AppHeader.vue'), file('components/OrderTable.vue', 'OrderTable.vue')]),
+                folder('pages', 'pages', [file('pages/index.vue', 'index.vue')]),
+                file('app.vue', 'app.vue'),
+                file('nuxt.config.ts', 'nuxt.config.ts')
+            ],
+            expandedFiles: { components: true },
             avatars: ['avatar-02', 'avatar-04', 'avatar-07', 'avatar-11'],
             seats: 12,
-            // Phone layout only: the cards that stay on small screens, back to front. Tapping or focusing one moves it to the front.
-            layerOrder: ['team', 'verify', 'notifications']
+            brandColor: '10b981',
+            rating: 4
         };
     },
     computed: {
+        selectedPreset() {
+            return selectedPreset(this.$appState);
+        },
         storageUsed() {
             return this.storage.reduce((sum, item) => sum + item.value, 0);
         }
@@ -158,16 +191,8 @@ export default {
         }
     },
     methods: {
-        bringToFront(key) {
-            if (this.layerOrder[this.layerOrder.length - 1] === key) return;
-
-            this.layerOrder = [...this.layerOrder.filter((item) => item !== key), key];
-        },
-        layerClass(key) {
-            return [`hero-layer-${key}`, { 'is-front': this.layerOrder[this.layerOrder.length - 1] === key }];
-        },
-        layerStyle(key) {
-            return { zIndex: this.layerOrder.indexOf(key) + 1 };
+        onPresetChange(value) {
+            applySitePreset(this.$appState, this.$siteTheme, value);
         },
         async copyInstallCommand() {
             try {

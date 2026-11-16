@@ -2,23 +2,25 @@
     <div :class="containerClass">
         <!--<AppNews />-->
         <AppTopBar :showDesigner="false" />
+        <AnnouncementBar />
         <HeroSection />
         <MigrationSection />
         <FeaturesSection />
-        <ThemeSection />
         <TemplatesSection />
-        <AppFooter show-cta />
+        <CommunitySection />
+        <AppFooter />
         <Toast />
     </div>
 </template>
 
 <script>
 import pkg from '../../../packages/primevue/package.json';
+import AnnouncementBar from '@/components/landing/AnnouncementBar.vue';
+import CommunitySection from '@/components/landing/CommunitySection.vue';
 import FeaturesSection from '@/components/landing/FeaturesSection.vue';
 import MigrationSection from '@/components/landing/MigrationSection.vue';
 import HeroSection from '@/components/landing/HeroSection.vue';
 import TemplatesSection from '@/components/landing/TemplatesSection.vue';
-import ThemeSection from '@/components/landing/ThemeSection.vue';
 
 export default {
     setup() {
@@ -38,7 +40,7 @@ export default {
                     {
                         '@type': 'Organization',
                         '@id': `${SITE_URL}/#organization`,
-                        name: 'OpenVI Foundation',
+                        name: 'OpenVi Foundation',
                         url: SITE_URL,
                         logo: `${SITE_URL}/open_vue_logo.svg`,
                         sameAs: ['https://github.com/openvi-foundation/openvue', 'https://www.npmjs.com/package/openvue']
@@ -84,10 +86,11 @@ export default {
         }
     },
     components: {
+        AnnouncementBar,
         HeroSection,
         MigrationSection,
-        ThemeSection,
         TemplatesSection,
+        CommunitySection,
         FeaturesSection
     }
 };

@@ -52,7 +52,7 @@
                         <span>contact@openvi.dev</span>
                     </a>
                     <span class="footer-note">Not affiliated with PrimeTek.</span>
-                    <span class="footer-note">OpenVue {{ version }} on Vue 3 by Openvi Foundation</span>
+                    <span class="footer-note">OpenVue {{ version }} on Vue 3 by OpenVi Foundation</span>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@ export default {
                         { label: 'GitHub', href: REPO, external: true },
                         { label: 'Discussions', href: `${REPO}/discussions`, external: true },
                         { label: 'Contributing', to: '/contribution' },
-                        { label: 'Team', to: '/team' }
+                        { label: 'About', to: '/team' }
                     ]
                 }
             ]

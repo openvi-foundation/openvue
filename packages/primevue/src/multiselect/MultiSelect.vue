@@ -34,8 +34,8 @@
                         <template v-else-if="chipSelectedItems">
                             <span>{{ label }}</span>
                         </template>
-                        <template v-else>
-                            <span v-for="(item, idx) of d_value" :key="`chip-${getLabelByValue(item)}_${idx}`" :class="cx('chipItem')" v-bind="ptm('chipItem')">
+                        <template v-else-if="selectedValues.length">
+                            <span v-for="(item, idx) of selectedValues" :key="`chip-${getLabelByValue(item)}_${idx}`" :class="cx('chipItem')" v-bind="ptm('chipItem')">
                                 <slot name="chip" :value="item" :removeCallback="(event) => removeOption(event, item)">
                                     <!-- TODO: removetokenicon and removeTokenIcon  deprecated since v4.0. Use chipicon slot and chipIcon prop-->
                                     <Chip :class="cx('pcChip')" :label="getLabelByValue(item)" :removeIcon="chipIcon || removeTokenIcon" removable :unstyled="unstyled" @remove="removeOption($event, item)" :pt="ptm('pcChip')">
@@ -46,7 +46,7 @@
                                 </slot>
                             </span>
                         </template>
-                        <template v-if="!d_value || d_value.length === 0">{{ placeholder || 'empty' }}</template>
+                        <template v-else>{{ placeholder || 'empty' }}</template>
                     </template>
                 </slot>
             </div>
@@ -837,7 +837,7 @@ export default {
             const selectedItemsLabel = this.selectedItemsLabel || this.$primevue.config.locale.selectionMessage;
 
             if (pattern.test(selectedItemsLabel)) {
-                return selectedItemsLabel.replace(selectedItemsLabel.match(pattern)[0], this.d_value.length + '');
+                return selectedItemsLabel.replace(selectedItemsLabel.match(pattern)[0], this.selectedValues.length + '');
             }
 
             return selectedItemsLabel;
@@ -1075,18 +1075,10 @@ export default {
             if (this.d_value && this.d_value.length) {
                 if (this.loading && (!this.options || this.options.length === 0)) {
                     label = this.placeholder;
-                } else if (isNotEmpty(this.maxSelectedLabels) && this.d_value.length > this.maxSelectedLabels) {
+                } else if (isNotEmpty(this.maxSelectedLabels) && this.selectedValues.length > this.maxSelectedLabels) {
                     return this.getSelectedItemsLabel();
                 } else {
-                    label = '';
-
-                    for (let i = 0; i < this.d_value.length; i++) {
-                        if (i !== 0) {
-                            label += ', ';
-                        }
-
-                        label += this.getLabelByValue(this.d_value[i]);
-                    }
+                    label = this.selectedValues.length ? this.selectedValues.map((value) => this.getLabelByValue(value)).join(', ') : this.placeholder;
                 }
             } else {
                 label = this.placeholder;
@@ -1094,8 +1086,11 @@ export default {
 
             return label;
         },
+        selectedValues() {
+            return (this.d_value || []).filter((value) => isNotEmpty(this.getLabelByValue(value)));
+        },
         chipSelectedItems() {
-            return isNotEmpty(this.maxSelectedLabels) && this.d_value && this.d_value.length > this.maxSelectedLabels;
+            return isNotEmpty(this.maxSelectedLabels) && this.selectedValues.length > this.maxSelectedLabels;
         },
         allSelected() {
             return this.selectAll !== null ? this.selectAll : isNotEmpty(this.visibleOptions) && this.visibleOptions.every((option) => this.isOptionGroup(option) || this.isOptionDisabled(option) || this.isSelected(option));
@@ -1171,8 +1166,8 @@ export default {
                 clearable: this.showClear,
                 disabled: this.disabled,
                 [this.size]: this.size,
-                'has-chip': this.display === 'chip' && this.d_value && this.d_value.length && (this.maxSelectedLabels ? this.d_value.length <= this.maxSelectedLabels : true),
-                empty: !this.placeholder && !this.$filled
+                'has-chip': this.display === 'chip' && this.selectedValues.length && (this.maxSelectedLabels ? this.selectedValues.length <= this.maxSelectedLabels : true),
+                empty: !this.placeholder && !this.selectedValues.length
             });
         },
         dropdownIconDataP() {

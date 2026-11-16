@@ -115,6 +115,10 @@ export default {
             default() {
                 return { severity: 'secondary' };
             }
+        },
+        inputId: {
+            type: String,
+            default: null
         }
     },
     style: FileUploadStyle,
