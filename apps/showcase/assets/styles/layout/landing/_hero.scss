@@ -25,6 +25,11 @@
         color: var(--high-contrast-text-color);
     }
 
+    /* Large text only needs 3:1, so the heading takes the button green rather than the darker link shade. */
+    .hero-title-accent {
+        color: var(--landing-accent-strong);
+    }
+
     .hero-subtitle {
         max-width: 40rem;
         margin: 1.75rem 0 2.5rem 0;
@@ -97,17 +102,8 @@
 
     .hero-theme-switch {
         display: flex;
-        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
         margin-bottom: 1.25rem;
-
-        > span {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--text-secondary-color);
-        }
     }
 
     .hero-stage {
@@ -118,10 +114,10 @@
         height: 40rem;
         padding: 1.25rem 1.25rem 0 1.25rem;
         overflow: hidden;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--landing-stage-border);
         border-bottom: 0 none;
         border-radius: 20px 20px 0 0;
-        background: var(--hover-background);
+        background: var(--landing-stage-background);
         /* The columns end at different heights; the fade turns the ragged edge into a stage that runs on under the fold. */
         mask-image: linear-gradient(to bottom, #000 calc(100% - 7rem), transparent);
     }
@@ -289,27 +285,32 @@
 
     /* Phones: every card stays, in one row you swipe through edge to edge. The next card peeking in at the
        right edge is the cue that the row scrolls. */
+    /* Phones: keep the intro short so the first cards show above the fold. The two buttons share a row
+       and the install command shrinks to its text. */
     @media screen and (max-width: 639px) {
-        padding: 3.5rem 1rem 0 1rem;
+        padding: 2.5rem 1rem 0 1rem;
 
         .hero-subtitle {
-            font-size: 1.0625rem;
-            margin: 1.25rem 0 2rem 0;
+            font-size: 1rem;
+            margin: 1rem 0 1.5rem 0;
         }
 
         .hero-actions {
-            width: 100%;
-            flex-direction: column;
-            align-items: stretch;
+            gap: 0.5rem;
         }
 
-        .linkbox {
-            justify-content: center;
+        /* "Star on" drops so both buttons fit one row at 360px. */
+        .hero-star-verb {
+            display: none;
         }
 
         .hero-install {
-            width: 100%;
-            justify-content: space-between;
+            margin-top: 1rem;
+            padding-left: 0.875rem;
+        }
+
+        .hero-install-command {
+            font-size: 0.8125rem;
         }
 
         .hero-install-copy {
@@ -318,13 +319,11 @@
         }
 
         .hero-stage-wrap {
-            margin: 3rem -1rem 0 -1rem;
+            margin: 2rem -1rem 0 -1rem;
         }
 
         /* Five presets do not fit 360px; the switch scrolls sideways instead of wrapping. */
         .hero-theme-switch {
-            flex-direction: column;
-            gap: 0.625rem;
             padding: 0 1rem;
 
             .p-selectbutton {

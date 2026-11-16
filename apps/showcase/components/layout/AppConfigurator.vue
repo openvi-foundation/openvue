@@ -14,7 +14,7 @@
                         type="button"
                         role="radio"
                         :class="['theme-builder-swatch', { 'theme-builder-swatch-active': isActivePrimary(primaryColor) }]"
-                        :style="{ background: primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColor.palette['500'] }"
+                        :style="{ background: primaryColor.swatch }"
                         :aria-label="colorName(primaryColor.name)"
                         :aria-checked="isActivePrimary(primaryColor)"
                         :title="colorName(primaryColor.name)"
@@ -70,7 +70,7 @@
 import EventBus from '@/app/AppEventBus';
 import { updatePreset, updateSurfacePalette } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
-import { PRIMARY_COLORS, SURFACES } from '@/service/theme/compile';
+import { PRIMARY_COLORS, SURFACES, primaryLabel, swatchColor } from '@/service/theme/compile';
 import { PRESET_OPTIONS, applySitePreset, loadedPresets, presetExtension, releaseSiteTheme, selectedPreset } from '@/service/theme/presets';
 
 export default {
@@ -110,7 +110,7 @@ export default {
             EventBus.emit('theme-palette-change');
         },
         colorName(name) {
-            return name === 'noir' ? 'Ink' : name.charAt(0).toUpperCase() + name.slice(1);
+            return primaryLabel(name);
         },
         isActivePrimary(color) {
             return !this.siteThemeWorn && this.selectedPrimaryColor === color.name;
@@ -173,7 +173,7 @@ export default {
         primaryColors() {
             const presetPalette = (loadedPresets[this.$appState.preset] || Aura).primitive;
 
-            return PRIMARY_COLORS.map((name) => ({ name, palette: name === 'noir' ? {} : presetPalette[name] }));
+            return PRIMARY_COLORS.map((name) => ({ name, swatch: presetPalette[name]?.[500] ?? swatchColor(name) }));
         }
     }
 };

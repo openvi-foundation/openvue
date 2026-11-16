@@ -79,7 +79,7 @@
         padding: 2rem;
         border: 1px solid var(--border-color);
         border-radius: 20px;
-        background: var(--hover-background);
+        background: var(--ground-background);
     }
 
     .features-demo {
@@ -179,7 +179,7 @@
         align-self: flex-start;
         font-size: 0.9375rem;
         font-weight: 600;
-        color: var(--text-color);
+        color: var(--landing-accent-text);
         text-underline-offset: 0.25em;
         @include focus-visible();
 
@@ -250,7 +250,8 @@
             border-radius: 10px;
 
             &.is-active {
-                border-color: var(--high-contrast-text-color);
+                border-color: var(--landing-accent-strong);
+                color: var(--landing-accent-text);
                 box-shadow: none;
             }
         }

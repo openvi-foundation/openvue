@@ -1,5 +1,5 @@
 /* Full-width bar directly under the fixed topbar. It scrolls away with the page.
-   A light tint of the primary colour, so it follows the palette picked in the configurator without competing with the primary hero button. */
+   A light tint of the brand green, the same accent as the hero button. */
 .landing-announcement {
     display: flex;
     align-items: center;
@@ -9,8 +9,8 @@
     /* .landing pads 4rem for the topbar, which is slightly taller; close the gap so the bar starts where the topbar ends. */
     margin-top: calc(var(--topbar-height) - 4rem);
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 45%, var(--ground-background));
-    background: color-mix(in srgb, var(--primary-color) 20%, var(--ground-background));
+    border-bottom: 1px solid var(--landing-stage-border);
+    background: var(--landing-accent-tint);
     color: var(--text-color);
     font-size: 1rem;
     font-weight: 600;
@@ -26,8 +26,8 @@
     flex-shrink: 0;
     padding: 0.1875rem 0.625rem;
     border-radius: 999px;
-    background: var(--primary-color);
-    color: var(--primary-contrast-color);
+    background: var(--landing-accent-strong);
+    color: var(--landing-accent-contrast);
     font-size: 0.8125rem;
     font-weight: 700;
 }
@@ -37,7 +37,7 @@
     align-items: center;
     gap: 0.375rem;
     flex-shrink: 0;
-    color: var(--home-announcement-cta-color);
+    color: var(--landing-accent-text);
     font-weight: 700;
 
     .pi {

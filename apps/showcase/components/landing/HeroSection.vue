@@ -1,7 +1,7 @@
 <template>
     <section class="landing-hero">
         <div class="hero-intro">
-            <h1 class="hero-title">The complete UI toolkit for Vue and Nuxt</h1>
+            <h1 class="hero-title">The complete UI toolkit <span class="hero-title-accent">for Vue and Nuxt</span></h1>
             <p class="hero-subtitle">80+ accessible, themeable components for Vue and Nuxt. OpenVue is an MIT-licensed fork of PrimeVue 4.5.5, so the library your app already depends on stays free and keeps moving.</p>
             <div class="hero-actions">
                 <OpenVueNuxtLink to="/setup" class="linkbox linkbox-primary">
@@ -10,7 +10,7 @@
                 </OpenVueNuxtLink>
                 <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
                     <i class="pi pi-github me-3"></i>
-                    <span>Star on GitHub</span>
+                    <span><span class="hero-star-verb">Star on </span>GitHub</span>
                     <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
                 </a>
             </div>
@@ -24,8 +24,7 @@
 
         <div class="hero-stage-wrap">
             <div class="hero-theme-switch">
-                <span id="hero-theme-label">Try a theme</span>
-                <SelectButton :modelValue="selectedPreset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" aria-labelledby="hero-theme-label" size="small" />
+                <SelectButton :modelValue="selectedPreset" @update:modelValue="onPresetChange" :options="presetOptions" optionLabel="label" optionValue="value" :allowEmpty="false" aria-label="Theme" size="small" />
             </div>
 
             <!-- Real components, not screenshots: they follow the theme picked above and the palette and dark mode set in the topbar. -->
