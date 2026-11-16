@@ -121,14 +121,12 @@
 
     /* Phones: the shot is too small for pins to point at anything readable. */
     @media screen and (max-width: 639px) {
-        .template-actions {
-            width: 100%;
-            flex-direction: column;
-            align-items: stretch;
+        .template-head {
+            margin-bottom: 1.75rem;
+        }
 
-            .linkbox {
-                justify-content: center;
-            }
+        .template-actions {
+            gap: 0.5rem;
         }
 
         .template-stage {

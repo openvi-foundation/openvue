@@ -106,7 +106,7 @@
         gap: 0.5rem;
         margin-top: 1.25rem;
         font-weight: 600;
-        color: var(--text-color);
+        color: var(--landing-accent-text);
         border-radius: 4px;
         @include focus-visible();
 
@@ -205,10 +205,34 @@
         color: var(--text-secondary-color);
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
+        .migration-grid {
+            gap: 2rem;
+        }
+
+        .migration-points {
+            margin-top: 1.25rem;
+
+            li {
+                font-size: 0.9375rem;
+            }
+        }
 
         .migration-command {
+            margin-top: 1.5rem;
             overflow-x: auto;
+        }
+
+        .migration-diff .p-tab {
+            padding: 0.625rem 1rem;
+        }
+
+        .migration-diff-body {
+            font-size: 0.8125rem;
+        }
+
+        .migration-diff-sign {
+            width: 1.75rem;
         }
     }
 }

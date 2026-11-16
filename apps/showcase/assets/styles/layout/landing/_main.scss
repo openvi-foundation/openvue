@@ -87,7 +87,7 @@
         padding: 7rem 1.5rem;
 
         @media screen and (max-width: 767px) {
-            padding: 4.5rem 1rem;
+            padding: 3.5rem 1rem;
         }
     }
 
@@ -99,6 +99,10 @@
     .landing-section-header {
         max-width: 44rem;
         margin-bottom: 3rem;
+
+        @media screen and (max-width: 767px) {
+            margin-bottom: 1.75rem;
+        }
     }
 
     .landing-section-title {
@@ -118,6 +122,34 @@
         line-height: 1.6;
         text-wrap: pretty;
         color: var(--text-secondary-color);
+
+        @media screen and (max-width: 767px) {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Phones: every pair of homepage buttons shares one row instead of stacking as full-width slabs.
+       The icon margins come from utility classes, which sit in a later layer, hence !important. */
+    @media screen and (max-width: 639px) {
+        .linkbox {
+            justify-content: center;
+            padding: 0.75rem 1.125rem;
+            font-size: 0.9375rem;
+
+            .ms-4 {
+                margin-inline-start: 0.625rem !important;
+            }
+
+            .me-3 {
+                margin-inline-end: 0.5rem !important;
+            }
+
+            .linkbox-count {
+                margin-left: 0.5rem;
+                padding-left: 0.5rem;
+            }
+        }
     }
 
     .section-header {

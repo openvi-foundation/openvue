@@ -10,7 +10,7 @@
                 </OpenVueNuxtLink>
                 <a href="https://github.com/openvi-foundation/openvue" target="_blank" rel="noopener noreferrer" class="linkbox">
                     <i class="pi pi-github me-3"></i>
-                    <span>Star on GitHub</span>
+                    <span><span class="hero-star-verb">Star on </span>GitHub</span>
                     <span v-if="starsLabel" class="linkbox-count">{{ starsLabel }}</span>
                 </a>
             </div>
