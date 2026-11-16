@@ -11,11 +11,13 @@ All packages in this repository are released together under a single version.
 ### Changed
 
 - `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
 
 ### Fixed
 
 - `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
 - `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
+- `DatePicker` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. Before, the click on the option's panel counted as an outside click and closed the calendar. ([#571](https://github.com/openvi-foundation/openvue/issues/571))
 
 ## [1.1.1] - 2026-11-04
 
