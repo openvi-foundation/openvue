@@ -1,5 +1,6 @@
 import { flushPromises, mount } from '@vue/test-utils';
 import { vi } from 'vitest';
+import { isReactive, reactive } from 'vue';
 import ChartJS from 'chart.js/auto';
 import Chart from './Chart.vue';
 import { applyPalette, mergeOptions } from './utils/ChartTheme';
@@ -99,6 +100,29 @@ describe('Chart.vue', () => {
         expect(chart.options).toEqual({ responsive: false });
         expect(chart.update).toHaveBeenCalled();
         expect(instances.length).toBe(1);
+    });
+
+    it('is chart given raw data rather than reactive proxies', async () => {
+        const source = reactive({ datasets: [{ label: 'Sales', data: [{ x: 1, y: 2 }] }] });
+
+        await mountChart({ data: source, options: reactive({ parsing: false }) });
+
+        expect(isReactive(instances[0].data.datasets[0].data)).toBe(false);
+        expect(isReactive(instances[0].options)).toBe(false);
+    });
+
+    it('is chart.js writing into the data not retriggering an update', async () => {
+        const source = reactive({ datasets: [{ label: 'Sales', data: [{ x: 1, y: 2 }] }] });
+
+        await mountChart({ data: source, options: { parsing: false, scales: { y: { stacked: true } } } });
+
+        const chart = instances[0];
+
+        // what Chart.js does to each point while stacking with parsing disabled
+        chart.data.datasets[0].data[0]._stacks = { y: {} };
+        await flushPromises();
+
+        expect(chart.update).not.toHaveBeenCalled();
     });
 
     it('is type change recreating the chart', async () => {

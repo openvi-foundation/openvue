@@ -6,6 +6,7 @@
 
 <script>
 import { ThemeService } from '@openuxkit/styled';
+import { toRaw } from 'vue';
 import BaseChart from './BaseChart.vue';
 import { applyPalette, getChartTheme, mergeOptions } from './utils/ChartTheme';
 
@@ -85,11 +86,18 @@ export default {
                 });
         },
         resolveConfig() {
-            const theme = this.themed ? getChartTheme(this.$el, this.type, this.data?.datasets?.length ?? 0) : null;
+            /*
+             * Chart.js writes bookkeeping such as _stacks and _custom into the data objects (directly
+             * into the user's points when parsing is false). Handing it the reactive proxies would make
+             * every render trip the deep watchers below and loop through update() indefinitely.
+             */
+            const rawData = toRaw(this.data);
+            const rawOptions = toRaw(this.options);
+            const theme = this.themed ? getChartTheme(this.$el, this.type, rawData?.datasets?.length ?? 0) : null;
 
             return {
-                data: theme ? applyPalette(this.data, this.type, theme.palette) : this.data,
-                options: theme ? mergeOptions(theme.options, this.options) : this.options
+                data: theme ? applyPalette(rawData, this.type, theme.palette) : rawData,
+                options: theme ? mergeOptions(theme.options, rawOptions) : rawOptions
             };
         },
         syncChart() {
