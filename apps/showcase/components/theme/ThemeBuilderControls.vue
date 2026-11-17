@@ -196,7 +196,7 @@
 </template>
 
 <script>
-import { DENSITIES, DISABLED_MAX, DISABLED_MIN, FOCUS_RINGS, MOTIONS, PRIMARY_COLORS, SHADOWS, SURFACES, isCustomColor } from '@/service/theme/compile';
+import { DENSITIES, DISABLED_MAX, DISABLED_MIN, FOCUS_RINGS, MOTIONS, PRIMARY_COLORS, SHADOWS, SURFACES, isCustomColor, primaryLabel, swatchColor } from '@/service/theme/compile';
 import { DEFAULT_RECIPE, FOCUS_OPTIONS, INPUT_VARIANTS, MASK_OPTIONS, MOTION_OPTIONS, RADIUS_MAX, RADIUS_MIN, SCALES, SHADOW_OPTIONS, SURFACE_OPTIONS } from '@/service/theme/recipe';
 import Aura from '@openvue/themes/aura';
 
@@ -284,10 +284,10 @@ export default {
             return options.find((option) => option.value === value)?.label ?? value;
         },
         colorLabel(color) {
-            return isCustomColor(color) ? color.toUpperCase() : color === 'noir' ? 'Ink' : this.capitalize(color);
+            return primaryLabel(color);
         },
         primarySwatch(color) {
-            return color === 'noir' ? 'var(--text-color)' : Aura.primitive[color][500];
+            return Aura.primitive[color]?.[500] ?? swatchColor(color);
         },
         // Light and dark ends of the palette, so the tint shows; the 500 shades all read as the same grey.
         surfaceSwatch(surface) {

@@ -15,6 +15,15 @@
     --home-blocks-bar-bg:var(--p-surface-300);
     --home-blocks-bar-button-bg:var(--p-surface-0);
     --home-blocks-circle-bg:var(--p-surface-300);
-    /* 800, not 600: the announcement bar's primary tint is strong enough that lighter shades drop below AA. */
-    --home-announcement-cta-color:var(--p-primary-800);
+    /* Homepage accents follow the primary colour picked in the topbar (OpenVue green by default).
+       -text is a deeper shade so links stay readable on white and on the tints. */
+    --landing-background:#ffffff;
+    --landing-accent:var(--p-primary-500);
+    --landing-accent-strong:var(--primary-color);
+    --landing-accent-strong-hover:var(--primary-hover-color);
+    --landing-accent-contrast:var(--primary-contrast-color);
+    --landing-accent-text:var(--p-primary-700);
+    --landing-accent-tint:color-mix(in srgb, var(--landing-accent) 12%, #ffffff);
+    --landing-stage-background:linear-gradient(180deg, color-mix(in srgb, var(--landing-accent) 10%, #ffffff), color-mix(in srgb, var(--landing-accent) 2%, #ffffff) 70%);
+    --landing-stage-border:color-mix(in srgb, var(--landing-accent) 24%, #ffffff);
 }

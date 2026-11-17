@@ -86,7 +86,7 @@ export default defineNuxtConfig({
         alias,
         externals: {
             // Otherwise Node loads the workspace theme sources natively and warns MODULE_TYPELESS_PACKAGE_JSON.
-            inline: [/[\\/]themes[\\/]app-theme\.js$/]
+            inline: [/[\\/]themes[\\/](app-theme|brand)\.js$/]
         }
     },
     sitemap: {

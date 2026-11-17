@@ -8,14 +8,16 @@ import Nora from '@openvue/themes/nora';
 import { BASES, PRIMARY_COLORS, RECIPE_COMPONENTS, SURFACES, buildPresetExt, primaryPalette, scaleRadius, scaleSpacing, swatchColor } from '../../service/theme/compile';
 import { presetExtension } from '../../service/theme/presets';
 import { scopedThemeCss } from '../../service/theme/scope';
+import { BRAND_PALETTE } from '../../themes/brand';
 
 const PRESETS = { Aura, Lara, Material, Nora, Nide };
 const PLAIN = { base: 'Aura', primary: 'noir', surface: 'default', radius: null, density: 1 };
 
 describe('theme-studio/compile', () => {
+    // noir follows the surface and openvue ships its own palette; every other name comes from the base.
     it('every named primary is a primitive palette of every base', () => {
         for (const [name, preset] of Object.entries(PRESETS)) {
-            for (const color of PRIMARY_COLORS.filter((value) => value !== 'noir')) {
+            for (const color of PRIMARY_COLORS.filter((value) => value !== 'noir' && value !== 'openvue')) {
                 expect(preset.primitive[color]?.[500], `${name} ${color}`).toMatch(/^#/);
             }
         }
@@ -25,6 +27,10 @@ describe('theme-studio/compile', () => {
         it('references a named palette and follows the surface for noir', () => {
             expect(primaryPalette('indigo')[500]).toBe('{indigo.500}');
             expect(primaryPalette('noir')[950]).toBe('{surface.950}');
+        });
+
+        it('uses the hand-tuned OpenVue palette for openvue', () => {
+            expect(primaryPalette('openvue')).toEqual(BRAND_PALETTE);
         });
 
         it('generates a full palette around a custom colour', () => {
@@ -38,6 +44,7 @@ describe('theme-studio/compile', () => {
     it('draws a swatch from the theme’s own palette, the text colour for noir, or the custom colour itself', () => {
         expect(swatchColor('indigo')).toBe('var(--p-indigo-500)');
         expect(swatchColor('noir')).toBe('var(--text-color)');
+        expect(swatchColor('openvue')).toBe(BRAND_PALETTE[500]);
         expect(swatchColor('#be123c')).toBe('#be123c');
     });
 

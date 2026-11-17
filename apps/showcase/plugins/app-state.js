@@ -6,7 +6,7 @@ const $appState = {
     install: (Vue) => {
         Vue.config.globalProperties.$appState = reactive({
             preset: 'Aura',
-            primary: 'noir',
+            primary: 'openvue',
             surface: null,
             siteRecipe: null,
             darkTheme: false,
