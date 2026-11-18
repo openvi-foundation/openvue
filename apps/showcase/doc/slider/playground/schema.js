@@ -15,7 +15,7 @@ export default defineSchema({
     groups: [
         {
             title: 'Behaviour',
-            controls: ['min', 'max', 'orientation', { prop: 'step', min: 1 }, 'range']
+            controls: ['min', 'max', 'orientation', { prop: 'step', min: 1 }, 'range', 'inverted']
         },
         {
             title: 'State',

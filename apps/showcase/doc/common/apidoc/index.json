@@ -62821,6 +62821,14 @@
                             "description": "Orientation of the slider."
                         },
                         {
+                            "name": "inverted",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "Places the maximum value at the start of the slider and the minimum value at the end."
+                        },
+                        {
                             "name": "step",
                             "optional": true,
                             "readonly": false,

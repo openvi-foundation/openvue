@@ -403,4 +403,103 @@ describe('Slider.vue value selection', () => {
             expect(wrapper.props('modelValue')).toEqual([10, 40]);
         });
     });
+
+    describe('inverted', () => {
+        const styleOf = (wrapper, selector) => wrapper.find(selector).element.style;
+
+        it('should place max at the start', () => {
+            const wrapper = mountSlider({ modelValue: 25, inverted: true });
+
+            expect(styleOf(wrapper, '[role="slider"]').insetInlineStart).toBe('75%');
+            expect(styleOf(wrapper, '.p-slider-range').insetInlineStart).toBe('75%');
+            expect(styleOf(wrapper, '.p-slider-range').width).toBe('25%');
+        });
+
+        it('should place max at the top when vertical', () => {
+            const wrapper = mountSlider({ modelValue: 25, inverted: true, orientation: 'vertical' });
+
+            expect(styleOf(wrapper, '[role="slider"]').bottom).toBe('75%');
+            expect(styleOf(wrapper, '.p-slider-range').bottom).toBe('75%');
+            expect(styleOf(wrapper, '.p-slider-range').height).toBe('25%');
+        });
+
+        it('should place the range between the handles', () => {
+            const wrapper = mountSlider({ modelValue: [20, 60], inverted: true, range: true });
+            const [start, end] = wrapper.findAll('[role="slider"]');
+
+            expect(start.element.style.insetInlineStart).toBe('80%');
+            expect(end.element.style.insetInlineStart).toBe('40%');
+            expect(styleOf(wrapper, '.p-slider-range').insetInlineStart).toBe('40%');
+            expect(styleOf(wrapper, '.p-slider-range').width).toBe('40%');
+        });
+
+        it('should not set a start offset on the range when not inverted', () => {
+            const wrapper = mountSlider({ modelValue: 25 });
+
+            expect(styleOf(wrapper, '.p-slider-range').insetInlineStart).toBe('');
+            expect(styleOf(wrapper, '.p-slider-range').width).toBe('25%');
+        });
+
+        it('should select the value under the pointer', async () => {
+            const wrapper = mountSlider({ modelValue: 50, inverted: true });
+
+            await clickAt(wrapper, 3);
+            expect(wrapper.props('modelValue')).toBe(97);
+
+            await clickAt(wrapper, 70);
+            expect(wrapper.props('modelValue')).toBe(30);
+        });
+
+        it('should select the value under the pointer when vertical', async () => {
+            const wrapper = mountSlider({ modelValue: 50, inverted: true, orientation: 'vertical' });
+
+            await wrapper.trigger('click', { pageY: 20 });
+
+            expect(wrapper.props('modelValue')).toBe(20);
+        });
+    });
+
+    describe('arrow key direction', () => {
+        const pressAll = async (wrapper, codes) => {
+            for (const code of codes) await press(wrapper, code);
+
+            return emittedValues(wrapper);
+        };
+
+        const rtl = (wrapper) => {
+            wrapper.element.style.direction = 'rtl';
+
+            return wrapper;
+        };
+
+        it('should move the handle the way the arrow points when inverted', async () => {
+            const wrapper = mountSlider({ modelValue: 50, inverted: true });
+
+            expect(await pressAll(wrapper, ['ArrowRight', 'ArrowLeft', 'ArrowLeft', 'ArrowUp', 'ArrowDown'])).toEqual([49, 50, 51, 52, 51]);
+        });
+
+        it('should flip up and down when inverted and vertical', async () => {
+            const wrapper = mountSlider({ modelValue: 50, inverted: true, orientation: 'vertical' });
+
+            expect(await pressAll(wrapper, ['ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowRight', 'ArrowLeft'])).toEqual([49, 50, 51, 52, 51]);
+        });
+
+        it('should flip left and right in RTL', async () => {
+            const wrapper = rtl(mountSlider({ modelValue: 50 }));
+
+            expect(await pressAll(wrapper, ['ArrowLeft', 'ArrowRight', 'ArrowRight', 'ArrowUp', 'ArrowDown'])).toEqual([51, 50, 49, 50, 49]);
+        });
+
+        it('should not flip left and right when inverted in RTL', async () => {
+            const wrapper = rtl(mountSlider({ modelValue: 50, inverted: true }));
+
+            expect(await pressAll(wrapper, ['ArrowRight', 'ArrowLeft'])).toEqual([51, 50]);
+        });
+
+        it('should keep up and down in RTL when vertical', async () => {
+            const wrapper = rtl(mountSlider({ modelValue: 50, orientation: 'vertical' }));
+
+            expect(await pressAll(wrapper, ['ArrowUp', 'ArrowDown'])).toEqual([51, 50]);
+        });
+    });
 });

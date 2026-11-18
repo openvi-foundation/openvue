@@ -113,6 +113,10 @@ export default {
                 handleValue = ((this.initY + this.barHeight - pageY) * 100) / this.barHeight;
             }
 
+            if (this.inverted) {
+                handleValue = 100 - handleValue;
+            }
+
             const newValue = (this.max - this.min) * (handleValue / 100) + this.min;
 
             this.updateModel(event, this.snapToStep(newValue));
@@ -211,12 +215,9 @@ export default {
             switch (event.code) {
                 case 'ArrowDown':
                 case 'ArrowLeft':
-                    this.stepBy(event, -1);
-                    break;
-
                 case 'ArrowUp':
                 case 'ArrowRight':
-                    this.stepBy(event, 1);
+                    this.stepBy(event, this.getArrowStep(event.code));
                     break;
 
                 case 'PageDown':
@@ -240,6 +241,13 @@ export default {
             }
 
             event.preventDefault();
+        },
+        getArrowStep(code) {
+            const step = code === 'ArrowUp' || code === 'ArrowRight' ? 1 : -1;
+            const alongAxis = this.horizontal ? code === 'ArrowLeft' || code === 'ArrowRight' : code === 'ArrowUp' || code === 'ArrowDown';
+            const reversed = this.horizontal ? this.inverted !== isRTL(this.$el) : this.inverted;
+
+            return alongAxis && reversed ? -step : step;
         },
         onBlur(event, index) {
             this.formField.onBlur?.(event);
@@ -267,43 +275,37 @@ export default {
             }
         },
         rangeStyle() {
-            if (this.range) {
-                const rangeSliderWidth = this.rangeEndPosition > this.rangeStartPosition ? this.rangeEndPosition - this.rangeStartPosition : this.rangeStartPosition - this.rangeEndPosition;
-                const rangeSliderPosition = this.rangeEndPosition > this.rangeStartPosition ? this.rangeStartPosition : this.rangeEndPosition;
+            let start;
+            let size;
 
-                if (this.horizontal) {
-                    return { 'inset-inline-start': rangeSliderPosition + '%', width: rangeSliderWidth + '%' };
-                } else {
-                    return { bottom: rangeSliderPosition + '%', height: rangeSliderWidth + '%' };
-                }
+            if (this.range) {
+                size = Math.abs(this.rangeEndPosition - this.rangeStartPosition);
+                start = Math.min(this.rangeStartPosition, this.rangeEndPosition);
+
+                if (this.inverted) start = 100 - start - size;
             } else {
-                if (this.horizontal) {
-                    return { width: this.handlePosition + '%' };
-                } else {
-                    return { height: this.handlePosition + '%' };
-                }
+                size = this.handlePosition;
+
+                if (this.inverted) start = 100 - size;
             }
+
+            const offset = start === undefined ? undefined : start + '%';
+
+            return this.horizontal ? { 'inset-inline-start': offset, width: size + '%' } : { bottom: offset, height: size + '%' };
+        },
+        positionStyle(position) {
+            const offset = (this.inverted ? 100 - position : position) + '%';
+
+            return this.horizontal ? { 'inset-inline-start': offset } : { bottom: offset };
         },
         handleStyle() {
-            if (this.horizontal) {
-                return { 'inset-inline-start': this.handlePosition + '%' };
-            } else {
-                return { bottom: this.handlePosition + '%' };
-            }
+            return this.positionStyle(this.handlePosition);
         },
         rangeStartHandleStyle() {
-            if (this.horizontal) {
-                return { 'inset-inline-start': this.rangeStartPosition + '%' };
-            } else {
-                return { bottom: this.rangeStartPosition + '%' };
-            }
+            return this.positionStyle(this.rangeStartPosition);
         },
         rangeEndHandleStyle() {
-            if (this.horizontal) {
-                return { 'inset-inline-start': this.rangeEndPosition + '%' };
-            } else {
-                return { bottom: this.rangeEndPosition + '%' };
-            }
+            return this.positionStyle(this.rangeEndPosition);
         }
     },
     computed: {

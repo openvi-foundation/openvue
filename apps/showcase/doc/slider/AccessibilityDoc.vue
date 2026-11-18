@@ -25,20 +25,20 @@
                     <tr>
                         <td>
                             <span class="inline-flex flex-col">
-                                <i class="mb-1">left arrow</i>
+                                <i class="mb-1">right arrow</i>
                                 <i>up arrow</i>
                             </span>
                         </td>
-                        <td>Decrements the value.</td>
+                        <td>Increments the value.</td>
                     </tr>
                     <tr>
                         <td>
                             <span class="inline-flex flex-col">
-                                <i class="mb-1">right arrow</i>
+                                <i class="mb-1">left arrow</i>
                                 <i>down arrow</i>
                             </span>
                         </td>
-                        <td>Increments the value.</td>
+                        <td>Decrements the value.</td>
                     </tr>
                     <tr>
                         <td><i>home</i></td>
@@ -59,6 +59,7 @@
                 </tbody>
             </table>
         </div>
+        <p>The arrow keys along the slider move the handle the way they point. Left and right arrows are swapped in RTL, and the arrows along the slider are swapped when <i>inverted</i> is present.</p>
     </DocSectionText>
 </template>
 
