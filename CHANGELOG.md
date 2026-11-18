@@ -7,7 +7,7 @@ OpenVue forked from PrimeVue at 4.5.5. Pre-fork history is in [CHANGELOG_PRIMEVU
 All packages in this repository are released together under a single version.
 
 ## [Unreleased]
-
+- `TabList` now does not crash the application after the state that it relies on gets changed by an async page wrapped in a `<Suspense>` tag even after it is unmounted 
 ### Changed
 
 - `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
