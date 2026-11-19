@@ -9,13 +9,14 @@ All packages in this repository are released together under a single version.
 ## [Unreleased]
 
 ### Changed
-- `TabList` now does not crash application when its state gets updated after it is unmounted ([#723](https://github.com/openvi-foundation/openvue/issues/723))
+
 - `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
 - `Chart` now passes `data` and `options` to Chart.js as plain objects instead of Vue reactive proxies. If you change the instance from `getChart()` or the `loaded` event directly, e.g. `chart.data.datasets[0].data.push(5)`, call `chart.update()` (or the component's `refresh()`) afterwards. Before, such changes sometimes redrew without it because the nested arrays were reactive. Calling `update()` after a change is how Chart.js applies changes, as its [Updating Charts](https://www.chartjs.org/docs/latest/developers/updates.html) guide shows. Changing the `data` or `options` you pass to the component works as before. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
 - `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
 
 ### Fixed
 
+- `TabList` now does not crash application when its state gets updated after it is unmounted ([#723](https://github.com/openvi-foundation/openvue/issues/723))
 - `Chart` no longer keeps the CPU busy with a stacked chart and `parsing: false`. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
 - `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
 - `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
