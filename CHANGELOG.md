@@ -7,9 +7,9 @@ OpenVue forked from PrimeVue at 4.5.5. Pre-fork history is in [CHANGELOG_PRIMEVU
 All packages in this repository are released together under a single version.
 
 ## [Unreleased]
-- `TabList` now does not crash the application after the state that it relies on gets changed by an async page wrapped in a `<Suspense>` tag even after it is unmounted 
-### Changed
 
+### Changed
+- `TabList` now does not crash application when its state gets updated after it is unmounted ([#723](https://github.com/openvi-foundation/openvue/issues/723))
 - `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
 - `Chart` now passes `data` and `options` to Chart.js as plain objects instead of Vue reactive proxies. If you change the instance from `getChart()` or the `loaded` event directly, e.g. `chart.data.datasets[0].data.push(5)`, call `chart.update()` (or the component's `refresh()`) afterwards. Before, such changes sometimes redrew without it because the nested arrays were reactive. Calling `update()` after a change is how Chart.js applies changes, as its [Updating Charts](https://www.chartjs.org/docs/latest/developers/updates.html) guide shows. Changing the `data` or `options` you pass to the component works as before. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
 - `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while you move the mouse diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
