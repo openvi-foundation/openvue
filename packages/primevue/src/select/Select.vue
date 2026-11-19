@@ -240,6 +240,8 @@ export default {
     matchMediaOrientationListener: null,
     overlay: null,
     list: null,
+    selfClick: false,
+    overlayEventListener: null,
     virtualScroller: null,
     searchTimeout: null,
     searchValue: null,
@@ -288,6 +290,11 @@ export default {
         if (this.overlay) {
             ZIndex.clear(this.overlay);
             this.overlay = null;
+        }
+
+        if (this.overlayEventListener) {
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
         }
     },
     methods: {
@@ -736,6 +743,14 @@ export default {
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
 
+            this.overlayEventListener = (e) => {
+                if (this.overlay && this.overlay.contains(e.target)) {
+                    this.selfClick = true;
+                }
+            };
+
+            OverlayEventBus.on('overlay-click', this.overlayEventListener);
+
             setTimeout(() => {
                 this.autoFilterFocus && this.filter && focus(this.$refs.filterInput.$el);
                 this.autoUpdateModel();
@@ -753,6 +768,8 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
 
             if (this.autoFilterFocus && this.filter && !this.editable) {
                 this.$nextTick(() => {
@@ -782,9 +799,11 @@ export default {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
                     const composedPath = event.composedPath();
-                    if (this.overlayVisible && this.overlay && !composedPath.includes(this.$el) && !composedPath.includes(this.overlay)) {
+                    if (this.overlayVisible && this.overlay && !this.selfClick && !this.isNestedOverlayVisible() && !composedPath.includes(this.$el) && !composedPath.includes(this.overlay)) {
                         this.hide();
                     }
+
+                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -794,7 +813,11 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('click', this.outsideClickListener, true);
                 this.outsideClickListener = null;
+                this.selfClick = false;
             }
+        },
+        isNestedOverlayVisible() {
+            return !!this.overlay?.querySelector('[aria-expanded="true"]');
         },
         bindScrollListener() {
             if (!this.scrollHandler) {

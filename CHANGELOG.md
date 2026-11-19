@@ -30,6 +30,7 @@ All packages in this repository are released together under a single version.
 - `AutoComplete` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`. ([#720](https://github.com/openvi-foundation/openvue/issues/720))
 - `MultiSelect` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`. ([#719](https://github.com/openvi-foundation/openvue/issues/719))
 - `InputNumber` in `currency` mode no longer misreads typed numbers when the currency symbol contains a dot, such as `AED` with `locale="ar-AE"` (typing 2 gave 200) and `DKK` with `locale="da-DK"` (a fourth digit was cut off). ([#257](https://github.com/openvi-foundation/openvue/issues/257), [#267](https://github.com/openvi-foundation/openvue/issues/267))
+- `Select` stays open when you pick an option in another `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`.([#731](https://github.com/openvi-foundation/openvue/issues/731))
 
 ## [1.1.1] - 2026-11-04
 
