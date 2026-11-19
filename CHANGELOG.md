@@ -17,6 +17,8 @@ All packages in this repository are released together under a single version.
 
 ### Fixed
 
+- `Slider` now snaps to the nearest step, so the first and last steps are easy to select, `PageUp`/`PageDown` move by ten steps, and it emits only when the value changes. ([#633](https://github.com/openvi-foundation/openvue/issues/633))
+- `TabList` now does not crash application when its state gets updated after it is unmounted ([#723](https://github.com/openvi-foundation/openvue/issues/723))
 - `Chart` no longer keeps the CPU busy with a stacked chart and `parsing: false`. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
 - `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
 - `MultiSelect` no longer freezes the page when many options are selected, e.g. after selecting all of 100,000 options with the virtual scroller. Opening the overlay, selecting all, scrolling and showing the selected label no longer compare every option against every selected value. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects other than the option objects themselves are still compared by deep equality. ([#64](https://github.com/openvi-foundation/openvue/issues/64))
