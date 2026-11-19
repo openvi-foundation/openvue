@@ -116,6 +116,8 @@ export default {
     scrollHandler: null,
     resizeListener: null,
     overlay: null,
+    selfClick: false,
+    overlayEventListener: null,
     searchTimeout: null,
     searchValue: null,
     data() {
@@ -153,6 +155,11 @@ export default {
         if (this.overlay) {
             ZIndex.clear(this.overlay);
             this.overlay = null;
+        }
+
+        if (this.overlayEventListener) {
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
         }
 
         if (this.mobileActive) {
@@ -540,6 +547,14 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            this.overlayEventListener = (e) => {
+                if (this.overlay && this.overlay.contains(e.target)) {
+                    this.selfClick = true;
+                }
+            };
+
+            OverlayEventBus.on('overlay-click', this.overlayEventListener);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -553,6 +568,8 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
 
             this.$emit('hide');
             this.overlay = null;
@@ -572,9 +589,11 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.overlay && !this.$el.contains(event.target) && !this.overlay.contains(event.target)) {
+                    if (this.overlayVisible && this.overlay && !this.selfClick && !this.isNestedOverlayVisible() && !this.$el.contains(event.target) && !this.overlay.contains(event.target)) {
                         this.hide();
                     }
+
+                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -584,7 +603,11 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('click', this.outsideClickListener, true);
                 this.outsideClickListener = null;
+                this.selfClick = false;
             }
+        },
+        isNestedOverlayVisible() {
+            return !!this.overlay?.querySelector('[aria-expanded="true"]:not([role="treeitem"])');
         },
         bindScrollListener() {
             if (!this.scrollHandler) {
