@@ -29,6 +29,8 @@ All packages in this repository are released together under a single version.
 - `InputOtp` now handling `Delete` key press. `Delete` keeps the focus on the current field and selects its new value (the other values move over to the current field), so you can press it again to remove the following characters. Before, the focus jumped to the next field with the cursor at the end, and further presses did nothing. ([#529](https://github.com/openvi-foundation/openvue/issues/529))
 - `AutoComplete` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`. ([#720](https://github.com/openvi-foundation/openvue/issues/720))
 - `MultiSelect` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`. ([#719](https://github.com/openvi-foundation/openvue/issues/719))
+- `TreeSelect` closes on the first click outside after you clicked into its panel outside the tree, for example on its header or footer slot content or on the empty message. Before, that first click was ignored and a second click was needed. ([#735](https://github.com/openvi-foundation/openvue/issues/735))
+- `TreeSelect` stays open when you pick an option in a `Select` placed in its header or footer slot, and the option is selected. While that `Select` is open, a click outside closes only the `Select`. ([#736](https://github.com/openvi-foundation/openvue/issues/736))
 
 ## [1.1.1] - 2026-11-04
 
