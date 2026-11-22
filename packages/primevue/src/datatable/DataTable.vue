@@ -135,6 +135,7 @@
                             :dataKey="dataKey"
                             :selection="selection"
                             :selectionKeys="d_selectionKeys"
+                            :selectionSet="selectionSet"
                             :selectionMode="selectionMode"
                             :rowHover="rowHover"
                             :contextMenu="contextMenu"
@@ -193,6 +194,7 @@
                             :dataKey="dataKey"
                             :selection="selection"
                             :selectionKeys="d_selectionKeys"
+                            :selectionSet="selectionSet"
                             :selectionMode="selectionMode"
                             :rowHover="rowHover"
                             :contextMenu="contextMenu"
@@ -354,10 +356,16 @@ import ArrowUpIcon from '@openvue/icons/arrowup';
 import SpinnerIcon from '@openvue/icons/spinner';
 import Paginator from 'openvue/paginator';
 import VirtualScroller from 'openvue/virtualscroller';
+import { toRaw } from 'vue';
 import BaseDataTable from './BaseDataTable.vue';
 import TableBody from './TableBody.vue';
 import TableFooter from './TableFooter.vue';
 import TableHeader from './TableHeader.vue';
+
+// Named so usesCustomEquality can tell whether a component that extends DataTable replaced it.
+function selectionEquals(data1, data2) {
+    return this.compareSelectionBy === 'equals' ? data1 === data2 : equals(data1, data2, this.dataKey);
+}
 
 export default {
     name: 'DataTable',
@@ -472,6 +480,9 @@ export default {
         },
         selection: {
             immediate: true,
+            // Depth 1 also rebuilds the keys when the selection array is changed in place (push, splice), so the row
+            // checkboxes and allRowsSelected, which both read d_selectionKeys, pick up those changes.
+            deep: 1,
             handler(newValue) {
                 if (this.dataKey) {
                     this.updateSelectionKeys(newValue);
@@ -1142,12 +1153,17 @@ export default {
                 if (this.dataKey) {
                     return this.d_selectionKeys ? this.d_selectionKeys[resolveFieldData(rowData, this.dataKey)] !== undefined : false;
                 } else {
-                    if (this.selection instanceof Array) return this.findIndexInSelection(rowData) > -1;
+                    if (this.selection instanceof Array) return this.selectionSet.has(this.getSelectionKey(rowData)) || (this.mayMatchEqualCopy && this.findIndexInSelection(rowData) > -1);
                     else return this.equals(rowData, this.selection);
                 }
             }
 
             return false;
+        },
+        // Rows with the same key are always equal for equals: the same object, or with deepEquals, also its reactive
+        // proxy (toRaw gives both the same key). With compareSelectionBy 'equals' the row itself is the key, as === needs.
+        getSelectionKey(rowData) {
+            return this.compareSelectionBy === 'equals' ? rowData : toRaw(rowData);
         },
         findIndexInSelection(rowData) {
             return this.findIndex(rowData, this.selection);
@@ -1188,9 +1204,7 @@ export default {
                 this.d_editingRowKeys = null;
             }
         },
-        equals(data1, data2) {
-            return this.compareSelectionBy === 'equals' ? data1 === data2 : equals(data1, data2, this.dataKey);
-        },
+        equals: selectionEquals,
         selectRange(event) {
             let rangeStart, rangeEnd;
 
@@ -2295,8 +2309,27 @@ export default {
             } else {
                 const val = this.frozenValue ? [...this.frozenValue, ...this.processedData] : this.processedData;
 
-                return isNotEmpty(val) && this.selection && Array.isArray(this.selection) && val.every((v) => this.selection.some((s) => this.equals(s, v)));
+                // One lookup per row (d_selectionKeys with dataKey, selectionSet without), the same check as the row checkboxes,
+                // instead of comparing every row against every selected row.
+                return isNotEmpty(val) && this.selection && Array.isArray(this.selection) && val.every((rowData) => this.isSelected(rowData));
             }
+        },
+        // Without dataKey, the selected rows as a Set of selection keys, so isSelected, allRowsSelected and the row
+        // checkboxes don't compare each row against every selected row. With dataKey, d_selectionKeys holds the keys.
+        // Reading the selection through its reactive proxy makes in-place changes to the array (push, splice) rebuild it.
+        selectionSet() {
+            return !this.dataKey && Array.isArray(this.selection) ? new Set(this.selection.map((rowData) => this.getSelectionKey(rowData))) : null;
+        },
+        // Without dataKey, rows are compared by deep equality unless compareSelectionBy is 'equals'. An equal copy of a
+        // selected row has a different key, so it can only be found by comparing against each selected row. The same goes
+        // for any row when a component extending DataTable overrides equals.
+        mayMatchEqualCopy() {
+            return this.usesCustomEquality || this.compareSelectionBy !== 'equals';
+        },
+        // True when a component extending DataTable overrides equals. Selection keys can't follow its rule, so lookups
+        // that miss the keys fall back to calling equals.
+        usesCustomEquality() {
+            return this.$options.methods?.equals !== selectionEquals;
         },
         groupRowSortField() {
             return this.sortMode === 'single' ? this.sortField : this.d_groupRowsSortMeta ? this.d_groupRowsSortMeta.field : null;

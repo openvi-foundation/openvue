@@ -14,6 +14,7 @@
                     :dataKey="dataKey"
                     :selection="selection"
                     :selectionKeys="selectionKeys"
+                    :selectionSet="selectionSet"
                     :selectionMode="selectionMode"
                     :contextMenu="contextMenu"
                     :contextMenuSelection="contextMenuSelection"
@@ -168,6 +169,10 @@ export default {
         },
         selectionKeys: {
             type: null,
+            default: null
+        },
+        selectionSet: {
+            type: Set,
             default: null
         },
         selectionMode: {

@@ -4,6 +4,10 @@
             More than one row is selectable by setting <i>selectionMode</i> to <i>multiple</i>. By default in multiple selection mode, metaKey press (e.g. <i>⌘</i>) is not necessary to add to existing selections. When the optional
             <i>metaKeySelection</i> is present, behavior is changed in a way that selecting a new row requires meta key to be present. Note that in touch enabled devices, DataTable always ignores metaKey.
         </p>
+        <p>
+            DataTable picks up every change to the selection array that Vue can track, such as calling <i>push</i> or <i>splice</i> on an array held in a <i>ref</i> or <i>reactive</i>, or assigning a new array. Changes Vue doesn't track, such as
+            pushing into a <i>shallowRef</i> or <i>markRaw</i> array, are not detected; assign a new array instead, e.g. <i>selectedProducts.value = [...selectedProducts.value, product]</i>.
+        </p>
     </DocSectionText>
     <DeferredDemo @load="loadDemoData">
         <div class="card">
