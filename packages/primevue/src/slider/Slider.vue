@@ -113,43 +113,50 @@ export default {
                 handleValue = ((this.initY + this.barHeight - pageY) * 100) / this.barHeight;
             }
 
-            let newValue = (this.max - this.min) * (handleValue / 100) + this.min;
+            const newValue = (this.max - this.min) * (handleValue / 100) + this.min;
 
-            if (this.step) {
-                const oldValue = this.range ? this.value[this.handleIndex] : this.value;
-                const diff = newValue - oldValue;
+            this.updateModel(event, this.snapToStep(newValue));
+        },
+        snapToStep(value) {
+            const clamped = Math.min(Math.max(value, this.min), this.max);
+            const snapped = this.min + Math.round((clamped - this.min) / this.stepSize) * this.stepSize;
 
-                if (diff < 0) newValue = oldValue + Math.ceil(newValue / this.step - oldValue / this.step) * this.step;
-                else if (diff > 0) newValue = oldValue + Math.floor(newValue / this.step - oldValue / this.step) * this.step;
-            } else {
-                newValue = Math.floor(newValue);
+            return Math.min(this.roundToPrecision(snapped), this.max);
+        },
+        roundToPrecision(value) {
+            const factor = 10 ** this.precision;
+
+            return Math.round(value * factor) / factor;
+        },
+        stepBy(event, count) {
+            const value = this.range ? this.value[this.handleIndex] : this.value;
+            const position = (value - this.min) / this.stepSize;
+            const nearest = Math.round(position);
+            let current;
+
+            if (Math.abs(position - nearest) < 1e-9) current = nearest;
+            else current = count > 0 ? Math.floor(position) : Math.ceil(position);
+
+            const newValue = this.snapToStep(this.min + (current + count) * this.stepSize);
+
+            if ((newValue - value) * count >= 0) {
+                this.updateModel(event, newValue);
             }
-
-            this.updateModel(event, newValue);
         },
         updateModel(event, value) {
-            let newValue = Math.round(value * 100) / 100;
             let modelValue;
 
             if (this.range) {
-                modelValue = this.value ? [...this.value] : [];
+                const index = this.handleIndex === 0 ? 0 : 1;
 
-                if (this.handleIndex == 0) {
-                    if (newValue < this.min) newValue = this.min;
-                    else if (newValue >= this.max) newValue = this.max;
+                if (this.d_value?.[index] === value) return;
 
-                    modelValue[0] = newValue;
-                } else {
-                    if (newValue > this.max) newValue = this.max;
-                    else if (newValue <= this.min) newValue = this.min;
-
-                    modelValue[1] = newValue;
-                }
+                modelValue = [...this.value];
+                modelValue[index] = value;
             } else {
-                if (newValue < this.min) newValue = this.min;
-                else if (newValue > this.max) newValue = this.max;
+                if (this.d_value === value) return;
 
-                modelValue = newValue;
+                modelValue = value;
             }
 
             this.writeValue(modelValue, event);
@@ -164,7 +171,7 @@ export default {
             this.dragging = true;
             this.updateDomData();
 
-            if (this.range && this.value[0] === this.max) {
+            if (this.range && this.value[0] === this.snapToStep(this.max)) {
                 this.handleIndex = 0;
             } else {
                 this.handleIndex = index;
@@ -204,72 +211,38 @@ export default {
             switch (event.code) {
                 case 'ArrowDown':
                 case 'ArrowLeft':
-                    this.decrementValue(event, index);
-                    event.preventDefault();
+                    this.stepBy(event, -1);
                     break;
 
                 case 'ArrowUp':
                 case 'ArrowRight':
-                    this.incrementValue(event, index);
-                    event.preventDefault();
+                    this.stepBy(event, 1);
                     break;
 
                 case 'PageDown':
-                    this.decrementValue(event, index, true);
-                    event.preventDefault();
+                    this.stepBy(event, -10);
                     break;
 
                 case 'PageUp':
-                    this.incrementValue(event, index, true);
-                    event.preventDefault();
+                    this.stepBy(event, 10);
                     break;
 
                 case 'Home':
                     this.updateModel(event, this.min);
-                    event.preventDefault();
                     break;
 
                 case 'End':
-                    this.updateModel(event, this.max);
-                    event.preventDefault();
+                    this.updateModel(event, this.snapToStep(this.max));
                     break;
 
                 default:
-                    break;
+                    return;
             }
+
+            event.preventDefault();
         },
         onBlur(event, index) {
             this.formField.onBlur?.(event);
-        },
-        decrementValue(event, index, pageKey = false) {
-            let newValue;
-
-            if (this.range) {
-                if (this.step) newValue = this.value[index] - this.step;
-                else newValue = this.value[index] - 1;
-            } else {
-                if (this.step) newValue = this.value - this.step;
-                else if (!this.step && pageKey) newValue = this.value - 10;
-                else newValue = this.value - 1;
-            }
-
-            this.updateModel(event, newValue);
-            event.preventDefault();
-        },
-        incrementValue(event, index, pageKey = false) {
-            let newValue;
-
-            if (this.range) {
-                if (this.step) newValue = this.value[index] + this.step;
-                else newValue = this.value[index] + 1;
-            } else {
-                if (this.step) newValue = this.value + this.step;
-                else if (!this.step && pageKey) newValue = this.value + 10;
-                else newValue = this.value + 1;
-            }
-
-            this.updateModel(event, newValue);
-            event.preventDefault();
         },
         bindDragListeners() {
             if (!this.dragListener) {
@@ -340,6 +313,14 @@ export default {
             }
 
             return this.d_value ?? this.min;
+        },
+        stepSize() {
+            return this.step || 1;
+        },
+        precision() {
+            const decimals = (number) => String(number).split('.')[1]?.length ?? 0;
+
+            return Math.max(decimals(this.stepSize), decimals(this.min));
         },
         horizontal() {
             return this.orientation === 'horizontal';

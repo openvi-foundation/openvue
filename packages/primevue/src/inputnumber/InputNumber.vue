@@ -204,8 +204,8 @@ export default {
             this._numeral = new RegExp(`[${numerals.join('')}]`, 'g');
             this._group = this.getGroupingExpression();
             this._minusSign = this.getMinusSignExpression();
-            this._currency = this.getCurrencyExpression();
             this._decimal = this.getDecimalExpression();
+            this._currency = this.getCurrencyExpression();
             this._suffix = this.getSuffixExpression();
             this._prefix = this.getPrefixExpression();
             this._index = (d) => index.get(d);
@@ -220,13 +220,9 @@ export default {
         },
         getDecimalExpression() {
             const formatter = new Intl.NumberFormat(this.locale, { ...this.getOptions(), useGrouping: false });
-            const formatted = formatter.format(1.1);
+            const decimal = formatter.formatToParts(1.1).find((part) => part.type === 'decimal');
 
-            if (formatted === formatter.format(1)) {
-                return new RegExp(`[]`, 'g');
-            }
-
-            return new RegExp(`[${formatted.replace(this._currency, '').trim().replace(this._numeral, '')}]`, 'g');
+            return new RegExp(`[${decimal ? decimal.value : ''}]`, 'g');
         },
         getGroupingExpression() {
             const formatter = new Intl.NumberFormat(this.locale, { useGrouping: true });
@@ -244,7 +240,7 @@ export default {
             if (this.currency) {
                 const formatter = new Intl.NumberFormat(this.locale, { style: 'currency', currency: this.currency, currencyDisplay: this.currencyDisplay, minimumFractionDigits: 0, maximumFractionDigits: 0, roundingMode: this.roundingMode });
 
-                return new RegExp(`[${formatter.format(1).replace(/\s/g, '').replace(this._numeral, '').replace(this._group, '')}]`, 'g');
+                return new RegExp(`[${formatter.format(1).replace(/\s/g, '').replace(this._numeral, '').replace(this._group, '').replace(this._decimal, '')}]`, 'g');
             }
 
             return new RegExp(`[]`, 'g');

@@ -4,6 +4,10 @@
             Virtual Scrolling is a performant way to render large lists. Configuration of the scroll behavior is defined with <i>virtualScrollerOptions</i> that requires <i>itemSize</i> as the mandatory value to set the height of an item. Visit
             <OpenVueNuxtLink to="/virtualscroller">VirtualScroller</OpenVueNuxtLink> documentation for more information about the configuration API.
         </p>
+        <p>
+            With many suggestions and a large <i>multiple</i> selection of objects, set <i>dataKey</i> to a unique field so suggestions are matched to the selection by that field. Without it, each suggestion that isn't the same object as a selected
+            value is compared to every selected object by deep equality.
+        </p>
     </DocSectionText>
     <div class="card flex justify-center">
         <AutoComplete v-model="selectedItem" :suggestions="filteredItems" @complete="searchItems" :virtualScrollerOptions="{ itemSize: 38 }" optionLabel="label" dropdown />

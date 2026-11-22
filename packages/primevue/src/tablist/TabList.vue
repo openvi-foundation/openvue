@@ -157,6 +157,9 @@ export default {
         },
         updateButtonState() {
             const { list, content } = this.$refs;
+
+            if (!list || !content) return;
+
             const { scrollTop, scrollWidth, scrollHeight, offsetWidth, offsetHeight } = content;
             const scrollLeft = Math.abs(content.scrollLeft);
             const [width, height] = [getWidth(content), getHeight(content)];
