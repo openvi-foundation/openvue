@@ -22,28 +22,27 @@ describe('InputMask.vue', () => {
     });
 
     it('should not re-emit the old value when cleared externally with unmask', async () => {
-        const wrapper = mount(InputMask, {
-            props: {
-                modelValue: null,
-                mask: '99-999999',
-                unmask: true
-            }
-        });
+        vi.useFakeTimers();
 
+        const wrapper = mount(InputMask, {
+            props: { modelValue: null, mask: '99-999999', unmask: true }
+        });
         const input = wrapper.find('input');
 
         input.element.value = '123';
         await wrapper.vm.onInput({ target: input.element });
 
-        expect(wrapper.emitted()['update:modelValue'].at(-1)).toEqual(['123']);
+        await wrapper.setProps({ modelValue: '12345678' });
+        vi.runAllTimers();
+        expect(input.element.value).toBe('12-345678');
 
-        await wrapper.setProps({ modelValue: '12' });
         await wrapper.setProps({ modelValue: null });
+        vi.runAllTimers();
 
-        const emitted = wrapper.emitted()['update:modelValue'];
-
-        expect(emitted.at(-1)).toEqual(['']);
+        expect(wrapper.emitted()['update:modelValue']).toEqual([['123'], ['12345678'], ['']]);
         expect(input.element.value).toBe('');
+
+        vi.useRealTimers();
     });
 
     it('keydown event', async () => {
