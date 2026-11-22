@@ -17,7 +17,7 @@
 import { $dt } from '@openuxkit/styled';
 import { absolutePosition, addClass, addStyle, focus, getOffset, isClient, isTouchDevice, setAttribute } from '@openuxkit/utils/dom';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import FocusTrap from 'openvue/focustrap';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
@@ -81,6 +81,7 @@ export default {
             this.overlayEventListener = null;
         }
 
+        OverlayRegistry.unregister(this.container);
         this.container = null;
     },
     mounted() {
@@ -128,13 +129,15 @@ export default {
             this.bindContentResizeListener();
             this.focus();
             OverlayEventBus.on('overlay-click', this.overlayEventListener);
+            OverlayRegistry.register(el, this.target || this.$el);
             this.$emit('show');
 
             if (this.closeOnEscape) {
                 this.bindDocumentKeyDownListener();
             }
         },
-        onLeave() {
+        onLeave(el) {
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();

@@ -157,7 +157,7 @@ import { absolutePosition, addStyle, focus, getAttribute, isTouchDevice } from '
 import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterOperator } from '@openvue/core/api';
 import BaseComponent from '@openvue/core/basecomponent';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import FilterIcon from '@openvue/icons/filter';
 import FilterFillIcon from '@openvue/icons/filterfill';
 import FilterSlashIcon from '@openvue/icons/filterslash';
@@ -545,17 +545,20 @@ export default {
             };
 
             OverlayEventBus.on('overlay-click', this.overlayEventListener);
+            OverlayRegistry.register(el, this.$el);
         },
         onOverlayAfterEnter() {
             this.overlay?.$focustrap?.autoFocus();
         },
-        onOverlayLeave() {
+        onOverlayLeave(el) {
+            OverlayRegistry.unregister(el);
             this.onOverlayHide();
         },
         onOverlayAfterLeave(el) {
             ZIndex.clear(el);
         },
         onOverlayHide() {
+            OverlayRegistry.unregister(this.overlay);
             this.unbindOutsideClickListener();
             this.unbindResizeListener();
             this.unbindScrollListener();

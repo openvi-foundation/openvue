@@ -134,7 +134,7 @@
 import { absolutePosition, addStyle, find, findSingle, focus, getFirstFocusableElement, getFocusableElements, getLastFocusableElement, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
 import { isEmpty, isNotEmpty } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import TimesIcon from '@openvue/icons/times';
 import Chip from 'openvue/chip';
@@ -182,7 +182,6 @@ export default {
     scrollHandler: null,
     overlay: null,
     selfChange: false,
-    selfClick: false,
     beforeUnmount() {
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
@@ -193,6 +192,7 @@ export default {
         }
 
         if (this.overlay) {
+            OverlayRegistry.unregister(this.overlay);
             ZIndex.clear(this.overlay);
             this.overlay = null;
         }
@@ -350,6 +350,8 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            OverlayRegistry.register(el, this.$el);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -358,7 +360,8 @@ export default {
             this.scrollValueInView();
             this.$emit('show');
         },
-        onOverlayLeave() {
+        onOverlayLeave(el) {
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
@@ -386,11 +389,9 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && !this.selfClick && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && this.isOutsideClicked(event) && !OverlayRegistry.isInside(event, this.overlay) && !OverlayRegistry.hasNestedOverlay(this.overlay)) {
                         this.hide();
                     }
-
-                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -446,8 +447,6 @@ export default {
                 originalEvent: event,
                 target: this.$el
             });
-
-            this.selfClick = true;
         },
         onOverlayKeydown(event) {
             if (event.code === 'Escape') this.hide();
