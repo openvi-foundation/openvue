@@ -10,7 +10,6 @@
             :name="$formName"
             :aria-labelledby="ariaLabelledby"
             :aria-label="ariaLabel"
-            :aria-expanded="overlayVisible"
             :aria-controls="overlayVisible ? (overlayProps && overlayProps.id) || overlayId || (panelProps && panelProps.id) || panelId || overlayUniqueId : undefined"
             :aria-haspopup="feedback"
             :placeholder="placeholder"
@@ -60,7 +59,6 @@
                     :style="[overlayStyle, panelStyle]"
                     @click="onOverlayClick"
                     :data-p="overlayDataP"
-                    role="dialog"
                     aria-live="polite"
                     v-bind="{ ...panelProps, ...overlayProps, ...ptm('overlay') }"
                 >
