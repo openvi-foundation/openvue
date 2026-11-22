@@ -4,6 +4,10 @@
             VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with <i>virtualScrollerOptions</i> property, refer to the
             <NuxtLink to="/virtualscroller">VirtualScroller</NuxtLink> for more information about the available options as it is used internally by MultiSelect.
         </p>
+        <p>
+            With many options or a large selection, give MultiSelect a fast way to compare values: bind primitive values with <i>optionValue</i>, or set <i>dataKey</i> to a unique field when <i>v-model</i> holds objects. Without either, an option
+            that isn't itself one of the selected objects is compared to every selected object by deep equality, which slows down as the selection grows.
+        </p>
     </DocSectionText>
     <div class="card flex justify-center">
         <MultiSelect
