@@ -59,7 +59,6 @@
                     :style="[overlayStyle, panelStyle]"
                     @click="onOverlayClick"
                     :data-p="overlayDataP"
-                    role="dialog"
                     aria-live="polite"
                     v-bind="{ ...panelProps, ...overlayProps, ...ptm('overlay') }"
                 >
