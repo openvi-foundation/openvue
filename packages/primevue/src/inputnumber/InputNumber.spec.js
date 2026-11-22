@@ -356,6 +356,30 @@ describe('InputNumber.vue', () => {
             expect(wrapper.emitted().input.map(([e]) => e.value)).toEqual([1, 12, 125, 1250]);
         });
 
+        it('should keep typing into a currency whose symbol contains a dot', async () => {
+            await wrapper.setProps({ modelValue: 0, mode: 'currency', currency: 'AED', locale: 'ar-AE' });
+
+            const input = wrapper.find('input.p-inputnumber-input').element;
+
+            expect(input.value).toBe('‏0.00 د.إ.‏');
+
+            input.setSelectionRange(2, 2);
+
+            expect(await type(input, '2')).toEqual({ value: '‏2.00 د.إ.‏', caret: 2 });
+            expect(await type(input, '3')).toEqual({ value: '‏23.00 د.إ.‏', caret: 3 });
+            expect(await type(input, '4')).toEqual({ value: '‏234.00 د.إ.‏', caret: 4 });
+            expect(await type(input, '5')).toEqual({ value: '‏2,345.00 د.إ.‏', caret: 6 });
+
+            await wrapper.setProps({ currency: 'DKK', locale: 'da-DK' });
+            input.setSelectionRange(0, input.value.length);
+
+            expect(await type(input, '2')).toEqual({ value: '2,00 kr.', caret: 1 });
+            expect(await type(input, '3')).toEqual({ value: '23,00 kr.', caret: 2 });
+            expect(await type(input, '4')).toEqual({ value: '234,00 kr.', caret: 3 });
+            expect(await type(input, '5')).toEqual({ value: '2.345,00 kr.', caret: 5 });
+            expect(wrapper.emitted().input.map(([e]) => e.value)).toEqual([2, 23, 234, 2345, 2, 23, 234, 2345]);
+        });
+
         it('should place caret after typed digit with single char suffix', async () => {
             await wrapper.setProps({ modelValue: 0, suffix: '%' });
 
