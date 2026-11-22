@@ -64,7 +64,10 @@ function extractTextFromTemplate(template) {
     let descriptions = [];
 
     for (const match of docTextMatches) {
+        // Figures hold illustrations such as before/after diffs. Their old `primevue/...` imports
+        // would otherwise end up in the MCP data and fail scripts/verify-dist.mjs.
         const content = match[1]
+            .replace(/<figure[^>]*>[\s\S]*?<\/figure>/gi, ' ')
             .replace(/<[^>]+>/g, ' ')
             .replace(/\s+/g, ' ')
             .trim();

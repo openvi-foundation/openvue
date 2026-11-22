@@ -72,7 +72,9 @@ export default {
 
             if (event.inputType === 'deleteContentBackward') {
                 this.moveToPrev(event);
-            } else if (event.inputType === 'insertText' || event.inputType === 'deleteContentForward' || (isTouchDevice() && event instanceof CustomEvent)) {
+            } else if (event.inputType === 'deleteContentForward') {
+                this.$nextTick(() => event.target.select());
+            } else if (event.inputType === 'insertText' || (isTouchDevice() && event instanceof CustomEvent)) {
                 this.moveToNext(event);
             }
         },

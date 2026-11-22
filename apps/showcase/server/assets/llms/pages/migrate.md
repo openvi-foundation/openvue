@@ -21,7 +21,7 @@ If you just want to evaluate OpenVue first, add an override yourself instead of 
 ```vue
 {
     "overrides": {
-        "primevue": "npm:openvue@1.0.0"
+        "primevue": "npm:openvue@${pkg.version}"
     }
 }
 ```

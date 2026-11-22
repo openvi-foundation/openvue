@@ -1,7 +1,7 @@
 .landing {
     scroll-behavior: smooth;
     padding-top: 4rem;
-    background-color: var(--ground-background);
+    background-color: var(--landing-background);
 
     .box {
         border: 1px solid var(--border-color);
@@ -56,11 +56,13 @@
         }
 
         &.linkbox-primary {
-            background: var(--primary-color);
-            color: var(--primary-contrast-color);
+            border-color: var(--landing-accent-strong);
+            background: var(--landing-accent-strong);
+            color: var(--landing-accent-contrast);
 
             &:hover {
-                background: var(--primary-hover-color);
+                border-color: var(--landing-accent-strong-hover);
+                background: var(--landing-accent-strong-hover);
             }
         }
 
@@ -77,6 +79,76 @@
             border-left: 1px solid var(--border-color);
             color: var(--text-secondary-color);
             font-variant-numeric: tabular-nums;
+        }
+    }
+
+    /* Shared section rhythm for the homepage: one container width, left-aligned headers, more space above a heading than below it. */
+    .landing-section {
+        padding: 7rem 1.5rem;
+
+        @media screen and (max-width: 767px) {
+            padding: 3.5rem 1rem;
+        }
+    }
+
+    .landing-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .landing-section-header {
+        max-width: 44rem;
+        margin-bottom: 3rem;
+
+        @media screen and (max-width: 767px) {
+            margin-bottom: 1.75rem;
+        }
+    }
+
+    .landing-section-title {
+        margin: 0;
+        font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+        color: var(--high-contrast-text-color);
+    }
+
+    .landing-section-detail {
+        margin: 1rem 0 0 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.6;
+        text-wrap: pretty;
+        color: var(--text-secondary-color);
+
+        @media screen and (max-width: 767px) {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Phones: every pair of homepage buttons shares one row instead of stacking as full-width slabs.
+       The icon margins come from utility classes, which sit in a later layer, hence !important. */
+    @media screen and (max-width: 639px) {
+        .linkbox {
+            justify-content: center;
+            padding: 0.75rem 1.125rem;
+            font-size: 0.9375rem;
+
+            .ms-4 {
+                margin-inline-start: 0.625rem !important;
+            }
+
+            .me-3 {
+                margin-inline-end: 0.5rem !important;
+            }
+
+            .linkbox-count {
+                margin-left: 0.5rem;
+                padding-left: 0.5rem;
+            }
         }
     }
 

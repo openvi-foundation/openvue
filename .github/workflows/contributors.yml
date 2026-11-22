@@ -135,6 +135,47 @@ jobs:
                       npx --yes all-contributors-cli@6 add "$login" "$types"
                   done
 
+            # `add` appends, so the list would otherwise read in order of arrival.
+            # Core team first, then code contributors, then everyone credited for bugs or
+            # ideas only. Inside each group, most merged PRs first; ties keep their order.
+            - name: Sort the list
+              if: steps.collect.outputs.people != '[]'
+              uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+              env:
+                  CORE: NJevric dekitriv sane6 miske11
+              with:
+                  script: |
+                      const fs = require('fs');
+                      const file = '.all-contributorsrc';
+                      const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+                      const core = process.env.CORE.toLowerCase().split(/\s+/);
+
+                      const pulls = await github.paginate(github.rest.pulls.list, {
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          state: 'closed',
+                          per_page: 100
+                      });
+
+                      const merged = new Map();
+
+                      for (const pull of pulls) {
+                          if (!pull.merged_at || !pull.user) continue;
+                          const login = pull.user.login.toLowerCase();
+                          merged.set(login, (merged.get(login) || 0) + 1);
+                      }
+
+                      const tier = (c) => (core.includes(c.login.toLowerCase()) ? 0 : c.contributions.includes('code') ? 1 : 2);
+                      const count = (c) => merged.get(c.login.toLowerCase()) || 0;
+
+                      config.contributors.sort((a, b) => tier(a) - tier(b) || count(b) - count(a));
+                      fs.writeFileSync(file, JSON.stringify(config, null, 4) + '\n');
+
+            - name: Regenerate the README
+              if: steps.collect.outputs.people != '[]'
+              run: |
+                  npx --yes all-contributors-cli@6 generate
+
                   # The generator's output does not match this repo's Prettier config.
                   npx --yes prettier@3 --write .all-contributorsrc README.md
 

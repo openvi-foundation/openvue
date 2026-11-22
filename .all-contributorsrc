@@ -14,14 +14,14 @@
             "name": "Nikola Jevrić",
             "avatar_url": "https://avatars.githubusercontent.com/u/46942531?v=4",
             "profile": "https://github.com/NJevric",
-            "contributions": ["code", "doc", "maintenance", "infra", "review", "ideas"]
+            "contributions": ["code", "doc", "maintenance", "infra", "review", "design", "test", "security"]
         },
         {
             "login": "dekitriv",
             "name": "dekitriv",
             "avatar_url": "https://avatars.githubusercontent.com/u/52245546?v=4",
             "profile": "https://github.com/dekitriv",
-            "contributions": ["code", "infra"]
+            "contributions": ["code", "infra", "maintenance", "design", "tool", "test", "doc", "review"]
         },
         {
             "login": "sane6",
@@ -38,10 +38,73 @@
             "contributions": ["code", "design"]
         },
         {
+            "login": "Bharath314",
+            "name": "Bharath Valaboju",
+            "avatar_url": "https://avatars.githubusercontent.com/u/69413757?v=4",
+            "profile": "https://github.com/Bharath314",
+            "contributions": ["code", "bug"]
+        },
+        {
+            "login": "wahpiangle",
+            "name": "Quan Ming",
+            "avatar_url": "https://avatars.githubusercontent.com/u/116425066?v=4",
+            "profile": "https://github.com/wahpiangle",
+            "contributions": ["code"]
+        },
+        {
+            "login": "AntekOlszewski",
+            "name": "AntekOlszewski",
+            "avatar_url": "https://avatars.githubusercontent.com/u/73691558?v=4",
+            "profile": "https://github.com/AntekOlszewski",
+            "contributions": ["code"]
+        },
+        {
             "login": "Tamas-hi",
             "name": "Tamás H.",
             "avatar_url": "https://avatars.githubusercontent.com/u/36476318?v=4",
             "profile": "https://github.com/Tamas-hi",
+            "contributions": ["code"]
+        },
+        {
+            "login": "Jacobs63",
+            "name": "Jakub Potocký",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16275303?v=4",
+            "profile": "https://jakubpotocky.sk/",
+            "contributions": ["code"]
+        },
+        {
+            "login": "Pshnychnyi",
+            "name": "Artem",
+            "avatar_url": "https://avatars.githubusercontent.com/u/104310686?v=4",
+            "profile": "https://github.com/Pshnychnyi",
+            "contributions": ["code", "bug"]
+        },
+        {
+            "login": "ariccadonna-doxee",
+            "name": "Alessandro Riccadonna",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2885522?v=4",
+            "profile": "https://www.doxee.com/",
+            "contributions": ["code"]
+        },
+        {
+            "login": "SAY-5",
+            "name": "Sai Asish Y",
+            "avatar_url": "https://avatars.githubusercontent.com/u/240962040?v=4",
+            "profile": "https://sayportfolio.vercel.app/",
+            "contributions": ["code"]
+        },
+        {
+            "login": "tokainz",
+            "name": "Tobias Kainz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/74963455?v=4",
+            "profile": "https://github.com/tokainz",
+            "contributions": ["code"]
+        },
+        {
+            "login": "pupuking723",
+            "name": "pupuking723",
+            "avatar_url": "https://avatars.githubusercontent.com/u/169750518?v=4",
+            "profile": "https://github.com/pupuking723",
             "contributions": ["code"]
         },
         {
@@ -66,20 +129,6 @@
             "contributions": ["ideas"]
         },
         {
-            "login": "wahpiangle",
-            "name": "Quan Ming",
-            "avatar_url": "https://avatars.githubusercontent.com/u/116425066?v=4",
-            "profile": "https://github.com/wahpiangle",
-            "contributions": ["code"]
-        },
-        {
-            "login": "pupuking723",
-            "name": "pupuking723",
-            "avatar_url": "https://avatars.githubusercontent.com/u/169750518?v=4",
-            "profile": "https://github.com/pupuking723",
-            "contributions": ["code"]
-        },
-        {
             "login": "DJ-caddev",
             "name": "Dylan",
             "avatar_url": "https://avatars.githubusercontent.com/u/93262194?v=4",
@@ -87,46 +136,11 @@
             "contributions": ["ideas"]
         },
         {
-            "login": "Jacobs63",
-            "name": "Jakub Potocký",
-            "avatar_url": "https://avatars.githubusercontent.com/u/16275303?v=4",
-            "profile": "https://jakubpotocky.sk/",
-            "contributions": ["code"]
-        },
-        {
             "login": "posti85",
             "name": "José Antonio Postigo",
             "avatar_url": "https://avatars.githubusercontent.com/u/17066163?v=4",
             "profile": "https://github.com/posti85",
             "contributions": ["bug"]
-        },
-        {
-            "login": "AntekOlszewski",
-            "name": "AntekOlszewski",
-            "avatar_url": "https://avatars.githubusercontent.com/u/73691558?v=4",
-            "profile": "https://github.com/AntekOlszewski",
-            "contributions": ["code"]
-        },
-        {
-            "login": "Bharath314",
-            "name": "Bharath Valaboju",
-            "avatar_url": "https://avatars.githubusercontent.com/u/69413757?v=4",
-            "profile": "https://github.com/Bharath314",
-            "contributions": ["code", "bug"]
-        },
-        {
-            "login": "Pshnychnyi",
-            "name": "Artem",
-            "avatar_url": "https://avatars.githubusercontent.com/u/104310686?v=4",
-            "profile": "https://github.com/Pshnychnyi",
-            "contributions": ["code", "bug"]
-        },
-        {
-            "login": "ariccadonna-doxee",
-            "name": "Alessandro Riccadonna",
-            "avatar_url": "https://avatars.githubusercontent.com/u/2885522?v=4",
-            "profile": "https://www.doxee.com/",
-            "contributions": ["code"]
         }
     ]
 }

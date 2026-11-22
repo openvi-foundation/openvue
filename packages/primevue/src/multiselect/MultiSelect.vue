@@ -244,7 +244,13 @@ import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
 import Ripple from 'openvue/ripple';
 import VirtualScroller from 'openvue/virtualscroller';
+import { toRaw } from 'vue';
 import BaseMultiSelect from './BaseMultiSelect.vue';
+
+// Named so usesCustomEquality can tell whether a component that extends MultiSelect replaced it.
+function isEquals(value1, value2) {
+    return equals(value1, value2, this.equalityKey);
+}
 
 export default {
     name: 'MultiSelect',
@@ -259,6 +265,8 @@ export default {
     resizeListener: null,
     overlay: null,
     list: null,
+    selfClick: false,
+    overlayEventListener: null,
     virtualScroller: null,
     startRangeIndex: -1,
     searchTimeout: null,
@@ -293,6 +301,11 @@ export default {
         if (this.overlay) {
             ZIndex.clear(this.overlay);
             this.overlay = null;
+        }
+
+        if (this.overlayEventListener) {
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
         }
     },
     methods: {
@@ -745,6 +758,14 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            this.overlayEventListener = (e) => {
+                if (this.overlay && this.overlay.contains(e.target)) {
+                    this.selfClick = true;
+                }
+            };
+
+            OverlayEventBus.on('overlay-click', this.overlayEventListener);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -758,6 +779,8 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
 
             this.$emit('hide');
             this.overlay = null;
@@ -776,9 +799,11 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
                         this.hide();
                     }
+
+                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -788,6 +813,7 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('click', this.outsideClickListener, true);
                 this.outsideClickListener = null;
+                this.selfClick = false;
             }
         },
         bindScrollListener() {
@@ -826,9 +852,18 @@ export default {
         isOutsideClicked(event) {
             return !(this.$el.isSameNode(event.target) || this.$el.contains(event.target) || (this.overlay && this.overlay.contains(event.target)));
         },
+        isNestedOverlayVisible() {
+            return !!this.overlay?.querySelector('[aria-expanded="true"]');
+        },
         getLabelByValue(value) {
-            const options = this.optionGroupLabel ? this.flatOptions(this.options) : this.options || [];
-            const matchedOption = options.find((option) => !this.isOptionGroup(option) && equals(this.getOptionValue(option), value, this.equalityKey));
+            let matchedOption = this.optionsBySelectionKey.get(this.getSelectionKey(value));
+
+            // An equal copy of an option object has a different key, so it can only be found by deep equality.
+            if (matchedOption === undefined && this.mayMatchEqualCopy(value, false)) {
+                const options = this.optionGroupLabel ? this.flatOptions(this.options) : this.options || [];
+
+                matchedOption = options.find((option) => !this.isOptionGroup(option) && equals(this.getOptionValue(option), value, this.equalityKey));
+            }
 
             return this.getOptionLabel(matchedOption);
         },
@@ -872,13 +907,25 @@ export default {
         isValidSelectedOption(option) {
             return this.isValidOption(option) && this.isSelected(option);
         },
-        isEquals(value1, value2) {
-            return equals(value1, value2, this.equalityKey);
+        isEquals,
+        // Values with the same key are always equal for isEquals: same dataKey field, or the same value or object.
+        // toRaw gives a reactive proxy the same key as its original object.
+        getSelectionKey(value) {
+            return this.equalityKey ? resolveFieldData(value, this.equalityKey) : toRaw(value);
+        },
+        // Whether value can be equal to a value with a different selection key, so a lookup by key that misses has to
+        // fall back to comparing one by one. Without an equalityKey, objects are compared by deep equality, so an equal
+        // copy of an option has a different key. A component extending MultiSelect may also override isEquals with its
+        // own rule; pass checkCustomEquality = false where the comparison uses equals directly instead of isEquals.
+        mayMatchEqualCopy(value, checkCustomEquality = true) {
+            return (checkCustomEquality && this.usesCustomEquality) || (!this.equalityKey && typeof value === 'object' && value !== null);
         },
         isSelected(option) {
             const optionValue = this.getOptionValue(option);
 
-            return (this.d_value || []).some((value) => this.isEquals(value, optionValue));
+            if (this.selectedKeys.has(this.getSelectionKey(optionValue))) return true;
+
+            return this.mayMatchEqualCopy(optionValue) && (this.d_value || []).some((value) => this.isEquals(value, optionValue));
         },
         findFirstOptionIndex() {
             return this.visibleOptions.findIndex((option) => this.isValidOption(option));
@@ -898,11 +945,32 @@ export default {
         },
         findSelectedOptionIndex() {
             if (this.$filled) {
+                // Index the options by selection key once, so each selected value is found without scanning every option.
+                // The first option wins for a repeated key, the same option findIndex would return.
+                const optionIndexes = new Map();
+
+                this.visibleOptions.forEach((option, index) => {
+                    if (!this.isValidOption(option)) return;
+
+                    const key = this.getSelectionKey(this.getOptionValue(option));
+
+                    !optionIndexes.has(key) && optionIndexes.set(key, index);
+                });
+
+                // Newest selected value first.
                 for (let index = this.d_value.length - 1; index >= 0; index--) {
                     const value = this.d_value[index];
-                    const matchedOptionIndex = this.visibleOptions.findIndex((option) => this.isValidSelectedOption(option) && this.isEquals(value, this.getOptionValue(option)));
+                    const matchedOptionIndex = optionIndexes.get(this.getSelectionKey(value));
 
-                    if (matchedOptionIndex > -1) return matchedOptionIndex;
+                    if (matchedOptionIndex !== undefined) return matchedOptionIndex;
+
+                    // Same fallback as isSelected: an equal copy of an option object, or a value only an overridden
+                    // isEquals matches, has a different key.
+                    if (this.mayMatchEqualCopy(value)) {
+                        const copyIndex = this.visibleOptions.findIndex((option) => this.isValidOption(option) && this.isEquals(value, this.getOptionValue(option)));
+
+                        if (copyIndex > -1) return copyIndex;
+                    }
                 }
             }
 
@@ -1101,6 +1169,33 @@ export default {
         },
         equalityKey() {
             return this.optionValue ? null : this.dataKey;
+        },
+        // True when a component extending MultiSelect overrides isEquals. Selection keys can't follow its rule, so lookups
+        // that miss the keys fall back to calling isEquals.
+        usesCustomEquality() {
+            return this.$options.methods?.isEquals !== isEquals;
+        },
+        // The selection keys of the selected values, so isSelected doesn't have to compare each option against every
+        // selected value. Reading d_value through its reactive proxy makes in-place changes to the array (push, splice)
+        // rebuild the set.
+        selectedKeys() {
+            return new Set((this.d_value || []).map((value) => this.getSelectionKey(value)));
+        },
+        // All options (not only the filtered ones) by selection key, so the label of each selected value is found without
+        // scanning every option. The first option wins for a repeated key, the same option find would return.
+        optionsBySelectionKey() {
+            const options = this.optionGroupLabel ? this.flatOptions(this.options) : this.options || [];
+            const optionsByKey = new Map();
+
+            options.forEach((option) => {
+                if (this.isOptionGroup(option)) return;
+
+                const key = this.getSelectionKey(this.getOptionValue(option));
+
+                !optionsByKey.has(key) && optionsByKey.set(key, option);
+            });
+
+            return optionsByKey;
         },
         searchFields() {
             return this.filterFields || [this.optionLabel];

@@ -185,7 +185,7 @@ describe('theme-builder/site', () => {
 
             await site.apply(GARAGE, { persist: false });
 
-            expect(appState).toMatchObject({ preset: 'Aura', primary: 'noir', surface: null });
+            expect(appState).toMatchObject({ preset: 'Aura', primary: 'openvue', surface: null });
             expect(appState.siteRecipe).toEqual(GARAGE);
         });
 
@@ -237,7 +237,7 @@ describe('theme-builder/site', () => {
             site.reset();
 
             expect(Theme.getPreset()).toBe(Aura);
-            expect(appState).toMatchObject({ siteRecipe: null, preset: 'Aura', primary: 'noir', surface: null });
+            expect(appState).toMatchObject({ siteRecipe: null, preset: 'Aura', primary: 'openvue', surface: null });
             expect(primevue.config.inputVariant).toBeNull();
             expect(browser.document.documentElement.style.fontFamily).toBe('');
             expect(readSiteTheme()).toBeNull();
@@ -464,13 +464,13 @@ describe('theme-builder/site', () => {
                 site.setLive(false);
 
                 expect(Theme.getPreset()).toBe(Aura);
-                expect(appState).toMatchObject({ preset: 'Aura', primary: 'noir', surface: null });
+                expect(appState).toMatchObject({ preset: 'Aura', primary: 'openvue', surface: null });
             });
         });
     });
 
     describe('wornPresetName', () => {
-        const state = (changes = {}) => ({ preset: 'Aura', primary: 'noir', surface: null, siteRecipe: null, designer: { theme: { id: null } }, ...changes });
+        const state = (changes = {}) => ({ preset: 'Aura', primary: 'openvue', surface: null, siteRecipe: null, designer: { theme: { id: null } }, ...changes });
 
         it('names Shoji while nothing has changed the documentation’s own look', () => {
             expect(wornPresetName(state())).toBe('Shoji');

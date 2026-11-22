@@ -103,9 +103,30 @@
     }
 }
 
-/* The landing sections are centred on a narrower measure, so its footer follows them instead. */
-.landing .site-footer .footer-container {
-    max-width: 1250px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+/* On the homepage the footer continues the page: same grey ground, separated by one hairline,
+   and the same 1280px column and 1.5rem gutter as .landing-container. */
+.landing .site-footer {
+    border-top: 1px solid var(--border-color);
+
+    .footer-main,
+    .footer-bottom {
+        background-color: var(--ground-background);
+    }
+
+    .footer-container {
+        max-width: calc(1280px + 3rem);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .footer-link:hover {
+        color: var(--text-color);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .landing .site-footer .footer-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }

@@ -293,7 +293,7 @@ const cities = ref([
 
 ## Multiple
 
-Listbox allows choosing a single item by default, enable multiple property to choose more than one. When the optional metaKeySelection is present, behavior is changed in a way that selecting a new item requires meta key to be present.
+Listbox allows choosing a single item by default, enable multiple property to choose more than one. When the optional metaKeySelection is present, behavior is changed in a way that selecting a new item requires meta key to be present. Listbox picks up every change to the selection array that Vue can track, such as calling push or splice on an array held in a ref or reactive , or assigning a new array. Changes Vue doesn't track, such as pushing into a shallowRef or markRaw array, are not detected; assign a new array instead, e.g. selected.value = [...selected.value, item] .
 
 ```vue
 <Listbox v-model="selectedCity" :options="cities" multiple optionLabel="name" class="w-full md:w-56" />
@@ -378,7 +378,7 @@ const countries = ref([
 
 ## Virtual Scroll
 
-VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by Listbox.
+VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by Listbox. With many options or a large selection, give Listbox a fast way to compare values: bind primitive values with optionValue , or set dataKey to a unique field when v-model holds objects. Without either, each option is compared to every selected object by deep equality, which slows down as the selection grows.
 
 ```vue
 <Listbox v-model="selectedItem" :options="items" optionLabel="label" optionValue="value"

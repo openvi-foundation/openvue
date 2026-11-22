@@ -58,7 +58,7 @@ export function wornPresetName(appState) {
 
     const { preset, primary, surface } = appState;
 
-    return preset === 'Aura' && primary === 'noir' && !surface ? PRESETS[0].name : null;
+    return preset === 'Aura' && primary === DEFAULT_RECIPE.primary && !surface ? PRESETS[0].name : null;
 }
 
 export function clearSiteTheme() {
@@ -180,7 +180,7 @@ export function createSiteTheme({ appState, primevue, defaultPreset, emit = () =
 
     function clearConfiguratorChoice() {
         appState.preset = 'Aura';
-        appState.primary = 'noir';
+        appState.primary = DEFAULT_RECIPE.primary;
         appState.surface = null;
     }
 

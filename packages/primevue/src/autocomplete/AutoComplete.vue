@@ -222,7 +222,13 @@ import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
 import Ripple from 'openvue/ripple';
 import VirtualScroller from 'openvue/virtualscroller';
+import { toRaw } from 'vue';
 import BaseAutoComplete from './BaseAutoComplete.vue';
+
+// Named so usesCustomEquality can tell whether a component that extends AutoComplete replaced it.
+function isEquals(value1, value2) {
+    return equals(value1, value2, this.equalityKey);
+}
 
 export default {
     name: 'AutoComplete',
@@ -236,6 +242,8 @@ export default {
     resizeListener: null,
     scrollHandler: null,
     overlay: null,
+    selfClick: false,
+    overlayEventListener: null,
     virtualScroller: null,
     searchTimeout: null,
     dirty: false,
@@ -282,6 +290,11 @@ export default {
         if (this.overlay) {
             ZIndex.clear(this.overlay);
             this.overlay = null;
+        }
+
+        if (this.overlayEventListener) {
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
         }
     },
     methods: {
@@ -806,6 +819,14 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            this.overlayEventListener = (e) => {
+                if (this.overlay && this.overlay.contains(e.target)) {
+                    this.selfClick = true;
+                }
+            };
+
+            OverlayEventBus.on('overlay-click', this.overlayEventListener);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -819,6 +840,8 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
+            OverlayEventBus.off('overlay-click', this.overlayEventListener);
+            this.overlayEventListener = null;
 
             this.$emit('hide');
             this.overlay = null;
@@ -839,9 +862,11 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.overlay && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && this.overlay && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
                         this.hide();
                     }
+
+                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -851,6 +876,7 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('click', this.outsideClickListener, true);
                 this.outsideClickListener = null;
+                this.selfClick = false;
             }
         },
         bindScrollListener() {
@@ -889,6 +915,9 @@ export default {
         isOutsideClicked(event) {
             return !this.overlay.contains(event.target) && !this.isInputClicked(event) && !this.isDropdownClicked(event);
         },
+        isNestedOverlayVisible() {
+            return !!this.overlay?.querySelector('[aria-expanded="true"]');
+        },
         isInputClicked(event) {
             if (this.multiple) return event.target === this.$refs.multiContainer || this.$refs.multiContainer.contains(event.target);
             else return event.target === this.$refs.focusInput.$el;
@@ -905,13 +934,25 @@ export default {
         isValidSelectedOption(option) {
             return this.isValidOption(option) && this.isSelected(option);
         },
-        isEquals(value1, value2) {
-            return equals(value1, value2, this.equalityKey);
+        isEquals,
+        // Values with the same key are always equal for isEquals: same dataKey field, or the same value or object.
+        // toRaw gives a reactive proxy the same key as its original object.
+        getSelectionKey(value) {
+            return this.equalityKey ? resolveFieldData(value, this.equalityKey) : toRaw(value);
         },
         isSelected(option) {
             const optionValue = this.getOptionValue(option);
 
-            return this.multiple ? (this.d_value || []).some((value) => this.isEquals(value, optionValue)) : this.isEquals(this.d_value, this.getOptionValue(option));
+            if (!this.multiple) return this.isEquals(this.d_value, optionValue);
+
+            if (this.selectedKeys.has(this.getSelectionKey(optionValue))) return true;
+
+            // Without an equalityKey, objects are compared by deep equality. An equal copy of the suggestion, such as the
+            // same item returned by a new search, has a different key, so it can only be found by comparing against each
+            // selected value. The same goes for any value when a component extending AutoComplete overrides isEquals.
+            const mayMatchEqualCopy = this.usesCustomEquality || (!this.equalityKey && typeof optionValue === 'object' && optionValue !== null);
+
+            return mayMatchEqualCopy && (this.d_value || []).some((value) => this.isEquals(value, optionValue));
         },
         findFirstOptionIndex() {
             return this.visibleOptions.findIndex((option) => this.isValidOption(option));
@@ -1069,6 +1110,17 @@ export default {
         equalityKey() {
             // @todo: The 'optionValue' properties can be added.
             return this.dataKey;
+        },
+        // True when a component extending AutoComplete overrides isEquals. Selection keys can't follow its rule, so
+        // lookups that miss the keys fall back to calling isEquals.
+        usesCustomEquality() {
+            return this.$options.methods?.isEquals !== isEquals;
+        },
+        // The selection keys of the selected values in multiple mode, so isSelected doesn't have to compare each
+        // suggestion against every selected value. Reading d_value through its reactive proxy makes in-place changes to
+        // the array (push, splice) rebuild the set.
+        selectedKeys() {
+            return new Set((this.d_value || []).map((value) => this.getSelectionKey(value)));
         },
         searchResultMessageText() {
             return isNotEmpty(this.visibleOptions) && this.overlayVisible ? this.searchMessageText.replaceAll('{0}', this.visibleOptions.length) : this.emptySearchMessageText;

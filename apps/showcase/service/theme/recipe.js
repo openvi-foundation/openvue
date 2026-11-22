@@ -16,7 +16,7 @@ export const MASK_OPTIONS = ['default', ...Object.keys(MASKS)];
 
 export const DEFAULT_RECIPE = Object.freeze({
     base: 'Aura',
-    primary: 'noir',
+    primary: 'openvue',
     surface: 'default',
     font: 'Inter var',
     radius: null,
@@ -34,13 +34,14 @@ export const DEFAULT_RECIPE = Object.freeze({
 export const PRESETS = [
     {
         name: 'Shoji',
-        description: 'The OpenVue documentation look: crisp, neutral and ink-black.',
+        description: 'The OpenVue documentation look: crisp and neutral, in OpenVue green.',
         ...DEFAULT_RECIPE
     },
     {
         name: 'Loft',
         description: 'Black, white and nothing extra. Borders over shadows.',
         ...DEFAULT_RECIPE,
+        primary: 'noir',
         base: 'Nide',
         surface: 'neutral',
         font: 'Geist',
@@ -145,6 +146,7 @@ export const PRESETS = [
         name: 'Alcove',
         description: 'Warm greys, soft corners and larger text for content-first products.',
         ...DEFAULT_RECIPE,
+        primary: 'noir',
         surface: 'stone',
         font: 'Manrope',
         radius: 10,

@@ -5,8 +5,6 @@
     --primary-hover-color: var(--p-primary-hover-color);
     --text-color: var(--p-surface-700);
     --text-secondary-color: var(--p-surface-500);
-    --glow-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png);
-    --glow-blend: hard-light, multiply;
     --topbar-sticky-background:rgba(255,255,255,.7);
     --card-border: 1px solid var(--p-surface-200);
     --card-background: #ffffff;
@@ -22,7 +20,21 @@
     --selection-background: var(--p-surface-200);
     --selection-text-color: var(--p-surface-950);
     --code-button-text-color: var(--p-surface-300);
-    --logo-color: var(--text-secondary-color);
+    /* Doc code blocks: a light well in light mode so examples don't end in a black slab. */
+    --doc-code-scheme: light;
+    --doc-code-background: var(--p-surface-100);
+    --doc-code-border: var(--p-surface-200);
+    --doc-code-text: var(--p-surface-800);
+    --doc-code-muted: var(--p-surface-600);
+    --doc-code-tag: #1d4ed8;
+    --doc-code-keyword: #15803d;
+    --doc-code-accent: #b45309;
+    --doc-diff-del-background: #fef2f2;
+    --doc-diff-del-text: #b91c1c;
+    --doc-diff-add-background: #f0fdf4;
+    --doc-diff-add-text: #15803d;
+    --doc-check-color: #16a34a;
+    --logo-color: var(--primary-color);
     --designer-primary-color: #09090b;
     --designer-primary-emphasis-color: #27272a;
     --designer-primary-contrast-color: #ffffff;

@@ -48,7 +48,7 @@ describe('theme-builder/recipe', () => {
 
         it('accepts a custom hex primary and lowercases it', () => {
             expect(normalizeRecipe({ primary: '#3B82F6' }).primary).toBe('#3b82f6');
-            expect(normalizeRecipe({ primary: 'url(#x)' }).primary).toBe('noir');
+            expect(normalizeRecipe({ primary: 'url(#x)' }).primary).toBe(DEFAULT_RECIPE.primary);
         });
 
         it('accepts any Google Fonts family name but nothing that could break out of CSS', () => {

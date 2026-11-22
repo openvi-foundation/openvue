@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "generatedAt": "2026-11-04",
+    "generatedAt": "2026-11-15",
     "components": [
         {
             "name": "accordion",
@@ -19826,7 +19826,7 @@
                 {
                     "id": "multiple",
                     "label": "Multiple",
-                    "description": "Listbox allows choosing a single item by default, enable multiple property to choose more than one. When the optional metaKeySelection is present, behavior is changed in a way that selecting a new item requires meta key to be present.",
+                    "description": "Listbox allows choosing a single item by default, enable multiple property to choose more than one. When the optional metaKeySelection is present, behavior is changed in a way that selecting a new item requires meta key to be present. Listbox picks up every change to the selection array that Vue can track, such as calling push or splice on an array held in a ref or reactive , or assigning a new array. Changes Vue doesn't track, such as pushing into a shallowRef or markRaw array, are not detected; assign a new array instead, e.g. selected.value = [...selected.value, item] .",
                     "examples": {
                         "basic": "<Listbox v-model=\"selectedCity\" :options=\"cities\" multiple optionLabel=\"name\" class=\"w-full md:w-56\" />",
                         "options": "<template>\n    <div class=\"card flex justify-center\">\n        <Listbox v-model=\"selectedCity\" :options=\"cities\" multiple optionLabel=\"name\" class=\"w-full md:w-56\" />\n    </div>\n</template>\n\n<script>\nexport default {\n    data() {\n        return {\n            selectedCity: null,\n            cities: [\n                { name: 'New York', code: 'NY' },\n                { name: 'Rome', code: 'RM' },\n                { name: 'London', code: 'LDN' },\n                { name: 'Istanbul', code: 'IST' },\n                { name: 'Paris', code: 'PRS' }\n            ]\n        };\n    }\n};\n<\\/script>",
@@ -19846,7 +19846,7 @@
                 {
                     "id": "virtualscroll",
                     "label": "Virtual Scroll",
-                    "description": "VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by Listbox.",
+                    "description": "VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by Listbox. With many options or a large selection, give Listbox a fast way to compare values: bind primitive values with optionValue , or set dataKey to a unique field when v-model holds objects. Without either, each option is compared to every selected object by deep equality, which slows down as the selection grows.",
                     "examples": {
                         "basic": "<Listbox v-model=\"selectedItem\" :options=\"items\" optionLabel=\"label\" optionValue=\"value\"\n    :virtualScrollerOptions=\"{ itemSize: 38 }\" class=\"w-full md:w-56\" listStyle=\"height:250px\" striped />",
                         "options": "<template>\n    <div class=\"card flex justify-center\">\n        <Listbox v-model=\"selectedItem\" :options=\"items\" optionLabel=\"label\" optionValue=\"value\"\n            :virtualScrollerOptions=\"{ itemSize: 38 }\" class=\"w-full md:w-56\" listStyle=\"height:250px\" striped />\n    </div>\n</template>\n\n<script>\nexport default {\n    data() {\n        return {\n            selectedItem: null,\n            items: Array.from({ length: 100000 }, (_, i) => ({ label: \\`Item #\\${i}\\`, value: i }))\n        };\n    }\n};\n<\\/script>",
@@ -32051,25 +32051,25 @@
         },
         {
             "name": "team",
-            "title": "About Us - OpenVue",
-            "description": "Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.",
+            "title": "About OpenVue | Maintained by the OpenVi Foundation",
+            "description": "OpenVue is the MIT-licensed continuation of PrimeVue 4, maintained in the open by the OpenVi Foundation alongside OpenUXKit, OpenIcons and OpenVolt.",
             "sections": [
                 {
-                    "id": "getinvolved",
-                    "label": "Get Involved",
-                    "description": "We are early, and we are in this for the long run. If you want to help, star the repo, join the discussion, or tell someone who still ships with PrimeVue.",
+                    "id": "foundation",
+                    "label": "The OpenVi Foundation",
+                    "description": "OpenVue is one of four libraries the foundation maintains. The other three are the parts OpenVue is built on or ships with, so the whole stack is developed in the open by the same people and nothing critical resolves from a scope we do not control. OpenUXKit The framework-agnostic theming engine behind OpenVue, forked from PrimeUIX. Design tokens, presets and styled mode run on it. OpenIcons The MIT-licensed icon set used across these docs, forked from PrimeIcons. OpenVolt Tailwind CSS components built on OpenVue that you copy into your project and own, forked from PrimeVue Volt. How the foundation is run, who has commit access and how decisions are made is documented on openvi.dev: read the about page and the governance model .",
                     "examples": null
                 },
                 {
-                    "id": "introduction",
-                    "label": "Introduction",
-                    "description": "Hey Vue community, We are long-time PrimeVue users who believe a great UI component library should stay free, open, and community run. PrimeVue 4.5.5, released in April 2026, was the last open source version, and new development moved to a commercial license. Rather than watch one of the most widely adopted Vue component libraries stand still, we picked it up. OpenVue is our continuation of PrimeVue v4, the last fully open source line, with more than 80 accessible and themeable components. It is MIT licensed, and it stays that way. Let's keep Vue open together. &mdash; Openvi Foundation",
+                    "id": "getinvolved",
+                    "label": "Get Involved",
+                    "description": "Triage an issue, test a release against your app, or fix a doc. The contribution guide covers setup and pull requests for this repository, and the foundation's contribute page lists where help is needed most across all four projects. Conversation happens on Discord and in GitHub Discussions . For anything else, write to contact@openvi.dev .",
                     "examples": null
                 },
                 {
                     "id": "why",
-                    "label": "Why We Continued",
-                    "description": "We used PrimeVue daily for years, across projects big and small. It was one of the best UI libraries in the Vue ecosystem, and we did not want to see it stall behind a closed license. Thousands of teams still have it in their dependency tree, and every one of them deserves a version that keeps getting security fixes, Vue compatibility updates, and accessibility work. {{ value.title }} {{ value.description }}",
+                    "label": "Why OpenVue Exists",
+                    "description": "We used PrimeVue daily for years, across projects big and small. PrimeVue 4.5.5, released in April 2026, was the last open source version, and new development moved to a commercial license. Thousands of teams still have it in their dependency tree, and every one of them deserves a version that keeps getting security fixes, Vue compatibility updates, and accessibility work. So we picked it up. OpenVue continues the PrimeVue 4 line with the same components and API, more than 80 of them, accessible and themeable. It is MIT licensed, and it stays that way. If you are coming from PrimeVue, the PrimeVue alternative page explains what changes and what does not.",
                     "examples": null
                 }
             ],
@@ -38882,7 +38882,7 @@
                 {
                     "id": "overview",
                     "label": "Overview",
-                    "description": "OpenVue is a complete UI suite for Vue.js, consisting of a rich set of components that are easy to tune and customize as an in-house library. The library is a community-maintained fork of PrimeVue 4.5.5, started after its original maintainers ended active open source development and moved new releases to a commercial license. Everything you know from PrimeVue v4 is here, under a name and a maintenance path that are not tied to a single company. OpenVue is not affiliated with PrimeTek or PrimeUI. Development is led by Openvi Foundation , an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.",
+                    "description": "OpenVue is a complete UI suite for Vue.js, consisting of a rich set of components that are easy to tune and customize as an in-house library. The library is a community-maintained fork of PrimeVue 4.5.5, started after its original maintainers ended active open source development and moved new releases to a commercial license. Everything you know from PrimeVue v4 is here, under a name and a maintenance path that are not tied to a single company. OpenVue is not affiliated with PrimeTek or PrimeUI. Development is led by OpenVi Foundation , an independent organization of developers who run this library in production. Every component is MIT licensed, with no paid tier and nothing held back.",
                     "examples": null
                 },
                 {
@@ -39682,7 +39682,7 @@
                     "label": "Try Without Migrating",
                     "description": "If you just want to evaluate OpenVue first, add an override yourself instead of running the codemod; no source changes needed. Use overrides for npm and bun, or resolutions for yarn. On pnpm, put the same overrides entry in pnpm-workspace.yaml instead, because pnpm 11 no longer reads the pnpm field from package.json . Once you decide to stay, run npx @openvue/migrate for the real rename.",
                     "examples": {
-                        "basic": "{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@1.0.0\"\n    }\n}"
+                        "basic": "{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@${pkg.version}\"\n    }\n}"
                     }
                 },
                 {
@@ -39716,13 +39716,13 @@
                 {
                     "id": "compatibility",
                     "label": "What Changes",
-                    "description": "OpenVue starts from the PrimeVue 4.5.5 source, so moving over is a rename rather than a rewrite. Stays the same Changes Component names, props, events and slots primevue becomes openvue usePrimeVue , PrimeVueResolver and the primevue Nuxt config key @primevue/* packages become @openvue/* p- prefixed CSS classes, pass-through options and unstyled mode PrimeIcons is replaced by OpenIcons , with a compatibility stylesheet that keeps pi pi-* classes working Aura, Lara and Nora theme presets and design tokens Theme presets are imported from @openvue/themes",
+                    "description": "OpenVue starts from the PrimeVue 4.5.5 source, so moving over is a rename rather than a rewrite. Stays the same Component names, props, events and slots usePrimeVue , PrimeVueResolver and the primevue Nuxt config key p- prefixed CSS classes, pass-through options and unstyled mode Aura, Lara and Nora theme presets and design tokens Changes primevue becomes openvue @primevue/* packages become @openvue/* PrimeIcons is replaced by OpenIcons , with a compatibility stylesheet that keeps pi pi-* classes working Theme presets are imported from @openvue/themes",
                     "examples": null
                 },
                 {
                     "id": "longevity",
                     "label": "Will OpenVue Last?",
-                    "description": "It's the right question to ask about any fork. Here is what protects you. Run by people who depend on it. OpenVue is maintained by the Openvi Foundation , developers who run this library in production themselves, together with outside contributors whose fixes are credited in every release. The whole stack is open. The theming engine and the icon set are maintained alongside the components, and OpenVue has no runtime dependency on any PrimeTek package. Your worst case is fine. Everything is MIT. Whatever happens, the version you install keeps working, and anyone can pick the code up and continue it, the same way OpenVue continued PrimeVue 4. Everything happens in public. Issues, pull requests and decisions are on GitHub , so you can judge the project's health yourself at any time.",
+                    "description": "It's the right question to ask about any fork. Here is what protects you. Run by people who depend on it OpenVue is maintained by the OpenVi Foundation , developers who run this library in production themselves, together with outside contributors whose fixes are credited in every release. The whole stack is open The theming engine and the icon set are maintained alongside the components, and OpenVue has no runtime dependency on any PrimeTek package. Your worst case is fine Everything is MIT. Whatever happens, the version you install keeps working, and anyone can pick the code up and continue it, the same way OpenVue continued PrimeVue 4. Everything happens in public Issues, pull requests and decisions are on GitHub , so you can judge the project's health yourself at any time.",
                     "examples": null
                 },
                 {
@@ -39734,33 +39734,33 @@
                 {
                     "id": "options",
                     "label": "Compare Your Options",
-                    "description": "If you run PrimeVue 4 today, you have three realistic paths. Stay on PrimeVue 4.5.5 Upgrade to PrimeVue 5 Switch to OpenVue License MIT PrimeUI license MIT Cost Free Paid per developer, free Community tier for eligible small organizations Free Updates Security fixes only Active, by PrimeTek Active, by the community Effort None A major version upgrade One command PrimeVue 5 is a good fit if you want vendor support and the PrimeUI license works for your organization. Check primeui.dev for current terms. Staying on 4.5.5 works for apps that are finished, but bugs you hit there will stay unfixed. OpenVue is for teams that want to keep their code, keep MIT and keep getting fixes.",
+                    "description": "If you run PrimeVue 4 today, you have three realistic paths. Stay on PrimeVue 4.5.5 License MIT Cost Free Updates Security fixes only Effort None Upgrade to PrimeVue 5 License PrimeUI license Cost Paid per developer, free Community tier for eligible small organizations Updates Active, by PrimeTek Effort A major version upgrade Switch to OpenVue License MIT Cost Free Updates Active, by the community Effort One command Read the migration guide PrimeVue 5 is a good fit if you want vendor support and the PrimeUI license works for your organization. Check primeui.dev for current terms. Staying on 4.5.5 works for apps that are finished, but bugs you hit there will stay unfixed. OpenVue is for teams that want to keep their code, keep MIT and keep getting fixes.",
                     "examples": null
                 },
                 {
                     "id": "shipped",
                     "label": "Shipped Since the Fork",
-                    "description": "A fork is only worth switching to if it keeps shipping. Here are a few highlights from the changelog . Theme Designer, free. Edit every design token visually, watch the docs restyle as you type, and export a preset. No account, no license key, runs entirely in your browser. #655 TreeTable filtering. The filter row and multi-rule filter menu that DataTable already had, styled in all four presets. #638 Variable-height virtual scrolling. VirtualScroller accepts a getItemSize callback, so lists with rows of different heights can be virtualized, and DataTable row groups now work with virtual scrolling. #621 DataTable column widths that stick. Resized widths stay with the right column when columns are hidden or shown, and after a reload. #627 InputNumber typing fixes. Typing after a leading 0 no longer clears the field or shifts currency values. #665 Accessibility fixes. Menu components no longer announce a bogus nesting level to screen readers. #645 AI-ready docs. An MCP server and llms.txt give coding assistants accurate props, events and slots for every component. You can see the result live in the Theme Designer and in Deni , a full application template built on OpenVue.",
+                    "description": "A fork is only worth switching to if it keeps shipping. Here are a few highlights from the changelog . Theme Designer, free Edit every design token visually, watch the docs restyle as you type, and export a preset. No account, no license key, runs entirely in your browser. PR #655 TreeTable filtering The filter row and multi-rule filter menu that DataTable already had, styled in all four presets. PR #638 Variable-height virtual scrolling VirtualScroller accepts a getItemSize callback, so lists with rows of different heights can be virtualized, and DataTable row groups now work with virtual scrolling. PR #621 DataTable column widths that stick Resized widths stay with the right column when columns are hidden or shown, and after a reload. PR #627 InputNumber typing fixes Typing after a leading 0 no longer clears the field or shifts currency values. PR #665 Accessibility fixes Menu components no longer announce a bogus nesting level to screen readers. PR #645 AI-ready docs An MCP server and llms.txt give coding assistants accurate props, events and slots for every component. You can see the result live in the Theme Designer and in Deni , a full application template built on OpenVue.",
                     "examples": null
                 },
                 {
                     "id": "try",
                     "label": "Try It Without Risk",
-                    "description": "You don't have to commit to anything to find out whether OpenVue works for your app. Test it with zero code changes. Add a package override so your existing primevue imports resolve to OpenVue, run your app and your tests. Delete the override to go back. Preview the migration. npx @openvue/migrate --dry lists every file and dependency it would change, and writes nothing. Migrate for real. npx @openvue/migrate asks before writing, and the result is one git diff you can review and revert like any other change.",
+                    "description": "You don't have to commit to anything to find out whether OpenVue works for your app. Test it with zero code changes Add a package override so your existing primevue imports resolve to OpenVue, run your app and your tests. Delete the override to go back. Preview the migration npx @openvue/migrate --dry lists every file and dependency it would change, and writes nothing. Migrate for real npx @openvue/migrate asks before writing, and the result is one git diff you can review and revert like any other change. For pnpm and yarn overrides, monorepos and every option, see the migration guide . Starting a new project instead? Follow the setup guide .",
                     "examples": {
-                        "basic": "// 1. try OpenVue without touching your code (package.json, npm and bun)\n{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@1.0.0\"\n    }\n}\n\n// 2. preview what the migration changes\nnpx @openvue/migrate --dry\n\n// 3. migrate\nnpx @openvue/migrate"
+                        "basic": "// package.json, npm and bun\n{\n    \"overrides\": {\n        \"primevue\": \"npm:openvue@${pkg.version}\"\n    }\n}"
                     }
                 },
                 {
                     "id": "why",
                     "label": "Why Teams Switch",
-                    "description": "Nothing to rewrite Same components, props, events, slots, pass-through and themes as PrimeVue 4.5.5. Switching is a package rename that one command does for you. MIT, no license fees No per-developer pricing, no revenue limits, no license keys. Every package is MIT, and a license change elsewhere cannot reach code you already have. Still moving forward Ten releases since July 2026, a stable 1.0 in September, and fixes and features landing every few weeks from a growing group of contributors.",
+                    "description": "This is the whole migration for a typical Vite app, and npx @openvue/migrate writes it for you. Your components, templates, props and themes do not change. Nothing to rewrite Same components, props, events, slots, pass-through and themes as PrimeVue 4.5.5. Switching is a package rename that one command does for you. MIT, no license fees No per-developer pricing, no revenue limits, no license keys. Every package is MIT, and a license change elsewhere cannot reach code you already have. Still moving forward Ten releases since July 2026, a stable 1.0 in September, and fixes and features landing every few weeks from a growing group of contributors.",
                     "examples": null
                 },
                 {
                     "id": "faq",
                     "label": "FAQ",
-                    "description": "Is OpenVue a drop-in replacement for PrimeVue 4? Yes. OpenVue is a fork of PrimeVue 4.5.5 with the same components and public API. Switching renames packages and imports, and @openvue/migrate does that for you in one command. Is OpenVue free for commercial use? Yes. OpenVue is MIT licensed, with no paid tier, no per-developer fee and no revenue limits. Does OpenVue work with Nuxt and Tailwind CSS? Yes. The Nuxt module auto-imports components and works with SSR, and OpenVue integrates with Tailwind CSS in both styled and unstyled modes. Can I migrate a PrimeVue 5 project? The migration tool supports PrimeVue 4.x projects only, since 4.5.5 is the fork point. Projects on version 5 need to be checked by hand. Who maintains OpenVue? The Openvi Foundation , an independent group of developers who use the library in production, together with outside contributors. OpenVue is not affiliated with PrimeTek.",
+                    "description": "Is OpenVue a drop-in replacement for PrimeVue 4? Yes. OpenVue is a fork of PrimeVue 4.5.5 with the same components and public API. Switching renames packages and imports, and @openvue/migrate does that for you in one command. Is OpenVue free for commercial use? Yes. OpenVue is MIT licensed, with no paid tier, no per-developer fee and no revenue limits. Does OpenVue work with Nuxt and Tailwind CSS? Yes. The Nuxt module auto-imports components and works with SSR, and OpenVue integrates with Tailwind CSS in both styled and unstyled modes. Can I migrate a PrimeVue 5 project? The migration tool supports PrimeVue 4.x projects only, since 4.5.5 is the fork point. Projects on version 5 need to be checked by hand. Who maintains OpenVue? The OpenVi Foundation , an independent group of developers who use the library in production, together with outside contributors. OpenVue is not affiliated with PrimeTek.",
                     "examples": null
                 }
             ]

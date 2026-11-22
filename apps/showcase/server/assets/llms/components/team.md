@@ -1,16 +1,16 @@
-# About Us - OpenVue
+# About OpenVue | Maintained by the OpenVi Foundation
 
-Openvi Foundation is a community-run organization maintaining open source UI libraries for the web. OpenVue is our continuation of PrimeVue v4, MIT licensed and free forever.
+OpenVue is the MIT-licensed continuation of PrimeVue 4, maintained in the open by the OpenVi Foundation alongside OpenUXKit, OpenIcons and OpenVolt.
+
+## The OpenVi Foundation
+
+OpenVue is one of four libraries the foundation maintains. The other three are the parts OpenVue is built on or ships with, so the whole stack is developed in the open by the same people and nothing critical resolves from a scope we do not control. OpenUXKit The framework-agnostic theming engine behind OpenVue, forked from PrimeUIX. Design tokens, presets and styled mode run on it. OpenIcons The MIT-licensed icon set used across these docs, forked from PrimeIcons. OpenVolt Tailwind CSS components built on OpenVue that you copy into your project and own, forked from PrimeVue Volt. How the foundation is run, who has commit access and how decisions are made is documented on openvi.dev: read the about page and the governance model .
 
 ## Get Involved
 
-We are early, and we are in this for the long run. If you want to help, star the repo, join the discussion, or tell someone who still ships with PrimeVue.
+Triage an issue, test a release against your app, or fix a doc. The contribution guide covers setup and pull requests for this repository, and the foundation's contribute page lists where help is needed most across all four projects. Conversation happens on Discord and in GitHub Discussions . For anything else, write to contact@openvi.dev .
 
-## Introduction
+## Why OpenVue Exists
 
-Hey Vue community, We are long-time PrimeVue users who believe a great UI component library should stay free, open, and community run. PrimeVue 4.5.5, released in April 2026, was the last open source version, and new development moved to a commercial license. Rather than watch one of the most widely adopted Vue component libraries stand still, we picked it up. OpenVue is our continuation of PrimeVue v4, the last fully open source line, with more than 80 accessible and themeable components. It is MIT licensed, and it stays that way. Let's keep Vue open together. &mdash; Openvi Foundation
-
-## Why We Continued
-
-We used PrimeVue daily for years, across projects big and small. It was one of the best UI libraries in the Vue ecosystem, and we did not want to see it stall behind a closed license. Thousands of teams still have it in their dependency tree, and every one of them deserves a version that keeps getting security fixes, Vue compatibility updates, and accessibility work. {{ value.title }} {{ value.description }}
+We used PrimeVue daily for years, across projects big and small. PrimeVue 4.5.5, released in April 2026, was the last open source version, and new development moved to a commercial license. Thousands of teams still have it in their dependency tree, and every one of them deserves a version that keeps getting security fixes, Vue compatibility updates, and accessibility work. So we picked it up. OpenVue continues the PrimeVue 4 line with the same components and API, more than 80 of them, accessible and themeable. It is MIT licensed, and it stays that way. If you are coming from PrimeVue, the PrimeVue alternative page explains what changes and what does not.
 

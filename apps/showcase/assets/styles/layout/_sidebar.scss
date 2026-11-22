@@ -1,30 +1,152 @@
+/* Docs sidebar: a flat map of every page, grouped under plain headings. Only groups that would
+   bury the rest (Components) collapse, and only until the reader is inside them. */
 .layout-sidebar {
     position: sticky;
-    inset-inline-start: 0;
-    top: calc(var(--topbar-height) + 2rem);
-    height: calc(100vh - var(--topbar-height) - 5rem);
-    user-select: none;
-    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    flex: 0 0 250px;
-    margin-inline-end: 4rem;
-    overflow: auto;
+    top: var(--topbar-height);
+    align-self: flex-start;
+    flex: 0 0 var(--docs-sidebar-width);
+    height: calc(100vh - var(--topbar-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-block: 1.75rem 4rem;
+    padding-inline: 0 1rem;
+    border-inline-end: 1px solid var(--border-color);
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 
-    .logo {
-        display: flex;
-        justify-content: center;
+    /* The scrollbar only shows while the pointer is over the sidebar. */
+    &:hover {
+        scrollbar-color: var(--border-color) transparent;
     }
 
+    /* Headings stack tight so collapsed groups read as an index; an open group adds its own space below. */
     nav {
-        padding-block: 0;
-        padding-inline: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+
+    .menu-group > .menu-list {
+        margin: 0.125rem 0 1rem;
+    }
+
+    ul {
+        list-style: none;
         margin: 0;
-        flex-grow: 1;
+        padding: 0;
+    }
+
+    .menu-group-toggle,
+    .menu-group-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        padding: 0.3125rem 0.5rem;
+        border: 0 none;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--high-contrast-text-color);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: start;
+        cursor: pointer;
+        transition: color 0.15s, background-color 0.15s;
+        --p-focus-ring-offset: -1px;
+        @include focus-visible();
+
+        &:hover {
+            background-color: var(--hover-background);
+        }
+
+        i {
+            font-size: 0.6875rem;
+            color: var(--text-secondary-color);
+            transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        &[aria-expanded='false'] i {
+            transform: rotate(-90deg);
+        }
+
+        &:hover i {
+            color: var(--text-color);
+        }
+    }
+
+    .menu-group-link {
+        &.is-active {
+            color: var(--primary-text-color);
+            background-color: var(--hover-background);
+        }
+    }
+
+    .menu-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        color: var(--text-secondary-color);
+        font-size: 0.9375rem;
+        line-height: 1.5;
+        transition: color 0.15s, background-color 0.15s;
+        --p-focus-ring-offset: -1px;
+        @include focus-visible();
+
+        > i {
+            font-size: 0.6875rem;
+            opacity: 0.7;
+        }
+
+        &:hover {
+            color: var(--high-contrast-text-color);
+        }
+
+        &.is-active {
+            color: var(--primary-text-color);
+            background-color: var(--hover-background);
+            font-weight: 500;
+        }
+    }
+
+    .menu-badge {
+        margin-inline-start: auto;
+        padding: 0 0.375rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        color: var(--text-secondary-color);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        line-height: 1.125rem;
+    }
+
+    .menu-subgroup {
+        margin-top: 0.75rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .menu-subgroup-label {
+        display: block;
+        padding: 0.25rem 0.5rem;
+        color: var(--high-contrast-text-color);
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .menu-subgroup .menu-list {
+        margin-inline-start: 0.5rem;
+        padding-inline-start: 0.25rem;
+        border-inline-start: 1px solid var(--border-color);
     }
 }
 
+/* Mobile drawer menu (AppMobileMenu). */
 .layout-menu {
     list-style: none;
     margin: 0;
