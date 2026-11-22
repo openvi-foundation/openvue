@@ -1,6 +1,10 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>OrderList requires an array as its value bound with the <i>v-model</i> directive and <i>option</i> template for its content.</p>
+        <p>
+            Set <i>dataKey</i> to a unique field of the items, such as <i>id</i>, so that items are matched by that field, which is also the fastest way to compare them in a large list. Without it, items are matched by deep equality, so an equal copy
+            of an item in <i>v-model:selection</i> also shows as selected. The move buttons only move the items themselves, not their copies.
+        </p>
     </DocSectionText>
     <div class="card sm:flex sm:justify-center">
         <OrderList v-model="products" dataKey="id" breakpoint="575px" pt:pcListbox:root="w-full sm:w-56">

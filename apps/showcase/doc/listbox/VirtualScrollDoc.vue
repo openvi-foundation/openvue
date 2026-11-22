@@ -5,8 +5,8 @@
             <NuxtLink to="/virtualscroller" class="doc-link">VirtualScroller</NuxtLink> for more information about the available options as it is used internally by Listbox.
         </p>
         <p>
-            With many options or a large selection, give Listbox a fast way to compare values: bind primitive values with <i>optionValue</i>, or set <i>dataKey</i> to a unique field when <i>v-model</i> holds objects. Without either, each option is
-            compared to every selected object by deep equality, which slows down as the selection grows.
+            With many options or a large selection, give Listbox a fast way to compare values: bind primitive values with <i>optionValue</i>, or set <i>dataKey</i> to a unique field when <i>v-model</i> holds objects. Without either, objects are
+            compared by deep equality. Listbox then only compares an option with the selected objects whose top-level fields hold the same values, which stays fast as long as those fields tell the objects apart, such as an id.
         </p>
     </DocSectionText>
     <div class="card flex justify-center">

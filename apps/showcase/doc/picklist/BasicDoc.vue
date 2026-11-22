@@ -1,6 +1,10 @@
 <template>
     <DocSectionText v-bind="$attrs">
         <p>PickList requires a multidimensional array as its value bound with the <i>v-model </i>directive and a template for its content that gets the <i>option</i> instance and the index via slotProps.</p>
+        <p>
+            Set <i>dataKey</i> to a unique field of the items, such as <i>id</i>, so that items are matched by that field, which is also the fastest way to compare them in a large list. Without it, items are matched by deep equality, so an equal copy
+            of an item in <i>v-model:selection</i> also shows as selected. The move and transfer buttons only move the items themselves, not their copies.
+        </p>
     </DocSectionText>
     <div class="card">
         <PickList v-model="products" dataKey="id" breakpoint="1400px">

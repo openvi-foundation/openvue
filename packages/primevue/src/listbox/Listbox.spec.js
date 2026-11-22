@@ -490,4 +490,154 @@ describe('Listbox.vue', () => {
             expect(lastEmittedValue(wrapper)).toEqual(['NY', 'RM', 'LDN', 'IST']);
         });
     });
+
+    describe('objects without dataKey', () => {
+        const items = (count) => Array.from({ length: count }, (_, i) => ({ id: i, name: `Item #${i}` }));
+
+        const mountItems = (props) => mount(Listbox, { props: { optionLabel: 'name', multiple: true, ...props } });
+
+        it('should not compare unselected options with the whole selection while rendering', async () => {
+            // Guards #730: without dataKey every unselected option was deep-compared with every selected object.
+            const options = items(20);
+            const wrapper = mountItems({ options, modelValue: [] });
+            const isEquals = vi.spyOn(wrapper.vm, 'isEquals');
+
+            await wrapper.setProps({ modelValue: options.filter((option) => option.id % 2 === 0) });
+
+            expect(selectedLabels(wrapper)).toEqual(options.filter((option) => option.id % 2 === 0).map((option) => option.name));
+            expect(isEquals).not.toHaveBeenCalled();
+        });
+
+        it('should only deep-compare an equal copy with the options it can be equal to', async () => {
+            const options = items(20);
+            const wrapper = mountItems({ options, modelValue: [] });
+            const isEquals = vi.spyOn(wrapper.vm, 'isEquals');
+
+            await wrapper.setProps({ modelValue: [{ ...options[3] }, { ...options[7] }] });
+
+            expect(selectedLabels(wrapper)).toEqual(['Item #3', 'Item #7']);
+            // Each call compares a copy with its own option, never with the other rows.
+            expect(isEquals.mock.calls.every(([value, option]) => value.id === option.id)).toBe(true);
+        });
+
+        it('should match an equal copy with its keys in a different order', () => {
+            const options = cities();
+            const wrapper = mountListbox({ multiple: true, options, modelValue: [{ code: 'RM', name: 'Rome' }] });
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome']);
+        });
+
+        it('should match a copy that has the same top-level fields only if the nested fields are equal too', async () => {
+            const options = [
+                { name: 'A', meta: { tags: ['x'] } },
+                { name: 'B', meta: { tags: ['y'] } }
+            ];
+            const wrapper = mountItems({ options, modelValue: [{ name: 'A', meta: { tags: ['x'] } }] });
+
+            expect(selectedLabels(wrapper)).toEqual(['A']);
+
+            await wrapper.setProps({ modelValue: [{ name: 'A', meta: { tags: ['z'] } }] });
+
+            expect(selectedLabels(wrapper)).toEqual([]);
+        });
+
+        it('should tell long strings with the same start apart', () => {
+            const start = 'The same first sixteen characters and then';
+            const options = [
+                { name: 'First', note: `${start} one` },
+                { name: 'Second', note: `${start} two` },
+                { name: 'Third', note: `${start} one!` }
+            ];
+            const wrapper = mountItems({ options, modelValue: [{ name: 'First', note: `${start} one` }] });
+
+            expect(selectedLabels(wrapper)).toEqual(['First']);
+        });
+
+        it('should not match a copy whose field differs only in type', () => {
+            const wrapper = mountItems({ options: [{ id: 1, name: 'One' }], modelValue: [{ id: '1', name: 'One' }] });
+
+            expect(selectedLabels(wrapper)).toEqual([]);
+        });
+
+        it('should keep showing options with equal content as selected together', () => {
+            // Distinct objects that are deeply equal are the same value for deep equality, as before #730.
+            const options = [
+                { name: 'Same', code: 'S' },
+                { name: 'Other', code: 'O' },
+                { name: 'Same', code: 'S' }
+            ];
+            const wrapper = mountItems({ options, modelValue: [options[0]] });
+
+            expect(wrapper.findAll('li.p-listbox-option').map((option) => option.attributes('aria-selected'))).toEqual(['true', 'false', 'true']);
+        });
+
+        it('should match equal copies of array and Date values', () => {
+            const day = (date) => new Date(Date.UTC(2026, 0, date));
+            const options = [
+                { name: 'Pair', value: [1, 2] },
+                { name: 'Triple', value: [1, 2, 3] },
+                { name: 'First', value: day(1) },
+                { name: 'Second', value: day(2) }
+            ];
+            const wrapper = mountItems({ options, optionValue: 'value', modelValue: [[1, 2], day(2)] });
+
+            expect(selectedLabels(wrapper)).toEqual(['Pair', 'Second']);
+        });
+
+        it('should match a reactive copy and options held in a reactive array', () => {
+            const options = reactive(cities());
+            const wrapper = mountListbox({ multiple: true, options, modelValue: reactive([{ ...cities()[1] }, options[4]]) });
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome', 'Paris']);
+        });
+
+        it('should update when a field of a selected copy changes in place', async () => {
+            const modelValue = reactive([{ name: 'Rome', code: 'XX' }]);
+            const wrapper = mountListbox({ multiple: true, modelValue });
+
+            expect(selectedLabels(wrapper)).toEqual([]);
+
+            modelValue[0].code = 'RM';
+            await nextTick();
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome']);
+
+            modelValue[0].code = 'LDN';
+            await nextTick();
+
+            expect(selectedLabels(wrapper)).toEqual([]);
+        });
+
+        it('should update when a field of an option changes in place', async () => {
+            const options = reactive(cities());
+            const wrapper = mountListbox({ multiple: true, options, modelValue: [{ name: 'Rome', code: 'XX' }] });
+
+            expect(selectedLabels(wrapper)).toEqual([]);
+
+            options[1].code = 'XX';
+            await nextTick();
+
+            expect(selectedLabels(wrapper)).toEqual(['Rome']);
+        });
+
+        it('should only compare a copy with the options it can be equal to in findSelectedOptionIndex', () => {
+            const options = items(20);
+            const wrapper = mountItems({ options, modelValue: [{ ...options[12] }, { id: 99, name: 'Missing' }] });
+            const isEquals = vi.spyOn(wrapper.vm, 'isEquals');
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(12);
+            expect(isEquals).toHaveBeenCalledTimes(1);
+        });
+
+        it('should return the first of several equal options in findSelectedOptionIndex', () => {
+            const options = [
+                { name: 'Other', code: 'O' },
+                { name: 'Same', code: 'S' },
+                { name: 'Same', code: 'S' }
+            ];
+            const wrapper = mountItems({ options, modelValue: [{ name: 'Same', code: 'S' }] });
+
+            expect(wrapper.vm.findSelectedOptionIndex()).toBe(1);
+        });
+    });
 });
