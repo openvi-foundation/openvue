@@ -61,7 +61,7 @@
 import { $dt } from '@openuxkit/styled';
 import { absolutePosition, addClass, focus, getOffset, isTouchDevice } from '@openuxkit/utils/dom';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import Button from 'openvue/button';
 import ConfirmationEventBus from 'openvue/confirmationeventbus';
 import FocusTrap from 'openvue/focustrap';
@@ -129,6 +129,7 @@ export default {
         this.unbindResizeListener();
 
         if (this.container) {
+            OverlayRegistry.unregister(this.container);
             ZIndex.clear(this.container);
             this.container = null;
         }
@@ -183,11 +184,13 @@ export default {
             this.bindResizeListener();
 
             ZIndex.set('overlay', el, this.$primevue.config.zIndex.overlay);
+            OverlayRegistry.register(el, this.target || this.$el);
         },
         onAfterEnter() {
             this.focus();
         },
-        onLeave() {
+        onLeave(el) {
+            OverlayRegistry.unregister(el);
             this.autoFocusAccept = null;
             this.autoFocusReject = null;
 

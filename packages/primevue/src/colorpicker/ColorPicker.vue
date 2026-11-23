@@ -23,7 +23,7 @@
 <script>
 import { absolutePosition, addClass, isTouchDevice, relativePosition, removeClass } from '@openuxkit/utils/dom';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
 import BaseColorPicker from './BaseColorPicker.vue';
@@ -77,6 +77,7 @@ export default {
             ZIndex.clear(this.picker);
         }
 
+        OverlayRegistry.unregister(this.picker);
         this.clearRefs();
     },
     mounted() {
@@ -364,9 +365,11 @@ export default {
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
 
+            OverlayRegistry.register(el, this.$el);
             this.$emit('show');
         },
-        onOverlayLeave() {
+        onOverlayLeave(el) {
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
