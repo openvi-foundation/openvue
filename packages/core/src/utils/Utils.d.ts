@@ -16,6 +16,25 @@ export declare class HelperSet {
     get(parentInstance?: any, slots?: any): any[] | null | undefined;
 }
 
+export declare const OverlayRegistry: {
+    /**
+     * Registers an open overlay and the element of the component that owns it.
+     */
+    register(overlay: Element | null | undefined, owner: Node | null | undefined): void;
+    /**
+     * Unregisters an overlay when it starts to hide.
+     */
+    unregister(overlay: Element | null | undefined): void;
+    /**
+     * Whether the event happened inside the container, or inside an overlay owned by a component placed in it, at any depth.
+     */
+    isInside(event: Event | null | undefined, container: Element | null | undefined): boolean;
+    /**
+     * Whether an overlay owned by a component placed in the container is open.
+     */
+    hasNestedOverlay(container: Element | null | undefined): boolean;
+};
+
 export declare class SafeTriangle {
     constructor(delay?: number);
     bind(): void;
