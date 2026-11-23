@@ -151,6 +151,35 @@ function isEquals(value1, value2) {
     return equals(value1, value2, this.equalityKey);
 }
 
+function getValueSignature(value) {
+    const type = value === null ? 'null' : typeof value;
+
+    // Long strings are summarised by length and start, equal strings still get the same signature.
+    if (type === 'string') return `s${value.length}:${value.slice(0, 16)}`;
+
+    // Nested objects and functions only by type, so the signature stays cheap.
+    if (type === 'object' || type === 'function') return type;
+
+    return `${type}:${String(value)}`;
+}
+
+// A cheap summary of an object for finding its deeply equal copies. Objects that are equal by deepEquals have the
+// same own keys and the same primitive values under them (an array: the same length and elements), so they always
+// get the same signature. Unequal objects can share one too, so a signature match is confirmed with isEquals.
+// Dates and regular expressions are compared by deepEquals without their keys, so they get a fixed signature.
+function getObjectSignature(object) {
+    if (object instanceof Date) return 'date';
+
+    if (object instanceof RegExp) return 'regexp';
+
+    if (Array.isArray(object)) return `array:${Array.from({ length: object.length }, (_, index) => getValueSignature(object[index])).join(',')}`;
+
+    return Object.keys(object)
+        .sort()
+        .map((key) => `${key}=${getValueSignature(object[key])}`)
+        .join(',');
+}
+
 export default {
     name: 'Listbox',
     extends: BaseListbox,
@@ -566,12 +595,21 @@ export default {
 
             if (this.selectedKeys.has(this.getSelectionKey(optionValue))) return true;
 
-            // Without an equalityKey, objects are compared by deep equality. An equal copy of the option has a different
-            // key, so it can only be found by comparing against each selected value. The same goes for any value when
-            // a component extending Listbox overrides isEquals with its own rule.
-            const mayMatchEqualCopy = this.usesCustomEquality || (!this.equalityKey && typeof optionValue === 'object' && optionValue !== null);
+            // A component extending Listbox may override isEquals with its own rule, which the keys can't follow.
+            if (this.usesCustomEquality) return (this.d_value || []).some((value) => this.isEquals(value, optionValue));
 
-            return mayMatchEqualCopy && (this.d_value || []).some((value) => this.isEquals(value, optionValue));
+            if (!this.mayMatchEqualCopy(optionValue)) return false;
+
+            // Without an equalityKey, objects are compared by deep equality, and an equal copy of the option has a
+            // different key. Equal objects share a signature, so only the selected objects with the option's
+            // signature need to be compared.
+            const candidates = this.selectedObjectsBySignature.get(getObjectSignature(optionValue));
+
+            return !!candidates && candidates.some((value) => this.isEquals(value, optionValue));
+        },
+        // True for values that only deep equality can match: objects, when there is no equalityKey.
+        mayMatchEqualCopy(value) {
+            return !this.equalityKey && typeof value === 'object' && value !== null;
         },
         findFirstOptionIndex() {
             return this.visibleOptions.findIndex((option) => this.isValidOption(option));
@@ -604,6 +642,9 @@ export default {
                         !optionIndexes.has(key) && optionIndexes.set(key, index);
                     });
 
+                    // Option indexes by signature, built only once a selected object has no option with its key.
+                    let optionIndexesBySignature = null;
+
                     // Newest selected value first.
                     for (let index = this.d_value.length - 1; index >= 0; index--) {
                         const value = this.d_value[index];
@@ -611,12 +652,31 @@ export default {
 
                         if (matchedOptionIndex !== undefined) return matchedOptionIndex;
 
-                        // Same fallback as isSelected: an equal copy of an option object, or a value only an overridden
-                        // isEquals matches, has a different key.
-                        if (this.usesCustomEquality || (!this.equalityKey && typeof value === 'object' && value !== null)) {
+                        // Same fallback as isSelected: a value only an overridden isEquals matches, or an equal copy of
+                        // an option object, has a different key.
+                        if (this.usesCustomEquality) {
                             const copyIndex = this.visibleOptions.findIndex((option) => this.isValidOption(option) && this.isEquals(value, this.getOptionValue(option)));
 
                             if (copyIndex > -1) return copyIndex;
+                        } else if (this.mayMatchEqualCopy(value)) {
+                            if (!optionIndexesBySignature) {
+                                optionIndexesBySignature = new Map();
+
+                                this.visibleOptions.forEach((option, optionIndex) => {
+                                    const optionValue = this.getOptionValue(option);
+
+                                    if (!this.isValidOption(option) || !this.mayMatchEqualCopy(optionValue)) return;
+
+                                    const signature = getObjectSignature(optionValue);
+
+                                    optionIndexesBySignature.has(signature) ? optionIndexesBySignature.get(signature).push(optionIndex) : optionIndexesBySignature.set(signature, [optionIndex]);
+                                });
+                            }
+
+                            // The indexes are in option order, so this is the option findIndex would return.
+                            const copyIndex = (optionIndexesBySignature.get(getObjectSignature(value)) || []).find((optionIndex) => this.isEquals(value, this.getOptionValue(this.visibleOptions[optionIndex])));
+
+                            if (copyIndex !== undefined) return copyIndex;
                         }
                     }
                 } else {
@@ -779,6 +839,21 @@ export default {
         // (push, splice) rebuild the set.
         selectedKeys() {
             return new Set((this.d_value || []).map((value) => this.getSelectionKey(value)));
+        },
+        // The selected objects that deep equality may match, grouped by signature, so isSelected only compares an option
+        // with the selected objects that can be equal to it instead of with the whole selection.
+        selectedObjectsBySignature() {
+            const objects = new Map();
+
+            (this.d_value || []).forEach((value) => {
+                if (!this.mayMatchEqualCopy(value)) return;
+
+                const signature = getObjectSignature(value);
+
+                objects.has(signature) ? objects.get(signature).push(value) : objects.set(signature, [value]);
+            });
+
+            return objects;
         },
         searchFields() {
             return this.filterFields || [this.optionLabel];
