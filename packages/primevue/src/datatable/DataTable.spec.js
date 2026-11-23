@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import Button from 'openvue/button';
 import PrimeVue from 'openvue/config';
 import InputText from 'openvue/inputtext';
-import { defineComponent, nextTick } from 'vue';
+import { defineComponent, nextTick, reactive, toRaw } from 'vue';
 import Column from '../column/Column.vue';
 import ColumnGroup from '../columngroup/ColumnGroup.vue';
 import Row from '../row/Row.vue';
@@ -1981,5 +1981,527 @@ describe('DataTable.vue', () => {
 
         expect(wrapper.findAll('.p-datatable-row-group-header')).toHaveLength(1);
         expect(wrapper.findAll('.p-datatable-row-group-footer')).toHaveLength(2);
+    });
+});
+
+describe('DataTable multiple selection', () => {
+    const products = () => [
+        { id: 1, name: 'Bamboo Watch', category: 'Accessories' },
+        { id: 2, name: 'Black Watch', category: 'Accessories' },
+        { id: 3, name: 'Blue Band', category: 'Fitness' },
+        { id: 4, name: 'Blue T-Shirt', category: 'Clothing' },
+        { id: 5, name: 'Bracelet', category: 'Accessories' }
+    ];
+
+    const mountTable = (props = {}, component = DataTable) =>
+        mount(component, {
+            global: { plugins: [PrimeVue], components: { Column } },
+            props: { selection: null, ...props },
+            slots: {
+                default: `
+                    <Column selectionMode="multiple" />
+                    <Column field="name" header="Name" />
+                `
+            }
+        });
+
+    const rowNames = (wrapper) => wrapper.findAll('tbody tr[data-p-index]').map((row) => row.findAll('td').at(-1).text());
+
+    const checkedRowNames = (wrapper) =>
+        wrapper
+            .findAll('tbody tr[data-p-index]')
+            .filter((row) => row.find('input[type="checkbox"]').element.checked)
+            .map((row) => row.findAll('td').at(-1).text());
+
+    const headerCheckbox = (wrapper) => wrapper.find('thead input[type="checkbox"]');
+
+    const headerChecked = (wrapper) => headerCheckbox(wrapper).element.checked;
+
+    const lastSelection = (wrapper) => wrapper.emitted('update:selection').at(-1)[0];
+
+    // Feeds the emitted selection back in, as v-model:selection would.
+    const applySelection = (wrapper) => wrapper.setProps({ selection: lastSelection(wrapper) });
+
+    describe('row matching', () => {
+        it('should match rows by the dataKey field only', () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', selection: [{ id: 2, name: 'Black Watch (copy)' }, { id: 4 }] });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch', 'Blue T-Shirt']);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should check the header when every row matches by the dataKey field', () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', selection: value.map((row) => ({ id: row.id })) });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should compare dataKey values as strings in the rows and the header', () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', selection: value.map((row) => ({ id: String(row.id) })) });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should match the row objects by reference without dataKey', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [value[1], value[3]] });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch', 'Blue T-Shirt']);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should match equal copies of the rows by deep equality without dataKey', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [{ ...value[1] }, { ...value[3] }] });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch', 'Blue T-Shirt']);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should check the header when every row has an equal copy in the selection', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: value.map((row) => ({ ...row })).reverse() });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should check the header when references and equal copies are mixed', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [value[0], { ...value[1] }, value[2], { ...value[3] }, value[4]] });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should not match a copy that differs in any field without dataKey', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [{ ...value[1], name: 'Black Watch (copy)' }] });
+
+            expect(checkedRowNames(wrapper)).toEqual([]);
+        });
+
+        it('should match the reactive proxy of a row with its original object', () => {
+            const value = reactive(products());
+            const wrapper = mountTable({ value, selection: [toRaw(value[1]), toRaw(value[3])] });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch', 'Blue T-Shirt']);
+        });
+
+        it('should match rows only by reference with compareSelectionBy equals', () => {
+            const value = products();
+            const wrapper = mountTable({ value, compareSelectionBy: 'equals', selection: [value[1], { ...value[3] }] });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch']);
+        });
+
+        it('should check the header with compareSelectionBy equals only when every row is selected by reference', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, compareSelectionBy: 'equals', selection: value.map((row) => ({ ...row })) });
+
+            expect(checkedRowNames(wrapper)).toEqual([]);
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ selection: [...value] });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should match rows by the dataKey field with compareSelectionBy equals', () => {
+            // The row checkboxes and the header checkbox both use dataKey when it's set.
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', compareSelectionBy: 'equals', selection: value.map((row) => ({ ...row })) });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+    });
+
+    describe('header checkbox', () => {
+        it('should be checked only when every row is selected', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [] });
+
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ selection: value.slice(0, 4) });
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ selection: [...value] });
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.setProps({ selection: value.slice(1) });
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should stay checked when the selection also holds rows that are not in the table', () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', selection: [...value, { id: 99, name: 'Other' }] });
+
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should not be checked when the table has no rows', () => {
+            const wrapper = mountTable({ value: [], selection: [] });
+
+            expect(wrapper.vm.allRowsSelected).toBe(false);
+        });
+
+        it('should cover every page, not only the rendered one', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', paginator: true, rows: 2, selection: value.slice(0, 2) });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch', 'Black Watch']);
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ selection: [...value] });
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.setProps({ first: 4 });
+            expect(rowNames(wrapper)).toEqual(['Bracelet']);
+            expect(checkedRowNames(wrapper)).toEqual(['Bracelet']);
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should cover only the rows that pass the filters', async () => {
+            const value = products();
+            const wrapper = mountTable({
+                value,
+                selection: [value[0], value[1]],
+                globalFilterFields: ['name'],
+                filters: { global: { value: 'watch', matchMode: FilterMatchMode.CONTAINS } }
+            });
+
+            expect(rowNames(wrapper)).toEqual(['Bamboo Watch', 'Black Watch']);
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.setProps({ filters: { global: { value: 'b', matchMode: FilterMatchMode.CONTAINS } } });
+
+            expect(rowNames(wrapper)).toEqual(['Bamboo Watch', 'Black Watch', 'Blue Band', 'Blue T-Shirt', 'Bracelet']);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should include the frozen rows', async () => {
+            const value = products();
+            const frozenValue = [{ id: 0, name: 'Frozen Row', category: 'Pinned' }];
+            const wrapper = mountTable({ value, frozenValue, dataKey: 'id', selection: [...value] });
+
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ selection: [...frozenValue, ...value] });
+
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should cover only the current page in lazy mode', () => {
+            const value = products().slice(0, 2);
+            const wrapper = mountTable({ value, lazy: true, paginator: true, rows: 2, totalRecords: 5, selection: [...value] });
+
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should follow the selectAll prop when it is set', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [], selectAll: true });
+
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.setProps({ selection: [...value], selectAll: false });
+
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should select and unselect all rows when clicked', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', paginator: true, rows: 2, selection: [] });
+
+            await headerCheckbox(wrapper).trigger('change');
+            expect(lastSelection(wrapper)).toEqual(value);
+            expect(wrapper.emitted('row-select-all')[0][0].data).toEqual(value);
+
+            await applySelection(wrapper);
+            expect(headerChecked(wrapper)).toBe(true);
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch', 'Black Watch']);
+
+            await headerCheckbox(wrapper).trigger('change');
+            expect(lastSelection(wrapper)).toEqual([]);
+            expect(wrapper.emitted('row-unselect-all')).toHaveLength(1);
+
+            await applySelection(wrapper);
+            expect(headerChecked(wrapper)).toBe(false);
+            expect(checkedRowNames(wrapper)).toEqual([]);
+        });
+
+        it('should emit select-all-change instead of changing the selection when selectAll is set', async () => {
+            const wrapper = mountTable({ value: products(), selection: [], selectAll: false });
+
+            await headerCheckbox(wrapper).trigger('change');
+
+            expect(wrapper.emitted('select-all-change')[0][0].checked).toBe(true);
+            expect(wrapper.emitted('update:selection')).toBeUndefined();
+        });
+    });
+
+    describe('row toggle', () => {
+        it('should add and remove a row with its checkbox', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [value[0], value[1], value[2], value[3]] });
+
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.findAll('tbody input[type="checkbox"]')[4].trigger('change');
+            expect(lastSelection(wrapper)).toEqual(value);
+            expect(wrapper.emitted('row-select')[0][0].data).toEqual(value[4]);
+
+            await applySelection(wrapper);
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.findAll('tbody input[type="checkbox"]')[1].trigger('change');
+            expect(lastSelection(wrapper)).toEqual([value[0], value[2], value[3], value[4]]);
+            expect(wrapper.emitted('row-unselect')[0][0].data).toEqual(value[1]);
+
+            await applySelection(wrapper);
+            expect(headerChecked(wrapper)).toBe(false);
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch', 'Blue Band', 'Blue T-Shirt', 'Bracelet']);
+        });
+
+        it('should remove an equal copy from the selection without dataKey', () => {
+            const value = products();
+            const copy = { ...value[1] };
+            const wrapper = mountTable({ value, selection: [value[0], copy] });
+
+            wrapper.vm.toggleRowWithCheckbox({ originalEvent: {}, data: value[1], index: 1 });
+
+            expect(lastSelection(wrapper)).toEqual([value[0]]);
+            expect(wrapper.emitted('row-unselect')[0][0].data).toBe(value[1]);
+        });
+
+        it('should remove a row matched by the dataKey field', () => {
+            const value = products();
+            const wrapper = mountTable({ value, dataKey: 'id', selection: [{ id: 1 }, { id: 2 }] });
+
+            wrapper.vm.toggleRowWithCheckbox({ originalEvent: {}, data: value[1], index: 1 });
+
+            expect(lastSelection(wrapper)).toEqual([{ id: 1 }]);
+        });
+
+        it('should add an equal copy instead of removing it with compareSelectionBy equals', () => {
+            const value = products();
+            const copy = { ...value[1] };
+            const wrapper = mountTable({ value, compareSelectionBy: 'equals', selection: [copy] });
+
+            wrapper.vm.toggleRowWithCheckbox({ originalEvent: {}, data: value[1], index: 1 });
+
+            expect(lastSelection(wrapper)).toEqual([copy, value[1]]);
+            expect(lastSelection(wrapper)[1]).toBe(value[1]);
+        });
+
+        it('should tell whether a row is selected from isSelected', () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [value[0], { ...value[2] }] });
+
+            expect(value.map((row) => wrapper.vm.isSelected(row))).toEqual([true, false, true, false, false]);
+        });
+    });
+
+    describe('selection changes', () => {
+        it.each([
+            ['with dataKey', { dataKey: 'id' }],
+            ['without dataKey', {}],
+            ['with compareSelectionBy equals', { compareSelectionBy: 'equals' }]
+        ])('should update when the selection array is changed in place %s', async (_, props) => {
+            const value = products();
+            const selection = reactive([value[0]]);
+            const wrapper = mountTable({ value, selection, ...props });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch']);
+
+            selection.push(value[2]);
+            await nextTick();
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch', 'Blue Band']);
+
+            // Same length, different content: catches lookups that only watch the array length.
+            selection[0] = value[1];
+            await nextTick();
+            expect(checkedRowNames(wrapper)).toEqual(['Black Watch', 'Blue Band']);
+
+            selection.push(value[0], value[3], value[4]);
+            await nextTick();
+            expect(headerChecked(wrapper)).toBe(true);
+
+            selection.splice(1, 1);
+            await nextTick();
+            expect(checkedRowNames(wrapper)).toEqual(['Bamboo Watch', 'Black Watch', 'Blue T-Shirt', 'Bracelet']);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it.each([
+            ['with dataKey', { dataKey: 'id' }],
+            ['without dataKey', {}],
+            ['with compareSelectionBy equals', { compareSelectionBy: 'equals' }]
+        ])('should update when the selection is replaced %s', async (_, props) => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: [value[0]], ...props });
+
+            await wrapper.setProps({ selection: [value[3], value[4]] });
+            expect(checkedRowNames(wrapper)).toEqual(['Blue T-Shirt', 'Bracelet']);
+
+            await wrapper.setProps({ selection: null });
+            expect(checkedRowNames(wrapper)).toEqual([]);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+
+        it('should update when the rows change', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: value.slice(0, 3) });
+
+            expect(headerChecked(wrapper)).toBe(false);
+
+            await wrapper.setProps({ value: value.slice(0, 3) });
+
+            expect(headerChecked(wrapper)).toBe(true);
+        });
+
+        it('should update when compareSelectionBy changes', async () => {
+            const value = products();
+            const wrapper = mountTable({ value, selection: value.map((row) => ({ ...row })) });
+
+            expect(headerChecked(wrapper)).toBe(true);
+
+            await wrapper.setProps({ compareSelectionBy: 'equals' });
+
+            expect(checkedRowNames(wrapper)).toEqual([]);
+            expect(headerChecked(wrapper)).toBe(false);
+        });
+    });
+
+    describe('single selection', () => {
+        const mountSingle = (props) =>
+            mount(DataTable, {
+                global: { plugins: [PrimeVue], components: { Column } },
+                props: { selectionMode: 'single', ...props },
+                slots: { default: '<Column field="name" header="Name" />' }
+            });
+
+        const selectedRows = (wrapper) =>
+            wrapper
+                .findAll('tbody tr[data-p-index]')
+                .filter((row) => row.attributes('aria-selected') === 'true')
+                .map((row) => row.text());
+
+        it('should match an equal copy without dataKey', () => {
+            const value = products();
+            const wrapper = mountSingle({ value, selection: { ...value[2] } });
+
+            expect(selectedRows(wrapper)).toEqual(['Blue Band']);
+        });
+
+        it('should match by the dataKey field', () => {
+            const wrapper = mountSingle({ value: products(), dataKey: 'id', selection: { id: 4 } });
+
+            expect(selectedRows(wrapper)).toEqual(['Blue T-Shirt']);
+        });
+
+        it('should match only by reference with compareSelectionBy equals', async () => {
+            const value = products();
+            const wrapper = mountSingle({ value, compareSelectionBy: 'equals', selection: { ...value[2] } });
+
+            expect(selectedRows(wrapper)).toEqual([]);
+
+            await wrapper.setProps({ selection: value[2] });
+
+            expect(selectedRows(wrapper)).toEqual(['Blue Band']);
+        });
+
+        it('should select a clicked row', async () => {
+            const value = products();
+            const wrapper = mountSingle({ value, dataKey: 'id', selection: null });
+
+            await wrapper.findAll('tbody tr[data-p-index]')[3].trigger('click');
+
+            expect(lastSelection(wrapper)).toEqual(value[3]);
+        });
+    });
+
+    describe('comparisons', () => {
+        // Guards #729: the header checkbox compared every row against every selected row, and without dataKey each
+        // rendered row searched the whole selection with deep equality.
+        const spyOnEquals = (wrapper) => [wrapper.vm, ...wrapper.findAllComponents({ name: 'BodyRow' }).map((row) => row.vm)].map((vm) => vi.spyOn(vm, 'equals'));
+
+        const callCount = (spies) => spies.reduce((count, spy) => count + spy.mock.calls.length, 0);
+
+        it.each([
+            ['with dataKey', { dataKey: 'id' }, (value) => value.map((row) => ({ id: row.id }))],
+            ['without dataKey', {}, (value) => [...value]],
+            ['with compareSelectionBy equals', { compareSelectionBy: 'equals' }, (value) => [...value]]
+        ])('should not compare rows against the selection when every row is selected %s', async (_, props, select) => {
+            const value = Array.from({ length: 50 }, (_, i) => ({ id: i, name: `Product ${i}` }));
+            const wrapper = mountTable({ value, paginator: true, rows: 10, selection: [], ...props });
+            const spies = spyOnEquals(wrapper);
+
+            await wrapper.setProps({ selection: select(value).reverse() });
+
+            expect(headerChecked(wrapper)).toBe(true);
+            expect(checkedRowNames(wrapper)).toHaveLength(10);
+
+            await wrapper.setProps({ first: 40 });
+
+            expect(checkedRowNames(wrapper)).toEqual(rowNames(wrapper));
+            expect(callCount(spies)).toBe(0);
+        });
+
+        it.each([
+            ['with dataKey', { dataKey: 'id' }],
+            ['with compareSelectionBy equals', { compareSelectionBy: 'equals' }]
+        ])('should not compare unselected rows against the selection %s', async (_, props) => {
+            const value = Array.from({ length: 50 }, (_, i) => ({ id: i, name: `Product ${i}` }));
+            const wrapper = mountTable({ value, paginator: true, rows: 10, selection: [], ...props });
+            const spies = spyOnEquals(wrapper);
+
+            await wrapper.setProps({ selection: value.filter((row) => row.id % 2 === 0) });
+
+            expect(checkedRowNames(wrapper)).toEqual(['Product 0', 'Product 2', 'Product 4', 'Product 6', 'Product 8']);
+            expect(headerChecked(wrapper)).toBe(false);
+            expect(callCount(spies)).toBe(0);
+        });
+
+        it('should search the selection for equal copies only for rows that are not selected by reference', async () => {
+            const value = Array.from({ length: 50 }, (_, i) => ({ id: i, name: `Product ${i}` }));
+            const wrapper = mountTable({ value, paginator: true, rows: 10, selection: [] });
+            const spies = spyOnEquals(wrapper);
+            const selection = value.filter((row) => row.id !== 45);
+
+            await wrapper.setProps({ selection });
+
+            // The header stops at the first row that is not selected (row 45) and searches the selection once for a copy.
+            expect(headerChecked(wrapper)).toBe(false);
+            expect(spies[0]).toHaveBeenCalledTimes(selection.length);
+            // The rendered rows are all selected by reference.
+            expect(callCount(spies.slice(1))).toBe(0);
+        });
+
+        it('should use the overridden equals of a component that extends DataTable', () => {
+            // A component that extends DataTable with its own equality rule, here names compared case-insensitively.
+            const CaseInsensitiveDataTable = {
+                extends: DataTable,
+                render: DataTable.render,
+                methods: {
+                    equals(data1, data2) {
+                        return data1.name.toLowerCase() === data2.name.toLowerCase();
+                    }
+                }
+            };
+            const value = products();
+            const wrapper = mountTable({ value, selection: value.map((row) => ({ name: row.name.toUpperCase() })) }, CaseInsensitiveDataTable);
+
+            expect(wrapper.vm.allRowsSelected).toBe(true);
+            expect(wrapper.vm.isSelected(value[2])).toBe(true);
+        });
     });
 });

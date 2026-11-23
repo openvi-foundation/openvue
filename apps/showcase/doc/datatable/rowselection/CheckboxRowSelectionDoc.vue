@@ -2,6 +2,10 @@
     <DocSectionText v-bind="$attrs">
         <p>Specifying <i>selectionMode</i> as <i>multiple</i> on a Column, displays a checkbox inside that column for selection.</p>
         <p>The header checkbox toggles the selection state of the whole dataset by default, when paginator is enabled you may add <i>selectAll</i> property and <i>select-all-change</i> event to only control the selection of visible rows.</p>
+        <p>
+            With many rows or a large selection, set <i>dataKey</i> to a unique field so rows are matched by that field. Without it, each row that isn't one of the selected objects itself, such as a copy loaded again from a server, is compared to
+            every selected row by deep equality, which slows down as the selection grows. The header checkbox is checked when every row checkbox is checked.
+        </p>
     </DocSectionText>
     <DeferredDemo @load="loadDemoData">
         <div class="card">

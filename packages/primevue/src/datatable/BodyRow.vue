@@ -98,7 +98,7 @@ import BaseComponent from '@openvue/core/basecomponent';
 import { getVNodeProp } from '@openvue/core/utils';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronRightIcon from '@openvue/icons/chevronright';
-import { mergeProps } from 'vue';
+import { mergeProps, toRaw } from 'vue';
 import BodyCell from './BodyCell.vue';
 
 export default {
@@ -200,6 +200,10 @@ export default {
         },
         selectionKeys: {
             type: null,
+            default: null
+        },
+        selectionSet: {
+            type: Set,
             default: null
         },
         selectionMode: {
@@ -542,8 +546,14 @@ export default {
                 if (this.dataKey) {
                     return this.selectionKeys ? this.selectionKeys[resolveFieldData(this.rowData, this.dataKey)] !== undefined : false;
                 } else {
-                    if (this.selection instanceof Array) return this.findIndexInSelection(this.rowData) > -1;
-                    else return this.equals(this.rowData, this.selection);
+                    if (this.selection instanceof Array) {
+                        // selectionSet holds the selection keys of the selected rows (see DataTable getSelectionKey).
+                        if (this.selectionSet?.has(this.compareSelectionBy === 'equals' ? this.rowData : toRaw(this.rowData))) return true;
+
+                        // With deepEquals, an equal copy of a selected row has a different key, so it can only be found by
+                        // comparing against each selected row.
+                        return (this.compareSelectionBy !== 'equals' || !this.selectionSet) && this.findIndexInSelection(this.rowData) > -1;
+                    } else return this.equals(this.rowData, this.selection);
                 }
             }
 
