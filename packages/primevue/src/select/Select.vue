@@ -212,7 +212,7 @@ import { absolutePosition, addStyle, findSingle, focus, getFirstFocusableElement
 import { equals, findLastIndex, isNotEmpty, isPrintableCharacter, resolveFieldData } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
 import { FilterService } from '@openvue/core/api';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import BlankIcon from '@openvue/icons/blank';
 import CheckIcon from '@openvue/icons/check';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
@@ -286,6 +286,7 @@ export default {
         }
 
         if (this.overlay) {
+            OverlayRegistry.unregister(this.overlay);
             ZIndex.clear(this.overlay);
             this.overlay = null;
         }
@@ -736,6 +737,8 @@ export default {
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
 
+            OverlayRegistry.register(el, this.$el);
+
             setTimeout(() => {
                 this.autoFilterFocus && this.filter && focus(this.$refs.filterInput.$el);
                 this.autoUpdateModel();
@@ -750,6 +753,7 @@ export default {
         },
         onOverlayLeave(el) {
             el.style.pointerEvents = 'none';
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
@@ -782,7 +786,7 @@ export default {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
                     const composedPath = event.composedPath();
-                    if (this.overlayVisible && this.overlay && !composedPath.includes(this.$el) && !composedPath.includes(this.overlay)) {
+                    if (this.overlayVisible && this.overlay && !composedPath.includes(this.$el) && !composedPath.includes(this.overlay) && !OverlayRegistry.isInside(event, this.overlay) && !OverlayRegistry.hasNestedOverlay(this.overlay)) {
                         this.hide();
                     }
                 };

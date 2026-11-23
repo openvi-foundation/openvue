@@ -573,7 +573,7 @@ import { cn } from '@openuxkit/utils';
 import { absolutePosition, addStyle, find, findSingle, getAttribute, getFocusableElements, getIndex, getOuterWidth, isTouchDevice, relativePosition, setAttribute } from '@openuxkit/utils/dom';
 import { isDate, isEmpty, isNotEmpty, localeComparator } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import CalendarIcon from '@openvue/icons/calendar';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import ChevronLeftIcon from '@openvue/icons/chevronleft';
@@ -599,8 +599,6 @@ export default {
     timePickerChange: false,
     scrollHandler: null,
     outsideClickListener: null,
-    selfClick: false,
-    overlayEventListener: null,
     resizeListener: null,
     matchMediaListener: null,
     matchMediaOrientationListener: null,
@@ -723,11 +721,6 @@ export default {
 
         this.destroyResponsiveStyleElement();
 
-        if (this.overlayEventListener) {
-            OverlayEventBus.off('overlay-click', this.overlayEventListener);
-            this.overlayEventListener = null;
-        }
-
         this.unbindOutsideClickListener();
         this.unbindResizeListener();
         this.unbindMatchMediaListener();
@@ -742,6 +735,7 @@ export default {
             ZIndex.clear(this.overlay);
         }
 
+        OverlayRegistry.unregister(this.overlay);
         this.overlay = null;
     },
     methods: {
@@ -954,14 +948,7 @@ export default {
 
             this.alignOverlay();
 
-            // Issue: #571
-            this.overlayEventListener = (e) => {
-                if (this.overlay && this.overlay.contains(e.target)) {
-                    this.selfClick = true;
-                }
-            };
-
-            OverlayEventBus.on('overlay-click', this.overlayEventListener);
+            OverlayRegistry.register(el, this.$el);
             this.$emit('show');
         },
         onOverlayEnterComplete() {
@@ -974,13 +961,12 @@ export default {
                 ZIndex.clear(el);
             }
         },
-        onOverlayLeave() {
+        onOverlayLeave(el) {
             this.currentView = this.view;
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
-            OverlayEventBus.off('overlay-click', this.overlayEventListener);
-            this.overlayEventListener = null;
+            OverlayRegistry.unregister(el);
             this.$emit('hide');
 
             this.overlay = null;
@@ -1113,11 +1099,9 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && this.isOutsideClicked(event) && !OverlayRegistry.isInside(event, this.overlay) && !OverlayRegistry.hasNestedOverlay(this.overlay)) {
                         this.overlayVisible = false;
                     }
-
-                    this.selfClick = false;
                 };
 
                 document.addEventListener('mousedown', this.outsideClickListener);
@@ -1127,7 +1111,6 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('mousedown', this.outsideClickListener);
                 this.outsideClickListener = null;
-                this.selfClick = false;
             }
         },
         bindScrollListener() {
@@ -1207,10 +1190,6 @@ export default {
         isOutsideClicked(event) {
             const composedPath = event.composedPath();
             return !(this.$el.isSameNode(event.target) || this.isNavIconClicked(event) || composedPath.includes(this.$el) || composedPath.includes(this.overlay));
-        },
-        isNestedOverlayVisible() {
-            // Issue: #571
-            return !!this.overlay?.querySelector('[aria-expanded="true"]');
         },
         isNavIconClicked(event) {
             return (this.previousButton && (this.previousButton.isSameNode(event.target) || this.previousButton.contains(event.target))) || (this.nextButton && (this.nextButton.isSameNode(event.target) || this.nextButton.contains(event.target)));

@@ -45,7 +45,7 @@
 import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice } from '@openuxkit/utils/dom';
 import { findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, resolve } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler, SafeTriangle } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry, SafeTriangle } from '@openvue/core/utils';
 import OverlayEventBus from 'openvue/overlayeventbus';
 import Portal from 'openvue/portal';
 import BaseTieredMenu from './BaseTieredMenu.vue';
@@ -116,6 +116,7 @@ export default {
         }
 
         this.target = null;
+        OverlayRegistry.unregister(this.container);
         this.container = null;
     },
     methods: {
@@ -442,6 +443,8 @@ export default {
             this.alignOverlay();
             focus(this.menubar);
             this.scrollInView();
+
+            this.popup && OverlayRegistry.register(el, this.target || this.$el);
         },
         onAfterEnter() {
             this.bindOutsideClickListener();
@@ -450,7 +453,8 @@ export default {
 
             this.$emit('show');
         },
-        onLeave() {
+        onLeave(el) {
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();

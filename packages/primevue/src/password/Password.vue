@@ -82,7 +82,7 @@
 import { cn } from '@openuxkit/utils';
 import { absolutePosition, addStyle, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import EyeIcon from '@openvue/icons/eye';
 import EyeSlashIcon from '@openvue/icons/eyeslash';
 import TimesIcon from '@openvue/icons/times';
@@ -127,6 +127,7 @@ export default {
         }
 
         if (this.overlay) {
+            OverlayRegistry.unregister(this.overlay);
             ZIndex.clear(this.overlay);
             this.overlay = null;
         }
@@ -142,8 +143,11 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            OverlayRegistry.register(el, this.$el);
         },
-        onOverlayLeave() {
+        onOverlayLeave(el) {
+            OverlayRegistry.unregister(el);
             this.unbindScrollListener();
             this.unbindResizeListener();
             this.overlay = null;

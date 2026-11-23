@@ -212,7 +212,7 @@ import { cn } from '@openuxkit/utils';
 import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
 import { equals, findLastIndex, isEmpty, isNotEmpty, resolveFieldData } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import SpinnerIcon from '@openvue/icons/spinner';
 import TimesIcon from '@openvue/icons/times';
@@ -242,8 +242,6 @@ export default {
     resizeListener: null,
     scrollHandler: null,
     overlay: null,
-    selfClick: false,
-    overlayEventListener: null,
     virtualScroller: null,
     searchTimeout: null,
     dirty: false,
@@ -288,13 +286,9 @@ export default {
         }
 
         if (this.overlay) {
+            OverlayRegistry.unregister(this.overlay);
             ZIndex.clear(this.overlay);
             this.overlay = null;
-        }
-
-        if (this.overlayEventListener) {
-            OverlayEventBus.off('overlay-click', this.overlayEventListener);
-            this.overlayEventListener = null;
         }
     },
     methods: {
@@ -820,13 +814,7 @@ export default {
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
 
-            this.overlayEventListener = (e) => {
-                if (this.overlay && this.overlay.contains(e.target)) {
-                    this.selfClick = true;
-                }
-            };
-
-            OverlayEventBus.on('overlay-click', this.overlayEventListener);
+            OverlayRegistry.register(el, this.$el);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -840,8 +828,7 @@ export default {
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
-            OverlayEventBus.off('overlay-click', this.overlayEventListener);
-            this.overlayEventListener = null;
+            OverlayRegistry.unregister(el);
 
             this.$emit('hide');
             this.overlay = null;
@@ -862,11 +849,9 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.overlay && !this.selfClick && !this.isNestedOverlayVisible() && this.isOutsideClicked(event)) {
+                    if (this.overlayVisible && this.overlay && this.isOutsideClicked(event) && !OverlayRegistry.isInside(event, this.overlay) && !OverlayRegistry.hasNestedOverlay(this.overlay)) {
                         this.hide();
                     }
-
-                    this.selfClick = false;
                 };
 
                 document.addEventListener('click', this.outsideClickListener, true);
@@ -876,7 +861,6 @@ export default {
             if (this.outsideClickListener) {
                 document.removeEventListener('click', this.outsideClickListener, true);
                 this.outsideClickListener = null;
-                this.selfClick = false;
             }
         },
         bindScrollListener() {
@@ -914,9 +898,6 @@ export default {
         },
         isOutsideClicked(event) {
             return !this.overlay.contains(event.target) && !this.isInputClicked(event) && !this.isDropdownClicked(event);
-        },
-        isNestedOverlayVisible() {
-            return !!this.overlay?.querySelector('[aria-expanded="true"]');
         },
         isInputClicked(event) {
             if (this.multiple) return event.target === this.$refs.multiContainer || this.$refs.multiContainer.contains(event.target);
