@@ -21,7 +21,7 @@ Screen Reader Value to describe the component can either be provided with aria-l
 
 ## Basic
 
-MultiSelect is used with the v-model property for two-way value binding along with the options collection. Label and value of an option are defined with the optionLabel and optionValue properties respectively. Note that, when options are simple primitive values such as a string array, no optionLabel and optionValue would be necessary.
+MultiSelect is used with the v-model property for two-way value binding along with the options collection. Label and value of an option are defined with the optionLabel and optionValue properties respectively. Note that, when options are simple primitive values such as a string array, no optionLabel and optionValue would be necessary. MultiSelect picks up every change to the selection array that Vue can track, such as calling push or splice on an array held in a ref or reactive , or assigning a new array. Changes Vue doesn't track, such as pushing into a shallowRef or markRaw array, are not detected; assign a new array instead, e.g. selected.value = [...selected.value, item] .
 
 ```vue
 <MultiSelect v-model="selectedCities" :options="cities" optionLabel="name" filter placeholder="Select Cities"
@@ -614,7 +614,7 @@ const countries = ref([
 
 ## VirtualScroll
 
-VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by MultiSelect.
+VirtualScroller is used to render a long list of options efficiently like 100K records in this demo. The configuration is done with virtualScrollerOptions property, refer to the VirtualScroller for more information about the available options as it is used internally by MultiSelect. With many options or a large selection, give MultiSelect a fast way to compare values: bind primitive values with optionValue , or set dataKey to a unique field when v-model holds objects. Without either, an option that isn't itself one of the selected objects is compared to every selected object by deep equality, which slows down as the selection grows.
 
 ```vue
 <MultiSelect v-model="selectedItems" :options="items" :maxSelectedLabels="3" :selectAll="selectAll" optionLabel="label" optionValue="value"

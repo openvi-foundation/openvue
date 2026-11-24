@@ -528,7 +528,7 @@ const search = (event) => {
 
 ## Multiple
 
-Multiple mode is enabled using multiple property used to select more than one value from the autocomplete. In this case, value reference should be an array.
+Multiple mode is enabled using multiple property used to select more than one value from the autocomplete. In this case, value reference should be an array. When the value holds objects and many of them can be selected, set dataKey to a unique field of the suggestions. Suggestions are then matched to the selected values by that field, which stays fast with a large selection. Without it, a suggestion that isn't the same object as a selected value, such as one returned again by a new search, is compared to every selected object by deep equality, which slows down as the selection grows. AutoComplete picks up every change to the value array that Vue can track, such as calling push or splice on an array held in a ref or reactive , or assigning a new array. Changes Vue doesn't track, such as pushing into a shallowRef or markRaw array, are not detected; assign a new array instead, e.g. selected.value = [...selected.value, item] .
 
 ```vue
 <label for="multiple-ac-1" class="font-bold mb-2 block">With Typeahead</label>
@@ -727,7 +727,7 @@ const search = (event) => {
 
 ## Virtual Scroll
 
-Virtual Scrolling is a performant way to render large lists. Configuration of the scroll behavior is defined with virtualScrollerOptions that requires itemSize as the mandatory value to set the height of an item. Visit VirtualScroller documentation for more information about the configuration API.
+Virtual Scrolling is a performant way to render large lists. Configuration of the scroll behavior is defined with virtualScrollerOptions that requires itemSize as the mandatory value to set the height of an item. Visit VirtualScroller documentation for more information about the configuration API. With many suggestions and a large multiple selection of objects, set dataKey to a unique field so suggestions are matched to the selection by that field. Without it, each suggestion that isn't the same object as a selected value is compared to every selected object by deep equality.
 
 ```vue
 <AutoComplete v-model="selectedItem" :suggestions="filteredItems" @complete="searchItems"
