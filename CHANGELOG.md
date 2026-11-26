@@ -8,6 +8,10 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Fixed
+
+- A disabled `Slider` can no longer be focused with Tab or changed with the keyboard. ([#744](https://github.com/openvi-foundation/openvue/issues/744))
+
 ## [1.2.0] - 2026-11-24
 
 ### Changed
