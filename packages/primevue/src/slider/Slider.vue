@@ -11,7 +11,7 @@
             @mousedown="onMouseDown($event)"
             @keydown="onKeyDown($event)"
             @blur="onBlur($event)"
-            :tabindex="tabindex"
+            :tabindex="disabled ? -1 : tabindex"
             role="slider"
             :aria-valuemin="min"
             :aria-valuenow="d_value"
@@ -19,6 +19,7 @@
             :aria-labelledby="ariaLabelledby"
             :aria-label="ariaLabel"
             :aria-orientation="orientation"
+            :aria-disabled="disabled"
             v-bind="ptm('handle')"
             :data-p="dataP"
         ></span>
@@ -32,7 +33,7 @@
             @mousedown="onMouseDown($event, 0)"
             @keydown="onKeyDown($event, 0)"
             @blur="onBlur($event, 0)"
-            :tabindex="tabindex"
+            :tabindex="disabled ? -1 : tabindex"
             role="slider"
             :aria-valuemin="min"
             :aria-valuenow="d_value ? d_value[0] : null"
@@ -40,6 +41,7 @@
             :aria-labelledby="ariaLabelledby"
             :aria-label="ariaLabel"
             :aria-orientation="orientation"
+            :aria-disabled="disabled"
             v-bind="ptm('startHandler')"
             :data-p="dataP"
         ></span>
@@ -53,7 +55,7 @@
             @mousedown="onMouseDown($event, 1)"
             @keydown="onKeyDown($event, 1)"
             @blur="onBlur($event, 1)"
-            :tabindex="tabindex"
+            :tabindex="disabled ? -1 : tabindex"
             role="slider"
             :aria-valuemin="min"
             :aria-valuenow="d_value ? d_value[1] : null"
@@ -61,6 +63,7 @@
             :aria-labelledby="ariaLabelledby"
             :aria-label="ariaLabel"
             :aria-orientation="orientation"
+            :aria-disabled="disabled"
             v-bind="ptm('endHandler')"
             :data-p="dataP"
         ></span>
@@ -210,6 +213,10 @@ export default {
             this.onDragStart(event, index);
         },
         onKeyDown(event, index) {
+            if (this.disabled) {
+                return;
+            }
+
             this.handleIndex = index;
 
             switch (event.code) {

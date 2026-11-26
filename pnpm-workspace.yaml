@@ -7,7 +7,7 @@ catalog:
     '@openuxkit/utils': ^1.0.0
     '@openuxkit/forms': ^1.0.0
     '@openuxkit/styles': ^1.1.0
-    '@openuxkit/themes': ^1.2.0
+    '@openuxkit/themes': ^1.3.1
     '@openuxkit/mcp': ^1.1.0
     'tailwindcss-primeui': ^0.6.1
     'primeicons': ^7.0.0

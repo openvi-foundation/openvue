@@ -4,14 +4,27 @@ Every OpenVue release since the fork from PrimeVue 4.5.5, newest first. All pack
 
 ## Unreleased
 
+## 1.2.0 - 2026-11-24
+
 ### Changed
 
-- `Listbox` with `multiple` no longer picks up in-place changes to a selection array Vue doesn't track, such as pushing into a `shallowRef` or `markRaw` array. Assign a new array instead, e.g. `selected.value = [...selected.value, item]`. Arrays held in a `ref` or `reactive` work as before. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
+- `Listbox` and `AutoComplete` with `multiple`, and `MultiSelect`, no longer react when you change the selected values array in place (for example with `push`) if that array is a `shallowRef` or `markRaw` array. Replace the array instead: `selected.value = [...selected.value, item]`. Arrays in a `ref` or `reactive` are not affected. `MultiSelect` chip labels follow the same rule for the `options` array. ([#560](https://github.com/openvi-foundation/openvue/issues/560), [#64](https://github.com/openvi-foundation/openvue/issues/64), [#728](https://github.com/openvi-foundation/openvue/issues/728))
+- `Chart` passes `data` and `options` to Chart.js as plain objects instead of reactive proxies. If you change the chart instance from `getChart()` or the `loaded` event directly, call `chart.update()` afterwards. Changing the `data` and `options` props works as before. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
+- `TieredMenu`, `ContextMenu`, `Menubar` and `MegaMenu` keep the open submenu while the mouse moves diagonally towards it, instead of switching to the items the pointer passes over. ([#60](https://github.com/openvi-foundation/openvue/issues/60))
 
 ### Fixed
 
-- `Listbox` with `multiple` no longer slows down while scrolling or getting focus when many options are selected. When `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup; without either, objects are still compared by deep equality. ([#560](https://github.com/openvi-foundation/openvue/issues/560))
-- `InputNumber` now accepts digits typed in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit one in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
+- `Listbox`, `MultiSelect` and `AutoComplete` stay fast with many selected values. For example, selecting all of 100,000 options in `MultiSelect` no longer freezes the page. If `v-model` holds objects, set `optionValue` or `dataKey` to get the speedup. ([#560](https://github.com/openvi-foundation/openvue/issues/560), [#64](https://github.com/openvi-foundation/openvue/issues/64), [#728](https://github.com/openvi-foundation/openvue/issues/728))
+- `Select`, `MultiSelect`, `AutoComplete`, `CascadeSelect`, `TreeSelect` and `DatePicker` work with an overlay component, such as a `Select`, `DatePicker` or `Popover`, in their header or footer slot. Picking a value there selects it and keeps the outer panel open, and a click outside closes the inner overlay first. ([#571](https://github.com/openvi-foundation/openvue/issues/571), [#719](https://github.com/openvi-foundation/openvue/issues/719), [#720](https://github.com/openvi-foundation/openvue/issues/720), [#731](https://github.com/openvi-foundation/openvue/issues/731), [#733](https://github.com/openvi-foundation/openvue/issues/733), [#736](https://github.com/openvi-foundation/openvue/issues/736))
+- The same components now close on an outside click while their panel contains an expanded `Panel` or `Accordion`.
+- `TreeSelect` closes on the first outside click after you click its header, footer or empty message, instead of needing a second click. ([#735](https://github.com/openvi-foundation/openvue/issues/735))
+- `Chart` no longer keeps the CPU busy with a stacked chart and `parsing: false`. ([#306](https://github.com/openvi-foundation/openvue/issues/306))
+- `Slider` snaps to the nearest step, so the first and last steps are easy to reach. `PageUp` and `PageDown` move by ten steps, and it emits only when the value changes. ([#633](https://github.com/openvi-foundation/openvue/issues/633))
+- `InputNumber` accepts digits in the locale's own numbering system, such as Persian digits with `locale="fa-IR"`, and no longer drops the digit 1 in those locales. ([#197](https://github.com/openvi-foundation/openvue/issues/197))
+- `InputNumber` in `currency` mode reads typed numbers correctly when the currency symbol contains a dot. For example, typing 2 with `AED` and `locale="ar-AE"` no longer gives 200. ([#257](https://github.com/openvi-foundation/openvue/issues/257), [#267](https://github.com/openvi-foundation/openvue/issues/267))
+- `InputOtp` handles the `Delete` key. It removes the character in the current field, keeps the focus there and moves the following characters back, so pressing it again keeps deleting. ([#529](https://github.com/openvi-foundation/openvue/issues/529))
+- `TabList` no longer throws an error when its state changes after it is unmounted. ([#723](https://github.com/openvi-foundation/openvue/issues/723))
+- `Password` no longer sets `aria-expanded` on its input, which failed accessibility checks such as axe, and its strength overlay no longer has `role="dialog"`. ([#132](https://github.com/openvi-foundation/openvue/issues/132))
 
 ## 1.1.1 - 2026-11-04
 

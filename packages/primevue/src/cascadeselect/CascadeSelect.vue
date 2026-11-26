@@ -96,7 +96,7 @@
 import { absolutePosition, addStyle, findSingle, focus, getOuterWidth, isTouchDevice, relativePosition } from '@openuxkit/utils/dom';
 import { equals, findLastIndex, isEmpty, isNotEmpty, isPrintableCharacter, isString, resolveFieldData } from '@openuxkit/utils/object';
 import { ZIndex } from '@openuxkit/utils/zindex';
-import { ConnectedOverlayScrollHandler } from '@openvue/core/utils';
+import { ConnectedOverlayScrollHandler, OverlayRegistry } from '@openvue/core/utils';
 import AngleRightIcon from '@openvue/icons/angleright';
 import ChevronDownIcon from '@openvue/icons/chevrondown';
 import SpinnerIcon from '@openvue/icons/spinner';
@@ -151,6 +151,7 @@ export default {
         }
 
         if (this.overlay) {
+            OverlayRegistry.unregister(this.overlay);
             ZIndex.clear(this.overlay);
             this.overlay = null;
         }
@@ -540,6 +541,8 @@ export default {
 
             // Issue: #7508
             this.$attrSelector && el.setAttribute(this.$attrSelector, '');
+
+            OverlayRegistry.register(el, this.$el);
         },
         onOverlayAfterEnter() {
             this.bindOutsideClickListener();
@@ -550,6 +553,7 @@ export default {
         },
         onOverlayLeave(el) {
             el.style.pointerEvents = 'none';
+            OverlayRegistry.unregister(el);
             this.unbindOutsideClickListener();
             this.unbindScrollListener();
             this.unbindResizeListener();
@@ -572,7 +576,7 @@ export default {
         bindOutsideClickListener() {
             if (!this.outsideClickListener) {
                 this.outsideClickListener = (event) => {
-                    if (this.overlayVisible && this.overlay && !this.$el.contains(event.target) && !this.overlay.contains(event.target)) {
+                    if (this.overlayVisible && this.overlay && !this.$el.contains(event.target) && !this.overlay.contains(event.target) && !OverlayRegistry.isInside(event, this.overlay) && !OverlayRegistry.hasNestedOverlay(this.overlay)) {
                         this.hide();
                     }
                 };
