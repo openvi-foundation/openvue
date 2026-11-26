@@ -125,6 +125,11 @@ export interface SliderProps {
      */
     orientation?: HintedString<'horizontal' | 'vertical'> | undefined;
     /**
+     * Places the maximum value at the start of the slider and the minimum value at the end.
+     * @defaultValue false
+     */
+    inverted?: boolean | undefined;
+    /**
      * Step factor to increment/decrement the value.
      * @defaultValue 1
      */

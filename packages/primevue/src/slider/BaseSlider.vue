@@ -18,6 +18,10 @@ export default {
             type: String,
             default: 'horizontal'
         },
+        inverted: {
+            type: Boolean,
+            default: false
+        },
         step: {
             type: Number,
             default: null

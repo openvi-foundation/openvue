@@ -19,6 +19,7 @@ import FilterDoc from '@/doc/slider/FilterDoc.vue';
 import FormsDoc from '@/doc/slider/FormsDoc.vue';
 import ImportDoc from '@/doc/slider/ImportDoc.vue';
 import InputDoc from '@/doc/slider/InputDoc.vue';
+import InvertedDoc from '@/doc/slider/InvertedDoc.vue';
 import RangeDoc from '@/doc/slider/RangeDoc.vue';
 import StepDoc from '@/doc/slider/StepDoc.vue';
 import VerticalDoc from '@/doc/slider/VerticalDoc.vue';
@@ -69,6 +70,11 @@ export default {
                     id: 'vertical',
                     label: 'Vertical',
                     component: VerticalDoc
+                },
+                {
+                    id: 'inverted',
+                    label: 'Inverted',
+                    component: InvertedDoc
                 },
                 {
                     id: 'accessibility',

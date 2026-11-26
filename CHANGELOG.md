@@ -8,8 +8,13 @@ All packages in this repository are released together under a single version.
 
 ## [Unreleased]
 
+### Added
+
+- Added `inverted` prop to `Slider` that places the maximum value at the start and the minimum value at the end. ([#726](https://github.com/openvi-foundation/openvue/issues/726))
+
 ### Fixed
 
+- `Slider` left and right arrow keys now move the handle the way they point in RTL. ([#726](https://github.com/openvi-foundation/openvue/issues/726))
 - A disabled `Slider` can no longer be focused with Tab or changed with the keyboard. ([#744](https://github.com/openvi-foundation/openvue/issues/744))
 
 ## [1.2.0] - 2026-11-24
