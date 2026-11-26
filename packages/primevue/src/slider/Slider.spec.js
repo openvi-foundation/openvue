@@ -403,4 +403,49 @@ describe('Slider.vue value selection', () => {
             expect(wrapper.props('modelValue')).toEqual([10, 40]);
         });
     });
+
+    describe('disabled', () => {
+        it('should remove the handle from the tab order', () => {
+            const wrapper = mountSlider({ modelValue: 40, disabled: true });
+            const handle = wrapper.find('[role="slider"]');
+
+            expect(handle.attributes('tabindex')).toBe('-1');
+            expect(handle.attributes('aria-disabled')).toBe('true');
+        });
+
+        it('should remove both range handles from the tab order', () => {
+            const wrapper = mountSlider({ modelValue: [20, 60], range: true, disabled: true });
+
+            wrapper.findAll('[role="slider"]').forEach((handle) => {
+                expect(handle.attributes('tabindex')).toBe('-1');
+                expect(handle.attributes('aria-disabled')).toBe('true');
+            });
+        });
+
+        it('should keep the tabindex when enabled', () => {
+            const wrapper = mountSlider({ modelValue: 40, tabindex: 2 });
+
+            expect(wrapper.find('[role="slider"]').attributes('tabindex')).toBe('2');
+        });
+
+        it('should ignore keyboard input', async () => {
+            const wrapper = mountSlider({ modelValue: 40, disabled: true });
+
+            for (const code of ['ArrowRight', 'ArrowLeft', 'PageUp', 'PageDown', 'Home', 'End']) {
+                await press(wrapper, code);
+            }
+
+            expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+            expect(wrapper.props('modelValue')).toBe(40);
+        });
+
+        it('should ignore keyboard input on range handles', async () => {
+            const wrapper = mountSlider({ modelValue: [20, 60], range: true, disabled: true });
+
+            await press(wrapper, 'ArrowRight', 0);
+            await press(wrapper, 'ArrowLeft', 1);
+
+            expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+        });
+    });
 });
